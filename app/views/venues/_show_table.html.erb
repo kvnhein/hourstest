@@ -1,0 +1,52 @@
+<ul class="collection">
+      <% @v = @events.all.where( day: @d)%>
+      <% if @v.empty?%>
+        <li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@d%>
+        </li>
+      <%else%>
+      <% @v.order(:start).each do |x| %>
+      <li class="collection-item grey lighten-3">
+      <%= x.special %><br>
+
+        
+          <% start_minutes = "00"%>
+<%if x.end%1 > 0 %>
+     <%minutes = "30"%>
+<%end%>
+<%start_am = "am"%>
+<%if x.end >10 && x.end < 22 %>
+     <%start_am = "pm"%>
+<%end%>
+
+<% end_minutes = "00"%>
+<%if x.end%1 > 0 %>
+     <%minutes = "30"%>
+<%end%>
+<%end_am = "am"%>
+<%if x.end >10 && x.end < 22 %>
+     <%end_am="pm"%>
+<%end%>
+
+<!--Convert to regular time-->
+<%start_time = 0%>
+<%end_time = 0%>
+<% if x.start > 10 %>
+   <%start_time = (x.start - 0.1).round(0)- 10%>
+<%else%>
+   <%start_time = (x.start - 0.1).round(0)+ 2%>
+<%end%>
+
+    <% if x.end > 10 %>
+   <%end_time = (x.end - 0.1).round(0)- 10%>
+<%else%>
+   <%end_time = (x.end - 0.1).round(0)+ 2%>
+<%end%>
+
+<div class="valign-wrapper">
+<i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
+</div>
+        
+      </li>
+       <%end%>
+    </ul>
+    <%end%>

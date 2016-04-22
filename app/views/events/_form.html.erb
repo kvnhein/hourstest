@@ -1,0 +1,45 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :special %><br>
+    <%= f.text_area :special %>
+  </div>
+  <div class="row">
+  <div class="field col s6">
+    <%= f.label :day %><br>
+    <%= f.select(:day, options_for_select([['Monday', 'Monday'],['Tuesday','Tuesday'],['Wednesday', 'Wednesday'],['Thursday','Thursday'],['Friday','Friday'],['Saturday','Saturday'],['Sunday','Sunday']]) ) %>
+  </div>
+  <div class="field col s6">
+    <%= f.label :venue_id %><br>
+    <%=collection_select( :event, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
+  </div>
+  </div>
+  <div class="row">
+    <div class="field col s6 m6">
+    <%= f.label :start %><br>
+    <%= f.select(:start, options_for_select([['3:00 pm', '13'],['4:00 pm','14'],['5:00 pm', '15'],['6:00 pm','16'],['7:00 pm','17'],['8:00 pm','18'],['9:00 pm','19'],['10:00 pm','20'],['11:00 pm','21'],['12:00 pm','22']]))%>
+    </div>
+    <div class="field col s6 m6">
+    <%= f.label :end %><br>
+    <%= f.select(:end, options_for_select([['5:00 pm','15'],['6:00 pm','16'],['7:00 pm', '17'],['8:00 pm','18'],['9:00 pm','19'],['10:00 pm','20'],['11:00 pm','21'],['12:00 am','22'],['1:00 am','23'],['2:00 am','24']]))%>
+    </div>
+  </div>
+  <div class="row">
+   <div class="actions waves-effect waves-light btn">
+    <%= f.submit "Done" %>
+  </div>
+    <%= link_to 'Back',  events_path, class: "waves-effect waves-light btn" %>
+     </div>
+
+<% end %>

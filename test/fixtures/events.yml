@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  special: MyText
+  day: MyString
+  venue_id: 
+  start: 1.5
+  end: 1.5
+
+two:
+  special: MyText
+  day: MyString
+  venue_id: 
+  start: 1.5
+  end: 1.5

@@ -1,0 +1,92 @@
+
+<%x = []%>
+<%@events.each do |event| %>
+   <%x.push(Venue.where(id: event.venue_id).first.id)%>
+<%end%>
+<%x.uniq.each do |d|%>
+  <%e = @events.where(venue_id: d).order(:start)%>
+
+      <div class="row">
+        <div class="col s12 ">
+          <div class="card teal ">
+            <div class="card-content white-text">
+              <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
+              <!----This is where the uniq special code is going in -->
+                <%unievents = []%>
+                <%unispecials = []%>
+                    <%e.each do |event| %>
+                      <% test = event.special.to_s %>
+                         <%if unispecials.index(test) == nil%>
+                            <%unievents.push(event)%>
+                            <%unispecials.push(test)%>
+                         <%end%>
+                      <%end%>
+              <!---This is where it ends-->
+              <%unievents.each do |event|%>
+                <div class="chip">
+                  <%=event.special%>
+                </div><br>
+              <%end%>
+            <!--div class="card-content">-->
+<br>
+<a class="activator waves-effect waves-light btn"><i class="material-icons left">query_builder</i>HOURS</a>
+    </div>
+            <div class="card-reveal">
+             <span class="card-title grey-text text-darken-4">HOURS<i class="material-icons right">close</i></span>
+   <ul class="collection">
+     <% e.each do |x| %>
+  <li class="collection-item grey lighten-3">
+    <span class = "left"><%= x.special %></span><br>
+ <!-- This is Where the time code is -->
+<% start_minutes = "00"%>
+<%if x.end%1 > 0 %>
+     <%minutes = "30"%>
+<%end%>
+<%start_am = "am"%>
+<%if x.end >10 && x.end < 22 %>
+     <%start_am = "pm"%>
+<%end%>
+
+<% end_minutes = "00"%>
+<%if x.end%1 > 0 %>
+     <%minutes = "30"%>
+<%end%>
+<%end_am = "am"%>
+<%if x.end >10 && x.end < 22 %>
+     <%end_am="pm"%>
+<%end%>
+
+<!--Convert to regular time-->
+<%start_time = 0%>
+<%end_time = 0%>
+<% if x.start > 10 %>
+   <%start_time = (x.start - 0.1).round(0)- 10%>
+<%else%>
+   <%start_time = (x.start - 0.1).round(0)+ 2%>
+<%end%>
+
+    <% if x.end > 10 %>
+   <%end_time = (x.end - 0.1).round(0)- 10%>
+<%else%>
+   <%end_time = (x.end - 0.1).round(0)+ 2%>
+<%end%>
+
+<div class="valign-wrapper">
+<i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
+</div>
+<!--This is where the time code ends - This should be put into the model later -->
+     </li>
+            <li class="divider"></li>
+     <%end%>
+    </ul>
+
+    <%= link_to 'More Hours', venue_path(Venue.where( id: e[0].venue_id).first.id), class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
+            </div>
+           <!-- <div class="card-action">
+              <a href="#">Menu</a>
+              <a href="#">Share</a>
+            </div>-->
+          </div>
+        </div>
+      </div>
+ <%end%>

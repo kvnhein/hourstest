@@ -1,0 +1,114 @@
+<div class="col s3">
+     <div class="card-panel grey lighten-3 z-depth-1">
+           <h2 class= "flow-text center-align"><%= @venue.name%> Hours <%=@l%></h2>
+     </div>
+</div>
+<ul class="collapsible" data-collapsible="accordion">
+     <li>
+      <div class="collapsible-header <%=@s%>"><i class="material-icons">query_builder</i>Sunday</div>
+      <div class="collapsible-body">
+        <% @d = "Sunday" %>
+        <%= render "show_table" %>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header <%=@m%>"><i class="material-icons">query_builder</i>Monday</div>
+      <div class="collapsible-body">
+        <% @d = "Monday" %>
+        <%= render "show_table" %>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header <%=@t%>"><i class="material-icons">query_builder</i>Tuesday</div>
+      <div class="collapsible-body">
+      <% @d = "Tuesday" %>
+        <%= render "show_table" %>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header <%=@w%>"><i class="material-icons">query_builder</i>Wednesday</div>
+      <div class="collapsible-body">
+        <% @d = "Wednesday" %>
+        <%= render "show_table" %>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header <%=@th%>"><i class="material-icons">query_builder</i>Thursday</div>
+      <div class="collapsible-body">
+        <% @d = "Thursday" %>
+        <%= render "show_table" %>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header <%=@f%>"><i class="material-icons">query_builder</i>Friday</div>
+      <div class="collapsible-body">
+        <% @d = "Friday" %>
+        <%= render "show_table" %>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header <%=@st%>"><i class="material-icons">query_builder</i>Saturday</div>
+      <div class="collapsible-body">
+        <% @d = "Saturday" %>
+        <%= render "show_table" %>
+      </div>
+     </li>
+  </ul>
+    <div class="row">
+      <!--  <a class="waves-effect waves-light btn" href=
+        "<%= @venue.menu_address %>">Menu</a>-->
+        <h3 class="flow-text">Contact</h3>
+    </div>
+    <div class="col s3 m2">
+        <div class="card zdepth-5">
+            <div class="card-content">
+                <p><%= @venue.address%> / Phone: (412)555-5555</p><br>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <style>
+      #map {
+        width: 100%;
+        height: 400px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js">
+    </script>
+    <script>
+
+      function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(<%= @venue.latitude %>,<%= @venue.longitude %>),
+          zoom: 18,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(<%= @venue.latitude %>,<%= @venue.longitude %>),
+          title: "Here is Melbourne"
+        });
+
+        marker.setMap(map);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+    <% if (user_signed_in?)%>
+        <% if current_user.admin? %>
+            <%= link_to 'New Venue', new_venue_path, class: "waves-effect waves-light btn" %>
+            <%= link_to 'Edit', edit_venue_path(@venue) %>
+        <%end%>
+    <%end%>
+
+<%if @venue.neighborhood_id == 1%>
+    <%= link_to 'Back',  south_side_path, class: "waves-effect waves-light btn" %>
+<%elsif @venue.neighborhood_id == 2%>
+    <%= link_to 'Back',  shadyside_path, class: "waves-effect waves-light btn" %>
+<%else%>
+   <%= link_to 'Back',  oakland_path, class: "waves-effect waves-light btn" %>
+<%end%>
+
+
+

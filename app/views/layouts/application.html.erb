@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hours</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render partial: "shared/header"%>
+<%= render partial: "shared/message"%>
+<main>
+<div class = "container">
+<%= yield %>
+</div>
+</main>
+
+<%= render partial: "shared/footer"%>
+
+<script>
+$(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+$(document).ready(function() {
+    $('select').material_select();
+    $(".dropdown-button").dropdown();
+});
+ $(".button-collapse").sideNav();
+</script>
+</body>
+</html>

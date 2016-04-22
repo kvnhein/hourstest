@@ -1,0 +1,18 @@
+ <h5 class="flow-text" style="font-size:170%;">Today's Oakland Hours</h5>
+<blockquote><h4 class="flow-text" style="font-size:200%;"><%= @day_tag %></h4></blockquote>
+
+
+
+<br>
+<% if (user_signed_in?)%>
+   <% if current_user.admin? %>
+<%= link_to 'New Happy Hour', new_event_path, class: "waves-effect waves-light btn" %>
+<%= link_to 'New Venue', new_venue_path, class: "waves-effect waves-light btn" %>
+<%end%>
+<%end%>
+
+
+<div class ="center hide-on-large-only">
+<%=render partial: "shared/dynamic_table_cards"%>
+</div>
+
