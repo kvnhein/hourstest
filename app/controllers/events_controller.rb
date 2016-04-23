@@ -6,11 +6,13 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     @l = Time.now.in_time_zone("Eastern Time (US & Canada)").min
   end
 
   def shadyside
-
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour #this is what decides whether a special will be shown of clear
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
     if t.wday == 1
       x = "Monday"
@@ -44,6 +46,8 @@ class EventsController < ApplicationController
   end
 
   def south_side
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
     if t.wday == 1
       x = "Monday"
@@ -77,6 +81,8 @@ class EventsController < ApplicationController
   end
 
   def oakland
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
     if t.wday == 1
       x = "Monday"

@@ -4,7 +4,7 @@
    <%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 <%x.uniq.each do |d|%>
-  <%e = @events.where(venue_id: d).order(:start)%>
+  <%e = @events.where(venue_id: d).order(:start).reverse%>
 
       <div class="row">
         <div class="col s12 ">
@@ -22,10 +22,16 @@
                          <%end%>
                       <%end%>
               <!---This is where it ends-->
-              <%unievents.each do |event|%>
+              <%unievents.reverse.each do |event|%>
+              <% if @b-2+(@c.to_f*0.0166) > event.start.to_i%>
                 <div class="chip" style="opacity:0.4">
                   <%=event.special%>
                 </div><br>
+              <%else%>
+                 <div class="chip">
+                  <%=event.special%>
+                </div><br>
+              <%end%>
               <%end%>
             <!--div class="card-content">-->
 <br>
@@ -34,7 +40,7 @@
             <div class="card-reveal">
              <span class="card-title grey-text text-darken-4">HOURS<i class="material-icons right xbox">close</i></span>
    <ul class="collection">
-     <% e.each do |x| %>
+     <% e.reverse.each do |x| %>
   <li class="collection-item grey lighten-3">
     <span class = "left"><%= x.special %></span><br>
  <!-- This is Where the time code is -->
