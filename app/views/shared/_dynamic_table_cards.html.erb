@@ -23,7 +23,7 @@
                       <%end%>
               <!---This is where it ends-->
               <%unievents.reverse.each do |event|%>
-              <% if @b-2+(@c.to_f*0.0166) > event.start.to_i%>
+              <% if @b-2+(@c.to_f*0.0166) > event.end.to_i%>
                 <div class="chip" style="opacity:0.4">
                   <%=event.special%>
                 </div><br>
