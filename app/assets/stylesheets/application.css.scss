@@ -12,6 +12,34 @@ $primary-color: color("teal", "darken-3") !default;
     flex: 1 0 auto;
   }
 
+.xbox {
+    position:absolute;
+    right: 16px;
+}
+
+.card-panel {
+    margin: 1rem 0 1rem 0;
+}
+
+.card-panel h2 {
+  margin: 1rem 0 1rem 0;
+}
+
+.waves-effect.waves-light.btn-large {
+  display: block;
+    width: 293px;
+    margin: 0 auto;
+}
+
+.container h5 {
+  margin: 2.82rem 0 0.656rem 0;
+}
+
+i.tiny {
+    margin-right: 6px;
+    margin-top: -2px;
+}
+
 .card .card-action a {
   width: 49%;
 }

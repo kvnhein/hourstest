@@ -5,9 +5,12 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @l = Time.now.in_time_zone("Eastern Time (US & Canada)").min
   end
 
   def shadyside
+
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
     if t.wday == 1
       x = "Monday"
@@ -105,8 +108,8 @@ class EventsController < ApplicationController
     @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
     @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
   end
-  
-  
+
+
   # GET /events/1
   # GET /events/1.json
   def show
