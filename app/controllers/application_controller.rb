@@ -15,7 +15,8 @@ def get_venues
 	@venues ||= Venue.all
 end
 
-  def allow_iframe
-    response.headers.delete "X-Frame-Options"
+ def embeddable_action
+    response.headers["X-FRAME-OPTIONS"] = "ALLOW-FROM http://hourspgh.com/"
+    # render or do something
   end
 end
