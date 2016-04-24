@@ -23,10 +23,9 @@ module Hours
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    
-    config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'ALLOWALL'})
+
+     config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'ALLOWALL'})
+
+
   end
-  def allow_iframe_requests
-  response.headers.delete('X-Frame-Options')
-end
 end
