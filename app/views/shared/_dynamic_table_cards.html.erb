@@ -71,7 +71,9 @@
    <%start_time = (x.start - 0.1).round(0)+ 2%>
 <%end%>
 
-    <% if x.end > 10 %>
+ <%if x.end > 22 %>
+   <%end_time = (x.end - 0.1).round(0)- 22%>
+    <% elsif x.end > 10 %>
    <%end_time = (x.end - 0.1).round(0)- 10%>
 <%else%>
    <%end_time = (x.end - 0.1).round(0)+ 2%>
