@@ -17,6 +17,12 @@ $primary-color: color("teal", "darken-3") !default;
     right: 16px;
 }
 
+iframe {
+        width: 1px;
+        min-width: 100%;
+        *width: 100%;
+    }
+
 .card-panel {
     margin: 1rem 0 1rem 0;
 }
