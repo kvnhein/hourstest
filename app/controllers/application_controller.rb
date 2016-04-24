@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :get_neighborhoods
   before_filter :get_venues
-  
+
   protected
 
 def get_neighborhoods
@@ -14,9 +14,8 @@ end
 def get_venues
 	@venues ||= Venue.all
 end
-  
-  def iframe_action
+
+  def allow_iframe
     response.headers.delete "X-Frame-Options"
-    render_something
   end
 end
