@@ -14,4 +14,9 @@ end
 def get_venues
 	@venues ||= Venue.all
 end
+  
+  def iframe_action
+    response.headers.delete "X-Frame-Options"
+    render_something
+  end
 end
