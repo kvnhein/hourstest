@@ -1,5 +1,5 @@
 @import "materialize/components/color";
-$primary-color: color("teal", "darken-3") !default;
+$primary-color: color("grey", "lighten-5") !default;
 @import "materialize";
 @import "toastr";
   body {
@@ -15,6 +15,10 @@ $primary-color: color("teal", "darken-3") !default;
 .xbox {
     position:absolute;
     right: 16px;
+}
+
+.material-icons {
+     color: #4db6ac;
 }
 
 iframe {
@@ -35,6 +39,8 @@ iframe {
   display: block;
     width: 293px;
     margin: 0 auto;
+    background-color: #f5f5f5;
+    color: #4db6ac;
 }
 
 .container h5 {
