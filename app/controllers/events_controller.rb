@@ -3,6 +3,9 @@ class EventsController < ApplicationController
   before_action :require_admin, only: [:edit, :update, :destroy, :new]
   # GET /events
   # GET /events.json
+  def landing
+    
+  end
   def index
     @events = Event.all
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
