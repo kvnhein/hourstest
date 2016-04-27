@@ -1,0 +1,9 @@
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <%if @venue.neighborhood_id == 1%>
+    <%= link_to 'Back',  south_side_path, class: "waves-effect waves-light btn" %>
+<%elsif @venue.neighborhood_id == 2%>
+    <%= link_to 'Back',  shadyside_path, class: "waves-effect waves-light btn" %>
+<%else%>
+   <%= link_to 'Back',  oakland_path, class: "waves-effect waves-light btn" %>
+<%end%>
+</div>

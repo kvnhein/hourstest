@@ -1,3 +1,4 @@
+<%= render partial: "back_button"%>
 <div class="col s3">
      <div class="card-panel grey lighten-3 z-depth-1">
            <h2 class= "flow-text center-align"><%= @venue.name%> Hours <%=@l%></h2>
@@ -62,7 +63,7 @@
     <div class="col s3 m2">
         <div class="card zdepth-5">
             <div class="card-content">
-                <p><%= @venue.address%> / Phone: (412)555-5555</p><br>
+                <p><%= @venue.address%> / Phone: (<%=@venue.phone_number[0..2]%>) <%=@venue.phone_number[3..5]%>-<%=@venue.phone_number[6..9]%></p><br>
                 <div id="map"></div>
             </div>
         </div>
@@ -102,13 +103,13 @@
         <%end%>
     <%end%>
 
-<%if @venue.neighborhood_id == 1%>
+<!--<%if @venue.neighborhood_id == 1%>
     <%= link_to 'Back',  south_side_path, class: "waves-effect waves-light btn" %>
 <%elsif @venue.neighborhood_id == 2%>
     <%= link_to 'Back',  shadyside_path, class: "waves-effect waves-light btn" %>
 <%else%>
    <%= link_to 'Back',  oakland_path, class: "waves-effect waves-light btn" %>
-<%end%>
+<%end%>-->
 
 
 
