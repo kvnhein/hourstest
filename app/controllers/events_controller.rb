@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def landing
-    
+
   end
   def index
     @events = Event.all
@@ -17,27 +17,48 @@ class EventsController < ApplicationController
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour #this is what decides whether a special will be shown of clear
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-    if t.wday == 1
+  if t.wday == 0 && t.hour < 2 #these conditionals make sure the day doesn't change till 2am
+    x = "Saturday"
+    @day_tag = "Saturday"
+  elsif t.wday == 0
+    x = "Sunday"
+    @day_tag = "Sunday"
+  elsif t.wday == 1 && t.hour < 2
+    x = "Sunday"
+    @day_tag = "Sunday"
+  elsif t.wday == 1
+      x = "Monday"
+      @day_tag = "Monday"
+    elsif t.wday == 2 && t.hour < 2
       x = "Monday"
       @day_tag = "Monday"
     elsif  t.wday==2
       x = "Tuesday"
       @day_tag  = "Tuesday"
+    elsif t.wday == 3 && t.hour < 2
+      x = "Tuesday"
+      @day_tag  = "Tuesday"
     elsif  t.wday==3
+      x = "Wednesday"
+      @day_tag  = "Wednesday"
+    elsif t.wday == 4 && t.hour < 2
       x = "Wednesday"
       @day_tag  = "Wednesday"
     elsif  t.wday==4
       x = "Thursday"
       @day_tag  = "Thursday"
+    elsif t.wday == 5 && t.hour < 2
+      x = "Thursday"
+      @day_tag  = "Thursday"
     elsif t.wday==5
       x = "Friday"
       @day_tag  = "Friday"
-     elsif t.wday==6
+    elsif t.wday == 6 && t.hour < 2
+       x = "Friday"
+      @day_tag  = "Friday"
+     else t.wday==6
       x= "Saturday"
       @day_tag  = "Saturday"
-     else
-      x= "Sunday"
-      @day_tag  = "Sunday"
     end
     @v = @venues.where( neighborhood_id: 2)
     @events = Event.where(venue_id: @v.pluck(:id), day: x )

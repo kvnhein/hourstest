@@ -37,9 +37,14 @@ class VenuesController < ApplicationController
       @s = "active"
     end
 
+    if (user_signed_in?)
+     if current_user.id == @venue.owner
+       @button = 1
+     else
+       @button = 0
+     end
+   end
     
-
-
   end
 
   # GET /venues/new
