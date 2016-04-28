@@ -17,9 +17,9 @@ end
   
  def require_admin
   if user_signed_in?
-	  redirect_to '/' unless current_user.admin?
+	  redirect_to '/south_side' unless current_user.admin?
   else
-    redirect_to '/'
+    redirect_to '/south_side'
   end
  end
 

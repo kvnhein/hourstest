@@ -1,1 +1,15 @@
- <h1 class="flow-text" style="font-size:170%;">Coming Soon!</1>
+<div class=" center-align">
+<h1 class="flow-text" style="font-size:170%;">Coming Soon!</h1>
+</div>
+<br>
+
+<div class=" center-align">
+
+<%if (!user_signed_in?)%>
+<%= link_to "Login", new_user_session_path, class: "waves-effect waves-light btn"%>
+<%else%>
+<%= link_to "See Hours", events_path, class: "waves-effect waves-light btn"%>
+<%end%>
+</div>
+
+
