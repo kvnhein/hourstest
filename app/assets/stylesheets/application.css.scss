@@ -76,6 +76,31 @@ iframe {
 
 .specials-header {
   background-color: #1fdeb4;
+  margin-left: -18px;
+    margin-right: -18px;
+    margin-bottom: -20px;
+    padding: 28px 18px 25px 18px;
+}
+
+.specials-header h5 {
+     margin: 0;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: .5px;
+  color:#2e2e2e;
+}
+
+.btn, .btn-large {
+      background-color: #17a787;
+}
+
+.specials-header h4 {
+        margin: 0;
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: .5px;
 }
 
 .card-panel {
