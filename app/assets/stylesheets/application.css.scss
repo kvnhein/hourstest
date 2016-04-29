@@ -22,14 +22,48 @@ $primary-color: color("grey", "lighten-5") !default;
      color: #4db6ac;
 }
 
+.hourslist {
+    margin-left: -18px;
+    margin-right: -18px;
+      margin-bottom: 0;
+}
+
+.chip {
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    margin-bottom: 8px;
+    background-color: #2e2e2e;
+}
+
+.card .card-content .card-title {
+  font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #17a787;
+      display: block;
+    margin: 4px 0 2px 0;
+      line-height: 0;
+      letter-spacing: 1px;
+}
+
+.hourslist .col {
+  padding:0;
+}
+
 nav {
   background-color:#0e0e0e;
+      box-shadow: none;
 }
 
 nav a img{
     border: 0;
-    padding-top: 17px;
+    padding-top: 18px;
     display: block;
+    padding-left: 14px;
     width: 158px;
     height: auto;
 }
@@ -68,6 +102,14 @@ i.tiny {
 .card .card-reveal {
     position: fixed;
         left: 0%;
+}
+
+.card {
+    margin: 0;
+    background-color: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 1px solid #aaa;
 }
 
 .card .card-action a {

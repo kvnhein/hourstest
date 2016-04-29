@@ -6,9 +6,9 @@
 <%x.uniq.each do |d|%>
   <%e = @events.where(venue_id: d).order(:start).reverse%>
 
-      <div class="row">
-        <div class="col s12 ">
-          <div class="card teal ">
+      <div class="row hourslist">
+        <div class="col s12">
+          <div class="card">
             <div class="card-content white-text">
               <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
               <!----This is where the uniq special code is going in -->
@@ -92,7 +92,7 @@
         "http://<%= Venue.where( id: e[0].venue_id).first.menu_address %>">Menu</a>
       <%= link_to 'More Hours', venue_path(Venue.where( id: e[0].venue_id).first.id), class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
     </div>
-    
+
             </div>
            <!-- <div class="card-action">
               <a href="#">Menu</a>
