@@ -9,6 +9,7 @@
       <div class="row hourslist">
         <div class="col s12">
           <div class="card">
+            <a class="activator">
             <div class="card-content">
               <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
               <!----This is where the uniq special code is going in -->
@@ -35,8 +36,9 @@
               <%end%>
             <!--div class="card-content">-->
 <br>
-<a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a>
+<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
     </div>
+            </a>
             <div class="card-reveal">
              <span class="card-title grey-text text-darken-4">HOURS<i class="material-icons right xbox">close</i></span>
    <ul class="collection">
