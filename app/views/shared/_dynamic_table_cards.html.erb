@@ -5,11 +5,11 @@
 <%end%>
 <%x.uniq.each do |d|%>
   <%e = @events.where(venue_id: d).order(:start).reverse%>
-    
-<a class="activator">
+
+
       <div class="row hourslist">
         <div class="col s12">
-          
+          <a class="activator btn">
           <div class="card">
 
             <div class="card-content">
@@ -103,9 +103,8 @@
               <a href="#">Share</a>
             </div>-->
           </div>
-            
+          </a>
         </div>
 
       </div>
-  </a>
  <%end%>
