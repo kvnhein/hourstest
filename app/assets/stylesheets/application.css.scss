@@ -23,8 +23,8 @@ $primary-color: color("grey", "lighten-5") !default;
 }
 
 .hourslist {
-    margin-left: -18px;
-    margin-right: -18px;
+    margin-left: -18px !important;
+    margin-right: -18px !important;
       margin-bottom: 0;
 }
 
@@ -74,6 +74,10 @@ iframe {
         *width: 100%;
     }
 
+.specials-header {
+  background-color: #1fdeb4;
+}
+
 .card-panel {
     margin: 1rem 0 1rem 0;
 }
@@ -109,7 +113,7 @@ i.tiny {
     background-color: #fff;
     border-radius: 0;
     box-shadow: none;
-    border-top: 1px solid #aaa;
+    border-top: 1px solid #D6D5D5;
 }
 
 .card .card-action a {
