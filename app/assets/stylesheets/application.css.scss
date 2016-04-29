@@ -31,6 +31,15 @@ body, html { overflow-x:hidden; }
       margin-bottom: 0;
 }
 
+.container {
+     width:100%;
+   }
+
+   .container .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
 .chip {
     font-size: 12px;
     font-weight: 500;
@@ -79,8 +88,8 @@ iframe {
 
 .specials-header {
   background-color: #1fdeb4;
-  margin-left: -18px;
-    margin-right: -18px;
+/*   margin-left: -18px;
+    margin-right: -18px; */
     margin-bottom: -20px;
     padding: 28px 18px 25px 18px;
 }
@@ -149,4 +158,5 @@ i.tiny {
 }
  @media #{$small-and-down} {
     // styles for small screens and down
+   
   }
