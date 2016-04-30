@@ -16,7 +16,7 @@ body, html { overflow-x:hidden; }
     flex: 1 0 auto;
   }
 
-.addbuttons btn{
+.addbuttons a{
       background-color: #17a787;
     width: 50%;
     box-shadow: none;
@@ -27,7 +27,7 @@ body, html { overflow-x:hidden; }
     letter-spacing: 1px;
 }
 
-.addbuttons .newvenue {
+.addbuttons a.newvenue {
    border-left: 1px solid #fff;
 }
 
