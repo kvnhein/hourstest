@@ -61,12 +61,14 @@
     <div class="row">
       <a class="waves-effect waves-light btn" href=
         "http://<%= @venue.menu_address %>">Menu</a>
-        <h3 class="flow-text">Contact</h3>
+        <h3 class="flow-text">Contact Info:</h3>
+        <p>Phone: (<%=@venue.phone_number[0..2]%>) <%=@venue.phone_number[3..5]%>-<%=@venue.phone_number[6..9]%></p>
+        <p><%= @venue.address%></p>
     </div>
     <div class="col s3 m2">
         <div class="card zdepth-5">
             <div class="card-content">
-                <p><%= @venue.address%> / Phone: (<%=@venue.phone_number[0..2]%>) <%=@venue.phone_number[3..5]%>-<%=@venue.phone_number[6..9]%></p><br>
+
                 <div id="map"></div>
             </div>
         </div>
