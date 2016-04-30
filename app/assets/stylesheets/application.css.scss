@@ -16,6 +16,13 @@ body, html { overflow-x:hidden; }
     flex: 1 0 auto;
   }
 
+.arrow img {
+      width: 10px;
+    position: absolute;
+    right: 26px;
+    top: 50%;
+}
+
 .xbox {
     position:absolute;
     right: 16px;
