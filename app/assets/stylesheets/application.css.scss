@@ -17,18 +17,20 @@ body, html { overflow-x:hidden; }
   }
 
 .addbuttons a{
-      background-color: #17a787;
-    width: 50%;
+    background-color: #17a787;
+    width: 50.72271%;
     box-shadow: none;
-    margin-right: -4px;
+    margin-right: 0px;
     border-radius: 0px;
     margin-top: -1px;
     font-size: 11px;
     letter-spacing: 1px;
+    padding:0;
 }
 
 .addbuttons a.newvenue {
    border-left: 1px solid #fff;
+   float: right;
 }
 
 .arrow img {
@@ -90,7 +92,8 @@ body, html { overflow-x:hidden; }
 
 nav {
   background-color:#0e0e0e;
-      box-shadow: none;
+  box-shadow: none;
+  height: 51px;
 }
 
 nav a img{
@@ -98,7 +101,7 @@ nav a img{
     padding-top: 18px;
     display: block;
     padding-left: 14px;
-    width: 158px;
+    width: 128px;
     height: auto;
 }
 
