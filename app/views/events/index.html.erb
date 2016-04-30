@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if (user_signed_in?)%>
+      <div class="fixed-action-btn" style="bottom: 85px; right: 24px;">
+  <%= link_to "Log Out",  destroy_user_session_path,method: :delete, class: "waves-effect waves-light btn" %>
+</div>
+      <%end%>
 <% if (user_signed_in?)%>
    <% if current_user.admin? %>
 <div class="card">

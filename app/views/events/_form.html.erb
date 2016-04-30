@@ -22,7 +22,11 @@
   </div>
   <div class="field col s6">
     <%= f.label :venue_id %><br>
+    <% if current_user.admin?%>
     <%=collection_select( :event, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
+    <%else%>
+    <%=collection_select( :event, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
+    <%end%>
   </div>
   </div>
   <div class="row">

@@ -1,5 +1,6 @@
 class NeighborhoodsController < ApplicationController
   before_action :set_neighborhood, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:show,:index,:edit, :update, :destroy, :new]
 
   # GET /neighborhoods
   # GET /neighborhoods.json

@@ -14,13 +14,21 @@ end
 def get_venues
 	@venues ||= Venue.all
 end
-  
+
  def require_admin
   if user_signed_in?
-	  redirect_to '/south_side' unless current_user.admin?
+	  redirect_to '/' unless current_user.admin?
   else
-    redirect_to '/south_side'
+    redirect_to '/'
   end
  end
+
+  def require_owner
+    redirect_to '/' unless current_user.id == @venue.owner || current_user.admin?
+  end
+  
+  def require_user
+     redirect_to '/' unless current_user
+   end 
 
 end

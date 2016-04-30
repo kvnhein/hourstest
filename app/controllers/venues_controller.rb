@@ -1,5 +1,8 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
+   before_action :require_admin, only: [:index,:destroy, :new]
+  before_action :require_owner, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:show]
 
   # GET /venues
   # GET /venues.json
@@ -37,14 +40,17 @@ class VenuesController < ApplicationController
       @s = "active"
     end
 
+    @h = current_user.id
+    
+
     if (user_signed_in?)
-     if current_user.id == @venue.owner
+     if current_user.id == @venue.owner || current_user.admin?
        @button = 1
      else
        @button = 0
      end
    end
-    
+
   end
 
   # GET /venues/new

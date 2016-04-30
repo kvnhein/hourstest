@@ -15,6 +15,7 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+ <% if current_user.admin?%>
   <div class="field">
     <%= f.label :address %><br>
     <%= f.text_field :address %>
@@ -23,6 +24,7 @@
     <%= f.label :neighborhood_id %><br>
     <%=collection_select( :venue, :neighborhood_id, Neighborhood.all, :id, :name, {}, { :multiple => false})%>
   </div>
+<%end%>
   <div class="field">
     <%= f.label :menu_address %><br>
     <%= f.text_field :menu_address %>
@@ -31,10 +33,12 @@
     <%= f.label :phone_number %><br>
     <%= f.text_field :phone_number %>
   </div>
+<% if current_user.admin?%>
   <div class="field">
     <%= f.label :owner %><br>
     <%= f.number_field :owner %>
   </div>
+<%end%>
   <div class="actions waves-effect waves-light btn">
     <%= f.submit %>
   </div>
