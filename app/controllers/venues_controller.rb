@@ -40,7 +40,7 @@ class VenuesController < ApplicationController
       @s = "active"
     end
 
-    @h = current_user.id
+    
 
 
     if (user_signed_in?)
