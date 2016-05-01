@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :south_side]
   before_action :require_admin, only: [:oakland, :shadyside]
   before_action :require_owner, only: [:edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :events
   resources :venues
   resources :neighborhoods
-  root 'events#landing'
+  root 'events#index'
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'
    get 'south_side' => 'events#south_side'
