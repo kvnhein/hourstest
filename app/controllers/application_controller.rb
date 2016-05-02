@@ -24,7 +24,11 @@ end
  end
 
   def require_owner
-    redirect_to '/' unless current_user.id == @venue.owner || current_user.admin?
+    if user_signed_in?
+       redirect_to '/' unless current_user.id == @venue.owner || current_user.admin?
+    else
+      redirect_to '/'
+    end
   end
   
   def require_user
