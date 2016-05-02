@@ -22,13 +22,23 @@ body, html { overflow-x:hidden; }
 }
 
 .modal-header .card-title {
-  font-size: 11px;
-  color:#1fdeb4;
-  font-weight: 800;
+    font-size: 11px;
+    color: #1fdeb4;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding-top: 18px;
+    letter-spacing: 1px;
 }
 
 .modal-title {
   background-color: #1fdeb4;
+}
+
+.modal-title .card-title {
+  font-size: 24px;
+    font-weight: 600;
+    color: #fff !important;
+      padding-top: 17px;
 }
 
 .addbuttons a{
@@ -203,8 +213,11 @@ i.tiny {
 
 .card .card-reveal {
     position: fixed;
-        left: 0%;
+    left: 0%;
+    padding: 0;
 }
+
+
 
 .card {
     margin: 0;
