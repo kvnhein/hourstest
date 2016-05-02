@@ -46,6 +46,9 @@
 
             <div class="card-reveal">
              <span class="card-title grey-text text-darken-4">HOURS<i class="material-icons right xbox">close</i></span>
+              
+              <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
+              
    <ul class="collection">
      <% e.reverse.each do |x| %>
   <li class="collection-item grey lighten-3">
