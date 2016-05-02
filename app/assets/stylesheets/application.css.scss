@@ -16,6 +16,21 @@ body, html { overflow-x:hidden; }
     flex: 1 0 auto;
   }
 
+.modal-header {
+    background-color: #0e0e0e;
+    height: 51px;
+}
+
+.modal-header .card .card-reveal .card-title {
+  font-size: 11px;
+  color:#fff;
+  font-weight: 800;
+}
+
+.modal-title {
+  background-color: #1fdeb4;
+}
+
 .addbuttons a{
     background-color: #17a787;
     width: 50%;
