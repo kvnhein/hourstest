@@ -220,7 +220,20 @@ i.tiny {
     padding: 0;
 }
 
+.morehourslist li {
+  margin: 34px 0;
+  font-size: 13px;
+}
 
+.morehourslist .valign-wrapper {
+    align-items: center;
+    display: block;
+    color: #17a787;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 .card {
     margin: 0;
