@@ -33,7 +33,7 @@ end
 
   def require_owner_event
     if user_signed_in?
-       redirect_to '/' unless current_user.id == Venue.where(id: @event.venue_id).owner || current_user.admin?
+       redirect_to '/' unless current_user.id == Venue.where(id: @event.venue_id).first.owner || current_user.admin?
     else
       redirect_to '/'
     end
