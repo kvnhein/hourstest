@@ -30,6 +30,10 @@
                 <div class="chip" style="opacity:0.4">
                   <%=event.special%>
                 </div><br>
+              <%elsif @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_i %>
+              <div class="chip" style="opacity:0.8">
+                  <%=event.special%>
+                </div><br>
               <%else%>
                  <div class="chip">
                   <%=event.special%>
@@ -101,7 +105,7 @@
 </div>
 <!--This is where the time code ends - This should be put into the model later -->
      </li>
-            
+
      <%end%>
     </ul>
      <div class="row">
