@@ -56,10 +56,10 @@
 
 
 
-   <ul class="collection">
+   <ul class="morehourslist">
      <% e.reverse.each do |x| %>
-  <li class="collection-item grey lighten-3">
-    <span class = "left"><%= x.special %></span><br>
+  <li>
+    <span><%= x.special %></span><br>
  <!-- This is Where the time code is -->
 <% start_minutes = "00"%>
 <%if x.end%1 > 0 %>
@@ -101,7 +101,7 @@
 </div>
 <!--This is where the time code ends - This should be put into the model later -->
      </li>
-            <li class="divider"></li>
+            
      <%end%>
     </ul>
      <div class="row">
