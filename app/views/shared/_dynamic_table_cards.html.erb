@@ -66,11 +66,11 @@
     <span><%= x.special %></span><br>
  <!-- This is Where the time code is -->
 <% start_minutes = "00"%>
-<%if x.end%1 > 0 %>
+<%if x.start%1 > 0 %>
      <%minutes = "30"%>
 <%end%>
 <%start_am = "am"%>
-<%if x.end >10 && x.end < 22 %>
+<%if x.start >10 && x.start < 22 %>
      <%start_am = "pm"%>
 <%end%>
 
