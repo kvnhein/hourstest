@@ -18,8 +18,8 @@
                     <%e.each do |event| %>
                       <% test = event.special.to_s %>
                          <%if unispecials.index(test) == nil%>
-                            <%unievents.push(event)%>
-                            <%unispecials.push(test)%>
+                            <%unievents.push(event) unless @b-2+(@c.to_f*0.0166) > event.end.to_i%>
+                            <%unispecials.push(test) unless @b-2+(@c.to_f*0.0166) > event.end.to_i%>
                          <%end%>
                       <%end%>
               <div class="arrow">
