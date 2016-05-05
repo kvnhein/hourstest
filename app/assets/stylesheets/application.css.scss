@@ -232,14 +232,16 @@ i.tiny {
 
 .morehourslist .valign-wrapper {
     align-items: center;
-    display: block;
     color: #17a787;
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: -2px;
-      justify-content: center;
+    display: -webkit-flex; /* Safari */
+    -webkit-justify-content:center; /* Safari 6.1+ */
+    display: flex;
+    justify-content: center;
 }
 
 .detailstitle {
