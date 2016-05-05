@@ -6,7 +6,7 @@ $primary-color: color("grey", "lighten-5") !default;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova", Helvetica Neue;
     overflow-x:hidden;
   }
 
