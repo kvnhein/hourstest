@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Special:</strong>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Venue:</strong>
-  <%= @event.venue %>
+  <%= Venue.where(id: @event.venue_id).first.name %>
 </p>
 
 <p>
