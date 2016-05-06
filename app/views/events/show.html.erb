@@ -1,29 +1,62 @@
 
+<h4 class = "flow-text">
 
-<p>
-  <strong>Special:</strong>
-  <%= @event.special %>
-</p>
-
-<p>
-  <strong>Day:</strong>
-  <%= @event.day %>
-</p>
-
-<p>
-  <strong>Venue:</strong>
   <%= Venue.where(id: @event.venue_id).first.name %>
-</p>
+</h4>
+<h4  class = "flow-text">
 
-<p>
-  <strong>Start:</strong>
-  <%= @event.start %>
-</p>
+  <%= @event.day %>
+</h4>
+<h4  class = "flow-text">
 
-<p>
-  <strong>End:</strong>
-  <%= @event.end %>
-</p>
+  <%= @event.special %>
+</h4>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+
+
+
+<!-- Time Conversion-->
+<% start_minutes = "00"%>
+<%if @event.start%1 > 0 %>
+     <%start_minutes = "30"%>
+<%end%>
+<%start_am = "am"%>
+<%if @event.start >9.5 && @event.start < 22 %>
+     <%start_am = "pm"%>
+<%end%>
+
+<% end_minutes = "00"%>
+<%if @event.end%1 > 0 %>
+     <%end_minutes = "30"%>
+<%end%>
+<%end_am = "am"%>
+<%if @event.end >9.5 && @event.end < 22 %>
+     <%end_am="pm"%>
+<%end%>
+
+<!--Convert to regular time-->
+<%start_time = 0%>
+<%end_time = 0%>
+<% if @event.start > 10.5 %>
+   <%start_time = (@event.start - 0.1).round(0)- 10%>
+<%else%>
+   <%start_time = (@event.start - 0.1).round(0)+ 2%>
+<%end%>
+
+ <%if @event.end > 22.5 %>
+   <%end_time = (@event.end - 0.1).round(0)- 22%>
+    <% elsif @event.end > 10.5 %>
+   <%end_time = (@event.end - 0.1).round(0)- 10%>
+<%else%>
+   <%end_time = (@event.end - 0.1).round(0)+ 2%>
+<%end%>
+<!-- End of Time Conversion -->
+<h4  class = "flow-text">
+  <strong>Hours:</strong>
+  <%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
+</h4>
+
+
+
+<%= link_to 'Edit', edit_event_path(@event), class: "waves-effect waves-light btn" %> |
+ <%= link_to 'Back',   Venue.where(id: @event.venue_id).first, class: "waves-effect waves-light btn", 'data-no-turbolink' => true  %>
