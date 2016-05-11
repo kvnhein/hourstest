@@ -4,6 +4,7 @@
    <%x.push(Venue.where(id: event.venue_id).first.id)%>
     <%end%>
 <%end%>
+
 <%x.uniq.each do |d|%>
   <%e = @events.where(venue_id: d).order(:start).reverse%>
       <div class="row hourslist">
@@ -32,6 +33,10 @@
                   <%=event.special%>
                 </div><br>
               <%elsif @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
+              <div class="chip" style="background-color:#17a787">
+                  <%=event.special%>
+                </div><br>
+              <%elsif Time.now.in_time_zone("Eastern Time (US & Canada)").hour < 2 && event.end > 22 %>
               <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>

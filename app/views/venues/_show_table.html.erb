@@ -1,5 +1,11 @@
 <ul class="collection">
-      <% @v = @events.all.where( day: @d)%>
+       <%if @d != "Saturday" || @d != "Sunday" %>
+         <%s = @events.all.where( day: "Weekdays")%>
+         <%g = @events.all.where( day: @d)%>
+      <% @v = g.merge(s)%>
+        <%else%>
+       <% @v = @events.all.where( day: @d)%>
+       <%end%>
       <% if @v.empty?%>
         <li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@d%>
         </li>

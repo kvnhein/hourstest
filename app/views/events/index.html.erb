@@ -1,3 +1,4 @@
+<%=@b-2+(@c.to_f*0.0166)%>
 <% if (user_signed_in?)%>
       <div class="fixed-action-btn" style="bottom: 85px; right: 24px;">
   <%= link_to "Log Out",  destroy_user_session_path,method: :delete, class: "waves-effect waves-light btn" %>

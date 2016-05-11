@@ -63,7 +63,8 @@ class EventsController < ApplicationController
       @day_tag  = "Saturday"
     end
     @v = @venues.where( neighborhood_id: 2)
-    @events = Event.where(venue_id: @v.pluck(:id), day: x )
+
+
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
     @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
@@ -119,7 +120,26 @@ class EventsController < ApplicationController
       @day_tag  = "Saturday"
     end
     @v = @venues.where( neighborhood_id: 1)
-    @events = Event.where(venue_id: @v.pluck(:id), day: x )
+    if Time.now.in_time_zone("Eastern Time (US & Canada)").hour > 2 
+    if x != "Saturday" || x != "Sunday"
+    todays_event = Event.where(venue_id: @v.pluck(:id), day: x)
+    weekdays_events = Event.where(venue_id: @v.pluck(:id), day: "Weekdays")
+    everyday_events = Event.where(venue_id: @v.pluck(:id), day: "Everyday")
+     @events  = todays_event.merge(weekdays_events)
+    else
+      @events = Event.where(venue_id: @v.pluck(:id), day: x)
+    end
+      else
+      if x != "Saturday" || x != "Sunday"
+    todays_event = Event.where(venue_id: @v.pluck(:id), day: x)
+    weekdays_events = Event.where(venue_id: @v.pluck(:id), day: "Weekdays", end: 24)
+    everyday_events = Event.where(venue_id: @v.pluck(:id), day: "Everyday", end: 24)
+     @events  = todays_event.merge(weekdays_events)
+    else
+      @events = Event.where(venue_id: @v.pluck(:id), day: x, end: 24)
+    end
+    end
+
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
     @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
@@ -184,8 +204,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+        format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Event was successfully created.' }
+        format.json { head :no_content }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -212,7 +232,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
