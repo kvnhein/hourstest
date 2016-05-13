@@ -121,23 +121,23 @@ class EventsController < ApplicationController
     end
     @v = @venues.where( neighborhood_id: 1)
     if Time.now.in_time_zone("Eastern Time (US & Canada)").hour > 2 
-    if x != "Saturday" || x != "Sunday"
-    todays_event = Event.where(venue_id: @v.pluck(:id), day: x)
-    weekdays_events = Event.where(venue_id: @v.pluck(:id), day: "Weekdays")
-    everyday_events = Event.where(venue_id: @v.pluck(:id), day: "Everyday")
-     @events  = todays_event.merge(weekdays_events)
-    else
+    #if x != "Saturday" || x != "Sunday"
+    #todays_event = Event.where(venue_id: @v.pluck(:id), day: x)
+    #weekdays_events = Event.where(venue_id: @v.pluck(:id), day: "Weekdays")
+    #everyday_events = Event.where(venue_id: @v.pluck(:id), day: "Everyday")
+     #@events  = todays_event.merge(weekdays_events)
+    #else
       @events = Event.where(venue_id: @v.pluck(:id), day: x)
-    end
+    #end
       else
-      if x != "Saturday" || x != "Sunday"
-    todays_event = Event.where(venue_id: @v.pluck(:id), day: x)
-    weekdays_events = Event.where(venue_id: @v.pluck(:id), day: "Weekdays", end: 24)
-    everyday_events = Event.where(venue_id: @v.pluck(:id), day: "Everyday", end: 24)
-     @events  = todays_event.merge(weekdays_events)
-    else
+      #if x != "Saturday" || x != "Sunday"
+    #todays_event = Event.where(venue_id: @v.pluck(:id), day: x)
+    #weekdays_events = Event.where(venue_id: @v.pluck(:id), day: "Weekdays", end: 24)
+    #everyday_events = Event.where(venue_id: @v.pluck(:id), day: "Everyday", end: 24)
+     #@events  = todays_event.merge(weekdays_events)
+    #else
       @events = Event.where(venue_id: @v.pluck(:id), day: x, end: 24)
-    end
+    #end
     end
 
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
