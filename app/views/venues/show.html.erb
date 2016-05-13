@@ -65,6 +65,7 @@
         <% if current_user.admin? || current_user.id == @venue.owner %>
         <%= link_to 'Edit Venue', edit_venue_path(@venue), class: "waves-effect waves-light btn"  %>
          <%= link_to 'New Hour', new_event_path, class: "waves-effect waves-light btn" %>
+         <%= link_to 'New Beer', new_beer_path, class: "waves-effect waves-light btn" %>
         <%end%>
         <%end%>
     <div class="row venue-details">

@@ -40,7 +40,8 @@ class VenuesController < ApplicationController
       @s = "active"
     end
 
-    
+    @beers = Beer.where(venue_id: params[:id])
+
 
 
     if (user_signed_in?)

@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427020803) do
+ActiveRecord::Schema.define(version: 20160512033306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "brewery"
+    t.string   "abv"
+    t.string   "genre"
+    t.string   "price"
+    t.string   "serving"
+    t.text     "details"
+    t.integer  "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "beers", ["venue_id"], name: "index_beers_on_venue_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.text     "special"
@@ -67,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160427020803) do
 
   add_index "venues", ["neighborhood_id"], name: "index_venues_on_neighborhood_id", using: :btree
 
+  add_foreign_key "beers", "venues"
   add_foreign_key "events", "venues"
   add_foreign_key "venues", "neighborhoods"
 end

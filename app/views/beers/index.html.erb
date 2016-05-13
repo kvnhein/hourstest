@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Beers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class = "flow-text">Name</th>
+      <th class = "flow-text">Brewery</th>
+      <th class = "flow-text">Abv</th>
+      <th class = "flow-text">Genre</th>
+      <th class = "flow-text">Price</th>
+      <th class = "flow-text">Serving</th>
+      <th class = "flow-text">Details</th>
+      <th class = "flow-text">Venue</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @beers.each do |beer| %>
+      <tr>
+        <td class = "flow-text"><%= beer.name %></td>
+        <td class = "flow-text"><%= beer.brewery %></td>
+        <td class = "flow-text"><%= beer.abv %></td>
+        <td class = "flow-text"><%= beer.genre %></td>
+        <td class = "flow-text"><%= beer.price %></td>
+        <td class = "flow-text"><%= beer.serving %></td>
+        <td class = "flow-text"><%= beer.details %></td>
+        <td class = "flow-text"><%= beer.venue %></td>
+        <td class = "flow-text"><%= link_to 'Show', beer %></td>
+        <td class = "flow-text"><%= link_to 'Edit', edit_beer_path(beer) %></td>
+        <td class = "flow-text"><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Beer', new_beer_path %>

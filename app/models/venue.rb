@@ -9,4 +9,5 @@ class Venue < ActiveRecord::Base
   
   belongs_to :neighborhood
   has_many :events
+  has_many :beers
 end
