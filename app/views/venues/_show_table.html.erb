@@ -2,7 +2,7 @@
        <%if @d != "Saturday" || @d != "Sunday" %>
          <%s = @events.all.where( day: "Weekdays")%>
          <%g = @events.all.where( day: @d)%>
-      <% @v = g.merge(s)%>
+      <% @v = g%>
         <%else%>
        <% @v = @events.all.where( day: @d)%>
        <%end%>
