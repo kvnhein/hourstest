@@ -21,6 +21,32 @@ body, html { overflow-x:hidden; }
   margin-bottom: 0;
 }
 
+.modal-style-new {
+       width: 100%;
+    max-height: 100% !important;
+    height: 100% !important;
+}
+
+.modal-style-new .modal-footer .modal-close .xbox {
+  font-size: 25px;
+    margin-top: -15px;
+    margin-right: -10px;
+    font-weight: 600;
+}
+
+.modal-style-new .modal-footer {
+  width: 50px;
+    float: right;
+  background: #000;
+    height: 50px;
+      position: fixed;
+    right: 0;
+}
+
+.modal-style-new .modal-content{
+  padding:0;
+}
+
 .modal-header {
     background-color: #0e0e0e;
     height: 51px;
@@ -33,6 +59,8 @@ body, html { overflow-x:hidden; }
     text-transform: uppercase;
     padding-top: 18px;
     letter-spacing: 1px;
+  display: block;
+    text-align: center;
 }
 
 .modal-title{
@@ -50,6 +78,49 @@ body, html { overflow-x:hidden; }
 
 .navbar-fixed {
   height:51px;
+}
+
+.form-padding {
+  padding: 0 20px;
+}
+
+.beerslistopen {
+  margin: 0;
+    padding: 11px 0;
+}
+
+.drinks i {
+  padding-top:10px;
+}
+
+#dropdown1 {
+  width:100% !important;
+  top: 124px !important;
+  left:0 !important;
+}
+
+.collapsible.beerlist {
+  margin-bottom:0;
+}
+
+.newvenuebtn {
+      width: 200px;
+    display: block;
+    margin: 20px auto;
+}
+
+.edit-btn {
+  position: absolute;
+    top: 51px;
+    right: 0;
+    width: 56px;
+    height: 73px;
+    padding: 17px 0 0 0;
+  color:#fff;
+}
+
+.edit-btn .material-icons {
+  color:#1fdeb4;
 }
 
 .log-out {

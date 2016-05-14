@@ -8,7 +8,10 @@
 <div class="col s3">
      <div class="detailstitle">
            <h2 class= "flow-text center-align"><%= @venue.name%> Hours <%=@l%></h2>
+       <a class='dropdown-button btn edit-btn' href='#' data-activates='dropdown1'><i class="material-icons">settings</i></a>
      </div>
+
+
 </div>
 
 <!-- <div class="addbuttons">
@@ -18,7 +21,7 @@
 
 
 
-<ul class="collapsible" data-collapsible="accordion">
+<ul class="collapsible beerlist" data-collapsible="accordion">
      <li>
       <div class="collapsible-header <%=@s%>"><i class="material-icons">query_builder</i>Sunday</div>
       <div class="collapsible-body">
@@ -69,30 +72,52 @@
       </div>
      </li>
   </ul>
-<!--Beer List
-<ul class="collapsible" data-collapsible="accordion">
- <li>
-      <div class="collapsible-header"><i class="material-icons">local_bar</i>Beer List</div>
-  </li>
-  <% @beers.each do |beer| %>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">local_bar</i><p class = "flow-text"><%= beer.name %> (<%= beer.abv %>% ABV)
-        <span class = "right">$<%= beer.price %></span></p>
-      </div>
-      <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %>/<%= beer.abv %>/<%= beer.details %></p></div>
-    </li>
-   <%end%>
-  </ul>
--->
 
-    <div class="row venue-details">
-      <a class="waves-effect waves-light btn" href=
+
+
+  <!-- Modal Structure -->
+
+
+
+
+  <!-- Modal Structure -->
+  <div id="modal2" class="modal bottom-sheet modal-style-new">
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons card-title right xbox">close</i></a>
+    </div>
+    <div class="modal-content">
+      <!--Beer List-->
+      <div class="modal-header">
+        <span class="card-title activator">Beer List</span>
+      </div>
+        <ul class="collapsible" data-collapsible="accordion">
+          <% @beers.each do |beer| %>
+            <li>
+              <div class="collapsible-header drinks"><i class="material-icons">local_bar</i><p class = "flow-text beerslistopen"><%= beer.name %> (<%= beer.abv %>% ABV)
+                <span class = "right">$<%= beer.price %></span></p>
+              </div>
+              <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %>/<%= beer.abv %>/<%= beer.details %></p></div>
+            </li>
+           <%end%>
+          </ul>
+    </div>
+
+  </div>
+
+
+
+
+    <div class="row addbuttons">
+      <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Beer List</a>
+
+      <a class="waves-effect waves-light btn newvenue" href=
         "http://<%= @venue.menu_address %>">Menu</a>
       <!-- Drop Down Button -->
        <%if user_signed_in?%>
         <% if current_user.admin? || current_user.id == @venue.owner %>
+</div>
 
-         <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Edit</a>
+<!--        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Edit</a> -->
 
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
@@ -148,10 +173,24 @@
       google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
+
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+   $('.modal-trigger').leanModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+
+    }
+  );
+  });
+</script>
     <% if (user_signed_in?)%>
         <% if current_user.admin? %>
-            <%= link_to 'New Venue', new_venue_path, class: "waves-effect waves-light btn" %>
-            <%= link_to 'Edit', edit_venue_path(@venue) %>
+            <%= link_to 'New Venue', new_venue_path, class: "waves-effect waves-light btn newvenuebtn" %>
+            <!--%= link_to 'Edit', edit_venue_path(@venue) %>--
         <%end%>
     <%end%>
 
