@@ -67,6 +67,7 @@ body, html { overflow-x:hidden; }
 
 .log-out .btn:hover {
   background-color:#000;
+  box-shadow:none;
 }
 
 .addbuttons a{
@@ -153,9 +154,9 @@ nav {
 
 nav a img{
     border: 0;
-    padding-top: 18px;
+    padding-top: 17px;
     display: block;
-    padding-left: 14px;
+    padding-left: 0;
     width: 128px;
     height: auto;
       margin: 0 auto;
@@ -179,6 +180,7 @@ nav a img{
 
 .back-button .btn:hover {
   background-color: #000;
+  box-shadow:none
 }
 
 iframe {

@@ -39,3 +39,18 @@
 <br>
 
 <%= link_to 'New Beer', new_beer_path %>
+
+<ul class="collapsible" data-collapsible="accordion">
+ <li>
+      <div class="collapsible-header"><i class="material-icons">local_bar</i>Beer List</div>
+  </li>
+  <% @beers.each do |beer| %>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">local_bar</i><p class = "flow-text"><%= beer.name %> (<%= beer.abv %>% ABV)
+        <span class = "right">$<%= beer.price %></span></p>
+      </div>
+      <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %>/<%= beer.abv %>/<%= beer.details %></p></div>
+    </li>
+   <%end%>
+  </ul>
+

@@ -10,6 +10,14 @@
            <h2 class= "flow-text center-align"><%= @venue.name%> Hours <%=@l%></h2>
      </div>
 </div>
+
+<div class="addbuttons">
+         <%= link_to 'New Hour', new_event_path, class: "waves-effect waves-light btn" %>
+         <%= link_to 'New Beer', new_beer_path, class: "waves-effect waves-light btn newvenue" %>
+</div>
+
+
+
 <ul class="collapsible" data-collapsible="accordion">
      <li>
       <div class="collapsible-header <%=@s%>"><i class="material-icons">query_builder</i>Sunday</div>
@@ -61,16 +69,45 @@
       </div>
      </li>
   </ul>
-  <%if user_signed_in?%>
-        <% if current_user.admin? || current_user.id == @venue.owner %>
-        <%= link_to 'Edit Venue', edit_venue_path(@venue), class: "waves-effect waves-light btn"  %>
-         <%= link_to 'New Hour', new_event_path, class: "waves-effect waves-light btn" %>
-         <%= link_to 'New Beer', new_beer_path, class: "waves-effect waves-light btn" %>
-        <%end%>
-        <%end%>
+<!--Beer List
+<ul class="collapsible" data-collapsible="accordion">
+ <li>
+      <div class="collapsible-header"><i class="material-icons">local_bar</i>Beer List</div>
+  </li>
+  <% @beers.each do |beer| %>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">local_bar</i><p class = "flow-text"><%= beer.name %> (<%= beer.abv %>% ABV)
+        <span class = "right">$<%= beer.price %></span></p>
+      </div>
+      <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %>/<%= beer.abv %>/<%= beer.details %></p></div>
+    </li>
+   <%end%>
+  </ul>
+-->
+
     <div class="row venue-details">
       <a class="waves-effect waves-light btn" href=
         "http://<%= @venue.menu_address %>">Menu</a>
+      <!-- Drop Down Button -->
+       <%if user_signed_in?%>
+        <% if current_user.admin? || current_user.id == @venue.owner %>
+
+         <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Edit</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><%= link_to 'Edit Venue', edit_venue_path(@venue)%></li>
+    <li class="divider"></li>
+    <li><%= link_to 'New Hour' %></li>
+    <li class="divider"></li>
+    <li><%= link_to 'New Beer', new_beer_path%></li>
+  </ul>
+
+        <%= link_to 'Edit Venue', edit_venue_path(@venue), class: "waves-effect waves-light btn"  %>
+         
+        <%end%>
+        <%end%>
+      <!-- End OF Drop Down -->
         <h3 class="flow-text">Contact Info:</h3>
         <p>Phone: (<%=@venue.phone_number[0..2]%>) <%=@venue.phone_number[3..5]%>-<%=@venue.phone_number[6..9]%></p>
         <p><%= @venue.address%></p>
