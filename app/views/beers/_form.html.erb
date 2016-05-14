@@ -1,9 +1,11 @@
+<div class = "container">
 <%= form_for(@beer) do |f| %>
   <% if @beer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
 
       <ul>
+
       <% @beer.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -33,7 +35,7 @@
   </div>
   <div class="field">
     <%= f.label :serving %><br>
-    <%= f.select :serving, [['Draft', 'Drafts'],['Bottle','Bottles']]%>
+    <%= f.select :serving, [['Draft', 'Draft'],['Bottle','Bottle']]%>
   </div>
   <div class="field">
     <%= f.label :details %><br>
@@ -47,3 +49,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>

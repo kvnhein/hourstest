@@ -137,6 +137,15 @@ nav a img{
     padding-left: 14px;
     width: 128px;
     height: auto;
+      margin: 0 auto;
+}
+
+.waves-effect.waves-light.btn.back-button {
+      bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+    top: 7px;
 }
 
 iframe {
