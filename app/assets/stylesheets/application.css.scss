@@ -52,6 +52,23 @@ body, html { overflow-x:hidden; }
   height:51px;
 }
 
+.log-out {
+      top: 0;
+    height: 51px;
+    padding: 0;
+    right: 0;
+}
+
+.log-out btn {
+  padding: 7px 14px;
+    height: 51px;
+    background: #000;
+}
+
+.log-out .btn:hover {
+  background-color:#000;
+}
+
 .addbuttons a{
     background-color: #17a787;
     width: 50%;
