@@ -11,10 +11,10 @@
      </div>
 </div>
 
-<div class="addbuttons">
-         <%= link_to 'New Hour', new_event_path, class: "waves-effect waves-light btn" %>
-         <%= link_to 'New Beer', new_beer_path, class: "waves-effect waves-light btn newvenue" %>
-</div>
+<!-- <div class="addbuttons">
+         %= link_to 'New Hour', new_event_path, class: "waves-effect waves-light btn" %>
+         %= link_to 'New Beer', new_beer_path, class: "waves-effect waves-light btn newvenue" %>
+</div> -->
 
 
 
@@ -98,13 +98,13 @@
   <ul id='dropdown1' class='dropdown-content'>
     <li><%= link_to 'Edit Venue', edit_venue_path(@venue)%></li>
     <li class="divider"></li>
-    <li><%= link_to 'New Hour' %></li>
+    <li><%= link_to 'New Hour', new_event_path %></li>
     <li class="divider"></li>
     <li><%= link_to 'New Beer', new_beer_path%></li>
   </ul>
+<!--
+        %= link_to 'Edit Venue', edit_venue_path(@venue), class: "waves-effect waves-light btn"  %>-->
 
-        <%= link_to 'Edit Venue', edit_venue_path(@venue), class: "waves-effect waves-light btn"  %>
-         
         <%end%>
         <%end%>
       <!-- End OF Drop Down -->
