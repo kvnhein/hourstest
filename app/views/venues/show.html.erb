@@ -101,7 +101,7 @@
               <div class="collapsible-header drinks"><i class="material-icons">local_bar</i><p class = "flow-text beerslistopen"><%= beer.name %> (<%= beer.abv %>% ABV)
                 <span class = "right">$<%= beer.price %></span></p>
               </div>
-              <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %>/<%= beer.abv %>/<%= beer.details %></p></div>
+              <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %> - <%= beer.details %></p></div>
             </li>
            <%end%>
           </ul>
