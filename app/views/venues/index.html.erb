@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @venues.sort.each do |venue| %>
+    <% @venues.order_by(name:).each do |venue| %>
       <tr>
         <td><%= venue.name %></td>
         <td><%= venue.address %></td>
@@ -25,7 +25,7 @@
         <td><%= venue.neighborhood %></td>
         <td><%= venue.owner %></td>
         <td><%= link_to 'Show', venue %></td>
-       
+
        <!-- <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
         <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
