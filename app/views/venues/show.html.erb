@@ -99,7 +99,8 @@
           <% @beers.each do |beer| %>
             <li>
               <div class="collapsible-header drinks">
-                <%= beer.name %> (<%= beer.abv %>% ABV)
+                <%= beer.name %><br/>
+                (<%= beer.abv %>% ABV)
                 <span class = "right">$<%= beer.price %></span>
               </div>
               <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.genre%>)<br/><br/><%= beer.details %></p></div>
