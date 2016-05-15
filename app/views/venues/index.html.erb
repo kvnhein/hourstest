@@ -22,7 +22,7 @@
         <td class = "text-flow"><%= venue.address %></td>
        <!-- <td><%= venue.longitude %></td>
         <td><%= venue.latitude %></td>-->
-        <td class = "text-flow"><%= venue.neighborhood %></td>
+        <td class = "text-flow"><%=Neighborhood.where(id: venue.neighborhood_id).first.name %></td>
        <!-- <td><%= venue.owner %></td>-->
         <td><%= link_to 'Show', venue, class: "waves-effect waves-light btn" %></td>
 

@@ -8,7 +8,7 @@
 <div class="col s3">
      <div class="detailstitle">
            <h2 class= "flow-text center-align"><%= @venue.name%> Hours <%=@l%></h2>
-       
+
        <% if (user_signed_in?)%>
         <% if current_user.admin? %>
        <a class='dropdown-button btn edit-btn' href='#' data-activates='dropdown1'><i class="material-icons">settings</i></a>
@@ -98,10 +98,11 @@
         <ul class="collapsible" data-collapsible="accordion">
           <% @beers.each do |beer| %>
             <li>
-              <div class="collapsible-header drinks"><i class="material-icons">local_bar</i><p class = "flow-text beerslistopen"><%= beer.name %> (<%= beer.abv %>% ABV)
-                <span class = "right">$<%= beer.price %></span></p>
+              <div class="collapsible-header drinks">
+                <%= beer.name %> (<%= beer.abv %>% ABV)
+                <span class = "right">$<%= beer.price %></span>
               </div>
-              <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %> - <%= beer.details %></p></div>
+              <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.genre%>)<br/><br/><%= beer.details %></p></div>
             </li>
            <%end%>
           </ul>
