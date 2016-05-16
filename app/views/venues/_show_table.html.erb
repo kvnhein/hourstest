@@ -11,8 +11,10 @@
         </li>
       <%else%>
       <% @v.order(:start).each do |x| %>
-      <li class="collection-item grey lighten-3">
-      <%= x.special %><br>
+      <li class="collection-item grey lighten-3 special-by-day">
+        
+        <h4><%= x.special %></h4>
+        
 
 
 <% start_minutes = "00"%>
@@ -50,7 +52,7 @@
    <%end_time = (x.end - 0.1).round(0)+ 2%>
 <%end%>
 
-<div class="valign-wrapper">
+<div class="valign-wrapper timeforspecial">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
 

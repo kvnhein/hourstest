@@ -19,11 +19,26 @@
 
 </div>
 
+ <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><%= link_to 'Edit Venue', edit_venue_path(@venue)%></li>
+    <li class="divider"></li>
+    <li><%= link_to 'New Hour', new_event_path %></li>
+    <li class="divider"></li>
+    <li><%= link_to 'New Beer', new_beer_path%></li>
+  </ul>
+
 <!-- <div class="addbuttons">
          %= link_to 'New Hour', new_event_path, class: "waves-effect waves-light btn" %>
          %= link_to 'New Beer', new_beer_path, class: "waves-effect waves-light btn newvenue" %>
 </div> -->
+ <div class="row addbuttons" style="margin-bottom:0;">
+      <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Beer List</a>
 
+      <a class="waves-effect waves-light btn newvenue" href=
+        "http://<%= @venue.menu_address %>">Menu</a>
+
+</div>
 
 
 <ul class="collapsible beerlist" data-collapsible="accordion">
@@ -99,9 +114,9 @@
           <% @beers.each do |beer| %>
             <li>
               <div class="collapsible-header drinks">
-                <%= beer.name %><br/>
-                (<%= beer.abv %>% ABV)
-                <span class = "right">$<%= beer.price %></span>
+                <h4> <%= beer.name %></h4>
+                <h6><%= beer.abv %>% ABV</h6>
+                <span class = "right beer-price">$<%= beer.price %></span>
               </div>
               <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.genre%>)<br/><br/><%= beer.details %></p></div>
             </li>
@@ -114,31 +129,19 @@
 
 
 
-    <div class="row addbuttons">
-      <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Beer List</a>
 
-      <a class="waves-effect waves-light btn newvenue" href=
-        "http://<%= @venue.menu_address %>">Menu</a>
-      <!-- Drop Down Button -->
-       <%if user_signed_in?%>
-        <% if current_user.admin? || current_user.id == @venue.owner %>
-</div>
 
+<!-- Drop Down Button -->
+       <!--%if user_signed_in?%>
+        % if current_user.admin? || current_user.id == @venue.owner %-->
 <!--        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Edit</a> -->
+        <!--%end%>
+        %end%>
 
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><%= link_to 'Edit Venue', edit_venue_path(@venue)%></li>
-    <li class="divider"></li>
-    <li><%= link_to 'New Hour', new_event_path %></li>
-    <li class="divider"></li>
-    <li><%= link_to 'New Beer', new_beer_path%></li>
-  </ul>
 <!--
         %= link_to 'Edit Venue', edit_venue_path(@venue), class: "waves-effect waves-light btn"  %>-->
 
-        <%end%>
-        <%end%>
+
       <!-- End OF Drop Down -->
 <div class="venue-details">
         <h3 class="flow-text">Contact Info:</h3>

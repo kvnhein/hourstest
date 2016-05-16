@@ -25,6 +25,75 @@ body, html { overflow-x:hidden; }
   background-color:#fff !important;
 }
 
+.collapsible-header.drinks {
+   padding: 12px 20px;
+      position: relative;
+}
+
+.login-btn input{
+    background-color: #17a787;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    box-shadow: none;
+      text-decoration: none;
+    color: #fff;
+  border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+      width: 90%;
+    margin: 36px auto;
+    display: block;
+}
+
+.beer-price {
+  position: absolute;
+    top: 10px;
+    right: 20px;
+
+}
+
+.special-by-day h4 {
+  font-size: 14px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.special-by-day .timeforspecial {
+  color: #555;
+    font-weight: 300;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.special-by-day .timeforspecial i.tiny {
+    color:#555;
+}
+
+.collapsible-header.drinks h4 {
+   margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.collapsible-header.drinks h6 {
+    color: #000;
+    font-weight: 200;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+}
+
 .modal-style-new {
        width: 100%;
     max-height: 100% !important;
@@ -113,7 +182,7 @@ body, html { overflow-x:hidden; }
     margin: 20px auto;
 }
 
-.edit-btn {
+.edit-btn.btn {
   position: absolute;
     top: 51px;
     right: 0;
@@ -121,10 +190,21 @@ body, html { overflow-x:hidden; }
     height: 73px;
     padding: 17px 0 0 0;
   color:#fff;
+   background-color: rgba(0,0,0,0);
 }
 
-.edit-btn .material-icons {
-  color:#1fdeb4;
+.edit-btn.btn:hover {
+      box-shadow: none;
+    background-color: #17a787;
+}
+
+.edit-btn.btn .material-icons {
+  color: #17a787;
+    font-size: 26px;
+}
+
+.edit-btn.btn .material-icons:hover {
+  color: #fff;
 }
 
 .log-out {
@@ -386,6 +466,7 @@ i.tiny {
     text-transform: uppercase;
     padding-top: 30px;
     letter-spacing: 1px;
+  text-align:center;
 }
 
 .collapsible {
