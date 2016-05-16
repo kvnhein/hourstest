@@ -5,7 +5,7 @@ class BeersController < ApplicationController
   # GET /beers.json
   def index
     a = Venue.where(owner: current_user.id).first.id
-    @beers = Beer.where(venue_id: a)
+    @beers = Beer.where(venue_id: 19)
 
     if (user_signed_in?)
       if  current_user.admin?
