@@ -4,7 +4,16 @@ class BeersController < ApplicationController
   # GET /beers
   # GET /beers.json
   def index
-    @beers = Beer.all
+    a = Venue.where(owner: current_user.id).first.id
+    @beers = Beer.where(venue_id: a)
+
+    if (user_signed_in?)
+      if  current_user.admin?
+       @button = 0
+     else
+       @button = 1
+     end
+  end
   end
 
   # GET /beers/1
