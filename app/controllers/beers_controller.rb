@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_action :set_beer, only: [:show, :edit, :update, :destroy]
+  before_action :set_beer, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
 
   # GET /beers
   # GET /beers.json
@@ -10,6 +10,16 @@ class BeersController < ApplicationController
   # GET /beers/1
   # GET /beers/1.json
   def show
+  end
+
+  def add_to_current
+    @beer.update_attribute(:beer_status, 1)
+    redirect_to action: "index", notice: "Beer added to current list"
+  end
+
+  def add_to_reserve
+    @beer.update_attribute(:beer_status, 2)
+     redirect_to action: "index", notice: "Beer added to current list"
   end
 
   # GET /beers/new

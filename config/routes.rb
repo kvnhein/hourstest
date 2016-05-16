@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :beers do
-    member do 
-      patch :add_to_current, :add_to_reserve
-    end
-  end
+        member do
+          patch :add_to_reserve, :add_to_current
+        end
+      end
   devise_for :users
   resources :events
   resources :venues
