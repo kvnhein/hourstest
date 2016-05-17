@@ -3,7 +3,7 @@
 <%= link_to 'New Beer', new_beer_path,class: "waves-effect waves-light btn" %>
 <h4 class ="flow-text">Current Beers</h4>
 <ul class="collapsible" data-collapsible="accordion">
-          <% @beers.where(beer_status: 1).each do |beer| %>
+          <% @beers.where(beer_status: 1, venue_id: @users_beers).each do |beer| %>
             <li>
               <div class="collapsible-header drinks">
                 <h4> <%= beer.name %></h4>
@@ -25,7 +25,7 @@
 
 <h4 class ="flow-text">Reserve List</h4>
 <ul class="collapsible" data-collapsible="accordion">
-          <% @beers.where(beer_status: 2).each do |beer| %>
+          <% @beers.where(beer_status: 2, venue_id: @users_beers).each do |beer| %>
             <li>
               <div class="collapsible-header drinks">
                 <h4> <%= beer.name %></h4>

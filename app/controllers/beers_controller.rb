@@ -4,9 +4,11 @@ class BeersController < ApplicationController
   # GET /beers
   # GET /beers.json
   def index
-    a = Venue.where(owner: current_user.id).first.id
-    @beers = Beer.where(venue_id: 19)
-
+    
+    @beers = Beer.all
+    
+    @users_beers = Venue.where(owner: current_user.id).first.id
+    
     if (user_signed_in?)
       if  current_user.admin?
        @button = 0
