@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  before_action :set_venue, only: [:show, :edit, :update, :destroy]
+  before_action :set_venue, only: [:show, :edit, :update, :destroy, :venue_verified]
   before_action :require_admin, only: [:index,:destroy, :new]
   before_action :require_owner, only: [:edit, :update]
 
@@ -8,8 +8,13 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all
+
   end
 
+  def venue_verified
+    @venue.update_attribute(:venue_verify, Time.now)
+    redirect_to action: "show", notice: "You are verified!"
+  end
   # GET /venues/1
   # GET /venues/1.json
   def show
@@ -40,7 +45,7 @@ class VenuesController < ApplicationController
       @s = "active"
     end
 
-    @beers = Beer.where(venue_id: params[:id])
+    @lists = List.where(venue_id: params[:id])
 
 
 

@@ -15,6 +15,7 @@ def get_venues
 	@venues ||= Venue.all
 end
 
+
  def require_admin
   if user_signed_in?
 	  redirect_to '/' unless current_user.admin?
@@ -42,5 +43,6 @@ end
   def require_user
      redirect_to '/' unless current_user
    end
+
 
 end

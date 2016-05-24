@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @list.venue %>
+</p>
+
+<p>
+  <strong>Brew:</strong>
+  <%= @list.brew %>
+</p>
+
+<p>
+  <strong>Serving style:</strong>
+  <%= @list.serving_style %>
+</p>
+
+<p>
+  <strong>Serving size:</strong>
+  <%= @list.serving_size %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @list.price %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @list.status %>
+</p>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

@@ -25,6 +25,15 @@ body, html { overflow-x:hidden; }
   background-color:#fff !important;
 }
 
+.beerlist .special-by-day {
+  text-align:left;
+  padding: 10px 20px;
+}
+
+.beerlist .special-by-day h4 {
+  text-align:left;
+}
+
 .collapsible-header.drinks {
    padding: 12px 20px;
       position: relative;
@@ -55,7 +64,7 @@ body, html { overflow-x:hidden; }
 
 .beer-price {
   position: absolute;
-    top: 10px;
+    top: 15px;
     right: 20px;
 
 }
@@ -72,10 +81,13 @@ body, html { overflow-x:hidden; }
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    height: 21px;
 }
 
 .special-by-day .timeforspecial i.tiny {
-    color:#555;
+    color: #555;
+    font-size: 1rem;
+    width: 14px;
 }
 
 .collapsible-header.drinks h4 {
@@ -163,7 +175,7 @@ body, html { overflow-x:hidden; }
 }
 
 .drinks i {
-  padding-top:10px;
+  padding-top:15px;
 }
 
 #dropdown1 {
@@ -484,6 +496,28 @@ i.tiny {
 .card .card-action a {
   width: 49%;
 }
+
+.row.brews-list {
+  margin-bottom:0;
+}
+
+.row.brews-list h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 41px;
+  margin: 13px 0 15px 41px;
+}
+
+.icon-remove-add a{
+    position: absolute;
+    z-index: 1000;
+    height: 47px;
+    margin-top: 22px;
+    margin-left: 16px;
+}
+
+
+
  @media #{$small-and-down} {
     // styles for small screens and down
 

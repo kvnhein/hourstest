@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515223934) do
+ActiveRecord::Schema.define(version: 20160523175641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20160515223934) do
 
   add_index "beers", ["venue_id"], name: "index_beers_on_venue_id", using: :btree
 
+  create_table "brews", force: :cascade do |t|
+    t.string   "name"
+    t.string   "brewery"
+    t.text     "detail"
+    t.string   "abv"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "style"
+  end
+
   create_table "events", force: :cascade do |t|
     t.text     "special"
     t.string   "day"
@@ -40,9 +50,24 @@ ActiveRecord::Schema.define(version: 20160515223934) do
     t.float    "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "detail"
   end
 
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
+
+  create_table "lists", force: :cascade do |t|
+    t.integer  "venue_id"
+    t.integer  "brew_id"
+    t.string   "serving_style"
+    t.string   "serving_size"
+    t.string   "price"
+    t.string   "status"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "lists", ["brew_id"], name: "index_lists_on_brew_id", using: :btree
+  add_index "lists", ["venue_id"], name: "index_lists_on_venue_id", using: :btree
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string   "name"
@@ -79,11 +104,13 @@ ActiveRecord::Schema.define(version: 20160515223934) do
     t.datetime "updated_at",      null: false
     t.string   "menu_address"
     t.string   "phone_number"
+    t.datetime "venue_verify"
   end
 
   add_index "venues", ["neighborhood_id"], name: "index_venues_on_neighborhood_id", using: :btree
 
-  add_foreign_key "beers", "venues"
   add_foreign_key "events", "venues"
+  add_foreign_key "lists", "brews"
+  add_foreign_key "lists", "venues"
   add_foreign_key "venues", "neighborhoods"
 end

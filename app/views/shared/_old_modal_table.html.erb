@@ -1,16 +1,8 @@
-<ul class="collection">
-
-       <% @v = @events.all.where( day: @d)%>
-<% if @v.empty?%>
-<li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@d%></li>
-<%else%>
-<% @v.order(:start).each do |x| %>
-<li class="collection-item grey lighten-3 special-by-day">
-
-        <h4><%= x.special %></h4>
-
-
-
+<!-- <ul class="morehourslist">
+     <% @e.reverse.each do |x| %>
+  <li>
+    <span><%= x.special %></span><br>
+ <!-- This is Where the time code is
 <% start_minutes = "00"%>
 <%if x.start%1 > 0 %>
      <%start_minutes = "30"%>
@@ -25,14 +17,14 @@
      <%end_minutes = "30"%>
 <%end%>
 <%end_am = "am"%>
-<%if x.end.to_f >9.5 && x.end < 22 %>
+<%if x.end >9.5 && x.end < 22 %>
      <%end_am="pm"%>
-<%end%>
+<%end%>-->
 
-<!--Convert to regular time-->
-<%start_time = 0%>
+<!--Convert to regular time
+<!--<%start_time = 0%>
 <%end_time = 0%>
-<% if x.start.to_f > 10.5 %>
+<% if x.start > 10.5 %>
    <%start_time = (x.start - 0.1).round(0)- 10%>
 <%else%>
    <%start_time = (x.start - 0.1).round(0)+ 2%>
@@ -46,16 +38,11 @@
    <%end_time = (x.end - 0.1).round(0)+ 2%>
 <%end%>
 
-<div class="valign-wrapper timeforspecial">
+<div class="valign-wrapper">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
+<!--This is where the time code ends - This should be put into the model later -->
+     <!--</li>
 
-<%if @button == 1 %>
-  <span-right><%= link_to 'Edit', edit_event_path(x) %></span-right>
-  <%= link_to 'Delete', x, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%end%>
-
-      </li>
-       <%end%>
-    </ul>
-    <%end%>
+     <%end%>
+    </ul>-->

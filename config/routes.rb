@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :lists do
+   member do
+          get :add_to_reserve, :add_to_current
+        end
+      end
+  resources :brews
   resources :beers do
         member do
           patch :add_to_reserve, :add_to_current
@@ -6,7 +12,12 @@ Rails.application.routes.draw do
       end
   devise_for :users
   resources :events
-  resources :venues
+  resources :venues do
+    member do
+      get :venue_verified
+    end
+  end
+
   resources :neighborhoods
   root 'events#south_side'
    get 'landing' => 'events#landing'

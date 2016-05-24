@@ -25,7 +25,7 @@
     <li class="divider"></li>
     <li><%= link_to 'New Hour', new_event_path %></li>
     <li class="divider"></li>
-    <li><%= link_to 'New Beer', new_beer_path%></li>
+    <li><%= link_to 'New Beer', new_list_path%></li>
   </ul>
 
 <!-- <div class="addbuttons">
@@ -111,21 +111,26 @@
         <span class="card-title activator">Beer List</span>
       </div>
         <ul class="collapsible" data-collapsible="accordion">
-          <% @beers.where(beer_status: 1).each do |beer| %>
+          <% @lists.each do |list| %>
+           <% @beer_count = 0%>
             <li>
               <div class="collapsible-header drinks">
-                <h4> <%= beer.name %></h4>
-                <h6><%= beer.abv %>% ABV</h6>
+                <h4> <%= list.brew.name %></h4>
+                <h6><%= list.brew.abv %>% ABV</h6>
                 <%if @button == 1 %>
-               <%=link_to add_to_reserve_beer_path(beer), :class => "btn btn-small", method: :patch do%>
+               <%=link_to add_to_reserve_list_path(list), :class => "btn btn-small", method: :patch do%>
                 remove
                 <%end%>
                 <%end%>
-                <span class = "right beer-price">$<%= beer.price %></span>
+                <span class = "right beer-price">$<%= list.price %></span>
               </div>
-              <div class="collapsible-body"><p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.genre%>)<br/><br/><%= beer.details %></p></div>
+              <div class="collapsible-body"><p class = "flow-text"><%= list.brew.brewery %><br/>(IPA)<br/><br/><%= list.brew.detail %></p></div>
             </li>
+            <%@beer_count += 1%>
            <%end%>
+          <%if @beer_count = 0 %>
+          <li><%=@venue.name%> does not have a beer list</li>
+          <%end%>
           </ul>
     </div>
 
@@ -230,3 +235,11 @@
 
 </script>
 
+<%=link_to venue_verified_venue_path(@venue), :class => "btn btn-small", method: :patch do%>
+Verify
+                <%end%>
+<%if @venue.venue_verify.nil?%>
+ <p>Venue not verified<p/>
+<%else%>
+<%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%><br/> <p> Time since last Verification: <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
+<%end%>

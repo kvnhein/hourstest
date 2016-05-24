@@ -1,15 +1,6 @@
-<ul class="collection">
+<% @e.order(:start).each do |x| %>
 
-       <% @v = @events.all.where( day: @d)%>
-<% if @v.empty?%>
-<li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@d%></li>
-<%else%>
-<% @v.order(:start).each do |x| %>
-<li class="collection-item grey lighten-3 special-by-day">
-
-        <h4><%= x.special %></h4>
-
-
+<h4><%= x.special %></h4>
 
 <% start_minutes = "00"%>
 <%if x.start%1 > 0 %>
@@ -50,12 +41,6 @@
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
 
-<%if @button == 1 %>
-  <span-right><%= link_to 'Edit', edit_event_path(x) %></span-right>
-  <%= link_to 'Delete', x, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%end%>
-
-      </li>
        <%end%>
-    </ul>
+
     <%end%>

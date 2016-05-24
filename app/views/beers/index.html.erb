@@ -56,7 +56,7 @@
                <%=link_to add_to_reserve_beer_path(beer), method: :patch do%>
                remove
                <%end%><br/>
-                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.genre%>)<br/><br/><%= beer.details %></p></div>
+                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.brewery%>)<br/><br/><%= beer.details %></p></div>
             </li>
            <%end%>
           </ul>
@@ -80,7 +80,7 @@
                 <%end%>
                 <%= link_to 'Edit', edit_beer_path(beer) %>
                 <%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
-                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.genre%>)<br/><br/><%= beer.details %></p></div>
+                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.brewery%>)<br/><br/><%= beer.details %></p></div>
             </li>
            <%end%>
           </ul>

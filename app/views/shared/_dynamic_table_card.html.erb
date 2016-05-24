@@ -1,22 +1,28 @@
 <%x = []%>
 <%@events.shuffle.each do |event| %>
+   <%if @b > 2%>
    <%if @b-2+(@c.to_f*0.0166) < event.end.to_f %>
    <%x.push(Venue.where(id: event.venue_id).first.id)%>
     <%end%>
+<%else%>
+    <%if event.end > 22 %>
+    <%x.push(Venue.where(id: event.venue_id).first.id)%>
+     <%end%>
+<%end%>
 <%end%>
 
 <%x.uniq.each do |d|%>
-  <%e = @events.where(venue_id: d).order(:start).reverse%>
+  <%@e = @events.where(venue_id: d).order(:start).reverse%>
       <div class="row hourslist">
         <div class="col s12">
           <div class="card">
 
             <div class="card-content">
-              <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
+              <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span><br>
               <!----This is where the uniq special code is going in -->
                 <%unievents = []%>
                 <%unispecials = []%>
-                    <%e.each do |event| %>
+                    <%@e.each do |event| %>
                       <% test = event.special.to_s %>
                          <%if unispecials.index(test) == nil%>
                             <%unievents.push(event) unless @b-2+(@c.to_f*0.0166) > event.end.to_f%>
@@ -28,15 +34,11 @@
               </div>
               <!---This is where it ends-->
               <%unievents.reverse.each do |event|%>
-              <% if @b-2+(@c.to_f*0.0166) > event.end.to_f%>
-                <div class="chip" style="opacity:0.2">
-                  <%=event.special%>
-                </div><br>
-              <%elsif @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
+              <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
               <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>
-              <%elsif Time.now.in_time_zone("Eastern Time (US & Canada)").hour < 2 && event.end > 22 %>
+              <%elsif @b < 2 && event.end > 22 %>
               <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>
@@ -56,7 +58,7 @@
             <i class="material-icons card-title right xbox">close</i>
 
               <div class="modal-header">
-                <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
+                <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span><br>
 
               </div>
 
@@ -64,63 +66,70 @@
                <span class="grey-text"><%= @day_tag %> Hours</span>
              </div>
 
-
-
-   <ul class="morehourslist">
-     <% e.reverse.each do |x| %>
+ <ul class="collapsible beerlist" data-collapsible="accordion">
+ <% @e.each do |modal_event|%>
   <li>
-    <span><%= x.special %></span><br>
- <!-- This is Where the time code is -->
+      <div class="collapsible-header special-by-day">
+       <h4><%= modal_event.special %></h4>
+
 <% start_minutes = "00"%>
-<%if x.start%1 > 0 %>
+<%if modal_event.start%1 > 0 %>
      <%start_minutes = "30"%>
 <%end%>
 <%start_am = "am"%>
-<%if x.start >9.5 && x.start < 22 %>
+<%if modal_event.start >9.5 && modal_event.start < 22 %>
      <%start_am = "pm"%>
 <%end%>
 
 <% end_minutes = "00"%>
-<%if x.end%1 > 0 %>
+<%if modal_event.end%1 > 0 %>
      <%end_minutes = "30"%>
 <%end%>
 <%end_am = "am"%>
-<%if x.end >9.5 && x.end < 22 %>
+<%if modal_event.end.to_f >9.5 && modal_event.end < 22 %>
      <%end_am="pm"%>
 <%end%>
 
 <!--Convert to regular time-->
 <%start_time = 0%>
 <%end_time = 0%>
-<% if x.start > 10.5 %>
-   <%start_time = (x.start - 0.1).round(0)- 10%>
+<% if modal_event.start.to_f > 10.5 %>
+   <%start_time = (modal_event.start - 0.1).round(0)- 10%>
 <%else%>
-   <%start_time = (x.start - 0.1).round(0)+ 2%>
+   <%start_time = (modal_event.start - 0.1).round(0)+ 2%>
 <%end%>
 
- <%if x.end > 22.5 %>
-   <%end_time = (x.end - 0.1).round(0)- 22%>
-    <% elsif x.end > 10.5 %>
-   <%end_time = (x.end - 0.1).round(0)- 10%>
+ <%if modal_event.end > 22.5 %>
+   <%end_time = (modal_event.end - 0.1).round(0)- 22%>
+    <% elsif modal_event.end > 10.5 %>
+   <%end_time = (modal_event.end - 0.1).round(0)- 10%>
 <%else%>
-   <%end_time = (x.end - 0.1).round(0)+ 2%>
+   <%end_time = (modal_event.end - 0.1).round(0)+ 2%>
 <%end%>
 
-<div class="valign-wrapper">
+
+<div class="valign-wrapper timeforspecial">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
-<!--This is where the time code ends - This should be put into the model later -->
-     </li>
 
-     <%end%>
-    </ul>
+
+       </div>
+      <div class="collapsible-body">
+        <%=modal_event.detail%>
+      </div>
+    </li>
+ <%end%>
+  </ul><br>
      <div class="row">
       <a class="waves-effect waves-light btn" href=
-        "http://<%= Venue.where( id: e[0].venue_id).first.menu_address %>">Menu</a>
-      <%= link_to 'More Hours', venue_path(Venue.where( id: e[0].venue_id).first.id), class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
+        "http://<%= Venue.where( id: @e[0].venue_id).first.menu_address %>">Menu</a>
+      <%= link_to 'More Hours', venue_path(Venue.where( id: @e[0].venue_id).first.id), class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
+
+
     </div>
 
             </div>
+
            <!-- <div class="card-action">
               <a href="#">Menu</a>
               <a href="#">Share</a>
