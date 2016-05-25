@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
+
+//= require jquery_ujs
+//= require autocomplete-rails
 //= require turbolinks
 //= require materialize-sprockets
 //= require toastr

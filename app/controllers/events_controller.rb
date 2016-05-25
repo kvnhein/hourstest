@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :require_admin, only: [:oakland, :shadyside]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :require_owner_event, only: [:edit, :update, :destroy]
-
+  autocomplete :event, :special, :full => true
   # GET /events
   # GET /events.json
   def landing
@@ -73,7 +73,7 @@ class EventsController < ApplicationController
   end
 
   def south_side
-    @b = @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
 
@@ -105,9 +105,13 @@ class EventsController < ApplicationController
 
 
     @v = @venues.where( neighborhood_id: 1)
-    
+
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
-    
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
+
 
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
     @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
@@ -214,6 +218,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:special, :day, :venue_id, :start, :end,)
+      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end,)
     end
 end

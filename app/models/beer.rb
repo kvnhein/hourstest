@@ -1,4 +1,6 @@
 class Beer < ActiveRecord::Base
+  scope :name_like, -> (name) { where("name ilike ?", name)}
+
   belongs_to :venue
 
  before_save :default_values

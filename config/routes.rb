@@ -5,11 +5,8 @@ Rails.application.routes.draw do
         end
       end
   resources :brews
-  resources :beers do
-        member do
-          patch :add_to_reserve, :add_to_current
-        end
-      end
+  resources :beers
+      
   devise_for :users
   resources :events
   resources :venues do
@@ -20,6 +17,9 @@ Rails.application.routes.draw do
 
   resources :neighborhoods
   root 'events#south_side'
+  get 'beers/autocomplete_beer_name'
+  get 'south_side/autocomplete_event_special'
+  
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'
    get 'south_side' => 'events#south_side'

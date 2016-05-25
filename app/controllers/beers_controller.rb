@@ -1,21 +1,16 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
-
+  autocomplete :beer, :name, :full => true
   # GET /beers
   # GET /beers.json
   def index
-    
+
     @beers = Beer.all
-    
-    @users_beers = Venue.where(owner: current_user.id).first.id
-    
-    if (user_signed_in?)
-      if  current_user.admin?
-       @button = 0
-     else
-       @button = 1
-     end
-  end
+    if params[:search]
+      @beers = Beer.name_like("%#{params[:search]}%").order('name')
+    else
+    end
+   
   end
 
   # GET /beers/1

@@ -1,89 +1,42 @@
-<p id="notice"><%= notice %></p>
-<%if @button == 1%>
-<%= link_to 'New Beer', new_beer_path,class: "waves-effect waves-light btn" %>
-<h4 class ="flow-text">Current Beers</h4>
-<ul class="collapsible" data-collapsible="accordion">
-          <% @beers.where(beer_status: 1, venue_id: @users_beers).each do |beer| %>
-            <li>
-              <div class="collapsible-header drinks">
-                <h4> <%= beer.name %></h4>
-                <span class = "right beer-price">$<%= beer.price %></span>
-              </div>
-              <div class="collapsible-body">
-                <%=link_to add_to_reserve_beer_path(beer), method: :patch do%>remove
-                <%end%>
-                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.genre%>)<br/><br/><%= beer.details %></p></div>
-            </li>
-           <%end%>
-          </ul>
+<h1>Index</h1>
 
 
-<br>
+<h1>Welcome!</h1>
 
-
-
-
-<h4 class ="flow-text">Reserve List</h4>
-<ul class="collapsible" data-collapsible="accordion">
-          <% @beers.where(beer_status: 2, venue_id: @users_beers).each do |beer| %>
-            <li>
-              <div class="collapsible-header drinks">
-                <h4> <%= beer.name %></h4>
-                <h6><%= beer.abv %>% ABV</h6>
-                <span class = "right beer-price">$<%= beer.price %></span>
-              </div>
-              <div class="collapsible-body">
-                <%=link_to add_to_current_beer_path(beer), method: :patch do %>Add To Current
-                <%end%>
-                <%= link_to 'Edit', edit_beer_path(beer) %>
-                <%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
-                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.genre%>)<br/><br/><%= beer.details %></p></div>
-            </li>
-           <%end%>
-          </ul>
-<%elsif @button == 0%>
-<%= link_to 'New Beer', new_beer_path,class: "waves-effect waves-light btn"%>
-<h4 class ="flow-text">Current Beers</h4>
-<ul class="collapsible" data-collapsible="accordion">
-          <% @beers.where(beer_status: 1).each do |beer| %>
-            <li>
-              <div class="collapsible-header drinks">
-                <h4> <%= beer.name %></h4>
-                <h6><%= beer.abv %>% ABV</h6>
-                <span class = "right beer-price">$<%= beer.price %></span>
-              </div>
-              <div class="collapsible-body">
-               <%=link_to add_to_reserve_beer_path(beer), method: :patch do%>
-               remove
-               <%end%><br/>
-                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.brewery%>)<br/><br/><%= beer.details %></p></div>
-            </li>
-           <%end%>
-          </ul>
-
-
-<br>
-
-
-
-<h4 class ="flow-text">Reserve List</h4>
-<ul class="collapsible" data-collapsible="accordion">
-          <% @beers.where(beer_status: 2).each do |beer| %>
-            <li>
-              <div class="collapsible-header drinks">
-                <h4> <%= beer.name %></h4>
-                <h6><%= beer.abv %>% ABV</h6>
-                <span class = "right beer-price">$<%= beer.price %></span>
-              </div>
-              <div class="collapsible-body">
-                <%=link_to add_to_current_beer_path(beer), method: :patch do %>Add
-                <%end%>
-                <%= link_to 'Edit', edit_beer_path(beer) %>
-                <%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
-                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.brewery%>)<br/><br/><%= beer.details %></p></div>
-            </li>
-           <%end%>
-          </ul>
+<%= form_tag(beers_path, :method => "get", id: "search-form") do %>
+<!-- text field tag=action,args,identifier,placeholdertext... -->
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "namesearch", type: "search", data: {autocomplete: beers_autocomplete_beer_name_path} %>  
+<%= submit_tag "Search" %>
 <%end%>
+<script type="text/javascript" charset="utf-8">
+  $('#search').bind('railsAutocomplete.select', function(event, data){
+  $('#search-form').submit()
+  });
+</script>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @beers.each do |beer| %>
+      <tr>
+        <td><%= beer.name %></td>
+     
+        <td><%= link_to 'Show', beer %></td>
+        <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
+        <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Food', new_beer_path %>
 
 
