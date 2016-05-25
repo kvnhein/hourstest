@@ -26,6 +26,11 @@
     <li><%= link_to 'New Hour', new_event_path %></li>
     <li class="divider"></li>
     <li><%= link_to 'New Beer', new_list_path%></li>
+    <li class="divider"></li>
+    <li><%=link_to venue_verified_venue_path(@venue), method: :get do%>
+Verify Venue
+                <%end%>
+    </li>
   </ul>
 
 <!-- <div class="addbuttons">
@@ -235,9 +240,7 @@
 
 </script>
 
-<%=link_to venue_verified_venue_path(@venue), :class => "btn btn-small", method: :get do%>
-Verify
-                <%end%>
+
 <%if @venue.venue_verify.nil?%>
  <p>Venue not verified<p/>
 <%else%>

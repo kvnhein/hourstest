@@ -65,7 +65,11 @@
              <div class="modal-title">
                <span class="grey-text"><%= @day_tag %> Hours</span>
              </div>
-
+<% if @e[0].event_venue.venue_verify.nil?%>
+  <p> Venue has not been verified </p>
+  <%else%>
+ <p> Time since last Verification: <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
+<%end%>
  <ul class="collapsible beerlist" data-collapsible="accordion">
  <% @e.each do |modal_event|%>
   <li>
