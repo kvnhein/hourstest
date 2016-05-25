@@ -235,7 +235,7 @@
 
 </script>
 
-<%=link_to venue_verified_venue_path(@venue), :class => "btn btn-small", method: :patch do%>
+<%=link_to venue_verified_venue_path(@venue), :class => "btn btn-small", method: :get do%>
 Verify
                 <%end%>
 <%if @venue.venue_verify.nil?%>
