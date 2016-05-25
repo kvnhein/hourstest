@@ -28,7 +28,7 @@
 
 <%= form_tag(south_side_path, :method => "get", id: "search-form") do %>
 <!-- text field tag=action,args,identifier,placeholdertext... -->
-<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "special search", type: "search", data: {autocomplete: south_side_autocomplete_event_special_path} %>
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: south_side_autocomplete_event_special_path} %>
 <%= submit_tag "Search" %>
 <%end%>
 <script type="text/javascript" charset="utf-8">
@@ -36,7 +36,7 @@
   $('#search-form').submit()
   });
 </script>
-
+<%= link_to "clear", south_side_path%>
 <div class ="center">
 <%=render partial: "shared/dynamic_table_card"%>
 </div>
