@@ -12,6 +12,26 @@
 <div class="specials-header">
 <h5 class="flow-text">Today's South Side Hours</h5>
 <h4 class="flow-text"><%= @day_tag %></h4>
+
+
+
+<!-- <nav>
+
+  <!--ul id="slide-out" class="side-nav2"-->
+
+<!--   </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+</nav>
+
+  <script>
+     // Show sideNav
+  $('.button-collapse').sideNav('show');
+  // Hide sideNav
+  $('.button-collapse').sideNav('hide');
+    </script> -->
+
+
+
 </div>
 
 
@@ -31,15 +51,21 @@
 <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: south_side_autocomplete_event_special_path} %>
 <%= submit_tag "Search" %>
 <%end%>
+
 <script type="text/javascript" charset="utf-8">
   $('#search').bind('railsAutocomplete.select', function(event, data){
   $('#search-form').submit()
   });
 </script>
 <%= link_to "clear", south_side_path%>
+<div>
+  <%= link_to "venues", venues_path%>
+</div>
+
 <div class ="center">
 <%=render partial: "shared/dynamic_table_card"%>
 </div>
+
 
 <!-- This script is for Google Analytics -->
 <script>

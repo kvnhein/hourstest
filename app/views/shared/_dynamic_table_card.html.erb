@@ -1,7 +1,9 @@
 <%x = []%>
+<%y =[]%>
+<%z = []%>
 <%@events.shuffle.each do |event| %>
    <%if @b > 2%>
-   <%if @b-2+(@c.to_f*0.0166) < event.end.to_f %>
+   <%if @b-2+(@c.to_f*0.0166) < event.end.to_f  %>
    <%x.push(Venue.where(id: event.venue_id).first.id)%>
     <%end%>
 <%else%>
@@ -19,6 +21,7 @@
 
             <div class="card-content">
               <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span><br>
+
               <!----This is where the uniq special code is going in -->
                 <%unievents = []%>
                 <%unispecials = []%>
@@ -65,14 +68,16 @@
              <div class="modal-title">
                <span class="grey-text"><%= @day_tag %> Hours</span>
              </div>
+
 <% if @e[0].event_venue.venue_verify.nil?%>
   <p> Venue has not been verified </p>
-  <%else%>
- <p> Time since last Verification: <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
+<%else%>
+  <p> Time since last Verification: <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
 <%end%>
- <ul class="collapsible beerlist" data-collapsible="accordion">
- <% @e.each do |modal_event|%>
-  <li>
+ 
+<ul class="collapsible beerlist" data-collapsible="accordion">
+ <% @e.reverse.each do |modal_event|%>
+<li>
       <div class="collapsible-header special-by-day">
        <h4><%= modal_event.special %></h4>
 
@@ -112,9 +117,19 @@
 <%end%>
 
 
+
+
 <div class="valign-wrapper timeforspecial">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
+<%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
+        <div class="now-tab">Now</div>
+<%elsif @b < 2 && modal_event.end > 22 %>
+        <div class="now-tab">Now</div>
+<%elsif @b-2+(@c.to_f*0.0166) < modal_event.start %>
+        <div class="later-tab">Later</div>
+ <%end%>
+
 
 
        </div>
@@ -143,3 +158,4 @@
 
       </div>
  <%end%>
+
