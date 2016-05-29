@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy, :venue_verified]
-  before_action :require_admin, only: [:index,:destroy, :new]
+  before_action :require_admin, only: [:destroy, :new]
   before_action :require_owner, only: [:edit, :update]
 
 
