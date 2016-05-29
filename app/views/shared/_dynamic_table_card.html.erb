@@ -1,19 +1,31 @@
+<%@four_day_range = Time.now..4.days.ago%>
+
 <%x = []%>
 <%y =[]%>
 <%z = []%>
 <%@events.shuffle.each do |event| %>
    <%if @b > 2%>
-   <%if @b-2+(@c.to_f*0.0166) < event.end.to_f  %>
+   <%if @b-2+(@c.to_f*0.0166) < event.end.to_f && event.event_venue.venue_verify.nil?  %>
    <%x.push(Venue.where(id: event.venue_id).first.id)%>
+    <%elsif  @b-2+(@c.to_f*0.0166) < event.end.to_f && event.event_venue.venue_verify === @four_day_range%>
+      <%y.push(Venue.where(id: event.venue_id).first.id)%>
+     <%elsif  @b-2+(@c.to_f*0.0166) < event.end.to_f && event.event_venue.venue_verify < 6.day.ago%>
+      <%y.push(Venue.where(id: event.venue_id).first.id)%>
     <%end%>
 <%else%>
-    <%if event.end > 22 %>
+    <%if event.end > 22 && event.event_venue.venue_verify.nil?%>
     <%x.push(Venue.where(id: event.venue_id).first.id)%>
+    <%elsif  event.end > 22 && event.event_venue.venue_verify === @four_day_range%>
+    <%y.push(Venue.where(id: event.venue_id).first.id)%>
+    <%elsif event.end > 22 && event.event_venue.venue_verify < 7.day.ago%>
+    <%z.push(Venue.where(id: event.venue_id).first.id)%>
      <%end%>
 <%end%>
 <%end%>
 
-<%x.uniq.each do |d|%>
+
+<%y.uniq.each do |d|%>
+
   <%@e = @events.where(venue_id: d).order(:start).reverse%>
       <div class="row hourslist">
         <div class="col s12">
@@ -50,9 +62,10 @@
                   <%=event.special%>
                 </div><br>
               <%end%>
+
               <%end%>
             <!--div class="card-content">-->
-<br>
+
 <!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
        <a class="activator waves-effect waves-light btn openhours"></a>
     </div>
@@ -74,7 +87,7 @@
 <%else%>
   <p> Time since last Verification: <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
 <%end%>
- 
+
 <ul class="collapsible beerlist" data-collapsible="accordion">
  <% @e.reverse.each do |modal_event|%>
 <li>

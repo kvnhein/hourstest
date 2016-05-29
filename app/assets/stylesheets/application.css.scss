@@ -8,6 +8,7 @@ $primary-color: color("grey", "lighten-5") !default;
     flex-direction: column;
     font-family: "proxima-nova", Helvetica Neue;
     overflow-x:hidden;
+    background-color: #f9f9f9;
   }
 
 body, html { overflow-x:hidden; }
@@ -15,6 +16,10 @@ body, html { overflow-x:hidden; }
   main {
     flex: 1 0 auto;
   }
+
+main .container {
+  background-color:#fff;
+}
 
 .venue-details {
   padding: 0 20px;
@@ -27,26 +32,6 @@ body, html { overflow-x:hidden; }
     background: #ccc;
   }
 
-.side-nav2 {
-     position: absolute;
-    height: 10px !important;
-    width: 90%;
-    left: 0;
-    top: 0;
-    margin: 0;
-    transform: translateX(-100%);
-    height: 100%;
-    height: calc(100% + 60px);
-    height: -moz-calc(100%);
-    padding-bottom: 60px;
-    background-color: #fff;
-    z-index: 999;
-    backface-visibility: hidden;
-    overflow-y: auto;
-    will-change: transform;
-    backface-visibility: hidden;
-    transform: translateX(-105%);
-}
 
 .now-tab {
         text-transform: uppercase;
@@ -86,6 +71,118 @@ body, html { overflow-x:hidden; }
         font-weight: 900;
 }
 
+.search-tab {
+  height:100px;
+  width:100px;
+ border:1px solid #000;
+  position: relative;
+    overflow: hidden;
+}
+
+.search-tab-btn {
+    position: absolute;
+    right: -86%;
+    width: 100%;
+    height: 80px;
+    background: #17a787;
+    transition: 1s;
+    top: 0;
+}
+
+.search-tab-btn a {
+      position: absolute;
+    right: 82px;
+    top: 21px;
+    color: #fff;
+}
+
+#search-form .search-btn input {
+position: absolute;
+    right: 11px;
+    background: #fff;
+    top: 0px;
+    border: 0;
+    color: #000;
+    padding-left: 11px !important;
+    background-color: #1fdeb4 !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 900;
+}
+
+.side-nav a {
+    padding: 0 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+nav .button-collapse {
+      float: left;
+    position: absolute;
+    z-index: 1;
+    height: 56px;
+    right: 10px;
+    top: -4px;
+}
+
+.side-nav li {
+  padding: 0;
+}
+
+nav .button-collapse i {
+    font-size: 32px;
+    height: 56px;
+    line-height: 56px;
+    color: #1fdeb4;
+}
+
+.click-open-search {
+        width: 80px;
+    height: 80px;
+    background: #17a787;
+    position: absolute;
+  width:14%;
+}
+
+.click-open-search .material-icons {
+      color: #1fdeb4;
+    font-weight: 900;
+    text-align: center;
+    display: block;
+    margin-top: 27px;
+}
+
+.addbuttons {
+  border-top: 1px solid #fff;
+}
+
+#search-form {
+      width: 82%;
+  margin-left: 16%;
+  padding-right: 78px;
+  color: #fff;
+}
+
+#search-form input {
+      margin-bottom: 0;
+    margin-top: 19px;
+    height: 38px;
+    color: #000;
+    background: #fff;
+    padding-left: 16px;
+      border: 0;
+}
+
+.slide-out-search {
+    transition: .3s;
+  -webkit-transition: .3s;
+    right: 0;
+}
+
 
 .phonea a {
   background-color:#fff !important;
@@ -99,6 +196,10 @@ body, html { overflow-x:hidden; }
 
 .beerlist .special-by-day h4 {
   text-align:left;
+}
+
+.beerlist .special-by-day h4.venues{
+      margin-bottom: 2px;
 }
 
 .collapsible-header.drinks {
@@ -149,6 +250,10 @@ body, html { overflow-x:hidden; }
     text-transform: uppercase;
     letter-spacing: 1px;
     height: 21px;
+}
+
+.special-by-day .timeforspecial.streets {
+    height: auto;
 }
 
 .special-by-day .timeforspecial i.tiny {
@@ -264,6 +369,7 @@ body, html { overflow-x:hidden; }
 .edit-btn.btn {
   position: absolute;
     top: 51px;
+      top: 0;
     right: 0;
     width: 56px;
     height: 73px;
@@ -340,13 +446,12 @@ body, html { overflow-x:hidden; }
 }
 
 .hourslist {
-    margin-left: -18px !important;
-    margin-right: -18px !important;
     margin-bottom: 0;
 }
 
 .container {
      width:100%;
+      max-width: 800px;
    }
 
    .container .row {
@@ -380,6 +485,10 @@ body, html { overflow-x:hidden; }
   padding:0;
 }
 
+#notice {
+  display:none;
+}
+
 nav {
   background-color:#0e0e0e;
   box-shadow: none;
@@ -407,15 +516,20 @@ nav a img{
       width: 81px;
 }
 
+.side-nav {
+    padding-top: 46px;
+}
+
 .back-button a {
   height: 50px;
     padding-top: 8px;
-    background-color: #000;
+    background-color: rgba(0,0,0,0);
+      color: #1fdeb4;
 }
 
 .back-button .btn:hover {
-  background-color: #000;
-  box-shadow:none
+    background-color: rgba(0,0,0,0);
+    box-shadow: none;
 }
 
 iframe {
@@ -433,6 +547,7 @@ iframe {
     left: 0;
       background-color: transparent !important;
       box-shadow: none;
+  color: rgba(0,0,0,0);
 }
 
 .openhours:hover {
@@ -440,7 +555,7 @@ iframe {
 }
 
 .card .card-content {
-    padding: 20px 20px 0px 20px;
+    padding: 20px 20px 16px 20px;
     border-radius: 0;
 }
 
@@ -451,6 +566,7 @@ iframe {
     margin-bottom: -20px;
     padding: 22px 18px 18px 18px;
   position: relative;
+      overflow: hidden;
 }
 
 .specials-header h5 {
@@ -536,6 +652,7 @@ i.tiny {
 .detailstitle {
      background-color: #1fdeb4;
     height: 73px;
+      position: relative;
 }
 
 .detailstitle h2 {
@@ -550,7 +667,8 @@ i.tiny {
 }
 
 .collapsible {
-   margin: 0 0 20px 0;
+   max-width: 800px;
+    margin: 0 auto;
 }
 
 .card {
@@ -582,6 +700,26 @@ i.tiny {
     height: 47px;
     margin-top: 22px;
     margin-left: 16px;
+}
+
+@media only screen and (min-width: 993px) {
+  nav a img {
+     margin-left: 2px;
+  }
+
+  nav ul li {
+    height: 50px;
+        margin-top: -7px;
+}
+
+  nav ul a {
+   height: 50px;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
 }
 
 

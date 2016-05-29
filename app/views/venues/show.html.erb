@@ -1,8 +1,4 @@
-<% if (user_signed_in?)%>
-      <div class="fixed-action-btn log-out">
-  <%= link_to "Log Out",  destroy_user_session_path,method: :delete, class: "waves-effect waves-light btn" %>
-</div>
-      <%end%>
+
 
 <%= render partial: "back_button"%>
 <div class="col s3">
@@ -245,4 +241,5 @@ Verify Venue
  <p>Venue not verified<p/>
 <%else%>
 <%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%><br/> <p> Time since last Verification: <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
+   
 <%end%>
