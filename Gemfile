@@ -14,6 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'by_star', git: "git://github.com/radar/by_star"
 gem 'geocoder'
 gem 'devise'
 gem 'rails4-autocomplete'

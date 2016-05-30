@@ -2,7 +2,7 @@ class Venue < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode
-
+  by_star_field :venue_verify
   before_save :default_values
   def default_values
     self.owner ||= 1
