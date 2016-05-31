@@ -9,6 +9,13 @@ class Venue < ActiveRecord::Base
     self.venue_verify ||= Time.now
   end
 
+
+  def varified_array
+    a = 7.day.ago
+    b = time.now
+    self.between_times(a,b)
+  end
+
   belongs_to :neighborhood
   has_many :events
   has_many :beers

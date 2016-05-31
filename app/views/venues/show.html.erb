@@ -129,9 +129,10 @@ Verify Venue
             </li>
             <%@beer_count += 1%>
            <%end%>
-          <%if @beer_count = 0 %>
+          <%if @lists.count == 0 %>
           <li><%=@venue.name%> does not have a beer list</li>
           <%end%>
+         
           </ul>
     </div>
 
@@ -241,5 +242,5 @@ Verify Venue
  <p>Venue not verified<p/>
 <%else%>
 <%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%><br/> <p> Time since last Verification: <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
-   
+
 <%end%>

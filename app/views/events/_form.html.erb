@@ -20,11 +20,11 @@
     <%= f.text_field :detail %>
   </div>
   <div class="row">
-  <div class="field col s6">
+  <div class="field">
     <%= f.label :day %><br>
     <%= f.select :day, [['Monday', 'Monday'],['Tuesday','Tuesday'],['Wednesday', 'Wednesday'],['Thursday','Thursday'],['Friday','Friday'],['Saturday','Saturday'],['Sunday','Sunday'], ['Weekdays','Weekdays']]  %>
   </div>
-  <div class="field col s6">
+  <div class="field">
     <%= f.label :venue_id %><br>
     <% if current_user.admin?%>
     <%=collection_select( :event, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
