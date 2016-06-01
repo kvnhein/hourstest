@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :lists do
    member do
-          get :add_to_reserve, :add_to_current
+          patch :add_to_reserve, :add_to_current
         end
       end
   resources :brews
