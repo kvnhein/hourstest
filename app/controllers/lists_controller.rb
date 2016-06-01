@@ -5,7 +5,9 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = List.all
+    if (user_signed_in?)
     @venue_owner = current_user.id
+    end
   end
 
   # GET /lists/1
