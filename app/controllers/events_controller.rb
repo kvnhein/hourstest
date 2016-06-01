@@ -110,7 +110,7 @@ class EventsController < ApplicationController
 
 
 
-    @v = @venues.where( neighborhood_id: 1)
+   @v = @venues.where( neighborhood_id: 1)
 
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
    if params[:search]

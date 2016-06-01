@@ -1,6 +1,6 @@
 <%x=[]%>
 <%@first_batch.shuffle.each do |event| %>
-   <%if @b > 2%>
+<%if @b > 2%>
    <%if @b-2+(@c.to_f*0.0166) < event.end.to_f %>
    <%x.push(Venue.where(id: event.venue_id).first.id)%>
     <%end%>
@@ -24,20 +24,30 @@
               <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span><br>
 
               <!----This is where the uniq special code is going in -->
-                <%unievents = []%>
-                <%unispecials = []%>
-                    <%@e.each do |event| %>
-                      <% test = event.special.to_s %>
-                         <%if unispecials.index(test) == nil%>
-                            <%unievents.push(event) unless @b-2+(@c.to_f*0.0166) > event.end.to_f%>
-                            <%unispecials.push(test) unless @b-2+(@c.to_f*0.0166) > event.end.to_f%>
-                         <%end%>
-                      <%end%>
+<%unievents = []%>
+<%unispecials = []%>
+<%@e.each do |event| %>
+<%if @b > 2%>
+      <% test = event.special.to_s %>
+      <%if unispecials.index(test) == nil%>
+            <%unievents.push(event) unless @b-2+(@c.to_f*0.0166) > event.end.to_f%>
+            <%unispecials.push(test) unless @b-2+(@c.to_f*0.0166) > event.end.to_f%>
+        <%end%>
+
+<%elsif @b < 2 %>
+     <% test = event.special.to_s %>
+     <%if unispecials.index(test) == nil%>
+         <%unievents.push(event) unless event.end.to_f < 22%>
+         <%unispecials.push(test) unless event.end.to_f < 22%>
+      <%end%>
+<%end%>
+<%end%>
               <div class="arrow">
                 <%= image_tag "arrow.png"%>
               </div>
               <!---This is where it ends-->
               <%unievents.reverse.each do |event|%>
+              <%if @b > 2 %>
               <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
               <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
@@ -51,7 +61,11 @@
                   <%=event.special%>
                 </div><br>
               <%end%>
-
+              <%else%>
+              <div class="chip" style="background-color:#17a787">
+                  <%=event.special%>
+                </div><br>
+              <%end%>
               <%end%>
             <!--div class="card-content">-->
 
