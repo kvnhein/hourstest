@@ -4,7 +4,14 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    if (user_signed_in?)
+      venue_owner = Venue.where(owner: current_user.id).first.id
+      if current_user.id == 1
+         @lists = List.all
+      else
+        @lists = List.where(venue_id: venue_owner)
+      end
+    end
     if (user_signed_in?)
     @venue_owner = current_user.id
     end
