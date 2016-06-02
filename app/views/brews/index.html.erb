@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @brews.each do |brew| %>
+    <% @brews.order('name ASC').each do |brew| %>
       <tr>
         <td><%= brew.name %></td>
         <td><%= brew.brewery %></td>

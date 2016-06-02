@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :require_admin, only: [:oakland, :shadyside]
+  before_action :require_admin, only: [:oakland]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :require_owner_event, only: [:edit, :update, :destroy]
   autocomplete :event, :special, :full => true
@@ -16,53 +16,50 @@ class EventsController < ApplicationController
   end
 
   def shadyside
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour #this is what decides whether a special will be shown of clear
+     @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-  if t.wday == 0 && t.hour < 2 #these conditionals make sure the day doesn't change till 2am
-    x = "Saturday"
-    @day_tag = "Saturday"
-  elsif t.wday == 0
-    x = "Sunday"
-    @day_tag = "Sunday"
-  elsif t.wday == 1 && t.hour < 2
-    x = "Sunday"
-    @day_tag = "Sunday"
-  elsif t.wday == 1
-      x = "Monday"
-      @day_tag = "Monday"
-    elsif t.wday == 2 && t.hour < 2
-      x = "Monday"
-      @day_tag = "Monday"
-    elsif  t.wday==2
-      x = "Tuesday"
-      @day_tag  = "Tuesday"
-    elsif t.wday == 3 && t.hour < 2
-      x = "Tuesday"
-      @day_tag  = "Tuesday"
-    elsif  t.wday==3
-      x = "Wednesday"
-      @day_tag  = "Wednesday"
-    elsif t.wday == 4 && t.hour < 2
-      x = "Wednesday"
-      @day_tag  = "Wednesday"
-    elsif  t.wday==4
-      x = "Thursday"
-      @day_tag  = "Thursday"
-    elsif t.wday == 5 && t.hour < 2
-      x = "Thursday"
-      @day_tag  = "Thursday"
-    elsif t.wday==5
-      x = "Friday"
-      @day_tag  = "Friday"
-    elsif t.wday == 6 && t.hour < 2
-       x = "Friday"
-      @day_tag  = "Friday"
-     else t.wday==6
-      x= "Saturday"
-      @day_tag  = "Saturday"
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
     end
-    @v = @venues.where( neighborhood_id: 2)
+
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+
+
+   @v = @venues.where( neighborhood_id: 1)
+
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
 
 
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )

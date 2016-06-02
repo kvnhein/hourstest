@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   root 'events#south_side'
   get 'beers/autocomplete_beer_name'
   get 'south_side/autocomplete_event_special'
+  get 'shadyside/autocomplete_event_special'
   
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'

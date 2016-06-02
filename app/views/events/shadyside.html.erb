@@ -1,18 +1,64 @@
- <h5 class="flow-text" style="font-size:170%;">Today's Shadyside Hours</h5>
-<blockquote style="background-color:#4db6ac;"><h4 class="flow-text" style="font-size:200%;"><%= @day_tag %></h4></blockquote>
+ <!--<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <%= link_to 'Back',  events_path, class: "waves-effect waves-light btn" %>
+</div>-->
 
+<div class="specials-header">
+<h5 class="flow-text">Today's Shadyside Hours</h5>
+<h4 class="flow-text"><%= @day_tag %></h4>
+
+
+    <div class="search-tab-btn">
+      <div class="click-open-search"> <i class="material-icons">search</i></div>
+ <%= form_tag(shadyside_path, :method => "get", id: "search-form") do %>
+<!-- text field tag=action,args,identifier,placeholdertext... -->
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: shadyside_autocomplete_event_special_path} %>
+
+      <div class="search-btn">
+<%= submit_tag "Search" %>
+      </div>
+<%end%>
+
+<script type="text/javascript" charset="utf-8">
+  $('#search').bind('railsAutocomplete.select', function(event, data){
+  $('#search-form').submit()
+  });
+</script>
+<%= link_to "clear", shadyside_path%>
+
+  </div>
+
+<script>
+
+  $( ".click-open-search" ).click(function() {
+  $( ".search-tab-btn" ).toggleClass( "slide-out-search" );
+});
+
+  </script>
+
+
+
+</div>
 
 
 <br>
-<% if (user_signed_in?)%>
-   <% if current_user.admin? %>
-<%= link_to 'New Happy Hour', new_event_path, class: "waves-effect waves-light btn" %>
-<%= link_to 'New Venue', new_venue_path, class: "waves-effect waves-light btn" %>
-<%end%>
-<%end%>
 
 
-<div class ="center hide-on-large-only">
-<%=render partial: "shared/dynamic_table_cards"%>
+
+
+
+<div class ="center">
+<%=render partial: "shared/dynamic_table_card"%>
 </div>
 
+
+<!-- This script is for Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77170385-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
