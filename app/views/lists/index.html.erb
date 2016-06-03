@@ -48,9 +48,10 @@
 
 
 <p id="notice"><%= notice %></p>
-
+<div class="newbeerbtn">
 <%= link_to 'New Beer ', new_list_path,class: "waves-effect waves-light btn" %>
-<h4 class ="flow-text">Current Beers</h4>
+</div>
+<h4 class ="flow-text listtitle">Current Beers</h4>
 <ul class="collapsible" data-collapsible="accordion">
            <% @lists.where(status: "Current").each do |list| %>
            <% @brew_count = 0%>
@@ -91,7 +92,7 @@
 
 
 
-<h4 class ="flow-text">Reserve Beers</h4>
+<h4 class ="flow-text listtitle">Reserve Beers</h4>
 <ul class="collapsible" data-collapsible="accordion">
            <% @lists.where(status: "Reserve").each do |list| %>
            <% @brew_count = 0%>

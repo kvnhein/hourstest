@@ -95,7 +95,7 @@ main .container {
 
 .search-tab-btn a {
     position: absolute;
-    right: 91px;
+    right: 28%;
     top: 27px;
     color: #AAA;
 }
@@ -115,6 +115,7 @@ position: absolute;
     font-size: 11px;
     letter-spacing: 1px;
     font-weight: 900;
+      width: 22%;
       border-radius: 0 50px 50px 0;
 }
 
@@ -397,23 +398,7 @@ nav .button-collapse i {
   color: #fff;
 }
 
-.log-out {
-      top: 0;
-    height: 51px;
-    padding: 0;
-    right: 0;
-}
 
-.log-out .btn {
-  padding: 7px 14px;
-    height: 51px;
-    background: #000;
-}
-
-.log-out .btn:hover {
-  background-color:#000;
-  box-shadow:none;
-}
 
 .addbuttons a{
     background-color: #17a787;
@@ -519,6 +504,7 @@ nav a img{
     height: 46px;
     padding: 0;
       width: 81px;
+  display:none;
 }
 
 .side-nav {
@@ -530,11 +516,13 @@ nav a img{
     padding-top: 8px;
     background-color: rgba(0,0,0,0);
       color: #1fdeb4;
+   display:none;
 }
 
 .back-button .btn:hover {
     background-color: rgba(0,0,0,0);
     box-shadow: none;
+   display:none;
 }
 
 iframe {
@@ -696,15 +684,37 @@ i.tiny {
   font-size: 16px;
   font-weight: 600;
   margin-left: 41px;
-  margin: 13px 0 15px 41px;
+  margin: 13px 50px 15px 41px;
 }
 
 .icon-remove-add a{
     position: absolute;
-    z-index: 1000;
+    z-index: 900;
     height: 47px;
     margin-top: 22px;
     margin-left: 16px;
+}
+
+.newbeerbtn {
+  padding:20px;
+}
+
+.newbeerbtn a{
+  margin: 0 auto;
+  width: 80%;
+  display: block;
+}
+
+.listtitle{
+      background: #aaa;
+    margin: 0;
+    padding: 6px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    text-align: center;
 }
 
 @media only screen and (min-width: 993px) {
