@@ -35,6 +35,7 @@ class ListsController < ApplicationController
   def new
     @list = List.new
     @venue_owner = current_user.id
+    @x = []
   end
 
   # GET /lists/1/edit

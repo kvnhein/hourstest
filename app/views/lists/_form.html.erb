@@ -19,9 +19,11 @@
      <%=collection_select( :list, :venue_id, Venue.where(owner: @venue_owner), :id, :name, { :multiple => false})%>
     <%end%>
   </div>
+
+
   <div class="field">
     <%= f.label :brew_id %><br>
-    <%=collection_select( :list, :brew_id, Brew.order('name ASC'), :id, :full_brew_name, { :multiple => false})%>
+    <%=collection_select( :list, :brew_id, Brew.order('brewery ASC'), :id, :full_brew_name, { :multiple => false})%>
   </div>
   <div class="field">
     <%= f.label :serving_style %><br>
