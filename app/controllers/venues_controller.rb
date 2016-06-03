@@ -10,13 +10,13 @@ class VenuesController < ApplicationController
     @venues = Venue.all
 
   end
-  
+
   def users_venues
     if user_signed_in?
     a = current_user.id
     @venues = Venue.where(owner: a)
-    end 
-  end 
+    end
+  end
   def venue_verified
     @venue.update_attribute(:venue_verify, Time.now)
     redirect_to action: "show", notice: "You are verified!"
