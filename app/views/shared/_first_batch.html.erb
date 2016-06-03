@@ -140,7 +140,9 @@
 </div>
 <%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
         <div class="now-tab">Now</div>
-<%elsif @b < 2 && modal_event.end > 22 %>
+<%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
+        <div class="now-tab">Now</div>
+<%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 %>
         <div class="now-tab">Now</div>
 <%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
         <div class="later-tab">Later</div>
