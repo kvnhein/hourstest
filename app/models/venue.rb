@@ -1,5 +1,5 @@
 class Venue < ActiveRecord::Base
-
+   
   geocoded_by :address
   after_validation :geocode
   by_star_field :venue_verify
@@ -19,4 +19,8 @@ class Venue < ActiveRecord::Base
   belongs_to :neighborhood
   has_many :events
   has_many :beers
+  
+  def to_param
+    "#{id} #{name}".parameterize
+  end
 end

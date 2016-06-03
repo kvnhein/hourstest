@@ -5,9 +5,10 @@ class EventsController < ApplicationController
   autocomplete :event, :special, :full => true
   # GET /events
   # GET /events.json
-  def landing
+  def about_us
 
   end
+  
   def index
     @events = Event.all
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour

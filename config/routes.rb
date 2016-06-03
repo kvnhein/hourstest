@@ -26,6 +26,7 @@ Rails.application.routes.draw do
    get 'south_side' => 'events#south_side'
    get 'oakland' => 'events#oakland'
    get 'users_venues' => 'venues#users_venues'
+   get 'about_us' => 'events#about_us'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
