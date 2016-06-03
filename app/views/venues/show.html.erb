@@ -114,7 +114,7 @@ Verify Venue
         <span class="card-title activator">Beer List</span>
       </div>
         <ul class="collapsible" data-collapsible="accordion">
-          <% @lists.order('lists.brew.name ASC').each do |list| %>
+          <% @lists.order('serving_style ASC').each do |list| %>
            <% @beer_count = 0%>
             <li>
               <div class="collapsible-header drinks">
