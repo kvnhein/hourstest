@@ -5,7 +5,9 @@
    <%x.push(Venue.where(id: event.venue_id).first.id)%>
     <%end%>
 <%else%>
-    <%if event.end > 22%>
+    <%if @b < 1 && event.end > 22 && event.end < 23%>
+    <%x.push(Venue.where(id: event.venue_id).first.id)%>
+    <%elsif @b < 2 && event.end > 23 && event.end < 24%>
     <%x.push(Venue.where(id: event.venue_id).first.id)%>
      <%end%>
 <%end%>

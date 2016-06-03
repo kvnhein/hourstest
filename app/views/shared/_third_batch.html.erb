@@ -5,9 +5,11 @@
    <%x.push(Venue.where(id: event.venue_id).first.id)%>
     <%end%>
 <%else%>
-    <%if event.end > 22%>
+    <%if @b < 1 && event.end > 22 && event.end < 23%>
     <%x.push(Venue.where(id: event.venue_id).first.id)%>
-     <%end%>
+    <%elsif @b < 2 && event.end > 23 && event.end < 24%>
+    <%x.push(Venue.where(id: event.venue_id).first.id)%>
+    <%end%>
 <%end%>
 <%end%>
 
@@ -126,12 +128,13 @@
 </div>
 <%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
         <div class="now-tab">Now</div>
-<%elsif @b < 2 && modal_event.end > 22 %>
+<%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
         <div class="now-tab">Now</div>
-<%elsif @b-2+(@c.to_f*0.0166) < modal_event.start %>
+<%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 %>
+        <div class="now-tab">Now</div>
+<%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
         <div class="later-tab">Later</div>
  <%end%>
-
 
 
        </div>
