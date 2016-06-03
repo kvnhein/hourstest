@@ -114,12 +114,12 @@ Verify Venue
         <span class="card-title activator">Beer List</span>
       </div>
         <ul class="collapsible" data-collapsible="accordion">
-          <% @lists.each do |list| %>
+          <% @lists.order('lists.brew.name ASC').each do |list| %>
            <% @beer_count = 0%>
             <li>
               <div class="collapsible-header drinks">
                 <h4> <%= list.brew.name %></h4>
-                <h6><%= list.brew.abv %>% ABV</h6>
+                <h6><%=list.serving_size%> oz. <%=list.serving_style%> (<%= list.brew.abv %>% ABV)</h6>
                 <%if @button == 1 %>
                <%=link_to add_to_reserve_list_path(list), :class => "btn btn-small", method: :patch do%>
                 remove
