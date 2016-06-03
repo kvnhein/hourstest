@@ -6,7 +6,7 @@
            <h2 class= "flow-text center-align"><%= @venue.name%> Hours <%=@l%></h2>
 
        <% if (user_signed_in?)%>
-        <% if current_user.admin? %>
+        <% if current_user.admin? || @venue.owner == current_user.id%>
        <a class='dropdown-button btn edit-btn' href='#' data-activates='dropdown1'><i class="material-icons">settings</i></a>
         <%end%>
     <%end%>
