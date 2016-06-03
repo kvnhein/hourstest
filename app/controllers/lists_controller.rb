@@ -40,6 +40,7 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
+     @venue_owner = current_user.id
   end
 
   # POST /lists
