@@ -5,10 +5,15 @@ Rails.application.routes.draw do
         end
       end
   resources :brews
-  resources :beers
-      
+  get 'beers/autocomplete_beer_name'
+    resources :beers
+
   devise_for :users
-  resources :events
+ get 'south_side/autocomplete_event_special'
+    root 'events#south_side'
+      get 'south_side' => 'events#south_side'
+         resources :events
+
   resources :venues do
     member do
       get :venue_verified
@@ -16,14 +21,14 @@ Rails.application.routes.draw do
   end
 
   resources :neighborhoods
-  root 'events#south_side'
-  get 'beers/autocomplete_beer_name'
-  get 'south_side/autocomplete_event_special'
+
+
+
   get 'shadyside/autocomplete_event_special'
-  
+
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'
-   get 'south_side' => 'events#south_side'
+
    get 'oakland' => 'events#oakland'
    get 'users_venues' => 'venues#users_venues'
    get 'about_us' => 'events#about_us'

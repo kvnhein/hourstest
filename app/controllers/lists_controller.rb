@@ -50,6 +50,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
+        Venue.where(id: @list.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to @list, notice: 'List was successfully created.' }
         format.json { render :show, status: :created, location: @list }
       else
@@ -64,6 +65,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
+        Venue.where(id: @list.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
         format.json { render :show, status: :ok, location: @list }
       else
@@ -78,6 +80,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     respond_to do |format|
+      Venue.where(id: @list.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
       format.json { head :no_content }
     end

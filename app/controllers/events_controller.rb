@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def about_us
 
   end
-  
+
   def index
     @events = Event.all
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
@@ -181,6 +181,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Event was successfully created.' }
         format.json { head :no_content }
       else
@@ -195,6 +196,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
+        Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -209,6 +211,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
+      Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
