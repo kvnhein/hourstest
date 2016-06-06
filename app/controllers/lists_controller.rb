@@ -36,7 +36,7 @@ class ListsController < ApplicationController
     @list = List.new
     @venue_owner = current_user.id
     @x = []
-    @brews = Brew.paginate(:page => params[:page], :per_page => 30)
+    @brews = Brew.paginate(:page => params[:page], :per_page => 50)
   end
 
   # GET /lists/1/edit
