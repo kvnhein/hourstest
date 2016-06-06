@@ -36,7 +36,7 @@ class ListsController < ApplicationController
     @list = List.new
     @venue_owner = current_user.id
     @x = []
-    @brews = Brew.first
+    @brews = Brew.all
   end
 
   # GET /lists/1/edit
@@ -92,7 +92,7 @@ class ListsController < ApplicationController
     def set_list
       @list = List.find(params[:id])
     end
-  
+
     def set_list_total
       @list = List.find(params[:id])
     end
