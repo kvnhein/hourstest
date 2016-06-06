@@ -36,7 +36,7 @@ class ListsController < ApplicationController
     @list = List.new
     @venue_owner = current_user.id
     @x = []
-    @brews = Brew.paginate(:page => params[:page], :per_page => 50)
+    @brews, @alphaParams = Brew.all.alpha_paginate(params[:letter]){|brew| brew.name}
   end
 
   # GET /lists/1/edit

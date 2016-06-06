@@ -25,6 +25,7 @@ gem 'turbolinks'
 gem 'materialize-sass'
 gem 'toastr-rails'
 gem 'will_paginate', '~> 3.1.0'
+gem 'alphabetical_paginate'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -42,7 +43,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  
+
   gem 'foreman'
 end
 
