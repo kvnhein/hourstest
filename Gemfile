@@ -24,6 +24,7 @@ gem 'jquery-rails', '~> 2.3.0'
 gem 'turbolinks'
 gem 'materialize-sass'
 gem 'toastr-rails'
+gem 'will_paginate', '~> 3.1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
