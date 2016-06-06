@@ -1,0 +1,5 @@
+<ul class="collection">
+  <%@brews.where(brewery: @brewery).order('name ASC').each do |brew| %>
+      <li class="collection-item"><%=brew.name%></li>
+  <%end%>
+</ul>

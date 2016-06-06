@@ -1,35 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Brews</h1>
+<h3 class = "flow-text">Master Beer List</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Brewery</th>
-      <th>Detail</th>
-      <th>Abv</th>
-      <th>style</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @brews.order('name ASC').each do |brew| %>
-      <tr>
-        <td><%= brew.name %></td>
-        <td><%= brew.brewery %></td>
-        <td><%= brew.detail %></td>
-        <td><%= brew.abv %></td>
-        <td><%= brew.style %></td>
-        <td><%= link_to 'Show', brew %></td>
-        <td><%= link_to 'Edit', edit_brew_path(brew) %></td>
-        <td><%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 <%= link_to 'New Brew', new_brew_path %>
+
+<% x = []%>
+<% @brews.each do |brew| %>
+<%  x.push(brew.brewery)%>
+ <% end%>
+
+<ul class="collapsible" data-collapsible="accordion">
+<%x.uniq.each do |brewery| %>
+    <li>
+      <div class="collapsible-header"><%=brewery%></div>
+      <div class="collapsible-body">
+        <ul class="collection">
+             <%@brews.where(brewery: brewery).order('name ASC').each do |brew| %>
+                 <li class="collection-item">
+                     <%=brew.name%>
+                      <div class="valign-wrapper timeforspecial">
+                        <span-right><%= link_to 'Show', brew %></span-right> -
+                        <%= link_to 'Edit', edit_brew_path(brew) %> -
+                        <%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %>
+                     </div>
+                 </li>
+             <%end%>
+        </ul>
+      </div>
+    </li>
+  <%end%>
+  </ul>
+
+
+
