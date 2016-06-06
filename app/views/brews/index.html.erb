@@ -13,7 +13,7 @@
 <ul class="collapsible" data-collapsible="accordion">
 <%x.uniq.each do |brewery| %>
     <li>
-      <div class="collapsible-header"><%=brewery%>(<%=@brews.where(brewery: brewery).count%>)</div>
+      <div class="collapsible-header"><%=brewery%>( <%=@brews.where(brewery: brewery).count%> )</div>
       <div class="collapsible-body">
         <ul class="collection">
              <%@brews.where(brewery: brewery).order('name ASC').each do |brew| %>
