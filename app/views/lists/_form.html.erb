@@ -1,4 +1,4 @@
-<%= form_for(@list) do |f| %>
+<!-- <%= form_for(@list) do |f| %>
   <% if @list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
@@ -45,3 +45,83 @@
     <%= f.submit %>
   </div>
 <% end %>
+-->
+<% x = []%>
+<% @brews.order('brewery ASC').each do |brew| %>
+<%  x.push(brew.brewery)%>
+ <% end%>
+
+<ul class="collapsible" data-collapsible="accordion">
+<%x.uniq.each do |brewery| %>
+    <li>
+      <div class="collapsible-header"><%=brewery%> ( <%=@brews.where(brewery: brewery).count%> )</div>
+      <div class="collapsible-body">
+        <ul class="collapsible" data-collapsible="accordion">
+             <%@brews.where(brewery: brewery).order('name ASC').each do |brew| %>
+                 <li>
+                   <div class="collapsible-header"> <%=brew.name%></div>
+                    <div class="collapsible-body">
+                      <!--<div class="valign-wrapper timeforspecial">
+                        <span-right><%= link_to 'Show', brew %></span-right> -
+                        <%= link_to 'Edit', edit_brew_path(brew) %> -
+                        <%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %>
+                     </div>-->
+  <!-- This is where the modal needs to start -->
+                          <%= form_for(@list) do |f| %>
+                             <% if @list.errors.any? %>
+                              <div id="error_explanation">
+                                 <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+                                 <ul>
+                                    <% @list.errors.full_messages.each do |message| %>
+                                      <li><%= message %></li>
+                                    <% end %>
+                                 </ul>
+                                </div>
+                             <% end %>
+                        <div class="field">
+                           <% f.label :venue_id %><br>
+                           <%if current_user.admin?%>
+                               <%=collection_select( :list, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
+                           <%else%>
+                               <%=collection_select( :list, :venue_id, Venue.where(owner: @venue_owner).first, :id, :name, { :multiple => false})%>
+
+                           <%end%>
+                       </div>
+                       <div class="field">
+                          <%= hidden_field_tag :list, Venue.where(owner: @venue_owner).first.id %>
+                       </div>
+                        <div class="row">
+
+                        <div class="field col s6">
+                            <%= f.label :serving_style %><br>
+                            <%= f.select :serving_style, [['Draft', 'Draft'], ['Bottle', 'Bottle'], ['Can','Can']]%>
+                            </div>
+                            <div class="field col s6">
+                              <%= f.label :serving_size %><br>
+                              <%= f.text_field :serving_size %>
+                            </div>
+                       </div>
+                       <div class="row">
+                            <div class="field col s6">
+                              <%= f.label :price %><br>
+                              <%= f.text_field :price %>
+                             </div>
+                             <div class="field col s6">
+                                <%= f.label :status %><br>
+                                <%= f.select :status, [['Current', 'Current'], ['Reserve', 'Reserve']]%>
+                              </div>
+                              <div class="actions">
+                              <%= f.submit "Add Beer" %>
+                              </div>
+                        </div>
+                              <% end %>
+
+                   <!-- end of modal -->
+                   </div>
+                 </li>
+             <%end%>
+        </ul>
+      </div>
+    </li>
+  <%end%>
+  </ul>
