@@ -86,7 +86,7 @@
              <div class="modal-title">
                <span class="grey-text"><%= @day_tag %> Hours</span>
              </div>
-
+<%=@e[0].event_type%>
 <% if @e[0].event_venue.venue_verify.nil?%>
   <p> Venue has not been verified </p>
 <%else%>
