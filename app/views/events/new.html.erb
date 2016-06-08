@@ -7,5 +7,5 @@
 <%= render 'form' %>
 
 <div class="fixed-action-btn back-button">
-<%= link_to 'Back', events_path, class: "waves-effect waves-light btn" %>
+<%= link_to 'Back', Venue.where(id: @event.venue_id).first, class: "waves-effect waves-light btn", 'data-no-turbolink' => true  %>
 </div>
