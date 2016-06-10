@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :require_admin, only: [:oakland]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :require_owner_event, only: [:edit, :update, :destroy]
   autocomplete :event, :special, :full => true
   # GET /events
@@ -17,7 +18,7 @@ class EventsController < ApplicationController
   end
 
   def shadyside
-     @today = Time.now
+    @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
     @verified_this_week = Venue.between_times(@week_ago, @today)
@@ -125,33 +126,52 @@ class EventsController < ApplicationController
   end
 
   def oakland
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-    if t.wday == 1
-      x = "Monday"
-      @day_tag = "Monday"
-    elsif  t.wday==2
-      x = "Tuesday"
-      @day_tag  = "Tuesday"
-    elsif  t.wday==3
-      x = "Wednesday"
-      @day_tag  = "Wednesday"
-    elsif  t.wday==4
-      x = "Thursday"
-      @day_tag  = "Thursday"
-    elsif t.wday==5
-      x = "Friday"
-      @day_tag  = "Friday"
-     elsif t.wday==6
-      x= "Saturday"
-      @day_tag  = "Saturday"
-     else
-      x= "Sunday"
-      @day_tag  = "Sunday"
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
     end
-    @v = @venues.where( neighborhood_id: 3)
-    @events = Event.where(venue_id: @v.pluck(:id), day: x )
+
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+
+
+   @v = @venues.where( neighborhood_id: 2)
+
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
+
+
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
     @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )

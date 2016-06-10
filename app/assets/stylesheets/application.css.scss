@@ -21,6 +21,32 @@ main .container {
   background-color:#fff;
 }
 
+/**DROPDOWN**/
+.narrowchart {padding:20px; max-width:400px; margin:0 auto;}
+.accordianheader {position:relative; color:#fff; background:#222; padding:10px 20px; margin-top:20px; text-align: center;}
+.accordianbody {background:#f4f4f4;}
+.accordianbody ul {margin:0; list-style:none; padding:0;}
+.accordianbody ul li {padding:10px; border-bottom: 1px solid lightgrey;}
+
+.accordianheader i { position:absolute;
+  right: 20px;
+  top:14px;
+    -webkit-transition:all 300ms ease-in 0s;
+    -moz-transition: all 300ms ease-in 0s;
+    -o-transition: all 300ms ease-in 0s;
+  transition: all 300ms ease-in 0s;}
+
+.ui-state-active i {
+    color: #ACD4CE;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/**END**/
+
 .form-padding {
   padding:20px;
 }

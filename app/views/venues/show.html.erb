@@ -44,12 +44,38 @@ Verify Venue
 </div>
 
 
+
+<!-- <div class="narrowchart">
+	<div id="accordion">
+		<!-- yeah, yeah, I spelled Accordion wrong,  do something about it.  - G  -->
+<!-- 		<div class="accordianheader">
+      <i class="material-icons">query_builder</i>Sunday
+		</div>
+		<div class="accordianbody">
+			sadfsafsdf
+		</div>
+  </div>
+</div> -->
+
+<!-- <script>
+  $( "#accordion" ).accordion({
+      heightStyle: "content",
+      active:false,
+      collapsible: true,
+      header:"div.accordianheader",
+    });
+
+</script> -->
+
+
+
 <ul class="collapsible beerlist" data-collapsible="accordion">
      <li>
       <div class="collapsible-header <%=@s%>"><i class="material-icons">query_builder</i>Sunday</div>
       <div class="collapsible-body">
         <% @d = "Sunday" %>
         <%= render "show_table" %>
+
       </div>
     </li>
     <li>
