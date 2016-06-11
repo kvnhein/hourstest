@@ -5,6 +5,7 @@ class BrewsController < ApplicationController
   # GET /brews.json
   def index
     @brews = Brew.all
+    @brew = Brew.new
   end
 
   # GET /brews/1
