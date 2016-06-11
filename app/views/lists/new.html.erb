@@ -3,32 +3,7 @@
 </div>
 
 <div class="form-padding">
-<% x = []%>
-<% @brews.order('brewery ASC').each do |brew| %>
-<%  x.push(brew.brewery)%>
- <% end%>
-
-<ul class="collapsible" data-collapsible="accordion">
-<%x.uniq.each do |brewery| %>
-    <li>
-      <div class="collapsible-header"><%=brewery%> ( <%=@brews.where(brewery: brewery).count%> )</div>
-      <div class="collapsible-body">
-        <ul class="collapsible" data-collapsible="accordion">
-             <%@brews.where(brewery: brewery).order('name ASC').each do |brew| %>
-                 <li>
-                   <div class="collapsible-header"> <%=brew.name%></div>
-                    <div class="collapsible-body">
-                     
 <%= render 'form' %>
-                     </div>
-                 </li>
-             <%end%>
-        </ul>
-      </div>
-    </li>
-  <%end%>
-  </ul>
-
 </div>
 
 
