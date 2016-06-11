@@ -1,8 +1,15 @@
 class ListsController < ApplicationController
+  after_filter "save_my_previous_url", only: [:new]
   before_action :set_list, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
   before_action :authenticate_user!, only: [:new,:show, :edit, :update, :destroy,:add_to_current, :add_to_reserve]
   # GET /lists
   # GET /lists.json
+  
+  def save_my_previous_url
+    # session[:previous_url] is a Rails built-in variable to save last url.
+    session[:my_previous_url] = URI(request.referer || '').path
+  end
+  
   def index
     if (user_signed_in?)
       venue_owner = Venue.where(owner: current_user.id).first.id
@@ -36,7 +43,8 @@ class ListsController < ApplicationController
     @list = List.new
     @venue_owner = current_user.id
     @x = []
-    @brews = Brew.paginate(:page => params[:page], :per_page => 50)
+    @brews = Brew.all
+    @back_url = session[:my_previous_url]
   end
 
   # GET /lists/1/edit

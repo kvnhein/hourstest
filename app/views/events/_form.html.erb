@@ -47,7 +47,7 @@
    <div class="actions waves-effect waves-light btn">
     <%= f.submit "Done" %>
   </div>
-    <%= link_to 'Back',   Venue.where(id: @event.venue_id).first, class: "waves-effect waves-light btn", 'data-no-turbolink' => true  %>
+    <%= link_to "Back", @back_url, 'data-no-turbolink' => true %>
      </div>
 
 <% end %>

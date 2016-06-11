@@ -150,6 +150,9 @@
         <div class="later-tab">Later</div>
  <%end%>
 
+       <div class="dropdownarrow">
+         <%= image_tag "dropdown.png"%>
+       </div>
 
 
        </div>
@@ -160,9 +163,8 @@
  <%end%>
   </ul><br>
      <div class="row">
-      <a class="waves-effect waves-light btn" href=
-        "http://<%= Venue.where( id: @e[0].venue_id).first.menu_address %>">Menu</a>
-      <%= link_to 'More Hours', venue_path(Venue.where( id: @e[0].venue_id).first.id), class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
+
+      <%= link_to 'More Hours', venue_path(Venue.where( id: @e[0].venue_id).first.id), class: "waves-effect waves-light btn menubtn", 'data-no-turbolink' => true %>
 
 
     </div>

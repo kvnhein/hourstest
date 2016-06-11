@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  after_filter "save_my_previous_url", only: [:new]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :require_owner_event, only: [:edit, :update, :destroy]
@@ -7,6 +8,11 @@ class EventsController < ApplicationController
   # GET /events.json
   def about_us
 
+  end
+
+  def save_my_previous_url
+    # session[:previous_url] is a Rails built-in variable to save last url.
+    session[:my_previous_url] = URI(request.referer || '').path
   end
 
   def index
@@ -187,6 +193,8 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @back_url = session[:my_previous_url]
+
   end
 
   # GET /events/1/edit

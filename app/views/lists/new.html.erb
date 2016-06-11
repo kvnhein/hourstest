@@ -4,7 +4,8 @@
 
 <div class="form-padding">
 <%= render 'form' %>
-<%= will_paginate @brews %>
-<%= link_to 'Back', lists_path %>
 
-</div>
+
+
+
+<%= link_to "Back", @back_url, class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>

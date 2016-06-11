@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608172727) do
+ActiveRecord::Schema.define(version: 20160611172159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,11 +73,14 @@ ActiveRecord::Schema.define(version: 20160608172727) do
     t.string   "serving_size"
     t.string   "price"
     t.string   "status"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.boolean  "brew_level",    default: true
-    t.boolean  "brew_special",  default: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "brew_level",       default: true
+    t.boolean  "brew_special",     default: true
     t.string   "draft_Status"
+    t.string   "beer_name"
+    t.text     "beer_description"
+    t.string   "beer_abv"
   end
 
   add_index "lists", ["brew_id"], name: "index_lists_on_brew_id", using: :btree

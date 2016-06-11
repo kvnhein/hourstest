@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ root 'events#landing'
   resources :lists do
    member do
           patch :add_to_reserve, :add_to_current
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
 
   devise_for :users
  get 'south_side/autocomplete_event_special'
-    root 'events#south_side'
+    
       get 'south_side' => 'events#south_side'
          resources :events
 

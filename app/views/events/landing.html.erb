@@ -1,15 +1,6 @@
-<div class=" center-align">
-<h1 class="flow-text" style="font-size:170%;">Coming Soon!</h1>
-</div>
-<br>
+<%= link_to "South Side", south_side_path, class: "waves-effect waves-light btn newvenue menubtn"%>
+<%= link_to "Shadyside", shadyside_path, class: "waves-effect waves-light btn newvenue menubtn"%>
+<%= link_to "Oakland", oakland_path, class: "waves-effect waves-light btn newvenue menubtn"%>
 
-<div class=" center-align">
-
-<%if (!user_signed_in?)%>
-<%= link_to "Login", new_user_session_path, class: "waves-effect waves-light btn"%>
-<%else%>
-<%= link_to "See Hours", events_path, class: "waves-effect waves-light btn"%>
-<%end%>
-</div>
 
 

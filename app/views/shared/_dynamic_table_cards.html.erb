@@ -109,8 +109,7 @@
      <%end%>
     </ul>
      <div class="row">
-      <a class="waves-effect waves-light btn" href=
-        "http://<%= Venue.where( id: e[0].venue_id).first.menu_address %>">Menu</a>
+     
       <%= link_to 'More Hours', venue_path(Venue.where( id: e[0].venue_id).first.id), class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
     </div>
 
