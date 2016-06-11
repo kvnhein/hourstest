@@ -114,7 +114,7 @@ main .container {
 }
 
 .tabs .tab a {
-    color: #fff;
+    color: #1fdeb4;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -131,7 +131,12 @@ main .container {
 }
 
 .tabs .tab a.active {
-  color:#1fdeb4;
+  color:#fff;
+}
+
+.nobeerlist {
+  text-align: center;
+    padding: 36px 20px;
 }
 
 .search-tab {
