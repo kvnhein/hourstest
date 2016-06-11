@@ -46,26 +46,7 @@
   </div>
 <% end %>
 -->
-<% x = []%>
-<% @brews.order('brewery ASC').each do |brew| %>
-<%  x.push(brew.brewery)%>
- <% end%>
 
-<ul class="collapsible" data-collapsible="accordion">
-<%x.uniq.each do |brewery| %>
-    <li>
-      <div class="collapsible-header"><%=brewery%> ( <%=@brews.where(brewery: brewery).count%> )</div>
-      <div class="collapsible-body">
-        <ul class="collapsible" data-collapsible="accordion">
-             <%@brews.where(brewery: brewery).order('name ASC').each do |brew| %>
-                 <li>
-                   <div class="collapsible-header"> <%=brew.name%></div>
-                    <div class="collapsible-body">
-                      <!--<div class="valign-wrapper timeforspecial">
-                        <span-right><%= link_to 'Show', brew %></span-right> -
-                        <%= link_to 'Edit', edit_brew_path(brew) %> -
-                        <%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %>
-                     </div>-->
   <!-- This is where the modal needs to start -->
                           <%= form_for(@list) do |f| %>
                              <% if @list.errors.any? %>
@@ -118,11 +99,4 @@
                               <% end %>
 
                    <!-- end of modal -->
-                   </div>
-                 </li>
-             <%end%>
-        </ul>
-      </div>
-    </li>
-  <%end%>
-  </ul>
+                   
