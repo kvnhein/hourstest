@@ -6,9 +6,9 @@
            <h2 class= "flow-text center-align">Venues</h2>
      </div>
 </div>
+<br>
 
-
-
+<h3 class = "flow-text">|   South Side   |</h3>
 
 
   <% @venues.where(neighborhood_id: 1).each do |venue| %>
@@ -34,8 +34,8 @@
         </div>
       </div>
    <% end %>
-
-
+<br>
+<h3 class = "flow-text">|   Shadyside   |</h3>
  <% @venues.where(neighborhood_id: 2).each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
@@ -59,7 +59,8 @@
         </div>
       </div>
    <% end %>
-
+<br>
+<h3 class = "flow-text">|   Oakland   |</h3>
  <% @venues.where(neighborhood_id: 3).each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
