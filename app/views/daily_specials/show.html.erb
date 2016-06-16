@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @daily_special.text %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @daily_special.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @daily_special.price %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @daily_special.venue %>
+</p>
+
+<p>
+  <strong>Dish type:</strong>
+  <%= @daily_special.dish_type %>
+</p>
+
+<%= link_to 'Edit', edit_daily_special_path(@daily_special) %> |
+<%= link_to 'Back', daily_specials_path %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Daily Specials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Venue</th>
+      <th>Dish type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @daily_specials.each do |daily_special| %>
+      <tr>
+        <td><%= daily_special.text %></td>
+        <td><%= daily_special.description %></td>
+        <td><%= daily_special.price %></td>
+        <td><%= daily_special.venue %></td>
+        <td><%= daily_special.dish_type %></td>
+        <td><%= link_to 'Show', daily_special %></td>
+        <td><%= link_to 'Edit', edit_daily_special_path(daily_special) %></td>
+        <td><%= link_to 'Destroy', daily_special, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Daily special', new_daily_special_path %>

@@ -5,7 +5,7 @@
 
 <%= form_tag(beers_path, :method => "get", id: "search-form") do %>
 <!-- text field tag=action,args,identifier,placeholdertext... -->
-<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "namesearch", type: "search", data: {autocomplete: beers_autocomplete_beer_name_path} %>  
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "namesearch", type: "search", data: {autocomplete: beers_autocomplete_beer_name_path} %>
 <%= submit_tag "Search" %>
 <%end%>
 <script type="text/javascript" charset="utf-8">
@@ -13,7 +13,6 @@
   $('#search-form').submit()
   });
 </script>
-
 <table>
   <thead>
     <tr>
@@ -26,7 +25,7 @@
     <% @beers.each do |beer| %>
       <tr>
         <td><%= beer.name %></td>
-     
+
         <td><%= link_to 'Show', beer %></td>
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
         <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -37,6 +36,6 @@
 
 <br>
 
-<%= link_to 'New Food', new_beer_path %>
+<%= link_to 'New Drink', new_beer_path %>
 
 

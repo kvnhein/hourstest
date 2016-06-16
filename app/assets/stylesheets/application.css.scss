@@ -8,7 +8,7 @@ $primary-color: color("grey", "lighten-5") !default;
     flex-direction: column;
     font-family: "proxima-nova", Helvetica Neue;
     overflow-x:hidden;
-    background-color: #f9f9f9;
+    background-color: #fff;
   }
 
 body, html { overflow-x:hidden; }
@@ -20,6 +20,26 @@ body, html { overflow-x:hidden; }
 main .container {
   background-color:#fff;
 }
+
+
+#map {
+        height: 100%;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+
 
 /**DROPDOWN**/
 .narrowchart {padding:20px; max-width:400px; margin:0 auto;}
@@ -122,8 +142,9 @@ main .container {
 
 .menubtn {
   width: auto;
-  margin: 20px;
-  display: block;
+    margin: 20px auto;
+    display: block;
+    max-width: 250px;
 }
 
 .tabs .indicator {
@@ -268,6 +289,7 @@ nav .button-collapse i {
 
 .beerlist .special-by-day h4 {
   text-align:left;
+  padding-right: 64px;
 }
 
 .beerlist .special-by-day h4.venues{

@@ -22,3 +22,53 @@
 
 <%= link_to 'Edit', edit_brew_path(@brew) %> |
 <%= link_to 'Back', brews_path %>
+
+<%= form_for(@list) do |f| %>
+                             <% if @list.errors.any? %>
+                              <div id="error_explanation">
+                                 <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+                                 <ul>
+                                    <% @list.errors.full_messages.each do |message| %>
+                                      <li><%= message %></li>
+                                    <% end %>
+                                 </ul>
+                                </div>
+                             <% end %>
+                        <div class="field">
+                           <% f.label :venue_id %><br>
+                           <%if current_user.admin?%>
+                               <%=collection_select( :list, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
+                           <%else%>
+                               <%=collection_select( :list, :venue_id, Venue.where(owner: @venue_owner).first, :id, :name, { :multiple => false})%>
+
+                           <%end%>
+                       </div>
+                       <div class="field">
+                          <%= hidden_field_tag :list, Venue.where(owner: @venue_owner).first.id %>
+                       </div>
+                        <div class="row">
+
+                        <div class="field col s6">
+                            <%= f.label :serving_style %><br>
+                            <%= f.select :serving_style, [['Draft', 'Draft'], ['Bottle', 'Bottle'], ['Can','Can']]%>
+                            </div>
+                            <div class="field col s6">
+                              <%= f.label :serving_size %><br>
+                              <%= f.text_field :serving_size %>
+                            </div>
+                       </div>
+                       <div class="row">
+                            <div class="field col s6">
+                              <%= f.label :price %><br>
+                              <%= f.text_field :price %>
+                             </div>
+                             <div class="field col s6">
+                                <%= f.label :status %><br>
+                                <%= f.select :status, [['Current', 'Current'], ['Reserve', 'Reserve']]%>
+                              </div>
+
+                              <div class="actions">
+                              <%= f.submit "Add Beer" %>
+                              </div>
+                        </div>
+                              <% end %>

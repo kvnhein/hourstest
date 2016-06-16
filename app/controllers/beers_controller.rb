@@ -10,9 +10,19 @@ class BeersController < ApplicationController
       @beers = Beer.name_like("%#{params[:search]}%").order('name')
     else
     end
-   
+
   end
 
+  def venue_beer_list
+    if user_signed_in?
+      userid = current_user.id
+      venue_id = Venue.where(owner: userid).first.id
+      @beers = Beer.where(venue_id: venue_id)
+    end
+    if (user_signed_in?)
+    @venue_owner = current_user.id
+    end 
+  end
   # GET /beers/1
   # GET /beers/1.json
   def show

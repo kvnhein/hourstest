@@ -1,0 +1,41 @@
+<%= form_for(@daily_special) do |f| %>
+  <% if @daily_special.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@daily_special.errors.count, "error") %> prohibited this daily_special from being saved:</h2>
+
+      <ul>
+      <% @daily_special.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :text %><br>
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%if current_user.admin?%>
+    <%= f.label :venue_id %><br>
+     <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
+    <%else%>
+     <%= hidden_field_tag :daily_special, Venue.where(owner: @venue_owner).first.id %>
+    <%end%>
+  </div>
+  <div class="field">
+    <%= f.label :dish_type %><br>
+    <%= f.text_field :dish_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

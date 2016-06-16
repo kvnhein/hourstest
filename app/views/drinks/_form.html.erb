@@ -1,0 +1,46 @@
+<%= form_for(@drink) do |f| %>
+  <% if @drink.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@drink.errors.count, "error") %> prohibited this drink from being saved:</h2>
+
+      <ul>
+      <% @drink.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :drink_Status %><br>
+    <%= f.text_field :drink_Status %>
+  </div>
+  <div class="field">
+    <%= f.label :drink_type %><br>
+    <%= f.text_field :drink_type %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_id %><br>
+    <% if current_user.admin?%>
+    <%=collection_select( :drink, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
+    <%else%>
+    <%=collection_select( :drink, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
+    <%end%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -24,7 +24,7 @@
                         <%= link_to 'Edit', edit_brew_path(brew) %> -
                         <%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %>
                      </div>
-                   
+                   <%= render partial: "form" %>
                  </li>
              <%end%>
         </ul>
@@ -32,6 +32,3 @@
     </li>
   <%end%>
   </ul>
-
-
-

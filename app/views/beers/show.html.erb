@@ -4,7 +4,7 @@
   <strong>Name:</strong>
   <%= @beer.name %>
 </p>
-
+<!--
 <p>
   <strong>Brewery:</strong>
   <%= @beer.brewery %>
@@ -19,17 +19,17 @@
   <strong>Type:</strong>
   <%= @beer.genre %>
 </p>
-
+-->
 <p>
   <strong>Price:</strong>
   <%= @beer.price %>
 </p>
-
+<!--
 <p>
   <strong>Serving:</strong>
   <%= @beer.serving %>
 </p>
-
+-->
 <p>
   <strong>Details:</strong>
   <%= @beer.details %>
@@ -37,7 +37,7 @@
 
 <p>
   <strong>Venue:</strong>
-  <%= @beer.venue %>
+  <%= @beer.venue.name %>
 </p>
 
 <%= link_to 'Edit', edit_beer_path(@beer) %> |

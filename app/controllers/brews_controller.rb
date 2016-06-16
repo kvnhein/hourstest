@@ -11,9 +11,11 @@ class BrewsController < ApplicationController
   # GET /brews/1
   # GET /brews/1.json
   def show
+    @list = List.new
+    @venue_owner = current_user.id
   end
 
-  
+
 
   # GET /brews/new
   def new

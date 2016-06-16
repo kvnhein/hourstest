@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :daily_specials
+  resources :liqours
+  resources :drinks
  root 'events#landing'
   resources :lists do
    member do
@@ -29,7 +32,9 @@ Rails.application.routes.draw do
 
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'
-
+   get 'venue_beer_list' => 'beers#venue_beer_list'
+   get 'venue_liqour_list' => 'liqours#venue_liqour_list'
+   get 'venue_drink_list' => 'drinks#venue_drink_list'
    get 'oakland' => 'events#oakland'
    get 'users_venues' => 'venues#users_venues'
    get 'about_us' => 'events#about_us'

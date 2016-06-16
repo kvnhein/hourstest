@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611172159) do
+ActiveRecord::Schema.define(version: 20160615122334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,19 @@ ActiveRecord::Schema.define(version: 20160611172159) do
     t.string   "style"
   end
 
+  create_table "daily_specials", force: :cascade do |t|
+    t.string   "text"
+    t.text     "description"
+    t.string   "price"
+    t.integer  "venue_id"
+    t.string   "dish_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "status"
+  end
+
+  add_index "daily_specials", ["venue_id"], name: "index_daily_specials_on_venue_id", using: :btree
+
   create_table "drink_lists", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -52,6 +65,19 @@ ActiveRecord::Schema.define(version: 20160611172159) do
   end
 
   add_index "drink_lists", ["venue_id"], name: "index_drink_lists_on_venue_id", using: :btree
+
+  create_table "drinks", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "name"
+    t.text     "description"
+    t.string   "price"
+    t.string   "drink_Status"
+    t.string   "drink_type"
+    t.integer  "venue_id"
+  end
+
+  add_index "drinks", ["venue_id"], name: "index_drinks_on_venue_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.text     "special"
@@ -65,6 +91,20 @@ ActiveRecord::Schema.define(version: 20160611172159) do
   end
 
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
+
+  create_table "liqours", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "distillery"
+    t.string   "liqour_status"
+    t.string   "liqour_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "price"
+    t.integer  "venue_id"
+  end
+
+  add_index "liqours", ["venue_id"], name: "index_liqours_on_venue_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
     t.integer  "venue_id"
@@ -127,8 +167,11 @@ ActiveRecord::Schema.define(version: 20160611172159) do
 
   add_index "venues", ["neighborhood_id"], name: "index_venues_on_neighborhood_id", using: :btree
 
+  add_foreign_key "daily_specials", "venues"
   add_foreign_key "drink_lists", "venues"
+  add_foreign_key "drinks", "venues"
   add_foreign_key "events", "venues"
+  add_foreign_key "liqours", "venues"
   add_foreign_key "lists", "brews"
   add_foreign_key "lists", "venues"
   add_foreign_key "venues", "neighborhoods"

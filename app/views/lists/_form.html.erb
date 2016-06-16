@@ -84,9 +84,9 @@
                                <%=collection_select( :list, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
                            <%else%>
                                <%=collection_select( :list, :venue_id, Venue.where(owner: @venue_owner).first, :id, :name, { :multiple => false})%>
-
                            <%end%>
                        </div>
+
                        <div class="field">
                           <%= hidden_field_tag :list, Venue.where(owner: @venue_owner).first.id %>
                        </div>
@@ -96,10 +96,10 @@
                             <%= f.label :serving_style %><br>
                             <%= f.select :serving_style, [['Draft', 'Draft'], ['Bottle', 'Bottle'], ['Can','Can']]%>
                             </div>
-                            <div class="field col s6">
-                              <%= f.label :serving_size %><br>
-                              <%= f.text_field :serving_size %>
-                            </div>
+                         <div class="field col s6">
+                            <%= f.label :serving_size %><br>
+                            <%= f.text_field :serving_size %>
+                         </div>
                        </div>
                        <div class="row">
                             <div class="field col s6">
@@ -110,7 +110,7 @@
                                 <%= f.label :status %><br>
                                 <%= f.select :status, [['Current', 'Current'], ['Reserve', 'Reserve']]%>
                               </div>
-                              
+
                               <div class="actions">
                               <%= f.submit "Add Beer" %>
                               </div>

@@ -1,0 +1,49 @@
+<%= form_for(@liqour) do |f| %>
+  <% if @liqour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@liqour.errors.count, "error") %> prohibited this liqour from being saved:</h2>
+
+      <ul>
+      <% @liqour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :distillery %><br>
+    <%= f.text_field :distillery %>
+  </div>
+  <div class="field">
+    <%= f.label :liqour_status %><br>
+    <%= f.text_field :liqour_status %>
+  </div>
+  <div class="field">
+    <%= f.label :liqour_type %><br>
+    <%= f.text_field :liqour_type %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_id %><br>
+    <% if current_user.admin?%>
+    <%=collection_select(:liqour, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
+    <%else%>
+    <%=collection_select(:liqour, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
+    <%end%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
