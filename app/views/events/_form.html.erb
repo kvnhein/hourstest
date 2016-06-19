@@ -27,7 +27,7 @@
   <div class="field">
     <%= f.label :venue_id %><br>
     <% if current_user.admin?%>
-    <%=collection_select( :event, :venue_id, Venue.all, :id, :name, { :multiple => false})%>
+    <%=collection_select( :event, :venue_id, Venue.order('name ASC').all, :id, :name, { :multiple => false})%>
     <%else%>
     <%=collection_select( :event, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
     <%end%>
