@@ -1,5 +1,5 @@
 class DailySpecialsController < ApplicationController
-  before_action :set_daily_special, only: [:show, :edit, :update, :destroy]
+  before_action :set_daily_special, only: [:show, :edit, :update, :destroy, :dish_limited, :dish_not_limited]
 
   # GET /daily_specials
   # GET /daily_specials.json
@@ -36,7 +36,15 @@ class DailySpecialsController < ApplicationController
       end
     end
   end
+  def dish_limited
+    @dailyspecial.update_attribute(:dish_status, "limited")
+    redirect_to action: "index", notice: "Special's status has been changed to 'Limited'"
+  end
 
+  def dish_not_limited
+    @dailyspecial.update_attribute(:dish_status, "not limited")
+    redirect_to action: "index", notice: "Special's status has been changed to 'Not Limited'"
+  end
   # PATCH/PUT /daily_specials/1
   # PATCH/PUT /daily_specials/1.json
   def update
@@ -69,6 +77,6 @@ class DailySpecialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daily_special_params
-      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type)
+      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status)
     end
 end

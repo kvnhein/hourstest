@@ -23,8 +23,10 @@
 
   <tbody>
     <% @beers.each do |beer| %>
+
       <tr>
         <td><%= beer.name %></td>
+
 
         <td><%= link_to 'Show', beer %></td>
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>

@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_action :set_beer, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
+  before_action :set_beer, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve, :beer_level_low, :beer_level_full]
   autocomplete :beer, :name, :full => true
   # GET /beers
   # GET /beers.json
@@ -21,7 +21,7 @@ class BeersController < ApplicationController
     end
     if (user_signed_in?)
     @venue_owner = current_user.id
-    end 
+    end
   end
   # GET /beers/1
   # GET /beers/1.json
@@ -34,9 +34,21 @@ class BeersController < ApplicationController
   end
 
   def add_to_reserve
-    @beer.update_attribute(:beer_status, 2)
+    @beer.update_attribute(:beer_status => 2, :beer_level => 2)
      redirect_to action: "index", notice: "Beer added to current list"
   end
+
+  def beer_level_low
+    @beer.update_attribute(:beer_level, 1)
+      redirect_to action: "venue_beer_list", notice: "Beer level has been changed to 'Low'"
+  end
+
+  def beer_level_full
+    @beer.update_attribute(:beer_level, 2)
+    redirect_to action: "venue_beer_list", notice: "Beer level has been changed to 'high'"
+  end
+
+  def
 
   # GET /beers/new
   def new
@@ -95,6 +107,6 @@ class BeersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def beer_params
-      params.require(:beer).permit(:name, :brewery, :abv, :genre, :price, :serving, :details, :venue_id)
+      params.require(:beer).permit(:name, :brewery, :abv, :genre, :price, :serving, :details, :venue_id, :beer_level)
     end
 end

@@ -11,10 +11,19 @@
       <tr>
         <td><%= beer.name %></td>
         <td><%= Venue.where(id: beer.venue_id).first.name%></td>
-
+        <td><%= beer.beer_level %></td>
+        <td><%=link_to beer_level_low_beer_path(beer), method: :patch do%>
+                <i class="material-icons">add</i>
+                <%end%>
+        </td>
+        <td><%=link_to beer_level_full_beer_path(beer), method: :patch do%>
+                <i class="material-icons">remove</i>
+                <%end%>
+        </td>
         <td><%= link_to 'Show', beer %></td>
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
         <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>

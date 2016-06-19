@@ -16,6 +16,9 @@
 
   <tbody>
     <% @drinks.each do |drink| %>
+      <%=link_to add_to_reserve_drink_path(drink), method: :patch do%>
+                <i class="material-icons">add</i>
+                <%end%>
       <tr>
         <td><%= drink.name %></td>
         <td><%= drink.description %></td>

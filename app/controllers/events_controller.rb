@@ -184,6 +184,59 @@ class EventsController < ApplicationController
     @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
   end
 
+  def market_square
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
+    end
+
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+
+   hood_id = Neighborhood.where(name: "Market Square").first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
+
+
+    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
+    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
+    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
+    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
+    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+  end
 
   # GET /events/1
   # GET /events/1.json

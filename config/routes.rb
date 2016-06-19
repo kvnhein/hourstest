@@ -1,20 +1,42 @@
 Rails.application.routes.draw do
-  resources :daily_specials
-  resources :liqours
-  resources :drinks
- root 'events#landing'
+  root 'events#landing'\
+
+  resources :daily_specials do
+     member do
+          patch :dish_limited, :dish_not_limited
+        end
+      end
+  resources :liqours do
+    member do
+      patch :add_to_reserve, :add_to_current
+    end
+  end
+
+  resources :drinks do
+    member do
+      patch :add_to_reserve, :add_to_current
+    end
+  end
+
   resources :lists do
    member do
           patch :add_to_reserve, :add_to_current
         end
       end
+
   resources :brews
   get 'beers/autocomplete_beer_name'
-    resources :beers
 
-  devise_for :users
+  resources :beers do
+      member do
+          patch :beer_level_low, :beer_level_full, :add_to_reserve, :add_to_current
+        end
+      end
+
+
+
+ devise_for :users
  get 'south_side/autocomplete_event_special'
-    
       get 'south_side' => 'events#south_side'
          resources :events
 
@@ -28,8 +50,8 @@ Rails.application.routes.draw do
 
 
 
-  get 'shadyside/autocomplete_event_special'
-
+   get 'shadyside/autocomplete_event_special'
+   get 'market_square' => 'events#market_square'
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'
    get 'venue_beer_list' => 'beers#venue_beer_list'

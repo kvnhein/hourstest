@@ -1,5 +1,5 @@
 class DrinksController < ApplicationController
-  before_action :set_drink, only: [:show, :edit, :update, :destroy]
+  before_action :set_drink, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
 
   # GET /drinks
   # GET /drinks.json
@@ -12,6 +12,15 @@ class DrinksController < ApplicationController
   def show
   end
 
+  def add_to_current
+    @drink.update_attribute(:drink_Status, "Current")
+    redirect_to action: "index", notice: "Drink added to current list"
+  end
+
+  def add_to_reserve
+    @drink.update_attribute(:drink_Status, "Reserve")
+     redirect_to action: "index", notice: "Drink added to current list"
+  end
   # GET /drinks/new
   def new
     @drink = Drink.new

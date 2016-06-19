@@ -16,6 +16,9 @@
 
   <tbody>
     <% @liqours.each do |liqour| %>
+    <%=link_to add_to_reserve_liqour_path(liqour), method: :patch do%>
+                <i class="material-icons">add</i>
+                <%end%>
       <tr>
         <td><%= liqour.name %></td>
         <td><%= liqour.description %></td>

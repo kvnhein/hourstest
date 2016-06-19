@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Daily Specials</h1>
-
+<br>
+<h4 class = "flow-text center-align">Daily Special</h4>
+<!--
 <table>
   <thead>
     <tr>
@@ -29,7 +29,26 @@
     <% end %>
   </tbody>
 </table>
+-->
 
 <br>
+<% @daily_specials.each do |daily_special| %>
+<div class="collection">
+        <a href="#!" class="collection-item active">Special Title</a>
+        <a href="#!" class="collection-item"><%= daily_special.text %></a>
+        <a href="#!" class="collection-item active">Special  Description</a>
+        <a href="#!" class="collection-item"><%= daily_special.description %></a>
+        <a href="#!" class="collection-item active">Price</a>
+        <a href="#!" class="collection-item">$<%= daily_special.price %></a>
+        <a href="#!" class="collection-item active">Special Type</a>
+        <a href="#!" class="collection-item"><%= daily_special.dish_type %>
+        <%= link_to 'Show', daily_special %>
+        <%= link_to 'Edit', edit_daily_special_path(daily_special) %>
+        <%= link_to 'Destroy', daily_special, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </a>
+      </div>
+<% end %>
+<br>
+<%= link_to 'New Daily special', new_daily_special_path, class: "waves-effect waves-light btn" %>
 
-<%= link_to 'New Daily special', new_daily_special_path %>
+

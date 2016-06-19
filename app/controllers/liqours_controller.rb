@@ -1,5 +1,5 @@
 class LiqoursController < ApplicationController
-  before_action :set_liqour, only: [:show, :edit, :update, :destroy]
+  before_action :set_liqour, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
 
   # GET /liqours
   # GET /liqours.json
@@ -12,6 +12,15 @@ class LiqoursController < ApplicationController
   def show
   end
 
+  def add_to_current
+    @liqour.update_attribute(:drink_Status, "Current")
+    redirect_to action: "index", notice: "Liqour added to current list"
+  end
+
+  def add_to_reserve
+    @liqour.update_attribute(:liqour_Status, "Reserve")
+     redirect_to action: "index", notice: "Liqour added to current list"
+  end
   # GET /liqours/new
   def new
     @liqour = Liqour.new
