@@ -221,7 +221,7 @@ class EventsController < ApplicationController
        end
 
 
-   hood_id = Neighborhood.where(id: 5).first.id
+   hood_id = Neighborhood.where(id: 2).first.id
    @v = @venues.where( neighborhood_id: hood_id)
 
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
