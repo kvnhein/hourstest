@@ -46,7 +46,7 @@
               <h4 class="venues"><%= venue.name %></h4>
 
           <div class="timeforspecial streets">
-              <%= venue.address %><br/>
+              <%= truncate(venue.address, length: 35) %><br/>
               <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
               </div>
             </div>
