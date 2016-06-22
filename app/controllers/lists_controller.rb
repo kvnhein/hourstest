@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   after_filter "save_my_previous_url", only: [:new]
   before_action :set_list, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
-  before_action :authenticate_user!, only: [:new,:show, :edit, :update, :destroy,:add_to_current, :add_to_reserve]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy,:add_to_current, :add_to_reserve]
   # GET /lists
   # GET /lists.json
   

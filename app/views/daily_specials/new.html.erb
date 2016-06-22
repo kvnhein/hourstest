@@ -1,5 +1,16 @@
-<h1>New Daily Special</h1>
+<!--<h1>New Daily Special</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', daily_specials_path %>
+<%= link_to 'Back', daily_specials_path %> -->
+<div class="col s3">
+     <div class="detailstitle">
+           <h2 class= "flow-text center-align">New Special</h2>
+     </div>
+</div>
+
+<%= render 'form' %>
+
+<div class="fixed-action-btn back-button">
+<%= link_to "Back", @back_url, 'data-no-turbolink' => true %>
+</div>

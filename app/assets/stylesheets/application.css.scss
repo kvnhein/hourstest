@@ -102,6 +102,11 @@ main .container {
     font-weight: 900;
 }
 
+.now-tab.low-tab {
+    right: 7px;
+    top: 32px;
+}
+
 .later-tab {
     text-transform: uppercase;
     font-size: 8px;
@@ -301,8 +306,8 @@ nav .button-collapse i {
 }
 
 .collapsible-header.drinks {
-   padding: 12px 20px;
-      position: relative;
+      padding: 12px 64px 12px 20px;
+    position: relative;
 }
 
 .login-btn input{
@@ -330,9 +335,8 @@ nav .button-collapse i {
 
 .beer-price {
   position: absolute;
-    top: 15px;
-    right: 20px;
-
+  top: 0px;
+  right: 13px;
 }
 
 .special-by-day h4 {

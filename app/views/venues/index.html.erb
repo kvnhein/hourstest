@@ -6,10 +6,25 @@
            <h2 class= "flow-text center-align">Venues</h2>
      </div>
 </div>
-<br>
-<h3 class = "flow-text center-align">Market Square</h3>
 
+<div class="row" style="margin0;">
+    <div class="col s12 profile-tabs">
+      <ul class="tabs tab-demo" style="width: 100%;">
+        <li class="tab col s3"><a class="active" href="#Market_Square">Market Square</a></li>
+        <li class="tab col s3"><a href="#Southside">Southside</a></li>
+        <li class="tab col s3"><a href="#Shadyside">Shadyside</a></li>
+         <li class="tab col s3"><a href="#Oakland">Oakland</a></li>
+      </ul>
+    </div>
+  </div>
 
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+
+<div id="Market_Square">
   <% @venues.where(neighborhood_id: 5).each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
@@ -33,11 +48,9 @@
         </div>
       </div>
    <% end %>
-<br>
+</div>
 
-<h3 class = "flow-text center-align">South Side</h3>
-
-
+<div id="Southside">
   <% @venues.where(neighborhood_id: 1).each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
@@ -61,8 +74,9 @@
         </div>
       </div>
    <% end %>
-<br>
-<h3 class = "flow-text center-align">Shadyside</h3>
+</div>
+
+<div id="Shadyside">
  <% @venues.where(neighborhood_id: 2).each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
@@ -86,8 +100,10 @@
         </div>
       </div>
    <% end %>
-<br>
-<h3 class = "flow-text center-align">Oakland</h3>
+</div>
+
+
+<div id="Oakland">
  <% @venues.where(neighborhood_id: 3).each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
@@ -111,4 +127,5 @@
         </div>
       </div>
    <% end %>
+</div>
 

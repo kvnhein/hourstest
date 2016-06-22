@@ -15,11 +15,11 @@
   <ul id='dropdown1' class='dropdown-content'>
     <li><%= link_to 'Edit Venue', edit_venue_path(@venue)%></li>
     <li class="divider"></li>
-    <li><%= link_to 'Edit Beer List', lists_path%></li>
+    <li><%= link_to 'Edit Beer List', venue_beer_list_path%></li>
     <li class="divider"></li>
     <li><%= link_to 'New Hour', new_event_path %></li>
     <li class="divider"></li>
-    <li><%= link_to 'New Beer', new_list_path%></li>
+    <li><%= link_to 'New Beer', new_beer_path%></li>
     <li class="divider"></li>
     <li><%=link_to venue_verified_venue_path(@venue), method: :get do%>
 Verify Venue
@@ -35,7 +35,7 @@ Verify Venue
       <ul class="tabs">
         <li class="tab col s4"><a class="active" href="#weekly">Weekly Hours</a></li>
         <li class="tab col s4"><a href="#beerlist">Beer List</a></li>
-        <li class="tab col s4"><a href="#venueinfo">Venue Info</a></li>
+        <li class="tab col s4"><a href="#venueinfo">Info</a></li>
       </ul>
     </div>
   </div>
@@ -164,20 +164,38 @@ Verify Venue
       <!--Beer List-->
      <div id="beerlist" class="col s12">
         <ul class="collapsible" data-collapsible="accordion">
-          <% @lists.order('serving_style ASC').each do |list| %>
+          <% @lists.where(beer_status: 1).order('serving ASC').each do |list| %>
            <% @beer_count = 0%>
             <li>
+
+              
               <div class="collapsible-header drinks">
-                <h4> <%= list.brew.name %></h4>
-                <h6><%=list.serving_size%> oz. <%=list.serving_style%> (<%= list.brew.abv %>% ABV)</h6>
+                <h4> <%= list.name %></h4>
+                <h6><%=list.serving_size%> oz. <%=list.serving%> (<%= list.abv %>% ABV)</h6>
+
+              <div class="display:block">
                 <%if @button == 1 %>
-               <%=link_to add_to_reserve_list_path(list), :class => "btn btn-small", method: :patch do%>
-                remove
+               <%=link_to add_to_reserve_beer_path(list), method: :patch do%>
+               | Remove |
+                <%end%>
+                <%=link_to beer_level_low_beer_path(list), method: :patch do%>
+                Limited
+                <%end%>
+                <%=link_to beer_level_full_beer_path(list), method: :patch do%>
+                | Full |
                 <%end%>
                 <%end%>
-                <span class = "right beer-price">$<%= list.price %></span>
               </div>
-              <div class="collapsible-body"><p class = "flow-text"><%= list.brew.brewery %><br/>(IPA)<br/><br/><%= list.brew.detail %></p></div>
+                
+                
+                <span class = "right beer-price">$<%= list.price %></span>
+                <% if list.beer_level == 1 %>
+                <div class="now-tab low-tab">low</div>
+                <%end%>
+
+              </div>
+              <div class="collapsible-body"><p class = "flow-text"><%= list.brewery %><br/>(IPA)<br/><br/><%= list.details %></p></div>
+
             </li>
             <%@beer_count += 1%>
            <%end%>

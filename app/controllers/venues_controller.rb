@@ -51,7 +51,7 @@ class VenuesController < ApplicationController
       @s = "active"
     end
 
-    @lists = List.where(venue_id: params[:id])
+    @lists = Beer.where(venue_id: params[:id])
 
 
 

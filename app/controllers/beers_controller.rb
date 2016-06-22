@@ -17,7 +17,7 @@ class BeersController < ApplicationController
     if user_signed_in?
       userid = current_user.id
       venue_id = Venue.where(owner: userid).first.id
-      @beers = Beer.where(venue_id: venue_id)
+      @beers = Beer.all
     end
     if (user_signed_in?)
     @venue_owner = current_user.id
@@ -29,13 +29,14 @@ class BeersController < ApplicationController
   end
 
   def add_to_current
-    @beer.update_attribute(:beer_status, 1)
-    redirect_to action: "index", notice: "Beer added to current list"
+    @beer.update_attribute(:beer_status, 2)
+    redirect_to action: "venue_beer_list", notice: "Beer added to current list"
   end
 
   def add_to_reserve
-    @beer.update_attribute(:beer_status => 2, :beer_level => 2)
-     redirect_to action: "index", notice: "Beer added to current list"
+    @beer.update_attribute(:beer_status, 1)
+    @beer.update_attribute(:beer_level, 2)
+     redirect_to action: "venue_beer_list", notice: "Beer added to current list"
   end
 
   def beer_level_low
@@ -107,6 +108,6 @@ class BeersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def beer_params
-      params.require(:beer).permit(:name, :brewery, :abv, :genre, :price, :serving, :details, :venue_id, :beer_level)
+      params.require(:beer).permit(:name, :brewery, :abv, :genre, :price, :serving, :details, :venue_id, :beer_level, :serving_size)
     end
 end

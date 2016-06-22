@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+<div class="newbeerbtn">
+<%= link_to 'New Beer ', new_beer_path,class: "waves-effect waves-light btn" %>
+</div>
+<h4 class ="flow-text listtitle">Current Beer List</h4>
+<ul class="collapsible" data-collapsible="accordion">
+           <% @beers.where(beer_status: "Current").each do |beer| %>
+           <% @brew_count = 0%>
+
+
+            <div class="icon-remove-add">
+            <%=link_to add_to_reserve_beer_path(beer), method: :patch do%>
+                <i class="material-icons">remove</i>
+                <%end%>
+            </div>
+           <li>
+              <div class="collapsible-header drinks">
+                <div class = "row brews-list">
+                <h4> <%= beer.name %></h4>
+
+
+
+
+                </div>
+                <span class = "right beer-price"> $<%= beer.price %></span>
+              </div>
+              <div class="collapsible-body">
+
+                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.serving %>)<br/><br/><%= beer.details %></p></div>
+               <% @brew_count +=1 %>
+            </li>
+
+           <%end%>
+            <%if @brew_count == 0%>
+           <li>You Have No Beers</li>
+           <%end%>
+</ul>
+
+
+<br>
+
+
+
+
+
+<h4 class ="flow-text listtitle">Reserve Beer List</h4>
+<ul class="collapsible" data-collapsible="accordion">
+           <% @beers.where(beer_status: "Reserve").each do |beer| %>
+           <% @brew_count = 0%>
+
+            <div class="icon-remove-add">
+             <%=link_to add_to_current_beer_path(beer), method: :patch do%>
+                <i class="material-icons">add</i>
+                <%end%>
+             </div>
+
+            <li>
+              <div class="collapsible-header drinks">
+                <div class = "row brews-list">
+                <h4> <%= beer.name %></h4>
+
+
+                </div>
+                <span class = "right beer-price">$<%= beer.price %></span>
+              </div>
+              <div class="collapsible-body">
+                 <%= link_to 'Edit', edit_beer_path(beer) %>  <%= link_to 'Delete', beer, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <p class = "flow-text"><%= beer.brewery %><br/>(<%= beer.serving %>)<br/><br/><%= beer.detail %></p></div>
+               <% @brew_count +=1 %>
+            </li>
+            
+           <%end%>
+            <%if @brew_count == 0%>
+           <li>You Have No Brews</li>
+           <%end%>
+</ul>
+
+
+<%= link_to 'Back', Venue.where(owner: current_user.id).first%>
