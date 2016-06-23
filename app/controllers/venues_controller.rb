@@ -50,7 +50,8 @@ class VenuesController < ApplicationController
      else
       @s = "active"
     end
-
+    
+    
     @lists = Beer.where(venue_id: params[:id])
 
 

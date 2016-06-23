@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'events#landing'\
+  root 'events#landing'
 
   resources :daily_specials do
      member do

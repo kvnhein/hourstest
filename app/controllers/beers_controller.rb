@@ -3,6 +3,7 @@ class BeersController < ApplicationController
   autocomplete :beer, :name, :full => true
   # GET /beers
   # GET /beers.json
+
   def index
 
     @beers = Beer.all
@@ -54,10 +55,12 @@ class BeersController < ApplicationController
   # GET /beers/new
   def new
     @beer = Beer.new
+
   end
 
   # GET /beers/1/edit
   def edit
+
   end
 
   # POST /beers
@@ -67,8 +70,8 @@ class BeersController < ApplicationController
 
     respond_to do |format|
       if @beer.save
-        format.html { redirect_to @beer, notice: 'Beer was successfully created.' }
-        format.json { render :show, status: :created, location: @beer }
+        format.html { redirect_to :venue_beer_list, notice: 'Beer was successfully created.' }
+        format.json { render :venue_beer_list, status: :created, location: @beer }
       else
         format.html { render :new }
         format.json { render json: @beer.errors, status: :unprocessable_entity }
@@ -81,8 +84,8 @@ class BeersController < ApplicationController
   def update
     respond_to do |format|
       if @beer.update(beer_params)
-        format.html { redirect_to @beer, notice: 'Beer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @beer }
+        format.html { redirect_to :venue_beer_list, notice: 'Beer was successfully updated.' }
+        format.json { render :venue_beer_list, status: :ok, location: @beer }
       else
         format.html { render :edit }
         format.json { render json: @beer.errors, status: :unprocessable_entity }

@@ -23,4 +23,8 @@ class Venue < ActiveRecord::Base
   def to_param
     "#{id} #{name}".parameterize
   end
+  
+  def venue_area
+     "#{name} (#{neighborhood_id})"
+  end 
 end

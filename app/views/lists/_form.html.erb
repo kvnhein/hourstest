@@ -47,7 +47,7 @@
 <% end %>
 -->
 <% x = []%>
-<% @brews.order('brewery ASC').each do |brew| %>
+<% @brews.each do |brew| %>
 <%  x.push(brew.brewery)%>
  <% end%>
 

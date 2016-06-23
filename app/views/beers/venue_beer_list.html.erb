@@ -44,10 +44,11 @@
 <p id="notice"><%= notice %></p>
 <div class="newbeerbtn">
 <%= link_to 'New Beer ', new_beer_path,class: "waves-effect waves-light btn" %>
+
 </div>
 <h4 class ="flow-text listtitle">Current Beer List</h4>
 <ul class="collapsible" data-collapsible="accordion">
-           <% @beers.where(beer_status: 2).each do |beer| %>
+           <% @beers.where(beer_status: 2).order("brewery ASC").each do |beer| %>
            <% @brew_count = 0%>
 
 
@@ -68,8 +69,15 @@
                 <span class = "right beer-price"> $<%= beer.price %></span>
               </div>
               <div class="collapsible-body">
-               <%= link_to 'Edit', edit_beer_path(beer) %>  <%= link_to 'Delete', beer, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <p class = "flow-text"><%= beer.abv %> ABV / <%= beer.genre %> / <%= beer.serving %> / <%= beer.serving_size %> oz. <br/><%= beer.details %></p></div>
+               <%= link_to '| Edit |', edit_beer_path(beer) %>  <%= link_to '| Delete |', beer, method: :delete, data: { confirm: 'Are you sure?' } %><%=link_to beer_level_low_beer_path(beer), method: :patch do%>
+                | Limited |
+                <%end%>
+                <%=link_to beer_level_full_beer_path(beer), method: :patch do%>
+                | Full |
+                <%end%>
+                <p class = "flow-text"><%= beer.abv %> ABV / <%= beer.genre %> <br> <%= beer.serving %> / <%= beer.serving_size %> oz. <br>
+                  Beer Level: <%=beer.beer_level%>
+                  <br/><%= beer.details %></p></div>
                <% @brew_count +=1 %>
             </li>
 
@@ -118,5 +126,7 @@
            <%end%>
 </ul>
 
+<div class="newbeerbtn">
+<%= link_to ' Back To Venue ',  Venue.where(owner: current_user.id).first,class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
 
-<%= link_to 'Back', Venue.where(owner: current_user.id).first%>
+</div>
