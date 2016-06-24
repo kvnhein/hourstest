@@ -164,7 +164,7 @@ Verify Venue
       <!--Beer List-->
      <div id="beerlist" class="col s12">
 <ul class="collapsible" data-collapsible="accordion">
-   <% @lists.where(beer_status: 2).order('serving ASC').each do |list| %>
+   <% @lists.where(beer_status: 2).order('serving DSC').each do |list| %>
    <% @beer_count = 0%>
    <li>
       <%if @button == 1 %>
