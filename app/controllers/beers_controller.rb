@@ -70,6 +70,7 @@ class BeersController < ApplicationController
 
     respond_to do |format|
       if @beer.save
+        Venue.where(id: @beer.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to :venue_beer_list, notice: 'Beer was successfully created.' }
         format.json { render :venue_beer_list, status: :created, location: @beer }
       else
@@ -84,6 +85,7 @@ class BeersController < ApplicationController
   def update
     respond_to do |format|
       if @beer.update(beer_params)
+        Venue.where(id: @beer.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to :venue_beer_list, notice: 'Beer was successfully updated.' }
         format.json { render :venue_beer_list, status: :ok, location: @beer }
       else
@@ -98,6 +100,7 @@ class BeersController < ApplicationController
   def destroy
     @beer.destroy
     respond_to do |format|
+      Venue.where(id: @beer.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to beers_url, notice: 'Beer was successfully destroyed.' }
       format.json { head :no_content }
     end

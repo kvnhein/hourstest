@@ -1,0 +1,30 @@
+<%@first_special_batch = []%>
+<%@verified_this_week.each do |venue|%>
+ <%a= venue.id%>
+ <%ds = @daily_specials.where(venue_id: a)%>
+ <%ds.each do |special|%>
+     <%@first_special_batch.push(special)%>
+    <%end%>
+    <%end%>
+
+<%@second_special_batch =[]%>
+<%@verified_after_week.each do |venue|%>
+ <%a= venue.id%>
+ <%ds = @daily_specials.where(venue_id: a)%>
+  <%ds.each do |special|%>
+     <%@second_batch.push(special)%>
+    <%end%>
+    <%end%>
+
+<%@third_special_batch = []%>
+<%@verified_month_ago.each do |venue|%>
+ <%a= venue.id%>
+ <%ds = @daily_specials.where(venue_id: a)%>
+  <%ds.each do |special|%>
+     <%@third_batch.push(special)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/first_special_batch"%>
+<%=render partial: "shared/second_special_batch"%>
+<%=render partial: "shared/third_special_batch"%>

@@ -14,12 +14,12 @@ class LiqoursController < ApplicationController
 
   def add_to_current
     @liqour.update_attribute(:drink_Status, "Current")
-    redirect_to action: "index", notice: "Liqour added to current list"
+    redirect_to action: "index", notice: "Liquor added to current list"
   end
 
   def add_to_reserve
     @liqour.update_attribute(:liqour_Status, "Reserve")
-     redirect_to action: "index", notice: "Liqour added to current list"
+     redirect_to action: "index", notice: "Liquor added to current list"
   end
   # GET /liqours/new
   def new
@@ -37,7 +37,8 @@ class LiqoursController < ApplicationController
 
     respond_to do |format|
       if @liqour.save
-        format.html { redirect_to @liqour, notice: 'Liqour was successfully created.' }
+        Venue.where(id: @liqour.venue_id).first.update_attribute(:venue_verify, Time.now)
+        format.html { redirect_to @liqour, notice: 'Liquor was successfully created.' }
         format.json { render :show, status: :created, location: @liqour }
       else
         format.html { render :new }
@@ -51,7 +52,8 @@ class LiqoursController < ApplicationController
   def update
     respond_to do |format|
       if @liqour.update(liqour_params)
-        format.html { redirect_to @liqour, notice: 'Liqour was successfully updated.' }
+        Venue.where(id: @liqour.venue_id).first.update_attribute(:venue_verify, Time.now)
+        format.html { redirect_to @liqour, notice: 'Liquor was successfully updated.' }
         format.json { render :show, status: :ok, location: @liqour }
       else
         format.html { render :edit }
@@ -65,7 +67,8 @@ class LiqoursController < ApplicationController
   def destroy
     @liqour.destroy
     respond_to do |format|
-      format.html { redirect_to liqours_url, notice: 'Liqour was successfully destroyed.' }
+      Venue.where(id: @liqour.venue_id).first.update_attribute(:venue_verify, Time.now)
+      format.html { redirect_to liqours_url, notice: 'Liquor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

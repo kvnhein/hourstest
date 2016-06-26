@@ -161,24 +161,47 @@ Verify Venue
   <!-- Modal Structure -->
 
 
-      <!--Beer List-->
-     <div id="beerlist" class="col s12">
+
+  <div id="beerlist" class="col s12">
+     <!--Beer List-->
+<%@can_list = [] %>
+<%@bottle_list =[]%>
+<%@draft_list = []%>
+<%k = []%>
+<%k = @lists.where(beer_status: 2)%>
+<%if k.count < 0 %>
+
+   <ul class="collapsible" data-collapsible="accordion">
+    <li class="nobeerlist"><%=@venue.name%> does not have a beer list</li>
+   </ul>
+
+    <%else%>
+   <% @lists.where(beer_status: 2).order('name ASC').each do |list| %>
+     <% if list.serving == "Draft"%>
+        <%@draft_list.push(list)%>
+     <%elsif list.serving == "Can" %>
+        <%@can_list.push(list)%>
+     <%else list.serving == "Bottle"%>
+        <%@bottle_list.push(list)%>
+      <%end%>
+    <%end%>
+<%if @draft_list.count > 0 %>
+<div id="beerlist" class="col s12">
+  <h4 class="flow-text listtitle">Drafts</h4>
 <ul class="collapsible" data-collapsible="accordion">
-   <% @lists.where(beer_status: 2).order('serving DESC').each do |list| %>
-   <% @beer_count = 0%>
-   <li>
-      <%if @button == 1 %>
-      <div class="collapsible-header drinks">
-         <h4> <%= list.name %> <%=link_to add_to_reserve_beer_path(list), method: :patch do%>
+<%@draft_list.each do |list|%>
+   <li style="position:relative;">
+     <%if @button == 1 %>
+     <div class="remove-btn">
+     <%=link_to add_to_reserve_beer_path(list), method: :patch do%>
             | Remove |
-            <%end%>
-         </h4>
-         <h6><%=list.serving_size%> oz. <%=list.serving%> (<%= list.abv %>% ABV)</h6>
-         <%else%>
+       <%end%>
+     </div>
+        <%end%>
          <div class="collapsible-header drinks">
             <h4> <%= list.name %></h4>
             <h6><%=list.serving_size%> oz. <%=list.serving%> (<%= list.abv %>% ABV)</h6>
-            <%end%>
+
             <%if list.price.length >= 1 %>
             <span class = "right beer-price">$<%= list.price %></span>
             <%end%>
@@ -190,13 +213,91 @@ Verify Venue
             <p class = "flow-text"><%= list.brewery %><br>(IPA)<br/><br/><%= list.details %></p>
          </div>
    </li>
-   <%@beer_count += 1%>
-   <%end%>
-   <%if @lists.count == 0 %>
-   <li class="nobeerlist"><%=@venue.name%> does not have a beer list</li>
-   <%end%>
-</ul>
+
+  <%end%>
+  </ul>
+
+<br>
+<%end%>
+<%if @bottle_list.count > 0 %>
+<div id="beerlist" class="col s12">
+  <h4 class="flow-text listtitle">Bottles</h4>
+<ul class="collapsible" data-collapsible="accordion">
+<%@bottle_list.each do |list|%>
+
+   <li style="position:relative;">
+     <%if @button == 1 %>
+     <div class="remove-btn">
+     <%=link_to add_to_reserve_beer_path(list), method: :patch do%>
+            | Remove |
+             </div>
+            <%end%>
+        <%end%>
+         <div class="collapsible-header drinks">
+            <h4> <%= list.name %></h4>
+            <h6><%=list.serving_size%> oz. <%=list.serving%> (<%= list.abv %>% ABV)</h6>
+
+            <%if list.price.length >= 1 %>
+            <span class = "right beer-price">$<%= list.price %></span>
+            <%end%>
+            <% if list.beer_level == 1 %>
+            <div class="now-tab low-tab">low</div>
+            <%end%>
+         </div>
+         <div class="collapsible-body">
+            <p class = "flow-text"><%= list.brewery %><br>(IPA)<br/><br/><%= list.details %></p>
+         </div>
+   </li>
+
+<%end%>
+ </ul>
+
+<br>
+<%end%>
+<%if @can_list.count > 0 %>
+<div id="beerlist" class="col s12">
+   <h4 class="flow-text listtitle">Cans</h4>
+<ul class="collapsible" data-collapsible="accordion">
+<%@can_list.each do |list|%>
+
+   <li style="position:relative;">
+     <%if @button == 1 %>
+     <div class="remove-btn">
+     <%=link_to add_to_reserve_beer_path(list), method: :patch do%>
+            | Remove |
+             </div>
+            <%end%>
+        <%end%>
+         <div class="collapsible-header drinks">
+            <h4> <%= list.name %></h4>
+            <h6><%=list.serving_size%> oz. <%=list.serving%> (<%= list.abv %>% ABV)</h6>
+
+            <%if list.price.length >= 1 %>
+            <span class = "right beer-price">$<%= list.price %></span>
+            <%end%>
+            <% if list.beer_level == 1 %>
+            <div class="now-tab low-tab">low</div>
+            <%end%>
+         </div>
+         <div class="collapsible-body">
+            <p class = "flow-text"><%= list.brewery %><br>(IPA)<br/><br/><%= list.details %></p>
+         </div>
+   </li>
+
+<%end%>
+   </ul>
+
+<br>
+<%end%>
+<%end%>
+  </div>
+
+
+  </div>
+    </div>
 </div>
+
+
 
 
 
@@ -220,8 +321,8 @@ Verify Venue
         <p><%= @venue.address%></p>
         <p><%= @venue.genre%></p>
     </div>
-</div>
-    <div class="col s12">
+  </div>
+<div class="col s12">
         <div class="card zdepth-5">
             <div class="card-content">
 
@@ -305,13 +406,19 @@ Verify Venue
 
 
 
-
+<div class="verified">
 <%if @venue.venue_verify.nil?%>
- <p>Venue not verified<p/>
+ <p class="verified-date">Venue not verified<p/>
 <%else%>
-<%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%><br/> <p> Time since last Verification: <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
+<%= image_tag "verified.png"%>
+  <div class="verified-date">
+<%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%>
+  </div>
+  <br/>
+  <p style="margin: -20px 20px 50px 20px;" class="verified-date"> Time since last Verification: <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
 
 <%end%>
+</div>
 
 
 <!--TABS-->

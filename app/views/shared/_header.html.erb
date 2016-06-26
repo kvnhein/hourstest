@@ -46,10 +46,35 @@
   <div class="nav-wrapper">
   <div class = "row">
 
+    <!-- Dropdown Structure -->
+<ul id="venue-menu-dropdown" class="dropdown-content nav-drop">
+  <li><%= link_to "Market Square", market_square_path%></li>
+    <li class="divider"></li>
+    <li><%= link_to "South Side", south_side_path%></li>
+    <li class="divider"></li>
+    <li><%= link_to "Shadyside", shadyside_path%></li>
+    <li class="divider"></li>
+    <li><%= link_to "Oakland", oakland_path%></li>
+</ul>
+
+    <ul id="venue-menu-dropdown2" class="dropdown-content nav-drop" style="top: 51px !important;">
+  <li><%= link_to "Market Square", market_square_path%></li>
+    <li class="divider"></li>
+    <li><%= link_to "South Side", south_side_path%></li>
+    <li class="divider"></li>
+    <li><%= link_to "Shadyside", shadyside_path%></li>
+    <li class="divider"></li>
+    <li><%= link_to "Oakland", oakland_path%></li>
+</ul>
+
+
 
   <ul class="right hide-on-med-and-down">
-    <li><%= link_to "South Side", south_side_path%></li>
+    <li><a class="dropdown-button" data-activates="venue-menu-dropdown2">Neighborhoods<i class="material-icons right" style="color: #fff;
+    padding-top: 0px;">arrow_drop_down</i></a></li>
+    <li class="divider"></li>
     <li> <%= link_to "venues", venues_path%></li>
+
     <%if (user_signed_in?)%>
     <li><%= link_to "My Venues", users_venues_path%></li>
     <%end%>
@@ -68,15 +93,13 @@
       <%end%>
 
   </ul>
+
+
+
   <ul id="slide-out" class="side-nav">
     <li class="divider"></li>
-    <li><%= link_to "Market Square", market_square_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "South Side", south_side_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "Shadyside", shadyside_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "Oakland", oakland_path%></li>
+    <li><a class="dropdown-button" data-activates="venue-menu-dropdown">Neighborhoods<i class="material-icons right" style="color: #444;
+    padding-top: 4px;">arrow_drop_down</i></a></li>
     <li class="divider"></li>
     <li> <%= link_to "venues", venues_path%></li>
     <li class="divider"></li>
@@ -140,6 +163,11 @@
       <%end%>
     </ul>
 -->
+    <script>
+     $(document).ready(function(){
+      $(".dropdown-button").dropdown();
+    });
+    </script>
     </div>
   </div>
   </div>

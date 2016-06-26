@@ -37,6 +37,7 @@ class DrinksController < ApplicationController
 
     respond_to do |format|
       if @drink.save
+        Venue.where(id: @drink.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to @drink, notice: 'Drink was successfully created.' }
         format.json { render :show, status: :created, location: @drink }
       else
@@ -51,6 +52,7 @@ class DrinksController < ApplicationController
   def update
     respond_to do |format|
       if @drink.update(drink_params)
+        Venue.where(id: @drink.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to @drink, notice: 'Drink was successfully updated.' }
         format.json { render :show, status: :ok, location: @drink }
       else
@@ -65,6 +67,7 @@ class DrinksController < ApplicationController
   def destroy
     @drink.destroy
     respond_to do |format|
+      Venue.where(id: @drink.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to drinks_url, notice: 'Drink was successfully destroyed.' }
       format.json { head :no_content }
     end

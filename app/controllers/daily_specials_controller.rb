@@ -28,6 +28,7 @@ class DailySpecialsController < ApplicationController
 
     respond_to do |format|
       if @daily_special.save
+        Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to @daily_special, notice: 'Daily special was successfully created.' }
         format.json { render :show, status: :created, location: @daily_special }
       else
@@ -50,6 +51,7 @@ class DailySpecialsController < ApplicationController
   def update
     respond_to do |format|
       if @daily_special.update(daily_special_params)
+        Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to @daily_special, notice: 'Daily special was successfully updated.' }
         format.json { render :show, status: :ok, location: @daily_special }
       else
@@ -64,6 +66,7 @@ class DailySpecialsController < ApplicationController
   def destroy
     @daily_special.destroy
     respond_to do |format|
+      Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to daily_specials_url, notice: 'Daily special was successfully destroyed.' }
       format.json { head :no_content }
     end
@@ -77,6 +80,6 @@ class DailySpecialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daily_special_params
-      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status)
+      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status, :start, :end, :day)
     end
 end
