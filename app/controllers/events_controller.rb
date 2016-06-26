@@ -262,7 +262,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
-        format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Event was successfully created.' }
+        format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
         format.json { head :no_content }
       else
         format.html { render :new }
@@ -277,7 +277,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -305,6 +305,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end,)
+      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end)
     end
 end

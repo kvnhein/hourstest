@@ -7,4 +7,5 @@
 </div>
 <!--
 <%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', Venue.where(owner: current_user.id).first %>
+<%= link_to 'Back', Venue.where(owner: current_user.id).first %>
