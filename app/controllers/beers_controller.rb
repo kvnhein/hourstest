@@ -18,7 +18,7 @@ class BeersController < ApplicationController
     if user_signed_in?
       userid = current_user.id
       venue_id = Venue.where(owner: userid).first.id
-      @beers = Beer.all
+      @beers = Beer.where(venue_id: venue_id)
     end
     if (user_signed_in?)
     @venue_owner = current_user.id
