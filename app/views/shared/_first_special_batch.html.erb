@@ -83,8 +83,9 @@
 
               </div>
 
-             <div class="modal-title">
-               <span class="grey-text"><%= Venue.where( id: @e[0].venue_id).first.name%></span>
+             <div class="specials-header">
+               <h4><%= Venue.where( id: @e[0].venue_id).first.name%></h4>
+                 <h5 class="flow-text"><%=@e[0].event_type%></h5>
              </div>
 
               <div style="display:none;">
@@ -178,7 +179,7 @@
   <p class="verified-date"> Venue has not been verified </p>
 <%else%>
   <%= image_tag "verified.png"%>
-  <p class="verified-date"> Time since last Verification: <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
+  <p class="verified-date"> Time since last Verification: <br><%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
 <%end%>
 </div>
             </div>

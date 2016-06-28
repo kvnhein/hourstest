@@ -169,8 +169,7 @@ Verify Venue
 <%@draft_list = []%>
 <%k = []%>
 <%k = @lists.where(beer_status: 2)%>
-<%if k.count < 0 %>
-
+<%if k.first.nil? %>
    <ul class="collapsible" data-collapsible="accordion">
     <li class="nobeerlist"><%=@venue.name%> does not have a beer list</li>
    </ul>
@@ -236,7 +235,6 @@ Verify Venue
          <div class="collapsible-header drinks">
             <h4> <%= list.name %></h4>
             <h6><%=list.serving_size%> oz. <%=list.serving%> (<%= list.abv %>% ABV)</h6>
-
             <%if list.price.length >= 1 %>
             <span class = "right beer-price">$<%= list.price %></span>
             <%end%>
