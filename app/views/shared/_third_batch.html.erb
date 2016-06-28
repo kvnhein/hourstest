@@ -72,7 +72,7 @@
              <div class="modal-title">
                <span class="grey-text"><%= Venue.where( id: @e[0].venue_id).first.name%></span>
              </div>
-              <div style="display:none;">
+              <div style="">
                 <% if @e[0].event_venue.venue_verify.nil?%>
                   <p> Venue has not been verified </p>
                 <%else%>
