@@ -199,7 +199,7 @@ Verify Venue
         <%end%>
          <div class="collapsible-header drinks">
             <h4> <%= list.name %></h4>
-            <h6><%=list.serving_size%> oz. <%=list.serving%> (<%= list.abv %>% ABV)</h6>
+            <h6><%= list.brewery %></h6>
 
             <%if list.price.length >= 1 %>
             <span class = "right beer-price">$<%= list.price %></span>
@@ -211,7 +211,7 @@ Verify Venue
          <div class="collapsible-body">
            <ul class="collection">
              <li class="collection-item grey lighten-3 special-by-day">
-            <%= list.brewery %><br>(IPA)<br/><br/><%= list.details %>
+            <%=list.genre%><br><%=list.beer_serving_size%> <%= list.beer_abv %><br/><br/><%= list.details %>
              </li>
            </ul>
          </div>

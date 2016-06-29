@@ -7,4 +7,13 @@ class Beer < ActiveRecord::Base
   def default_values
     self.beer_status ||= 2
   end
+
+  def beer_serving_size
+      self.serving_size + " " +"oz." unless self.serving_size.nil? || self.serving_size.length < 1 
+  end
+  def beer_abv
+     if self.abv.length > 0
+       "(#{self.abv}% ABV)"
+     end
+  end
 end
