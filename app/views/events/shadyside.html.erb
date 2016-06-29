@@ -40,16 +40,29 @@
 </div>
 
 
-<br>
+<div class="row" style="margin:0;">
+    <div class="col s12 profile-tabs">
+      <ul class="tabs">
+        <li class="tab col s4"><a class="active" href="#specials">Specials</a></li>
+        <li class="tab col s4"><a href="#featured-dish">Featured Dishes</a></li>
+      </ul>
+    </div>
+  </div>
+
+<!--TABS-->
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+<!--END TABS-->
 
 
 
-
-
-<div class ="center">
+<div class ="center" id="specials">
 <%=render partial: "shared/dynamic_table_card"%>
 </div>
-<div class ="center">
+<div class ="center" id="featured-dish">
 <%=render partial: "shared/featured_dish_table"%>
 </div>
 <!-- This script is for Google Analytics -->
