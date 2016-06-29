@@ -56,6 +56,7 @@ class VenuesController < ApplicationController
     @liquors = Liqour.where(venue_id: params[:id])
     @daily_specials = DailySpecial.where(venue_id: params[:id])
     @drinks = Drink.where(venue_id: params[:id])
+    
 
 
 

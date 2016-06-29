@@ -28,7 +28,7 @@
     <%= f.label :venue_id %><br>
      <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
     <%else%>
-     <%= hidden_field_tag :daily_special, Venue.where(owner: @venue_owner).first.id %>
+     <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
     <%end%>
   </div>
   <div class="field">

@@ -29,7 +29,7 @@ class DailySpecialsController < ApplicationController
     respond_to do |format|
       if @daily_special.save
         Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
-        format.html { redirect_to @daily_special, notice: 'Daily special was successfully created.' }
+        format.html { redirect_to Venue.where(id: @daily_special.venue_id).first, notice: 'Daily special was successfully created.' }
         format.json { render :show, status: :created, location: @daily_special }
       else
         format.html { render :new }
@@ -52,7 +52,7 @@ class DailySpecialsController < ApplicationController
     respond_to do |format|
       if @daily_special.update(daily_special_params)
         Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
-        format.html { redirect_to @daily_special, notice: 'Daily special was successfully updated.' }
+        format.html { redirect_to Venue.where(id: @daily_special.venue_id).first, notice: 'Daily special was successfully updated.' }
         format.json { render :show, status: :ok, location: @daily_special }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class DailySpecialsController < ApplicationController
     @daily_special.destroy
     respond_to do |format|
       Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
-      format.html { redirect_to daily_specials_url, notice: 'Daily special was successfully destroyed.' }
+      format.html { redirect_to Venue.where(id: @daily_special.venue_id).first, notice: 'Daily special was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
