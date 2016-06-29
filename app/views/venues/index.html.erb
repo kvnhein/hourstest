@@ -25,7 +25,7 @@
 </script>
 
 <div id="Market_Square">
-  <% @venues.where(neighborhood_id: 5).each do |venue| %>
+  <% @venues.where(neighborhood_id: 5).order("name ASC").each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
           <div class="card beerlist">
@@ -51,7 +51,7 @@
 </div>
 
 <div id="Southside">
-  <% @venues.where(neighborhood_id: 1).each do |venue| %>
+  <% @venues.where(neighborhood_id: 1).order("name ASC").each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
           <div class="card beerlist">
@@ -77,7 +77,7 @@
 </div>
 
 <div id="Shadyside">
- <% @venues.where(neighborhood_id: 2).each do |venue| %>
+ <% @venues.where(neighborhood_id: 2).order("name ASC").each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
           <div class="card beerlist">
@@ -104,7 +104,7 @@
 
 
 <div id="Oakland">
- <% @venues.where(neighborhood_id: 3).each do |venue| %>
+ <% @venues.where(neighborhood_id: 3).order("name ASC").each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">
           <div class="card beerlist">
