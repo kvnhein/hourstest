@@ -50,7 +50,11 @@
 <ul class="collapsible" data-collapsible="accordion">
            <% @beers.where(beer_status: 2).order("brewery ASC").each do |beer| %>
            <% @brew_count = 0%>
-
+           <% if beer.beer_level == 2 %>
+               <%beer_level = "Full"%>
+            <%else%>
+               <%beer_level = "Low"%>
+            <%end%>
 
             <div class="icon-remove-add">
             <%=link_to add_to_reserve_beer_path(beer), method: :patch do%>
@@ -76,7 +80,7 @@
                 | Full |
                 <%end%>
                 <p class = "flow-text"><%= beer.abv %> ABV / <%= beer.genre %> <br> <%= beer.serving %> / <%= beer.serving_size %> oz. <br>
-                  Beer Level: <%=beer.beer_level%>
+                  Beer Level: <%=beer_level%>
                   <br/><%= beer.details %></p></div>
                <% @brew_count +=1 %>
             </li>
