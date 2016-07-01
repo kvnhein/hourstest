@@ -26,7 +26,7 @@
   <div class="field">
     <%if current_user.admin?%>
     <%= f.label :venue_id %><br>
-     <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
+     <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id), :id, :venue_area, { :multiple => false})%>
     <%else%>
      <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
     <%end%>
