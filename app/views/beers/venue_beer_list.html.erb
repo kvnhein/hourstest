@@ -50,7 +50,7 @@
 <ul class="collapsible" data-collapsible="accordion">
            <% @beers.where(beer_status: 2).order("brewery ASC").each do |beer| %>
            <% @brew_count = 0%>
-           <% if beer.beer_level == 2 %>
+           <% if beer.beer_level == 1 %>
                <%beer_level = "Full"%>
             <%else%>
                <%beer_level = "Low"%>

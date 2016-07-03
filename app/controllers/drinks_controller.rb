@@ -1,6 +1,6 @@
 class DrinksController < ApplicationController
   before_action :set_drink, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
-
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   # GET /drinks
   # GET /drinks.json
   def index

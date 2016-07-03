@@ -1,5 +1,6 @@
 class DailySpecialsController < ApplicationController
   before_action :set_daily_special, only: [:show, :edit, :update, :destroy, :dish_limited, :dish_not_limited]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   # GET /daily_specials
   # GET /daily_specials.json
