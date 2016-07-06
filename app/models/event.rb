@@ -11,7 +11,7 @@ scope :special_like, -> (special) { where("special ilike ?", special)}
  end
 
   def any_details
-    if self.detail.length < 1
+    if self.detail.length < 1 || self.detail.nil?
      return 1
     else
      return 2

@@ -88,16 +88,8 @@
                  <h5 class="flow-text"><%=@e[0].event_type%></h5>
              </div>
 
-                <div style="display:none;">
-                <div class="description">
-                  <%=@e[0].event_type%>
-                </div>
-                <% if @e[0].event_venue.venue_verify.nil?%>
-                  <p> Venue has not been verified </p>
-                <%else%>
-                  <p> Time since last Verification: <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
-                <%end%>
-              </div>
+
+
 <ul class="collapsible beerlist" data-collapsible="accordion">
  <% @e.reverse.each do |modal_event|%>
 <li>
