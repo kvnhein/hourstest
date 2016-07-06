@@ -59,7 +59,7 @@ class EventsController < ApplicationController
        end
 
 
-
+   @neighborhood_tag = 2
    @v = @venues.where( neighborhood_id: 2)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
@@ -113,7 +113,7 @@ class EventsController < ApplicationController
        end
 
 
-
+   @neighborhood_tag = 1
    @v = @venues.where( neighborhood_id: 1)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
@@ -167,7 +167,7 @@ class EventsController < ApplicationController
        end
 
 
-
+   @neighborhood_tag = 3
    @v = @venues.where( neighborhood_id: 3)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
@@ -220,7 +220,7 @@ class EventsController < ApplicationController
        @day_tag = "Saturday"
        end
 
-
+   @neighborhood_tag = 5
    hood_id = Neighborhood.where(id: 5).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))

@@ -36,7 +36,9 @@ Verify Venue
     <div class="col s12 profile-tabs">
       <ul class="tabs">
         <li class="tab col s4"><a class="active" href="#weekly">Weekly Hours</a></li>
+        <%unless  @lists.where(beer_status: 2).empty?%>
         <li class="tab col s4"><a href="#beerlist">Beer List</a></li>
+        <%end%>
         <li class="tab col s4"><a href="#venueinfo">Info</a></li>
       </ul>
     </div>
@@ -152,7 +154,7 @@ Verify Venue
       </div>
      </li>
   </ul>
-  
+
   <br>
 <%= render partial: "featured_dish"%>
 </div>
@@ -174,9 +176,9 @@ Verify Venue
 <%k = []%>
 <%k = @lists.where(beer_status: 2)%>
 <%if k.first.nil? %>
-   <ul class="collapsible" data-collapsible="accordion">
+   <!--<ul class="collapsible" data-collapsible="accordion">
     <li class="nobeerlist"><%=@venue.name%> does not have a beer list</li>
-   </ul>
+   </ul>-->
 
     <%else%>
    <% @lists.where(beer_status: 2).order('name ASC').each do |list| %>

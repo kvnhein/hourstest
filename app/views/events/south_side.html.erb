@@ -44,10 +44,23 @@
 
 <div class="row" style="margin:0;">
     <div class="col s12 profile-tabs">
+  <%if @b > 4 && @b < 20 %>
       <ul class="tabs">
-        <li class="tab col s4"><a class="active" href="#specials">Specials</a></li>
-        <li class="tab col s4"><a href="#featured-dish">Featured Dishes</a></li>
+        <li class="tab col s4"><a href="#venues">Venues</a></li>
+        <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
+        <%unless @daily_specials.empty?%>
+        <li class="tab col s4"><a href="#featured-dish">Features</a></li>
+        <%end%>
       </ul>
+  <%else%>
+      <ul class="tabs">
+        <li class="tab col s4"><a class="active" href="#venues">Venues</a></li>
+        <li class="tab col s4"><a href="#specials">Hours</a></li>
+        <%unless @daily_specials.empty?%>
+        <li class="tab col s4"><a href="#featured-dish">Features</a></li>
+        <%end%>
+      </ul>
+   <%end%>
     </div>
   </div>
 
@@ -59,8 +72,9 @@
 </script>
 <!--END TABS-->
 
-
-
+<div class ="center" id="venues">
+  <%=render partial: "shared/venue_index"%>
+</div>
 <div class ="center" id="specials">
 <%=render partial: "shared/dynamic_table_card"%>
 </div>

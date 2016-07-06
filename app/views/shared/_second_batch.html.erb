@@ -138,17 +138,26 @@
 <%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
         <div class="later-tab">Later</div>
  <%end%>
-
-
+<%if modal_event.any_details == 2%>
+       <div class="dropdownarrow">
+         <%= image_tag "dropdown.png"%>
+       </div>
+<%end%>
 
        </div>
+
+
+
+<%if modal_event.any_details == 2%>
       <div class="collapsible-body">
-        <ul class="collection">
+          <ul class="collection">
             <li class="collection-item grey lighten-3 special-by-day">
         <%=modal_event.detail%>
-          </li>
+            </li>
+
         </ul>
       </div>
+    <%end%>
     </li>
  <%end%>
   </ul><br>
