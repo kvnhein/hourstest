@@ -41,11 +41,11 @@
               <!---This is where it ends-->
               <%unievents.reverse.each do |event|%>
               <%if @b > 2 %>
-              <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-              <div class="chip" style="background-color:#17a787">
+              <%if @b-2+(@c.to_f*0.0166) > event.end.to_i %>
+              <div class="chip" style="background-color:#bdbdbd">
                   <%=event.special%>
                 </div><br>
-              <%elsif @b < 2 && event.end > 22 %>
+              <%elsif @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
               <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>
@@ -54,10 +54,18 @@
                   <%=event.special%>
                 </div><br>
               <%end%>
-              <%else%>
+              <%end%>
+              
+              <%if @b <2%>
+              <%if @b+22+(@c.to_f*0.0166)< event.end%>
               <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>
+              <%else%>
+                 <div class="chip" style="background-color:#bdbdbd">
+                  <%=event.special%>
+                </div><br>
+              <%end%>
               <%end%>
               <%end%>
             <!--div class="card-content">-->
