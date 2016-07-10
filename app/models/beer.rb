@@ -1,4 +1,6 @@
 class Beer < ActiveRecord::Base
+  validates :name, presence: true
+  validates :abv, presence: true
   scope :name_like, -> (name) { where("name ilike ?", name)}
 
   belongs_to :venue

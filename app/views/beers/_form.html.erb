@@ -56,7 +56,7 @@
      <%=collection_select( :beer, :venue_id, Venue.where(owner: current_user.id).order('name ASC'), :id, :name, { :multiple => false})%>
     <%end%>
   </div>
-  <div class="actions waves-effect waves-light btn">
+  <div class="waves-effect waves-light btn menubtn">
     <%= f.submit %>
   </div>
 <% end %>

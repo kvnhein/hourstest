@@ -1,4 +1,5 @@
 class DailySpecial < ActiveRecord::Base
+  validates :text, presence: true
   belongs_to :venue
 
    def event_type

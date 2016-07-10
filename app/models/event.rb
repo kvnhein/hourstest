@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  validates :special, presence: true
 scope :special_like, -> (special) { where("special ilike ?", special)}
   belongs_to :venue
 

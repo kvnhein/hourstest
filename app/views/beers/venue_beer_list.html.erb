@@ -74,12 +74,18 @@
                 <span class = "right beer-price"> $<%= beer.price %></span>
               </div>
               <div class="collapsible-body">
-               <%= link_to '| Edit |', edit_beer_path(beer) %>  <%= link_to '| Delete |', beer, method: :delete, data: { confirm: 'Are you sure?' } %><%=link_to beer_level_low_beer_path(beer), method: :patch do%>
+                
+               <%= link_to '| Edit |', edit_beer_path(beer) %>  <%= link_to '| Delete |', beer, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% if beer.beer_level == 2%>
+                <%=link_to beer_level_low_beer_path(beer), method: :patch do%>
                 | Limited |
                 <%end%>
+                <%else%>
                 <%=link_to beer_level_full_beer_path(beer), method: :patch do%>
                 | Full |
                 <%end%>
+                <%end%>
+                
                 <p class = "flow-text"><%= beer.abv %> ABV / <%= beer.genre %> <br> <%= beer.serving %> / <%= beer.serving_size %> oz. <br>
                   Beer Level: <%=beer_level%>
                   <br/><%= beer.details %></p></div>
