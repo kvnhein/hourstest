@@ -77,35 +77,29 @@
   <%=render partial: "shared/venue_index"%>
 </div>
 <div class ="center" id="specials">
-  
-  <div style="width: 100%;
-    background: #f2f2f2;
-    height: 60px;
-    margin-top: 0px;
-    padding: 20px;">
+
+  <div class="key-color">
     <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">Past</div>
   <div class="now-tab" style="position: inherit; width: 45px; display:inline-block;">Now</div>
   <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;">Later</div>
 
 </div>
-  
-  
+
+
 <%=render partial: "shared/dynamic_table_card"%>
 </div>
+<%unless @daily_specials.empty?%>
 <div class ="center" id="featured-dish">
-  
-  <div style="width: 100%;
-    background: #f2f2f2;
-    height: 60px;
-    margin-top: 0px;
-    padding: 20px;">
+
+  <div class="key-color">
     <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">Past</div>
   <div class="now-tab" style="position: inherit; width: 45px; display:inline-block;">Now</div>
   <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;">Later</div>
 
 </div>
-  
-  
+  <%end%>
+
+
 <%=render partial: "shared/featured_dish_table"%>
 </div>
 <!-- This script is for Google Analytics -->
