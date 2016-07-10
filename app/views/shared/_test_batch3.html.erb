@@ -42,7 +42,7 @@
               <%unievents.reverse.each do |event|%>
               <%if @b > 2 %>
               <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-              <div class="chip" style="background-color:#bdbdbd ">
+              <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>
               <%elsif @b < 2 && event.end > 22 %>
@@ -55,7 +55,7 @@
                 </div><br>
               <%end%>
               <%else%>
-              <div class="chip" style="background-color:#17a787">
+              <div class="chip" style="background-color:#bdbdbd ">
                   <%=event.special%>
                 </div><br>
               <%end%>
