@@ -1,16 +1,6 @@
 <%x=[]%>
 <%@third_batch.shuffle.each do |event| %>
-<%if @b > 2%>
-   <%if @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-   <%x.push(Venue.where(id: event.venue_id).first.id)%>
-    <%end%>
-<%else%>
-    <%if @b < 1 && event.end > 22 && event.end < 23%>
-    <%x.push(Venue.where(id: event.venue_id).first.id)%>
-    <%elsif @b < 2 && event.end > 23 && event.end <= 24%>
-    <%x.push(Venue.where(id: event.venue_id).first.id)%>
-     <%end%>
-<%end%>
+<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 
 
