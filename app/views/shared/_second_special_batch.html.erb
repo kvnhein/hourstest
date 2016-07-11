@@ -1,5 +1,5 @@
 <%x=[]%>
-<%@first_special_batch.shuffle.each do |event| %>
+<%@second_special_batch.shuffle.each do |event| %>
 <%if @b > 2%>
    <%if @b-2+(@c.to_f*0.0166) < event.end.to_f %>
    <%x.push(Venue.where(id: event.venue_id).first.id)%>

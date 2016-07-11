@@ -8,11 +8,11 @@
     <%end%>
 
 <%@second_special_batch =[]%>
-<%@verified_after_week.each do |venue|%>
+<%@verified_this_week.each do |venue|%>
  <%a= venue.id%>
  <%ds = @daily_specials.where(venue_id: a)%>
   <%ds.each do |special|%>
-     <%@second_batch.push(special)%>
+     <%@second_special_batch.push(special)%>
     <%end%>
     <%end%>
 
@@ -21,7 +21,7 @@
  <%a= venue.id%>
  <%ds = @daily_specials.where(venue_id: a)%>
   <%ds.each do |special|%>
-     <%@third_batch.push(special)%>
+     <%@third_special_batch.push(special)%>
     <%end%>
     <%end%>
 
