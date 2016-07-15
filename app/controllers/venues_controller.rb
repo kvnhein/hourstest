@@ -10,7 +10,8 @@ class VenuesController < ApplicationController
     @venues = Venue.all
     visitor_latitude = request.location.latitude
     visitor_longitude = request.location.longitude
-    @locationl = visitor_latitude 
+    @locationl = visitor_latitude
+    @locationg = visitor_longitude
   end
 
   def users_venues
