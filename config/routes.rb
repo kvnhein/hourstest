@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :daily_specials do
      member do
           patch :dish_limited, :dish_not_limited
+          put "like", to: "daily_specials#upvote"
+          put "dislike", to: "daily_specials#downvote"
         end
       end
   resources :liqours do

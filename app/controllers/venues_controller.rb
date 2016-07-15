@@ -8,7 +8,9 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all
-
+    visitor_latitude = request.location.latitude
+    visitor_longitude = request.location.longitude
+    @locationl = visitor_latitude 
   end
 
   def users_venues

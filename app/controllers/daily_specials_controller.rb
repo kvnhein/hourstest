@@ -8,6 +8,17 @@ class DailySpecialsController < ApplicationController
     @daily_specials = DailySpecial.all
   end
 
+  def upvote
+  @daily_special = DailySpecial.find(params[:id])
+  @daily_special.upvote_by(current_user)
+  redirect_to :back 
+  end
+
+  def downvote
+  @daily_special = DailySpecial.find(params[:id])
+  @daily_special.downvote_by(current_user)
+  redirect_to :back 
+  end
   # GET /daily_specials/1
   # GET /daily_specials/1.json
   def show

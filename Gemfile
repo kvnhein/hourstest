@@ -22,6 +22,7 @@ gem 'rails4-autocomplete'
 gem 'jquery-rails', '~> 2.3.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'materialize-sass'
 gem 'toastr-rails'
 gem 'will_paginate', '~> 3.1.0'

@@ -1,125 +1,111 @@
-
 <%x = []%>
 <%@events.shuffle.each do |event| %>
-   <%x.push(Venue.where(id: event.venue_id).first.id)%>
+<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 <%x.uniq.each do |d|%>
-  <%e = @events.where(venue_id: d).order(:start).reverse%>
-      <div class="row hourslist">
-        <div class="col s12">
-          <div class="card">
-
-            <div class="card-content">
-              <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
-              <!----This is where the uniq special code is going in -->
-                <%unievents = []%>
-                <%unispecials = []%>
-                    <%e.each do |event| %>
-                      <% test = event.special.to_s %>
-                         <%if unispecials.index(test) == nil%>
-                            <%unievents.push(event)%>
-                            <%unispecials.push(test)%>
-                         <%end%>
-                      <%end%>
-              <div class="arrow">
-                <%= image_tag "arrow.png"%>
-              </div>
-              <!---This is where it ends-->
-              <%unievents.reverse.each do |event|%>
-              <% if @b-2+(@c.to_f*0.0166) > event.end.to_i%>
-                <div class="chip" style="opacity:0.2">
-                  <%=event.special%>
-                </div><br>
-              <%elsif @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_i %>
-              <div class="chip" style="background-color:#17a787">
-                  <%=event.special%>
-                </div><br>
-              <%else%>
-                 <div class="chip">
-                  <%=event.special%>
-                </div><br>
-              <%end%>
-              <%end%>
-            <!--div class="card-content">-->
-<br>
-<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
-       <a class="activator waves-effect waves-light btn openhours"></a>
-    </div>
-
-            <div class="card-reveal">
-            <i class="material-icons card-title right xbox">close</i>
-
-              <div class="modal-header">
-                <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
-
-              </div>
-
-             <div class="modal-title">
-               <span class="grey-text"><%= @day_tag %> Hours</span>
-             </div>
-
-
-
-   <ul class="morehourslist">
-     <% e.reverse.each do |x| %>
-  <li>
-    <span><%= x.special %></span><br>
- <!-- This is Where the time code is -->
-<% start_minutes = "00"%>
-<%if x.start%1 > 0 %>
-     <%minutes = "30"%>
-<%end%>
-<%start_am = "am"%>
-<%if x.start >10 && x.start < 22 %>
-     <%start_am = "pm"%>
-<%end%>
-
-<% end_minutes = "00"%>
-<%if x.end%1 > 0 %>
-     <%minutes = "30"%>
-<%end%>
-<%end_am = "am"%>
-<%if x.end >10 && x.end < 22 %>
-     <%end_am="pm"%>
-<%end%>
-
-<!--Convert to regular time-->
-<%start_time = 0%>
-<%end_time = 0%>
-<% if x.start > 10 %>
-   <%start_time = (x.start - 0.1).round(0)- 10%>
-<%else%>
-   <%start_time = (x.start - 0.1).round(0)+ 2%>
-<%end%>
-
- <%if x.end > 22 %>
-   <%end_time = (x.end - 0.1).round(0)- 22%>
-    <% elsif x.end > 10 %>
-   <%end_time = (x.end - 0.1).round(0)- 10%>
-<%else%>
-   <%end_time = (x.end - 0.1).round(0)+ 2%>
-<%end%>
-
-<div class="valign-wrapper">
-<i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
-</div>
-<!--This is where the time code ends - This should be put into the model later -->
-     </li>
-
-     <%end%>
-    </ul>
-     <div class="row">
-     
-      <%= link_to 'More Hours', venue_path(Venue.where( id: e[0].venue_id).first.id), class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
-    </div>
-
+<%e = @events.where(venue_id: d).order(:start).reverse%>
+<div class="row hourslist">
+   <div class="col s12">
+      <div class="card">
+         <div class="card-content">
+            <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
+            <!----This is where the uniq special code is going in -->
+            <%unievents = []%>
+            <%unispecials = []%>
+            <%e.each do |event| %>
+            <% test = event.special.to_s %>
+            <%if unispecials.index(test) == nil%>
+            <%unievents.push(event)%>
+            <%unispecials.push(test)%>
+            <%end%>
+            <%end%>
+            <div class="arrow">
+               <%= image_tag "arrow.png"%>
             </div>
-           <!-- <div class="card-action">
-              <a href="#">Menu</a>
-              <a href="#">Share</a>
+            <!---This is where it ends-->
+            <%unievents.reverse.each do |event|%>
+            <% if @b-2+(@c.to_f*0.0166) > event.end.to_i%>
+            <div class="chip" style="opacity:0.2">
+               <%=event.special%>
+            </div>
+            <br>
+            <%elsif @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_i %>
+            <div class="chip" style="background-color:#17a787">
+               <%=event.special%>
+            </div>
+            <br>
+            <%else%>
+            <div class="chip">
+               <%=event.special%>
+            </div>
+            <br>
+            <%end%>
+            <%end%>
+            <!--div class="card-content">-->
+            <br>
+            <!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
+            <a class="activator waves-effect waves-light btn openhours"></a>
+         </div>
+         <div class="card-reveal">
+            <i class="material-icons card-title right xbox">close</i>
+            <div class="modal-header">
+               <span class="card-title activator"><%= Venue.where( id: e[0].venue_id).first.name%></span><br>
+            </div>
+            <div class="modal-title">
+               <span class="grey-text"><%= @day_tag %> Hours</span>
+            </div>
+            <ul class="morehourslist">
+               <% e.reverse.each do |x| %>
+               <li>
+                  <span><%= x.special %></span><br>
+                  <!-- This is Where the time code is -->
+                  <% start_minutes = "00"%>
+                  <%if x.start%1 > 0 %>
+                  <%minutes = "30"%>
+                  <%end%>
+                  <%start_am = "am"%>
+                  <%if x.start >10 && x.start < 22 %>
+                  <%start_am = "pm"%>
+                  <%end%>
+                  <% end_minutes = "00"%>
+                  <%if x.end%1 > 0 %>
+                  <%minutes = "30"%>
+                  <%end%>
+                  <%end_am = "am"%>
+                  <%if x.end >10 && x.end < 22 %>
+                  <%end_am="pm"%>
+                  <%end%>
+                  <!--Convert to regular time-->
+                  <%start_time = 0%>
+                  <%end_time = 0%>
+                  <% if x.start > 10 %>
+                  <%start_time = (x.start - 0.1).round(0)- 10%>
+                  <%else%>
+                  <%start_time = (x.start - 0.1).round(0)+ 2%>
+                  <%end%>
+                  <%if x.end > 22 %>
+                  <%end_time = (x.end - 0.1).round(0)- 22%>
+                  <% elsif x.end > 10 %>
+                  <%end_time = (x.end - 0.1).round(0)- 10%>
+                  <%else%>
+                  <%end_time = (x.end - 0.1).round(0)+ 2%>
+                  <%end%>
+                  <div class="valign-wrapper">
+                     <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
+                  </div>
+                  <!--This is where the time code ends - This should be put into the model later -->
+               </li>
+               <%end%>
+            </ul>
+            <div class="row">
+               <%= link_to 'More Hours', venue_path(Venue.where( id: e[0].venue_id).first.id), class: "waves-effect waves-light btn", 'data-no-turbolink' => true %>
+            </div>
+         </div>
+         <!-- <div class="card-action">
+            <a href="#">Menu</a>
+            <a href="#">Share</a>
             </div>-->
-          </div>
-        </div>
-
       </div>
- <%end%>
+   </div>
+</div>
+<%end%>

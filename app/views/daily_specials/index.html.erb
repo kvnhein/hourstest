@@ -1,12 +1,13 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>
 <br>
 <h4 class = "flow-text center-align">Daily Special</h4>
-<!--
+
 <table>
   <thead>
     <tr>
       <th>Text</th>
       <th>Description</th>
+      <th>likes</th>
       <th>Price</th>
       <th>Venue</th>
       <th>Dish type</th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= daily_special.text %></td>
         <td><%= daily_special.description %></td>
+        <td><%= daily_special.get_likes.size%></td>
         <td><%= daily_special.price %></td>
         <td><%= daily_special.venue %></td>
         <td><%= daily_special.dish_type %></td>
@@ -29,7 +31,6 @@
     <% end %>
   </tbody>
 </table>
--->
 
 <br>
 <% @daily_specials.each do |daily_special| %>
@@ -51,4 +52,26 @@
 <br>
 <%= link_to 'New Daily special', new_daily_special_path, class: "waves-effect waves-light btn" %>
 
+-->
+<br>
+<% @daily_specials.each do |daily_special| %>
+  <div class="row hourslist">
+        <div class="col s12">
+          <div class="card beerlist">
+            <div class="card-content special-by-day">
+              <h4 class="venues"><%= daily_special.text %></h4>
 
+          <div class="timeforspecial streets">
+              <%= truncate(daily_special.description, length: 30) %><br/>
+              <%=Venue.where(id: daily_special.venue_id).first.name %>
+              </div>
+            </div>
+            <%= link_to "upvote", like_daily_special_path(daily_special), method: :put%> (<%= daily_special.get_upvotes.size%>)
+               <%= link_to 'View Profile', venue_path(Venue.where( id: daily_special.venue_id).first.id), class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
+            <div class="arrow">
+                <%= image_tag "arrow.png"%>
+              </div>
+          </div>
+        </div>
+      </div>
+   <% end %>
