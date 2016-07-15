@@ -4,7 +4,7 @@
 <div class="col s3">
      <div class="detailstitle">
            <h2 class= "flow-text center-align">Venues</h2>
-           
+
      </div>
 </div>
 
@@ -67,7 +67,7 @@
 
               <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
 
-            <%= venue.distance_to([@locationl,@locationg]) %>
+            <%= venue.distance_to([@locationl,@locationg]).round(2) %>
             <div class="arrow">
                 <%= image_tag "arrow.png"%>
               </div>
