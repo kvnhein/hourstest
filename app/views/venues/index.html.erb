@@ -67,7 +67,7 @@
 
               <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
 
-            <%= venue.distance_to([@locationl,@locationg]).round(2) %>
+            <%= @locationl%> <%=@locationg %>
             <div class="arrow">
                 <%= image_tag "arrow.png"%>
               </div>
