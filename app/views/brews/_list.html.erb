@@ -22,9 +22,7 @@
                       <div class="valign-wrapper timeforspecial">
                         <span-right><%= link_to 'Show', brew %></span-right> -
                         <%= link_to 'Edit', edit_brew_path(brew) %> -
-                        <%= link_to brew, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do%>
-                        Destroy
-                        <%end%>
+                        <%= link_to 'Destroy', brew, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
                      </div>
                    
                  </li>

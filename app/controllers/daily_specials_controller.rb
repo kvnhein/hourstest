@@ -11,13 +11,13 @@ class DailySpecialsController < ApplicationController
   def upvote
   @daily_special = DailySpecial.find(params[:id])
   @daily_special.upvote_by(current_user)
-  redirect_to :back 
+  respond_to :js
   end
 
   def downvote
   @daily_special = DailySpecial.find(params[:id])
   @daily_special.downvote_by(current_user)
-  redirect_to :back 
+  respond_to :js
   end
   # GET /daily_specials/1
   # GET /daily_specials/1.json

@@ -66,7 +66,10 @@
               <%=Venue.where(id: daily_special.venue_id).first.name %>
               </div>
             </div>
-            <%= link_to "upvote", like_daily_special_path(daily_special), method: :put%> (<%= daily_special.get_upvotes.size%>)
+            <% @j = daily_special %>
+            <%= link_to "upvote",like_daily_special_path(daily_special), remote: true, method: :put%>
+            <%= link_to "downvote", dislike_daily_special_path(daily_special), remote: true,  method: :put%>
+            <div id = "upvote-<%=@j.id%>"><%= render partial: "rating"%></div>
                <%= link_to 'View Profile', venue_path(Venue.where( id: daily_special.venue_id).first.id), class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
             <div class="arrow">
                 <%= image_tag "arrow.png"%>

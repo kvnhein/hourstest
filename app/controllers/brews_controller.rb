@@ -19,6 +19,7 @@ class BrewsController < ApplicationController
 
   # GET /brews/new
   def new
+    @brews = Brew.all
     @brew = Brew.new
   end
 
@@ -60,10 +61,8 @@ class BrewsController < ApplicationController
   # DELETE /brews/1.json
   def destroy
     @brew.destroy
-    respond_to do |format|
-      format.html { redirect_to brews_url, notice: 'Brew was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @brews = Brew.all
+    respond_to :js
   end
 
   private

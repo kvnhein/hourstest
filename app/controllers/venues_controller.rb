@@ -27,6 +27,11 @@ class VenuesController < ApplicationController
   # GET /venues/1
   # GET /venues/1.json
   def show
+    visitor_latitude = request.location.latitude
+    visitor_longitude = request.location.longitude
+    @locationl = visitor_latitude
+    @locationg = visitor_longitude
+
 
     @events = Event.where(venue_id: params[:id])
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -59,7 +64,7 @@ class VenuesController < ApplicationController
     @liquors = Liqour.where(venue_id: params[:id])
     @daily_specials = DailySpecial.where(venue_id: params[:id])
     @drinks = Drink.where(venue_id: params[:id])
-    
+
 
 
 
