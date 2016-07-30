@@ -17,6 +17,16 @@ body, html { overflow-x:hidden; }
     flex: 1 0 auto;
   }
 
+.urbanist {
+      position: absolute;
+    top: 0;
+      left: 0px;
+}
+
+.urbanist img {
+    width: 50%;
+}
+
 main .container {
   background-color:#fff;
 }
