@@ -1,5 +1,5 @@
 <div class="form-padding">
-<%= form_for(@brew) do |f| %>
+<%= form_for(@brew, remote: true) do |f| %>
   <% if @brew.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@brew.errors.count, "error") %> prohibited this brew from being saved:</h2>

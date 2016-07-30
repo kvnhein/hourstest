@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 
   end
 
+
   def save_my_previous_url
     # session[:previous_url] is a Rails built-in variable to save last url.
     session[:my_previous_url] = URI(request.referer || '').path
@@ -41,7 +42,6 @@ class EventsController < ApplicationController
       x = t.wday
     end
 
-
        if  x == 0
        @day_tag = "Sunday"
        elsif x == 1
@@ -58,7 +58,6 @@ class EventsController < ApplicationController
        @day_tag = "Saturday"
        end
 
-
    @neighborhood_tag = 2
    @v = @venues.where( neighborhood_id: 2)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
@@ -67,7 +66,6 @@ class EventsController < ApplicationController
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
-
 
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
     @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
@@ -95,7 +93,6 @@ class EventsController < ApplicationController
       x = t.wday
     end
 
-
        if  x == 0
        @day_tag = "Sunday"
        elsif x == 1
@@ -111,7 +108,6 @@ class EventsController < ApplicationController
        else
        @day_tag = "Saturday"
        end
-
 
    @neighborhood_tag = 1
    @v = @venues.where( neighborhood_id: 1)
@@ -149,7 +145,6 @@ class EventsController < ApplicationController
       x = t.wday
     end
 
-
        if  x == 0
        @day_tag = "Sunday"
        elsif x == 1
@@ -166,7 +161,6 @@ class EventsController < ApplicationController
        @day_tag = "Saturday"
        end
 
-
    @neighborhood_tag = 3
    @v = @venues.where( neighborhood_id: 3)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
@@ -175,7 +169,6 @@ class EventsController < ApplicationController
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
-
 
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
     @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
@@ -203,7 +196,6 @@ class EventsController < ApplicationController
       x = t.wday
     end
 
-
        if  x == 0
        @day_tag = "Sunday"
        elsif x == 1
@@ -230,6 +222,109 @@ class EventsController < ApplicationController
     else
     end
 
+    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
+    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
+    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
+    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
+    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+  end
+
+  def lawrenceville
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
+    end
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+   @neighborhood_tag = 7
+   hood_id = Neighborhood.where(id: 7).first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
+
+    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
+    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
+    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
+    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
+    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+  end
+
+  def bloomfield
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
+    end
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+   @neighborhood_tag = 6
+   hood_id = Neighborhood.where(id: 6).first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
 
     @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
     @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
@@ -247,7 +342,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @back_url = session[:my_previous_url]
-
   end
 
   # GET /events/1/edit

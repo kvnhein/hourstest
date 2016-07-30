@@ -6,6 +6,7 @@ class BrewsController < ApplicationController
   def index
     @brews = Brew.all
     @brew = Brew.new
+
   end
 
   # GET /brews/1
@@ -15,12 +16,11 @@ class BrewsController < ApplicationController
     @venue_owner = current_user.id
   end
 
-
-
   # GET /brews/new
   def new
     @brews = Brew.all
     @brew = Brew.new
+    respond_to :js
   end
 
   # GET /brews/1/edit
@@ -35,7 +35,7 @@ class BrewsController < ApplicationController
     respond_to do |format|
       if @brew.save
         format.html { redirect_to @brew, notice: 'Brew was successfully created.' }
-        format.json { render :show, status: :created, location: @brew }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @brew.errors, status: :unprocessable_entity }

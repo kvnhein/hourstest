@@ -11,13 +11,17 @@ class DailySpecialsController < ApplicationController
   def upvote
   @daily_special = DailySpecial.find(params[:id])
   @daily_special.upvote_by(current_user)
-  respond_to :js
+  @votes = @daily_special.get_likes.size
+  @downvotes = @daily_special.get_dislikes.size
+  redirect_to :back
   end
 
   def downvote
   @daily_special = DailySpecial.find(params[:id])
   @daily_special.downvote_by(current_user)
-  respond_to :js
+  @votes = @daily_special.get_likes.size
+  @downvotes = @daily_special.get_dislikes.size
+  redirect_to :back
   end
   # GET /daily_specials/1
   # GET /daily_specials/1.json
@@ -92,6 +96,6 @@ class DailySpecialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daily_special_params
-      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status, :start, :end, :day)
+      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status, :start, :end, :day, :image)
     end
 end

@@ -21,6 +21,19 @@ main .container {
   background-color:#fff;
 }
 
+.collection.with-header .collection-item {
+  padding:0;
+}
+
+.featuredsection {
+  margin-top:20px
+}
+
+.featuredsection .m5 img {
+  width:100%;
+  height:auto;
+}
+
 .remove-btn {
      margin-left:20px;
       margin-top:10px;

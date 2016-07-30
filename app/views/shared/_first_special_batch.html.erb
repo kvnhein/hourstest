@@ -137,6 +137,12 @@
                      <%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
                      <div class="later-tab">Later</div>
                      <%end%>
+                     <div id="upvote-<%=modal_event.id%>;">
+                         <%= link_to "upvote",like_daily_special_path(modal_event),  method: :put%><%= modal_event.get_likes.size%>
+                     </div>
+                     <div id="downvote-<%=modal_event.id%>">
+                       <%= link_to "downvote", dislike_daily_special_path(modal_event),  method: :put%><%= modal_event.get_dislikes.size%>
+                     </div>
                      <div class="dropdownarrow">
                         <%= image_tag "dropdown.png"%>
                      </div>
@@ -148,6 +154,7 @@
                   <div class="collapsible-body">
                      <ul class="collection">
                         <li class="collection-item grey lighten-3 special-by-day">
+                           <%= image_tag modal_event.image.url(:medium)%>
                            <%=modal_event.description%>
                         </li>
                      </ul>

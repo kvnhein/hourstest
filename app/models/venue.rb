@@ -1,5 +1,5 @@
 class Venue < ActiveRecord::Base
-   
+
   geocoded_by :address
   after_validation :geocode
   by_star_field :venue_verify
@@ -19,12 +19,19 @@ class Venue < ActiveRecord::Base
   belongs_to :neighborhood
   has_many :events
   has_many :beers
-  
+
   def to_param
     "#{id} #{name}".parameterize
   end
-  
+
   def venue_area
      "#{name} (#{neighborhood_id})"
-  end 
+  end
+
+  def feature_dish_check
+    a = self.id
+    b = DailySpecial.where(venue_id: a).count
+  end
+
+ 
 end

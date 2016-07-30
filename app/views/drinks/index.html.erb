@@ -1,39 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h1>Drinkss list...</h1>
 
-<h1>Listing Drinks</h1>
+<div id="drink_form">
+  <%= render partial: 'form' %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Drink status</th>
-      <th>Drink type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<ol id = "drink-list">
+  <%= render @drinks %>
+</ol>
 
-  <tbody>
-    <% @drinks.each do |drink| %>
-      <%=link_to add_to_reserve_drink_path(drink), method: :patch do%>
-                <i class="material-icons">add</i>
-                <%end%>
-      <tr>
-        <td><%= drink.name %></td>
-        <td><%= drink.description %></td>
-        <td><%= drink.price %></td>
-        <td><%= drink.drink_Status %></td>
-        <td><%= drink.drink_type %></td>
-        <td><%= drink.price %></td>
-        <td><%= link_to 'Show', drink %></td>
-        <td><%= link_to 'Edit', edit_drink_path(drink) %></td>
-        <td><%= link_to 'Destroy', drink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Drink', new_drink_path %>
+<%= link_to "Add drink", "#",  :id => "new_drink_link" %>

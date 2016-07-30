@@ -1,10 +1,11 @@
 class DrinksController < ApplicationController
   before_action :set_drink, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  #before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   # GET /drinks
   # GET /drinks.json
   def index
     @drinks = Drink.all
+    @drink = Drink.new
   end
 
   # GET /drinks/1
@@ -24,6 +25,7 @@ class DrinksController < ApplicationController
   # GET /drinks/new
   def new
     @drink = Drink.new
+    respond_to :js
   end
 
   # GET /drinks/1/edit
@@ -34,15 +36,19 @@ class DrinksController < ApplicationController
   # POST /drinks.json
   def create
     @drink = Drink.new(drink_params)
+    
 
     respond_to do |format|
       if @drink.save
+        @drinks = Drink.all
         Venue.where(id: @drink.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to @drink, notice: 'Drink was successfully created.' }
         format.json { render :show, status: :created, location: @drink }
+        respond_to :js
       else
         format.html { render :new }
         format.json { render json: @drink.errors, status: :unprocessable_entity }
+        respond_to :js
       end
     end
   end
@@ -65,12 +71,11 @@ class DrinksController < ApplicationController
   # DELETE /drinks/1
   # DELETE /drinks/1.json
   def destroy
-    @drink.destroy
-    respond_to do |format|
-      Venue.where(id: @drink.venue_id).first.update_attribute(:venue_verify, Time.now)
-      format.html { redirect_to drinks_url, notice: 'Drink was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+   Venue.where(id: @drink.venue_id).first.update_attribute(:venue_verify, Time.now)
+   @drink.destroy
+    @drinks = Drink.all
+    respond_to :js
   end
 
   private

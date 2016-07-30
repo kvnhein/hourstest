@@ -1,13 +1,23 @@
 <%if @daily_specials.count > 0 %>
 <ul class="collection with-header">
-        <h4 class="flow-text listtitle">Featured Dishes</h4>
-       <% @daily_specials.each do |special| %>
-  <li class="collection-item"><%=special.text%><br><%=special.description%><br>$<%=special.price%><br>
+        <h4 class="flow-text listtitle">Today's Featured Dish</h4>
+ <% @daily_specials.each do |special| %>
+  <div class = "row featuredsection">
+    <div class="col s12 m5">
+      <%= image_tag special.image.url(:medium)%>
+   </div>
+  <div class="col s12 m7">
+  <li class="collection-item special special-by-day">
+    <h4><%=special.text%></h4>
+    <br><%=special.description%><br>
+    <!--$<%=special.price%><br>-->
   <%if @button == 1 %>
   <span-right><%= link_to 'Edit', edit_daily_special_path(special) %></span-right>
   <%= link_to 'Delete', special, method: :delete, data: { confirm: 'Are you sure?' } %>
   <%end%>
   </li>
+  </div>
+  </div>
        <%end%>
 </ul>
 <%end%>

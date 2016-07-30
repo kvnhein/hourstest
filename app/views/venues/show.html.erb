@@ -21,8 +21,10 @@
     <li class="divider"></li>
     <li><%= link_to 'New Beer', new_beer_path%></li>
     <li class="divider"></li>
+    <% if @venue.feature_dish_check == 0 %>
     <li><%= link_to 'New Featured Dish', new_daily_special_path%></li>
     <li class="divider"></li>
+    <%end%>
     <li><%=link_to venue_verified_venue_path(@venue), method: :get do%>
 Verify Venue
                 <%end%>
@@ -260,7 +262,7 @@ Verify Venue
              </li>
            </ul>
          </div>
-   </li>
+        </li>
 
 <%end%>
  </ul>
@@ -334,11 +336,11 @@ Verify Venue
       <!-- End OF Drop Down -->
 <div class="venue-details">
         <h3 class="flow-text">Contact Info:</h3>
-        <p class="phonea">Phone: (<%=@venue.phone_number[0..2]%>) <%=@venue.phone_number[3..5]%>-<%=@venue.phone_number[6..9]%></p>
+         <%phone_string = "(#{@venue.phone_number[0..2].to_s})#{@venue.phone_number[3..5].to_s} - #{@venue.phone_number[6..9].to_s}"%>
+        <p class="phonea"> Phone:<%=phone_number_link("#{phone_string}")%></p>
         <p><%= @venue.address%></p>
         <p><%= @venue.genre%></p>
 
-  <div id="output"></div>
     </div>
   </div>
 <div class="col s12">
@@ -439,8 +441,7 @@ Verify Venue
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcCVvXtwQqi7U5DPCAKSguo4w8tFqRnxk&callback=initMap">
     </script> -->
 
-    <script src="https://maps.googleapis.com/maps/api/js">
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script>
 
       function initialize() {

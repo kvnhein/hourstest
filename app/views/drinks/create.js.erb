@@ -1,0 +1,6 @@
+<% if @drink.valid? %>
+  $("#drinks").prepend("<%= escape_javascript(render(:partial => 'drink', :locals => { :drink => @drink })) %>")
+  $("#new_drink").replaceWith("<%= escape_javascript(link_to("Add drink", new_drink_path, :remote => true, :id => "new_drink_link")) %>")
+<%- else %>
+  $("#new_drink").replaceWith("<%= escape_javascript(render(:partial => 'form', :locals => { :drink => @drink })) %>")
+<% end %>

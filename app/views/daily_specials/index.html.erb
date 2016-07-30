@@ -1,80 +1,20 @@
-<!--<p id="notice"><%= notice %></p>
-<br>
-<h4 class = "flow-text center-align">Daily Special</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th>Description</th>
-      <th>likes</th>
-      <th>Price</th>
-      <th>Venue</th>
-      <th>Dish type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @daily_specials.each do |daily_special| %>
-      <tr>
-        <td><%= daily_special.text %></td>
-        <td><%= daily_special.description %></td>
-        <td><%= daily_special.get_likes.size%></td>
-        <td><%= daily_special.price %></td>
-        <td><%= daily_special.venue %></td>
-        <td><%= daily_special.dish_type %></td>
-        <td><%= link_to 'Show', daily_special %></td>
-        <td><%= link_to 'Edit', edit_daily_special_path(daily_special) %></td>
-        <td><%= link_to 'Destroy', daily_special, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% @daily_specials.each do |daily_special| %>
-<div class="collection">
-        <a href="#!" class="collection-item active">Special Title</a>
-        <a href="#!" class="collection-item"><%= daily_special.text %></a>
-        <a href="#!" class="collection-item active">Special  Description</a>
-        <a href="#!" class="collection-item"><%= daily_special.description %></a>
-        <a href="#!" class="collection-item active">Price</a>
-        <a href="#!" class="collection-item">$<%= daily_special.price %></a>
-        <a href="#!" class="collection-item active">Special Type</a>
-        <a href="#!" class="collection-item"><%= daily_special.dish_type %>
-        <%= link_to 'Show', daily_special %>
-        <%= link_to 'Edit', edit_daily_special_path(daily_special) %>
-        <%= link_to 'Destroy', daily_special, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </a>
-      </div>
-<% end %>
-<br>
-<%= link_to 'New Daily special', new_daily_special_path, class: "waves-effect waves-light btn" %>
-
--->
-<br>
-<% @daily_specials.each do |daily_special| %>
-  <div class="row hourslist">
-        <div class="col s12">
-          <div class="card beerlist">
-            <div class="card-content special-by-day">
-              <h4 class="venues"><%= daily_special.text %></h4>
-
-          <div class="timeforspecial streets">
-              <%= truncate(daily_special.description, length: 30) %><br/>
-              <%=Venue.where(id: daily_special.venue_id).first.name %>
-              </div>
-            </div>
-            <% @j = daily_special %>
-            <%= link_to "upvote",like_daily_special_path(daily_special), remote: true, method: :put%>
-            <%= link_to "downvote", dislike_daily_special_path(daily_special), remote: true,  method: :put%>
-            <div id = "upvote-<%=@j.id%>"><%= render partial: "rating"%></div>
-               <%= link_to 'View Profile', venue_path(Venue.where( id: daily_special.venue_id).first.id), class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
-            <div class="arrow">
-                <%= image_tag "arrow.png"%>
-              </div>
-          </div>
+<h4>Featured Dishes</h4>
+    <br>
+    <% @daily_specials.each do |special| %>
+  <div class = "row">
+    <div class="col s6">
+      <%= image_tag special.image.url(:medium)%>
+   </div>
+  <div class="col s6">
+  <li class="collection-item"><%=special.text%><br><%=special.description%><br>$<%=special.price%><br>
+        <div id="upvote-<%=special.id%>;">
+           <%= link_to "upvote",like_daily_special_path(special),  method: :put%><%= special.get_likes.size%>
         </div>
-      </div>
-   <% end %>
+        <div id="downvote-<%=special.id%>">
+           <%= link_to "downvote", dislike_daily_special_path(special),  method: :put%><%= special.get_dislikes.size%>
+        </div>
+  </li>
+  </div>
+  </div>
+       <%end%>
