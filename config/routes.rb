@@ -56,6 +56,7 @@ Rails.application.routes.draw do
    get 'market_square' => 'events#market_square'
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'
+   get 'lawrenceville' => 'events#lawrenceville'
    get 'venue_beer_list' => 'beers#venue_beer_list'
    get 'venue_liqour_list' => 'liqours#venue_liqour_list'
    get 'venue_drink_list' => 'drinks#venue_drink_list'
