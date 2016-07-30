@@ -82,7 +82,7 @@
 
 </div>
 
-<!-- =render partial: "shared/dynamic_table_card" -->
+<%=render partial: "shared/dynamic_table_card"%>
 </div>
 
 <%unless @daily_specials.empty?%>
@@ -94,8 +94,9 @@
 
 </div>
   <%end%>
-
+<div class = "hide"> <!-- hiding features-->
 <%=render partial: "shared/featured_dish_table"%>
+  </div>
 </div>
 <!-- This script is for Google Analytics -->
 <script>

@@ -88,6 +88,7 @@
 
 <%=render partial: "shared/dynamic_table_card"%>
 </div>
+<div class = "hide"> <!-- hiding the legend-->
  <%unless @daily_specials.empty?%>
 <div class ="center" id="featured-dish">
 
@@ -97,7 +98,7 @@
   <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;">Later</div>
 </div>
   <%end%>
-
+  </div>
 
 <!-- =render partial: "shared/featured_dish_table" -->
 </div>

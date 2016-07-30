@@ -84,7 +84,7 @@
 
 <%=render partial: "shared/dynamic_table_card"%>
 </div>
-
+<div class = "hide"> <!-- hiding the legend-->
 <%unless @daily_specials.empty?%>
 <div class ="center" id="featured-dish">
   <div class="key-color">
@@ -94,6 +94,7 @@
 
 </div>
   <%end%>
+  </div>
 
 <!-- =render partial: "shared/featured_dish_table" -->
 </div>
