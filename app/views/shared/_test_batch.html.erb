@@ -18,20 +18,21 @@
               <!----This is where the uniq special code is going in -->
 <%unievents = []%>
 <%unispecials = []%>
-<%@e.each do |event| %>
-      <% test = event.special.to_s %>
-      <%if unispecials.index(test) == nil%>
-            <%unievents.push(event) %>
-            <%unispecials.push(test)%>
-        <%end%>
-<%end%>
+          <%@e.each do |event| %>
+                <% test = event.special.to_s %>
+                <%if unispecials.index(test) == nil%>
+                      <%unievents.push(event) %>
+                      <%unispecials.push(test)%>
+                  <%end%>
+          <%end%>
               <div class="arrow">
                 <%= image_tag "arrow.png"%>
               </div>
-              
+        <% if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
               <div class="urbanist">
                 <%= image_tag "urbanist.png"%>
               </div>
+          <% end %>
               <!---This is where it ends-->
               <%unievents.reverse.each do |event|%>
  <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
@@ -75,8 +76,6 @@
                  <h5 class="flow-text"><%=@e[0].event_type%></h5>
              </div>
 
-
-
 <ul class="collapsible beerlist" data-collapsible="accordion">
  <% @e.reverse.each do |modal_event|%>
 <li>
@@ -119,8 +118,6 @@
 <%end%>
 
 
-
-
 <div class="valign-wrapper timeforspecial">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
@@ -140,9 +137,6 @@
 <%end%>
 
        </div>
-
-
-
 <%if modal_event.any_details == 2%>
       <div class="collapsible-body">
           <ul class="collection">

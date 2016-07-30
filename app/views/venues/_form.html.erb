@@ -43,11 +43,15 @@
     <%= f.label :owner %><br>
     <%= f.number_field :owner %>
   </div>
+  <div class="field">
+    <%= f.label :urbanist %><br>
+    <%= f.check_box :urbanist %>
+  </div>
 <%end%>
   <div class="waves-effect waves-light btn menubtn">
     <%= f.submit %>
   </div>
-  
+
   <%= link_to 'Back', @venue, class: "waves-effect waves-light btn menubtn" %>
 <% end %>
 </div>
