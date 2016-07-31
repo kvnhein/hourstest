@@ -482,7 +482,7 @@ Verify Venue
     <% if (user_signed_in?)%>
         <% if current_user.admin? %>
             <%= link_to 'New Venue', new_venue_path, class: "waves-effect waves-light btn newvenuebtn" %>
-            <!--%= link_to 'Edit', edit_venue_path(@venue) %>--
+           <%= @venue.id %>
         <%end%>
     <%end%>
 
