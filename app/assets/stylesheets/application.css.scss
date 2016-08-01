@@ -21,6 +21,7 @@ body, html { overflow-x:hidden; }
       position: absolute;
     top: 0;
       left: 0px;
+      z-index: 900;
 }
 
 .urbanist img {
@@ -54,7 +55,8 @@ main .container {
     background: #f2f2f2;
     height: 60px;
     margin-top: 0px;
-    padding: 20px;
+/*     padding: 20px; */
+  overflow:hidden;
 }
 
 .verified {
@@ -199,6 +201,11 @@ main .container {
   background-color:#17a787;
 }
 
+.profile-tabs.neiborhoodprofile {
+  background-color:#17a787;
+  margin-top: -48px;
+}
+
 .profile-tabs.venues {
       padding: 0;
     margin-top: 2px;
@@ -266,6 +273,7 @@ main .container {
 
 .tabs .indicator {
   background-color:#1fdeb4;
+  height: 6px;
 }
 
 .tabs .tab a.active {
@@ -289,8 +297,8 @@ main .container {
     position: absolute;
     right: -86%;
     width: 100%;
-    height: 80px;
-    background: #1fdeb4;
+    height: 60px;
+    background: #f2f2f2;
     transition: 1s;
     top: 0;
 }
@@ -298,7 +306,7 @@ main .container {
 .search-tab-btn a {
     position: absolute;
     right: 28%;
-    top: 27px;
+    top: 20px;
     color: #AAA;
 }
 
@@ -352,18 +360,19 @@ nav .button-collapse i {
 .click-open-search {
         width: 80px;
     height: 80px;
-    background: #1fdeb4;
+    background: #f2f2f2;
     position: absolute;
   width:14%;
 }
 
 
 .click-open-search .material-icons {
-      color: #17a787;
+    color: #2a2a2a;
     font-weight: 900;
     text-align: center;
     display: block;
-    margin-top: 27px;
+    margin-top: 20px;
+    font-size: 20px;
 }
 
 .addbuttons {
@@ -379,7 +388,7 @@ nav .button-collapse i {
 
 #search-form input {
       margin-bottom: 0;
-    margin-top: 19px;
+    margin-top: 12px;
     height: 38px;
     color: #000;
     background: #fff;
@@ -768,22 +777,35 @@ iframe {
 }
 
 .specials-header {
-  background-color: #1fdeb4;
-/*   margin-left: -18px;
-    margin-right: -18px; */
+  background-color: #000;
     margin-bottom: 0;
     padding: 22px 18px 18px 18px;
-  position: relative;
-      overflow: hidden;
+    position: relative;
+    overflow: hidden;
+    height: 210px;
+    text-align:center;
+
+
+}
+
+.specials-header.oakland-header {
+   background: url(oakland-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.specials-header.oakland-header img {
+  width:80px
 }
 
 .specials-header h5 {
-     margin: 0 !important;
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: 800;
+    margin: 0 !important;
+    font-size: 12px;
+    font-weight: 500;
     letter-spacing: .5px;
-  color:#17a787;
+    color: #999999;
 }
 
 .btn, .btn-large {

@@ -4,46 +4,17 @@
   <%= link_to 'Back',  events_path, class: "waves-effect waves-light btn menubtn" %>
 </div>-->
 
-<div class="specials-header">
-<h5 class="flow-text">Today's Oakland Hours</h5>
-<h4 class="flow-text"><%= @day_tag %></h4>
+<div class="specials-header oakland-header">
 
-
-    <div class="search-tab-btn">
-      <div class="click-open-search"> <i class="material-icons">search</i></div>
- <%= form_tag(south_side_path, :method => "get", id: "search-form") do %>
-<!-- text field tag=action,args,identifier,placeholdertext... -->
-<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: south_side_autocomplete_event_special_path} %>
-
-      <div class="search-btn">
-<%= submit_tag "Search" %>
-      </div>
-<%end%>
-
-<script type="text/javascript" charset="utf-8">
-  $('#search').bind('railsAutocomplete.select', function(event, data){
-  $('#search-form').submit()
-  });
-</script>
-<%= link_to "clear", south_side_path%>
-
-  </div>
-
-<script>
-
-  $( ".click-open-search" ).click(function() {
-  $( ".search-tab-btn" ).toggleClass( "slide-out-search" );
-});
-
-  </script>
-
-
+   <%= image_tag "oakland-profile.png"%>
+<h4 class="flow-text">Oakland</h4>
+<h5 class="flow-text">Hours for <%= @day_tag %></h5>
 
 </div>
 
 
 <div class="row" style="margin:0;">
-    <div class="col s12 profile-tabs">
+    <div class="col s12 profile-tabs neiborhoodprofile">
       <%if @b > 4 && @b < 20 %>
       <ul class="tabs">
         <li class="tab col s4"><a href="#venues">Venues</a></li>
@@ -77,10 +48,44 @@
   <%=render partial: "shared/venue_index"%>
 </div>
 <div class ="center" id="specials">
-  <div class="key-color">
+  <div class="key-color" style="position:relative;">
     <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">Past</div>
   <div class="now-tab" style="position: inherit; width: 45px; display:inline-block;">Now</div>
   <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;">Later</div>
+
+
+
+     <div class="search-tab-btn">
+      <div class="click-open-search"> <i class="material-icons">search</i></div>
+ <%= form_tag(south_side_path, :method => "get", id: "search-form") do %>
+<!-- text field tag=action,args,identifier,placeholdertext... -->
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: south_side_autocomplete_event_special_path} %>
+
+      <div class="search-btn">
+<%= submit_tag "Search" %>
+      </div>
+<%end%>
+
+<script type="text/javascript" charset="utf-8">
+  $('#search').bind('railsAutocomplete.select', function(event, data){
+  $('#search-form').submit()
+  });
+</script>
+<%= link_to "clear", south_side_path%>
+
+  </div>
+
+<script>
+
+  $( ".click-open-search" ).click(function() {
+  $( ".search-tab-btn" ).toggleClass( "slide-out-search" );
+});
+
+  </script>
+
+
+
+
 
 </div>
 
