@@ -3,9 +3,19 @@ class DailySpecial < ActiveRecord::Base
   belongs_to :venue
   acts_as_votable
 
-  has_attached_file :image, styles: { :medium => {:geometry => "500x500>", :quality => 100} , thumb: "100x100>" }
+  has_attached_file :image, 
+  styles: { :medium => {:geometry => "500x500>", :quality => 100} , thumb: "100x100>" },
+  :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-   def event_type
+  
+
+  def event_type
     Venue.where(id: self.venue_id).first.genre unless Venue.where(id: self.venue_id).first.genre.nil?
    end
 
@@ -13,5 +23,5 @@ class DailySpecial < ActiveRecord::Base
      Venue.where(id: self.venue_id).first
    end
 
-  
+
 end
