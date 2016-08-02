@@ -74,6 +74,7 @@ class VenuesController < ApplicationController
      end
    end
 
+      @venue_features = DailySpecial.today
   end
 
   # GET /venues/new

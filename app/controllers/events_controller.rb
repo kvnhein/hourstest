@@ -72,6 +72,8 @@ class EventsController < ApplicationController
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
     @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
     @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+    
+    @todays_feature = DailySpecial.today
   end
 
   def south_side
@@ -124,6 +126,8 @@ class EventsController < ApplicationController
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
     @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
     @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+
+    @todays_feature = DailySpecial.today
   end
 
   def oakland
@@ -175,6 +179,8 @@ class EventsController < ApplicationController
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
     @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
     @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+    
+    @todays_feature = DailySpecial.today
   end
 
   def market_square
@@ -227,6 +233,8 @@ class EventsController < ApplicationController
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
     @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
     @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+    
+    @todays_feature = DailySpecial.today
   end
 
   def lawrenceville
@@ -279,6 +287,8 @@ class EventsController < ApplicationController
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
     @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
     @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+    
+    @todays_feature = DailySpecial.today
   end
 
   def bloomfield
@@ -331,6 +341,8 @@ class EventsController < ApplicationController
     @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
     @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
     @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
+    
+    @todays_feature = DailySpecial.today
   end
 
   # GET /events/1

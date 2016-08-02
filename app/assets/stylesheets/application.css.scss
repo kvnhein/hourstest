@@ -55,7 +55,7 @@ main .container {
     background: #f2f2f2;
     height: 60px;
     margin-top: 0px;
-/*     padding: 20px; */
+    padding: 12px;
   overflow:hidden;
 }
 
@@ -198,13 +198,14 @@ main .container {
 }
 
 .profile-tabs {
-  background-color:#17a787;
+  background-color:#0e0e0e;
+  margin:0;
 }
 
-.profile-tabs.neiborhoodprofile {
+/* .profile-tabs.neiborhoodprofile {
   background-color:#17a787;
   margin-top: -48px;
-}
+} */
 
 .profile-tabs.venues {
       padding: 0;
@@ -359,7 +360,7 @@ nav .button-collapse i {
 
 .click-open-search {
         width: 80px;
-    height: 80px;
+    height: 60px;
     background: #f2f2f2;
     position: absolute;
   width:14%;
@@ -367,11 +368,11 @@ nav .button-collapse i {
 
 
 .click-open-search .material-icons {
-    color: #2a2a2a;
+    color: #999;
     font-weight: 900;
     text-align: center;
     display: block;
-    margin-top: 20px;
+    margin-top: 21px;
     font-size: 20px;
 }
 
@@ -607,7 +608,7 @@ nav .button-collapse i {
 }
 
 .edit-btn.btn .material-icons {
-  color: #17a787;
+  color: #1fdeb4;
     font-size: 26px;
 }
 
@@ -707,6 +708,7 @@ nav {
   background-color:#0e0e0e;
   box-shadow: none;
   height: 51px;
+      border-bottom: 1px solid #1fdeb4;
 }
 
 nav a img{
@@ -777,12 +779,12 @@ iframe {
 }
 
 .specials-header {
-  background-color: #000;
+  background-color: #0e0e0e;
     margin-bottom: 0;
     padding: 22px 18px 18px 18px;
     position: relative;
     overflow: hidden;
-    height: 210px;
+   // height: 210px;
     text-align:center;
 
 
@@ -805,7 +807,8 @@ iframe {
     font-size: 12px;
     font-weight: 500;
     letter-spacing: .5px;
-    color: #999999;
+    //color: #999999;
+  color: #1fdeb4;
 }
 
 .btn, .btn-large {
@@ -880,7 +883,7 @@ i.tiny {
 }
 
 .detailstitle {
-     background-color: #1fdeb4;
+     background-color: #0c0c0c;
     height: 73px;
       position: relative;
 }
