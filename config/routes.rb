@@ -35,11 +35,24 @@ Rails.application.routes.draw do
         end
       end
 
-
-
  devise_for :users
  get 'south_side/autocomplete_event_special'
       get 'south_side' => 'events#south_side'
+         resources :events
+get 'shadyside/autocomplete_event_special'
+      get 'shadyside' => 'events#shadyside'
+         resources :events
+get 'market_square/autocomplete_event_special'
+      get 'market_square' => 'events#market_square'
+         resources :events
+get 'oakland/autocomplete_event_special'
+      get 'oakland' => 'events#oakland'
+         resources :events
+  get 'lawrenceville/autocomplete_event_special'
+      get 'lawrenceville' => 'events#lawrenceville'
+         resources :events
+  get 'bloomfield/autocomplete_event_special'
+      get 'bloomfield' => 'events#bloomfield'
          resources :events
 
   resources :venues do
@@ -49,8 +62,6 @@ Rails.application.routes.draw do
   end
 
   resources :neighborhoods
-
-
 
    get 'shadyside/autocomplete_event_special'
    get 'market_square' => 'events#market_square'
@@ -63,6 +74,7 @@ Rails.application.routes.draw do
    get 'oakland' => 'events#oakland'
    get 'users_venues' => 'venues#users_venues'
    get 'about_us' => 'events#about_us'
+   get 'urbanist' => 'events#urbanist'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

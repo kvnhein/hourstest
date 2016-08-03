@@ -4,12 +4,15 @@
     <% @daily_specials.each do |special| %>
   <div class = "row">
     <div class="col s6">
-      <%= image_tag special.image.url(:medium)%>
+      <%= image_tag special.image.url(:thumb)%>
    </div>
   <div class="col s6">
   <li class="collection-item"><%=special.text%><br><%=special.description%><br>$<%=special.price%><br>
         <div id="upvote-<%=special.id%>;">
-           <%= link_to "upvote",like_daily_special_path(special),  method: :put%><%= special.get_likes.size%>
+           <%= link_to like_daily_special_path(special),  method: :put do%>
+          <i class="material-icons">thumb_up</i>
+          <%end%>
+          <%= special.get_likes.size%>
         </div>
         <div id="downvote-<%=special.id%>">
            <%= link_to "downvote", dislike_daily_special_path(special),  method: :put%><%= special.get_dislikes.size%>
@@ -24,6 +27,28 @@
           <div class="card">
             <div class="card-image">
               <%= image_tag event.image.url(:medium)%>
+            </div>
+            <div class="card-content">
+              <p><%=event.text%><br/>
+              <div class = "card-title"><%=Venue.where(id: event.venue_id).first.name%></div><br>
+              <%= event.description%>
+            </div>
+            <div class="card-action">
+            <!-- <div id="upvote-<%=event.id%>;">
+           <%= link_to "upvote",like_daily_special_path(event),  method: :put%><%= event.get_likes.size%>
+        </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+<%end%>
+
+<%@daily_specials.shuffle.each do |event| %>
+<div class="row">
+        <div class="col s12 m7">
+          <div class="card small">
+            <div class="card-image">
+              <%= image_tag event.image.url(:thumb)%>
             </div>
             <div class="card-content">
               <p><%=event.text%><br/>

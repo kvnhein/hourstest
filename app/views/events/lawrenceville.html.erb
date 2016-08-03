@@ -53,9 +53,9 @@
 
      <div class="search-tab-btn">
       <div class="click-open-search"> <i class="material-icons">search</i></div>
- <%= form_tag(south_side_path, :method => "get", id: "search-form") do %>
+ <%= form_tag(lawrenceville_path, :method => "get", id: "search-form") do %>
 <!-- text field tag=action,args,identifier,placeholdertext... -->
-<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: south_side_autocomplete_event_special_path} %>
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: lawrenceville_autocomplete_event_special_path} %>
 
       <div class="search-btn">
 <%= submit_tag "Search" %>

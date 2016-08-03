@@ -1,13 +1,3 @@
- <!--<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-  <%= link_to 'Back',  events_path, class: "waves-effect waves-light btn" %>
-</div>-->
-
-<div class="specials-header">
-
-<h4 class="flow-text">Shadyside</h4>
-<h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
-</div>
-
 <div class="row" style="margin:0;">
     <div class="col s12 profile-tabs neiborhoodprofile">
       <%if @b > 4 && @b < 22 %>
@@ -53,21 +43,21 @@
 
      <div class="search-tab-btn">
       <div class="click-open-search"> <i class="material-icons">search</i></div>
- <%= form_tag(shadyside_path, :method => "get", id: "search-form") do %>
+ <%= form_tag(south_side_path, :method => "get", id: "search-form") do %>
 <!-- text field tag=action,args,identifier,placeholdertext... -->
-<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: shadyside_autocomplete_event_special_path} %>
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: south_side_autocomplete_event_special_path} %>
 
       <div class="search-btn">
 <%= submit_tag "Search" %>
       </div>
 <%end%>
 
-       <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
   $('#search').bind('railsAutocomplete.select', function(event, data){
   $('#search-form').submit()
   });
 </script>
-<%= link_to "clear", shadyside_path%>
+<%= link_to "clear", south_side_path%>
 
   </div>
 
