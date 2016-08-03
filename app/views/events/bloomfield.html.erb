@@ -43,49 +43,8 @@
   <%=render partial: "shared/venue_index"%>
 </div>
 <div class ="center" id="specials">
-  <div class="key-color" style="position:relative;">
-
-    <div style="display:block;margin-top:6px;">
-        <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">Past</div>
-      <div class="now-tab" style="position: inherit; width: 45px; display:inline-block;">Now</div>
-      <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;">Later</div>
-    </div>
-
-     <div class="search-tab-btn">
-      <div class="click-open-search"> <i class="material-icons">search</i></div>
- <%= form_tag(bloomfield_path, :method => "get", id: "search-form") do %>
-<!-- text field tag=action,args,identifier,placeholdertext... -->
-<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: bloomfield_autocomplete_event_special_path} %>
-
-      <div class="search-btn">
-<%= submit_tag "Search" %>
-      </div>
-<%end%>
-
-<script type="text/javascript" charset="utf-8">
-  $('#search').bind('railsAutocomplete.select', function(event, data){
-  $('#search-form').submit()
-  });
-</script>
-<%= link_to "clear", bloomfield_path%>
-
-  </div>
-
-<script>
-
-  $( ".click-open-search" ).click(function() {
-  $( ".search-tab-btn" ).toggleClass( "slide-out-search" );
-});
-
-  </script>
-
-
-
-
-
-</div>
-
-<%=render partial: "shared/dynamic_table_card"%>
+  <%=render partial: "shared/autocomplete"%>
+  <%=render partial: "shared/dynamic_table_card"%>
 </div>
 <div class = "hide">
 <%unless @daily_specials.empty?%>

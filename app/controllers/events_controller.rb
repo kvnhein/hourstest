@@ -76,6 +76,8 @@ class EventsController < ApplicationController
   end
 
   def shadyside
+    @autocomplete_path = shadyside_autocomplete_event_special_path
+    @neighborhood_path = shadyside_path
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
@@ -129,7 +131,8 @@ class EventsController < ApplicationController
   end
 
   def south_side
-    @ss_link = south_side_path
+    @autocomplete_path = south_side_autocomplete_event_special_path
+    @neighborhood_path = south_side_path
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
@@ -184,6 +187,8 @@ class EventsController < ApplicationController
   end
 
   def oakland
+    @autocomplete_path = oakland_autocomplete_event_special_path
+    @neighborhood_path = oakland_path
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
@@ -237,6 +242,8 @@ class EventsController < ApplicationController
   end
 
   def market_square
+    @autocomplete_path = market_square_autocomplete_event_special_path
+    @neighborhood_path = market_square_path
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
@@ -291,6 +298,8 @@ class EventsController < ApplicationController
   end
 
   def lawrenceville
+    @autocomplete_path = lawrenceville_autocomplete_event_special_path
+    @neighborhood_path = lawrenceville_path
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
@@ -345,6 +354,8 @@ class EventsController < ApplicationController
   end
 
   def bloomfield
+    @autocomplete_path = bloomfield_autocomplete_event_special_path
+    @neighborhood_path = bloomfield_path
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
