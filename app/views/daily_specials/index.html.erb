@@ -4,7 +4,7 @@
     <% @daily_specials.each do |special| %>
   <div class = "row">
     <div class="col s6">
-      <%= image_tag special.image.url(:thumb)%>
+      <%= image_tag special.image.url(:medium)%>
    </div>
   <div class="col s6">
   <li class="collection-item"><%=special.text%><br><%=special.description%><br>$<%=special.price%><br>

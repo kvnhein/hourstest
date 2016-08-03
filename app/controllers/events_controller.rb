@@ -62,7 +62,7 @@ class EventsController < ApplicationController
 
     @todays_feature = DailySpecial.today
   end
-  
+
   def save_my_previous_url
     # session[:previous_url] is a Rails built-in variable to save last url.
     session[:my_previous_url] = URI(request.referer || '').path
@@ -129,6 +129,7 @@ class EventsController < ApplicationController
   end
 
   def south_side
+    @ss_link = south_side_path
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago

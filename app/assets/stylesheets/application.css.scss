@@ -202,10 +202,11 @@ main .container {
   margin:0;
 }
 
-/* .profile-tabs.neiborhoodprofile {
-  background-color:#17a787;
-  margin-top: -48px;
-} */
+ .profile-tabs.neiborhoodprofile {
+  background-color: rgba(0,0,0,0);
+    margin: -48px 0 0 0;
+    padding: 0 !important;
+}
 
 .profile-tabs.venues {
       padding: 0;
@@ -784,22 +785,67 @@ iframe {
     padding: 22px 18px 18px 18px;
     position: relative;
     overflow: hidden;
-   // height: 210px;
+   height:100px;
     text-align:center;
-
-
 }
 
 .specials-header.oakland-header {
-   background: url(oakland-bg.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+   background: url(oakland-bg.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
 }
 
-.specials-header.oakland-header img {
-  width:80px
+.specials-header.marketsquare-header {
+   background: url(market-square.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.shadyside-header {
+   background: url(shadyside.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.lawrenceville-header {
+   background: url(lawrenceville.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.southside-header {
+   background: url(southside.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.neighborhoodtop  h4 {
+    margin: 20px 0 0 0;
 }
 
 .specials-header h5 {
@@ -820,7 +866,7 @@ iframe {
 }
 
 .specials-header h4 {
-        margin: 0;
+    margin:0;
     font-size: 26px;
     font-weight: bold;
     color: #fff;

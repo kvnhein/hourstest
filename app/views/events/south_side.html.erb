@@ -4,7 +4,7 @@
   <%= link_to 'Back',  events_path, class: "waves-effect waves-light btn menubtn" %>
 </div>-->
 
-<div class="specials-header">
+<div class="specials-header southside-header neighborhoodtop">
 
 <h4 class="flow-text">South Side</h4>
 <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
@@ -12,7 +12,7 @@
 
 <div class="row" style="margin:0;">
     <div class="col s12 profile-tabs neiborhoodprofile">
-      <%if @b > 4 && @b < 22 %>
+      <%if @b > 4 && @b < 24 %>
       <ul class="tabs">
         <li class="tab col s4"><a href="#venues">Venues</a></li>
         <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
@@ -55,7 +55,7 @@
 
      <div class="search-tab-btn">
       <div class="click-open-search"> <i class="material-icons">search</i></div>
- <%= form_tag(south_side_path, :method => "get", id: "search-form") do %>
+ <%= form_tag(@ss_link, :method => "get", id: "search-form") do %>
 <!-- text field tag=action,args,identifier,placeholdertext... -->
 <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: south_side_autocomplete_event_special_path} %>
 

@@ -4,7 +4,7 @@
   <%= link_to 'Back',  events_path, class: "waves-effect waves-light btn menubtn" %>
 </div>-->
 
-<div class="specials-header">
+<div class="specials-header oakland-header neighborhoodtop">
 
 <h4 class="flow-text">Oakland</h4>
 <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
@@ -12,7 +12,7 @@
 
 <div class="row" style="margin:0;">
     <div class="col s12 profile-tabs neiborhoodprofile">
-      <%if @b > 4 && @b < 22 %>
+      <%if @b > 4 && @b < 24 %>
       <ul class="tabs">
         <li class="tab col s4"><a href="#venues">Venues</a></li>
         <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>

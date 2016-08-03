@@ -4,12 +4,56 @@
   <%= link_to 'Back',  events_path, class: "waves-effect waves-light btn" %>
 </div>-->
 
-<div class="specials-header">
-<h5 class="flow-text">Today's Market Square Hours</h5>
-<h4 class="flow-text"><%= @day_tag %></h4>
+<div class="specials-header marketsquare-header neighborhoodtop">
+
+<h4 class="flow-text">Market Square</h4>
+<h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col s12 profile-tabs neiborhoodprofile">
+      <%if @b > 4 && @b < 24 %>
+      <ul class="tabs">
+        <li class="tab col s4"><a href="#venues">Venues</a></li>
+        <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
+        <%unless @daily_specials.empty?%>
+       <!-- <li class="tab col s4"><a href="#featured-dish">Features</a></li>-->
+        <%end%>
+      </ul>
+  <%else%>
+      <ul class="tabs">
+        <li class="tab col s4"><a class="active" href="#venues">Venues</a></li>
+        <li class="tab col s4"><a href="#specials">Hours</a></li>
+        <%unless @daily_specials.empty?%>
+        <!--<li class="tab col s4"><a href="#featured-dish">Features</a></li>-->
+        <%end%>
+      </ul>
+   <%end%>
+    </div>
+  </div>
+
+<!--TABS-->
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+<!--END TABS-->
 
 
-    <div class="search-tab-btn">
+<div class ="center" id="venues">
+  <%=render partial: "shared/venue_index"%>
+</div>
+<div class ="center" id="specials">
+  <div class="key-color" style="position:relative;">
+
+    <div style="display:block;margin-top:6px;">
+        <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">Past</div>
+      <div class="now-tab" style="position: inherit; width: 45px; display:inline-block;">Now</div>
+      <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;">Later</div>
+    </div>
+
+     <div class="search-tab-btn">
       <div class="click-open-search"> <i class="material-icons">search</i></div>
  <%= form_tag(market_square_path, :method => "get", id: "search-form") do %>
 <!-- text field tag=action,args,identifier,placeholdertext... -->
@@ -39,56 +83,13 @@
 
 
 
-</div>
 
-
-<div class="row" style="margin:0;">
-    <div class="col s12 profile-tabs">
-      <%if @b > 4 && @b < 20 %>
-      <ul class="tabs">
-        <li class="tab col s4"><a href="#venues">Venues</a></li>
-        <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
-        <%unless @daily_specials.empty?%>
-        <!--<li class="tab col s4"><a href="#featured-dish">Features</a></li>-->
-        <%end%>
-      </ul>
-  <%else%>
-      <ul class="tabs">
-        <li class="tab col s4"><a class="active" href="#venues">Venues</a></li>
-        <li class="tab col s4"><a href="#specials">Hours</a></li>
-        <%unless @daily_specials.empty?%>
-       <!-- <li class="tab col s4"><a href="#featured-dish">Features</a></li>-->
-        <%end%>
-      </ul>
-   <%end%>
-    </div>
-  </div>
-
-<!--TABS-->
-<script>
-   $(document).ready(function(){
-    $('ul.tabs').tabs();
-  });
-</script>
-<!--END TABS-->
-
-
-<div class ="center" id="venues">
-  <%=render partial: "shared/venue_index"%>
-</div>
-<div class ="center" id="specials">
-
-  <div class="key-color">
-    <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">Past</div>
-  <div class="now-tab" style="position: inherit; width: 45px; display:inline-block;">Now</div>
-  <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;">Later</div>
 
 </div>
-
 
 <%=render partial: "shared/dynamic_table_card"%>
 </div>
-<div class = "hide"> <!-- hiding the legend-->
+<div class = "hide">
 <%unless @daily_specials.empty?%>
 <div class ="center" id="featured-dish">
   <div class="key-color">
@@ -99,8 +100,7 @@
 </div>
   <%end%>
   </div>
-
-<!-- =render partial: "shared/featured_dish_table" -->
+<!-- render partial: "shared/featured_dish_table" -->
 </div>
 <!-- This script is for Google Analytics -->
 <script>
