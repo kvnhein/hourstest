@@ -11,9 +11,16 @@ class EventsController < ApplicationController
   end
 
   def urbanist
- @today = Time.now
+    @autocomplete_path = urbanist_autocomplete_event_special_path
+    @neighborhood_path = urbanist_path
+    @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
+    @shadyside_venues = Venue.where(urbanist: true, neighborhood_id: 2)
+    @south_side_venues = Venue.where(urbanist: true, neighborhood_id: 1)
+    @oakland_venues = Venue.where(urbanist: true, neighborhood_id: 3)
+    @lawrenceville_venues = Venue.where(urbanist: true, neighborhood_id: 6)
+    @market_square_venues = Venue.where(urbanist: true, neighborhood_id: 5)
     @verified_this_week = Venue.between_times(@week_ago, @today)
     @verified_after_week = Venue.between_times(@month_ago,@week_ago)
     @verified_month_ago = Venue.before(@month_ago)
@@ -45,22 +52,16 @@ class EventsController < ApplicationController
        @day_tag = "Saturday"
        end
 
-   @neighborhood_tag = 2
+
    @v = @venues.where( urbanist: true)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(day: @day_tag)
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
 
-    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
-    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
-    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
-    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
-    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
-
-    @todays_feature = DailySpecial.today
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
   def save_my_previous_url
@@ -121,12 +122,6 @@ class EventsController < ApplicationController
     else
     end
 
-    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
-    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
-    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
-    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
-    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
-
     @todays_feature = DailySpecial.today
   end
 
@@ -175,13 +170,6 @@ class EventsController < ApplicationController
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
-
-
-    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
-    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
-    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
-    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
-    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
 
     @todays_feature = DailySpecial.today
   end
@@ -232,13 +220,7 @@ class EventsController < ApplicationController
     else
     end
 
-    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
-    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
-    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
-    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
-    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
-
-    @todays_feature = DailySpecial.today
+    @todays_feature = DailySpecial.all
   end
 
   def market_square
@@ -287,12 +269,6 @@ class EventsController < ApplicationController
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
-
-    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
-    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
-    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
-    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
-    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
 
     @todays_feature = DailySpecial.today
   end
@@ -344,12 +320,6 @@ class EventsController < ApplicationController
     else
     end
 
-    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
-    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
-    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
-    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
-    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
-
     @todays_feature = DailySpecial.today
   end
 
@@ -399,12 +369,6 @@ class EventsController < ApplicationController
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
-
-    @events_monday = Event.where(venue_id: @v.pluck(:id), day: "Monday" )
-    @events_tuesday = Event.where(venue_id: @v.pluck(:id), day: "Tuesday" )
-    @events_wednesday = Event.where(venue_id: @v.pluck(:id), day: "Wednesday" )
-    @events_thursday = Event.where(venue_id: @v.pluck(:id), day: "Thursday" )
-    @events_friday = Event.where(venue_id: @v.pluck(:id), day: "Friday" )
 
     @todays_feature = DailySpecial.today
   end

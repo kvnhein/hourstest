@@ -17,6 +17,10 @@ body, html { overflow-x:hidden; }
     flex: 1 0 auto;
   }
 
+footer.page-footer {
+  margin-top: 0;
+}
+
 .urbanist {
       position: absolute;
     top: 0;
@@ -779,6 +783,68 @@ iframe {
     border-radius: 0;
 }
 
+.image-btns {
+    text-transform: none;
+   letter-spacing: normal !important;
+    height: 220px;
+    width: 100%;
+    font-size: 21px !important;
+    margin: 0;
+    max-width: none;
+    padding: 89px 0;
+    margin-bottom: 1px;
+}
+
+.lawrenceville-btn {
+      background: url(lawrenceville-btn.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.marketsquare-btn {
+    background: url(marketsquare.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.shadyside-btn {
+    background: url(shadyside-btn.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.oaklandbtn {
+    background: url(oaklandbtn.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.southside-btn {
+    background: url(southside-btn.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
 .specials-header {
   background-color: #0e0e0e;
     margin-bottom: 0;
@@ -822,8 +888,19 @@ background-position:center;
   height:150px;
 }
 
+.specials-header.features-header {
+   background: url(urban.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
 .specials-header.lawrenceville-header {
-   background: url(lawrenceville.jpg);
+   background: url("lawrenceville2.jpg");
    background-repeat:no-repeat;
 -webkit-background-size:cover;
 -moz-background-size:cover;

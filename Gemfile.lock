@@ -136,6 +136,8 @@ GEM
       mimemagic (~> 0.3.0)
     pg (0.18.4)
     rack (1.6.4)
+    rack-mini-profiler (0.10.1)
+      rack (>= 1.2.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5.1)
@@ -232,6 +234,7 @@ DEPENDENCIES
   omniauth-facebook
   paperclip
   pg (~> 0.15)
+  rack-mini-profiler
   rails (= 4.2.5.1)
   rails4-autocomplete
   rails_12factor

@@ -1,66 +1,44 @@
+<div class="specials-header features-header neighborhoodtop">
 
-<h4>Featured Dishes</h4>
-    <br>
-    <% @daily_specials.each do |special| %>
-  <div class = "row">
-    <div class="col s6">
-      <%= image_tag special.image.url(:medium)%>
-   </div>
-  <div class="col s6">
-  <li class="collection-item"><%=special.text%><br><%=special.description%><br>$<%=special.price%><br>
-        <div id="upvote-<%=special.id%>;">
-           <%= link_to like_daily_special_path(special),  method: :put do%>
-          <i class="material-icons">thumb_up</i>
+<h4 class="flow-text">Featured Dishes</h4>
+<!--<h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>-->
+</div>
+
+
+<h5 class="flow-text; center"><%= @day_tag %><%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+<br>
+
+<%@daily_specials.shuffle.each do |event| %>
+<div class="row">
+  <div class="col s12 m7">
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag event.image.url(:medium)%>
+      </div>
+      <div class="card-content">
+        <p><%=event.text%><br/>
+        <div class = "card-title">
+          <%=Venue.where(id: event.venue_id).first.name%>
+        </div>
+        <br>
+        <%= event.description%>
+      </div>
+      <div class="card-action">
+        <div id="upvote-<%=event.id%>">
+          <%= link_to like_daily_special_path(event),  method: :put do%>
+            <i class="material-icons">thumb_up</i>
           <%end%>
-          <%= special.get_likes.size%>
-        </div>
-        <div id="downvote-<%=special.id%>">
-           <%= link_to "downvote", dislike_daily_special_path(special),  method: :put%><%= special.get_dislikes.size%>
-        </div>
-  </li>
-  </div>
-  </div>
-       <%end%>
-<%@daily_specials.shuffle.each do |event| %>
-<div class="row">
-        <div class="col s12 m7">
-          <div class="card">
-            <div class="card-image">
-              <%= image_tag event.image.url(:medium)%>
-            </div>
-            <div class="card-content">
-              <p><%=event.text%><br/>
-              <div class = "card-title"><%=Venue.where(id: event.venue_id).first.name%></div><br>
-              <%= event.description%>
-            </div>
-            <div class="card-action">
-            <!-- <div id="upvote-<%=event.id%>;">
-           <%= link_to "upvote",like_daily_special_path(event),  method: :put%><%= event.get_likes.size%>
-        </div>-->
-            </div>
+          <div class = "hide">
+          <%= event.get_likes.size%>
+          <%= link_to 'Edit', edit_daily_special_path(event) %>
+          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
+           <i class="material-icons">share</i>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 <%end%>
 
-<%@daily_specials.shuffle.each do |event| %>
-<div class="row">
-        <div class="col s12 m7">
-          <div class="card small">
-            <div class="card-image">
-              <%= image_tag event.image.url(:thumb)%>
-            </div>
-            <div class="card-content">
-              <p><%=event.text%><br/>
-              <div class = "card-title"><%=Venue.where(id: event.venue_id).first.name%></div><br>
-              <%= event.description%>
-            </div>
-            <div class="card-action">
-            <!-- <div id="upvote-<%=event.id%>;">
-           <%= link_to "upvote",like_daily_special_path(event),  method: :put%><%= event.get_likes.size%>
-        </div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-<%end%>
+<%= link_to 'New Feature', new_daily_special_path %>

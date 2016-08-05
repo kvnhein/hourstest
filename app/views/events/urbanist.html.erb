@@ -1,3 +1,214 @@
-<%@v.each do |venue|%>
-<%=venue.name%>
-<%end%>
+<p id="notice"><%= notice %></p>
+
+
+<div class="col s3">
+     <div class="detailstitle">
+           <h2 class= "flow-text center-align">Venues</h2>
+
+     </div>
+</div>
+<%= render partial: "shared/autocomplete"%>
+<div class="row" style="margin:0;">
+    <div class="col s12 profile-tabs venues">
+      <ul class="tabs tab-demo" style="width: 100%;">
+        <li class="tab"><a class="active" href="#Market_Square">Market Square</a></li>
+        <li class="tab"><a href="#Southside">South Side</a></li>
+        <li class="tab"><a href="#Shadyside">Shadyside</a></li>
+         <li class="tab"><a href="#Oakland">Oakland</a></li>
+        <li class="tab"><a href="#Lawrenceville">Lawrenceville</a></li>
+      </ul>
+    </div>
+  </div>
+
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+
+<div id="Market_Square">
+  <%@first_batch = []%>
+<%@market_square_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/test_batch"%>
+ <!-- venues -->
+  <% @market_square_venues.order("name ASC").each do |venue| %>
+ <div class="row hourslist">
+        <div class="col s12">
+          <div class="card beerlist">
+            <div class="card-content special-by-day">
+              <h4 class="venues"><%= venue.name %></h4>
+
+          <div class="timeforspecial streets">
+              <%= truncate(venue.address, length: 40) %><br/>
+              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
+              </div>
+            </div>
+
+              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
+
+
+            <div class="arrow">
+                <%= image_tag "arrow.png"%>
+              </div>
+          </div>
+        </div>
+      </div>
+   <% end %>
+</div>
+
+<div id="Southside">
+ <%@first_batch = []%>
+<%@south_side_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/test_batch"%>
+  <!-- venues -->
+  <% @south_side_venues.order("name ASC").each do |venue| %>
+ <div class="row hourslist">
+        <div class="col s12">
+          <div class="card beerlist">
+            <div class="card-content special-by-day">
+              <h4 class="venues"><%= venue.name %></h4>
+
+          <div class="timeforspecial streets">
+              <%= truncate(venue.address, length: 40) %><br/>
+              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
+              </div>
+            </div>
+
+              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
+
+
+            <div class="arrow">
+                <%= image_tag "arrow.png"%>
+              </div>
+          </div>
+        </div>
+      </div>
+   <% end %>
+</div>
+
+
+<div id="Shadyside">
+<%@first_batch = []%>
+<%@shadyside_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/test_batch"%>
+  <!-- venues -->
+  <% @shadyside_venues.order("name ASC").each do |venue| %>
+ <div class="row hourslist">
+        <div class="col s12">
+          <div class="card beerlist">
+            <div class="card-content special-by-day">
+              <h4 class="venues"><%= venue.name %></h4>
+
+          <div class="timeforspecial streets">
+              <%= truncate(venue.address, length: 40) %><br/>
+              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
+              </div>
+            </div>
+
+              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
+
+
+            <div class="arrow">
+                <%= image_tag "arrow.png"%>
+              </div>
+          </div>
+        </div>
+      </div>
+   <% end %>
+</div>
+
+
+<div id="Oakland">
+ <%@first_batch = []%>
+<%@oakland_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/test_batch"%>
+  <!-- venues -->
+  <% @oakland_venues.order("name ASC").each do |venue| %>
+ <div class="row hourslist">
+        <div class="col s12">
+          <div class="card beerlist">
+            <div class="card-content special-by-day">
+              <h4 class="venues"><%= venue.name %></h4>
+
+          <div class="timeforspecial streets">
+              <%= truncate(venue.address, length: 40) %><br/>
+              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
+              </div>
+            </div>
+
+              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
+
+
+            <div class="arrow">
+                <%= image_tag "arrow.png"%>
+              </div>
+          </div>
+        </div>
+      </div>
+   <% end %>
+</div>
+
+<div id="Lawrenceville">
+ <%@first_batch = []%>
+<%@lawrenceville_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/test_batch"%>
+  <!-- venues -->
+  <% @lawrenceville_venues.order("name ASC").each do |venue| %>
+ <div class="row hourslist">
+        <div class="col s12">
+          <div class="card beerlist">
+            <div class="card-content special-by-day">
+              <h4 class="venues"><%= venue.name %></h4>
+
+          <div class="timeforspecial streets">
+              <%= truncate(venue.address, length: 40) %><br/>
+              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
+              </div>
+            </div>
+
+              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
+
+
+            <div class="arrow">
+                <%= image_tag "arrow.png"%>
+              </div>
+          </div>
+        </div>
+      </div>
+   <% end %>
+</div>

@@ -54,6 +54,9 @@ get 'oakland/autocomplete_event_special'
   get 'bloomfield/autocomplete_event_special'
       get 'bloomfield' => 'events#bloomfield'
          resources :events
+  get 'urbanist/autocomplete_event_special'
+      get 'urbanist' => 'events#urbanist'
+         resources :events
 
   resources :venues do
     member do
