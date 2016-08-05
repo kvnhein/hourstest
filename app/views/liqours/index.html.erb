@@ -27,7 +27,9 @@
         <td><%= liqour.liqour_type %></td>
         <td><%= link_to 'Show', liqour %></td>
         <td><%= link_to 'Edit', edit_liqour_path(liqour) %></td>
-        <td><%= link_to 'Destroy', liqour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', liqour, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_liqour' %></td>
+        
+
       </tr>
     <% end %>
   </tbody>

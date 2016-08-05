@@ -71,6 +71,7 @@ class LiqoursController < ApplicationController
       Venue.where(id: @liqour.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to liqours_url, notice: 'Liquor was successfully destroyed.' }
       format.json { head :no_content }
+      format.js    {render :layout => false}
     end
   end
 

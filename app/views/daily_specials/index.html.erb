@@ -9,6 +9,7 @@
 <br>
 
 <%@daily_specials.shuffle.each do |event| %>
+
 <div class="row">
   <div class="col s12 m7">
     <div class="card">
@@ -28,17 +29,19 @@
           <%= link_to like_daily_special_path(event),  method: :put do%>
             <i class="material-icons">thumb_up</i>
           <%end%>
-          <div class = "hide">
+
           <%= event.get_likes.size%>
           <%= link_to 'Edit', edit_daily_special_path(event) %>
-          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
+          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => "delete_dish"  %>
+
            <i class="material-icons">share</i>
         </div>
       </div>
     </div>
   </div>
 </div>
-<%end%>
 
-<%= link_to 'New Feature', new_daily_special_path %>
+<%end%>
+<div >
+<%= link_to 'New Feature', new_daily_special_path, :id => "feat_dish" %>
+</div>

@@ -85,6 +85,7 @@ class DailySpecialsController < ApplicationController
       Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to Venue.where(id: @daily_special.venue_id).first, notice: 'Daily special was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { render :layout => false }
     end
   end
 

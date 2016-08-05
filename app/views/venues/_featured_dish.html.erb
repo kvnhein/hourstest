@@ -2,6 +2,7 @@
 <ul class="collection with-header">
         <h4 class="flow-text listtitle">Featured Dishes</h4>
  <% @daily_specials.each do |special| %>
+  <div class = "feat_dish">
   <div class = "row featuredsection">
     <div class="col s12 m5">
       <%= image_tag special.image.url(:medium)%>
@@ -13,9 +14,10 @@
     <!--$<%=special.price%><br>-->
   <%if @button == 1 %>
   <span-right><%= link_to 'Edit', edit_daily_special_path(special) %></span-right>
-  <%= link_to 'Delete', special, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Delete', special, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_dish' %>
   <%end%>
   </li>
+  </div>
   </div>
   </div>
        <%end%>

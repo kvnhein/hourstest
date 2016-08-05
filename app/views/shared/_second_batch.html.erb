@@ -1,16 +1,6 @@
-<%x =[]%>
+<%x=[]%>
 <%@second_batch.shuffle.each do |event| %>
-   <%if @b > 2%>
-   <%if @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-   <%x.push(Venue.where(id: event.venue_id).first.id)%>
-    <%end%>
-<%else%>
-    <%if @b < 1 && event.end > 22 && event.end < 23%>
-    <%x.push(Venue.where(id: event.venue_id).first.id)%>
-    <%elsif @b < 2 && event.end > 23 && event.end < 24%>
-    <%x.push(Venue.where(id: event.venue_id).first.id)%>
-    <%end%>
-<%end%>
+<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 
 
@@ -26,34 +16,41 @@
               <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span><br>
 
               <!----This is where the uniq special code is going in -->
-                <%unievents = []%>
-                <%unispecials = []%>
-                    <%@e.each do |event| %>
-                      <% test = event.special.to_s %>
-                         <%if unispecials.index(test) == nil%>
-                            <%unievents.push(event) unless @b-2+(@c.to_f*0.0166) > event.end.to_f%>
-                            <%unispecials.push(test) unless @b-2+(@c.to_f*0.0166) > event.end.to_f%>
-                         <%end%>
-                      <%end%>
+<%unievents = []%>
+<%unispecials = []%>
+<%@e.each do |event| %>
+      <% test = event.special.to_s %>
+      <%if unispecials.index(test) == nil%>
+            <%unievents.push(event) %>
+            <%unispecials.push(test)%>
+        <%end%>
+<%end%>
               <div class="arrow">
                 <%= image_tag "arrow.png"%>
               </div>
               <!---This is where it ends-->
               <%unievents.reverse.each do |event|%>
               <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-              <div class="chip" style="background-color:#17a787">
+        <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>
-              <%elsif @b < 2 && event.end > 22 %>
-              <div class="chip" style="background-color:#17a787">
+<%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
+        <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>
-              <%else%>
-                 <div class="chip">
+<%elsif @b < 2 && event.end < 24  &&  event.end > 23 %>
+        <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div><br>
-              <%end%>
-
+<%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
+        <div class="chip" style="background-color:#000000">
+                  <%=event.special%>
+                </div><br>
+<%else%>
+         <div class="chip" style="background-color:#bdbdbd">
+                  <%=event.special%>
+                </div><br>
+ <%end%>
               <%end%>
             <!--div class="card-content">-->
 
@@ -74,13 +71,7 @@
                  <h5 class="flow-text"><%=@e[0].event_type%></h5>
              </div>
 
-              <div style="display:none;">
-                <% if @e[0].event_venue.venue_verify.nil?%>
-                  <p> Venue has not been verified </p>
-                <%else%>
-                  <p> Time since last Verification: <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
-                <%end%>
-              </div>
+
 
 <ul class="collapsible beerlist" data-collapsible="accordion">
  <% @e.reverse.each do |modal_event|%>
@@ -162,10 +153,12 @@
  <%end%>
   </ul><br>
      <div class="row">
+
       <%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class: "waves-effect waves-light btn menubtn", 'data-no-turbolink' => true %>
 
 
     </div>
+
 <div class="verified">
 <% if @e[0].event_venue.venue_verify.nil?%>
   <p class="verified-date"> Venue has not been verified </p>
@@ -174,6 +167,10 @@
   <p class="verified-date"> Time since last Verification: <br><%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%></p>
 <%end%>
 </div>
+
+
+
+
             </div>
 
            <!-- <div class="card-action">
