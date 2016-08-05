@@ -137,7 +137,7 @@ Verify Venue
   </ul>
 
   <br>
-  <div style="display:none">
+  <div >
   <%= render partial: "featured_dish"%>
   </div>
 </div>
@@ -375,7 +375,7 @@ Verify Venue
     <% if (user_signed_in?)%>
         <% if current_user.admin? %>
             <%= link_to 'New Venue', new_venue_path, class: "waves-effect waves-light btn newvenuebtn" %>
-           <%= @venue.id %>
+         
         <%end%>
     <%end%>
 

@@ -10,18 +10,18 @@
       <%if @b > 4 && @b < 24 %>
       <ul class="tabs">
         <li class="tab col s4"><a href="#venues">Venues</a></li>
-        <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
         <%unless @daily_specials.empty?%>
-       <!-- <li class="tab col s4"><a href="#featured-dish">Features</a></li>-->
+        <li class="tab col s4"><a href="#featured-dish">Features</a></li>
         <%end%>
+        <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
       </ul>
   <%else%>
       <ul class="tabs">
         <li class="tab col s4"><a class="active" href="#venues">Venues</a></li>
-        <li class="tab col s4"><a href="#specials">Hours</a></li>
-        <%unless @daily_specials.empty?%>
-        <!--<li class="tab col s4"><a href="#featured-dish">Features</a></li>-->
+         <%unless @daily_specials.empty?%>
+        <li class="tab col s4"><a href="#featured-dish">Features</a></li>
         <%end%>
+        <li class="tab col s4"><a href="#specials">Hours</a></li>
       </ul>
    <%end%>
     </div>
@@ -39,23 +39,14 @@
 <div class ="center" id="venues">
   <%=render partial: "shared/venue_index"%>
 </div>
+
 <div class ="center" id="specials">
- 
 <%=render partial: "shared/autocomplete"%>
 <%=render partial: "shared/dynamic_table_card"%>
 </div>
-<div class = "hide">
-<%unless @daily_specials.empty?%>
-<div class ="center" id="featured-dish">
-  <div class="key-color">
-    <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">Past</div>
-  <div class="now-tab" style="position: inherit; width: 45px; display:inline-block;">Now</div>
-  <div class="later-tab" style="position: inherit; width: 45px; display:inline-block;">Later</div>
 
-</div>
-  <%end%>
-  </div>
-<!-- render partial: "shared/featured_dish_table" -->
+<div class ="center" id="featured-dish">
+<%=render partial: "shared/featured_dish_table"%>
 </div>
 
 <!-- This script is for Google Analytics -->
