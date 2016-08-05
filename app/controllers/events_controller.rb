@@ -171,7 +171,7 @@ class EventsController < ApplicationController
     else
     end
 
-    @todays_feature = DailySpecial.today
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
   def oakland
@@ -213,14 +213,14 @@ class EventsController < ApplicationController
 
    @neighborhood_tag = 3
    @v = @venues.where( neighborhood_id: 3)
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @daily_specials =
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
 
-    @todays_feature = DailySpecial.today
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
   def market_square
@@ -270,7 +270,7 @@ class EventsController < ApplicationController
     else
     end
 
-    @todays_feature = DailySpecial.today
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
   def lawrenceville
@@ -320,7 +320,7 @@ class EventsController < ApplicationController
     else
     end
 
-    @todays_feature = DailySpecial.today
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
   def bloomfield
@@ -370,7 +370,7 @@ class EventsController < ApplicationController
     else
     end
 
-    @todays_feature = DailySpecial.today
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
   # GET /events/1
