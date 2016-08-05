@@ -220,7 +220,7 @@ class EventsController < ApplicationController
     else
     end
 
-    @todays_feature = DailySpecial.all
+    @todays_feature = DailySpecial.today
   end
 
   def market_square
