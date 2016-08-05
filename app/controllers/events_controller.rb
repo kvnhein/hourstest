@@ -122,7 +122,7 @@ class EventsController < ApplicationController
     else
     end
 
-    @todays_feature = DailySpecial.today
+    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
   def south_side
