@@ -12,7 +12,7 @@
       <%if @b > 4 && @b < 24 %>
       <ul class="tabs">
         <li class="tab col s4"><a href="#venues">Venues</a></li>
-         <%unless @daily_specials.empty?%>
+         <%unless @todays_feature.count== 0%>
          <li class="tab col s4"><a href="#featured-dish">Features</a></li>
         <%end%>
         <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
@@ -20,7 +20,7 @@
   <%else%>
       <ul class="tabs">
         <li class="tab col s4"><a class="active" href="#venues">Venues</a></li>
-        <%unless @daily_specials.empty?%>
+        <%unless @todays_feature.count== 0%>
         <li class="tab col s4"><a href="#featured-dish">Features</a></li>
         <%end%>
         <li class="tab col s4"><a href="#specials">Hours</a></li>
