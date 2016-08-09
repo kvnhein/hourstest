@@ -27,6 +27,11 @@ class VenuesController < ApplicationController
   # GET /venues/1
   # GET /venues/1.json
   def show
+    if DailySpecial.before(Date.today - 7).count > 0
+    past_specials = DailySpecial.before(Date.today - 7)
+    past_specials.delete_all
+    end
+
     visitor_latitude = request.location.latitude
     visitor_longitude = request.location.longitude
     @locationl = visitor_latitude
@@ -59,7 +64,7 @@ class VenuesController < ApplicationController
     end
 
 
-    @lists = Beer.where(venue_id: params[:id])
+    @beers = Beer.where(venue_id: @venue.id) #did this so no beer list would show
     @liquors = Liqour.where(venue_id: params[:id])
     @daily_specials = DailySpecial.where(venue_id: params[:id])
     @drinks = Drink.where(venue_id: params[:id])

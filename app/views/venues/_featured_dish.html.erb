@@ -1,25 +1,42 @@
+
 <%if @daily_specials.count > 0 %>
 <ul class="collection with-header">
-        <h4 class="flow-text listtitle">Featured Dishes</h4>
- <% @daily_specials.each do |special| %>
-  <div class = "feat_dish">
-  <div class = "row featuredsection">
-    <div class="col s12 m5">
-      <%= image_tag special.image.url(:medium)%>
-   </div>
+       <br>
+ <%@daily_specials.each do |event| %>
+
+<div class="row">
   <div class="col s12 m7">
-  <li class="collection-item special special-by-day">
-    <h4><%=special.text%></h4>
-    <br><%=special.description%><br>
-    <!--$<%=special.price%><br>-->
-  <%if @button == 1 %>
-  <span-right><%= link_to 'Edit', edit_daily_special_path(special) %></span-right>
-  <%= link_to 'Delete', special, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_dish' %>
-  <%end%>
-  </li>
+    <%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%>
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag event.image.url(:medium)%>
+      </div>
+      <div class="card-content">
+        <p><%=event.text%><br/>
+        <div class = "card-title">
+          <%=Venue.where(id: event.venue_id).first.name%>
+        </div>
+
+
+      </div>
+      <div class="card-action">
+         <%= event.description%>
+        <br>
+        <%if @button == 1 %>
+        <%= link_to 'Edit', edit_daily_special_path(event) %>
+          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true  %>
+        <%end%>
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
-       <%end%>
-</ul>
+</div>
+
 <%end%>
+<%if @button == 1 %>
+  <div>
+    <%= link_to 'New Feature', new_daily_special_path, :id => "feat_dish" %>
+  </div>
+<%end%>
+<%end%>
+
+  <%= social_share_button_tag("My Site") %>

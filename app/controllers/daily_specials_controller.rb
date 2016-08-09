@@ -1,6 +1,6 @@
 class DailySpecialsController < ApplicationController
   before_action :set_daily_special, only: [:show, :edit, :update, :destroy, :dish_limited, :dish_not_limited]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index,:new, :edit, :update, :destroy]
 
   # GET /daily_specials
   # GET /daily_specials.json
@@ -9,11 +9,18 @@ class DailySpecialsController < ApplicationController
   end
 
   def upvote
+
   @daily_special = DailySpecial.find(params[:id])
-  @daily_special.upvote_by(current_user)
-  @votes = @daily_special.get_likes.size
+  current_user.likes @daily_special
+
+  @upvotes = @daily_special.get_likes.size
   @downvotes = @daily_special.get_dislikes.size
-  redirect_to :back
+
+    respond_to do |format|
+      format.js
+    end
+
+
   end
 
   def downvote
@@ -47,6 +54,7 @@ class DailySpecialsController < ApplicationController
         Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @daily_special.venue_id).first, notice: 'Daily special was successfully created.' }
         format.json { render :show, status: :created, location: @daily_special }
+
       else
         format.html { render :new }
         format.json { render json: @daily_special.errors, status: :unprocessable_entity }
@@ -80,9 +88,11 @@ class DailySpecialsController < ApplicationController
   # DELETE /daily_specials/1
   # DELETE /daily_specials/1.json
   def destroy
+    id = @daily_special.venue_id
     @daily_special.destroy
+    @daily_specials = DailySpecial.where(venue_id: id)
+    Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
     respond_to do |format|
-      Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to Venue.where(id: @daily_special.venue_id).first, notice: 'Daily special was successfully destroyed.' }
       format.json { head :no_content }
       format.js { render :layout => false }

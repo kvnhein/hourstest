@@ -47,7 +47,7 @@
 </div>
 <%unless @todays_feature.count== 0%>
 <div class ="center" id="featured-dish">
-  <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5> Off Menu Features
+  <h5 class="flow-text">Off Menu Features<br>Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5> Off Menu Features
   <%=render partial: "shared/featured_dish_table"%>
 </div>
 <%end%>

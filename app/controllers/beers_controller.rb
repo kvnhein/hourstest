@@ -30,14 +30,24 @@ class BeersController < ApplicationController
   end
 
   def add_to_current
+    id = @beer.venue_id
     @beer.update_attribute(:beer_status, 2)
-    redirect_to action: "venue_beer_list", notice: "Beer added to current list"
+    @beers = Beer.where(venue_id: id)
+
+     respond_to do |format|
+       format.js    {render :layout => false}
+    end
   end
 
   def add_to_reserve
+    id = @beer.venue_id
     @beer.update_attribute(:beer_status, 1)
     @beer.update_attribute(:beer_level, 2)
-     redirect_to action: "venue_beer_list", notice: "Beer added to current list"
+    @beers =Beer.where(venue_id: id)
+
+    respond_to do |format|
+       format.js    {render :layout => false}
+    end
   end
 
   def beer_level_low
@@ -67,10 +77,10 @@ class BeersController < ApplicationController
   # POST /beers.json
   def create
     @beer = Beer.new(beer_params)
-
+Venue.where(id: @beer.venue_id).first.update_attribute(:venue_verify, Time.now)
     respond_to do |format|
       if @beer.save
-        Venue.where(id: @beer.venue_id).first.update_attribute(:venue_verify, Time.now)
+
         format.html { redirect_to :venue_beer_list, notice: 'Beer was successfully created.' }
         format.json { render :venue_beer_list, status: :created, location: @beer }
       else

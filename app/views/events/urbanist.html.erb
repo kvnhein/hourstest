@@ -1,23 +1,57 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="col s3">
-     <div class="detailstitle">
-           <h2 class= "flow-text center-align">Venues</h2>
 
-     </div>
-</div>
-<%= render partial: "shared/autocomplete"%>
 <div class="row" style="margin:0;">
-    <div class="col s12 profile-tabs venues">
-      <ul class="tabs tab-demo" style="width: 100%;">
-        <li class="tab"><a class="active" href="#Market_Square">Market Square</a></li>
-        <li class="tab"><a href="#Southside">South Side</a></li>
-        <li class="tab"><a href="#Shadyside">Shadyside</a></li>
-         <li class="tab"><a href="#Oakland">Oakland</a></li>
-        <li class="tab"><a href="#Lawrenceville">Lawrenceville</a></li>
+    <div class="col s12 profile-tabs neiborhoodprofile">
+      <ul class="tabs">
+        <li class="tab col s4"><a href="#venues">Venues</a></li>
+        <li class="tab col s4"><a href="#featured-urbanist">Features</a></li>
+        <li class="tab col s4"><a class="active" href="#about">About</a></li>
       </ul>
     </div>
+  </div>
+
+<!--TABS-->
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+<!--END TABS-->
+
+<div class="about-urbanist" id="about">
+  <div class="specials-header urbanist-header neighborhoodtop">
+      <h4 class="flow-text">About</h4>
+      <div style="display:none;">
+        <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+      </div>
+   </div>
+  <div class="row">
+      <div class="col s6">
+        <%= image_tag "natebenedetto.jpg"%>
+      </div>
+      <div class="col s6">
+        <%= image_tag "mikemcallister.jpg"%>
+      </div>
+
+      <p>
+        URBANIST guide aims to produce the best printed city guides in the nation. Since 2009 URBANIST has made it easy for both tourists and locals to pinpoint the outstanding local businesses in San Diego. With the addition of two more cities in 2013, URBANIST looks to create an expanded network of some of the best small businesses in the country. We are continually inspired by the entrepreneurs who have risked so much to create a unique experience for locals and visitors. They deserve your support. Restaurants that spark conversation. Shopping that encourages individuality. Nightlife that favors authenticity. Salons that understand you. Art that excites you. We believe the businesses listed here represent the best our select cities have to offer.
+      </p>
+  </div>
+</div>
+
+<div id="venues">
+
+  <div class="specials-header urbanist-venues neighborhoodtop">
+      <h4 class="flow-text">Venues</h4>
+      <div style="display:none;">
+        <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+      </div>
+   </div>
+
+  <div style="display:none">
+    <%= render partial: "shared/autocomplete"%>
   </div>
 
 <script>
@@ -26,7 +60,7 @@
   });
 </script>
 
-<div id="Market_Square">
+<h4 class="flow-text listtitle">Market Square</h4>
   <%@first_batch = []%>
 <%@market_square_venues.each do |venue|%>
  <%a= venue.id%>
@@ -36,7 +70,7 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/test_batch"%>
+<%=render partial: "shared/first_batch"%>
  <!-- venues -->
   <% @market_square_venues.order("name ASC").each do |venue| %>
  <div class="row hourslist">
@@ -53,7 +87,6 @@
 
               <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
 
-
             <div class="arrow">
                 <%= image_tag "arrow.png"%>
               </div>
@@ -61,9 +94,8 @@
         </div>
       </div>
    <% end %>
-</div>
 
-<div id="Southside">
+<h4 class="flow-text listtitle">South Side</h4>
  <%@first_batch = []%>
 <%@south_side_venues.each do |venue|%>
  <%a= venue.id%>
@@ -73,7 +105,7 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/test_batch"%>
+<%=render partial: "shared/first_batch"%>
   <!-- venues -->
   <% @south_side_venues.order("name ASC").each do |venue| %>
  <div class="row hourslist">
@@ -90,7 +122,6 @@
 
               <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
 
-
             <div class="arrow">
                 <%= image_tag "arrow.png"%>
               </div>
@@ -98,10 +129,9 @@
         </div>
       </div>
    <% end %>
-</div>
 
 
-<div id="Shadyside">
+<h4 class="flow-text listtitle">Shadyside</h4>
 <%@first_batch = []%>
 <%@shadyside_venues.each do |venue|%>
  <%a= venue.id%>
@@ -111,7 +141,7 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/test_batch"%>
+<%=render partial: "shared/first_batch"%>
   <!-- venues -->
   <% @shadyside_venues.order("name ASC").each do |venue| %>
  <div class="row hourslist">
@@ -136,10 +166,8 @@
         </div>
       </div>
    <% end %>
-</div>
 
-
-<div id="Oakland">
+<h4 class="flow-text listtitle">Oakland</h4>
  <%@first_batch = []%>
 <%@oakland_venues.each do |venue|%>
  <%a= venue.id%>
@@ -149,7 +177,7 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/test_batch"%>
+<%=render partial: "shared/first_batch"%>
   <!-- venues -->
   <% @oakland_venues.order("name ASC").each do |venue| %>
  <div class="row hourslist">
@@ -166,7 +194,6 @@
 
               <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
 
-
             <div class="arrow">
                 <%= image_tag "arrow.png"%>
               </div>
@@ -174,9 +201,8 @@
         </div>
       </div>
    <% end %>
-</div>
 
-<div id="Lawrenceville">
+<h4 class="flow-text listtitle">Lawrenceville</h4>
  <%@first_batch = []%>
 <%@lawrenceville_venues.each do |venue|%>
  <%a= venue.id%>
@@ -186,7 +212,7 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/test_batch"%>
+<%=render partial: "shared/first_batch"%>
   <!-- venues -->
   <% @lawrenceville_venues.order("name ASC").each do |venue| %>
  <div class="row hourslist">
@@ -211,4 +237,17 @@
         </div>
       </div>
    <% end %>
+</div>
+
+<div id="featured-urbanist">
+  
+   <div class="specials-header urbanist-featured neighborhoodtop">
+      <h4 class="flow-text">Featured</h4>
+      <div style="display:none;">
+        <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+      </div>
+   </div>
+  
+  
+  <h4>Featured Urbanist Dishes</h4>
 </div>

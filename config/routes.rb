@@ -78,6 +78,8 @@ get 'oakland/autocomplete_event_special'
    get 'users_venues' => 'venues#users_venues'
    get 'about_us' => 'events#about_us'
    get 'urbanist' => 'events#urbanist'
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

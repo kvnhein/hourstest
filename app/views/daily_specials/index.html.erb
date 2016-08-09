@@ -8,40 +8,4 @@
 <h5 class="flow-text; center"><%= @day_tag %><%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
 <br>
 
-<%@daily_specials.shuffle.each do |event| %>
-
-<div class="row">
-  <div class="col s12 m7">
-    <div class="card">
-      <div class="card-image">
-        <%= image_tag event.image.url(:medium)%>
-      </div>
-      <div class="card-content">
-        <p><%=event.text%><br/>
-        <div class = "card-title">
-          <%=Venue.where(id: event.venue_id).first.name%>
-        </div>
-        <br>
-        <%= event.description%>
-      </div>
-      <div class="card-action">
-        <div id="upvote-<%=event.id%>">
-          <%= link_to like_daily_special_path(event),  method: :put do%>
-            <i class="material-icons">thumb_up</i>
-          <%end%>
-
-          <%= event.get_likes.size%>
-          <%= link_to 'Edit', edit_daily_special_path(event) %>
-          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => "delete_dish"  %>
-
-           <i class="material-icons">share</i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%end%>
-<div >
-<%= link_to 'New Feature', new_daily_special_path, :id => "feat_dish" %>
-</div>
+<div id = 'specials'><%= render 'list'%></div>

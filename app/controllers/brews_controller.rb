@@ -6,7 +6,7 @@ class BrewsController < ApplicationController
   def index
     @brews = Brew.all
     @brew = Brew.new
-
+    @beers = Beer.all
   end
 
   # GET /brews/1

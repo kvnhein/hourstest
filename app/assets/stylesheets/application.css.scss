@@ -1,3 +1,7 @@
+
+
+
+
 @import "materialize/components/color";
 $primary-color: color("grey", "lighten-5") !default;
 @import "materialize";
@@ -30,6 +34,16 @@ footer.page-footer {
 
 .urbanist img {
     width: 50%;
+}
+
+.about-urbanist img {
+  width:100%;
+  margin-top:20px
+}
+
+.about-urbanist p {
+  padding: 20px;
+      clear: both;
 }
 
 main .container {
@@ -207,9 +221,13 @@ main .container {
 }
 
  .profile-tabs.neiborhoodprofile {
-  background-color: rgba(0,0,0,0);
+  background-color: transparent;
     margin: -48px 0 0 0;
     padding: 0 !important;
+    position: absolute;
+    top: 201px;
+    z-index: 90;
+   max-width: 800px;
 }
 
 .profile-tabs.venues {
@@ -866,6 +884,43 @@ background-position:center;
   height:150px;
 }
 
+.specials-header.urbanist-header {
+   background: url(UrbanistAbout.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.urbanist-venues {
+   background: url(Urbanist-venues.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.urbanist-featured {
+   background: url(Urbanist-featured.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.urbanist-header.neighborhoodtop h4 {
+      margin: 38px 0 0 0;
+}
+
 .specials-header.marketsquare-header {
    background: url(market-square.jpg);
    background-repeat:no-repeat;
@@ -1107,4 +1162,3 @@ i.tiny {
     // styles for small screens and down
 
   }
-

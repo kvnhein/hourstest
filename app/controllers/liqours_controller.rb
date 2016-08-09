@@ -67,8 +67,9 @@ class LiqoursController < ApplicationController
   # DELETE /liqours/1.json
   def destroy
     @liqour.destroy
+    @liqours = Liqour.all
+     Venue.where(id: @liqour.venue_id).first.update_attribute(:venue_verify, Time.now)
     respond_to do |format|
-      Venue.where(id: @liqour.venue_id).first.update_attribute(:venue_verify, Time.now)
       format.html { redirect_to liqours_url, notice: 'Liquor was successfully destroyed.' }
       format.json { head :no_content }
       format.js    {render :layout => false}

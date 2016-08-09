@@ -23,6 +23,7 @@ scope :special_like, -> (special) { where("special ilike ?", special)}
   end
  end
 
+  
 
 end
 

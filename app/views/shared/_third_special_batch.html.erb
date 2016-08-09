@@ -14,18 +14,8 @@
         <%= event.description%>
       </div>
       <div class="card-action">
-        <div class = "hide">
-        <div id="upvote-<%=event.id%>">
-          <%= link_to like_daily_special_path(event),  method: :put do%>
-            <i class="material-icons">thumb_up</i>
-          <%end%>
-          
-          <%= event.get_likes.size%>
-          <%= link_to 'Edit', edit_daily_special_path(event) %>
-          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-           <i class="material-icons">share</i>
-        </div>
+        <%= event.description%><br/>
+        <%= link_to 'View Profile', venue_path(Venue.where( id: event.venue_id).first.id), class: "waves-effect waves-light btn menubtn", 'data-no-turbolink' => true %>
       </div>
     </div>
   </div>
