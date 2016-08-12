@@ -25,6 +25,88 @@ footer.page-footer {
   margin-top: 0;
 }
 
+#specials .collection {
+  border:0;
+}
+
+.featured-dish-section {
+  position:relative;
+      margin-top: 20px;
+}
+
+.featured-dish-section h5 {
+      display: inline-block;
+    font-weight: 800;
+    margin: 0px 0 10px 0 !important;
+    font-size: 16px;
+    padding-right: 118px;
+    width: 100%;
+    text-align: left;
+
+}
+
+.featured-dish-section .card {
+  border:0;
+}
+
+.featured-dish-section h6 {
+  margin: 2px 0 0 0;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+
+.featured-dish-section .card .card-content {
+     padding: 10px 0px 0 0;
+    border-radius: 0;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.double-buttons {
+padding: 8px 0;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    margin: 20px 0 0 0;
+  text-align:center;
+}
+
+.double-buttons .row {
+ margin:0;
+}
+
+.double-buttons .s6 {
+      padding: 2px 0;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+  margin:0;
+  color:#999999;
+}
+
+.double-buttons .s6:first-child {
+border-right: 1px solid #999999;
+}
+
+.featured-dish-section .card .card-action {
+  border:0;
+      padding: 0 0 20px 0;
+}
+
+.urbanist-nav {
+  position: fixed;
+    z-index: 1000;
+    margin-top: -50px;
+      max-width: 800px;
+}
+
+.urbanist-nav img {
+  width:80px;
+  height:auto;
+
+  padding-top: 9px;
+}
+
 .urbanist {
       position: absolute;
     top: 0;
@@ -34,6 +116,28 @@ footer.page-footer {
 
 .urbanist img {
     width: 50%;
+}
+
+.powered-by {
+  background-color:#000;
+  padding:5px;
+  width:100%;
+  text-align:left;
+}
+
+.powered-by h5 {
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+    margin: 10px !important;
+}
+
+.powered-by img {
+    width: 98px;
+    height: auto;
+    display: inline-block;
+    float: right;
+    margin: 5px 12px;
 }
 
 .about-urbanist img {
@@ -75,6 +179,15 @@ main .container {
     margin-top: 0px;
     padding: 12px;
   overflow:hidden;
+  position:relative;
+  max-width: 800px;
+}
+
+.navbar-fixed2 {
+    top: 50px;
+    z-index: 100;
+  position: fixed;
+    width: 100%;
 }
 
 .verified {
@@ -221,13 +334,20 @@ main .container {
 }
 
  .profile-tabs.neiborhoodprofile {
-  background-color: transparent;
+  //background-color: transparent;
     margin: -48px 0 0 0;
     padding: 0 !important;
     position: absolute;
     top: 201px;
     z-index: 90;
    max-width: 800px;
+
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+
 }
 
 .profile-tabs.venues {
@@ -918,7 +1038,7 @@ background-position:center;
 }
 
 .specials-header.urbanist-header.neighborhoodtop h4 {
-      margin: 38px 0 0 0;
+      margin: 32px 0 0 0;
 }
 
 .specials-header.marketsquare-header {
@@ -1124,15 +1244,17 @@ i.tiny {
 }
 
 .listtitle{
-      background: #aaa;
+   background: #fff;
     margin: 0;
-    padding: 6px;
-    color: #fff;
+    padding: 46px 0;
+    color: #000;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 1px;
     font-weight: 800;
     text-align: center;
+    border-bottom: 1px solid #D6D5D5;
+    border-top: 1px solid #D6D5D5;
 }
 
 

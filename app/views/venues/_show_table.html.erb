@@ -52,8 +52,13 @@
 </div>
 
 <%if @button == 1 %>
-  <span-right><%= link_to 'Edit', edit_event_path(x) %></span-right>
-  <%= link_to 'Delete', x, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <span-right><%= link_to edit_event_path(x) do%>
+    <i class="material-icons">edit_mode</i>
+  <%end%>
+  </span-right>
+  <%= link_to x, method: :delete, data: { confirm: 'Are you sure?' } do%>
+  <i class="material-icons">delete_forever</i>
+  <%end%>
 <%end%>
 
       </li>

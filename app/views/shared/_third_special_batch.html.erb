@@ -1,23 +1,25 @@
 <%@third_special_batch.shuffle.each do |event| %>
 <div class="row">
-  <div class="col s12 m7">
+   <div class="col s12 m8 offset-m2 featured-dish-section">
+     <h5>
+       <%=Venue.where(id: event.venue_id).first.name%>
+    </h5>
+      <h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>
     <div class="card">
       <div class="card-image">
         <%= image_tag event.image.url(:medium)%>
       </div>
       <div class="card-content">
         <p><%=event.text%><br/>
-        <div class = "card-title">
-          <%=Venue.where(id: event.venue_id).first.name%>
-        </div>
-        <br>
-        <%= event.description%>
       </div>
       <div class="card-action">
-        <%= event.description%><br/>
+        <%= event.description%>
+
+
         <%= link_to 'View Profile', venue_path(Venue.where( id: event.venue_id).first.id), class: "waves-effect waves-light btn menubtn", 'data-no-turbolink' => true %>
+
       </div>
     </div>
   </div>
-</div>
+  </div>
 <%end%>

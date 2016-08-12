@@ -373,6 +373,206 @@ class EventsController < ApplicationController
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
+  def east_liberty
+    @autocomplete_path = bloomfield_autocomplete_event_special_path
+    @neighborhood_path = bloomfield_path
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
+    end
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+   @neighborhood_tag = 6
+   hood_id = Neighborhood.where(id: 6).first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
+
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+  end
+
+  def culture_district
+    @autocomplete_path = bloomfield_autocomplete_event_special_path
+    @neighborhood_path = bloomfield_path
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
+    end
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+   @neighborhood_tag = 8
+   hood_id = Neighborhood.where(id: 8).first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
+
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+  end
+
+  def strip_district
+    @autocomplete_path = bloomfield_autocomplete_event_special_path
+    @neighborhood_path = bloomfield_path
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
+    end
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+   @neighborhood_tag = 11
+   hood_id = Neighborhood.where(id: 11).first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
+
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+  end
+
+  def squirrel_hill
+    @autocomplete_path = bloomfield_autocomplete_event_special_path
+    @neighborhood_path = bloomfield_path
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
+    end
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
+
+   @neighborhood_tag = 10
+   hood_id = Neighborhood.where(id: 10).first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+    else
+    end
+
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show

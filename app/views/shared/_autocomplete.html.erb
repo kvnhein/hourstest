@@ -1,4 +1,5 @@
-<div class="key-color" style="position:relative;">
+<div id="key-fixed">
+<div class="key-color">
             <div style="display:block;margin-top:6px;">
                 <div class="later-tab" style=
                 "position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">
@@ -44,3 +45,23 @@
 
             </script>
         </div>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the
+      //nav bar to stick.
+      console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 194) {
+      $('#key-fixed').addClass('navbar-fixed2');
+    }
+    if ($(window).scrollTop() < 194) {
+      $('#key-fixed').removeClass('navbar-fixed2');
+    }
+  });
+});
+</script>

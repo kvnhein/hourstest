@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<nav class="urbanist-nav">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo"><%= image_tag "urbanist-logo.png"%></a>
+
+    </div>
+  </nav>
 
 
 <div class="row" style="margin:0;">
@@ -17,6 +23,9 @@
    $(document).ready(function(){
     $('ul.tabs').tabs();
   });
+
+      $(".button-collapse").sideNav();
+
 </script>
 <!--END TABS-->
 
@@ -43,22 +52,25 @@
 
 <div id="venues">
 
-  <div class="specials-header urbanist-venues neighborhoodtop">
+  <div class="specials-header urbanist-venues urbanist-header neighborhoodtop">
       <h4 class="flow-text">Venues</h4>
       <div style="display:none;">
         <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
       </div>
    </div>
 
-  <div style="display:none">
-    <%= render partial: "shared/autocomplete"%>
-  </div>
+
 
 <script>
    $(document).ready(function(){
     $('ul.tabs').tabs();
   });
 </script>
+
+  <div class="powered-by">
+    <h5><%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+    <%= image_tag "powered-hours.png"%>
+  </div>
 
 <h4 class="flow-text listtitle">Market Square</h4>
   <%@first_batch = []%>
@@ -70,9 +82,18 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/first_batch"%>
  <!-- venues -->
   <% @market_square_venues.order("name ASC").each do |venue| %>
+
+  <%unless @todays_feature.count== 0%>
+<div class ="center" id="featured-dish">
+  
+  <%=render partial: "shared/featured_dish_table"%>
+</div>
+<%end%>
+
+
+  <div class="display:none">
  <div class="row hourslist">
         <div class="col s12">
           <div class="card beerlist">
@@ -93,6 +114,7 @@
           </div>
         </div>
       </div>
+  </div>
    <% end %>
 
 <h4 class="flow-text listtitle">South Side</h4>
@@ -105,9 +127,18 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/first_batch"%>
   <!-- venues -->
   <% @south_side_venues.order("name ASC").each do |venue| %>
+
+  <%unless @todays_feature.count== 0%>
+<div class ="center" id="featured-dish">
+  
+  <%=render partial: "shared/featured_dish_table"%>
+</div>
+<%end%>
+
+
+  <div style="display:none;">
  <div class="row hourslist">
         <div class="col s12">
           <div class="card beerlist">
@@ -128,6 +159,7 @@
           </div>
         </div>
       </div>
+  </div>
    <% end %>
 
 
@@ -141,9 +173,19 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/first_batch"%>
   <!-- venues -->
   <% @shadyside_venues.order("name ASC").each do |venue| %>
+
+
+  <%unless @todays_feature.count== 0%>
+<div class ="center" id="featured-dish">
+
+  <%=render partial: "shared/featured_dish_table"%>
+</div>
+<%end%>
+
+
+  <div style="display:none">
  <div class="row hourslist">
         <div class="col s12">
           <div class="card beerlist">
@@ -165,6 +207,7 @@
           </div>
         </div>
       </div>
+  </div>
    <% end %>
 
 <h4 class="flow-text listtitle">Oakland</h4>
@@ -177,9 +220,17 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/first_batch"%>
   <!-- venues -->
   <% @oakland_venues.order("name ASC").each do |venue| %>
+
+  <%unless @todays_feature.count== 0%>
+<div class ="center" id="featured-dish">
+ 
+  <%=render partial: "shared/featured_dish_table"%>
+</div>
+<%end%>
+
+  <div style="display:none;">
  <div class="row hourslist">
         <div class="col s12">
           <div class="card beerlist">
@@ -200,6 +251,7 @@
           </div>
         </div>
       </div>
+  </div>
    <% end %>
 
 <h4 class="flow-text listtitle">Lawrenceville</h4>
@@ -212,7 +264,6 @@
     <%end%>
     <%end%>
 
-<%=render partial: "shared/first_batch"%>
   <!-- venues -->
   <% @lawrenceville_venues.order("name ASC").each do |venue| %>
  <div class="row hourslist">
@@ -239,15 +290,100 @@
    <% end %>
 </div>
 
-<div id="featured-urbanist">
-  
-   <div class="specials-header urbanist-featured neighborhoodtop">
+<div id="featured-urbanist" class="center">
+
+   <div class="specials-header urbanist-featured urbanist-header neighborhoodtop">
       <h4 class="flow-text">Featured</h4>
       <div style="display:none;">
         <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
       </div>
    </div>
-  
-  
-  <h4>Featured Urbanist Dishes</h4>
+
+  <div class="powered-by">
+    <h5><%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+    <%= image_tag "powered-hours.png"%>
+  </div>
+
+    <%= render partial: "shared/autocomplete"%>
+
+  <h4 class="flow-text listtitle">Market Square</h4>
+  <%@first_batch = []%>
+<%@market_square_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/first_batch"%>
+ <!-- venues -->
+  <% @market_square_venues.order("name ASC").each do |venue| %>
+
+   <% end %>
+
+<h4 class="flow-text listtitle">South Side</h4>
+ <%@first_batch = []%>
+<%@south_side_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/first_batch"%>
+  <!-- venues -->
+  <% @south_side_venues.order("name ASC").each do |venue| %>
+
+   <% end %>
+
+
+<h4 class="flow-text listtitle">Shadyside</h4>
+<%@first_batch = []%>
+<%@shadyside_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/first_batch"%>
+  <!-- venues -->
+  <% @shadyside_venues.order("name ASC").each do |venue| %>
+
+   <% end %>
+
+<h4 class="flow-text listtitle">Oakland</h4>
+ <%@first_batch = []%>
+<%@oakland_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/first_batch"%>
+  <!-- venues -->
+  <% @oakland_venues.order("name ASC").each do |venue| %>
+
+   <% end %>
+
+<h4 class="flow-text listtitle">Lawrenceville</h4>
+ <%@first_batch = []%>
+<%@lawrenceville_venues.each do |venue|%>
+ <%a= venue.id%>
+ <%events = @events.where(venue_id: a)%>
+  <%events.each do |event|%>
+     <%@first_batch.push(event)%>
+    <%end%>
+    <%end%>
+
+<%=render partial: "shared/first_batch"%>
+  <!-- venues -->
+  <% @lawrenceville_venues.order("name ASC").each do |venue| %>
+
+   <% end %>
 </div>
