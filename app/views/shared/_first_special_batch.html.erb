@@ -4,7 +4,7 @@
      <h5>
        <%=Venue.where(id: event.venue_id).first.name%>
     </h5>
-      <h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>
+      <!--<h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>-->
     <div class="card">
       <div class="card-image">
         <%= image_tag event.image.url(:medium)%>
