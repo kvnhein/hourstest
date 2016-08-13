@@ -1,4 +1,4 @@
-
+<%cache @events do%>
 <%@first_batch = []%>
 <%@verified_this_week.each do |venue|%>
  <%a= venue.id%>
@@ -29,3 +29,4 @@
 <%=render partial: "shared/first_batch"%>
 <%=render partial: "shared/second_batch"%>
 <%=render partial: "shared/third_batch"%>
+<%end%>

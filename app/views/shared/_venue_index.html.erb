@@ -1,4 +1,4 @@
-<% cache do%>
+<% cache @venues do%>
 <% @venues.where(neighborhood_id: @neighborhood_tag).order("name ASC").each do |venue| %>
  <div class="row hourslist">
         <div class="col s12">

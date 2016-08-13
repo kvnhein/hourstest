@@ -1,3 +1,5 @@
+<div class="add-height"></div>
+
 <div id="key-fixed">
 <div class="key-color">
             <div style="display:block;margin-top:6px;">
@@ -55,12 +57,14 @@
       //if you hard code, then use console
       //.log to determine when you want the
       //nav bar to stick.
-      console.log($(window).scrollTop())
+//    console.log($(window).scrollTop())
     if ($(window).scrollTop() > 194) {
       $('#key-fixed').addClass('navbar-fixed2');
+       $('.add-height').addClass('show-height');
     }
     if ($(window).scrollTop() < 194) {
       $('#key-fixed').removeClass('navbar-fixed2');
+      $('.add-height').removeClass('show-height');
     }
   });
 });

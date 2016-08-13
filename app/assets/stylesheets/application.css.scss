@@ -25,6 +25,25 @@ footer.page-footer {
   margin-top: 0;
 }
 
+.slider .slides li img {
+      margin: 0;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.slider {
+  margin-top:20px;
+      height: 400px !important;
+}
+
+.urbanist-about .slider .indicators{
+  display:none;
+}
+
 #specials .collection {
   border:0;
 }
@@ -88,6 +107,13 @@ padding: 8px 0;
 border-right: 1px solid #999999;
 }
 
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-large):not(.btn-floating) {
+  margin: 0 auto;
+    color: #999999;
+    width: 24px;
+    display: block;
+}
+
 .featured-dish-section .card .card-action {
   border:0;
       padding: 0 0 20px 0;
@@ -111,7 +137,7 @@ border-right: 1px solid #999999;
       position: absolute;
     top: 0;
       left: 0px;
-      z-index: 900;
+      z-index: 99;
 }
 
 .urbanist img {
@@ -188,6 +214,19 @@ main .container {
     z-index: 100;
   position: fixed;
     width: 100%;
+}
+
+.urbanist-page .urbanist{
+  display:none;
+}
+
+.add-height {
+  height: 64px;
+  display:none;
+}
+
+.show-height {
+  display:block;
 }
 
 .verified {
@@ -338,7 +377,7 @@ main .container {
     margin: -48px 0 0 0;
     padding: 0 !important;
     position: absolute;
-    top: 201px;
+    top: 245px;
     z-index: 90;
    max-width: 800px;
 
@@ -348,6 +387,14 @@ background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%
 background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
 
+}
+
+.urbanist-page .profile-tabs.neiborhoodprofile {
+      top: 201px;
+}
+
+.urbanist-page .specials-header.urbanist-header.neighborhoodtop h4 {
+      margin: 5px 0 0 0;
 }
 
 .profile-tabs.venues {
@@ -384,6 +431,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     min-width: auto;
     background-color: #17a787;
 }
+
+
 
 .drag-target {
   z-index:997;
@@ -805,6 +854,7 @@ nav .button-collapse i {
 
 .hourslist {
     margin-bottom: 0;
+  border-top: 1px solid #D6D5D5;
 }
 
 .container {
@@ -996,10 +1046,10 @@ iframe {
 .specials-header {
   background-color: #0e0e0e;
     margin-bottom: 0;
-    padding: 22px 18px 18px 18px;
+    padding: 50px 18px 18px 18px;
     position: relative;
     overflow: hidden;
-   height:100px;
+   height:194px;
     text-align:center;
 }
 
@@ -1011,7 +1061,7 @@ iframe {
 -o-background-size:cover;
 background-size:cover;
 background-position:center;
-  height:150px;
+  height:194px;
 }
 
 .specials-header.culture_district-header {
@@ -1022,7 +1072,7 @@ background-position:center;
 -o-background-size:cover;
 background-size:cover;
 background-position:center;
-  height:150px;
+  height:194px;
 }
 
 .specials-header.strip_district-header {
@@ -1033,7 +1083,7 @@ background-position:center;
 -o-background-size:cover;
 background-size:cover;
 background-position:center;
-  height:150px;
+  height:194px;
 }
 
 .specials-header.urbanist-header {
@@ -1081,7 +1131,7 @@ background-position:center;
 -o-background-size:cover;
 background-size:cover;
 background-position:center;
-  height:150px;
+  height:194px;
 }
 
 .specials-header.shadyside-header {
@@ -1092,7 +1142,7 @@ background-position:center;
 -o-background-size:cover;
 background-size:cover;
 background-position:center;
-  height:150px;
+  height:194px;
 }
 
 .specials-header.features-header {
@@ -1114,7 +1164,7 @@ background-position:center;
 -o-background-size:cover;
 background-size:cover;
 background-position:center;
-  height:150px;
+  height:194px;
 }
 
 .specials-header.southside-header {
@@ -1125,7 +1175,7 @@ background-position:center;
 -o-background-size:cover;
 background-size:cover;
 background-position:center;
-  height:150px;
+  height:194px;
 }
 
 .specials-header.neighborhoodtop  h4 {
@@ -1277,16 +1327,27 @@ i.tiny {
 
 .listtitle{
    background: #fff;
-    margin: 0;
-    padding: 46px 0;
+    width: initial;
+    display: table;
+    margin: -21px auto 0 auto;
+    padding: 7px;
     color: #000;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 1px;
     font-weight: 800;
-    text-align: center;
-    border-bottom: 1px solid #D6D5D5;
-    border-top: 1px solid #D6D5D5;
+
+}
+
+.title-sep {
+  padding: 30px 0;
+}
+
+.title-sep hr {
+    border-color: #D6D5D5;
+    border-style: solid;
+    border-width: 1px;
+      border-top: 0;
 }
 
 
@@ -1314,5 +1375,13 @@ i.tiny {
 
  @media #{$small-and-down} {
     // styles for small screens and down
+
+   .slider .slides {
+  height:260px !important;
+}
+
+   .slider {
+     height:260px !important;
+   }
 
   }

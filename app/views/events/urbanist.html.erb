@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<div class="urbanist-page">
 <nav class="urbanist-nav">
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><%= image_tag "urbanist-logo.png"%></a>
 
     </div>
   </nav>
+
 
 
 <div class="row" style="margin:0;">
@@ -36,13 +37,38 @@
         <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
       </div>
    </div>
-  <div class="row">
-      <div class="col s6">
-        <%= image_tag "natebenedetto.jpg"%>
-      </div>
-      <div class="col s6">
-        <%= image_tag "mikemcallister.jpg"%>
-      </div>
+  <div class="row urbanist-about">
+
+    <div class="col s12">
+     <div class="slider">
+    <ul class="slides">
+      <li>
+       <%= image_tag "Urbanist-mags.jpg"%>
+      </li>
+      <li>
+        <%= image_tag "slide2.jpg"%>
+      </li>
+      <li>
+        <%= image_tag "slide3.jpg"%>
+      </li>
+      <li>
+        <%= image_tag "slide4.jpg"%>
+      <li>
+        <%= image_tag "slide5.jpg"%>
+      </li>
+    </ul>
+  </div>
+    </div>
+
+    <script>
+       $(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
+    </script>
+
+
+
+
 
       <p>
         URBANIST guide aims to produce the best printed city guides in the nation. Since 2009 URBANIST has made it easy for both tourists and locals to pinpoint the outstanding local businesses in San Diego. With the addition of two more cities in 2013, URBANIST looks to create an expanded network of some of the best small businesses in the country. We are continually inspired by the entrepreneurs who have risked so much to create a unique experience for locals and visitors. They deserve your support. Restaurants that spark conversation. Shopping that encourages individuality. Nightlife that favors authenticity. Salons that understand you. Art that excites you. We believe the businesses listed here represent the best our select cities have to offer.
@@ -72,7 +98,10 @@
     <%= image_tag "powered-hours.png"%>
   </div>
 
+  <div class="title-sep">
+    <hr>
 <h4 class="flow-text listtitle">Market Square</h4>
+  </div>
   <%@first_batch = []%>
 <%@market_square_venues.each do |venue|%>
  <%a= venue.id%>
@@ -87,7 +116,7 @@
 
   <%unless @todays_feature.count== 0%>
 <div class ="center" id="featured-dish">
-  
+
   <%=render partial: "shared/featured_dish_table"%>
 </div>
 <%end%>
@@ -117,7 +146,10 @@
   </div>
    <% end %>
 
+  <div class="title-sep">
+    <hr>
 <h4 class="flow-text listtitle">South Side</h4>
+  </div>
  <%@first_batch = []%>
 <%@south_side_venues.each do |venue|%>
  <%a= venue.id%>
@@ -132,7 +164,7 @@
 
   <%unless @todays_feature.count== 0%>
 <div class ="center" id="featured-dish">
-  
+
   <%=render partial: "shared/featured_dish_table"%>
 </div>
 <%end%>
@@ -162,8 +194,10 @@
   </div>
    <% end %>
 
-
+<div class="title-sep">
+  <hr>
 <h4 class="flow-text listtitle">Shadyside</h4>
+  </div>
 <%@first_batch = []%>
 <%@shadyside_venues.each do |venue|%>
  <%a= venue.id%>
@@ -210,7 +244,12 @@
   </div>
    <% end %>
 
+  <div class="title-sep">
+    <hr>
+
 <h4 class="flow-text listtitle">Oakland</h4>
+
+  </div>
  <%@first_batch = []%>
 <%@oakland_venues.each do |venue|%>
  <%a= venue.id%>
@@ -225,7 +264,7 @@
 
   <%unless @todays_feature.count== 0%>
 <div class ="center" id="featured-dish">
- 
+
   <%=render partial: "shared/featured_dish_table"%>
 </div>
 <%end%>
@@ -254,7 +293,10 @@
   </div>
    <% end %>
 
+  <div class="title-sep">
+    <hr>
 <h4 class="flow-text listtitle">Lawrenceville</h4>
+  </div>
  <%@first_batch = []%>
 <%@lawrenceville_venues.each do |venue|%>
  <%a= venue.id%>
@@ -306,7 +348,11 @@
 
     <%= render partial: "shared/autocomplete"%>
 
+  <div class="title-sep">
+
+    <hr>
   <h4 class="flow-text listtitle">Market Square</h4>
+  </div>
   <%@first_batch = []%>
 <%@market_square_venues.each do |venue|%>
  <%a= venue.id%>
@@ -322,7 +368,10 @@
 
    <% end %>
 
+  <div class="title-sep">
+    <hr>
 <h4 class="flow-text listtitle">South Side</h4>
+  </div>
  <%@first_batch = []%>
 <%@south_side_venues.each do |venue|%>
  <%a= venue.id%>
@@ -338,8 +387,10 @@
 
    <% end %>
 
-
+<div class="title-sep">
+  <hr>
 <h4 class="flow-text listtitle">Shadyside</h4>
+  </div>
 <%@first_batch = []%>
 <%@shadyside_venues.each do |venue|%>
  <%a= venue.id%>
@@ -355,7 +406,10 @@
 
    <% end %>
 
+  <div class="title-sep">
+    <hr>
 <h4 class="flow-text listtitle">Oakland</h4>
+  </div>
  <%@first_batch = []%>
 <%@oakland_venues.each do |venue|%>
  <%a= venue.id%>
@@ -371,7 +425,10 @@
 
    <% end %>
 
+  <div class="title-sep">
+    <hr>
 <h4 class="flow-text listtitle">Lawrenceville</h4>
+  </div>
  <%@first_batch = []%>
 <%@lawrenceville_venues.each do |venue|%>
  <%a= venue.id%>
@@ -386,4 +443,5 @@
   <% @lawrenceville_venues.order("name ASC").each do |venue| %>
 
    <% end %>
+</div>
 </div>

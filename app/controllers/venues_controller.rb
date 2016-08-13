@@ -12,6 +12,7 @@ class VenuesController < ApplicationController
     visitor_longitude = request.location.longitude
     @locationl = visitor_latitude
     @locationg = visitor_longitude
+  
   end
 
   def users_venues
@@ -112,6 +113,7 @@ class VenuesController < ApplicationController
   def update
     respond_to do |format|
       if @venue.update(venue_params)
+
         format.html { redirect_to @venue, notice: 'Venue was successfully updated.' }
         format.json { render :show, status: :ok, location: @venue }
       else
@@ -119,6 +121,7 @@ class VenuesController < ApplicationController
         format.json { render json: @venue.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /venues/1
@@ -135,6 +138,7 @@ class VenuesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_venue
       @venue = Venue.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
