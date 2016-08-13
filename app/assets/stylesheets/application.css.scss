@@ -983,6 +983,16 @@ iframe {
     background-position: center;
 }
 
+.culture_district-btn {
+    background: url(cult.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
 .specials-header {
   background-color: #0e0e0e;
     margin-bottom: 0;
@@ -995,6 +1005,28 @@ iframe {
 
 .specials-header.oakland-header {
    background: url(oakland-bg.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.culture_district-header {
+   background: url(cult.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
+}
+
+.specials-header.strip_district-header {
+   background: url(cult.jpg);
    background-repeat:no-repeat;
 -webkit-background-size:cover;
 -moz-background-size:cover;
