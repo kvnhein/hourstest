@@ -221,12 +221,11 @@ main .container {
 }
 
 .add-height {
-  height: 64px;
-  display:none;
+  height: 0;
 }
 
 .show-height {
-  display:block;
+  height: 64px;
 }
 
 .verified {
@@ -854,7 +853,6 @@ nav .button-collapse i {
 
 .hourslist {
     margin-bottom: 0;
-  border-top: 1px solid #D6D5D5;
 }
 
 .container {
