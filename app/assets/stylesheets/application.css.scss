@@ -214,6 +214,7 @@ main .container {
     z-index: 100;
   position: fixed;
     width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .urbanist-page .urbanist{
@@ -222,10 +223,12 @@ main .container {
 
 .add-height {
   height: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .show-height {
   height: 64px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .verified {
