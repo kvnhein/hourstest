@@ -1,6 +1,9 @@
 <div class="detailstitle">
 <h2 class = "flow-text">Log in</h2>
 </div>
+<div class ="hide">
+<%= link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary" %>
+</div>
 
 <div class="form-padding">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

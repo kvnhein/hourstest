@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   root 'events#landing'
 
+  devise_for 	:users,
+  						:path => '',
+  						:path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
+  						:controllers => {:omniauth_callbacks => 'omniauth_callbacks',
+  														 :registrations => 'registrations'
+  														}
+
+
   resources :daily_specials do
      member do
           patch :dish_limited, :dish_not_limited
@@ -35,7 +43,7 @@ Rails.application.routes.draw do
         end
       end
 
- devise_for :users
+
  get 'south_side/autocomplete_event_special'
       get 'south_side' => 'events#south_side'
          resources :events
@@ -79,8 +87,8 @@ get 'oakland/autocomplete_event_special'
    get 'about_us' => 'events#about_us'
    get 'urbanist' => 'events#urbanist'
    get 'culture_district' => 'events#culture_district'
-  
-  
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

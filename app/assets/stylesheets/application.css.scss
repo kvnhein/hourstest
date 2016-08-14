@@ -90,6 +90,10 @@ padding: 8px 0;
   text-align:center;
 }
 
+.double-buttons .material-icons {
+  color: #999;
+}
+
 .double-buttons .row {
  margin:0;
 }
@@ -611,7 +615,7 @@ nav .button-collapse i {
 
 .beerlist .special-by-day h4 {
   text-align:left;
-  padding-right: 64px;
+  padding-right: 107px;
 }
 
 .beerlist .special-by-day h4.venues{
@@ -1240,6 +1244,37 @@ i.tiny {
   z-index: 9000;
 }
 
+.card .card-reveal .specials-header{
+  height: 114px;
+  padding: 22px 18px 18px 18px;
+}
+
+.edit-button-user {
+   width: 123px;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    height: 100%;
+    border-left: 1px solid #ddd;
+}
+
+.bleft {
+  width: 63px;
+    display: inline;
+    height: 100%;
+}
+
+.edit-button-user a .material-icons{
+  width: 53px;
+    padding: 14% 18px;
+    height: 100%;
+  color:#999;
+}
+
+.edit-button-user .bleft a .material-icons{
+  border-left: 1px solid #ddd;
+}
+
 .morehourslist li {
   margin: 34px 0;
   font-size: 13px;
@@ -1265,8 +1300,17 @@ i.tiny {
 
 .detailstitle {
      background-color: #0c0c0c;
-    height: 73px;
+    height: auto;
       position: relative;
+}
+
+.detailstitle h4 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: .5px;
+     padding: 25px 50px;
+  margin:0;
 }
 
 .detailstitle h2 {
