@@ -102,49 +102,7 @@
     <hr>
 <h4 class="flow-text listtitle">Market Square</h4>
   </div>
-  <%@first_batch = []%>
-<%@market_square_venues.each do |venue|%>
- <%a= venue.id%>
- <%events = @events.where(venue_id: a)%>
-  <%events.each do |event|%>
-     <%@first_batch.push(event)%>
-    <%end%>
-    <%end%>
-
- <!-- venues -->
-  <% @market_square_venues.order("name ASC").each do |venue| %>
-
-  <%unless @todays_feature.count== 0%>
-<div class ="center" id="featured-dish">
-
-  <%=render partial: "shared/featured_dish_table"%>
-</div>
-<%end%>
-
-
-  <div class="display:none">
- <div class="row hourslist">
-        <div class="col s12">
-          <div class="card beerlist">
-            <div class="card-content special-by-day">
-              <h4 class="venues"><%= venue.name %></h4>
-
-          <div class="timeforspecial streets">
-              <%= truncate(venue.address, length: 40) %><br/>
-              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
-              </div>
-            </div>
-
-              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
-
-            <div class="arrow">
-                <%= image_tag "arrow.png"%>
-              </div>
-          </div>
-        </div>
-      </div>
-  </div>
-   <% end %>
+ >
 
   <div class="title-sep">
     <hr>
