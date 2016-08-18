@@ -353,9 +353,9 @@
     <hr>
   <h4 class="flow-text listtitle">Market Square</h4>
   </div>
-<%@verified_this_week  = @verified_this_week.where(neighborhood_id: 2)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 2)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 2)%>
+<%@verified_this_week  = @verified_this_week.where(neighborhood_id: 5)%>
+<%@verified_after_week = @verified_after_week.where(neighborhood_id: 5)%>
+<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 5)%>
 <%=render partial: "shared/dynamic_table_card"%>
  <!-- venues -->
   <% @market_square_venues.order("name ASC").each do |venue| %>
@@ -366,9 +366,9 @@
     <hr>
 <h4 class="flow-text listtitle">South Side</h4>
   </div>
- <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 2)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 2)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 2)%>
+ <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 1)%>
+<%@verified_after_week = @verified_after_week.where(neighborhood_id: 1)%>
+<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 1)%>
 <%=render partial: "shared/dynamic_table_card"%>
   <!-- venues -->
   <% @south_side_venues.order("name ASC").each do |venue| %>
@@ -387,14 +387,14 @@
   <% @shadyside_venues.order("name ASC").each do |venue| %>
 
    <% end %>
-
+<div class = "hide">
   <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">Oakland</h4>
   </div>
- <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 1)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 1)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 1)%>
+ <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 3)%>
+<%@verified_after_week = @verified_after_week.where(neighborhood_id: 3)%>
+<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 3)%>
 <%=render partial: "shared/dynamic_table_card"%>
   <!-- venues -->
   <% @oakland_venues.order("name ASC").each do |venue| %>
@@ -405,13 +405,14 @@
     <hr>
 <h4 class="flow-text listtitle">Lawrenceville</h4>
   </div>
- <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 1)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 1)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 1)%>
+ <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 7)%>
+<%@verified_after_week = @verified_after_week.where(neighborhood_id: 7)%>
+<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 7)%>
 <%=render partial: "shared/dynamic_table_card"%>
   <!-- venues -->
   <% @lawrenceville_venues.order("name ASC").each do |venue| %>
 
    <% end %>
+  </div>
 </div>
 </div>
