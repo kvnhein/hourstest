@@ -102,105 +102,24 @@
     <hr>
 <h4 class="flow-text listtitle">Market Square</h4>
   </div>
- >
+ <% @daily_specials = @todays_feature.where(neighborhood_id: 5)
+ <%= render partial: "daily_specials/list"%>
 
   <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">South Side</h4>
   </div>
- <%@first_batch = []%>
-<%@south_side_venues.each do |venue|%>
- <%a= venue.id%>
- <%events = @events.where(venue_id: a)%>
-  <%events.each do |event|%>
-     <%@first_batch.push(event)%>
-    <%end%>
-    <%end%>
 
-  <!-- venues -->
-  <% @south_side_venues.order("name ASC").each do |venue| %>
-
-  <%unless @todays_feature.count== 0%>
-<div class ="center" id="featured-dish">
-
-  <%=render partial: "shared/featured_dish_table"%>
-</div>
-<%end%>
-
-
-  <div style="display:none;">
- <div class="row hourslist">
-        <div class="col s12">
-          <div class="card beerlist">
-            <div class="card-content special-by-day">
-              <h4 class="venues"><%= venue.name %></h4>
-
-          <div class="timeforspecial streets">
-              <%= truncate(venue.address, length: 40) %><br/>
-              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
-              </div>
-            </div>
-
-              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
-
-            <div class="arrow">
-                <%= image_tag "arrow.png"%>
-              </div>
-          </div>
-        </div>
-      </div>
-  </div>
-   <% end %>
+ <% @daily_specials = @todays_feature.where(neighborhood_id: 1)
+ <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
   <hr>
 <h4 class="flow-text listtitle">Shadyside</h4>
   </div>
-<%@first_batch = []%>
-<%@shadyside_venues.each do |venue|%>
- <%a= venue.id%>
- <%events = @events.where(venue_id: a)%>
-  <%events.each do |event|%>
-     <%@first_batch.push(event)%>
-    <%end%>
-    <%end%>
 
-  <!-- venues -->
-  <% @shadyside_venues.order("name ASC").each do |venue| %>
-
-
-  <%unless @todays_feature.count== 0%>
-<div class ="center" id="featured-dish">
-
-  <%=render partial: "shared/featured_dish_table"%>
-</div>
-<%end%>
-
-
-  <div style="display:none">
- <div class="row hourslist">
-        <div class="col s12">
-          <div class="card beerlist">
-            <div class="card-content special-by-day">
-              <h4 class="venues"><%= venue.name %></h4>
-
-          <div class="timeforspecial streets">
-              <%= truncate(venue.address, length: 40) %><br/>
-              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
-              </div>
-            </div>
-
-              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
-
-
-            <div class="arrow">
-                <%= image_tag "arrow.png"%>
-              </div>
-          </div>
-        </div>
-      </div>
-  </div>
-   <% end %>
+<% @daily_specials = @todays_feature.where(neighborhood_id: 2)
+<%= render partial: "daily_specials/list"%>
 
   <div class="title-sep">
     <hr>
@@ -208,86 +127,50 @@
 <h4 class="flow-text listtitle">Oakland</h4>
 
   </div>
- <%@first_batch = []%>
-<%@oakland_venues.each do |venue|%>
- <%a= venue.id%>
- <%events = @events.where(venue_id: a)%>
-  <%events.each do |event|%>
-     <%@first_batch.push(event)%>
-    <%end%>
-    <%end%>
 
-  <!-- venues -->
-  <% @oakland_venues.order("name ASC").each do |venue| %>
-
-  <%unless @todays_feature.count== 0%>
-<div class ="center" id="featured-dish">
-
-  <%=render partial: "shared/featured_dish_table"%>
-</div>
-<%end%>
-
-  <div style="display:none;">
- <div class="row hourslist">
-        <div class="col s12">
-          <div class="card beerlist">
-            <div class="card-content special-by-day">
-              <h4 class="venues"><%= venue.name %></h4>
-
-          <div class="timeforspecial streets">
-              <%= truncate(venue.address, length: 40) %><br/>
-              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
-              </div>
-            </div>
-
-              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
-
-            <div class="arrow">
-                <%= image_tag "arrow.png"%>
-              </div>
-          </div>
-        </div>
-      </div>
-  </div>
-   <% end %>
+ <% @daily_specials = @todays_feature.where(neighborhood_id: 3)
+ <%= render partial: "daily_specials/list"%>
 
   <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">Lawrenceville</h4>
   </div>
- <%@first_batch = []%>
-<%@lawrenceville_venues.each do |venue|%>
- <%a= venue.id%>
- <%events = @events.where(venue_id: a)%>
-  <%events.each do |event|%>
-     <%@first_batch.push(event)%>
-    <%end%>
-    <%end%>
 
-  <!-- venues -->
-  <% @lawrenceville_venues.order("name ASC").each do |venue| %>
- <div class="row hourslist">
-        <div class="col s12">
-          <div class="card beerlist">
-            <div class="card-content special-by-day">
-              <h4 class="venues"><%= venue.name %></h4>
+<% @daily_specials = @todays_feature.where(neighborhood_id: 7)
+<%= render partial: "daily_specials/list"%>
 
-          <div class="timeforspecial streets">
-              <%= truncate(venue.address, length: 40) %><br/>
-              <%=Neighborhood.where(id: venue.neighborhood_id).first.name %>
-              </div>
-            </div>
+<div class="title-sep">
+ <hr>
+  <h4 class="flow-text listtitle">Cultural District</h4>
+</div>
 
-              <%= link_to 'Show', venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
+<% @daily_specials = @todays_feature.where(neighborhood_id: 6)
+<%= render partial: "daily_specials/list"%>
 
+<div class="title-sep">
+  <hr>
+  <h4 class="flow-text listtitle">Bloomfield</h4>
+</div>
 
-            <div class="arrow">
-                <%= image_tag "arrow.png"%>
-              </div>
-          </div>
-        </div>
-      </div>
-   <% end %>
+<% @daily_specials = @todays_feature.where(neighborhood_id: 6)
+<%= render partial: "daily_specials/list"%>
+
+<div class="title-sep">
+  <hr>
+  <h4 class="flow-text listtitle">East Liberty</h4>
+</div>
+
+<% @daily_specials = @todays_feature.where(neighborhood_id: 6)
+<%= render partial: "daily_specials/list"%>
+
+<div class="title-sep">
+  <hr>
+  <h4 class="flow-text listtitle">Squirrel Hill</h4>
+</div>
+
+<% @daily_specials = @todays_feature.where(neighborhood_id: 6)
+<%= render partial: "daily_specials/list"%>
+
 </div>
 
 <div id="featured-urbanist" class="center">
