@@ -1,9 +1,9 @@
-
+<%cache do%>
 <div class="specials-header shadyside-header neighborhoodtop">
    <h4 class="flow-text">Shadyside</h4>
    <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
 </div>
-
+<%end%>
 
 <div class="row" style="margin:0;">
     <div class="col s12 profile-tabs neiborhoodprofile">

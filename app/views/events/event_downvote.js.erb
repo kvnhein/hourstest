@@ -1,0 +1,5 @@
+$('#down<%=@event.id%>').bind('ajax:success', function() {
+    $('#event<%=@event.id%>').html('<%=escape_javascript @event.get_upvotes.size.to_s %>');
+    $('#like-<%=@event.id%>').html('<%=escape_javascript (render partial: "shared/event_upvote") %>');
+
+});

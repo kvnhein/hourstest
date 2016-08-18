@@ -10,9 +10,11 @@ class ApplicationController < ActionController::Base
 
 def get_neighborhoods
 	@neighborhoods ||= Neighborhood.all
+ 
 end
 def get_venues
 	@venues ||= Venue.all
+ 
 end
 
 
@@ -44,6 +46,6 @@ end
      redirect_to '/' unless current_user
    end
 
- 
+
 
 end

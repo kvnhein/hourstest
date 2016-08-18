@@ -1,1 +1,5 @@
-$('#downvote-<%=@daily_special.id%>').html("<%= j render 'downrating'%>")
+$('#down<%=@daily_special.id%>').bind('ajax:success', function() {
+    $('#special<%=@daily_special.id%>').html('<%=escape_javascript @daily_special.get_upvotes.size.to_s %>');
+    $('#like-<%=@daily_special.id%>').html('<%=escape_javascript (render "shared/upvote") %>');
+
+});

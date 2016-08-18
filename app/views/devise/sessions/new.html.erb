@@ -1,8 +1,8 @@
 <div class="detailstitle">
 <h2 class = "flow-text">Log in</h2>
-</div>
-<div class ="hide">
-<%= link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary" %>
+</div><br>
+<div class = "center">
+<%= link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary blue darken-3" %>
 </div>
 
 <div class="form-padding">
@@ -23,13 +23,15 @@
       <%= f.label :remember_me %>
     </div>
   <% end -%>
-
-  <div class="actions login-btn">
-    <%= f.submit "Log in"%>
+<br>
+  <div class="actions login-btn; center">
+    <%= f.submit "Log in",  class: "waves-effect waves-light btn"%>
   </div>
 <% end %>
-<!--
+
 <%= render "devise/shared/links" %>
 </div>
--->
+<br>
+  <div class = "center">
   <p>Forgot Password? Email troyacox@gmail.com</p>
+  </div>

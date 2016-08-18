@@ -15,6 +15,12 @@
         </div>
         <div class="card-content">
           <%=event.text%>
+          <!--Like Button-->
+          <div class = "hide">
+          <%@j = event%>
+          <%=render partial: "daily_specials/like_form"%>
+          </div>
+          <!--End Of Like Button-->
         </div>
         <div class="card-action">
            <%= event.description%>
@@ -43,7 +49,7 @@
 
 <%end%>
 <%if @button == 1 %>
-  <div>
+  <div class ="hide">
     <%= link_to 'New Feature', new_daily_special_path, :id => "feat_dish" %>
   </div>
 <%end%>

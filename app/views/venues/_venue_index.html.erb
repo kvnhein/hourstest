@@ -1,0 +1,21 @@
+<div class="row hourslist">
+        <div class="col s12">
+          <div class="card beerlist">
+            <div class="card-content special-by-day">
+              <h4 class="venues"><%= @venue.name %></h4>
+
+          <div class="timeforspecial streets">
+              <%= truncate(@venue.address, length: 40) %><br/>
+              <%=Neighborhood.where(id: @venue.neighborhood_id).first.name %>
+              </div>
+            </div>
+
+              <%= link_to 'Show', @venue, class: "activator waves-effect waves-light btn openhours", 'data-no-turbolink' => true  %>
+
+
+            <div class="arrow">
+                <%= image_tag "arrow.png"%>
+              </div>
+          </div>
+        </div>
+      </div>

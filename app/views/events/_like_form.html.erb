@@ -1,0 +1,15 @@
+<div class = "right">
+            <div class = "valign-wrapper">
+              <div id='event<%=@d.id%>'>
+                <%= @d.get_likes.size%>
+              </div>
+              <div id = 'like-<%=@d.id%>'>
+
+                <% if current_user.voted_as_when_voted_for @d %>
+				          <%= render 'event_downvote'%>
+			          <% else %>
+				          <%= render 'event_upvote' %>
+			          <% end %>
+                </div>
+              </div>
+            </div>

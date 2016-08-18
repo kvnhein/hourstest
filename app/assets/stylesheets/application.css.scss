@@ -1018,6 +1018,16 @@ iframe {
     background-position: center;
 }
 
+.featurebtn {
+    background: url(wings.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
 .oaklandbtn {
     background: url(oaklandbtn.jpg);
   background-repeat: no-repeat;
@@ -1320,6 +1330,7 @@ i.tiny {
     font-weight: 800;
     text-transform: uppercase;
     padding-top: 30px;
+   padding-bottom: 30px;
     letter-spacing: 1px;
   text-align:center;
 }

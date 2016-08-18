@@ -15,7 +15,8 @@ Rails.application.routes.draw do
           put "like", to: "daily_specials#upvote"
           put "dislike", to: "daily_specials#downvote"
         end
-      end
+   end
+
   resources :liqours do
     member do
       patch :add_to_reserve, :add_to_current
@@ -43,6 +44,13 @@ Rails.application.routes.draw do
         end
       end
 
+resources :events do
+    member do
+          put "like", to: "events#event_upvote"
+          put "dislike", to: "events#event_downvote"
+        end
+   end
+
 
  get 'south_side/autocomplete_event_special'
       get 'south_side' => 'events#south_side'
@@ -65,6 +73,7 @@ get 'oakland/autocomplete_event_special'
   get 'urbanist/autocomplete_event_special'
       get 'urbanist' => 'events#urbanist'
          resources :events
+
 
   resources :venues do
     member do

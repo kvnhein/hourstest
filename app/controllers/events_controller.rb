@@ -1,13 +1,18 @@
 class EventsController < ApplicationController
   after_filter "save_my_previous_url", only: [:new]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :event_upvote, :event_downvote]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :require_owner_event, only: [:edit, :update, :destroy]
   autocomplete :event, :special, :full => true
   # GET /events
   # GET /events.json
-  def about_us
 
+  def event_upvote
+  @event.liked_by current_user
+  end
+
+  def event_downvote
+  @event.unliked_by current_user
   end
 
   def urbanist
@@ -16,11 +21,22 @@ class EventsController < ApplicationController
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
+
     @shadyside_venues = Venue.where(urbanist: true, neighborhood_id: 2)
     @south_side_venues = Venue.where(urbanist: true, neighborhood_id: 1)
     @oakland_venues = Venue.where(urbanist: true, neighborhood_id: 3)
     @lawrenceville_venues = Venue.where(urbanist: true, neighborhood_id: 6)
     @market_square_venues = Venue.where(urbanist: true, neighborhood_id: 5)
+
+    @urbanist_venues = Venue.where(urbanist: true)
+    @todays_feature =  DailySpecial.where(venue_id:  @urbanist_venues).today
+
+    @shadyside_todays_feature = DailySpecial.where(venue_id: @shadyside_venues).today
+    @south_side_todays_feature = DailySpecial.where(venue_id: @south_side_venues).today
+    @oakland_todays_feature = DailySpecial.where(venue_id: @oakland_venues).today
+    @lawrenceville_todays_feature = DailySpecial.where(venue_id: @lawrenceville_venues).today
+    @market_square_todays_feature = DailySpecial.where(venue_id: @market_square_venues).today
+
     @verified_this_week = Venue.between_times(@week_ago, @today)
     @verified_after_week = Venue.between_times(@month_ago,@week_ago)
     @verified_month_ago = Venue.before(@month_ago)
@@ -61,7 +77,7 @@ class EventsController < ApplicationController
     else
     end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
   end
 
   def save_my_previous_url
@@ -71,6 +87,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    fresh_when last_modified: @events.maximum(:updated_at)
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     @l = Time.now.in_time_zone("Eastern Time (US & Canada)").min

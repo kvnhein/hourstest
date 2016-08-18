@@ -1,34 +1,22 @@
 class DailySpecialsController < ApplicationController
-  before_action :set_daily_special, only: [:show, :edit, :update, :destroy, :dish_limited, :dish_not_limited]
-  before_action :authenticate_user!, only: [:index,:new, :edit, :update, :destroy]
+  before_action :set_daily_special, only: [:show, :edit, :update, :destroy, :dish_limited, :dish_not_limited,:upvote, :downvote]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy,:upvote, :downvote]
 
   # GET /daily_specials
   # GET /daily_specials.json
   def index
     @daily_specials = DailySpecial.all
+
   end
 
   def upvote
-
-  @daily_special = DailySpecial.find(params[:id])
-  current_user.likes @daily_special
-
-  @upvotes = @daily_special.get_likes.size
-  @downvotes = @daily_special.get_dislikes.size
-
-    respond_to do |format|
-      format.js
-    end
-
-
+  @daily_special.liked_by current_user
+  
   end
 
   def downvote
-  @daily_special = DailySpecial.find(params[:id])
-  @daily_special.downvote_by(current_user)
-  @votes = @daily_special.get_likes.size
-  @downvotes = @daily_special.get_dislikes.size
-  redirect_to :back
+  @daily_special.unliked_by current_user
+  
   end
   # GET /daily_specials/1
   # GET /daily_specials/1.json

@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   validates :special, presence: true
 scope :special_like, -> (special) { where("special ilike ?", special)}
   belongs_to :venue
-
+acts_as_votable
  def event_venue
   Venue.where(id: self.venue_id).first
  end

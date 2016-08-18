@@ -8,11 +8,13 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all
+    fresh_when last_modified: @venues.maximum(:updated_at)
+
     visitor_latitude = request.location.latitude
     visitor_longitude = request.location.longitude
     @locationl = visitor_latitude
     @locationg = visitor_longitude
-  
+
   end
 
   def users_venues
@@ -138,7 +140,7 @@ class VenuesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_venue
       @venue = Venue.find(params[:id])
-
+      fresh_when @venue
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
