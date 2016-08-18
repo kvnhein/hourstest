@@ -110,7 +110,7 @@
 <h4 class="flow-text listtitle">South Side</h4>
   </div>
 
- <% @daily_specials = @todays_feature.where(neighborhood_id: 1)&>
+ <% @daily_specials = @todays_feature.where(neighborhood_id: 1)%>
  <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
