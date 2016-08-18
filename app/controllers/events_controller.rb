@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     @market_square_venues = Venue.where(urbanist: true, neighborhood_id: 5)
 
     @urbanist_venues = Venue.where(urbanist: true)
-    @todays_feature =  DailySpecial.where(venue_id:  @urbanist_venues).today
+    @todays_feature =  DailySpecial.where(venue_id:  @urbanist_venues)
 
     @shadyside_todays_feature = DailySpecial.where(venue_id: @shadyside_venues).today
     @south_side_todays_feature = DailySpecial.where(venue_id: @south_side_venues).today
