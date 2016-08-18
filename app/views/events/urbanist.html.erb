@@ -110,7 +110,7 @@
 <h4 class="flow-text listtitle">South Side</h4>
   </div>
 
- <% @daily_specials = @todays_feature.where(neighborhood_id: 1)%>
+ <% @daily_specials = @todays_feature.where(venue_id: @market_square_venues)%>
  <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -118,7 +118,7 @@
 <h4 class="flow-text listtitle">Shadyside</h4>
   </div>
 
-<% @daily_specials = @todays_feature.where(neighborhood_id: 2)%>
+<% @daily_specials = @todays_feature.where(venue_id: @shadyside_venues)%>
 <%= render partial: "daily_specials/list"%>
 
   <div class="title-sep">
@@ -128,7 +128,7 @@
 
   </div>
 
- <% @daily_specials = @todays_feature.where(neighborhood_id: 3)%>
+ <% @daily_specials = @todays_feature.where(venue_id: @oakland_venues)%>
  <%= render partial: "daily_specials/list"%>
 
   <div class="title-sep">
@@ -136,7 +136,7 @@
 <h4 class="flow-text listtitle">Lawrenceville</h4>
   </div>
 
-<% @daily_specials = @todays_feature.where(neighborhood_id: 7)%>
+<% @daily_specials = @todays_feature.where(venue_id: @lawrenceville_venues)%>
 <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -144,7 +144,7 @@
   <h4 class="flow-text listtitle">Cultural District</h4>
 </div>
 
-<% @daily_specials = @todays_feature.where(neighborhood_id: 6)%>
+<% @daily_specials = @todays_feature.where(neighbor_id: @oakland_venues)%>
 <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -152,7 +152,7 @@
   <h4 class="flow-text listtitle">Bloomfield</h4>
 </div>
 
-<% @daily_specials = @todays_feature.where(neighborhood_id: 6)%>
+<% @daily_specials = @todays_feature.where(neighbor_id: @oakland_venues)%>
 <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -160,7 +160,7 @@
   <h4 class="flow-text listtitle">East Liberty</h4>
 </div>
 
-<% @daily_specials = @todays_feature.where(neighborhood_id: 6)%>
+<% @daily_specials = @todays_feature.where(neighbor_id: @oakland_venues)%>
 <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -168,7 +168,7 @@
   <h4 class="flow-text listtitle">Squirrel Hill</h4>
 </div>
 
-<% @daily_specials = @todays_feature.where(neighborhood_id: 6)%>
+<% @daily_specials = @todays_feature.where(neighbor_id: @oakland_venues)%>
 <%= render partial: "daily_specials/list"%>
 
 </div>
