@@ -2,7 +2,7 @@
 
 <%if @daily_specials.count > 0 %>
 
-<%@daily_specials.shuffle.before(Date.today+10).each do |event| %>
+<%@daily_specials.before(Date.today+7).shuffle.each do |event| %>
 
 <%@j=event%>
 <div class="row">
