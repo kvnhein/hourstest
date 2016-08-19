@@ -10,10 +10,7 @@ class VenuesController < ApplicationController
     @venues = Venue.all
     fresh_when last_modified: @venues.maximum(:updated_at)
 
-    visitor_latitude = request.location.latitude
-    visitor_longitude = request.location.longitude
-    @locationl = visitor_latitude
-    @locationg = visitor_longitude
+    
 
   end
 
