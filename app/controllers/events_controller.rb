@@ -30,6 +30,10 @@ class EventsController < ApplicationController
 
     @urbanist_venues = Venue.where(urbanist: true)
     @todays_feature =  DailySpecial.today
+    
+    @verified_this_week = Venue.between_times(@week_ago, @today).where(urbanist: true)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago).where(urbanist: true)
+    @verified_month_ago = Venue.before(@month_ago).where(urbanist: true)
 
     @shadyside_todays_feature = DailySpecial.where(venue_id: @shadyside_venues.pluck(:id)).today
     @south_side_todays_feature = DailySpecial.where(venue_id: @south_side_venues.pluck(:id)).today
