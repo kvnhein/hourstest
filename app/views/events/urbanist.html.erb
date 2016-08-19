@@ -98,77 +98,50 @@
     <%= image_tag "powered-hours.png"%>
   </div>
 
-<%if DailySpecial.where(venue_id:  @market_square_venues).today.count > 0%>
+<%if DailySpecial.where(venue_id: @market_square_venues.pluck(:id)).today.count > 0 %>
   <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">Market Square</h4>
   </div>
-<%@daily_Specials =  @market_square_todays_feature%>
- <%= render partial: "shared/featured_dish_table"%>
+<%@verified_this_week = Venue.between_times(@week_ago, @today).where(urbanist: true, neighborhood_id: 5)%>
+<%@verified_after_week = Venue.between_times(@month_ago,@week_ago).where(urbanist: true, neighborhood_id: 5)%>
+<%@verified_month_ago = Venue.before(@month_ago).where(urbanist: true, neighborhood_id: 5)%>
+  <%= render partial: "shared/featured_dish_table"%>
 <%end%>
 
-<%if DailySpecial.where(venue_id:  @south_side_venues).today.count > 0%>
+<%if DailySpecial.where(venue_id: @south_side_venues.pluck(:id)).today.count > 0 %>
   <div class="title-sep">
     <hr>
     <h4 class="flow-text listtitle">South Side</h4>
  </div>
-  <%@daily_Specials = @south_side_todays_feature%>
-  <%= render partial: "shared/featured_dish_table"%>
+<%@verified_this_week = Venue.between_times(@week_ago, @today).where(urbanist: true, neighborhood_id: 1)%>
+<%@verified_after_week = Venue.between_times(@month_ago,@week_ago).where(urbanist: true, neighborhood_id: 1)%>
+<%@verified_month_ago = Venue.before(@month_ago).where(urbanist: true, neighborhood_id: 1)%>
+   <%= render partial: "shared/featured_dish_table"%>
 <%end%>
 
- <%if DailySpecial.where(venue_id:  @shadyside_venues).today.count > 0%>
+  <%if DailySpecial.where(venue_id: @shadyside_venues.pluck(:id)).today.count > 0 %>
 <div class="title-sep">
   <hr>
 <h4 class="flow-text listtitle">Shadyside</h4>
   </div>
-<%@daily_Specials = @shadyside_todays_feature%>
-<%= render partial: "shared/featured_dish_table"%>
+<%@verified_this_week = Venue.between_times(@week_ago, @today).where(urbanist: true, neighborhood_id: 2)%>
+<%@verified_after_week = Venue.between_times(@month_ago,@week_ago).where(urbanist: true, neighborhood_id: 2)%>
+<%@verified_month_ago = Venue.before(@month_ago).where(urbanist: true, neighborhood_id: 2)%>
+   <%= render partial: "shared/featured_dish_table"%>
 <%end%>
 
-<%if DailySpecial.where(venue_id:  @oakland_venues).today.count > 0%>
+<%if DailySpecial.where(venue_id: @oakland_venues.pluck(:id)).today.count > 0 %>
 <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">Oakland</h4>
   </div>
-
-<%@daily_Specials = @oakland_todays_feature%>
+<%@verified_this_week = Venue.between_times(@week_ago, @today).where(urbanist: true, neighborhood_id: 3)%>
+<%@verified_after_week = Venue.between_times(@month_ago,@week_ago).where(urbanist: true, neighborhood_id: 3)%>
+<%@verified_month_ago = Venue.before(@month_ago).where(urbanist: true, neighborhood_id: 3)%>
  <%= render partial: "shared/featured_dish_table"%>
-  <%end%>
-<!--
-
-
-<div class="title-sep">
- <hr>
-  <h4 class="flow-text listtitle">Cultural District</h4>
-</div>
-
-<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
-<%= render partial: "daily_specials/list"%>
-
-<div class="title-sep">
-  <hr>
-  <h4 class="flow-text listtitle">Bloomfield</h4>
-</div>
-
-<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
-<%= render partial: "daily_specials/list"%>
-
-<div class="title-sep">
-  <hr>
-  <h4 class="flow-text listtitle">East Liberty</h4>
-</div>
-
-<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
-<%= render partial: "daily_specials/list"%>
-
-<div class="title-sep">
-  <hr>
-  <h4 class="flow-text listtitle">Squirrel Hill</h4>
-</div>
-
-<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
-<%= render partial: "daily_specials/list"%>
--->
+<%end%>
+<!--   End of Features -->
 </div>
 
 <div id="featured-urbanist" class="center">

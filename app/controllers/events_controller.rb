@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     @market_square_venues = Venue.where(urbanist: true, neighborhood_id: 5)
 
     @urbanist_venues = Venue.where(urbanist: true)
-    @todays_feature =  DailySpecial.where(venue_id:  @urbanist_venues)
+    @todays_feature =  DailySpecial.today
 
     @shadyside_todays_feature = DailySpecial.where(venue_id: @shadyside_venues.pluck(:id)).today
     @south_side_todays_feature = DailySpecial.where(venue_id: @south_side_venues.pluck(:id)).today
@@ -37,9 +37,6 @@ class EventsController < ApplicationController
     @lawrenceville_todays_feature = DailySpecial.where(venue_id: @lawrenceville_venues.pluck(:id)).today
     @market_square_todays_feature = DailySpecial.where(venue_id: @market_square_venues.pluck(:id)).today
 
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -70,7 +67,7 @@ class EventsController < ApplicationController
 
 
    @v = @venues.where( urbanist: true)
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
+
    @events = Event.where(day: @day_tag)
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')

@@ -1,8 +1,7 @@
-<div class = "right">
+<div>
             <div class = "valign-wrapper">
-              <div id='special<%=@j.id%>'>
-                <%= @j.get_likes.size%>
-              </div>
+               <div class="col s1 pull-s1">
+
               <div id = 'like-<%=@j.id%>'>
             <% if user_signed_in? %>
                 <% if current_user.voted_as_when_voted_for @j %>
@@ -15,4 +14,11 @@
                 <%end%>
                 </div>
               </div>
+              <div id='special<%=@j.id%>'>
+                <%= @j.get_likes.size%>
+              </div>
+              </div>
             </div>
+
+
+
