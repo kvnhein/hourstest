@@ -98,7 +98,7 @@
     <%= image_tag "powered-hours.png"%>
   </div>
 
-<%if DailySpecial.where(venue_id:  @market_square_venues.pluck(:id)) > 0%>
+<%if DailySpecial.where(venue_id:  @market_square_venues.pluck(:id)).count > 0%>
   <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">Market Square</h4>
@@ -107,7 +107,7 @@
  <%= render partial: "shared/featured_dish_table"%>
 <%end%>
 
-<%if DailySpecial.where(venue_id:  @south_side_venues.pluck(:id))>0%>
+<%if DailySpecial.where(venue_id:  @south_side_venues.pluck(:id)).count > 0%>
   <div class="title-sep">
     <hr>
     <h4 class="flow-text listtitle">South Side</h4>
@@ -117,7 +117,7 @@
    <%= render partial: "daily_specials/list"%>
 <%end%>
 
- <%if DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))>0%>
+ <%if DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id)).count > 0%>
 <div class="title-sep">
   <hr>
 <h4 class="flow-text listtitle">Shadyside</h4>
@@ -127,7 +127,7 @@
 <%= render partial: "daily_specials/list"%>
 <%end%>
 
-<%if DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))>0%>
+<%if DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id)).count > 0%>
 <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">Oakland</h4>
@@ -136,7 +136,7 @@
 <%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
  <%= render partial: "daily_specials/list"%>
 <%end%>
-<!--  
+<!--
   <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">Lawrenceville</h4>
