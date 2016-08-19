@@ -102,15 +102,15 @@
     <hr>
 <h4 class="flow-text listtitle">Market Square</h4>
   </div>
- 
- <%= render partial: "daily_specials/list"%>
+<%@daily_Specials = DailySpecial.where(venue_id:  @market_square_venues.pluck(:id))%>
+ <%= render partial: "shared/featured_dish_table"%>
 
   <div class="title-sep">
     <hr>
 <h4 class="flow-text listtitle">South Side</h4>
   </div>
 
- 
+<%@daily_Specials = DailySpecial.where(venue_id:  @south_side_venues.pluck(:id))%>
  <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -118,7 +118,7 @@
 <h4 class="flow-text listtitle">Shadyside</h4>
   </div>
 
-
+<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
 <%= render partial: "daily_specials/list"%>
 
   <div class="title-sep">
@@ -128,7 +128,7 @@
 
   </div>
 
- 
+<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
  <%= render partial: "daily_specials/list"%>
 
   <div class="title-sep">
@@ -136,6 +136,8 @@
 <h4 class="flow-text listtitle">Lawrenceville</h4>
   </div>
 
+<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
+<%= render partial: "daily_specials/list"%>
 
 
 <div class="title-sep">
@@ -143,7 +145,7 @@
   <h4 class="flow-text listtitle">Cultural District</h4>
 </div>
 
-
+<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
 <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -151,7 +153,7 @@
   <h4 class="flow-text listtitle">Bloomfield</h4>
 </div>
 
-
+<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
 <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -159,7 +161,7 @@
   <h4 class="flow-text listtitle">East Liberty</h4>
 </div>
 
-
+<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
 <%= render partial: "daily_specials/list"%>
 
 <div class="title-sep">
@@ -167,7 +169,7 @@
   <h4 class="flow-text listtitle">Squirrel Hill</h4>
 </div>
 
-
+<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
 <%= render partial: "daily_specials/list"%>
 
 </div>
