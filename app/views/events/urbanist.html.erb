@@ -103,7 +103,7 @@
     <hr>
 <h4 class="flow-text listtitle">Market Square</h4>
   </div>
-<%@daily_Specials = DailySpecial.where(venue_id:  @market_square_venues.pluck(:id))%>
+<%@daily_Specials =  @market_square_todays_feature%>
  <%= render partial: "shared/featured_dish_table"%>
 <%end%>
 
@@ -112,7 +112,7 @@
     <hr>
     <h4 class="flow-text listtitle">South Side</h4>
  </div>
-  <%@daily_Specials = DailySpecial.where(venue_id:  @south_side_venues.pluck(:id))%>
+  <%@daily_Specials = @south_side_todays_feature%>
   <%= render partial: "shared/featured_dish_table"%>
 <%end%>
 
@@ -121,7 +121,7 @@
   <hr>
 <h4 class="flow-text listtitle">Shadyside</h4>
   </div>
-<%@daily_Specials = DailySpecial.where(venue_id:  @shadyside_venues.pluck(:id))%>
+<%@daily_Specials = @shadyside_todays_feature%>
 <%= render partial: "shared/featured_dish_table"%>
 <%end%>
 
@@ -131,11 +131,11 @@
 <h4 class="flow-text listtitle">Oakland</h4>
   </div>
 
-<%@daily_Specials = DailySpecial.where(venue_id:  @oakland_venues.pluck(:id))%>
+<%@daily_Specials = @oakland_todays_feature%>
  <%= render partial: "shared/featured_dish_table"%>
   <%end%>
 <!--
-  
+
 
 <div class="title-sep">
  <hr>

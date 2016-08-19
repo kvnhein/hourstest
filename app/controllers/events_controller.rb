@@ -31,11 +31,11 @@ class EventsController < ApplicationController
     @urbanist_venues = Venue.where(urbanist: true)
     @todays_feature =  DailySpecial.where(venue_id:  @urbanist_venues)
 
-    @shadyside_todays_feature = DailySpecial.where(venue_id: @shadyside_venues).today
-    @south_side_todays_feature = DailySpecial.where(venue_id: @south_side_venues).today
-    @oakland_todays_feature = DailySpecial.where(venue_id: @oakland_venues).today
-    @lawrenceville_todays_feature = DailySpecial.where(venue_id: @lawrenceville_venues).today
-    @market_square_todays_feature = DailySpecial.where(venue_id: @market_square_venues).today
+    @shadyside_todays_feature = DailySpecial.where(venue_id: @shadyside_venues.pluck(:id)).today
+    @south_side_todays_feature = DailySpecial.where(venue_id: @south_side_venues.pluck(:id)).today
+    @oakland_todays_feature = DailySpecial.where(venue_id: @oakland_venues.pluck(:id)).today
+    @lawrenceville_todays_feature = DailySpecial.where(venue_id: @lawrenceville_venues.pluck(:id)).today
+    @market_square_todays_feature = DailySpecial.where(venue_id: @market_square_venues.pluck(:id)).today
 
     @verified_this_week = Venue.between_times(@week_ago, @today)
     @verified_after_week = Venue.between_times(@month_ago,@week_ago)
