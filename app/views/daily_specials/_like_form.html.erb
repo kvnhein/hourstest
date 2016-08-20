@@ -1,24 +1,21 @@
-<div>
-            <div class = "valign-wrapper">
-               <div class="col s1 pull-s1">
 
-              <div id = 'like-<%=@j.id%>'>
-            <% if user_signed_in? %>
-                <% if current_user.voted_as_when_voted_for @j %>
-				          <%= render 'daily_specials/downvote'%>
-			          <% else %>
-				          <%= render 'daily_specials/upvote' %>
-			          <% end %>
-             <%else%>
-                <%= link_to "Like", new_user_session_path%>
-                <%end%>
-                </div>
-              </div>
-              <div id='special<%=@j.id%>'>
-                <%= @j.get_likes.size%>
-              </div>
-              </div>
-            </div>
-
+<div class="like-btn">
+<div class="like-like">
+   <div id = 'like-<%=@j.id%>'>
+      <% if user_signed_in? %>
+      <% if current_user.voted_as_when_voted_for @j %>
+				  <%= render 'daily_specials/downvote'%>
+			    <% else %>
+				    <%= render 'daily_specials/upvote' %>
+			    <% end %>
+          <%else%>
+             <%= link_to "Like", new_user_session_path%>
+          <%end%>
+     </div>
+</div>
+<div class="like-number" id='special<%=@j.id%>'>
+   <%= @j.get_likes.size%>
+</div>
+</div>
 
 

@@ -44,13 +44,44 @@ footer.page-footer {
   display:none;
 }
 
+
+
 #specials .collection {
-  border:0;
+  border: 0;
+    margin: 0;
+    padding: 10px;
+}
+
+.like-btn {
+  position:absolute;
+  width: 105px;
+  top:10px;
+  right:0;
+  text-align: right;
+  color: #1fdeb4;
+  text-transform:uppercase;
+}
+
+.like-btn a{
+  color: #1fdeb4;
+}
+
+.like-like {
+  display:inline-block;
+   padding-right: 5px;
+}
+
+.like-number {
+  display:inline-block;
 }
 
 .featured-dish-section {
-  position:relative;
-      margin-top: 20px;
+     position: relative;
+    margin-top: 20px;
+    background: #fff;
+    margin: 5px;
+    padding: 10px !important;
+
 }
 
 .featured-dish-section h5 {
@@ -66,28 +97,37 @@ footer.page-footer {
 
 .featured-dish-section .card {
   border:0;
+  border-bottom: 1px solid #d2d2d2;
+}
+
+.featured-dish-section .card-image {
+  margin: 0 -20px;
 }
 
 .featured-dish-section h6 {
-  margin: 2px 0 0 0;
+     margin: 2px 0 0 0;
     position: absolute;
-    top: 0px;
+    top: 10px;
     right: 10px;
+    color: #999999;
+    font-size: 14px;
 }
 
 .featured-dish-section .card .card-content {
-     padding: 10px 0px 0 0;
+    padding: 10px 90px 8px 0;
     border-radius: 0;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 14px;
+    position: relative;
+    text-transform: capitalize;
 }
 
 .double-buttons {
-padding: 8px 0;
-    border-top: 1px solid #999999;
-    border-bottom: 1px solid #999999;
-    margin: 20px 0 0 0;
-  text-align:center;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    margin: 20px 0 -21px 0;
+    text-align: center;
+    background-color: #fff;
 }
 
 .double-buttons .material-icons {
@@ -102,25 +142,28 @@ padding: 8px 0;
       padding: 2px 0;
 }
 
+.double-buttons .s6:first-child {
+      border-right: 1px solid #d2d2d2;
+}
+
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   margin:0;
   color:#999999;
 }
 
-.double-buttons .s6:first-child {
-border-right: 1px solid #999999;
-}
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-large):not(.btn-floating) {
   margin: 0 auto;
     color: #999999;
     width: 24px;
     display: block;
+      padding-top: 5px;
 }
 
 .featured-dish-section .card .card-action {
   border:0;
       padding: 0 0 20px 0;
+  line-height: 18px;
 }
 
 .urbanist-nav {

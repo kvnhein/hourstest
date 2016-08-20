@@ -28,11 +28,7 @@
               <div class="arrow">
                 <%= image_tag "arrow.png"%>
                 <div class = "hide">
-                 <% visitor_latitude = request.location.latitude%>
-                <% visitor_longitude = request.location.longitude%>
-                <% @locationl = visitor_latitude.to_s%>
-                <% @locationg = visitor_longitude.to_s%>
-                <%= Venue.where( id: @e[0].venue_id).first.distance_to([@locationl, @locationg ]).round(2)%> miles away
+                 
                 </div>
               </div>
         <% if Venue.where(id: @e[0].venue_id).first.urbanist == true %>

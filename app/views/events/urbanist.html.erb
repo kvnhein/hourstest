@@ -165,10 +165,12 @@
     <hr>
   <h4 class="flow-text listtitle">Market Square</h4>
   </div>
-<%@verified_this_week  = @verified_this_week.where(neighborhood_id: 5)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 5)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 5)%>
+<%@verified_this_week  = @verified_this_weeku.where(neighborhood_id: 5)%>
+<%@verified_after_week = @verified_after_weeku.where(neighborhood_id: 5)%>
+<%@verified_month_ago  = @verified_month_agou.where(neighborhood_id: 5)%>
+<div>
 <%=render partial: "shared/dynamic_table_card"%>
+</div>
 <%end%>
 
 <%if Event.where(venue_id: @south_side_venues.pluck(:id), day: @day_tag).count > 0 %>
@@ -176,9 +178,9 @@
     <hr>
 <h4 class="flow-text listtitle">South Side</h4>
   </div>
- <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 1)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 1)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 1)%>
+<%@verified_this_week  = @verified_this_weeku.where(neighborhood_id: 1)%>
+<%@verified_after_week = @verified_after_weeku.where(neighborhood_id: 1)%>
+<%@verified_month_ago  = @verified_month_agou.where(neighborhood_id: 1)%>
 <%=render partial: "shared/dynamic_table_card"%>
  <% end %>
 
@@ -187,10 +189,12 @@
   <hr>
 <h4 class="flow-text listtitle">Shadyside</h4>
   </div>
-<%@verified_this_week  = @verified_this_week.where(neighborhood_id: 2)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 2)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 2)%>
+<%@verified_this_week  = @verified_this_weeku.where(neighborhood_id: 2)%>
+<%@verified_after_week = @verified_after_weeku.where(neighborhood_id: 2)%>
+<%@verified_month_ago  = @verified_month_agou.where(neighborhood_id: 2)%>
+
 <%=render partial: "shared/dynamic_table_card"%>
+
 <% end %>
 
 
@@ -199,9 +203,9 @@
     <hr>
 <h4 class="flow-text listtitle">Oakland</h4>
   </div>
- <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 3)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 3)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 3)%>
+ <%@verified_this_week  = @verified_this_weeku.where(neighborhood_id: 3)%>
+<%@verified_after_week = @verified_after_weeku.where(neighborhood_id: 3)%>
+<%@verified_month_ago  = @verified_month_agou.where(neighborhood_id: 3)%>
 <%=render partial: "shared/dynamic_table_card"%>
  <% end %>
 
@@ -210,9 +214,9 @@
     <hr>
 <h4 class="flow-text listtitle">Lawrenceville</h4>
   </div>
- <%@verified_this_week  = @verified_this_week.where(neighborhood_id: 6)%>
-<%@verified_after_week = @verified_after_week.where(neighborhood_id: 6)%>
-<%@verified_month_ago  = @verified_month_ago.where(neighborhood_id: 6)%>
+ <%@verified_this_week  = @verified_this_weeku.where(neighborhood_id: 6)%>
+<%@verified_after_week = @verified_after_weeku.where(neighborhood_id: 6)%>
+<%@verified_month_ago  = @verified_month_agou.where(neighborhood_id: 6)%>
 <%=render partial: "shared/dynamic_table_card"%>
    <% end %>
   </div>
