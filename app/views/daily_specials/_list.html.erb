@@ -21,7 +21,7 @@
              <div class="like-btn">
           <!--<div class = "Left">Available til 10:00 pm</div>-->
              <% @j = event%>
-            <div class="col s1 pull-s2">
+            <div class="like-like">
               <div id = 'like-<%=event.id%>'>
               <% if user_signed_in? %>
                 <% if current_user.voted_as_when_voted_for event %>
@@ -34,7 +34,7 @@
             <%end%>
               </div>
             </div>
-        <div id='special<%=event.id%>'>
+        <div class="like-number" id='special<%=event.id%>'>
                     <%= event.get_likes.size%>
                 </div>
             </div>
@@ -45,9 +45,7 @@
       <div class="card-action">
         <%= event.description%>
       <div>
-    <div class="col s1 pull-s8">
-
-    </div>
+   
       <div class = "hide">
           <%= link_to 'Edit', edit_daily_special_path(event) %>
           <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true  %>

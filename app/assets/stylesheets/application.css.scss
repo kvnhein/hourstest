@@ -44,7 +44,14 @@ footer.page-footer {
   display:none;
 }
 
-
+.landing-title {
+      margin: 20px;
+    font-weight: 800;
+    color: #555555;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 5px;
+}
 
 #specials .collection {
   border: 0;
@@ -652,7 +659,7 @@ nav .button-collapse i {
 
 .beerlist .special-by-day {
   text-align:left;
-  padding: 10px 20px;
+  padding: 10px 54px 10px 20px;
   position:relative;
 }
 
@@ -1211,7 +1218,7 @@ background-position:center;
 -o-background-size:cover;
 background-size:cover;
 background-position:center;
-  height:150px;
+  height:180px;
 }
 
 .specials-header.lawrenceville-header {
