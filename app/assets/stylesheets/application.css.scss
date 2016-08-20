@@ -99,7 +99,18 @@ footer.page-footer {
     padding-right: 118px;
     width: 100%;
     text-align: left;
+    text-transform: capitalize;
+}
 
+.featured-dish-section a{
+      display: inline-block;
+    font-weight: 800;
+    margin: 0px 0 10px 0 !important;
+    font-size: 16px;
+    padding-right: 118px;
+    width: 100%;
+    text-align: left;
+    text-transform: capitalize;
 }
 
 .featured-dish-section .card {

@@ -30,7 +30,7 @@ class Venue < ActiveRecord::Base
 
   def feature_dish_check
     a = self.id
-    b = DailySpecial.where(venue_id: a).count
+    b = DailySpecial.where(venue_id: a).today.count
   end
 
   def cached_all
