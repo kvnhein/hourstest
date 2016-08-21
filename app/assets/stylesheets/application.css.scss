@@ -122,7 +122,7 @@ footer.page-footer {
 }
 
 .featured-dish-section .card-image {
-  margin: 0 -20px;
+  margin: 0 0;
 }
 
 .featured-dish-section h6 {
@@ -1503,5 +1503,9 @@ i.tiny {
    .slider {
      height:260px !important;
    }
+
+   .featured-dish-section .card-image {
+  margin: 0 -20px;
+}
 
   }
