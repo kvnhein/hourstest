@@ -5,9 +5,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :get_neighborhoods
   before_filter :get_venues
+  before_action :configure_permitted_parameters, if: :devise_controller? 
+  
 
-  protected
+protected
 
+def configure_permitted_parameters
+  devise_parameter_sanitizer.for(:sign_up) << :fullname
+  devise_parameter_sanitizer.for(:account_update) << :fullname
+end
+  
 def get_neighborhoods
 	@neighborhoods ||= Neighborhood.all
  
