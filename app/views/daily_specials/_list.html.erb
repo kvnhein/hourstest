@@ -2,7 +2,7 @@
 
 <%if @daily_specials.count > 0 %>
 
-<%@daily_specials.today.shuffle.each do |event| %>
+<%@daily_specials.after(Date.today - 1).shuffle.each do |event| %>
 
 <%@j=event%>
 <div class="row">
@@ -45,7 +45,7 @@
       <div class="card-action">
         <%= event.description%>
       <div>
-   
+
       <div class = "hide">
           <%= link_to 'Edit', edit_daily_special_path(event) %>
           <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true  %>
