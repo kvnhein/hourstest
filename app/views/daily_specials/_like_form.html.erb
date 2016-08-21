@@ -13,9 +13,15 @@
           <%end%>
      </div>
 </div>
+<%if @j.instance_of? DailySpecial%>
 <div class="like-number" id='special<%=@j.id%>'>
    <%= @j.credit + @j.get_likes.size%>
 </div>
+  <%else%>
+  <div class="like-number" id='special<%=@j.id%>'>
+   <%= @j.credit + @j.get_likes.size%>
+</div>
+<%end%>
 </div>
 
 
