@@ -101,7 +101,7 @@
 <%if DailySpecial.where(venue_id: @market_square_venues.pluck(:id)).today.count > 0 %>
   <div class="title-sep">
     <hr>
-<h4 class="flow-text listtitle">Market Square</h4>
+<h4 class="flow-text listtitle">Downtown</h4>
   </div>
 <%@verified_this_week = Venue.between_times(@week_ago, @today).where(urbanist: true, neighborhood_id: 5)%>
 <%@verified_after_week = Venue.between_times(@month_ago,@week_ago).where(urbanist: true, neighborhood_id: 5)%>
