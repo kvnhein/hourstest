@@ -3,9 +3,18 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :event_upvote, :event_downvote]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :require_owner_event, only: [:edit, :update, :destroy]
+  before_action :verified_venues, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
   autocomplete :event, :special, :full => true
   # GET /events
   # GET /events.json
+  def verified_venues
+    @today = Time.now
+    @week_ago = 7.day.ago
+    @month_ago = 1.month.ago
+    @verified_this_week = Venue.between_times(@week_ago, @today)
+    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    @verified_month_ago = Venue.before(@month_ago)
+  end
 
   def event_upvote
   @event.liked_by current_user
@@ -97,12 +106,7 @@ class EventsController < ApplicationController
   def shadyside
     @autocomplete_path = shadyside_autocomplete_event_special_path
     @neighborhood_path = shadyside_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -146,12 +150,7 @@ class EventsController < ApplicationController
   def south_side
     @autocomplete_path = south_side_autocomplete_event_special_path
     @neighborhood_path = south_side_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -195,12 +194,7 @@ class EventsController < ApplicationController
   def oakland
     @autocomplete_path = oakland_autocomplete_event_special_path
     @neighborhood_path = oakland_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -241,15 +235,10 @@ class EventsController < ApplicationController
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
-  def market_square
-    @autocomplete_path = market_square_autocomplete_event_special_path
-    @neighborhood_path = market_square_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+  def downtown
+    @autocomplete_path = down_town_autocomplete_event_special_path
+    @neighborhood_path = downtown_path
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -294,12 +283,7 @@ class EventsController < ApplicationController
   def lawrenceville
     @autocomplete_path = lawrenceville_autocomplete_event_special_path
     @neighborhood_path = lawrenceville_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -344,12 +328,7 @@ class EventsController < ApplicationController
   def bloomfield
     @autocomplete_path = bloomfield_autocomplete_event_special_path
     @neighborhood_path = bloomfield_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -394,12 +373,7 @@ class EventsController < ApplicationController
   def east_liberty
     @autocomplete_path = bloomfield_autocomplete_event_special_path
     @neighborhood_path = bloomfield_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -444,12 +418,7 @@ class EventsController < ApplicationController
   def culture_district
     @autocomplete_path = bloomfield_autocomplete_event_special_path
     @neighborhood_path = bloomfield_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -494,12 +463,7 @@ class EventsController < ApplicationController
   def strip_district
     @autocomplete_path = bloomfield_autocomplete_event_special_path
     @neighborhood_path = bloomfield_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -544,12 +508,7 @@ class EventsController < ApplicationController
   def squirrel_hill
     @autocomplete_path = bloomfield_autocomplete_event_special_path
     @neighborhood_path = bloomfield_path
-    @today = Time.now
-    @week_ago = 7.day.ago
-    @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
+
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")

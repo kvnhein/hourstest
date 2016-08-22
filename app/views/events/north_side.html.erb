@@ -1,0 +1,69 @@
+
+
+<div class="specials-header lawrenceville-header neighborhoodtop">
+
+<h4 class="flow-text">North Side</h4>
+<h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col s12 profile-tabs neiborhoodprofile">
+      <%if @b > 4 && @b < 24 %>
+      <ul class="tabs">
+        <li class="tab col s4"><a href="#venues">Venues</a></li>
+       <div class = "hide-on-med-and-up">
+        <%unless @todays_feature.count== 0%>
+        <li class="tab col s4"><a href="#featured-dish">Features</a></li>
+        <%end%>
+        </div>
+        <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
+      </ul>
+  <%else%>
+      <ul class="tabs">
+        <li class="tab col s4"><a class="active" href="#venues">Venues</a></li>
+        <div class = "hide-on-med-and-up">
+        <%unless @todays_feature.count== 0%>
+        <li class="tab col s4"><a href="#featured-dish">Features</a></li>
+        <%end%>
+        </div>
+        <li class="tab col s4"><a href="#specials">Hours</a></li>
+      </ul>
+   <%end%>
+    </div>
+  </div>
+
+<!--TABS-->
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+<!--END TABS-->
+<div class ="center" id="venues">
+  <%=render partial: "shared/venue_index"%>
+</div>
+
+<div class ="center" id="specials">
+ <%=render partial: "shared/autocomplete"%>
+ <%=render partial: "shared/dynamic_table_card"%>
+</div>
+
+<div class = "hide-on-med-and-up">
+<%unless @todays_feature.count== 0%>
+<div id="featured-dish">
+  <h5 class="flow-text center">Off Menu Features<br> <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+  <%=render partial: "shared/featured_dish_table"%>
+</div>
+<%end%>
+</div>
+<!-- This script is for Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77170385-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

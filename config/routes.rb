@@ -58,8 +58,8 @@ resources :events do
 get 'shadyside/autocomplete_event_special'
       get 'shadyside' => 'events#shadyside'
          resources :events
-get 'market_square/autocomplete_event_special'
-      get 'market_square' => 'events#market_square'
+get 'downtown/autocomplete_event_special'
+      get 'downtown' => 'events#downtown'
          resources :events
 get 'oakland/autocomplete_event_special'
       get 'oakland' => 'events#oakland'
@@ -73,6 +73,18 @@ get 'oakland/autocomplete_event_special'
   get 'urbanist/autocomplete_event_special'
       get 'urbanist' => 'events#urbanist'
          resources :events
+  get 'squirrel_hill/autocomplete_event_special'
+     get 'squirrel_hill' => 'events#squirrel_hill'
+        resources :events
+ get 'strip_district/autocomplete_event_special'
+     get 'strip_district' => 'events#strip_district'
+        resources :events
+  get 'mt_washiington/autocomplete_event_special'
+     get 'mt_washington' => 'events#mt_washington'
+        resources :events
+get 'north_side/autocomplete_event_special'
+     get 'north_side' => 'events#north_side'
+        resources :events
 
 
   resources :venues do
@@ -84,7 +96,7 @@ get 'oakland/autocomplete_event_special'
   resources :neighborhoods
 
    get 'shadyside/autocomplete_event_special'
-   get 'market_square' => 'events#market_square'
+   get 'downtown' => 'events#downtown'
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'
    get 'lawrenceville' => 'events#lawrenceville'
