@@ -184,7 +184,7 @@ class EventsController < ApplicationController
   end
 
   def downtown
-    @autocomplete_path = down_town_autocomplete_event_special_path
+    @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
 
 
