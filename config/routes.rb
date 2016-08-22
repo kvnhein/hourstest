@@ -107,7 +107,7 @@ get 'north_side/autocomplete_event_special'
    get 'users_venues' => 'venues#users_venues'
    get 'about_us' => 'events#about_us'
    get 'urbanist' => 'events#urbanist'
-   get 'culture_district' => 'events#culture_district'
+   
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :require_owner_event, only: [:edit, :update, :destroy]
   before_action :verified_venues, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
+  before_action :event_time, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
   autocomplete :event, :special, :full => true
   # GET /events
   # GET /events.json
@@ -14,6 +15,36 @@ class EventsController < ApplicationController
     @verified_this_week = Venue.between_times(@week_ago, @today)
     @verified_after_week = Venue.between_times(@month_ago,@week_ago)
     @verified_month_ago = Venue.before(@month_ago)
+  end
+
+  def event_time
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
+
+    if t.wday == 0 && @b < 2
+      x = 6
+    elsif @b < 2
+      x = t.wday - 1
+    else
+      x = t.wday
+    end
+
+       if  x == 0
+       @day_tag = "Sunday"
+       elsif x == 1
+       @day_tag = "Monday"
+       elsif x == 2
+       @day_tag = "Tuesday"
+       elsif x == 3
+       @day_tag = "Wednesday"
+       elsif x == 4
+       @day_tag = "Thursday"
+       elsif x == 5
+       @day_tag = "Friday"
+       else
+       @day_tag = "Saturday"
+       end
   end
 
   def event_upvote
@@ -103,43 +134,15 @@ class EventsController < ApplicationController
     @l = Time.now.in_time_zone("Eastern Time (US & Canada)").min
   end
 
-  def shadyside
-    @autocomplete_path = shadyside_autocomplete_event_special_path
-    @neighborhood_path = shadyside_path
-
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
-
+ def shadyside
+   @autocomplete_path = shadyside_autocomplete_event_special_path
+   @neighborhood_path = shadyside_path
    @neighborhood_tag = 2
    @v = @venues.where( neighborhood_id: 2)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
-   if params[:search]
+
+    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
@@ -147,45 +150,17 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
+
   def south_side
-    @autocomplete_path = south_side_autocomplete_event_special_path
-    @neighborhood_path = south_side_path
-
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
-
+   @autocomplete_path = south_side_autocomplete_event_special_path
+   @neighborhood_path = south_side_path
    @neighborhood_tag = 1
    @v = @venues.where( neighborhood_id: 1)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
-   if params[:search]
+
+    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
-    else
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -195,33 +170,6 @@ class EventsController < ApplicationController
     @autocomplete_path = oakland_autocomplete_event_special_path
     @neighborhood_path = oakland_path
 
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
 
    @neighborhood_tag = 3
    @v = @venues.where( neighborhood_id: 3)
@@ -239,33 +187,7 @@ class EventsController < ApplicationController
     @autocomplete_path = down_town_autocomplete_event_special_path
     @neighborhood_path = downtown_path
 
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
 
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
 
    @neighborhood_tag = 5
    hood_id = Neighborhood.where(id: 5).first.id
@@ -280,130 +202,46 @@ class EventsController < ApplicationController
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
+
   def lawrenceville
-    @autocomplete_path = lawrenceville_autocomplete_event_special_path
-    @neighborhood_path = lawrenceville_path
-
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
-
+   @autocomplete_path = lawrenceville_autocomplete_event_special_path
+   @neighborhood_path = lawrenceville_path
    @neighborhood_tag = 7
    hood_id = Neighborhood.where(id: 7).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
-    else
-    end
+   end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+   @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
+
 
   def bloomfield
-    @autocomplete_path = bloomfield_autocomplete_event_special_path
-    @neighborhood_path = bloomfield_path
-
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
-
+   @autocomplete_path = bloomfield_autocomplete_event_special_path
+   @neighborhood_path = bloomfield_path
    @neighborhood_tag = 6
    hood_id = Neighborhood.where(id: 6).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
-   if params[:search]
+
+    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
-    else
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
+
 
   def east_liberty
-    @autocomplete_path = bloomfield_autocomplete_event_special_path
-    @neighborhood_path = bloomfield_path
-
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
-
-   @neighborhood_tag = 6
-   hood_id = Neighborhood.where(id: 6).first.id
+   @autocomplete_path = east_liberty_autocomplete_event_special_path
+   @neighborhood_path = east_liberty_path
+   @neighborhood_tag = 9
+   hood_id = Neighborhood.where(id: 9).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
@@ -415,83 +253,10 @@ class EventsController < ApplicationController
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
-  def culture_district
-    @autocomplete_path = bloomfield_autocomplete_event_special_path
-    @neighborhood_path = bloomfield_path
-
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
-
-   @neighborhood_tag = 8
-   hood_id = Neighborhood.where(id: 8).first.id
-   @v = @venues.where( neighborhood_id: hood_id)
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
-   if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
-    else
-    end
-
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
-  end
 
   def strip_district
-    @autocomplete_path = bloomfield_autocomplete_event_special_path
-    @neighborhood_path = bloomfield_path
-
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
-
+   @autocomplete_path = strip_district_autocomplete_event_special_path
+   @neighborhood_path = strip_district_path
    @neighborhood_tag = 11
    hood_id = Neighborhood.where(id: 11).first.id
    @v = @venues.where( neighborhood_id: hood_id)
@@ -499,44 +264,14 @@ class EventsController < ApplicationController
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
-    else
-    end
+   end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
 
   def squirrel_hill
-    @autocomplete_path = bloomfield_autocomplete_event_special_path
-    @neighborhood_path = bloomfield_path
-
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    t= Time.now.in_time_zone("Eastern Time (US & Canada)")
-
-    if t.wday == 0 && @b < 2
-      x = 6
-    elsif @b < 2
-      x = t.wday - 1
-    else
-      x = t.wday
-    end
-
-       if  x == 0
-       @day_tag = "Sunday"
-       elsif x == 1
-       @day_tag = "Monday"
-       elsif x == 2
-       @day_tag = "Tuesday"
-       elsif x == 3
-       @day_tag = "Wednesday"
-       elsif x == 4
-       @day_tag = "Thursday"
-       elsif x == 5
-       @day_tag = "Friday"
-       else
-       @day_tag = "Saturday"
-       end
-
+   @autocomplete_path = bloomfield_autocomplete_event_special_path
+   @neighborhood_path = bloomfield_path
    @neighborhood_tag = 10
    hood_id = Neighborhood.where(id: 10).first.id
    @v = @venues.where( neighborhood_id: hood_id)
@@ -544,8 +279,37 @@ class EventsController < ApplicationController
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
-    else
-    end
+   end
+
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+  end
+
+  def north_side
+   @autocomplete_path = north_side_autocomplete_event_special_path
+   @neighborhood_path = north_side_path
+   @neighborhood_tag = 12
+   hood_id = Neighborhood.where(id: 12).first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+   end
+
+    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+  end
+
+  def mt_washington
+   @autocomplete_path = mt_washington_autocomplete_event_special_path
+   @neighborhood_path = mt_washington_path
+   @neighborhood_tag = 13
+   hood_id = Neighborhood.where(id: 13).first.id
+   @v = @venues.where( neighborhood_id: hood_id)
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   if params[:search]
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+   end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
   end
