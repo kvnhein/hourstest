@@ -55,13 +55,13 @@ resources :events do
  get 'south_side/autocomplete_event_special'
       get 'south_side' => 'events#south_side'
          resources :events
-get 'shadyside/autocomplete_event_special'
+  get 'shadyside/autocomplete_event_special'
       get 'shadyside' => 'events#shadyside'
          resources :events
-get 'downtown/autocomplete_event_special'
+  get 'downtown/autocomplete_event_special'
       get 'downtown' => 'events#downtown'
          resources :events
-get 'oakland/autocomplete_event_special'
+  get 'oakland/autocomplete_event_special'
       get 'oakland' => 'events#oakland'
          resources :events
   get 'lawrenceville/autocomplete_event_special'
@@ -76,13 +76,13 @@ get 'oakland/autocomplete_event_special'
   get 'squirrel_hill/autocomplete_event_special'
      get 'squirrel_hill' => 'events#squirrel_hill'
         resources :events
- get 'strip_district/autocomplete_event_special'
+  get 'strip_district/autocomplete_event_special'
      get 'strip_district' => 'events#strip_district'
         resources :events
   get 'mt_washiington/autocomplete_event_special'
      get 'mt_washington' => 'events#mt_washington'
         resources :events
-get 'north_side/autocomplete_event_special'
+  get 'north_side/autocomplete_event_special'
      get 'north_side' => 'events#north_side'
         resources :events
 
@@ -94,8 +94,10 @@ get 'north_side/autocomplete_event_special'
   end
 
   resources :neighborhoods
-
-   get 'shadyside/autocomplete_event_special'
+   get 'mt_washington' => 'events#mt_washington'
+   get 'strip_district' => 'events#strip_district'
+   get 'squirrel_hill' => 'events#squirrel'
+   get 'north_side' => 'events#north_side'
    get 'downtown' => 'events#downtown'
    get 'landing' => 'events#landing'
    get 'shadyside' => 'events#shadyside'
@@ -107,7 +109,7 @@ get 'north_side/autocomplete_event_special'
    get 'users_venues' => 'venues#users_venues'
    get 'about_us' => 'events#about_us'
    get 'urbanist' => 'events#urbanist'
-   
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
