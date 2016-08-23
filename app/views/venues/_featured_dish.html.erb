@@ -1,5 +1,7 @@
 
 <%if @daily_specials.count > 0 %>
+<br/>
+<p class ="flow-text center landing-title">Past Features</p>
 <ul class="collection with-header">
  <%@daily_specials.order("created_at DESC").each do |event| %>
 

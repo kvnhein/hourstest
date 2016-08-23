@@ -162,8 +162,12 @@ Verify Venue
 
 
  <div id="venueinfo" class="col s12">
-    <a class="waves-effect waves-light btn newvenue menubtn" href=
-        "http://<%= @venue.menu_address %>">Menu</a>
+   <br><br/>
+   <div class = "center">
+    <a class="btn-flat disabled teal-text text-accent-4" href=
+        "http://<%= @venue.menu_address %>">Visit <%=@venue.name%></a>
+   </div>
+   <br>
       <!-- End OF Drop Down -->
 <div class="venue-details">
         <h3 class="flow-text">Contact Info:</h3>
