@@ -82,13 +82,14 @@ footer.page-footer {
   display:inline-block;
 }
 
+
+
 .featured-dish-section {
      position: relative;
     margin-top: 20px;
     background: #fff;
     margin: 5px;
     padding: 10px !important;
-
 }
 
 .featured-dish-section h5 {
@@ -102,18 +103,24 @@ footer.page-footer {
     text-transform: capitalize;
 }
 
+#featured-urbanist .listtitle {
+  border-bottom: 1px solid #d2d2d2;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
+
 .featured-dish-section .title a{
       display: inline-block;
     font-weight: 800;
-    margin: 0px 0 10px 0 !important;
+     margin: 0px 0 0px 0 !important;
     font-size: 16px;
     padding-right: 118px;
     width: 100%;
     text-align: left;
     text-transform: capitalize;
-    height: 26px;
+    height: auto;
     padding-left:0;
-    color: #1fdeb4;
+    color: #17a787;
 }
 
 .featured-dish-section .card {
@@ -141,6 +148,38 @@ footer.page-footer {
     font-size: 14px;
     position: relative;
     text-transform: capitalize;
+}
+
+.urbanist-featured {
+    background: #e9e9e9;
+}
+
+.urbanist-featured .featured-dish-section .title a {
+  margin: 5px 0 !important;
+}
+
+.urbanist-featured br {
+  display:none;
+}
+
+.urbanist-featured .featured-dish-section .card-image {
+  margin:0;
+}
+
+.urbanist-featured .featured-dish-section {
+      padding: 0 10px !important;
+}
+
+.urbanist-featured .featured-dish-section .card {
+    border: 0;
+    border-bottom: 0;
+}
+
+.container .urbanist-featured .row {
+  margin-left: 12px;
+    margin-right: 12px;
+  margin-bottom:0;
+  padding-bottom:20px;
 }
 
 .double-buttons {
@@ -1112,8 +1151,8 @@ iframe {
     background-position: center;
 }
 
-.culture_district-btn {
-    background: url(cult.jpg);
+.strip_district-btn {
+    background: url(stripterm.jpg);
   background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1121,6 +1160,18 @@ iframe {
     background-size: cover;
     background-position: center;
 }
+
+.east_liberty-btn {
+    background: url(eastlibmural.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+
 
 .specials-header {
   background-color: #0e0e0e;
@@ -1446,7 +1497,7 @@ i.tiny {
 }
 
 .listtitle{
-   background: #fff;
+/*    background: #fff;
     width: initial;
     display: table;
     margin: -21px auto 0 auto;
@@ -1455,19 +1506,26 @@ i.tiny {
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 1px;
+    font-weight: 800; */
+      margin: 20px;
     font-weight: 800;
-
+    color: #555555;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-align: center;
 }
 
-.title-sep {
+/* .title-sep {
   padding: 30px 0;
-}
+} */
 
 .title-sep hr {
     border-color: #D6D5D5;
     border-style: solid;
     border-width: 1px;
       border-top: 0;
+  display:none;
 }
 
 

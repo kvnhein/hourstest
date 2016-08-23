@@ -43,7 +43,7 @@
 <div id="Shadyside">
  <% @venues.where(neighborhood_id: 2).order("name ASC").each do |venue| %>
      <%@venue = venue %>
-     <%= render 'venue_index'%>  
+     <%= render 'venue_index'%>
 <% end %>
 </div>
 
@@ -51,7 +51,7 @@
 <div id="Oakland">
 <% @venues.where(neighborhood_id: 3).order("name ASC").each do |venue| %>
      <%@venue = venue %>
-     <%= render 'venue_index'%>  
+     <%= render 'venue_index'%>
 <% end %>
 </div>
 
@@ -59,7 +59,7 @@
 <div id="Lawrenceville">
  <% @venues.where(neighborhood_id: 7).order("name ASC").each do |venue| %>
      <%@venue = venue %>
-     <%= render 'venue_index'%>  
+     <%= render 'venue_index'%>
 <% end %>
 </div>
 
