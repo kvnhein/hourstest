@@ -171,10 +171,10 @@ Verify Venue
       <!-- End OF Drop Down -->
 <div class="venue-details">
         <h3 class="flow-text">Contact Info:</h3>
-         <%phone_string = "(#{@venue.phone_number[0..2].to_s})#{@venue.phone_number[3..5].to_s} - #{@venue.phone_number[6..9].to_s}"%>
-        <p class="phonea"> Phone:<%=phone_number_link("#{phone_string}")%></p>
-        <p><%= @venue.address%></p>
-        <p><%= @venue.genre%></p>
+         <%phone_string = "(#{@venue.phone_number[0..2].to_s}) #{@venue.phone_number[3..5].to_s} - #{@venue.phone_number[6..9].to_s}"%>
+        <p class="phonea"> Phone: <%=phone_number_link("#{phone_string}")%></p>
+        <p>Address: <%= @venue.address%></p>
+        <p>Venue Type: <%= @venue.genre%></p>
 
     </div>
   </div>
