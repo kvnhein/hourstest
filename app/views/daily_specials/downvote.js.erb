@@ -1,5 +1,5 @@
 $('#down<%=@daily_special.id%>').bind('ajax:success', function() {
-    $('#special<%=@daily_special.id%>').html('<%=escape_javascript @daily_special.get_upvotes.size.to_s %>');
+    $('#special<%=@daily_special.id%>').html('<%=escape_javascript (@daily_special.get_upvotes.size + @daily_special.credit).to_s %>');
     $('#like-<%=@daily_special.id%>').html('<%=escape_javascript (render "shared/upvote") %>');
 
 });

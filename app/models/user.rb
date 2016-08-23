@@ -13,7 +13,7 @@ def self.from_omniauth(auth)
     else
     	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.fullname = auth.info.name
-        user.provider = auth.provider
+        user.provider  = auth.provider
         user.uid = auth.uid
         user.email = auth.info.email
         user.image = auth.info.image

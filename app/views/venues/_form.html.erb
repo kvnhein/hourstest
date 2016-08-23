@@ -47,13 +47,13 @@
   <div class = "form-group">
     <%= f.check_box :urbanist %>
     <%= f.label 'urbanist', id:'urbanist' %>
-   
+
   </div>
 <%end%>
   <div class="waves-effect waves-light btn menubtn">
     <%= f.submit %>
   </div>
 
-  <%= link_to 'Back', @venue, class: "waves-effect waves-light btn menubtn" %>
+  <%= link_to 'Back', @venue, class:"btn-flat disabled teal-text text-accent-4"  %>
 <% end %>
 </div>

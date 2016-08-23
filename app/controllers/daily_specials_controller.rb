@@ -16,7 +16,7 @@ class DailySpecialsController < ApplicationController
 
   def downvote
   @daily_special.unliked_by current_user
-  
+ 
   end
   # GET /daily_specials/1
   # GET /daily_specials/1.json
