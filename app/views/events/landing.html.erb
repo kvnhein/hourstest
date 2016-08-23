@@ -1,6 +1,6 @@
 
 <%cache do%>
-<h4 class ="flow-text center landing-title"><%=Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y")%></h4>
+<h4 class ="flow-text center landing-title"><%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h4>
 <%= link_to "Today's Specials", daily_specials_path, class: "waves-effect waves-light btn newvenue menubtn image-btns featurebtn"%>
 <h4 class ="flow-text center landing-title">Happy Hours</h4>
 <%= link_to "South Side", south_side_path, class: "waves-effect waves-light btn newvenue menubtn image-btns southside-btn"%>
