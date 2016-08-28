@@ -8,8 +8,8 @@ acts_as_voter
 def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
 
-    if user 
-      
+    if user
+
       return user
     else
     	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -21,7 +21,7 @@ def self.from_omniauth(auth)
         user.password = Devise.friendly_token[0,20]
       end
     end
-  end  
+  end
 
   def admin?
   	self.id == 1
