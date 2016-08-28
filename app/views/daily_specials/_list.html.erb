@@ -102,6 +102,7 @@
       </div>
       <div class="card-action">
         <%= event.description%>
+        Tags: <%= raw event.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
       <div>
 
       <div class = "hide">

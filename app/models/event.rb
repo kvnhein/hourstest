@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  acts_as_taggable
   validates :special, presence: true
 scope :special_like, -> (special) { where("special ilike ?", special)}
   belongs_to :venue
@@ -13,8 +14,8 @@ acts_as_votable
 
   def any_details
   if self.detail.nil?
-    return 1 
-  else 
+    return 1
+  else
     if self.detail.length < 1
      return 1
     else
@@ -23,7 +24,7 @@ acts_as_votable
   end
  end
 
-  
+
 
 end
 

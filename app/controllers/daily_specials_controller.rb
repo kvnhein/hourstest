@@ -5,18 +5,24 @@ class DailySpecialsController < ApplicationController
   # GET /daily_specials
   # GET /daily_specials.json
   def index
+
+  if params[:tag]
+    @daily_specials = DailySpecial.tagged_with(params[:tag])
+  else
     @daily_specials = DailySpecial.all
+
+  end
 
   end
 
   def upvote
   @daily_special.liked_by current_user
-  
+
   end
 
   def downvote
   @daily_special.unliked_by current_user
- 
+
   end
   # GET /daily_specials/1
   # GET /daily_specials/1.json
@@ -95,6 +101,6 @@ class DailySpecialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daily_special_params
-      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status, :start, :end, :day, :image, :credit)
+      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status, :start, :end, :day, :image, :credit, :tag_list)
     end
 end

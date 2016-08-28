@@ -220,6 +220,11 @@ footer.page-footer {
       padding-top: 5px;
 }
 
+.teal-text.text-accent-4 {
+      color: #17a787 !important;
+    letter-spacing: 1px;
+}
+
 .featured-dish-section .card .card-action {
   border:0;
       padding: 0 0 20px 0;
@@ -249,6 +254,74 @@ footer.page-footer {
 
 .urbanist img {
     width: 50%;
+}
+
+.powered-by-ver {
+      background-color: #000;
+    padding: 9px;
+    width: 100%;
+    text-align: left;
+    /* height: 43px; */
+    /* border-top: 1px solid #888; */
+    position: relative;
+  margin-top: -20px;
+}
+
+.powered-by-ver.onprofile {
+  margin-top: 0;
+}
+
+.tags-box .teal-text.text-accent-4 {
+    color: #17a787 !important;
+    letter-spacing: 0px;
+    margin-left: 5px;
+}
+
+.tags-box {
+    padding: 20px;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.powered-by-ver .veri img{
+  float: left;
+    margin: 0;
+    display: inline-block;
+    width: 20px;
+}
+
+.powered-by-ver .urbanist img{
+         position: absolute;
+    top: 3px;
+    right: 10px;
+    margin: 0;
+    width: 52px;
+}
+
+.powered-by-ver .urbanist {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    left: 0px;
+    z-index: 99;
+}
+
+
+.powered-by-ver .verified-date {
+    margin: 0 0 0 29px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+    text-transform: CAPITALIZE;
+    padding-top: 0px;
+    letter-spacing: 0;
+    text-align: left;
+    padding-top: 0px;
+}
+
+.powered-by-ver .verified{
+      padding: 0 10px 0 10px;
+    margin-bottom: 0px;
+  text-align:left;
 }
 
 .powered-by {
@@ -1102,7 +1175,7 @@ iframe {
 }
 
 .marketsquare-btn {
-    background: url(marketsquare.jpg);
+    background: url(cultart.png);
   background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;

@@ -1,0 +1,19 @@
+<% if @neighborhood_tag == 2%>
+  Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, shady_tag_path(t) }.join(', ')  %>
+<%elsif @neighborhood_tag == 1%>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, south_tag_path(t) }.join(', ')  %>
+<%elsif @neighborhood_tag == 3%>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, oakland_tag_path(t) }.join(', ')  %>
+<%elsif @neighborhood_tag == 5%>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, down_tag_path(t) }.join(', ')  %>
+<%elsif @neighborhood_tag == 7%>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, law_tag_path(t) }.join(', ')  %>
+<%elsif @neighborhood_tag == 6%>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, bloom_tag_path(t) }.join(', ')  %>
+<%elsif @neighborhood_tag == 11%>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, strip_tag_path(t) }.join(', ')  %>
+<%elsif @neighborhood_tag == 10%>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, sq_tag_path(t) }.join(', ')  %>
+<%elsif @neighborhood_tag == 13%>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, mt_tag_path(t) }.join(', ')  %>
+<%end%>

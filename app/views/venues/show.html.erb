@@ -48,7 +48,31 @@ Verify Venue
     </div>
   </div>
 
+  <div class="powered-by-ver onprofile">
+           <div class="verified">
+<%if @venue.venue_verify.nil?%>
+ <p class="verified-date">Venue not verified<p/>
+<%else%>
+      <div class="veri">
+         <%= image_tag "verified.png"%>
+      </div>
+<!--   <div class="verified-date">
+<#%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%>
+  </div> -->
+  <p class="verified-date"> Verified <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
 
+
+<%end%>
+
+              <% if @venue.urbanist == true %>
+                      <div class="urbanist">
+                        <a href="http://wwww.hourspgh.com/urbanist" target="_blank">
+                        <%= image_tag "urbanist-approved.png"%>
+                        </a>
+                      </div>
+                  <% end %>
+</div>
+</div>
 
 
 
@@ -259,19 +283,19 @@ Verify Venue
 
 
 
-<div class="verified">
-<%if @venue.venue_verify.nil?%>
+<!-- <div class="verified">
+<#%if @venue.venue_verify.nil?%>
  <p class="verified-date">Venue not verified<p/>
-<%else%>
-<%= image_tag "verified.png"%>
+<#%else%>
+<#%= image_tag "verified.png"%>
   <div class="verified-date">
-<%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%>
+<#%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%>
   </div>
   <br/>
-  <p style="margin: -20px 20px 50px 20px;" class="verified-date"> Time since last Verification: <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
+  <p style="margin: -20px 20px 50px 20px;" class="verified-date"> Time since last Verification: <#%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
 
-<%end%>
-</div>
+<#%end%>
+</div> -->
 
 
 <!--TABS-->

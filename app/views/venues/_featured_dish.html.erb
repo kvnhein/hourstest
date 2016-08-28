@@ -17,12 +17,15 @@
         </div>
         <div class="card-content">
           <%=event.text%>
-          <!--Like Button-->
+         
           <div>
+          <!--Like Button-->
           <%@j = event%>
           <%=render partial: "daily_specials/like_form"%>
-          </div>
           <!--End Of Like Button-->
+          </div>
+          
+         
         </div>
         <div class="card-action">
            <%= event.description%>

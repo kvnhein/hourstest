@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   														 :registrations => 'registrations'
   														}
 
-
+  get 'tags/:tag', to: 'daily_specials#index', as: :tag
   resources :daily_specials do
      member do
           patch :dish_limited, :dish_not_limited
@@ -51,37 +51,57 @@ resources :events do
         end
    end
 
-
+ get 'south_side/:south_tag', to: 'events#south_side', as: :south_tag
  get 'south_side/autocomplete_event_special'
       get 'south_side' => 'events#south_side'
          resources :events
+
+  get 'shadyside/:shady_tag', to: 'events#shadyside', as: :shady_tag
   get 'shadyside/autocomplete_event_special'
       get 'shadyside' => 'events#shadyside'
          resources :events
+
+  get 'downtown/:down_tag', to: 'events#downtown', as: :down_tag
   get 'downtown/autocomplete_event_special'
       get 'downtown' => 'events#downtown'
          resources :events
+
+  get 'oakland/:oakland_tag', to: 'events#oakland', as: :oakland_tag
   get 'oakland/autocomplete_event_special'
       get 'oakland' => 'events#oakland'
          resources :events
+
+  get 'lawrenceville/:law_tag', to: 'events#lawrenceville', as: :law_tag
   get 'lawrenceville/autocomplete_event_special'
       get 'lawrenceville' => 'events#lawrenceville'
          resources :events
+
+  get 'bloomfield/:bloom_tag', to: 'events#bloomfield', as: :bloom_tag
   get 'bloomfield/autocomplete_event_special'
       get 'bloomfield' => 'events#bloomfield'
          resources :events
+
+  get 'urbanist/:urb_tag', to: 'events#urbanist', as: :urb_tag
   get 'urbanist/autocomplete_event_special'
       get 'urbanist' => 'events#urbanist'
          resources :events
+
+  get 'squirrel_hill/:sq_tag', to: 'events#squirrel_hill', as: :sq_tag
   get 'squirrel_hill/autocomplete_event_special'
      get 'squirrel_hill' => 'events#squirrel_hill'
         resources :events
+
+  get 'strip_district/:strip_tag', to: 'events#strip_district', as: :strip_tag
   get 'strip_district/autocomplete_event_special'
      get 'strip_district' => 'events#strip_district'
         resources :events
+
+  get 'mt_washington/:mt_tag', to: 'events#mt_washington', as: :mt_tag
   get 'mt_washiington/autocomplete_event_special'
      get 'mt_washington' => 'events#mt_washington'
         resources :events
+
+  get 'north_side/:north_tag', to: 'events#north_side', as: :north_tag
   get 'north_side/autocomplete_event_special'
      get 'north_side' => 'events#north_side'
         resources :events
@@ -94,21 +114,16 @@ resources :events do
   end
 
   resources :neighborhoods
-   get 'mt_washington' => 'events#mt_washington'
-   get 'strip_district' => 'events#strip_district'
-   get 'squirrel_hill' => 'events#squirrel'
-   get 'north_side' => 'events#north_side'
-   get 'downtown' => 'events#downtown'
+
    get 'landing' => 'events#landing'
-   get 'shadyside' => 'events#shadyside'
-   get 'lawrenceville' => 'events#lawrenceville'
+
    get 'venue_beer_list' => 'beers#venue_beer_list'
    get 'venue_liqour_list' => 'liqours#venue_liqour_list'
    get 'venue_drink_list' => 'drinks#venue_drink_list'
-   get 'oakland' => 'events#oakland'
+
    get 'users_venues' => 'venues#users_venues'
    get 'about_us' => 'events#about_us'
-   get 'urbanist' => 'events#urbanist'
+
 
 
 

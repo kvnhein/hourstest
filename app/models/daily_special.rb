@@ -1,4 +1,5 @@
 class DailySpecial < ActiveRecord::Base
+  acts_as_taggable
   validates :text, presence: true
   belongs_to :venue
   acts_as_votable

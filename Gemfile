@@ -19,6 +19,7 @@ gem 'by_star', git: "git://github.com/radar/by_star"
 gem 'geocoder'
 gem 'devise'
 gem 'rails4-autocomplete'
+gem 'acts-as-taggable-on'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 2.3.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

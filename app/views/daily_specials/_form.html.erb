@@ -31,6 +31,10 @@
      <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
     <%end%>
   </div>
+    <div class="field">
+      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+  </div>
   <div class="field">
     <%= f.label :dish_type %><br>
     <%= f.text_field :dish_type %>
