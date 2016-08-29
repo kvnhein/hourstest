@@ -52,9 +52,10 @@
 </div>
 
 <%if @button == 1 %>
+ <%@happy_hour = Event.where(id: x.id).first%>
 
   <div class="edit-button-user">
-  <span-right><%= link_to edit_event_path(x) do%>
+  <span-right><%= link_to edit_event_path(@happy_hour) do%>
     <i class="material-icons">edit_mode</i>
   <%end%>
   </span-right>
