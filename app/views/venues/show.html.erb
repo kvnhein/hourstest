@@ -59,7 +59,7 @@ Verify Venue
 <!--   <div class="verified-date">
 <#%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%>
   </div> -->
-  <p class="verified-date"> Verified <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%></p>
+  <p class="verified-date"> Verified <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%> Ago</p>
 
 
 <%end%>
