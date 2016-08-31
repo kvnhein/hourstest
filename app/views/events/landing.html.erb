@@ -1,3 +1,4 @@
+
 <% content_for :head do%>
 
 <meta property="og:site_name" content="HoursPGH" />
@@ -7,7 +8,7 @@
 <meta property="og:image" content="http://www.hourspgh.com/assets/HoursAd_V4-9f36b77e65320ff624eacd4c4c7d44660d31dabd977c9aef2782ee9fc879232c.jpg" />
 <%end%>
 
-
+<% cache("landing", :expires_in => 10.minutes) do %>
 <h4 class ="flow-text center landing-title"><%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h4>
 <%= link_to "Today's Features", daily_specials_path, class: "waves-effect waves-light btn newvenue menubtn image-btns featurebtn"%>
 <h4 class ="flow-text center landing-title">Happy Hours</h4>
@@ -27,6 +28,6 @@
 <%= link_to "Strip District", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn strip_district-btn"%>
 <%= link_to "East Liberty", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn east_liberty-btn"%>
 <div style="display:none;">
-
+<%end%>
 </div>
 </div>

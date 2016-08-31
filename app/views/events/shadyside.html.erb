@@ -7,6 +7,7 @@
 <meta property="og:image" content="http://www.hourspgh.com/assets/HoursAd_V4-9f36b77e65320ff624eacd4c4c7d44660d31dabd977c9aef2782ee9fc879232c.jpg" />
 <%end%>
 
+<% cache("shadyside", :expires_in => 10.minutes) do %>
 <div class="specials-header shadyside-header neighborhoodtop">
    <h4 class="flow-text">Shadyside</h4>
    <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y")%></h5>
@@ -62,6 +63,7 @@
   <h5 class="flow-text center">Off Menu Features<br> <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y")%></h5>
   <%=render partial: "shared/featured_dish_table"%>
 </div>
+<%end%>
 <%end%>
 
 <!-- This script is for Google Analytics -->
