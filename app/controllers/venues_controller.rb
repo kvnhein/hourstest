@@ -29,7 +29,7 @@ class VenuesController < ApplicationController
   def show
     @topic = "at #{@venue.name}"
     @topic_description = "Check out today's Happy Hours/Specials and Featured Dishes at #{@venue.name}"
-    @page_image = DailySpecial.where(venue_id: params[:id]).first 
+    @page_image = DailySpecial.today.where(venue_id: params[:id]).first 
 
     if DailySpecial.before(Date.today - 7).count > 0
     past_specials = DailySpecial.before(Date.today - 7)
