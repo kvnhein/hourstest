@@ -55,7 +55,20 @@ class EventsController < ApplicationController
   @event.unliked_by current_user
   end
 
+  def landing
+    #this is for OG
+    @topic = "Hours"
+    @topic_description = "Hours provides Happy Hours/Specials and Featured dishes throughout Pittsburgh"
+
+
+  end
+
   def urbanist
+    #this is for OG
+    @topic = "Happy Hours at Urbanist Approved Venues in Pittsburgh"
+    @topic_description = "URBANIST guide aims to produce the best printed city guides in the nation"
+
+
     @autocomplete_path = urbanist_autocomplete_event_special_path
     @neighborhood_path = urbanist_path
     @today = Time.now
@@ -149,6 +162,11 @@ class EventsController < ApplicationController
     end
 
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+    #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+   
   end
 
 
@@ -167,6 +185,11 @@ class EventsController < ApplicationController
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+   
   end
 
   def oakland
@@ -185,13 +208,16 @@ class EventsController < ApplicationController
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+   
   end
 
   def downtown
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
-
-
 
    @neighborhood_tag = 5
    hood_id = Neighborhood.where(id: 5).first.id
@@ -205,6 +231,11 @@ class EventsController < ApplicationController
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
   end
 
 
@@ -224,6 +255,10 @@ class EventsController < ApplicationController
    end
 
    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
 
@@ -243,6 +278,10 @@ class EventsController < ApplicationController
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
 
@@ -260,6 +299,10 @@ class EventsController < ApplicationController
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
 
@@ -278,6 +321,10 @@ class EventsController < ApplicationController
    end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
   def squirrel_hill
@@ -295,6 +342,10 @@ class EventsController < ApplicationController
    end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
   def north_side
@@ -312,6 +363,10 @@ class EventsController < ApplicationController
    end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
   def mt_washington
@@ -329,6 +384,10 @@ class EventsController < ApplicationController
    end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+
+     #this is for OG
+    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
   # GET /events/1

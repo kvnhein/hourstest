@@ -1,5 +1,13 @@
+<% content_for :head do%>
 
-<%cache do%>
+<meta property="og:site_name" content="HoursPGH" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="<%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%> <%=@topic%>" />
+<meta property="og:description" content="<%=@topic_description%>" />
+<meta property="og:image" content="<%=@page_image%>" />
+<%end%>
+<%@page_iamge =  image_tag "HoursAd_V4.jpg" %>
+
 <h4 class ="flow-text center landing-title"><%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h4>
 <%= link_to "Today's Features", daily_specials_path, class: "waves-effect waves-light btn newvenue menubtn image-btns featurebtn"%>
 <h4 class ="flow-text center landing-title">Happy Hours</h4>
@@ -12,7 +20,7 @@
 <h4 class ="flow-text center landing-title">Coming Soon</h4>
 <%= link_to "East Liberty", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn east_liberty-btn"%>
 
-<%end%>
+
 
 <div class = "hide">
   <h4 class ="flow-text center landing-title">Coming Soon</h4>

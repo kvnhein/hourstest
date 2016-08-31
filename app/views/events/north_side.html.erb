@@ -1,4 +1,15 @@
+<% content_for :head do%>
 
+<meta property="og:site_name" content="HoursPGH" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="<%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%> <%=@topic%>" />
+<meta property="og:description" content="<%=@topic_description%>" />
+<meta property="og:image" content="<%=@page_image%>" />
+<%end%>
+
+<!--OG data -->
+  <%@page_iamge = url(logo.jpg)%>
+<!-- end og OG -->
 
 <div class="specials-header lawrenceville-header neighborhoodtop">
 

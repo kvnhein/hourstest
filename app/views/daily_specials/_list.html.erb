@@ -13,6 +13,7 @@
     <h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>
     <div class="card">
       <div class="card-image">
+        
         <%= image_tag event.image.url(:medium)%>
       </div>
       <div class="card-content">
@@ -122,3 +123,4 @@
 <%= link_to 'New Feature', new_daily_special_path, :id => "feat_dish" %>
 </div>
 <%end%>
+<%@page_image = image_tag @daily_specials.today.first.image.url(:medium)%>
