@@ -5,6 +5,7 @@ class DailySpecialsController < ApplicationController
   # GET /daily_specials
   # GET /daily_specials.json
   def index
+  @page_url = "daily_specials"
   @topic = "Featured Dishes"
   @topic_description = "Today's best off menue dishes from around Pittsburgh"
   if params[:tag]

@@ -59,6 +59,7 @@ class EventsController < ApplicationController
     #this is for OG
     @topic = "Hours"
     @topic_description = "Hours provides Happy Hours/Specials and Featured dishes throughout Pittsburgh"
+    @page_url = ""
 
 
   end
@@ -148,6 +149,7 @@ class EventsController < ApplicationController
   end
 
  def shadyside
+   @page_url = "shadyside"
    @autocomplete_path = shadyside_autocomplete_event_special_path
    @neighborhood_path = shadyside_path
    @neighborhood_tag = 2
@@ -171,6 +173,7 @@ class EventsController < ApplicationController
 
 
   def south_side
+   @page_url = "southside"
    @autocomplete_path = south_side_autocomplete_event_special_path
    @neighborhood_path = south_side_path
    @neighborhood_tag = 1
@@ -193,6 +196,7 @@ class EventsController < ApplicationController
   end
 
   def oakland
+    @page_url = "oakland"
     @autocomplete_path = oakland_autocomplete_event_special_path
     @neighborhood_path = oakland_path
 
@@ -216,6 +220,7 @@ class EventsController < ApplicationController
   end
 
   def downtown
+    @page_url = "downtown"
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
 
@@ -240,6 +245,7 @@ class EventsController < ApplicationController
 
 
   def lawrenceville
+   @page_url = "lawrencville"
    @autocomplete_path = lawrenceville_autocomplete_event_special_path
    @neighborhood_path = lawrenceville_path
    @neighborhood_tag = 7
@@ -263,6 +269,7 @@ class EventsController < ApplicationController
 
 
   def bloomfield
+   @page_url = "bloomfield"
    @autocomplete_path = bloomfield_autocomplete_event_special_path
    @neighborhood_path = bloomfield_path
    @neighborhood_tag = 6
@@ -286,6 +293,7 @@ class EventsController < ApplicationController
 
 
   def east_liberty
+   @page_url = "east_liberty"
    @autocomplete_path = east_liberty_autocomplete_event_special_path
    @neighborhood_path = east_liberty_path
    @neighborhood_tag = 9
@@ -307,6 +315,7 @@ class EventsController < ApplicationController
 
 
   def strip_district
+   @page_url = "strip_district"
    @autocomplete_path = strip_district_autocomplete_event_special_path
    @neighborhood_path = strip_district_path
    @neighborhood_tag = 11
@@ -328,6 +337,7 @@ class EventsController < ApplicationController
   end
 
   def squirrel_hill
+   @page_url = "squirrel_hill"
    @autocomplete_path = bloomfield_autocomplete_event_special_path
    @neighborhood_path = bloomfield_path
    @neighborhood_tag = 10
@@ -349,6 +359,7 @@ class EventsController < ApplicationController
   end
 
   def north_side
+   @page_url = "north_side"
    @autocomplete_path = north_side_autocomplete_event_special_path
    @neighborhood_path = north_side_path
    @neighborhood_tag = 12
@@ -370,6 +381,7 @@ class EventsController < ApplicationController
   end
 
   def mt_washington
+   @page_url = "mt_washington"
    @autocomplete_path = mt_washington_autocomplete_event_special_path
    @neighborhood_path = mt_washington_path
    @neighborhood_tag = 13
