@@ -82,7 +82,9 @@ footer.page-footer {
   display:inline-block;
 }
 
-
+#featured-dish h5 {
+    text-align: center;
+}
 
 .featured-dish-section {
      position: relative;
@@ -291,7 +293,7 @@ footer.page-footer {
 
 .powered-by-ver .urbanist img{
          position: absolute;
-    top: 3px;
+    top: -5px;
     right: 10px;
     margin: 0;
     width: 52px;
@@ -318,10 +320,21 @@ footer.page-footer {
     padding-top: 0px;
 }
 
+.card .card-reveal .card-title {
+  cursor: pointer;
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
 .powered-by-ver .verified{
       padding: 0 10px 0 10px;
     margin-bottom: 0px;
   text-align:left;
+  max-width: 800px;
+    position: relative;
+    margin: 0 auto;
 }
 
 .powered-by {
@@ -1028,6 +1041,17 @@ nav .button-collapse i {
     position:absolute;
     right: 16px;
       top: 13px;
+      font-weight: 900;
+}
+
+.hide-on-med-and-up {
+  display:block !important;
+}
+
+@media only screen and (min-width: 601px) {
+.hide-on-med-and-up {
+    display: block !important;
+}
 }
 
 .material-icons {
