@@ -31,7 +31,7 @@
     <li><%= link_to 'New Beer', new_beer_path%></li>
     </div>
     <li class="divider"></li>
-    <% if @venue.feature_dish_check == 0 %>
+    <% if @venue.feature_dish_check < 2 %>
     <li><%= link_to 'New Featured Dish', new_daily_special_path%></li>
     <li class="divider"></li>
     <%end%>

@@ -4,7 +4,7 @@
     <div class="title">
     <%= link_to "#{Venue.where(id: event.venue_id).first.name}", venue_path(Venue.where( id: event.venue_id).first.id), class: "btn-flat", 'data-no-turbolink' => true %>
     </div>
-
+    
     <!--<h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>-->
     <div class="card">
      <div class="card-image">
@@ -14,8 +14,10 @@
        <%=event.text%>
 
        <!--Like Button-->
+       <div class = "hide">
        <%@j = event%>
          <%=render partial: "daily_specials/like_form"%>
+       </div>
 
        <!--End Of Like Button-->
      </div>
@@ -31,6 +33,8 @@
 
     </div>
     </div>
+
+
 <%end%>
 
 

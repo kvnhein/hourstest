@@ -1,6 +1,6 @@
 <%x=[]%>
 <%@second_batch.shuffle.each do |event| %>
-<%x.push(Venue.where(id: event.venue_id).first.id)%>
+ <%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 
 
@@ -33,7 +33,7 @@
               </div>
         <% if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
               <div class="urbanist">
-                <a href="http://pittsburgh.urbanistguide.com/about/" target="_blank">
+                <a href="http://www.hourspgh.com/urbanist" target="_blank">
                 <%= image_tag "urbanist.png"%>
                 </a>
               </div>
@@ -69,11 +69,11 @@
     </div>
 
             <div class="card-reveal">
-           
+            
 
               <div class="modal-header">
                 <span class="card-title activator"><%= @day_tag %> Hours
-                 <i class="material-icons right xbox">close</i>
+                <i class="material-icons right xbox">close</i>
                 </span><br>
 
               </div>
@@ -83,7 +83,7 @@
                  <h5 class="flow-text"><%=@e[0].event_type%></h5>
              </div>
 
-                     <div class="powered-by-ver">
+              <div class="powered-by-ver">
            <div class="verified">
                   <% if @e[0].event_venue.venue_verify.nil?%>
                     <p class="verified-date"> Venue has not been verified </p>
@@ -158,6 +158,9 @@
 <%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
         <div class="later-tab">Later</div>
  <%end%>
+
+
+
 <%if modal_event.any_details == 2%>
        <div class="dropdownarrow">
          <%= image_tag "dropdown.png"%>
@@ -169,7 +172,14 @@
       <div class="collapsible-body">
           <ul class="collection">
             <li class="collection-item lighten-3 special-by-day">
-        <%=modal_event.detail%>
+        <%@event_tag = modal_event%>
+
+        <%=modal_event.detail%><br>
+        <%@event_tag = modal_event%>
+        <!--<%= render partial: "shared/tags"%>-->
+         <!-- Like Buttons -->
+
+        <!-- End of Like Button -->
             </li>
 
         </ul>
@@ -180,7 +190,7 @@
   </ul><br>
      <div class="row">
 
-      <%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
+      <%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br><br><br><br>
 
 
     </div>
