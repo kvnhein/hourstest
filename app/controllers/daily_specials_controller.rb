@@ -7,7 +7,7 @@ class DailySpecialsController < ApplicationController
   def index
   @page_url = "daily_specials"
   @topic = "Featured Dishes"
-  @topic_description = "Today's best off menue dishes from around Pittsburgh"
+  @topic_description = "Today's best off menu dishes from around Pittsburgh"
   if params[:tag]
     @daily_specials = DailySpecial.tagged_with(params[:tag])
   else
