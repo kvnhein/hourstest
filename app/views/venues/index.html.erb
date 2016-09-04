@@ -16,6 +16,7 @@
         <li class="tab"><a href="#Shadyside">Shadyside</a></li>
          <li class="tab"><a href="#Oakland">Oakland</a></li>
         <li class="tab"><a href="#Lawrenceville">Lawrenceville</a></li>
+        <li class="tab"><a href="#Strip_district">Strip District</a></li>
       </ul>
     </div>
   </div>
@@ -58,6 +59,13 @@
 
 <div id="Lawrenceville">
  <% @venues.where(neighborhood_id: 7).order("name ASC").each do |venue| %>
+     <%@venue = venue %>
+     <%= render 'venue_index'%>
+<% end %>
+</div>
+
+<div id="Strip_district">
+ <% @venues.where(neighborhood_id: 11).order("name ASC").each do |venue| %>
      <%@venue = venue %>
      <%= render 'venue_index'%>
 <% end %>
