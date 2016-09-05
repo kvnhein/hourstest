@@ -16,7 +16,7 @@ Rails.application.routes.draw do
         end
 
    end
-  
+
 
   resources :liqours do
     member do
@@ -117,6 +117,7 @@ resources :events do
   resources :neighborhoods
 
    get 'landing' => 'events#landing'
+   get 'past_features' => 'daily_specials#past_features'
 
    get 'venue_beer_list' => 'beers#venue_beer_list'
    get 'venue_liqour_list' => 'liqours#venue_liqour_list'

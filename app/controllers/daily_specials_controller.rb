@@ -17,6 +17,17 @@ class DailySpecialsController < ApplicationController
 
   end
 
+  def past_features
+    @page_url = "daily_specials"
+    @topic = "Featured Dishes"
+    @topic_description = "Today's best off menu dishes from around Pittsburgh"
+    if params[:tag]
+      @daily_specials = DailySpecial.tagged_with(params[:tag])
+    else
+      @daily_specials = DailySpecial.all
+    end
+  end
+
   def upvote
   @daily_special.liked_by current_user
 
