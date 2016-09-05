@@ -1,6 +1,6 @@
 <%x=[]%>
 <%@second_batch.shuffle.each do |event| %>
- <%x.push(Venue.where(id: event.venue_id).first.id)%>
+<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 
 
@@ -69,7 +69,7 @@
     </div>
 
             <div class="card-reveal">
-            
+
 
               <div class="modal-header">
                 <span class="card-title activator"><%= @day_tag %> Hours
@@ -110,47 +110,11 @@
       <div class="collapsible-header special-by-day">
        <h4><%= modal_event.special %></h4>
 
-<% start_minutes = "00"%>
-<%if modal_event.start%1 > 0 %>
-     <%start_minutes = "30"%>
-<%end%>
-<%start_am = "am"%>
-<%if modal_event.start >9.5 && modal_event.start < 22 %>
-     <%start_am = "pm"%>
-<%end%>
-
-<% end_minutes = "00"%>
-<%if modal_event.end%1 > 0 %>
-     <%end_minutes = "30"%>
-<%end%>
-<%end_am = "am"%>
-<%if modal_event.end.to_f >9.5 && modal_event.end < 22 %>
-     <%end_am="pm"%>
-<%end%>
-
-<!--Convert to regular time-->
-<%start_time = 0%>
-<%end_time = 0%>
-<% if modal_event.start.to_f > 10.5 %>
-   <%start_time = (modal_event.start - 0.1).round(0)- 10%>
-<%else%>
-   <%start_time = (modal_event.start - 0.1).round(0)+ 2%>
-<%end%>
-
- <%if modal_event.end > 22.5 %>
-   <%end_time = (modal_event.end - 0.1).round(0)- 22%>
-    <% elsif modal_event.end > 10.5 %>
-   <%end_time = (modal_event.end - 0.1).round(0)- 10%>
-<%else%>
-   <%end_time = (modal_event.end - 0.1).round(0)+ 2%>
-<%end%>
-
-
 <div class="valign-wrapper timeforspecial">
-<i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
-</div>
-        
-        <%if modal_event.any_details == 2%>
+<i class="tiny material-icons">query_builder</i><%=modal_event.time_conversion%></div>
+
+
+       <%if modal_event.any_details == 2%>
 
         <p>
         <%=modal_event.detail%>
@@ -159,8 +123,9 @@
         <!--<%= render partial: "shared/tags"%>-->
 
     <%end%>
-        
-        
+
+
+
 <%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
         <div class="now-tab">Now</div>
 <%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
@@ -181,25 +146,7 @@
         </div>
 
        </div>
-  <div class="hide">
-<%if modal_event.any_details == 2%>
-      <div class="collapsible-body">
-          <ul class="collection">
-            <li class="collection-item lighten-3 special-by-day">
-        <%@event_tag = modal_event%>
 
-        <%=modal_event.detail%><br>
-        <%@event_tag = modal_event%>
-        <!--<%= render partial: "shared/tags"%>-->
-         <!-- Like Buttons -->
-
-        <!-- End of Like Button -->
-            </li>
-
-        </ul>
-      </div>
-    <%end%>
-  </div>
     </li>
  <%end%>
   </ul><br>

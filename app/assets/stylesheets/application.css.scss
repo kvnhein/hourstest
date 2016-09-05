@@ -536,10 +536,7 @@ main .container {
     letter-spacing: 1px;
     position: absolute;
   right: 10px;
-     top: 50%;
-      -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+  top: 20px;
 }
 
 .now-tab.low-tab {
@@ -562,11 +559,7 @@ main .container {
     letter-spacing: 1px;
     position: absolute;
     right: 10px;
-    top: 50%;
-      -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    font-weight: 900;
+    top: 10px;
 }
 
 .profile-tabs {
@@ -810,17 +803,12 @@ nav .button-collapse i {
 }
 
 .beerlist .special-by-day p {
-  margin: 10px 0;
+      margin: 0px -42px 0px 0;
     height: auto;
-    line-height: 16px;
-  padding: 0;
-}
-
-.beerlist .special-by-day p {
-  margin: 10px 0;
-    height: auto;
-    line-height: 16px;
-  padding: 0;
+    line-height: 18px;
+    padding: 0 0px 0 0;
+    color: #999;
+    font-weight: 300;
 }
 
 .beerlist .special-by-day h4 {
@@ -1524,7 +1512,7 @@ i.tiny {
 }
 
 .addedpadding {
-  padding-right:76px !important;
+  padding-right:126px !important;
 }
 
 .edit-button-user .bleft a .material-icons{

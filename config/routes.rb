@@ -14,7 +14,9 @@ Rails.application.routes.draw do
           put "like", to: "daily_specials#upvote"
           put "dislike", to: "daily_specials#downvote"
         end
+
    end
+  
 
   resources :liqours do
     member do

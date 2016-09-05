@@ -33,7 +33,7 @@
   </div>
     <div class="field">
       <%= f.label :tag_list, "Tags (separated by commas)" %><br />
-      <%= f.text_field :tag_list %>
+      <%= f.text_field :tag_list, value: @daily_special.tag_list.to_s %>
   </div>
   <div class="field hide">
     <%= f.label :dish_type %><br>
