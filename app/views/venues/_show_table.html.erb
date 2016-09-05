@@ -47,19 +47,43 @@
    <%end_time = (x.end - 0.1).round(0)+ 2%>
 <%end%>
 
+
+
 <div class="valign-wrapper timeforspecial">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
 
+  <%if Event.where(id: x.id).first.any_details == 2%>
+      <p class="detailonshow">
+        <%=Event.where(id: x.id).first.detail%>
+      </p>
+  <%end%>
+
+  <script>
+    if ($('.edit-button-user').hasClass('imhere')) {
+    $('.detailonshow').addClass('addedpadding');
+    }
+  </script>
+
 <%if @button == 1 %>
  <%@happy_hour = Event.where(id: x.id).first%>
 
-  <div class="edit-button-user">
-  <span-right><%= link_to edit_event_path(@happy_hour) do%>
+
+  <div class="edit-button-user imhere">
+  <div style="width: 58px;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    border-left: 1px solid #ddd;">
+    <%= link_to edit_event_path(@happy_hour) do%>
     <i class="material-icons">edit_mode</i>
   <%end%>
-  </span-right>
-    <div class="bleft">
+  </div>
+    <div style="width: 58px;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    border-left: 1px solid #ddd;">
   <%= link_to x, method: :delete, data: { confirm: 'Are you sure?' } do%>
   <i class="material-icons">delete_forever</i>
   <%end%>

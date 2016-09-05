@@ -78,7 +78,7 @@
         <%=event.text%>
           <!--Like Button-->
              <div class="like-btn">
-          <!--<div class = "Left">Available til 10:00 pm</div>-->
+
              <% @j = event%>
             <div class="like-like">
               <div id = 'like-<%=event.id%>'>
@@ -103,7 +103,10 @@
       </div>
       <div class="card-action">
         <%= event.description%>
+        <div class ="hide">
         Tags: <%= raw event.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+          <div class = "right">Available <%=event.time_conversion%></div>
+        </div>
       <div>
 
       <div class = "hide">

@@ -149,6 +149,18 @@
 <div class="valign-wrapper timeforspecial">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
+        
+        <%if modal_event.any_details == 2%>
+
+        <p>
+        <%=modal_event.detail%>
+        </p>
+        <%@event_tag = modal_event%>
+        <!--<%= render partial: "shared/tags"%>-->
+
+    <%end%>
+        
+        
 <%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
         <div class="now-tab">Now</div>
 <%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
@@ -160,14 +172,16 @@
  <%end%>
 
 
-
+<div class="hide">
 <%if modal_event.any_details == 2%>
        <div class="dropdownarrow">
          <%= image_tag "dropdown.png"%>
        </div>
 <%end%>
+        </div>
 
        </div>
+  <div class="hide">
 <%if modal_event.any_details == 2%>
       <div class="collapsible-body">
           <ul class="collection">
@@ -185,6 +199,7 @@
         </ul>
       </div>
     <%end%>
+  </div>
     </li>
  <%end%>
   </ul><br>

@@ -69,7 +69,7 @@
     </div>
 
             <div class="card-reveal">
-            
+
 
               <div class="modal-header">
                 <span class="card-title activator"><%= @day_tag %> Hours
@@ -149,6 +149,20 @@
 <div class="valign-wrapper timeforspecial">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
+
+
+       <%if modal_event.any_details == 2%>
+         
+        <p>
+        <%=modal_event.detail%>
+        </p>
+        <%@event_tag = modal_event%>
+        <!--<%= render partial: "shared/tags"%>-->
+
+    <%end%>
+
+
+
 <%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
         <div class="now-tab">Now</div>
 <%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
@@ -160,31 +174,16 @@
  <%end%>
 
 
-
+<div class="hide">
 <%if modal_event.any_details == 2%>
        <div class="dropdownarrow">
          <%= image_tag "dropdown.png"%>
        </div>
 <%end%>
+        </div>
 
        </div>
-<%if modal_event.any_details == 2%>
-      <div class="collapsible-body">
-          <ul class="collection">
-            <li class="collection-item lighten-3 special-by-day">
-        <%@event_tag = modal_event%>
 
-        <%=modal_event.detail%><br>
-        <%@event_tag = modal_event%>
-        <!--<%= render partial: "shared/tags"%>-->
-         <!-- Like Buttons -->
-
-        <!-- End of Like Button -->
-            </li>
-
-        </ul>
-      </div>
-    <%end%>
     </li>
  <%end%>
   </ul><br>

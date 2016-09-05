@@ -81,6 +81,7 @@ class EventsController < ApplicationController
     @oakland_venues = Venue.where(urbanist: true, neighborhood_id: 3)
     @lawrenceville_venues = Venue.where(urbanist: true, neighborhood_id: 6)
     @market_square_venues = Venue.where(urbanist: true, neighborhood_id: 5)
+    @strip_district_venues = Venue.where(urbanist: true, neighborhood_id: 11)
 
     @urbanist_venues = Venue.where(urbanist: true)
     @todays_feature =  DailySpecial.today
@@ -89,11 +90,7 @@ class EventsController < ApplicationController
     @verified_after_weeku = Venue.between_times(@month_ago,@week_ago).where(urbanist: true)
     @verified_month_agou = Venue.before(@month_ago).where(urbanist: true)
 
-    @shadyside_todays_feature = DailySpecial.where(venue_id: @shadyside_venues.pluck(:id)).today
-    @south_side_todays_feature = DailySpecial.where(venue_id: @south_side_venues.pluck(:id)).today
-    @oakland_todays_feature = DailySpecial.where(venue_id: @oakland_venues.pluck(:id)).today
-    @lawrenceville_todays_feature = DailySpecial.where(venue_id: @lawrenceville_venues.pluck(:id)).today
-    @market_square_todays_feature = DailySpecial.where(venue_id: @market_square_venues.pluck(:id)).today
+   
 
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
@@ -168,7 +165,7 @@ class EventsController < ApplicationController
     #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
-   
+
   end
 
 
@@ -192,7 +189,7 @@ class EventsController < ApplicationController
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
-   
+
   end
 
   def oakland
@@ -216,7 +213,7 @@ class EventsController < ApplicationController
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
-   
+
   end
 
   def downtown
@@ -240,7 +237,7 @@ class EventsController < ApplicationController
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
-    
+
   end
 
 

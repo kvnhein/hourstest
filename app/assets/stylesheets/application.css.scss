@@ -65,12 +65,12 @@ footer.page-footer {
   top:10px;
   right:0;
   text-align: right;
-  color: #1fdeb4;
+  color: #17a787;
   text-transform:uppercase;
 }
 
 .like-btn a{
-  color: #1fdeb4;
+  color: #17a787;
 }
 
 .like-like {
@@ -109,6 +109,8 @@ footer.page-footer {
   border-bottom: 1px solid #d2d2d2;
     margin-bottom: 0;
     padding-bottom: 20px;
+      margin-left: 0;
+    margin-right: 0;
 }
 
 .featured-dish-section .title a{
@@ -396,7 +398,7 @@ main .container {
     background: #f2f2f2;
     height: 60px;
     margin-top: 0px;
-    padding: 12px;
+    padding: 21px;
   overflow:hidden;
   position:relative;
   max-width: 800px;
@@ -533,9 +535,11 @@ main .container {
     color: #fff;
     letter-spacing: 1px;
     position: absolute;
-    right: 28px;
-    top: 20px;
-    font-weight: 900;
+  right: 10px;
+     top: 50%;
+      -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .now-tab.low-tab {
@@ -557,8 +561,11 @@ main .container {
     color: #fff;
     letter-spacing: 1px;
     position: absolute;
-    right: 28px;
-    top: 20px;
+    right: 10px;
+    top: 50%;
+      -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     font-weight: 900;
 }
 
@@ -800,6 +807,20 @@ nav .button-collapse i {
   text-align:left;
   padding: 10px 54px 10px 20px;
   position:relative;
+}
+
+.beerlist .special-by-day p {
+  margin: 10px 0;
+    height: auto;
+    line-height: 16px;
+  padding: 0;
+}
+
+.beerlist .special-by-day p {
+  margin: 10px 0;
+    height: auto;
+    line-height: 16px;
+  padding: 0;
 }
 
 .beerlist .special-by-day h4 {
@@ -1303,7 +1324,7 @@ background-position:center;
 }
 
 .specials-header.strip_district-header {
-   background: url(cult.jpg);
+   background: url(stripterm.jpg);
    background-repeat:no-repeat;
 -webkit-background-size:cover;
 -moz-background-size:cover;
@@ -1410,12 +1431,11 @@ background-position:center;
 }
 
 .specials-header h5 {
-    margin: 0 !important;
+        margin: 0 0 35px 0 !important;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: .5px;
-    //color: #999999;
-  color: #1fdeb4;
+    color: #1fdeb4;
 }
 
 .btn, .btn-large {
@@ -1467,7 +1487,7 @@ i.tiny {
 }
 
 .card .card-reveal .specials-header{
-  height: 114px;
+  height: auto;
   padding: 22px 18px 18px 18px;
 }
 
@@ -1477,7 +1497,14 @@ i.tiny {
     right: 0;
     top: 0px;
     height: 100%;
-    border-left: 1px solid #ddd;
+}
+
+.edit-button-user a {
+      display: block;
+    width: 58px;
+    height: 100%;
+    margin: 0;
+    position: relative;
 }
 
 .bleft {
@@ -1487,10 +1514,17 @@ i.tiny {
 }
 
 .edit-button-user a .material-icons{
-  width: 53px;
-    padding: 14% 18px;
-    height: 100%;
-  color:#999;
+   width: 53px;
+    padding: 0 19px;
+    height: auto;
+    color: #999;
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+}
+
+.addedpadding {
+  padding-right:76px !important;
 }
 
 .edit-button-user .bleft a .material-icons{
