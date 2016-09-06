@@ -1,7 +1,7 @@
 <%= form_for(@daily_special) do |f| %>
   <% if @daily_special.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@daily_special.errors.count, "error") %> prohibited this daily_special from being saved:</h2>
+        <h4 class= "flow-text center-align"><%= pluralize(@daily_special.errors.count, "error") %> prohibited this feature from being saved:</h4>
 
       <ul>
       <% @daily_special.errors.full_messages.each do |message| %>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, "Title (required)"%><br>
     <%= f.text_field :text %>
   </div>
   <div class="field">
@@ -32,7 +32,7 @@
     <%end%>
   </div>
     <div class="field">
-      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+      <%= f.label :tag_list, "Tags (Food, Drinks, Late Nite, Entertainment separated by commas)" %><br />
       <%= f.text_field :tag_list, value: @daily_special.tag_list.to_s %>
   </div>
   <div class="field hide">

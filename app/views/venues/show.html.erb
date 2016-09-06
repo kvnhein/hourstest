@@ -23,13 +23,7 @@
   <ul id='dropdown1' class='dropdown-content'>
     <li><%= link_to 'Edit Venue', edit_venue_path(@venue)%></li>
     <li class="divider"></li>
-    <li><%= link_to 'Edit Beer List', venue_beer_list_path%></li>
-    <li class="divider"></li>
     <li><%= link_to 'New Hour', new_event_path %></li>
-    <div class ="hide">
-    <li class="divider"></li>
-    <li><%= link_to 'New Beer', new_beer_path%></li>
-    </div>
     <li class="divider"></li>
     <% if @venue.feature_dish_check < 2 %>
     <li><%= link_to 'New Featured Dish', new_daily_special_path%></li>

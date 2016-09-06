@@ -1,14 +1,26 @@
 class DailySpecial < ActiveRecord::Base
   acts_as_taggable
-  validates :text, presence: true
-  belongs_to :venue
   acts_as_votable
+
+  validates :text, presence: true
+  validate :validate_tag
+
+
+  belongs_to :venue
+
   before_save :default_values
+  before_save :upper_case
 
   has_attached_file :image,
   styles: { :medium => {:geometry => "500x500^", :quality => 100} , thumb: "100x100>" }
-
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  def validate_tag
+    tag_list.each do |tag|
+      # This will only accept two character alphanumeric entry such as A1, B2, C3. The alpha character has to precede the numeric.
+      errors.add(:tag_list, "Please only use Food, Drinks, Late Nite, Entertainment as tags") unless ["food","drinks","late nite","entertainment"].include? tag.downcase
+    end
+  end
 
  def default_values
     self.credit ||= 0
@@ -16,6 +28,12 @@ class DailySpecial < ActiveRecord::Base
   def event_type
     Venue.where(id: self.venue_id).first.genre unless Venue.where(id: self.venue_id).first.genre.nil?
    end
+
+   def upper_case
+    self.tag_list.each do |tag|
+      tag.capitalize!
+    end
+ end
 
    def event_venue
      Venue.where(id: self.venue_id).first
