@@ -101,7 +101,7 @@
 
   <% if (user_signed_in?)%>
     <%if Venue.where(owner: current_user.id).count > 0 %>
-      <li><%= link_to 'New Happy Hour', new_event_path%></li>
+      <li><%= link_to 'New Hour', new_event_path%></li>
     <%end%>
     <li>
       <div class="log-out">
@@ -134,7 +134,7 @@
 
     <% if (user_signed_in?)%>
     <li class="divider"></li>
-    <li><%= link_to 'New Happy Hour', new_event_path%>
+    <li><%= link_to 'New Hour', new_event_path%>
     </li>
     <li class="divider"></li>
     <li>
