@@ -36,10 +36,7 @@ class VenuesController < ApplicationController
     past_specials.delete_all
     end
 
-    visitor_latitude = request.location.latitude
-    visitor_longitude = request.location.longitude
-    @locationl = visitor_latitude
-    @locationg = visitor_longitude
+    
 
     @events = Event.where(venue_id: params[:id])
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
