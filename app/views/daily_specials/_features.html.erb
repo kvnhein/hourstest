@@ -1,8 +1,7 @@
-
 <%if @daily_specials.count > 0 %>
 <br/>
 <p class ="flow-text center landing-title">Past Features</p>
-<h5 class ="flow-text center"><%=(Time.now - 7.days).in_time_zone("Eastern Time (US & Canada)").strftime("%B #{(Time.now - 7.days).in_time_zone("Eastern Time (US & Canada)").day.ordinalize}")%> - <%=(Time.now).in_time_zone("Eastern Time (US & Canada)").strftime("%B #{(Time.now).in_time_zone("Eastern Time (US & Canada)").day.ordinalize}")%></h5>
+<p class ="flow-text center"><%=(Time.now - 7.days).in_time_zone("Eastern Time (US & Canada)").strftime("%B #{(Time.now - 7.days).in_time_zone("Eastern Time (US & Canada)").day.ordinalize}")%> - <%=(Time.now).in_time_zone("Eastern Time (US & Canada)").strftime("%B #{(Time.now).in_time_zone("Eastern Time (US & Canada)").day.ordinalize}")%></p>
 <ul class="collection with-header">
  <%@daily_specials.order("created_at DESC").each do |event| %>
 
@@ -18,15 +17,15 @@
         </div>
         <div class="card-content">
           <%=event.text%>
-         
+
           <div>
           <!--Like Button-->
           <%@j = event%>
           <%=render partial: "daily_specials/like_form"%>
           <!--End Of Like Button-->
           </div>
-          
-         
+
+
         </div>
         <div class="card-action">
            <%= event.description%>
@@ -61,4 +60,3 @@
 <%end%>
 <%end%>
 
-  <%= social_share_button_tag("My Site") %>
