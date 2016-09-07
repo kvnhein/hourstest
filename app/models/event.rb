@@ -1,9 +1,28 @@
 class Event < ActiveRecord::Base
   acts_as_taggable
+  acts_as_votable
+
   validates :special, presence: true
+  validate :validate_tag
+
 scope :special_like, -> (special) { where("special ilike ?", special)}
   belongs_to :venue
-acts_as_votable
+
+  before_save :upper_case
+
+   def upper_case
+    self.tag_list.each do |tag|
+      tag.capitalize!
+    end
+ end
+
+  def validate_tag
+    tag_list.each do |tag|
+      # This will only accept two character alphanumeric entry such as A1, B2, C3. The alpha character has to precede the numeric.
+      errors.add(:tag_list, "can only have Food, Drinks, Late Nite, Entertainment as tags***") unless ["food","drinks","late nite","entertainment"].include? tag.downcase
+    end
+  end
+
  def event_venue
   Venue.where(id: self.venue_id).first
  end
@@ -23,7 +42,7 @@ acts_as_votable
     end
   end
  end
-  
+
    def time_conversion
   start_minutes = "00"
   if self.start%1 > 0

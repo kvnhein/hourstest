@@ -1,10 +1,15 @@
-
-<div class="row">
+<div class="row about-top">
   <div class="col s12 m12">
     <h5>Have a restaurant or bar in the Pittsburgh area? Contact us here to claim your profile page.</h5>
-  </div>
 
-  <!-- Begin MailChimp Signup Form -->
+ <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Get a Business Profile</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Free Business Account Sign Up</h4>
+      <!-- Begin MailChimp Signup Form -->
 <div id="mc_embed_signup">
 <form action="//hourspgh.us14.list-manage.com/subscribe/post?u=f3038164cb38276bc187a1c2c&amp;id=633c08c577" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
@@ -68,43 +73,16 @@
 </div>
 
 <!--End mc_embed_signup-->
-
-
-<!--     <form class="col s12 m6" action="mailto:kevinhein819@gmail.com" method="post" enctype="text/plain">
-    <div class="row">
-        <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="venue_name" name="VenueName" type="text" class="validate">
-          <label for="venue_name">Venue Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="venue_address" name="VenueAddress" type="text" class="validate">
-          <label for="venue_address">Venue Address</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" name="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-       <button class="btn waves-effect waves-light" type="submit" name="action" value="Send">Submit
-                  <i class="mdi-content-send right"></i>
-                </button>
-    </form> -->
+    </div>
   </div>
 
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m12">
 
 
    <p>Gathr Group is the spawn of the wiley minds of Kevin Hein and Troy Cox. Gathr Group is dedicated to helping people socialize and engage while exploring everything Pittsburgh has to offer.<br>
@@ -115,4 +93,14 @@ HoursPGH is their first project with this aim. Focused on the service industry, 
 
 No longer will you have to read/memorize the endless blackboards and posters throughout the city. Explore restaurants you haven’t been before, meet new people, show visitors why Pittsburgh is one of the greatest cities in the world! </p>
 
+</div>
+   </div>
 
+<!--MODAL-->
+  <script>
+   $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+  </script>
+<!--END MODAL-->

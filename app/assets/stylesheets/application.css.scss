@@ -25,6 +25,22 @@ footer.page-footer {
   margin-top: 0;
 }
 
+.about-top {
+   background: url(aboutHours.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+  padding:40px 40px 80px 40px;
+}
+
+.about-top h5 {
+  color:#fff;
+  font-weight:300;
+}
+
 .slider .slides li img {
       margin: 0;
     background-repeat: no-repeat;

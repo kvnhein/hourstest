@@ -26,7 +26,7 @@
     <li><%= link_to 'New Hour', new_event_path %></li>
     <li class="divider"></li>
     <% if @venue.feature_dish_check < 2 %>
-    <li><%= link_to 'New Featured Dish', new_daily_special_path%></li>
+    <li><%= link_to 'New Feature', new_daily_special_path%></li>
     <li class="divider"></li>
     <%end%>
     <li><%=link_to venue_verified_venue_path(@venue), method: :get do%>
