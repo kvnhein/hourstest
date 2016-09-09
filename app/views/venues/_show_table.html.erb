@@ -3,7 +3,7 @@
 
        <% @v = @events.all.where( day: @d)%>
 <% if @v.empty?%>
-<li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@d%></li>
+<li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@h%></li>
 <%else%>
 <% @v.order(:start).each do |x| %>
 <li class="collection-item grey lighten-3 special-by-day">
