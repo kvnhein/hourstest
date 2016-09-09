@@ -45,6 +45,23 @@ class EventsController < ApplicationController
        else
        @day_tag = "Saturday"
        end
+
+
+      if  x == 0
+       @day_specials = ["Sunday","Everyday","Weekend"]
+       elsif x == 1
+       @day_specials = ["Monday","Everyday","Weekdays"]
+       elsif x == 2
+       @day_specials = ["Tuesday","Everyday","Weekdays"]
+       elsif x == 3
+       @day_specials = ["Wednesday","Everyday","Weekdays"]
+       elsif x == 4
+       @day_specials = ["Thursday","Everyday","Weekdays"]
+       elsif x == 5
+       @day_specials = ["Friday","Everyday","Weekdays"]
+       else
+       @day_specials = ["Saturday","Everyday","Weekend"]
+       end
   end
 
   def event_upvote
@@ -90,7 +107,7 @@ class EventsController < ApplicationController
     @verified_after_weeku = Venue.between_times(@month_ago,@week_ago).where(urbanist: true)
     @verified_month_agou = Venue.before(@month_ago).where(urbanist: true)
 
-   
+
 
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
@@ -119,6 +136,8 @@ class EventsController < ApplicationController
        else
        @day_tag = "Saturday"
        end
+
+
 
 
    @v = @venues.where( urbanist: true)
@@ -152,12 +171,12 @@ class EventsController < ApplicationController
    @neighborhood_tag = 2
    @v = @venues.where( neighborhood_id: 2)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
 
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
     elsif params[:shady_tag]
-      @events = Event.tagged_with(params[:shady_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:shady_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -176,12 +195,12 @@ class EventsController < ApplicationController
    @neighborhood_tag = 1
    @v = @venues.where( neighborhood_id: 1)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
 
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
     elsif params[:south_tag]
-      @events = Event.tagged_with(params[:south_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:south_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -201,11 +220,11 @@ class EventsController < ApplicationController
    @neighborhood_tag = 3
    @v = @venues.where( neighborhood_id: 3)
    @daily_specials =
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
    elsif params[:oakland_tag]
-      @events = Event.tagged_with(params[:oakland_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:oakland_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -225,11 +244,11 @@ class EventsController < ApplicationController
    hood_id = Neighborhood.where(id: 5).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
      elsif params[:down_tag]
-      @events = Event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -249,12 +268,12 @@ class EventsController < ApplicationController
    hood_id = Neighborhood.where(id: 7).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
 
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
    elsif params[:law_tag]
-      @events = Event.tagged_with(params[:law_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:law_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -273,12 +292,12 @@ class EventsController < ApplicationController
    hood_id = Neighborhood.where(id: 6).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
 
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
     elsif params[:bloom_tag]
-      @events = Event.tagged_with(params[:bloom_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:bloom_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -297,9 +316,9 @@ class EventsController < ApplicationController
    hood_id = Neighborhood.where(id: 9).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
     else
     end
 
@@ -319,11 +338,11 @@ class EventsController < ApplicationController
    hood_id = Neighborhood.where(id: 11).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
    elsif params[:strip_tag]
-      @events = Event.tagged_with(params[:strip_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:strip_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -341,11 +360,11 @@ class EventsController < ApplicationController
    hood_id = Neighborhood.where(id: 10).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
    elsif params[:sq_tag]
-      @events = Event.tagged_with(params[:sq_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:sq_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -363,11 +382,11 @@ class EventsController < ApplicationController
    hood_id = Neighborhood.where(id: 12).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
    elsif params[:north_tag]
-      @events = Event.tagged_with(params[:north_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:north_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
@@ -385,11 +404,11 @@ class EventsController < ApplicationController
    hood_id = Neighborhood.where(id: 13).first.id
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
    elsif params[:mt_tag]
-      @events = Event.tagged_with(params[:mt_tag]).where(venue_id: @v.pluck(:id), day: @day_tag)
+      @events = Event.tagged_with(params[:mt_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
     @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
