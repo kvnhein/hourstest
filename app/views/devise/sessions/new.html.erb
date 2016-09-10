@@ -34,7 +34,7 @@
 <%= render "devise/shared/links" %>
 </div>
 <br>
-  <%= link_to "Sign up", new_registration_path(resource_name) %>
+  <div class="hide"><%= link_to "Sign up", new_registration_path(resource_name) %></div>
 <div class ="hide">
 <%= link_to "Sign In with Facebook", user_facebook_omniauth_authorize_path%>
   </div>
