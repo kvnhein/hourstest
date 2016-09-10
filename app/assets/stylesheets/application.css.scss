@@ -25,6 +25,21 @@ footer.page-footer {
   margin-top: 0;
 }
 
+.contactsec h5{
+  margin: 70px 0 0 0;
+    padding-right: 25px;
+}
+
+.contactsec {
+  margin-bottom:100px;
+}
+
+.contactsec input.teal-text {
+      text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
 .about-top {
    background: url(aboutHours.jpg);
   background-repeat: no-repeat;
@@ -33,12 +48,16 @@ footer.page-footer {
     -o-background-size: cover;
     background-size: cover;
     background-position: center;
-  padding:40px 40px 80px 40px;
+    padding: 101px 20px;
 }
 
-.about-top h5 {
-  color:#fff;
-  font-weight:300;
+.about-top h2 {
+     margin: 0;
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: .5px;
+      text-align: center;
 }
 
 .slider .slides li img {
