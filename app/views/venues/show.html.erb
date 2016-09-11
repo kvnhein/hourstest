@@ -81,7 +81,67 @@ Verify Venue
 
 
 <div id="weekly" class="col s12">
-<ul class="collapsible beerlist" data-collapsible="accordion">
+
+ <div class="weeklyhours beerlist">
+
+
+ <div class="row">
+    <div class="col s12 weektab">
+      <ul class="tabs">
+        <li class="tab col s1"><a class="<%=@s%>" href="#SunTab">Sun</a></li>
+        <li class="tab col s1"><a class="<%=@m%>" href="#MonTab">Mon</a></li>
+        <li class="tab col s1"><a class="<%=@t%>" href="#TueTab">Tue</a></li>
+        <li class="tab col s1"><a class="<%=@w%>" href="#WedTab">Wed</a></li>
+        <li class="tab col s1"><a class="<%=@th%>" href="#ThurTab">Thu</a></li>
+        <li class="tab col s1"><a class="<%=@f%>" href="#FriTab">Fri</a></li>
+       <li class="tab col s1"><a class="<%=@st%>" href="#SatTab">Sat</a></li>
+      </ul>
+    </div>
+
+
+   <div class="weeklyhours beerlist">
+    <div id="SunTab" class="col s12 showday">
+      <% @h = "Sunday"%>
+        <% @d = ["Sunday","Everyday","Weekend"] %>
+        <%= render "show_table" %>
+   </div>
+    <div id="MonTab" class="col s12 showday">
+     <% @h = "Monday"%>
+        <% @d = ["Monday","Everyday","Weekdays"] %>
+        <%= render "show_table" %>
+   </div>
+    <div id="TueTab" class="col s12 showday">
+      <% @h = "Tuesday"%>
+      <% @d = ["Tuesday","Everyday","Weekdays"] %>
+        <%= render "show_table" %>
+   </div>
+    <div id="WedTab" class="col s12 showday">
+       <% @h = "Wednesday"%>
+        <% @d = ["Wednesday","Everyday","Weekdays"] %>
+        <%= render "show_table" %>
+   </div><div id="ThurTab" class="col s12 showday">
+       <% @h = "Thursday"%>
+        <% @d = ["Thursday","Everyday","Weekdays"] %>
+        <%= render "show_table" %>
+   </div><div id="FriTab" class="col s12 showday">
+       <% @h = "Friday"%>
+        <% @d = ["Friday","Everyday","Weekdays"] %>
+        <%= render "show_table" %>
+   </div>
+   <div id="SatTab" class="col s12 showday">
+       <% @h = "Saturday"%>
+        <% @d = ["Saturday","Everyday","Weekend"] %>
+        <%= render "show_table" %>
+   </div>
+   </div>
+  </div>
+
+  <script>
+     $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+  </script>
+<ul class="collapsible beerlist hide" data-collapsible="accordion">
      <li>
       <div class="collapsible-header <%=@s%>"><i class="material-icons">query_builder</i>Sunday
         <div class="dropdownarrow">

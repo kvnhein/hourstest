@@ -21,6 +21,97 @@ body, html { overflow-x:hidden; }
     flex: 1 0 auto;
   }
 
+.slider.weeklyslider {
+      margin-bottom: 68px;
+}
+
+.weektab .tabs .tab {
+      min-width: 1px;
+}
+
+.weektab {
+  padding:0 !important;
+}
+
+.showday .special-by-day p {
+margin: 0 0px 0 0 !important;
+}
+
+.showday {
+  padding:0 !important;
+}
+
+.showday .collection{
+      margin: 0;
+    border-radius: 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+
+ .swiper-container {
+        width: 100%;
+        height: 300px;
+        margin: 20px auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #f2f2f2;
+        width: 60%;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .swiper-slide:nth-child(2n) {
+        width: 40%;
+    }
+    .swiper-slide:nth-child(3n) {
+        width: 20%;
+    }
+
+
+
+
+.weektab .tabs .tab a.active {
+  color:#000;
+}
+
+.weektab .tabs .tab a {
+  color: #17a787;
+}
+
+.weektab .tabs .indicator {
+  background-color: #17a787;
+}
+
+.weeklyhours .collection .collection-item {
+      position: relative;
+      background-color: #f2f2f2 !important;
+}
+
+.weeklyhours.beerlist .special-by-day {
+  padding: 10px 20px;
+      background-color: #f2f2f2 !important;
+}
+
+.slider.weeklyslider .indicators {
+  bottom: -40px;
+}
+
 footer.page-footer {
   margin-top: 0;
 }
@@ -1549,7 +1640,7 @@ i.tiny {
 }
 
 .addedpadding {
-  padding-right:126px !important;
+  padding-right:154px !important;
 }
 
 .edit-button-user .bleft a .material-icons{
