@@ -2,7 +2,7 @@
 <br/>
 <h3 class ="flow-text center landing-title">Past Features</h3>
 <h5 class ="flow-text center"><%=(Time.now - 7.days).in_time_zone("Eastern Time (US & Canada)").strftime("%B #{(Time.now - 7.days).in_time_zone("Eastern Time (US & Canada)").day.ordinalize}")%> - <%=(Time.now).in_time_zone("Eastern Time (US & Canada)").strftime("%B #{(Time.now).in_time_zone("Eastern Time (US & Canada)").day.ordinalize}")%></h5>
-<%@daily_specials.order("created_at ASC").each do |event| %>
+<%@daily_specials.order("created_at desc").each do |event| %>
 
 <%@j=event%>
 <div class="row">
