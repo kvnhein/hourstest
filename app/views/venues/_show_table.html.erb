@@ -5,7 +5,7 @@
 <% if @v.empty?%>
 <li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@h%></li>
 <%else%>
-<% @v.order(:start).each do |x| %>
+<% @v.order(start: :asc, special: :asc).each do |x| %>
 <li class="collection-item grey lighten-3 special-by-day">
 
         <h4><%= x.special %></h4>
