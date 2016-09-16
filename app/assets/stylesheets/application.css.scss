@@ -21,6 +21,16 @@ body, html { overflow-x:hidden; }
     flex: 1 0 auto;
   }
 
+#onesignal-bell-container.onesignal-reset .onesignal-bell-launcher.onesignal-bell-launcher-bottom-right {
+  top: 9px;
+    left: 20px;
+}
+
+#onesignal-bell-container.onesignal-reset.onesignal-bell-container-bottom-right {
+    top: 0;
+    left: 0;
+}
+
 .slider.weeklyslider {
       margin-bottom: 68px;
 }
