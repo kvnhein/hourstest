@@ -6,7 +6,7 @@
     <div class="title">
     <%= link_to "#{Venue.where(id: event.venue_id).first.name}", venue_path(Venue.where( id: event.venue_id).first.id), class: "btn-flat", 'data-no-turbolink' => true %>
     </div>
-    
+
     <!--<h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>-->
     <div class="card">
      <div class="card-image">
