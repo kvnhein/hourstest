@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable
 acts_as_voter
 
+  validates :fullname, presence: true, length: {maximum: 50}
+
 def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
 

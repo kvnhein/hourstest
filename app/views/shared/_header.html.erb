@@ -49,7 +49,7 @@
 
     <!-- Dropdown Structure -->
 <ul id="venue-menu-dropdown" class="dropdown-content nav-drop">
-    <li><%= link_to "Features", daily_specials_path%></li>
+
     <li class="divider"></li>
     <li><%= link_to "Downtown", downtown_path%></li>
     <li class="divider"></li>
@@ -67,7 +67,7 @@
 </ul>
 
     <ul id="venue-menu-dropdown2" class="dropdown-content nav-drop" style="top: 51px !important;">
-    <li><%= link_to "Features", daily_specials_path%></li>
+
     <li class="divider"></li>
     <li><%= link_to "Downtown", downtown_path%></li>
     <li class="divider"></li>
@@ -87,9 +87,11 @@
 
 
   <ul class="right hide-on-med-and-down">
+
     <li><a class="dropdown-button" data-activates="venue-menu-dropdown2">Neighborhoods<i class="material-icons right" style="color: #fff;
     padding-top: 0px;">arrow_drop_down</i></a></li>
     <li class="divider"></li>
+    <li><%= link_to "Features", daily_specials_path%></li>
     <li> <%= link_to "venues", venues_path%></li>
 
     <%if (user_signed_in?)%>
@@ -111,7 +113,9 @@
   <%else%>
        <li><%= link_to "Login", new_user_session_path%></li>
   <%end%>
-    <li><%= link_to 'About Us', about_us_path%></li>
+    <%if (user_signed_in?)%>
+   <!-- <li> <%= current_user.fullname %> Profile</li>-->
+    <%end%>
   </ul>
 
 
@@ -120,6 +124,8 @@
     <li class="divider"></li>
     <li><a class="dropdown-button" data-activates="venue-menu-dropdown">Neighborhoods<i class="material-icons right" style="color: #444;
     padding-top: 4px;">arrow_drop_down</i></a></li>
+    <li class="divider"></li>
+    <li><%= link_to "Features", daily_specials_path%></li>
     <li class="divider"></li>
     <li> <%= link_to "venues", venues_path%></li>
     <li class="divider"></li>
@@ -164,30 +170,7 @@
 
         <%= link_to "#{image_tag('logo.png')}".html_safe, landing_path %>
 
-<!--
-   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">query_builder</i></a>
-    <ul class="right hide-on-med-and-down">
-     <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Neighborhoods</a></li>
 
-      <% if (!user_signed_in?)%>
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown3">Sign-Up/Log-In</a></li>
-      <%else%>
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown4">Log-Out/Edit Profile</a></li>
-      <li><strong><%= current_user.email %></strong></li>
-      <%end%>
-    </ul>
-     <ul class="side-nav" id="mobile-demo">
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown6">Neighborhoods<i class="material-icons right">arrow_drop_down</i></a></li>
-      <!-- Dropdown Trigger -->
-     <!-- <% if (!user_signed_in?)%>
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown7">Sign-Up/Log-In<i class="material-icons right">arrow_drop_down</i></a></li>
-      <%else%>
-       <li><strong><%= current_user.email %></strong></li>
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown8">Log-Out/Edit Profile<i class="material-icons right">arrow_drop_down</i></a></li>
-
-      <%end%>
-    </ul>
--->
     <script>
      $(document).ready(function(){
       $(".dropdown-button").dropdown();

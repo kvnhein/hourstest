@@ -32,6 +32,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'alphabetical_paginate'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

@@ -440,6 +440,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        EventMailer.sample_email(current_user).deliver
+
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
         format.json { head :no_content }
