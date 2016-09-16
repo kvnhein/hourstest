@@ -8,7 +8,7 @@
 <% @v.order(start: :asc, special: :asc).each do |x| %>
 <li class="collection-item grey lighten-3 special-by-day">
 
-        <h4><%= x.special %></h4>
+        <h4 class="addonpadding"><%= x.special %></h4>
 
 
 
@@ -54,14 +54,15 @@
 </div>
 
   <%if Event.where(id: x.id).first.any_details == 2%>
-      <p class="detailonshow">
+      <p class="detailonshow addonpadding">
         <%=Event.where(id: x.id).first.detail%>
       </p>
   <%end%>
 
   <script>
     if ($('.edit-button-user').hasClass('imhere')) {
-    $('.detailonshow').addClass('addedpadding');
+    $('.addonpadding').addClass('addedpadding');
+      $('.addonpadding').addClass('addedpadding');
     }
   </script>
 
