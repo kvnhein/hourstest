@@ -9,17 +9,18 @@
   <link rel="manifest" href="/manifest.json">
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
   <script>
-    var OneSignal = window.OneSignal || [];
+   var OneSignal = window.OneSignal || [];
     OneSignal.push(["init", {
       appId: "03e86ca5-e989-4cf9-8d42-07c6ac901042",
-      autoRegister: false,
+      autoRegister: false, /* Set to true to automatically prompt visitors */
+      subdomainName: 'http://hourspgh.com/',   
       notifyButton: {
-        enable: true /* Set to false to hide */
+          enable: true /* Set to false to hide */
       }
     }]);
   </script>
-  
-  
+
+
 <meta property="fb:app_id" content="617946341715685" />
 <meta property="og:url" content="http://www.hourspgh.com/<%=@page_url%>"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
