@@ -21,6 +21,10 @@ body, html { overflow-x:hidden; }
     flex: 1 0 auto;
   }
 
+.dropdown-content {
+  
+  min-width: 150px;
+}
 
 .slider.weeklyslider {
       margin-bottom: 68px;
