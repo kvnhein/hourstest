@@ -6,7 +6,9 @@
   <body>
     <h1>Hi <%= @user.fullname %></h1>
     <p>
-      Sample mail sent using smtp.
+      <%=Venue.find(@hour.venue_id).name%> has posted a new Hour%>  
+      <%= @hour.special%>
+      <%=@hour.day%> 
     </p>
   </body>
 </html>

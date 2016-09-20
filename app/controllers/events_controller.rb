@@ -239,8 +239,8 @@ class EventsController < ApplicationController
     @page_url = "downtown"
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
-  
-   
+
+
    @v = @venues.where( neighborhood_id: 5)
    @neighborhood_tag = 5
    hood_id = Neighborhood.where(id: 5).first.id
@@ -442,7 +442,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        EventMailer.sample_email(current_user).deliver
+        EventMailer.sample_email(current_user, @event).deliver
 
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }

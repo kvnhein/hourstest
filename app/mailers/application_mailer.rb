@@ -2,8 +2,9 @@ class ApplicationMailer < ActionMailer::Base
   default from: "hourspgh@gmail.com"
   layout 'mailer'
   
-  def sample_email(user)
+  def sample_email(user, hour)
     @user = user
-    mail(to: @user.email, subject: 'Sample Email')
+    @hour = hour
+    mail(to: @user.email, subject: '#{Venue.find(@hour.venue_id).name} has posted a new Hour')
   end
 end
