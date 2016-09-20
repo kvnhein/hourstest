@@ -120,7 +120,7 @@
         </div>
       </div>
       <%event.votes_for.up.by_type(User).voters.each do |user|%>
-      <%EventMailer.sample_email(user).deliver%>
+
        <%user.fullname%>
       <%end%>
 
