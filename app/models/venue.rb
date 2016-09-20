@@ -37,4 +37,5 @@ class Venue < ActiveRecord::Base
     Rails.cache.fetch([self, "all"]) { all }
   end
 
+  
 end

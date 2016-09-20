@@ -136,6 +136,7 @@
             if (!OneSignal.isPushNotificationsSupported()) {
                 return;
             }
+          
             OneSignal.isPushNotificationsEnabled(function(isEnabled) {
                 if (isEnabled) {
                     // The user is subscribed to notifications

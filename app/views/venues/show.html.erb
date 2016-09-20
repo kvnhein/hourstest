@@ -17,7 +17,6 @@
         <%end%>
     <%end%>
      </div>
-
 </div>
  <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
@@ -34,10 +33,6 @@ Verify Venue
                 <%end%>
     </li>
   </ul>
-
-
-
-
 <div class="row" style="margin:0;">
     <div class="col s12 profile-tabs">
       <ul class="tabs">
@@ -62,8 +57,6 @@ Verify Venue
 <#%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%>
   </div> -->
   <p class="verified-date"> Verified <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%> Ago</p>
-
-
 <%end%>
 
               <% if @venue.urbanist == true %>
@@ -75,16 +68,8 @@ Verify Venue
                   <% end %>
 </div>
 </div>
-
-
-
-
-
 <div id="weekly" class="col s12">
-
  <div class="weeklyhours beerlist">
-
-
  <div class="row">
     <div class="col s12 weektab">
       <ul class="tabs">
@@ -97,9 +82,7 @@ Verify Venue
        <li class="tab col s1"><a class="<%=@st%>" href="#SatTab">Sat</a></li>
       </ul>
     </div>
-
-
-   <div class="weeklyhours beerlist">
+   <div class="weeklyhours beerlist" id="firstfade">
     <div id="SunTab" class="col s12 showday">
       <% @h = "Sunday"%>
         <% @d = ["Sunday","Everyday","Weekend"] %>
@@ -139,7 +122,10 @@ Verify Venue
   <script>
      $(document).ready(function(){
     $('ul.tabs').tabs();
+       $('#firstfade').delay(1000).fadeIn(500);
   });
+
+
   </script>
 <ul class="collapsible beerlist hide" data-collapsible="accordion">
      <li>

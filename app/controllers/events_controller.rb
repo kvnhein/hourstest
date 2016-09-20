@@ -239,7 +239,9 @@ class EventsController < ApplicationController
     @page_url = "downtown"
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
-
+  
+   
+   @v = @venues.where( neighborhood_id: 5)
    @neighborhood_tag = 5
    hood_id = Neighborhood.where(id: 5).first.id
    @v = @venues.where( neighborhood_id: hood_id)

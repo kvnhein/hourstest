@@ -24,17 +24,11 @@
     -webkit-font-smoothing: antialiased
 }
 
-#firstfade {
-  display: none;
-}
-
-
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     font-family: "proxima-nova",Helvetica Neue;
-    overflow-x: hidden;
     background-color: #fff
 }
 
@@ -58,16 +52,12 @@ main {
     min-width: 1px
 }
 
-.weektab {
+.showday,.weektab {
     padding: 0!important
 }
 
 .showday .special-by-day p {
-    margin: 0 0 0 0!important
-}
-
-.showday {
-    padding: 0!important
+    margin: 0!important
 }
 
 .showday .collection {
@@ -115,7 +105,7 @@ main {
     color: #000
 }
 
-.weektab .tabs .tab a {
+.like-btn a,.weektab .tabs .tab a {
     color: #17a787
 }
 
@@ -142,7 +132,7 @@ footer.page-footer {
 }
 
 .contactsec h5 {
-    margin: 70px 0 0 0;
+    margin: 70px 0 0;
     padding-right: 25px
 }
 
@@ -156,28 +146,7 @@ footer.page-footer {
     display: block
 }
 
-.about-top {
-    background: url(aboutHours.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    padding: 101px 20px
-}
-
-.about-top h2 {
-    margin: 0;
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: .5px;
-    text-align: center
-}
-
-.slider .slides li img {
-    margin: 0;
+.about-top,.slider .slides li img {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -186,12 +155,29 @@ footer.page-footer {
     background-position: center
 }
 
+.about-top {
+    background: url(aboutHours.jpg);
+    padding: 101px 20px
+}
+
+.about-top h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: .5px
+}
+
+.slider .slides li img {
+    margin: 0
+}
+
 .slider {
     margin-top: 20px;
     height: 400px!important
 }
 
-.urbanist-about .slider .indicators {
+.urbanist-about .slider .indicators,.urbanist-featured br {
     display: none
 }
 
@@ -220,35 +206,29 @@ footer.page-footer {
     text-transform: uppercase
 }
 
-.like-btn a {
-    color: #17a787
-}
-
 .like-like {
-    display: inline-block;
     padding-right: 5px
 }
 
-.like-number {
+.like-like,.like-number {
     display: inline-block
 }
 
-#featured-dish h5 {
+#featured-dish h5,.about-top h2 {
     text-align: center
 }
 
 .featured-dish-section {
     position: relative;
-    margin-top: 20px;
     background: #fff;
     margin: 5px;
     padding: 10px!important
 }
 
-.featured-dish-section h5 {
+.featured-dish-section .title a,.featured-dish-section h5 {
     display: inline-block;
     font-weight: 800;
-    margin: 0 0 10px 0!important;
+    margin: 0 0 10px!important;
     font-size: 16px;
     padding-right: 118px;
     width: 100%;
@@ -265,14 +245,7 @@ footer.page-footer {
 }
 
 .featured-dish-section .title a {
-    display: inline-block;
-    font-weight: 800;
-    margin: 0 0 0 0!important;
-    font-size: 16px;
-    padding-right: 118px;
-    width: 100%;
-    text-align: left;
-    text-transform: capitalize;
+    margin: 0!important;
     height: auto;
     padding-left: 0;
     color: #17a787
@@ -283,12 +256,8 @@ footer.page-footer {
     border-bottom: 1px solid #d2d2d2
 }
 
-.featured-dish-section .card-image {
-    margin: 0 0
-}
-
 .featured-dish-section h6 {
-    margin: 2px 0 0 0;
+    margin: 2px 0 0;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -313,11 +282,7 @@ footer.page-footer {
     margin: 5px 0!important
 }
 
-.urbanist-featured br {
-    display: none
-}
-
-.urbanist-featured .featured-dish-section .card-image {
+.featured-dish-section .card-image,.urbanist-featured .featured-dish-section .card-image {
     margin: 0
 }
 
@@ -340,7 +305,7 @@ footer.page-footer {
 .double-buttons {
     border-top: 1px solid #d6d6d6;
     border-bottom: 1px solid #d6d6d6;
-    margin: 20px 0 -21px 0;
+    margin: 20px 0 -21px;
     text-align: center;
     background-color: #fff
 }
@@ -381,7 +346,7 @@ footer.page-footer {
 
 .featured-dish-section .card .card-action {
     border: 0;
-    padding: 0 0 20px 0;
+    padding: 0 0 20px;
     line-height: 18px
 }
 
@@ -433,7 +398,7 @@ footer.page-footer {
     border-bottom: 1px solid #d2d2d2
 }
 
-.powered-by-ver .veri img {
+.powered-by img,.powered-by-ver .veri img {
     float: left;
     margin: 0;
     display: inline-block;
@@ -462,7 +427,6 @@ footer.page-footer {
     color: #fff;
     font-weight: 400;
     text-transform: CAPITALIZE;
-    padding-top: 0;
     letter-spacing: 0;
     text-align: left;
     padding-top: 0
@@ -477,8 +441,7 @@ footer.page-footer {
 }
 
 .powered-by-ver .verified {
-    padding: 0 10px 0 10px;
-    margin-bottom: 0;
+    padding: 0 10px;
     text-align: left;
     max-width: 800px;
     position: relative;
@@ -502,7 +465,6 @@ footer.page-footer {
 .powered-by img {
     width: 98px;
     height: auto;
-    display: inline-block;
     float: right;
     margin: 5px 12px
 }
@@ -521,7 +483,7 @@ main .container {
     background-color: #fff
 }
 
-.collection.with-header .collection-item {
+.collection.with-header .collection-item,.side-nav li {
     padding: 0
 }
 
@@ -529,7 +491,7 @@ main .container {
     margin-top: 20px
 }
 
-.featuredsection .m5 img {
+#map,.featuredsection .m5 img {
     width: 100%;
     height: auto
 }
@@ -558,29 +520,28 @@ main .container {
     -webkit-overflow-scrolling: touch
 }
 
-.urbanist-page .urbanist {
+.profile-tabs.venues .tabs .indicator,.urbanist-page .urbanist {
     display: none
 }
 
-.add-height {
+.add-height,.show-height {
     height: 0;
     -webkit-overflow-scrolling: touch
 }
 
 .show-height {
-    height: 64px;
-    -webkit-overflow-scrolling: touch
+    height: 64px
 }
 
 .verified {
     text-align: center;
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
     margin-bottom: 120px
 }
 
 .verified img {
     display: block;
-    margin: 40px auto 5px auto;
+    margin: 40px auto 5px;
     width: 45px
 }
 
@@ -596,8 +557,6 @@ main .container {
 }
 
 #map {
-    height: 100%;
-    width: 100%;
     height: 400px;
     max-width: 800px;
     margin: 0 auto
@@ -609,12 +568,11 @@ main .container {
     left: 25%;
     z-index: 5;
     background-color: #fff;
-    padding: 5px;
     border: 1px solid #999;
     text-align: center;
     font-family: 'Roboto','sans-serif';
     line-height: 30px;
-    padding-left: 10px
+    padding: 5px 5px 5px 10px
 }
 
 .narrowchart {
@@ -672,7 +630,6 @@ main .container {
 
 .venue-details {
     padding: 0 20px;
-    margin-bottom: 0;
     max-width: 800px;
     margin: 0 auto
 }
@@ -687,16 +644,14 @@ main .container {
     background: #ccc
 }
 
-.now-tab {
+.later-tab,.now-tab {
     text-transform: uppercase;
     font-size: 8px;
-    background: #17a787;
     width: auto;
     text-align: center;
     height: auto;
     margin: 0;
     line-height: 0;
-    padding: 10px 11px 8px 12px;
     border-radius: 50px;
     color: #fff;
     letter-spacing: 1px;
@@ -704,6 +659,11 @@ main .container {
     right: 10px;
     top: 10px;
     font-weight: 900
+}
+
+.now-tab {
+    background: #17a787;
+    padding: 10px 11px 8px 12px
 }
 
 .now-tab.low-tab {
@@ -712,22 +672,8 @@ main .container {
 }
 
 .later-tab {
-    text-transform: uppercase;
-    font-size: 8px;
     background: #0e0e0e;
-    width: auto;
-    text-align: center;
-    height: auto;
-    margin: 0;
-    line-height: 0;
-    padding: 10px 7px 8px 8px;
-    border-radius: 50px;
-    color: #fff;
-    letter-spacing: 1px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-weight: 900
+    padding: 10px 7px 8px 8px
 }
 
 .profile-tabs {
@@ -737,7 +683,7 @@ main .container {
 
 .profile-tabs.neiborhoodprofile {
     //background-color: transparent;
-    margin: -48px 0 0 0;
+    margin: -48px 0 0;
     padding: 0!important;
     position: absolute;
     top: 245px;
@@ -754,21 +700,22 @@ main .container {
 }
 
 .urbanist-page .specials-header.urbanist-header.neighborhoodtop h4 {
-    margin: 5px 0 0 0
+    margin: 5px 0 0
 }
 
 .profile-tabs.venues {
     padding: 0;
-    margin-top: 2px;
+    margin-top: 2px
+}
+
+.profile-tabs .tabs,.profile-tabs.venues {
     background-color: rgba(0,0,0,0)
 }
 
-.profile-tabs .tabs {
-    background-color: rgba(0,0,0,0)
-}
-
-.profile-tabs.venues .tabs .indicator {
-    display: none
+.login-btn input,.profile-tabs.venues .tabs .tab {
+    background-color: #17a787;
+    text-transform: uppercase;
+    display: block
 }
 
 .profile-tabs.venues .tabs .tab {
@@ -776,20 +723,17 @@ main .container {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    display: block;
     float: left;
     text-align: center;
-    line-height: 48px;
-    height: 47px;
     padding: 0 15px;
-    margin: 0 1px;
-    text-transform: uppercase;
     text-overflow: ellipsis;
     overflow: visible;
-    letter-spacing: .8px;
-    width: auto;
     min-width: auto;
-    background-color: #17a787
+    line-height: 48px;
+    height: 47px;
+    margin: 0 1px;
+    letter-spacing: .8px;
+    width: auto
 }
 
 .drag-target {
@@ -842,14 +786,17 @@ main .container {
     overflow: hidden
 }
 
-.search-tab-btn {
-    position: absolute;
-    right: -86%;
-    width: 100%;
+.click-open-search,.search-tab-btn {
     height: 60px;
     background: #f2f2f2;
+    position: absolute
+}
+
+.search-tab-btn {
+    right: -86%;
     transition: 1s;
-    top: 0
+    top: 0;
+    width: 100%
 }
 
 .search-tab-btn a {
@@ -865,7 +812,6 @@ main .container {
     background: #fff;
     top: 0;
     border: 0;
-    color: #000;
     padding-left: 11px!important;
     padding-right: 11px!important;
     background-color: #17a787!important;
@@ -895,10 +841,6 @@ nav .button-collapse {
     top: -4px
 }
 
-.side-nav li {
-    padding: 0
-}
-
 nav .button-collapse i {
     font-size: 32px;
     height: 56px;
@@ -907,10 +849,6 @@ nav .button-collapse i {
 }
 
 .click-open-search {
-    width: 80px;
-    height: 60px;
-    background: #f2f2f2;
-    position: absolute;
     width: 14%
 }
 
@@ -965,7 +903,7 @@ nav .button-collapse i {
     margin: 0 -42px 0 0;
     height: auto;
     line-height: 18px;
-    padding: 0 0 0 0;
+    padding: 0;
     color: #999;
     font-weight: 300
 }
@@ -989,7 +927,6 @@ nav .button-collapse i {
 }
 
 .login-btn input {
-    background-color: #17a787;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -998,17 +935,14 @@ nav .button-collapse i {
     color: #fff;
     border: none;
     border-radius: 2px;
-    display: inline-block;
     height: 36px;
     line-height: 36px;
     outline: 0;
     padding: 0 2rem;
-    text-transform: uppercase;
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
     width: 90%;
-    margin: 36px auto;
-    display: block
+    margin: 36px auto
 }
 
 .beer-price {
@@ -1137,7 +1071,7 @@ nav .button-collapse i {
     margin-bottom: 0
 }
 
-.newvenuebtn {
+.newvenuebtn,nav a img {
     width: 200px;
     display: block;
     margin: 20px auto
@@ -1145,17 +1079,16 @@ nav .button-collapse i {
 
 .edit-btn.btn {
     position: absolute;
-    top: 51px;
     top: 0;
     right: 0;
     width: 56px;
     height: 73px;
-    padding: 17px 0 0 0;
+    padding: 17px 0 0;
     color: #fff;
     background-color: rgba(0,0,0,0)
 }
 
-.edit-btn.btn:hover {
+.addbuttons a,.edit-btn.btn:hover,nav {
     box-shadow: none;
     background-color: #17a787
 }
@@ -1170,9 +1103,7 @@ nav .button-collapse i {
 }
 
 .addbuttons a {
-    background-color: #17a787;
     width: 50%;
-    box-shadow: none;
     margin-right: 0;
     border-radius: 0;
     margin-top: -1px;
@@ -1187,7 +1118,7 @@ nav .button-collapse i {
     float: right
 }
 
-.arrow img {
+.arrow img,.dropdownarrow img {
     width: 10px;
     position: absolute;
     right: 26px;
@@ -1195,8 +1126,6 @@ nav .button-collapse i {
 }
 
 .dropdownarrow img {
-    width: 10px;
-    position: absolute;
     right: 8px;
     top: 45%
 }
@@ -1253,7 +1182,7 @@ nav .button-collapse i {
     font-weight: 800;
     color: #17a787;
     display: block;
-    margin: 4px 0 2px 0;
+    margin: 4px 0 2px;
     line-height: 14px;
     letter-spacing: 1px
 }
@@ -1268,7 +1197,6 @@ nav .button-collapse i {
 
 nav {
     background-color: #0e0e0e;
-    box-shadow: none;
     height: 51px;
     border-bottom: 1px solid #1fdeb4
 }
@@ -1276,7 +1204,6 @@ nav {
 nav a img {
     border: 0;
     padding-top: 17px;
-    display: block;
     padding-left: 0;
     width: 128px;
     height: auto;
@@ -1299,18 +1226,19 @@ nav a img {
     padding-top: 46px
 }
 
-.back-button a {
-    height: 50px;
-    padding-top: 8px;
+.back-button .btn:hover,.back-button a {
     background-color: rgba(0,0,0,0);
-    color: #1fdeb4;
     display: none
 }
 
+.back-button a {
+    height: 50px;
+    padding-top: 8px;
+    color: #1fdeb4
+}
+
 .back-button .btn:hover {
-    background-color: rgba(0,0,0,0);
-    box-shadow: none;
-    display: none
+    box-shadow: none
 }
 
 iframe {
@@ -1327,16 +1255,15 @@ iframe {
     background: 0;
     left: 0;
     background-color: transparent!important;
-    box-shadow: none;
     color: rgba(0,0,0,0)
 }
 
-.openhours:hover {
+.openhours,.openhours:hover {
     box-shadow: none
 }
 
 .card .card-content {
-    padding: 20px 20px 16px 20px;
+    padding: 20px 20px 16px;
     border-radius: 0
 }
 
@@ -1346,34 +1273,33 @@ iframe {
     height: 220px;
     width: 100%;
     font-size: 21px!important;
-    margin: 0;
     max-width: none;
     padding: 89px 0;
-    margin-bottom: 1px
+    margin: 0 0 1px
+}
+
+.lawrenceville-btn,.marketsquare-btn {
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center
 }
 
 .lawrenceville-btn {
-    background: url(lawrenceville-btn.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center
+    background: url(lawrenceville-btn.jpg)
 }
 
 .marketsquare-btn {
-    background: url(cultart.png);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center
+    background: url(cultart.png)
 }
 
 .shadyside-btn {
-    background: url(shadyside-btn.jpg);
+    background: url(shadyside-btn.jpg)
+}
+
+.featurebtn,.oaklandbtn,.shadyside-btn {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1383,27 +1309,18 @@ iframe {
 }
 
 .featurebtn {
-    background: url(wings.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center
+    background: url(wings.jpg)
 }
 
 .oaklandbtn {
-    background: url(oaklandbtn.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center
+    background: url(oaklandbtn.jpg)
 }
 
 .southside-btn {
-    background: url(southside-btn.jpg);
+    background: url(southside-btn.jpg)
+}
+
+.east_liberty-btn,.southside-btn,.strip_district-btn {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1413,29 +1330,17 @@ iframe {
 }
 
 .strip_district-btn {
-    background: url(stripterm.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center
+    background: url(stripterm.jpg)
 }
 
 .east_liberty-btn {
-    background: url(muralbikes.png);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center
+    background: url(muralbikes.png)
 }
 
 .specials-header {
     background-color: #0e0e0e;
     margin-bottom: 0;
-    padding: 50px 18px 18px 18px;
+    padding: 50px 18px 18px;
     position: relative;
     overflow: hidden;
     height: 194px;
@@ -1455,124 +1360,93 @@ iframe {
 
 .specials-header.culture_district-header {
     background: url(cult.jpg);
+    height: 194px
+}
+
+.specials-header.culture_district-header,.specials-header.strip_district-header,.specials-header.urbanist-header {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center;
-    height: 194px
+    background-position: center
 }
 
 .specials-header.strip_district-header {
     background: url(stripterm.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
     height: 194px
 }
 
 .specials-header.urbanist-header {
     background: url(UrbanistAbout.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
     height: 150px
 }
 
 .specials-header.urbanist-venues {
     background: url(Urbanist-venues.jpg);
+    height: 150px
+}
+
+.specials-header.marketsquare-header,.specials-header.urbanist-featured,.specials-header.urbanist-venues {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center;
-    height: 150px
+    background-position: center
 }
 
 .specials-header.urbanist-featured {
     background: url(Urbanist-featured.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
     height: 150px
 }
 
 .specials-header.urbanist-header.neighborhoodtop h4 {
-    margin: 32px 0 0 0
+    margin: 32px 0 0
 }
 
 .specials-header.marketsquare-header {
     background: url(market-square.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
     height: 194px
 }
 
 .specials-header.shadyside-header {
     background: url(shadyside.jpg);
+    height: 194px
+}
+
+.specials-header.features-header,.specials-header.lawrenceville-header,.specials-header.shadyside-header,.specials-header.southside-header {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center;
-    height: 194px
+    background-position: center
 }
 
 .specials-header.features-header {
     background: url(urban.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
     height: 180px
 }
 
-.specials-header.lawrenceville-header {
-    background: url(lawrenceville2.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
+.specials-header.lawrenceville-header,.specials-header.southside-header {
     height: 194px
+}
+
+.specials-header.lawrenceville-header {
+    background: url(lawrenceville2.jpg)
 }
 
 .specials-header.southside-header {
-    background: image-url("southside.jpg");
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 194px
+    background: image-url("southside.jpg")
 }
 
 .specials-header.neighborhoodtop h4 {
-    margin: 20px 0 0 0
+    margin: 20px 0 0
 }
 
 .specials-header h5 {
-    margin: 0 0 35px 0!important;
+    margin: 0 0 35px!important;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: .5px;
@@ -1587,7 +1461,7 @@ iframe {
     box-shadow: none
 }
 
-.specials-header h4 {
+.detailstitle h4,.specials-header h4 {
     margin: 0;
     font-size: 26px;
     font-weight: 700;
@@ -1595,12 +1469,8 @@ iframe {
     letter-spacing: .5px
 }
 
-.card-panel {
-    margin: 1rem 0 1rem 0
-}
-
-.card-panel h2 {
-    margin: 1rem 0 1rem 0
+.card-panel,.card-panel h2 {
+    margin: 1rem 0
 }
 
 .waves-effect.waves-light.btn-large {
@@ -1612,7 +1482,7 @@ iframe {
 }
 
 .container h5 {
-    margin: 2.82rem 0 .656rem 0
+    margin: 2.82rem 0 .656rem
 }
 
 i.tiny {
@@ -1629,7 +1499,7 @@ i.tiny {
 
 .card .card-reveal .specials-header {
     height: auto;
-    padding: 22px 18px 18px 18px
+    padding: 22px 18px 18px
 }
 
 .edit-button-user {
@@ -1702,12 +1572,7 @@ i.tiny {
 }
 
 .detailstitle h4 {
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: .5px;
-    padding: 25px 50px;
-    margin: 0
+    padding: 25px 50px
 }
 
 .detailstitle h2 {
@@ -1746,7 +1611,6 @@ i.tiny {
 .row.brews-list h4 {
     font-size: 16px;
     font-weight: 600;
-    margin-left: 41px;
     margin: 13px 50px 15px 41px
 }
 
@@ -1804,20 +1668,3 @@ i.tiny {
         font-weight: 800
     }
 }
-
- @media #{$small-and-down} {
-    // styles for small screens and down
-
-   .slider .slides {
-  height:260px !important;
-}
-
-   .slider {
-     height:260px !important;
-   }
-
-   .featured-dish-section .card-image {
-  margin: 0 -20px;
-}
-
-  }

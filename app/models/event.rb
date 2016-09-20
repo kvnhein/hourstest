@@ -5,10 +5,13 @@ class Event < ActiveRecord::Base
   validates :special, presence: true
   validate :validate_tag
 
-scope :special_like, -> (special) { where("special ilike ?", special)}
-  belongs_to :venue
+  belongs_to :venue, touch: true
 
   before_save :upper_case
+
+  scope :special_like, -> (special) { where("special ilike ?", special)}
+
+ 
 
    def upper_case
     self.tag_list.each do |tag|
