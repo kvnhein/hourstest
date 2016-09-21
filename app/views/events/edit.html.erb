@@ -9,7 +9,10 @@
 		<%= render 'form' %>
 	</div>
 </div>
-<!--
+
+<div class="hide">
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', Venue.where(owner: current_user.id).first %>
 <%= link_to 'Back', Venue.where(owner: current_user.id).first %>
+</div>
+  

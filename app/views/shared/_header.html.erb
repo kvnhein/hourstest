@@ -62,8 +62,6 @@
     <li><%= link_to "Lawrenceville", lawrenceville_path%></li>
   <li class="divider"></li>
     <li><%= link_to "Strip District", strip_district_path%></li>
-  <li class="divider"></li>
-    <li><%= link_to "About Urbanist", urbanist_path%></li>
 </ul>
 
     <ul id="venue-menu-dropdown2" class="dropdown-content nav-drop" style="top: 51px !important;">
@@ -80,8 +78,6 @@
     <li><%= link_to "Lawrenceville", lawrenceville_path%></li>
       <li class="divider"></li>
     <li><%= link_to "Strip District", strip_district_path%></li>
-       <li class="divider"></li>
-    <li><%= link_to "About Urbanist", urbanist_path%></li>
 </ul>
 
 
@@ -97,7 +93,7 @@
     <%if (user_signed_in?)%>
      <%if Venue.where(owner: current_user.id).count > 0 %>
 
-    <li><a class="dropdown-button" data-activates="venue-menu-dropdown4">User<i class="material-icons right" style="color: #fff;
+    <li><a class="dropdown-button" data-activates="venue-menu-dropdown4"><%=current_user.fullname%><i class="material-icons right" style="color: #fff;
     padding-top: 0px; margin-left:0;">arrow_drop_down</i></a></li>
 
 
@@ -136,7 +132,7 @@
             if (!OneSignal.isPushNotificationsSupported()) {
                 return;
             }
-          
+
             OneSignal.isPushNotificationsEnabled(function(isEnabled) {
                 if (isEnabled) {
                     // The user is subscribed to notifications

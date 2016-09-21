@@ -1,33 +1,13 @@
 @import "materialize/components/color";
-
+$primary-color: color("grey", "lighten-5") !default;
 @import "materialize";
-
 @import "toastr";
 
-@font-face {
-    font-family:'Material Icons';font-style:normal;font-weight:400;src:local('Material Icons'),local('MaterialIcons-Regular'),url(https://fonts.gstatic.com/s/materialicons/v18/2fcrYFNaTjcS6g4U3t-Y5RV6cRhDpPC5P4GCEJpqGoc.woff) format('woff')
-}
 
-.material-icons {
-    font-family: 'Material Icons';
-    font-weight: 400;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased
-}
 
 #firstfade {
   display: none;
 }
-
 
 body {
     display: flex;
@@ -51,249 +31,253 @@ main {
 }
 
 .slider.weeklyslider {
-    margin-bottom: 68px
+      margin-bottom: 68px;
 }
 
 .weektab .tabs .tab {
-    min-width: 1px
+      min-width: 1px;
 }
 
 .weektab {
-    padding: 0!important
+  padding:0 !important;
 }
 
 .showday .special-by-day p {
-    margin: 0 0 0 0!important
+margin: 0 0px 0 0 !important;
 }
 
 .showday {
-    padding: 0!important
+  padding:0 !important;
 }
 
-.showday .collection {
-    margin: 0;
+.showday .collection{
+      margin: 0;
     border-radius: 0;
     border: 0;
     border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd
+    border-bottom: 1px solid #ddd;
 }
 
-.swiper-container {
-    width: 100%;
-    height: 300px;
-    margin: 20px auto
-}
 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #f2f2f2;
-    width: 60%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center
-}
 
-.swiper-slide:nth-child(2n) {
-    width: 40%
-}
 
-.swiper-slide:nth-child(3n) {
-    width: 20%
-}
+ .swiper-container {
+        width: 100%;
+        height: 300px;
+        margin: 20px auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #f2f2f2;
+        width: 60%;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .swiper-slide:nth-child(2n) {
+        width: 40%;
+    }
+    .swiper-slide:nth-child(3n) {
+        width: 20%;
+    }
+
+
+
 
 .weektab .tabs .tab a.active {
-    color: #000
+  color:#000;
 }
 
 .weektab .tabs .tab a {
-    color: #17a787
+  color: #17a787;
 }
 
 .weektab .tabs .indicator {
-    background-color: #17a787
+  background-color: #17a787;
 }
 
 .weeklyhours .collection .collection-item {
-    position: relative;
-    background-color: #f2f2f2!important
+      position: relative;
+      background-color: #f2f2f2 !important;
 }
 
 .weeklyhours.beerlist .special-by-day {
-    padding: 10px 20px;
-    background-color: #f2f2f2!important
+  padding: 10px 20px;
+      background-color: #f2f2f2 !important;
 }
 
 .slider.weeklyslider .indicators {
-    bottom: -40px
+  bottom: -40px;
 }
 
 footer.page-footer {
-    margin-top: 0
+  margin-top: 0;
 }
 
-.contactsec h5 {
-    margin: 70px 0 0 0;
-    padding-right: 25px
+.contactsec h5{
+  margin: 70px 0 0 0;
+    padding-right: 25px;
 }
 
 .contactsec {
-    margin-bottom: 100px
+  margin-bottom:100px;
 }
 
 .contactsec input.teal-text {
-    text-align: center;
+      text-align: center;
     margin: 0 auto;
-    display: block
+    display: block;
 }
 
 .about-top {
-    background: url(aboutHours.jpg);
+   background: url(aboutHours.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    padding: 101px 20px;
+}
+
+.about-top h2 {
+     margin: 0;
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: .5px;
+      text-align: center;
+}
+
+.slider .slides li img {
+      margin: 0;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background-position: center;
-    padding: 101px 20px
-}
-
-.about-top h2 {
-    margin: 0;
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: .5px;
-    text-align: center
-}
-
-.slider .slides li img {
-    margin: 0;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center
 }
 
 .slider {
-    margin-top: 20px;
-    height: 400px!important
+  margin-top:20px;
+      height: 400px !important;
 }
 
-.urbanist-about .slider .indicators {
-    display: none
+.urbanist-about .slider .indicators{
+  display:none;
 }
 
 .landing-title {
-    margin: 20px;
+      margin: 20px;
     font-weight: 800;
-    color: #555;
+    color: #555555;
     text-transform: uppercase;
     font-size: 14px;
-    letter-spacing: 5px
+    letter-spacing: 5px;
 }
 
 #specials .collection {
-    border: 0;
+  border: 0;
     margin: 0;
-    padding: 10px
+    padding: 10px;
 }
 
 .like-btn {
-    position: absolute;
-    width: 105px;
-    top: 10px;
-    right: 0;
-    text-align: right;
-    color: #17a787;
-    text-transform: uppercase
+  position:absolute;
+  width: 105px;
+  top:10px;
+  right:0;
+  text-align: right;
+  color: #17a787;
+  text-transform:uppercase;
 }
 
-.like-btn a {
-    color: #17a787
+.like-btn a{
+  color: #17a787;
 }
 
 .like-like {
-    display: inline-block;
-    padding-right: 5px
+  display:inline-block;
+   padding-right: 5px;
 }
 
 .like-number {
-    display: inline-block
+  display:inline-block;
 }
 
 #featured-dish h5 {
-    text-align: center
+    text-align: center;
 }
 
 .featured-dish-section {
-    position: relative;
+     position: relative;
     margin-top: 20px;
     background: #fff;
     margin: 5px;
-    padding: 10px!important
+    padding: 10px !important;
 }
 
 .featured-dish-section h5 {
-    display: inline-block;
+      display: inline-block;
     font-weight: 800;
-    margin: 0 0 10px 0!important;
+    margin: 0px 0 10px 0 !important;
     font-size: 16px;
     padding-right: 118px;
     width: 100%;
     text-align: left;
-    text-transform: capitalize
+    text-transform: capitalize;
 }
 
 #featured-urbanist .listtitle {
-    border-bottom: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2;
     margin-bottom: 0;
     padding-bottom: 20px;
-    margin-left: 0;
-    margin-right: 0
+      margin-left: 0;
+    margin-right: 0;
 }
 
-.featured-dish-section .title a {
-    display: inline-block;
+.featured-dish-section .title a{
+      display: inline-block;
     font-weight: 800;
-    margin: 0 0 0 0!important;
+     margin: 0px 0 0px 0 !important;
     font-size: 16px;
     padding-right: 118px;
     width: 100%;
     text-align: left;
     text-transform: capitalize;
     height: auto;
-    padding-left: 0;
-    color: #17a787
+    padding-left:0;
+    color: #17a787;
 }
 
 .featured-dish-section .card {
-    border: 0;
-    border-bottom: 1px solid #d2d2d2
+  border:0;
+  border-bottom: 1px solid #d2d2d2;
 }
 
 .featured-dish-section .card-image {
-    margin: 0 0
+  margin: 0 0;
 }
 
 .featured-dish-section h6 {
-    margin: 2px 0 0 0;
+     margin: 2px 0 0 0;
     position: absolute;
     top: 10px;
     right: 10px;
-    color: #999;
-    font-size: 14px
+    color: #999999;
+    font-size: 14px;
 }
 
 .featured-dish-section .card .card-content {
@@ -302,39 +286,39 @@ footer.page-footer {
     font-weight: 800;
     font-size: 14px;
     position: relative;
-    text-transform: capitalize
+    text-transform: capitalize;
 }
 
 .urbanist-featured {
-    background: #e9e9e9
+    background: #e9e9e9;
 }
 
 .urbanist-featured .featured-dish-section .title a {
-    margin: 5px 0!important
+  margin: 5px 0 !important;
 }
 
 .urbanist-featured br {
-    display: none
+  display:none;
 }
 
 .urbanist-featured .featured-dish-section .card-image {
-    margin: 0
+  margin:0;
 }
 
 .urbanist-featured .featured-dish-section {
-    padding: 0 10px!important
+      padding: 0 10px !important;
 }
 
 .urbanist-featured .featured-dish-section .card {
     border: 0;
-    border-bottom: 0
+    border-bottom: 0;
 }
 
 .container .urbanist-featured .row {
-    margin-left: 12px;
+  margin-left: 12px;
     margin-right: 12px;
-    margin-bottom: 0;
-    padding-bottom: 20px
+  margin-bottom:0;
+  padding-bottom:20px;
 }
 
 .double-buttons {
@@ -342,119 +326,124 @@ footer.page-footer {
     border-bottom: 1px solid #d6d6d6;
     margin: 20px 0 -21px 0;
     text-align: center;
-    background-color: #fff
+    background-color: #fff;
 }
 
 .double-buttons .material-icons {
-    color: #999
+  color: #999;
 }
 
 .double-buttons .row {
-    margin: 0
+ margin:0;
 }
 
 .double-buttons .s6 {
-    padding: 2px 0
+      padding: 2px 0;
 }
 
 .double-buttons .s6:first-child {
-    border-right: 1px solid #d2d2d2
+      border-right: 1px solid #d2d2d2;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-    margin: 0;
-    color: #999
+  margin:0;
+  color:#999999;
 }
 
+
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-large):not(.btn-floating) {
-    margin: 0 auto;
-    color: #999;
+  margin: 0 auto;
+    color: #999999;
     width: 24px;
     display: block;
-    padding-top: 5px
+      padding-top: 5px;
 }
 
 .teal-text.text-accent-4 {
-    color: #17a787!important;
-    letter-spacing: 1px
+      color: #17a787 !important;
+    letter-spacing: 1px;
 }
 
 .featured-dish-section .card .card-action {
-    border: 0;
-    padding: 0 0 20px 0;
-    line-height: 18px
+  border:0;
+      padding: 0 0 20px 0;
+  line-height: 18px;
 }
 
 .urbanist-nav {
-    position: fixed;
+  position: fixed;
     z-index: 1000;
     margin-top: -50px;
-    max-width: 800px
+      max-width: 800px;
 }
 
 .urbanist-nav img {
-    width: 80px;
-    height: auto;
-    padding-top: 9px
+  width:80px;
+  height:auto;
+
+  padding-top: 9px;
 }
 
 .urbanist {
-    position: absolute;
+      position: absolute;
     top: 0;
-    left: 0;
-    z-index: 99
+      left: 0px;
+      z-index: 99;
 }
 
 .urbanist img {
-    width: 50%
+    width: 50%;
 }
 
 .powered-by-ver {
-    background-color: #000;
+      background-color: #000;
     padding: 9px;
     width: 100%;
     text-align: left;
+    /* height: 43px; */
+    /* border-top: 1px solid #888; */
     position: relative;
-    margin-top: -20px
+  margin-top: -20px;
 }
 
 .powered-by-ver.onprofile {
-    margin-top: 0
+  margin-top: 0;
 }
 
 .tags-box .teal-text.text-accent-4 {
-    color: #17a787!important;
-    letter-spacing: 0;
-    margin-left: 5px
+    color: #17a787 !important;
+    letter-spacing: 0px;
+    margin-left: 5px;
 }
 
 .tags-box {
     padding: 20px;
-    border-bottom: 1px solid #d2d2d2
+    border-bottom: 1px solid #d2d2d2;
 }
 
-.powered-by-ver .veri img {
-    float: left;
+.powered-by-ver .veri img{
+  float: left;
     margin: 0;
     display: inline-block;
-    width: 20px
+    width: 20px;
 }
 
-.powered-by-ver .urbanist img {
-    position: absolute;
+.powered-by-ver .urbanist img{
+         position: absolute;
     top: -5px;
     right: 10px;
     margin: 0;
-    width: 52px
+    width: 52px;
 }
 
 .powered-by-ver .urbanist {
     position: absolute;
-    top: 0;
+    top: 0px;
     right: 0;
-    left: 0;
-    z-index: 99
+    left: 0px;
+    z-index: 99;
 }
+
 
 .powered-by-ver .verified-date {
     margin: 0 0 0 29px;
@@ -462,41 +451,41 @@ footer.page-footer {
     color: #fff;
     font-weight: 400;
     text-transform: CAPITALIZE;
-    padding-top: 0;
+    padding-top: 0px;
     letter-spacing: 0;
     text-align: left;
-    padding-top: 0
+    padding-top: 0px;
 }
 
 .card .card-reveal .card-title {
-    cursor: pointer;
+  cursor: pointer;
     display: block;
     max-width: 800px;
     margin: 0 auto;
-    position: relative
+    position: relative;
 }
 
-.powered-by-ver .verified {
-    padding: 0 10px 0 10px;
-    margin-bottom: 0;
-    text-align: left;
-    max-width: 800px;
+.powered-by-ver .verified{
+      padding: 0 10px 0 10px;
+    margin-bottom: 0px;
+  text-align:left;
+  max-width: 800px;
     position: relative;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .powered-by {
-    background-color: #000;
-    padding: 5px;
-    width: 100%;
-    text-align: left
+  background-color:#000;
+  padding:5px;
+  width:100%;
+  text-align:left;
 }
 
 .powered-by h5 {
     color: #fff;
     font-size: 14px;
     display: inline-block;
-    margin: 10px!important
+    margin: 10px !important;
 }
 
 .powered-by img {
@@ -504,188 +493,168 @@ footer.page-footer {
     height: auto;
     display: inline-block;
     float: right;
-    margin: 5px 12px
+    margin: 5px 12px;
 }
 
 .about-urbanist img {
-    width: 100%;
-    margin-top: 20px
+  width:100%;
+  margin-top:20px
 }
 
 .about-urbanist p {
-    padding: 20px;
-    clear: both
+  padding: 20px;
+      clear: both;
 }
 
 main .container {
-    background-color: #fff
+  background-color:#fff;
 }
 
 .collection.with-header .collection-item {
-    padding: 0
+  padding:0;
 }
 
 .featuredsection {
-    margin-top: 20px
+  margin-top:20px
 }
 
 .featuredsection .m5 img {
-    width: 100%;
-    height: auto
+  width:100%;
+  height:auto;
 }
 
 .remove-btn {
-    margin-left: 20px;
-    margin-top: 10px
+     margin-left:20px;
+      margin-top:10px;
 }
 
 .key-color {
-    width: 100%;
+  width: 100%;
     background: #f2f2f2;
     height: 60px;
-    margin-top: 0;
-    padding: 18px;
-    overflow: hidden;
-    position: relative;
-    max-width: 800px
+    margin-top: 0px;
+       padding: 18px;
+  overflow:hidden;
+  position:relative;
+  max-width: 800px;
 }
 
 .navbar-fixed2 {
     top: 50px;
     z-index: 100;
-    position: fixed;
+  position: fixed;
     width: 100%;
-    -webkit-overflow-scrolling: touch
+  -webkit-overflow-scrolling: touch;
 }
 
-.urbanist-page .urbanist {
-    display: none
+.urbanist-page .urbanist{
+  display:none;
 }
 
 .add-height {
-    height: 0;
-    -webkit-overflow-scrolling: touch
+  height: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .show-height {
-    height: 64px;
-    -webkit-overflow-scrolling: touch
+  height: 64px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .verified {
-    text-align: center;
-    padding: 0 20px 0 20px;
-    margin-bottom: 120px
+  text-align:center;
+  padding: 0 20px 0 20px;
+  margin-bottom:120px;
 }
 
 .verified img {
-    display: block;
-    margin: 40px auto 5px auto;
-    width: 45px
+  display: block;
+       margin: 40px auto 5px auto;
+    width: 45px;
 }
 
 .verified-date {
-    margin: 0;
+  margin: 0;
     font-size: 11px;
     color: #1fdeb4;
     font-weight: 800;
     text-transform: uppercase;
-    padding-top: 0;
+    padding-top: 0px;
     letter-spacing: 1px;
-    text-align: center
+    text-align: center;
 }
+
 
 #map {
-    height: 100%;
-    width: 100%;
-    height: 400px;
-    max-width: 800px;
-    margin: 0 auto
-}
+        height: 100%;
+        width: 100%;
+          height: 400px;
+          max-width: 800px;
+          margin: 0 auto;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
 
-#floating-panel {
-    position: absolute;
-    top: 10px;
-    left: 25%;
-    z-index: 5;
-    background-color: #fff;
-    padding: 5px;
-    border: 1px solid #999;
-    text-align: center;
-    font-family: 'Roboto','sans-serif';
-    line-height: 30px;
-    padding-left: 10px
-}
 
-.narrowchart {
-    padding: 20px;
-    max-width: 400px;
-    margin: 0 auto
-}
 
-.accordianheader {
-    position: relative;
-    color: #fff;
-    background: #222;
-    padding: 10px 20px;
-    margin-top: 20px;
-    text-align: center
-}
+/**DROPDOWN**/
+.narrowchart {padding:20px; max-width:400px; margin:0 auto;}
+.accordianheader {position:relative; color:#fff; background:#222; padding:10px 20px; margin-top:20px; text-align: center;}
+.accordianbody {background:#f4f4f4;}
+.accordianbody ul {margin:0; list-style:none; padding:0;}
+.accordianbody ul li {padding:10px; border-bottom: 1px solid lightgrey;}
 
-.accordianbody {
-    background: #f4f4f4
-}
-
-.accordianbody ul {
-    margin: 0;
-    list-style: none;
-    padding: 0
-}
-
-.accordianbody ul li {
-    padding: 10px;
-    border-bottom: 1px solid #d3d3d3
-}
-
-.accordianheader i {
-    position: absolute;
-    right: 20px;
-    top: 14px;
-    -webkit-transition: all 300ms ease-in 0s;
+.accordianheader i { position:absolute;
+  right: 20px;
+  top:14px;
+    -webkit-transition:all 300ms ease-in 0s;
     -moz-transition: all 300ms ease-in 0s;
     -o-transition: all 300ms ease-in 0s;
-    transition: all 300ms ease-in 0s
-}
+  transition: all 300ms ease-in 0s;}
 
 .ui-state-active i {
-    color: #acd4ce;
+    color: #ACD4CE;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
-    transform: rotate(180deg)
+    transform: rotate(180deg);
 }
 
+/**END**/
+
 .form-padding {
-    padding: 20px
+  padding:20px;
 }
 
 .venue-details {
-    padding: 0 20px;
+      padding: 0 20px;
     margin-bottom: 0;
     max-width: 800px;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 #venue-menu-dropdown2 {
-    top: 51px!important
+    top: 51px !important;
 }
 
 #toggle {
     width: 100px;
     height: 100px;
-    background: #ccc
-}
+    background: #ccc;
+  }
+
 
 .now-tab {
     text-transform: uppercase;
@@ -701,14 +670,14 @@ main .container {
     color: #fff;
     letter-spacing: 1px;
     position: absolute;
-    right: 10px;
-    top: 10px;
-    font-weight: 900
+  right: 10px;
+  top: 20px;
+  font-weight: 900;
 }
 
 .now-tab.low-tab {
     right: 7px;
-    top: 32px
+    top: 32px;
 }
 
 .later-tab {
@@ -727,48 +696,51 @@ main .container {
     position: absolute;
     right: 10px;
     top: 10px;
-    font-weight: 900
+    font-weight: 900;
 }
 
 .profile-tabs {
-    background-color: #0e0e0e;
-    margin: 0
+  background-color:#0e0e0e;
+  margin:0;
 }
 
-.profile-tabs.neiborhoodprofile {
-    //background-color: transparent;
+ .profile-tabs.neiborhoodprofile {
+  //background-color: transparent;
     margin: -48px 0 0 0;
-    padding: 0!important;
+    padding: 0 !important;
     position: absolute;
     top: 245px;
     z-index: 90;
-    max-width: 800px;
-    background: -moz-linear-gradient(top,rgba(0,0,0,0) 0%,rgba(0,0,0,.65) 100%);
-    background: -webkit-linear-gradient(top,rgba(0,0,0,0) 0%,rgba(0,0,0,.65) 100%);
-    background: linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.65) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 )
+   max-width: 800px;
+
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+
 }
 
 .urbanist-page .profile-tabs.neiborhoodprofile {
-    top: 201px
+      top: 201px;
 }
 
 .urbanist-page .specials-header.urbanist-header.neighborhoodtop h4 {
-    margin: 5px 0 0 0
+      margin: 5px 0 0 0;
 }
 
 .profile-tabs.venues {
-    padding: 0;
+      padding: 0;
     margin-top: 2px;
-    background-color: rgba(0,0,0,0)
+   background-color:rgba(0,0,0,0);
 }
 
 .profile-tabs .tabs {
-    background-color: rgba(0,0,0,0)
+  background-color: rgba(0,0,0,0)
 }
 
 .profile-tabs.venues .tabs .indicator {
-    display: none
+  display:none;
 }
 
 .profile-tabs.venues .tabs .tab {
@@ -789,57 +761,61 @@ main .container {
     letter-spacing: .8px;
     width: auto;
     min-width: auto;
-    background-color: #17a787
+    background-color: #17a787;
 }
 
+
+
 .drag-target {
-    z-index: 997
+  z-index:997;
 }
 
 .nav-drop li a {
-    font-size: 11px;
-    color: #444;
-    padding-top: 20px
+  font-size:11px;
+  color:#444;
+  padding-top: 20px;
 }
 
 .dropdown-row .row {
-    margin: 0
+  margin:0;
 }
 
 .tabs .tab a {
     color: #1fdeb4;
     font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1px
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
+
+
 .menubtn {
-    width: auto;
+  width: auto;
     margin: 20px auto;
     display: block;
-    max-width: 250px
+    max-width: 250px;
 }
 
 .tabs .indicator {
-    background-color: #1fdeb4;
-    height: 6px
+  background-color:#1fdeb4;
+  height: 6px;
 }
 
 .tabs .tab a.active {
-    color: #fff
+  color:#fff;
 }
 
 .nobeerlist {
-    text-align: center;
-    padding: 36px 20px
+  text-align: center;
+    padding: 36px 20px;
 }
 
 .search-tab {
-    height: 100px;
-    width: 100px;
-    border: 1px solid #000;
-    position: relative;
-    overflow: hidden
+  height:100px;
+  width:100px;
+ border:1px solid #000;
+  position: relative;
+    overflow: hidden;
 }
 
 .search-tab-btn {
@@ -849,33 +825,33 @@ main .container {
     height: 60px;
     background: #f2f2f2;
     transition: 1s;
-    top: 0
+    top: 0;
 }
 
 .search-tab-btn a {
     position: absolute;
     right: 28%;
     top: 20px;
-    color: #aaa
+    color: #AAA;
 }
 
 #search-form .search-btn input {
-    position: absolute;
+position: absolute;
     right: 15px;
     background: #fff;
-    top: 0;
+    top: 0px;
     border: 0;
     color: #000;
-    padding-left: 11px!important;
-    padding-right: 11px!important;
-    background-color: #17a787!important;
-    color: #fff!important;
+    padding-left: 11px !important;
+    padding-right: 11px !important;
+    background-color: #17a787 !important;
+    color: #fff !important;
     text-transform: uppercase;
     font-size: 11px;
     letter-spacing: 1px;
     font-weight: 900;
-    width: 22%;
-    border-radius: 0 50px 50px 0
+      width: 22%;
+      border-radius: 0 50px 50px 0;
 }
 
 .side-nav a {
@@ -883,36 +859,37 @@ main .container {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
-    text-transform: uppercase
+    text-transform: uppercase;
 }
 
 nav .button-collapse {
-    float: left;
+      float: left;
     position: absolute;
     z-index: 1;
     height: 56px;
     right: 10px;
-    top: -4px
+    top: -4px;
 }
 
 .side-nav li {
-    padding: 0
+  padding: 0;
 }
 
 nav .button-collapse i {
     font-size: 32px;
     height: 56px;
     line-height: 56px;
-    color: #1fdeb4
+    color: #1fdeb4;
 }
 
 .click-open-search {
-    width: 80px;
+        width: 80px;
     height: 60px;
     background: #f2f2f2;
     position: absolute;
-    width: 14%
+  width:14%;
 }
+
 
 .click-open-search .material-icons {
     color: #999;
@@ -920,83 +897,84 @@ nav .button-collapse i {
     text-align: center;
     display: block;
     margin-top: 21px;
-    font-size: 20px
+    font-size: 20px;
 }
 
 .addbuttons {
-    border-top: 1px solid #fff
+  border-top: 1px solid #fff;
 }
 
 #search-form {
-    width: 82%;
-    margin-left: 16%;
-    padding-right: 78px;
-    color: #fff
+      width: 82%;
+  margin-left: 16%;
+  padding-right: 78px;
+  color: #fff;
 }
 
 #search-form input {
-    margin-bottom: 0;
+      margin-bottom: 0;
     margin-top: 12px;
     height: 38px;
     color: #000;
     background: #fff;
     padding-left: 16px;
-    border: 0;
-    border-radius: 50px
+      border: 0;
+  border-radius: 50px;
 }
 
 .slide-out-search {
     transition: .3s;
-    -webkit-transition: .3s;
-    right: 0
+  -webkit-transition: .3s;
+    right: 0;
 }
 
+
 .phonea a {
-    background-color: #fff!important
+  background-color:#fff !important;
 }
 
 .beerlist .special-by-day {
-    text-align: left;
-    padding: 10px 54px 10px 20px;
-    position: relative
+  text-align:left;
+  padding: 10px 54px 10px 20px;
+  position:relative;
 }
 
 .beerlist .special-by-day p {
-    margin: 0 -42px 0 0;
+      margin: 0px -42px 0px 0;
     height: auto;
     line-height: 18px;
-    padding: 0 0 0 0;
+    padding: 0 0px 0 0;
     color: #999;
-    font-weight: 300
+    font-weight: 300;
 }
 
 .beerlist .special-by-day h4 {
-    text-align: left;
-    padding-right: 0
+  text-align:left;
+  padding-right: 107px;
 }
 
-.beerlist .special-by-day h4.venues {
-    margin-bottom: 2px
+.beerlist .special-by-day h4.venues{
+      margin-bottom: 2px;
 }
 
 .beerlist .collapsible-header {
-    position: relative
+   position: relative;
 }
 
 .collapsible-header.drinks {
-    padding: 12px 64px 12px 20px;
-    position: relative
+      padding: 12px 64px 12px 20px;
+    position: relative;
 }
 
-.login-btn input {
+.login-btn input{
     background-color: #17a787;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
     box-shadow: none;
-    text-decoration: none;
+      text-decoration: none;
     color: #fff;
-    border: none;
+  border: none;
     border-radius: 2px;
     display: inline-block;
     height: 36px;
@@ -1006,47 +984,47 @@ nav .button-collapse i {
     text-transform: uppercase;
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
-    width: 90%;
+      width: 90%;
     margin: 36px auto;
-    display: block
+    display: block;
 }
 
 .beer-price {
-    position: absolute;
-    top: 0;
-    right: 13px
+  position: absolute;
+  top: 0px;
+  right: 13px;
 }
 
 .special-by-day h4 {
-    font-size: 14px;
+  font-size: 14px;
     margin: 0;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .special-by-day .timeforspecial {
-    color: #555;
+  color: #555;
     font-weight: 300;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    height: 21px
+    height: 21px;
 }
 
 .special-by-day .timeforspecial.streets {
-    height: auto
+    height: auto;
 }
 
 .special-by-day .timeforspecial i.tiny {
     color: #555;
     font-size: 1rem;
-    width: 14px
+    width: 14px;
 }
 
 .collapsible-header.drinks h4 {
-    margin-top: 0;
+   margin-top: 0;
     margin-bottom: 0;
     font-size: 16px;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .collapsible-header.drinks h6 {
@@ -1055,38 +1033,38 @@ nav .button-collapse i {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-top: 6px
+    margin-top: 6px;
 }
 
 .modal-style-new {
-    width: 100%;
-    max-height: 100%!important;
-    height: 100%!important
+       width: 100%;
+    max-height: 100% !important;
+    height: 100% !important;
 }
 
 .modal-style-new .modal-footer .modal-close .xbox {
-    font-size: 25px;
+  font-size: 25px;
     margin-top: -15px;
     margin-right: -10px;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .modal-style-new .modal-footer {
-    width: 50px;
+  width: 50px;
     float: right;
-    background: #000;
+  background: #000;
     height: 50px;
-    position: fixed;
-    right: 0
+      position: fixed;
+    right: 0;
 }
 
-.modal-style-new .modal-content {
-    padding: 0
+.modal-style-new .modal-content{
+  padding:0;
 }
 
 .modal-header {
     background-color: #0e0e0e;
-    height: 51px
+    height: 51px;
 }
 
 .modal-header .card-title {
@@ -1096,145 +1074,149 @@ nav .button-collapse i {
     text-transform: uppercase;
     padding-top: 18px;
     letter-spacing: 1px;
-    display: block;
-    text-align: center
+  display: block;
+    text-align: center;
 }
 
-.modal-title {
-    background-color: #1fdeb4;
+.modal-title{
+  background-color: #1fdeb4;
     height: auto;
-    padding: 20px
+    padding: 20px;
 }
 
 .modal-title .grey-text {
-    font-size: 20px;
-    font-weight: 600;
-    color: #fff!important;
-    padding-top: 0;
-    display: block
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff !important;
+  padding-top: 0;
+  display: block;
 }
 
 .navbar-fixed {
-    height: 51px
+  height:51px;
 }
 
+
+
 .beerslistopen {
-    margin: 0;
-    padding: 11px 0
+  margin: 0;
+    padding: 11px 0;
 }
 
 .drinks i {
-    padding-top: 15px
+  padding-top:15px;
 }
 
 #dropdown1 {
-    width: 100%!important;
-    top: 73px!important;
-    left: 0!important
+  width:100% !important;
+  top: 73px !important;
+  left:0 !important;
 }
 
 .collapsible.beerlist {
-    margin-bottom: 0
+  margin-bottom:0;
 }
 
 .newvenuebtn {
-    width: 200px;
+      width: 200px;
     display: block;
-    margin: 20px auto
+    margin: 20px auto;
 }
 
 .edit-btn.btn {
-    position: absolute;
+  position: absolute;
     top: 51px;
-    top: 0;
+      top: 0;
     right: 0;
     width: 56px;
     height: 73px;
     padding: 17px 0 0 0;
-    color: #fff;
-    background-color: rgba(0,0,0,0)
+  color:#fff;
+   background-color: rgba(0,0,0,0);
 }
 
 .edit-btn.btn:hover {
-    box-shadow: none;
-    background-color: #17a787
+      box-shadow: none;
+    background-color: #17a787;
 }
 
 .edit-btn.btn .material-icons {
-    color: #1fdeb4;
-    font-size: 26px
+  color: #1fdeb4;
+    font-size: 26px;
 }
 
 .edit-btn.btn .material-icons:hover {
-    color: #fff
+  color: #fff;
 }
 
-.addbuttons a {
+
+
+.addbuttons a{
     background-color: #17a787;
     width: 50%;
     box-shadow: none;
-    margin-right: 0;
-    border-radius: 0;
+    margin-right: 0px;
+    border-radius: 0px;
     margin-top: -1px;
     font-size: 11px;
     letter-spacing: 1px;
-    padding: 0;
-    font-weight: 600
+    padding:0;
+    font-weight: 600;
 }
 
 .addbuttons a.newvenue {
-    border-left: 1px solid #fff;
-    float: right
+   border-left: 1px solid #fff;
+   float: right;
 }
 
 .arrow img {
     width: 10px;
     position: absolute;
     right: 26px;
-    top: 43%
+    top: 43%;
 }
 
 .dropdownarrow img {
     width: 10px;
     position: absolute;
     right: 8px;
-    top: 45%
+    top: 45%;
 }
 
 .xbox {
-    position: absolute;
+    position:absolute;
     right: 16px;
-    top: 13px;
-    font-weight: 900
+      top: 13px;
+      font-weight: 900;
 }
 
 .hide-on-med-and-up {
-    display: block!important
+  display:block !important;
 }
 
-@media only screen and (min-width:601px) {
-    .hide-on-med-and-up {
-        display: block!important
-    }
+@media only screen and (min-width: 601px) {
+.hide-on-med-and-up {
+    display: block !important;
+}
 }
 
 .material-icons {
-    color: #4db6ac
+     color: #4db6ac;
 }
 
 .hourslist {
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 .container {
-    width: 100%;
-    max-width: 800px
-}
+     width:100%;
+      max-width: 800px;
+   }
 
-.container .row {
+   .container .row {
     margin-left: 0;
-    margin-right: 0
-}
+    margin-right: 0;
+  }
 
 .chip {
     font-size: 11px;
@@ -1244,437 +1226,439 @@ nav .button-collapse i {
     padding: 0 12px;
     border-radius: 16px;
     margin-bottom: 8px;
-    background-color: #2e2e2e
+    background-color: #2e2e2e;
 }
 
 .card .card-content .card-title {
-    font-size: 11px;
+  font-size: 11px;
     text-transform: uppercase;
     font-weight: 800;
     color: #17a787;
     display: block;
     margin: 4px 0 2px 0;
     line-height: 14px;
-    letter-spacing: 1px
+    letter-spacing: 1px;
 }
 
 .hourslist .col {
-    padding: 0
+  padding:0;
 }
 
 #notice {
-    display: none
+  display:none;
 }
 
 nav {
-    background-color: #0e0e0e;
-    box-shadow: none;
-    height: 51px;
-    border-bottom: 1px solid #1fdeb4
+  background-color:#0e0e0e;
+  box-shadow: none;
+  height: 51px;
+      border-bottom: 1px solid #1fdeb4;
 }
 
-nav a img {
+nav a img{
     border: 0;
     padding-top: 17px;
     display: block;
     padding-left: 0;
     width: 128px;
     height: auto;
-    margin: 0 auto
+      margin: 0 auto;
 }
 
 .back-button {
-    bottom: 0;
+     bottom: 0;
     right: 0;
     left: 0;
     margin: 0;
-    top: 0;
+    top: 0px;
     height: 46px;
     padding: 0;
-    width: 81px;
-    display: none
+      width: 81px;
+  display:none;
 }
 
 .side-nav {
-    padding-top: 46px
+    padding-top: 46px;
 }
 
 .back-button a {
-    height: 50px;
+  height: 50px;
     padding-top: 8px;
     background-color: rgba(0,0,0,0);
-    color: #1fdeb4;
-    display: none
+      color: #1fdeb4;
+   display:none;
 }
 
 .back-button .btn:hover {
     background-color: rgba(0,0,0,0);
     box-shadow: none;
-    display: none
+   display:none;
 }
 
 iframe {
-    width: 1px;
-    min-width: 100%;
-    *width: 100%
-}
+        width: 1px;
+        min-width: 100%;
+        *width: 100%;
+    }
 
 .openhours {
-    width: 100%;
+  width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     background: 0;
     left: 0;
-    background-color: transparent!important;
-    box-shadow: none;
-    color: rgba(0,0,0,0)
+      background-color: transparent !important;
+      box-shadow: none;
+  color: rgba(0,0,0,0);
 }
 
 .openhours:hover {
-    box-shadow: none
+  box-shadow:none;
 }
 
 .card .card-content {
     padding: 20px 20px 16px 20px;
-    border-radius: 0
+    border-radius: 0;
 }
 
 .image-btns {
     text-transform: none;
-    letter-spacing: normal!important;
+   letter-spacing: normal !important;
     height: 220px;
     width: 100%;
-    font-size: 21px!important;
+    font-size: 21px !important;
     margin: 0;
     max-width: none;
     padding: 89px 0;
-    margin-bottom: 1px
+    margin-bottom: 1px;
 }
 
 .lawrenceville-btn {
-    background: url(lawrenceville-btn.jpg);
-    background-repeat: no-repeat;
+      background: url(lawrenceville-btn.jpg);
+  background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 
 .marketsquare-btn {
     background: url(cultart.png);
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 
 .shadyside-btn {
     background: url(shadyside-btn.jpg);
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 
 .featurebtn {
     background: url(wings.jpg);
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 
 .oaklandbtn {
     background: url(oaklandbtn.jpg);
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 
 .southside-btn {
     background: url(southside-btn.jpg);
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 
 .strip_district-btn {
     background: url(stripterm.jpg);
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 
 .east_liberty-btn {
     background: url(muralbikes.png);
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 
+
+
 .specials-header {
-    background-color: #0e0e0e;
+  background-color: #0e0e0e;
     margin-bottom: 0;
     padding: 50px 18px 18px 18px;
     position: relative;
     overflow: hidden;
-    height: 194px;
-    text-align: center
+   height:194px;
+    text-align:center;
 }
 
 .specials-header.oakland-header {
-    background: url(oakland-bg.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 194px
+   background: url(oakland-bg.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
 }
 
 .specials-header.culture_district-header {
-    background: url(cult.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 194px
+   background: url(cult.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
 }
 
 .specials-header.strip_district-header {
-    background: url(stripterm.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 194px
+   background: url(stripterm.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
 }
 
 .specials-header.urbanist-header {
-    background: url(UrbanistAbout.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 150px
+   background: url(UrbanistAbout.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
 }
 
 .specials-header.urbanist-venues {
-    background: url(Urbanist-venues.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 150px
+   background: url(Urbanist-venues.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
 }
 
 .specials-header.urbanist-featured {
-    background: url(Urbanist-featured.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 150px
+   background: url(Urbanist-featured.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:150px;
 }
 
 .specials-header.urbanist-header.neighborhoodtop h4 {
-    margin: 32px 0 0 0
+      margin: 32px 0 0 0;
 }
 
 .specials-header.marketsquare-header {
-    background: url(market-square.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 194px
+   background: url(market-square.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
 }
 
 .specials-header.shadyside-header {
-    background: url(shadyside.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 194px
+   background: url(shadyside.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
 }
 
 .specials-header.features-header {
-    background: url(urban.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 180px
+   background: url(urban.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
 }
 
 .specials-header.lawrenceville-header {
-    background: url(lawrenceville2.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 194px
+   background: url("lawrenceville2.jpg");
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
 }
 
 .specials-header.southside-header {
-    background: image-url("southside.jpg");
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 194px
+   background: image-url("southside.jpg");
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
 }
 
-.specials-header.neighborhoodtop h4 {
-    margin: 20px 0 0 0
+.specials-header.neighborhoodtop  h4 {
+    margin: 20px 0 0 0;
 }
 
 .specials-header h5 {
-    margin: 0 0 35px 0!important;
+        margin: 0 0 35px 0 !important;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: .5px;
-    color: #1fdeb4
+    color: #1fdeb4;
 }
 
-.btn,.btn-large {
+.btn, .btn-large {
     background-color: #17a787;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
-    box-shadow: none
+    box-shadow: none;
 }
 
 .specials-header h4 {
-    margin: 0;
+    margin:0;
     font-size: 26px;
-    font-weight: 700;
+    font-weight: bold;
     color: #fff;
-    letter-spacing: .5px
+    letter-spacing: .5px;
 }
 
 .card-panel {
-    margin: 1rem 0 1rem 0
+    margin: 1rem 0 1rem 0;
 }
 
 .card-panel h2 {
-    margin: 1rem 0 1rem 0
+  margin: 1rem 0 1rem 0;
 }
 
 .waves-effect.waves-light.btn-large {
-    display: block;
+  display: block;
     width: 293px;
     margin: 0 auto;
     background-color: #f5f5f5;
-    color: #4db6ac
+    color: #4db6ac;
 }
 
 .container h5 {
-    margin: 2.82rem 0 .656rem 0
+  margin: 2.82rem 0 0.656rem 0;
 }
 
 i.tiny {
     margin-right: 6px;
-    margin-top: -2px
+    margin-top: -2px;
 }
 
 .card .card-reveal {
     position: fixed;
     left: 0%;
     padding: 0;
-    z-index: 9000
+  z-index: 9000;
 }
 
-.card .card-reveal .specials-header {
-    height: auto;
-    padding: 22px 18px 18px 18px
+.card .card-reveal .specials-header{
+  height: auto;
+  padding: 22px 18px 18px 18px;
 }
 
 .edit-button-user {
-    width: 123px;
+   width: 123px;
     position: absolute;
     right: 0;
-    top: 0;
-    height: 100%
+    top: 0px;
+    height: 100%;
 }
 
 .edit-button-user a {
-    display: block;
+      display: block;
     width: 58px;
     height: 100%;
     margin: 0;
-    position: relative
+    position: relative;
 }
 
 .bleft {
-    width: 63px;
+  width: 63px;
     display: inline;
-    height: 100%
+    height: 100%;
 }
 
-.edit-button-user a .material-icons {
-    width: 53px;
+.edit-button-user a .material-icons{
+   width: 53px;
     padding: 0 19px;
     height: auto;
     color: #999;
     position: absolute;
     top: 48%;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
 }
 
 .addedpadding {
-    padding-right: 154px!important
+  padding-right:154px !important;
 }
 
-.edit-button-user .bleft a .material-icons {
-    border-left: 1px solid #ddd
+.edit-button-user .bleft a .material-icons{
+  border-left: 1px solid #ddd;
 }
 
 .morehourslist li {
-    margin: 34px 0;
-    font-size: 13px
+  margin: 34px 0;
+  font-size: 13px;
 }
 
 .morehourslist .valign-wrapper {
@@ -1685,29 +1669,29 @@ i.tiny {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: -2px;
-    display: -webkit-flex;
-    -webkit-justify-content: center;
+    display: -webkit-flex; /* Safari */
+    -webkit-justify-content:center; /* Safari 6.1+ */
     display: flex;
-    justify-content: center
+    justify-content: center;
 }
 
 .morehourslist .valign-wrapper i.tiny {
-    margin-top: 0
+  margin-top:0px;
 }
 
 .detailstitle {
-    background-color: #0c0c0c;
+     background-color: #0c0c0c;
     height: auto;
-    position: relative
+      position: relative;
 }
 
 .detailstitle h4 {
     font-size: 26px;
-    font-weight: 700;
+    font-weight: bold;
     color: #fff;
     letter-spacing: .5px;
-    padding: 25px 50px;
-    margin: 0
+     padding: 25px 50px;
+  margin:0;
 }
 
 .detailstitle h2 {
@@ -1717,14 +1701,14 @@ i.tiny {
     font-weight: 800;
     text-transform: uppercase;
     padding-top: 30px;
-    padding-bottom: 30px;
+   padding-bottom: 30px;
     letter-spacing: 1px;
-    text-align: center
+  text-align:center;
 }
 
 .collapsible {
-    max-width: 800px;
-    margin: 0 auto
+   max-width: 800px;
+    margin: 0 auto;
 }
 
 .card {
@@ -1732,78 +1716,96 @@ i.tiny {
     background-color: #fff;
     border-radius: 0;
     box-shadow: none;
-    border-bottom: 1px solid #d6d5d5
+    border-bottom: 1px solid #D6D5D5;
 }
 
 .card .card-action a {
-    width: 49%
+  width: 49%;
 }
 
 .row.brews-list {
-    margin-bottom: 0
+  margin-bottom:0;
 }
 
 .row.brews-list h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-left: 41px;
-    margin: 13px 50px 15px 41px
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 41px;
+  margin: 13px 50px 15px 41px;
 }
 
-.icon-remove-add a {
+.icon-remove-add a{
     position: absolute;
     z-index: 900;
     height: 47px;
     margin-top: 22px;
-    margin-left: 16px
+    margin-left: 16px;
 }
 
 .newbeerbtn {
-    padding: 20px
+  padding:20px;
 }
 
-.newbeerbtn a {
-    margin: 0 auto;
-    width: 80%;
-    display: block
+.newbeerbtn a{
+  margin: 0 auto;
+  width: 80%;
+  display: block;
 }
 
-.listtitle {
-    margin: 20px;
+.listtitle{
+/*    background: #fff;
+    width: initial;
+    display: table;
+    margin: -21px auto 0 auto;
+    padding: 7px;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 800; */
+      margin: 20px;
     font-weight: 800;
-    color: #555;
+    color: #555555;
     text-transform: uppercase;
     font-size: 14px;
     letter-spacing: 5px;
-    text-align: center
+    text-align: center;
 }
+
+/* .title-sep {
+  padding: 30px 0;
+} */
 
 .title-sep hr {
-    border-color: #d6d5d5;
+    border-color: #D6D5D5;
     border-style: solid;
     border-width: 1px;
-    border-top: 0;
-    display: none
+      border-top: 0;
+  display:none;
 }
 
-@media only screen and (min-width:993px) {
-    nav a img {
-        margin-left: 2px
-    }
 
-    nav ul li {
-        height: 50px;
-        margin-top: -7px
-    }
+@media only screen and (min-width: 993px) {
+  nav a img {
+     margin-left: 2px;
+  }
 
-    nav ul a {
-        height: 50px;
-        text-transform: uppercase;
-        font-size: 11px;
-        letter-spacing: 1px;
-        font-weight: 800
-    }
+  nav ul li {
+    height: 50px;
+        margin-top: -7px;
 }
+
+  nav ul a {
+   height: 50px;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+}
+
+
 
  @media #{$small-and-down} {
     // styles for small screens and down
