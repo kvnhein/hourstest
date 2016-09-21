@@ -1,11 +1,11 @@
 <%= form_for(@daily_special) do |f| %>
   <% if @daily_special.errors.any? %>
     <div id="error_explanation">
-        <h4 class= "flow-text center-align"><%= pluralize(@daily_special.errors.count, "error") %> prohibited this feature from being saved:</h4>
+        <!--<h4 class= "flow-text center-align"><%= pluralize(@daily_special.errors.count, "error") %> prohibited this feature from being saved:</h4>-->
 
       <ul>
       <% @daily_special.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><p class = "teal-text text-accent-4"><%= message %></p></li>
       <% end %>
       </ul>
     </div>
