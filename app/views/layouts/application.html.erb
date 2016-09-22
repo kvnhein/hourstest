@@ -15,12 +15,12 @@
       autoRegister: false, /* Set to true to automatically prompt visitors */
       subdomainName: 'https://hourspgh.onesignal.com',
       notifyButton: {
-          enable: true /* Set to false to hide */
+          enable: false /* Set to false to hide */
       }
     }]);
 
 
-    OneSignal.push(["sendTags", {key2: "@current_user.id"}]);
+    OneSignal.push(["sendTags", {key2: "current_user.id"}]);
 
 
 

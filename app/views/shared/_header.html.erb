@@ -116,7 +116,7 @@
        <li><%= link_to "Login", new_user_session_path%></li>
     <%end%>
 
-    <li class="hide">
+    <li class="">
       <a href="#" id="subscribe-link" style="display: none;">Subscribe to Notifications</a>
 <!--     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="async"></script> -->
     <script>
@@ -143,6 +143,8 @@
                 }
             });
         });
+
+      OneSignal.push(["sendTags", {key2: <%=current_user.id%>}]);
     </script>
     </li>
 
