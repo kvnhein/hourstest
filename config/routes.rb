@@ -115,9 +115,10 @@ resources :events do
   end
 
   resources :neighborhoods
-
+   get "daily_mailer" => "events#daily_mailer"
    get 'landing' => 'events#landing'
    get 'past_features' => 'daily_specials#past_features'
+   get 'underconstruction' => 'daily_specials#underconstruction'
 
    get 'venue_beer_list' => 'beers#venue_beer_list'
    get 'venue_liqour_list' => 'liqours#venue_liqour_list'

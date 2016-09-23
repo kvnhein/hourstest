@@ -4,6 +4,9 @@ class DailySpecialsController < ApplicationController
 
   # GET /daily_specials
   # GET /daily_specials.json
+  def underconstruction
+  end
+  
   def index
   @page_url = "daily_specials"
   @topic = "Featured Dishes"

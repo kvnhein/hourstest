@@ -5,6 +5,12 @@ class ApplicationMailer < ActionMailer::Base
   def sample_email(user, hour)
     @user = user
     @hour = hour
-    mail(to: @user.email, subject: 'Hours Reminder')
+    mail(to: @user.email, subject: Venue.where(id: @hour.venue.id).first.name)
+  end
+  
+   def event_reminder_email(user, events)
+    @user = user
+    @users_likes = hour
+    mail(to: @user.email, subject: Venue.where(id: @hour.venue.id).first.name)
   end
 end

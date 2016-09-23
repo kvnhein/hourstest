@@ -10,6 +10,7 @@ $primary-color: color("grey", "lighten-5") !default;
   display: none;
 }
 
+
 body {
     display: flex;
     min-height: 100vh;
@@ -21,6 +22,47 @@ body {
 
 body,html {
     overflow-x: hidden
+}
+
+.mailheader {
+  background-color:#f2f2f2;
+  padding:0;
+  display:block
+}
+
+.mailheader-content {
+  padding:0 20px;
+}
+
+.mailheader-content .special-by-day h4 {
+  color:#000;
+}
+
+.mailheader-content .card-title {
+      margin: 0;
+    font-size: 17px;
+    font-weight: bold;
+    color: #020202;
+    letter-spacing: .5px;
+}
+
+.mailheader-header {
+  background-color:#0e0e0e;
+  padding:20px;
+}
+
+.mailheader h1 {
+  color:#000;
+  font-size:21px;
+}
+
+.mailheader-logo {
+  height:auto;
+  width:128px;
+}
+
+body.mailpiece {
+  max-width:800px
 }
 
 main {
@@ -1802,6 +1844,7 @@ i.tiny {
     font-size: 11px;
     letter-spacing: 1px;
     font-weight: 800;
+    padding: 0 0 0 15px;
 }
 
 }

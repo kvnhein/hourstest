@@ -4,10 +4,22 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :require_owner_event, only: [:edit, :update, :destroy]
   before_action :verified_venues, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
-  before_action :event_time, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
+  before_action :event_time, only: [:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
   autocomplete :event, :special, :full => true
   # GET /events
   # GET /events.json
+
+  def daily_mailer
+    @users = User.where(id:1)
+    @users.each do |user|
+      users_likes = user.get_up_voted Event.where(day: @day_tag)
+      if user_likes.count > 0
+      EventMailer.event_reminder_email(user, users_likes).deliver
+      end
+    end
+  end
+
+
   def verified_venues
     @today = Time.now
     @week_ago = 7.day.ago
