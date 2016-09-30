@@ -1,4 +1,5 @@
 class BrewsController < ApplicationController
+  before_filter :require_admin_construction
   before_action :set_brew, only: [:show, :edit, :update, :destroy]
 
   # GET /brews

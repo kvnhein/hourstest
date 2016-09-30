@@ -1,0 +1,101 @@
+
+<div class="under-con">
+
+<div class="under-con-header">
+  </div>
+  <div class="main-con-header">
+  <div class="container">
+    <div class="row">
+      <div class="col m7 s12">
+        <h2>#1 Spot for Pittsburgh Happy Hours</h2>
+        <p>We are currently under construction now, but will be releasing soon. Stay tuned!</p>
+        <a href="#" id="learnmorecon">Learn More</a>
+      </div>
+      <div class="col m5 s12">
+          <%= image_tag "headerphone.png"%>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div id="learnmoreto"></div>
+
+ <div class="container con-content" style="clear:both;" >
+ <div class="row con-neighb" >
+      <h4 class="con-content-title">Neighborhoods</h4>
+   <p class="con-content-p">Find happy hours and featured dishes in the neighborhoods below and many more.</p>
+
+     <div class="col m3 s6" id="dtn">
+       <h6>Downtown</h6>
+     </div>
+     <div class="col m3 s6" id="oak">
+       <h6>Oakland</h6>
+     </div>
+     <div class="col m3 s6" id="shady">
+       <h6>Shadyside</h6>
+     </div>
+     <div class="col m3 s6" id="lawr">
+       <h6>Lawrenceville</h6>
+     </div>
+
+   <div class="col m3 s6" id="ss">
+       <h6>South Side</h6>
+     </div>
+     <div class="col m3 s6" id="stpd">
+       <h6>Strip District</h6>
+     </div>
+     <div class="col m3 s6" id="eastlib">
+       <h6>East Liberty</h6>
+     </div>
+     <div class="col m3 s6" id="mountw">
+       <h6>Mount Washington</h6>
+     </div>
+    </div>
+</div>
+
+   <div class="container con-content2" style="clear:both;">
+ <div class="row con-neighb">
+
+   <h4 class="con-content-title" style="padding-top: 76px;">Screens</h4>
+   <p class="con-content-p">Easily scroll through the current days specials, or featured dishes. Or look at particular venue's profile to view their weekly specials and details.</p>
+
+     <div class="col m4 s12">
+       <h6>Weekly Specials</h6>
+         <%= image_tag "screen1.jpg"%>
+
+    </div>
+
+   <div class="col m4 s12">
+     <h6>Featured Dishes</h6>
+         <%= image_tag "screen2.jpg"%>
+
+    </div>
+
+   <div class="col m4 s12">
+      <h6>Venue Details</h6>
+         <%= image_tag "screen3.jpg"%>
+
+    </div>
+
+
+     </div>
+    </div>
+ </div>
+
+
+<script>
+
+  $("#learnmorecon").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#learnmoreto").offset().top},
+        'slow');
+});
+
+</script>
+
+
+
+
+
+
+

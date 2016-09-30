@@ -48,6 +48,7 @@
   <div class = "row">
 
     <!-- Dropdown Structure -->
+<% if (user_signed_in?)%>
 <ul id="venue-menu-dropdown" class="dropdown-content nav-drop">
 
     <li class="divider"></li>
@@ -79,7 +80,7 @@
       <li class="divider"></li>
     <li><%= link_to "Strip District", strip_district_path%></li>
 </ul>
-
+<%end%>
 
 
   <ul class="right hide-on-med-and-down">

@@ -33,6 +33,9 @@ gem 'alphabetical_paginate'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'pusher'
+gem 'sinatra'
+
 #EMAIL CSS
 gem 'premailer-rails'
 gem 'nokogiri'

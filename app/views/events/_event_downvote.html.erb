@@ -1,1 +1,3 @@
-<%=link_to "Unlike", dislike_event_path(@d), method: :put, remote: true, id: "down#{@d.id}" %>
+<%=link_to dislike_event_path(@d), method: :put, remote: true, id: "down#{@d.id}" do%>
+<i class="tiny material-icons">bookmark</i>
+<%end%>

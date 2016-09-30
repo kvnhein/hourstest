@@ -1,4 +1,5 @@
 class BeersController < ApplicationController
+  before_filter :require_admin_construction
   before_action :set_beer, only: [:show, :edit, :update, :destroy, :add_to_current, :add_to_reserve, :beer_level_low, :beer_level_full]
   autocomplete :beer, :name, :full => true
   # GET /beers

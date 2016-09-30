@@ -1,9 +1,9 @@
 class Event < ActiveRecord::Base
   acts_as_taggable
   acts_as_votable
-
+  by_star_field :created_at
   validates :special, presence: true
-  validate :validate_tag
+  validates :validate_tag, presence: true
 
   belongs_to :venue, touch: true
 
@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
 
   scope :special_like, -> (special) { where("special ilike ?", special)}
 
- 
+
 
    def upper_case
     self.tag_list.each do |tag|
@@ -45,6 +45,13 @@ class Event < ActiveRecord::Base
     end
   end
  end
+
+  def new_event
+    a = Event.after(Date.today - 7).to_a
+    if a.include? self
+      return ""
+    end
+  end
 
    def time_conversion
   start_minutes = "00"

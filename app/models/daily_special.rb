@@ -3,9 +3,7 @@ class DailySpecial < ActiveRecord::Base
   acts_as_votable
 
   validates :text, presence: true
-  
-
-
+  validates :price, presence: true
   belongs_to :venue
 
   before_save :default_values

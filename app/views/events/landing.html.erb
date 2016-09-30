@@ -20,10 +20,13 @@
 <%= link_to "Strip District", strip_district_path, class: "waves-effect waves-light btn newvenue image-btns menubtn strip_district-btn"%>
 <h4 class ="flow-text center landing-title">Coming Soon</h4>
 <%= link_to "East Liberty", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn east_liberty-btn"%>
-<div class = "hide">
-<%=link_to "Unlike", daily_mailer_path, method: :get, remote: true%>
+<% if (user_signed_in?)%>  
+   <% if current_user.admin?%>
+<div>
+<%=link_to "Send Reminders", daily_mailer_path, method: :get, remote: true%>
 </div>
-
+    <%end%>
+<%end%>
 
 <div class = "hide">
   <h4 class ="flow-text center landing-title">Coming Soon</h4>
@@ -33,3 +36,45 @@
 <%end%><!--cache end-->
 </div>
 </div>
+
+<!-- 	<input class="create-notification" placeholder="Send a notification :)"></input>
+
+	<button class="submit-notification">Go!</button>
+
+	<div class="notification">
+	</div>
+
+
+	<script>
+	var pusher = new Pusher('e29028c930b5a4a8f36e');
+	var notificationsChannel = pusher.subscribe('notifications');
+	notificationsChannel.bind('new_notification', function(notification){
+		var message = notification.message;
+		toastr.success(message)
+	});
+	var sendNotification = function(){
+		var text = $('input.create-notification').val();
+		$.post('/notification', {message: text}).success(function(){
+			console.log('Notification sent!');
+		});
+	};
+	$('button.submit-notification').on('click', sendNotification);
+	</script> -->
+
+
+<!--
+<script>
+
+
+
+    var pusher = new Pusher('e29028c930b5a4a8f36e', {
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('my_event', function(data) {
+      alert(data.message);
+    });
+  </script>  -->
+
+

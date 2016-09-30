@@ -4,11 +4,227 @@ $primary-color: color("grey", "lighten-5") !default;
 @import "materialize";
 @import "toastr";
 
+.under-con .container{
+  background-color:rgba(0,0,0,0)
+}
+
+.main-con-header {
+   height: 467px;
+  position: relative;
+      margin-bottom: 73px;
+}
+
+.under-con .row{
+  background-color:rgba(0,0,0,0)
+}
+
+h4.con-content-title {
+  text-align: center;
+    margin: 20px;
+    font-weight: 800;
+    color: #555555;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 5px;
+}
+
+
+
+.under-con{
+  background-color:rgba(0,0,0,0)
+}
+
+.under-con-header {
+  background-color:#020202;
+  position:absolute;
+  top:50px;
+  width:100%;
+  left:0;
+  height: 467px;
+  z-index:0;
+}
+
+
+
+.under-con .main-con-header img {
+    padding: 30px 30px 30px 61px;
+      height: 512px;
+    position: absolute;
+  width: auto;
+}
+
+.under-con img {
+    width: 100%;
+    height: auto;
+}
+
+.con-content-p{
+         font-size: 18px;
+    color: #777;
+    font-weight: 300;
+    line-height: 30px;
+    margin-top: 5px;
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: center;
+      margin: 0 auto 80px auto;
+}
+
+.con-content2 .row .col.m4 {
+  padding: 25px;
+}
+
+.con-content2 {
+  background-color: #fafafa !important;
+  margin-bottom:20px;
+}
+
+.con-content2 img {
+   max-width: 247px;
+    margin: 0 auto;
+    display: block;
+      border: 1px solid #aaa;
+}
+
+.con-content2 h6 {
+ text-align: center;
+    font-weight: 800;
+    margin: 20px 0;
+}
+
+.under-con .container  {
+  background-color: rgba(0,0,0,0);
+}
+
+.main-con-header h2 {
+   color: #fff;
+    font-size: 48px;
+    margin-top: 88px;
+    font-weight: 300;
+}
+
+.main-con-header a {
+  color: #1fdeb4;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    border: 1px solid #1fdeb4;
+    border-radius: 3px;
+      display: table;
+}
+
+.main-con-header p {
+ color: #fff;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+
+
+.con-neighb .col.m3{
+         background: #aaa;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    padding: 62px 5px;
+
+   }
+
+.con-neighb .col.m3 h6 {
+  text-align: center;
+  color: #fff;
+    font-size: 16px;
+  font-weight: 700;
+}
+
+#dtn {
+  background: url(stripterm.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#oak {
+   background: url(oaklandbtn.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#shady{
+ background:url(shadyside-btn.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#lawr {
+ background:url(lawrenceville-btn.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#ss {
+background:url(southside-btn.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#stpd {
+background:url(stripterm.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#eastlib {
+background:url(muralbikes.png);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#mountw {
+background:url(mount.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+
 
 
 #firstfade {
   display: none;
 }
+
 
 
 body {
@@ -1854,6 +2070,48 @@ i.tiny {
  @media #{$small-and-down} {
     // styles for small screens and down
 
+   .main-con-header img {
+   display:none;
+}
+
+   .under-con .main-con-header img {
+    padding: 30px;
+      height: auto;
+    position: initial;
+  width: 100%;
+     margin:0 auto;
+     display:block;
+         max-width: 330px;
+}
+
+   .under-con h2 {
+       text-align: center;
+    margin-top: 70px;
+    font-size: 39px;
+}
+
+
+
+.under-con p {
+     text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    padding: 0 20px;
+}
+
+   .main-con-header a {
+         margin: 0 auto;
+   }
+
+   .main-con-header {
+   height: auto;
+     background-color:#020202;
+}
+
+   .under-con-header {
+  display:none;
+}
+
    .slider .slides {
   height:260px !important;
 }
@@ -1866,4 +2124,33 @@ i.tiny {
   margin: 0 -20px;
 }
 
-  }
+
+.con-content2 .row .col.m4 {
+  padding: 25px;
+}
+
+.con-content2 {
+  background-color: #f2f2f2 !important;
+  margin-bottom:20px;
+}
+
+   .main-con-header h2  {
+         font-size: 30px;
+   }
+
+.con-content2 img {
+   max-width: 247px;
+    margin: 0 auto;
+    display: block;
+}
+
+   .con-content-p {
+     margin-bottom:46px;
+   }
+
+.con-content2 h6 {
+ text-align: center;
+    font-weight: 800;
+    margin: 20px 0;
+}
+}

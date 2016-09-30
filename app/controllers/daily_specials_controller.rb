@@ -1,4 +1,5 @@
 class DailySpecialsController < ApplicationController
+  before_filter :require_admin_construction
   before_action :set_daily_special, only: [:show, :edit, :update, :destroy, :dish_limited, :dish_not_limited,:upvote, :downvote]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy,:upvote, :downvote]
 

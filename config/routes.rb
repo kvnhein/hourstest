@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'events#landing'
+  root 'events#under_construction'
 
   devise_for 	:users,
   						:path => '',
@@ -126,8 +126,6 @@ resources :events do
 
    get 'users_venues' => 'venues#users_venues'
    get 'about_us' => 'events#about_us'
-
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

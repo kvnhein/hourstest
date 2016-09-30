@@ -1,20 +1,25 @@
 class EventsController < ApplicationController
   after_filter "save_my_previous_url", only: [:new]
+  before_action :admin_redirect, only: [:under_construction]
+   before_action :require_admin_construction, except: [:under_construction]
   before_action :set_event, only: [:show, :edit, :update, :destroy, :event_upvote, :event_downvote]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :require_owner_event, only: [:edit, :update, :destroy]
+ # before_action :require_owner_event, only: [:edit, :update, :destroy]
   before_action :verified_venues, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
   before_action :event_time, only: [:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
   autocomplete :event, :special, :full => true
   # GET /events
   # GET /events.json
 
+  def under_construction
+  end
+
   def daily_mailer
-    @users = User.where(id:1)
+    @users = User.where(id: [1,2])
     @users.each do |user|
       users_likes = user.get_up_voted Event.where(day: @day_tag)
-      if user_likes.count > 0
-      EventMailer.event_reminder_email(user, users_likes).deliver
+      if users_likes != 0
+        EventMailer.event_reminder_email(user, users_likes).deliver
       end
     end
   end
