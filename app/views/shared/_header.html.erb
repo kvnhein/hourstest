@@ -99,7 +99,8 @@
 
 
     <ul id="venue-menu-dropdown4" class="dropdown-content nav-drop" style="top: 51px !important;">
- <%if Venue.where(owner: current_user.id).count > 0 %>
+     <li><%=link_to "My Profile", edit_user_registration_path%></li>
+   <%if Venue.where(owner: current_user.id).count > 0 %>
     <li><%= link_to "My Venues", users_venues_path%></li>
    <li><%= link_to 'New Hour', new_event_path%></li>
        <%end%>
@@ -170,6 +171,8 @@
     <br>
     <li class="divider"></li>
     <%if (user_signed_in?)%>
+    <li><%=link_to "My Profile", edit_user_registration_path%></li>
+    <li class="divider"></li>
       <%if Venue.where(owner: current_user.id).count > 0 %>
           <li><%= link_to "My Venues", users_venues_path%></li>
        <%end%>

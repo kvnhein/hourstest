@@ -108,11 +108,9 @@
  <% @e.reverse.each do |modal_event|%>
 <li>
       <div class="collapsible-header special-by-day">
-       <h4><%= modal_event.special %></h4>
-
-      <div class="valign-wrapper timeforspecial">
-        <i class="tiny material-icons">query_builder</i><%=modal_event.time_conversion%>
-        <% @d = modal_event%>
+       <div class = "valign-wrapper">
+        <h4><%= modal_event.special %></h4>
+              <% @d = modal_event%>
             <div class="like-like">
               <div id = 'like-<%=modal_event.id%>'>
               <% if user_signed_in? %>
@@ -126,6 +124,10 @@
             <%end%>
               </div>
             </div>
+        </div>
+
+      <div class="valign-wrapper timeforspecial">
+        <i class="tiny material-icons">query_builder</i><%=modal_event.time_conversion%>
       </div>
 
 

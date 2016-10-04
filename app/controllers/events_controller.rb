@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
 
   def daily_mailer
-    @users = User.where(id: [1,2])
+    @users = User.where(id: [1,2,4,5])
     @users.each do |user|
       users_likes = user.get_up_voted Event.where(day: @day_tag)
       if users_likes != 0
@@ -83,10 +83,12 @@ class EventsController < ApplicationController
 
   def event_upvote
   @event.liked_by current_user
+   current_user.increment!(:experience)
   end
 
   def event_downvote
   @event.unliked_by current_user
+  current_user.increment!(:experience)
   end
 
   def landing

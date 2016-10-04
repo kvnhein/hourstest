@@ -2,11 +2,11 @@
 
        <% @v = @current_user.get_up_voted Event.where( day: @d)%>
 <% if @v.empty?%>
-<li class = "collection-item grey lighten-3"><%= @current_user.fullname%> has no hours on <%=@h%></li>
+<li class = "collection-item grey lighten-3">You have no hours saved on <%=@h%></li>
 <%else%>
 <% @v.order(start: :asc, special: :asc).each do |x| %>
 <li class="collection-item grey lighten-3 special-by-day">
-        <h4 class="addonpadding"><%=Venue.find(x.venue_id).name %> (<%=Neighborhood.find(Venue.find(x.venue_id).id).name%>)</h4>
+<!--         <h4 class="addonpadding"><%#=Venue.find(x.venue_id).name %> (<%#=Neighborhood.find(Venue.find(x.venue_id).id).name%>)</h4> -->
         <h4 class="addonpadding"><%= x.special %></h4>
 
 

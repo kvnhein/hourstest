@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
   def new_event
     a = Event.after(Date.today - 7).to_a
     if a.include? self
-      return ""
+      return "NEW"
     end
   end
 

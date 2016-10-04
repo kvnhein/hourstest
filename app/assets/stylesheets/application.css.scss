@@ -4,14 +4,36 @@ $primary-color: color("grey", "lighten-5") !default;
 @import "materialize";
 @import "toastr";
 
+.under-con-nav {
+       position: fixed;
+    z-index: 1000;
+    left: 0;
+}
+
+.under-con-nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+      padding: 0 10px;
+}
+
+.under-con-nav img {
+    width: 128px !important;
+    height: auto;
+    padding-top: 0px;
+    display: block;
+    margin-top: 16px;
+}
+
 .under-con .container{
   background-color:rgba(0,0,0,0)
 }
 
 .main-con-header {
-   height: 467px;
-  position: relative;
-      margin-bottom: 73px;
+       height: 515px;
+    position: relative;
+    margin-bottom: 73px;
 }
 
 .under-con .row{
@@ -35,22 +57,41 @@ h4.con-content-title {
 }
 
 .under-con-header {
-  background-color:#020202;
-  position:absolute;
-  top:50px;
-  width:100%;
-  left:0;
-  height: 467px;
-  z-index:0;
+       background-color: #020202;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    left: 0;
+    height: 465px;
+    z-index: 0;
+}
+
+.login-btn-con a {
+    display: inline-block;
+    float: right;
+    height: auto;
+    line-height: 50px;
+    margin-top: -31px;
+
+
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.hours-btn-logo {
+      width: 128px;
+    display: block;
 }
 
 
 
 .under-con .main-con-header img {
-    padding: 30px 30px 30px 61px;
-      height: 512px;
+        padding: 75px 30px 30px 81px;
+    height: 562px;
     position: absolute;
-  width: auto;
+    width: auto;
 }
 
 .under-con img {
@@ -97,9 +138,9 @@ h4.con-content-title {
 }
 
 .main-con-header h2 {
-   color: #fff;
+    color: #fff;
     font-size: 48px;
-    margin-top: 88px;
+    margin-top: 140px;
     font-weight: 300;
 }
 
@@ -628,6 +669,8 @@ footer.page-footer {
       padding: 0 0 20px 0;
   line-height: 18px;
 }
+
+
 
 .urbanist-nav {
   position: fixed;
@@ -1209,7 +1252,7 @@ nav .button-collapse i {
 
 .beerlist .special-by-day h4 {
   text-align:left;
-  padding-right: 107px;
+  padding-right: 4px;
 }
 
 .beerlist .special-by-day h4.venues{
@@ -2137,6 +2180,8 @@ i.tiny {
    .main-con-header h2  {
          font-size: 30px;
    }
+
+
 
 .con-content2 img {
    max-width: 247px;

@@ -20,7 +20,8 @@
 <%= link_to "Strip District", strip_district_path, class: "waves-effect waves-light btn newvenue image-btns menubtn strip_district-btn"%>
 <h4 class ="flow-text center landing-title">Coming Soon</h4>
 <%= link_to "East Liberty", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn east_liberty-btn"%>
-<% if (user_signed_in?)%>  
+<% if (user_signed_in?)%>
+
    <% if current_user.admin?%>
 <div>
 <%=link_to "Send Reminders", daily_mailer_path, method: :get, remote: true%>
