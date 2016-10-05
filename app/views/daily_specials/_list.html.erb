@@ -2,7 +2,7 @@
 <h3 class ="flow-text center landing-title">Yesterdays Top Feature</h3>
 <%if @daily_specials.count > 0 %>
 <%max = @daily_specials.yesterday.maximum(:credit)%>
-<%@daily_specials.yesterday.where(credit: max).each do |event| %>
+<%@daily_specials.where(credit: max).each do |event| %>
 
 <%@j=event%>
 <div class="row">
