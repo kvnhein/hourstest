@@ -1,5 +1,6 @@
 <h2 class= "flow-text center-align"><%= current_user.fullname%> Profile</h2>
-
+<%@b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour%>
+<%@c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)%>
 <%t= Time.now.in_time_zone("Eastern Time (US & Canada)")%>
   <%  @m = ""%>
     <%@t = ""%>
@@ -41,39 +42,49 @@
        <li class="tab col s1"><a class="<%=@st%>" href="#SatTab">Sat</a></li>
       </ul>
     </div>
+   <div class ="center" id="specials">
+       <%=render partial: "shared/autocomplete"%>
+      </div>
    <div class="weeklyhours beerlist" id="firstfade">
     <div id="SunTab" class="col s12 showday">
+
         <% @d = ["Sunday","Everyday","Weekdays"] %>
-        <%= render  "profile_neighborhood" %>
+        <%= render  "prof_neigh_table" %>
    </div>
     <div id="MonTab" class="col s12 showday">
 
         <% @d = ["Monday","Everyday","Weekdays"] %>
-        <%= render  "profile_neighborhood" %>
+        <%= render  "prof_neigh_table" %>
    </div>
     <div id="TueTab" class="col s12 showday">
+
       <% @h = "Tuesday"%>
       <% @d = ["Tuesday","Everyday","Weekdays"] %>
-        <%= render partial: "profile_neighborhood" %>
+        <%= render  "prof_neigh_table" %>
    </div>
     <div id="WedTab" class="col s12 showday">
+
        <% @h = "Wednesday"%>
         <% @d = ["Wednesday","Everyday","Weekdays"] %>
-        <%= render partial: "profile_neighborhood" %>
+       <%= render  "prof_neigh_table" %>
    </div>
      <div id="ThurTab" class="col s12 showday">
+
        <% @h = "Thursday"%>
         <% @d = ["Thursday","Everyday","Weekdays"] %>
-        <%= render partial: "profile_neighborhood" %>
-   </div><div id="FriTab" class="col s12 showday">
+        <%= render  "prof_neigh_table" %>
+   </div>
+     <div id="FriTab" class="col s12 showday">
+
        <% @h = "Friday"%>
         <% @d = ["Friday","Everyday","Weekdays"] %>
-        <%= render partial: "profile_neighborhood" %>
+        <%= render  "prof_neigh_table" %>
    </div>
    <div id="SatTab" class="col s12 showday">
+
        <% @h = "Saturday"%>
         <% @d = ["Saturday","Everyday","Weekend"] %>
-        <%= render partial: "profile_neighborhood" %>
+        <%= render  "prof_neigh_table" %>
    </div>
    </div>
   </div>
@@ -85,7 +96,7 @@
   });
   </script>
 
-<ul class="collapsible" data-collapsible="accordion">
+<ul class="collapsible hide" data-collapsible="accordion">
   <li><div class="collapsible-header">Change Info</div>
     <div class="collapsible-body">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -110,7 +121,7 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />

@@ -1,5 +1,6 @@
+ <% @v = @current_user.get_up_voted Event.where( day: @d)%>
 <%x=[]%>
-<%@first_batch.shuffle.each do |event| %>
+<%@v.shuffle.each do |event| %>
  <%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 
@@ -7,13 +8,13 @@
 
 <%x.uniq.each do |d|%>
 
-  <%@e = @events.where(venue_id: d).order(:start).reverse%>
+  <%@e = @v.where(venue_id: d).order(:start).reverse%>
       <div class="row hourslist">
         <div class="col s12">
           <div class="card">
-
+            <%venue = Venue.find(@e[0].venue_id)%><%neighborhood = Neighborhood.find(venue.neighborhood_id)%>
             <div class="card-content">
-              <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span><br>
+              <span class="card-title activator center"><%= Venue.where( id: @e[0].venue_id).first.name%><br/><%=neighborhood.name%></span><br>
 
               <!----This is where the uniq special code is going in -->
 <%unievents = []%>
@@ -31,38 +32,42 @@
 
                 </div>
               </div>
-        <% if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
-              <div class="urbanist">
-                <a href="http://www.hourspgh.com/urbanist" target="_blank">
-                <%= image_tag "urbanist.png"%>
-                </a>
-              </div>
-          <% end %>
+
               <!---This is where it ends-->
               <%unievents.reverse.each do |event|%>
  <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-        <div class="chip" style="background-color:#17a787">
+              <div class = "center">
+              <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
                 </div>
-              <div class="new-">
-                <%= event.new_event%>
               </div>
+
 <%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
+        <div class = "center">
         <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
-                </div><%= event.new_event%><br>
+          </div></div>
+              <br>
 <%elsif @b < 2 && event.end < 24  &&  event.end > 23 %>
-        <div class="chip" style="background-color:#17a787">
+              <div class = "center">
+                <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
-                </div><%= event.new_event%><br>
+                </div>
+              </div>
+              <%= event.new_event%><br>
 <%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
+              <div class = "center">
         <div class="chip" style="background-color:#000000">
                   <%=event.special%>
-                </div><%= event.new_event%><br>
+                </div></div>
+              <br>
 <%else%>
-         <div class="chip" style="background-color:#bdbdbd">
+              <div class = "center">
+             <div class="chip" style="background-color:#bdbdbd">
                   <%=event.special%>
-                </div><%= event.new_event%><br>
+               </div>
+              </div>
+
  <%end%>
               <%end%>
             <!--div class="card-content">-->
@@ -113,20 +118,7 @@
       <div class="collapsible-header special-by-day">
        <div class = "valign-wrapper">
         <h4><%= modal_event.special %></h4>
-              <% @d = modal_event%>
-            <div class="like-like">
-              <div id = 'like-<%=modal_event.id%>'>
-              <% if user_signed_in? %>
-                <% if current_user.voted_as_when_voted_for modal_event %>
-                <%= render 'event_downvote'%>
-                <% else %>
-                <%= render 'event_upvote' %>
-              <% end %>
-            <%else%>
-               <%= link_to "Like", new_user_session_path%>
-            <%end%>
-              </div>
-            </div>
+
         </div>
 
       <div class="valign-wrapper timeforspecial">

@@ -1,29 +1,15 @@
-
 <ul class="collection">
-
-       <% @v = @events.all.where( day: @d)%>
+<%=@neighborhood_venues%>
+       <% @v = @current_user.get_up_voted Event.where( day: @d, venue_id: @neighborhood_venues)%>
 <% if @v.empty?%>
-<li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@h%></li>
+<li class = "collection-item grey lighten-3">You have no hours saved on <%=%></li>
 <%else%>
 <% @v.order(start: :asc, special: :asc).each do |x| %>
-<li class="collection-item grey lighten-3 special-by-day addonpadding">
+<li class="collection-item grey lighten-3 special-by-day">
+<!--         <h4 class="addonpadding"><%#=Venue.find(x.venue_id).name %> (<%#=Neighborhood.find(Venue.find(x.venue_id).id).name%>)</h4> -->
+        <h4 class="addonpadding"><%= x.special %>(<%=x.venue_id%></h4>
 
-        <h4><%= x.special %></h4>
 
-            <% @d = x%>
-            <div class="like-like">
-              <div id = 'like-<%=x.id%>'>
-              <% if user_signed_in? %>
-                <% if current_user.voted_as_when_voted_for x %>
-                <%= render partial: 'events/event_downvote'%>
-                <% else %>
-                <%= render partial: 'events/event_upvote' %>
-              <% end %>
-            <%else%>
-               <%= link_to "Like", new_user_session_path%>
-            <%end%>
-              </div>
-            </div>
 
 <% start_minutes = "00"%>
 <%if x.start%1 > 0 %>
@@ -64,8 +50,7 @@
 
 <div class="valign-wrapper timeforspecial">
 <i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
-
- </div>
+</div>
 
   <%if Event.where(id: x.id).first.any_details == 2%>
       <p class="detailonshow addonpadding">

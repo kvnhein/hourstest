@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   root 'events#under_construction'
 
+
+
+
   devise_for 	:users,
   						:path => '',
   						:path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
-  						:controllers => {:omniauth_callbacks => 'omniauth_callbacks'
+  						:controllers => {:omniauth_callbacks => 'omniauth_callbacks', :registrations => 'users/registrations'
   														}
 
   get 'tags/:tag', to: 'daily_specials#index', as: :tag

@@ -85,7 +85,19 @@ h4.con-content-title {
     display: block;
 }
 
+.like-like {
+      display: inline-block;
+    padding-right: 5px;
+    line-height: 0;
+    height: 15px;
+}
 
+.like-like i.tiny {
+  line-height: 18px;
+  margin-top: -2px;
+      font-size: 18px;
+      vertical-align: middle;
+}
 
 .under-con .main-con-header img {
         padding: 75px 30px 30px 81px;
@@ -1253,6 +1265,8 @@ nav .button-collapse i {
 .beerlist .special-by-day h4 {
   text-align:left;
   padding-right: 4px;
+      display: inline-block;
+    
 }
 
 .beerlist .special-by-day h4.venues{
@@ -1951,7 +1965,7 @@ i.tiny {
 }
 
 .addedpadding {
-  padding-right:154px !important;
+  padding-right: 135px !important;
 }
 
 .edit-button-user .bleft a .material-icons{
