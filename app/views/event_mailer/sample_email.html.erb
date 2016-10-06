@@ -23,27 +23,21 @@
 
 <%x.uniq.each do |d|%>
   <%@e = liked_events.where(venue_id: d).order(:start).reverse%>
-  <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span>
+  <span class="card-title activator">Southside</span>
+  <h4><%= Venue.where( id: @e[0].venue_id).first.name%></h4>
   <ul class="collection">
     <% @e.each do |x| %>
 
       <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
-          <%= x.special %>
-        </h4>
-      </li>
+        
+          <p class="detailonshow mailtit" style="font-weight:bold;"><%= x.special %></p>
+        <p class="detailonshow maildet"><%=x.detail%></p>
 
-      <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
-         <%=x.detail%>
-        </h4>
-      </li>
-
-      <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
+        <div class="valign-wrapper timeforspecial">
         <%= x.time_conversion %>
-        </h4>
+        </div>
       </li>
+
     <%end%>
     </ul>
 <%end%>

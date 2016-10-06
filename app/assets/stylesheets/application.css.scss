@@ -27,7 +27,7 @@ $primary-color: color("grey", "lighten-5") !default;
 }
 
 .under-con .container{
-  background-color:rgba(0,0,0,0)
+  background-color:rgba(0,0,0,0);
 }
 
 .main-con-header {
@@ -294,25 +294,71 @@ body,html {
 }
 
 .mailheader {
-  background-color:#f2f2f2;
+  background-color:#fafafa;
   padding:0;
   display:block
 }
 
 .mailheader-content {
-  padding:0 20px;
+  padding:0;
 }
 
-.mailheader-content .special-by-day h4 {
+.mailheader-content .collection {
+      border-radius: 0;
+      border-left: 0;
+    border-right: 0;
+}
+
+.mailheader-content .collection .collection-item {
+      border-radius: 0;
+}
+
+.mailheader-content h4 {
+ color: #17a787;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 11px;
+    margin: 1.14rem 0 0.912rem;
+    margin: 6px 20px;
+}
+
+.mailheader-content .special-by-day p.mailtit {
+          margin: 0;
+    font-weight: bold;
   color:#000;
+      font-size: 12px;
+}
+
+.mailheader-content .special-by-day p.maildet {
+      margin: 0;
+    line-height: 10px;
+    font-weight: 400;
+    color: #555;
+      font-size: 12px;
 }
 
 .mailheader-content .card-title {
-      margin: 0;
-    font-size: 17px;
-    font-weight: bold;
-    color: #020202;
-    letter-spacing: .5px;
+      margin: 20px;
+    font-weight: 800;
+    color: #555555;
+    text-transform: uppercase;
+       font-size: 12px;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.mailheader-content .neigb {
+  color: #17a787;
+  margin: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+      font-size: 12px;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.timeforspecial {
+      border-bottom: 0;
 }
 
 .mailheader-header {
@@ -323,6 +369,7 @@ body,html {
 .mailheader h1 {
   color:#000;
   font-size:21px;
+  margin: 35px 20px;
 }
 
 .mailheader-logo {
@@ -1266,7 +1313,7 @@ nav .button-collapse i {
   text-align:left;
   padding-right: 4px;
       display: inline-block;
-    
+
 }
 
 .beerlist .special-by-day h4.venues{
@@ -1543,6 +1590,27 @@ nav .button-collapse i {
     border-radius: 16px;
     margin-bottom: 8px;
     background-color: #2e2e2e;
+}
+
+.new-event {
+width: 50px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #000;
+    line-height: 14px;
+    letter-spacing: 1px;
+}
+
+.chip-piece {
+  width: auto;
+    display: block;
+    margin: 0 auto;
+    display: block;
+    position: relative;
 }
 
 .card .card-content .card-title {
