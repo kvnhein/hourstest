@@ -19,7 +19,7 @@
 
 <div id = 'specials'><%= render 'list'%></div>
 <%if @daily_specials.today.count == 0 %>
-<%= render partial: "shared/no_features"%><br/>
+<%render partial: "shared/no_features"%><br/>
 <%end%>
 <div class = "center"><%= link_to 'Past Features', past_features_path, class:"btn-flat disabled teal-text text-accent-4" %></div>
 <br><br/>
