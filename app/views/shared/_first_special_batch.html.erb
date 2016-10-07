@@ -25,7 +25,7 @@
      </div>
      <div class="card-action">
        <%= event.description%>
-       
+
        <div class = "row">
           <div class = "teal-text text-accent-4">
           Hours:  <%= event.time_conversion%>
@@ -41,7 +41,7 @@
            <%= link_to 'View Profile', venue_path(Venue.where( id: event.venue_id).first.id), class: "waves-effect waves-light btn menubtn", 'data-no-turbolink' => true %>
          </div>
      </div>
-
+        <div> <%= raw event.tag_list.map { |t| link_to t, tag_path(t), class:"disabled teal-text text-accent-4" }.join(' | ')%></div>
      </div>
      <br/>
 

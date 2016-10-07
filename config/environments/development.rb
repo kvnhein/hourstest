@@ -27,7 +27,7 @@ Rails.application.configure do
   authentication: "plain",
   enable_starttls_auto: true,
   user_name: "hourspgh",
-  password: "GathrGroupHours"
+  password: "GathrGroupHoursPGH"
 }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
