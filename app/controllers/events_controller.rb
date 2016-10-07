@@ -197,8 +197,8 @@ class EventsController < ApplicationController
     elsif params[:shady_tag]
       @events = Event.tagged_with(params[:shady_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
-
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
+    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
     #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
