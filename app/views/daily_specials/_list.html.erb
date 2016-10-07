@@ -106,10 +106,10 @@
       <div>
       <% if user_signed_in? %>
         <%if current_user.admin?%>
-        <div class = "row hide">
+        <div class = "row">
           <div class = "teal-text text-accent-4">
-          Available:  <%= event.time_conversion%>
-            <span class = "right">Price: $<%=event.price%></span>
+          Hours:  <%= event.time_conversion%>
+            <span class = "right"> $<%=event.price%></span>
           </div>
           <div class = "right hide">
             <div class="valign-wrapper timeforspecial">
