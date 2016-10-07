@@ -104,8 +104,7 @@
       <div class="card-action">
         <%= event.description %>
       <div>
-      <% if user_signed_in? %>
-        <%if current_user.admin?%>
+      
         <div class = "row">
           <div class = "teal-text text-accent-4">
           Hours:  <%= event.time_conversion%>
@@ -116,8 +115,7 @@
                 <i class="tiny material-icons">bookmark</i>Reserve Feature</div>
             </div>
         </div>
-        <%end%>
-        <%end%>
+        
         </div>
       </div>
 

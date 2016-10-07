@@ -222,7 +222,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:south_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -246,7 +247,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:oakland_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -272,7 +274,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -297,7 +300,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:law_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
-   @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -321,7 +325,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:bloom_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -343,7 +348,8 @@ class EventsController < ApplicationController
     else
     end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -366,7 +372,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:strip_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -388,7 +395,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:sq_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -410,7 +418,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:north_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -432,7 +441,8 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:mt_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
    end
 
-    @todays_feature = DailySpecial.where(venue_id: @v.pluck(:id)).today
+     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
