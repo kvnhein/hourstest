@@ -284,7 +284,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    font-family: "proxima-nova",Helvetica Neue;
+    font-family: "proxima-nova", sans-serif;
     overflow-x: hidden;
     background-color: #fff
 }
@@ -296,7 +296,7 @@ body,html {
 .mailheader {
   background-color:#fafafa;
   padding:0;
-  display:block
+  display:block;
 }
 
 .mailheader-content {
@@ -378,7 +378,7 @@ body,html {
 }
 
 body.mailpiece {
-  max-width:800px
+  max-width:800px;
 }
 
 main {

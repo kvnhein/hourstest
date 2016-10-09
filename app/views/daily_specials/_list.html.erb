@@ -104,10 +104,12 @@
       <div class="card-action">
         <%= event.description %>
       <div>
-      
+
         <div class = "row">
           <div class = "teal-text text-accent-4">
-          Hours:  <%= event.time_conversion%>
+            <div class="valign-wrapper timeforspecial">
+              <i class="tiny material-icons">query_builder</i><%= event.time_conversion%>
+            </div>
             <span class = "right"> $<%=event.price%></span>
           </div>
           <div class = "right hide">
@@ -115,7 +117,7 @@
                 <i class="tiny material-icons">bookmark</i>Reserve Feature</div>
             </div>
         </div>
-        
+
         </div>
       </div>
 

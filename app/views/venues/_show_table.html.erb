@@ -8,9 +8,9 @@
 <% @v.order(start: :asc, special: :asc).each do |x| %>
 <li class="collection-item grey lighten-3 special-by-day addonpadding">
 
-        <h4><%= x.special %></h4>
-
-            <% @d = x%>
+        <h4><%= x.special %>
+  
+   <% @d = x%>
             <div class="like-like">
               <div id = 'like-<%=x.id%>'>
               <% if user_signed_in? %>
@@ -24,6 +24,10 @@
             <%end%>
               </div>
             </div>
+  
+  </h4>
+
+           
 
 <% start_minutes = "00"%>
 <%if x.start%1 > 0 %>
@@ -68,7 +72,7 @@
  </div>
 
   <%if Event.where(id: x.id).first.any_details == 2%>
-      <p class="detailonshow addonpadding">
+      <p class="detailonshow">
         <%=Event.where(id: x.id).first.detail%>
       </p>
   <%end%>
