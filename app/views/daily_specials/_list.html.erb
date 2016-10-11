@@ -26,15 +26,15 @@
               <div id = 'like-<%=event.id%>'>
               <% if user_signed_in? %>
                 <% if current_user.voted_as_when_voted_for event %>
-                <%= render 'downvote'%>
+                  <%= render 'downvote'%>
                 <% else %>
-                <%= render 'upvote' %>
-              <% end %>
+                  <%= render 'upvote' %>
+                <% end %>
             <%else%>
                <%= link_to new_user_session_path%>
                 <i class="tiny material-icons" style="opacity:0.4">favorite_border</i>
                 <%end%>
-            <%end%>
+
               </div>
             </div>
         <div class="like-number" id='special<%=event.id%>'>
@@ -86,10 +86,10 @@
               <div id = 'like-<%=event.id%>'>
               <% if user_signed_in? %>
                 <% if current_user.voted_as_when_voted_for event %>
-                <%= render 'downvote'%>
+                  <%= render 'downvote'%>
                 <% else %>
-                <%= render 'upvote' %>
-              <% end %>
+                  <%= render 'upvote' %>
+                <% end %>
             <%else%>
                <%= link_to "Like", new_user_session_path%>
             <%end%>
