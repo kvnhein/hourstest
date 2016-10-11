@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
-  caches_action :downtown
+  caches_action :downtown, layout: false, expires_in: 1.hour
+  caches_action :landing, expires_in: 1.hour
+
   after_filter "save_my_previous_url", only: [:new]
   before_action :admin_redirect, only: [:under_construction]
    before_action :require_admin_construction, except: [:under_construction]
@@ -9,7 +11,7 @@ class EventsController < ApplicationController
   before_action :verified_venues, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
   before_action :event_time, only: [:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
   autocomplete :event, :special, :full => true
-  
+
   # GET /events
   # GET /events.json
 

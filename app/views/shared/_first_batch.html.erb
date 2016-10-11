@@ -58,7 +58,7 @@
                         <%= event.new_event%>
                    </div>
               </div>
-<%elsif @b < 2 && event.end < 24  &&  event.end > 23 %>
+<%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
               <div class="chip-piece">
         <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
@@ -86,6 +86,7 @@
                    </div>
               </div>
  <%end%>
+             
               <%end%>
             <!--div class="card-content">-->
 
