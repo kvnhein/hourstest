@@ -1,6 +1,14 @@
 class EventsController < ApplicationController
-  caches_action :downtown, layout: false, expires_in: 1.hour
-  caches_action :landing, expires_in: 1.hour
+  caches_action :landing, expires_in: 10.minutes
+  caches_action :downtown, expires_in: 1.minute
+  caches_action :shadyside, expires_in: 1.minute
+  caches_action :south_side, expires_in: 1.minute
+  caches_action :oakland, expires_in: 1.minute
+  caches_action :lawrenceville, expires_in: 1.minute
+  caches_action :strip_district, expires_in: 1.minute
+
+
+
 
   after_filter "save_my_previous_url", only: [:new]
   before_action :admin_redirect, only: [:under_construction]
@@ -471,7 +479,8 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    expire_action :action => :downtown
+
+    expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
     @event = Event.new(event_params)
 
     respond_to do |format|
@@ -491,6 +500,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+     expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
     respond_to do |format|
       if @event.update(event_params)
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
@@ -506,6 +516,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+     expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
     @event.destroy
     respond_to do |format|
       Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
