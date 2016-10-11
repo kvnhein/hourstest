@@ -20,7 +20,9 @@
                 <%= render partial: 'events/event_upvote' %>
               <% end %>
             <%else%>
-               <%= link_to "Like", new_user_session_path%>
+               <%= link_to new_user_session_path do%>
+                <i class="tiny material-icons" style="opacity:0.4">favorite_border</i>
+                <%end%>
             <%end%>
               </div>
             </div>

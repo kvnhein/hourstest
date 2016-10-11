@@ -22,6 +22,7 @@ gem 'rails4-autocomplete'
 gem 'acts-as-taggable-on'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 2.3.0'
+gem 'actionpack-action_caching'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'social-share-button', '~> 0.1.6'
 gem 'turbolinks'
