@@ -61,7 +61,7 @@
 
 <%unless @todays_feature.count== 0%>
 <div id="featured-dish">
-  <h5 class="flow-text center"><%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
+ 
   <%=render partial: "shared/featured_dish_table"%>
 </div>
 <%end%>
