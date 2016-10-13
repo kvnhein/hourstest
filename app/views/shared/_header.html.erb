@@ -91,25 +91,26 @@
     <li><%= link_to "Features", daily_specials_path%></li>
     <li> <%= link_to "venues", venues_path%></li>
 
-    <%if (user_signed_in?)%>
+   <%if (user_signed_in?)%>
 
 
     <li><a class="dropdown-button" data-activates="venue-menu-dropdown4"><%=current_user.fullname%><i class="material-icons right" style="color: #fff;
     padding-top: 0px; margin-left:0;">arrow_drop_down</i></a></li>
 
 
-    <ul id="venue-menu-dropdown4" class="dropdown-content nav-drop" style="top: 51px !important;">
-     <li><%=link_to "My Profile", edit_user_registration_path%></li>
-   <%if Venue.where(owner: current_user.id).count > 0 %>
-    <li><%= link_to "My Venues", users_venues_path%></li>
-   <li><%= link_to 'New Hour', new_event_path%></li>
-       <%end%>
-      <li>
+  <ul id="venue-menu-dropdown4" class="dropdown-content nav-drop" style="top: 51px !important;">
+    <li><%=link_to "My Profile", edit_user_registration_path%></li>
+    <%if Venue.where(owner: current_user.id).count > 0 %>
+      <li><%= link_to "My Venues", users_venues_path%></li>
+      <li><%= link_to 'New Hour', new_event_path%></li>
+      <li><%= link_to 'New Feature', new_daily_special_path%></li>
+    <%end%>
+    <li>
       <div class="log-out">
         <%= link_to "Log Out",  destroy_user_session_path,method: :delete%>
       </div>
     </li>
-    </ul>
+  </ul>
 
 
 
