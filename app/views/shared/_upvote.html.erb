@@ -1,1 +1,3 @@
- <%=link_to "Like", like_daily_special_path(@daily_special), method: :put, remote: true, id: "up#{@daily_special.id}" %>
+ <%=link_to like_daily_special_path(@daily_special), method: :put, remote: true, id: "up#{@daily_special.id}" do%>
+<i class="tiny material-icons" style="opacity:0.4">favorite_border</i>
+<%end%>

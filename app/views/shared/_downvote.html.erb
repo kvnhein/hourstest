@@ -1,1 +1,3 @@
-<%=link_to "Unlike", dislike_daily_special_path(@daily_special), method: :put, remote: true, id: "down#{@daily_special.id}" %>
+<%=link_to dislike_daily_special_path(@daily_special), method: :put, remote: true, id: "down#{@daily_special.id}" do%>
+<i class="tiny material-icons">favorite</i>
+<%end%>

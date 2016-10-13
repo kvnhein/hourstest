@@ -6,13 +6,23 @@
 <meta property="og:description" content="<%=@topic_description%>" />
 <meta property="og:image" content="<%=@page_image%>" />
 <%end%>
+<% header = ["specials-header features-header1 neighborhoodtop","specials-header features-header2 neighborhoodtop","specials-header features-header3 neighborhoodtop","specials-header features-header4 neighborhoodtop","specials-header features-header5 neighborhoodtop","specials-header features-header6 neighborhoodtop","specials-header features-header7 neighborhoodtop","specials-header features-header8 neighborhoodtop","specials-header features-header9 neighborhoodtop","specials-header features-header10 neighborhoodtop"]%>
+<% header2 = ["specials-header features-header1 neighborhoodtop","specials-header features-header6 neighborhoodtop","specials-header features-header7 neighborhoodtop","specials-header features-header9 neighborhoodtop"]%>
+<% header.shuffle!%>
 
-<div class="specials-header features-header neighborhoodtop">
-
+<% header2.shuffle!%>
+<div class="<%=header2[0]%> hide-on-small-only ">
 <h4 class="flow-text">Features</h4>
 <!--<h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>-->
 </div>
- 
+
+<div class="<%=header[0]%> hide-on-large-only">
+<h4 class="flow-text">Features</h4>
+<!--<h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>-->
+</div>
+
+
+
 
 <h5 class="flow-text; center hide"><%= @day_tag %><%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
 <br>

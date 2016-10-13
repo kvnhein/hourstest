@@ -27,6 +27,10 @@ class DailySpecial < ActiveRecord::Base
     end
  end
 
+  def special_neighborhood
+   Neighborhood.find(Venue.where(id: self.venue_id).first.neighborhood_id).name
+  end
+
    def event_venue
      Venue.where(id: self.venue_id).first
    end

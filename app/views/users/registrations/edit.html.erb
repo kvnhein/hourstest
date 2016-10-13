@@ -1,4 +1,6 @@
-<h2 class= "flow-text center-align"><%= current_user.fullname%>'s Profile</h2>
+<div class="col s3">
+     <div class="detailstitle">
+<h4 class= "flow-text center-align userfirstname"><%= current_user.fullname%>'s Profile</h4>
 <%@b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour%>
 <%@c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)%>
 <%t= Time.now.in_time_zone("Eastern Time (US & Canada)")%>
@@ -27,7 +29,15 @@
     <%end%>
 
 
-<h4 class= "flow-text center-align">Saved Hours</h4>
+<h6 class= "flow-text center-align">Saved Hours</h6>
+     </div>
+</div>
+
+<div class="profee">
+<div class="add-height"></div>
+
+</div>
+
 <div id="weekly" class="col s12">
  <div class="weeklyhours beerlist">
  <div class="row">

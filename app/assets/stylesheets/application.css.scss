@@ -361,6 +361,63 @@ body,html {
       border-bottom: 0;
 }
 
+.time-and-price {
+    letter-spacing: 1px;
+      color: #919191;
+     margin-top: 15px;
+}
+
+.detailstitle h4.userfirstname {
+  padding: 54px 50px 0 50px;
+}
+
+.profee .show-height {
+  height: 55px;
+}
+
+.detailstitle h6 {
+      padding-top: 0;
+    padding: 0 50px 54px 50px;
+    color: #fff;
+    margin-top: 0;
+  color: #1fdeb4;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  text-transform: uppercase;
+      margin-bottom: 0;
+}
+
+.time-and-price .material-icons {
+   color: #919191;
+      vertical-align: sub;
+}
+
+.time-and-price .timeforspecial {
+  border-bottom: 0;
+    display: inline-block;
+}
+
+.featured-tags {
+    margin-top: 15px;
+}
+
+.featured-tags .teal-text.text-accent-4 {
+     width: 100% !important;
+    display: initial !important;
+    padding-top: 5px !important;
+    text-transform: none !important;
+    margin-top: 25px !important;
+}
+
+
+
+.time-and-price .right-align {
+      display: inline-block;
+    text-align: right;
+    float: right;
+}
+
 .mailheader-header {
   background-color:#0e0e0e;
   padding:20px;
@@ -1902,8 +1959,107 @@ background-position:center;
   height:194px;
 }
 
-.specials-header.features-header {
-   background: url(urban.jpg);
+.specials-header.features-header1 {
+   background: url(feature1.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header2 {
+   background: url(feature2.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header3 {
+   background: url(feature3.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header4 {
+   background: url(feature4.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header5 {
+   background: url(feature5.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header6 {
+   background: url(feature6.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header7 {
+   background: url(feature7.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header8 {
+   background: url(feature8.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header9 {
+   background: url(feature9.png);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:180px;
+}
+
+.specials-header.features-header10 {
+   background: url(feature10.png);
    background-repeat:no-repeat;
 -webkit-background-size:cover;
 -moz-background-size:cover;
