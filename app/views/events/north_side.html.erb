@@ -62,7 +62,6 @@
 <div class = "hide-on-med-and-up">
 <%unless @todays_feature.count== 0%>
 <div id="featured-dish">
-  <h5 class="flow-text center">Off Menu Features<br> <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
   <%=render partial: "shared/featured_dish_table"%>
 </div>
 <%end%>
