@@ -50,81 +50,58 @@
     </div>
 <%end%>
 
-<h3 class ="flow-text center landing-title">Today's Features</h3>
-<%@daily_specials.shuffle.each do |event| %>
-
-<%@j=event%>
-<div class="row">
-  <div class="col s12 m8 offset-m2 featured-dish-section">
-     <h5>
-    <%=link_to "#{Venue.where(id: event.venue_id).first.name}", venue_path(Venue.where(id: event.venue_id).first), class: "teal-text text-accent-4",'data-no-turbolink' => true %>
-    </h5>
-    <h6><%=event.special_neighborhood%> </h6>
-    <div class="card">
-      <div class="card-image">
-        <%= image_tag event.image.url(:medium)%>
-      </div>
-      <div class="card-content">
-        <%=event.text%>
-          <!--Like Button-->
-             <div class="like-btn">
-
-             <% @j = event%>
-            <div class="like-like">
-              <div id = 'like-<%=event.id%>'>
-              <% if user_signed_in? %>
-                <% if current_user.voted_as_when_voted_for event %>
-                  <%= render 'downvote'%>
-                <% else %>
-                  <%= render 'upvote' %>
-                <% end %>
-            <%else%>
-               <%= link_to "Like", new_user_session_path%>
-            <%end%>
-              </div>
-            </div>
-        <div class="like-number" id='special<%=event.id%>'>
-                    <%= event.credit + event.get_likes.size%>
+<h3 class="flow-text center landing-title">Today's Features</h3>
+  <%@daily_specials.shuffle.each do |event| %>
+    <%@j=event%>
+    <div class="row">
+        <div class="col s12 m8 offset-m2 featured-dish-section">
+            <h5><%=link_to "#{Venue.where(id: event.venue_id).first.name}", venue_path(Venue.where(id: event.venue_id).first), class: "teal-text text-accent-4",'data-no-turbolink' => true %></h5>
+            <h6><%=event.special_neighborhood%></h6>
+            <div class="card">
+                <div class="card-image">
+                    <%= image_tag event.image.url(:medium)%>
                 </div>
-            </div>
-          <!--End Of Like Button-->
-      </div>
-
-      <div class="card-action">
-        <%= event.description %>
-        <div>
-            <div class="row">
-                <div class="time-and-price">
-                    <div class="timeforspecial">
-                        <i class="tiny material-icons">query_builder</i><%= event.time_conversion%>
-
-                  </div>
-                       <div class= "right-align">$<%=event.price%></div>
+                <div class="card-content">
+                    <%=event.text%>
+                    <!--Like Button-->
+                    <div class="like-btn">
+                        <%@j = event%>
+                        <div class="like-like">
+                            <div id='like-<%=event.id%>'>
+                                <%if user_signed_in? %><%if current_user.voted_as_when_voted_for event %><%= render 'downvote'%><%else %><%= render 'upvote' %><%end %><%else%><%= link_to "Like", new_user_session_path%><%end%>
+                            </div>
+                        </div>
+                        <div class="like-number" id= 'special<%=event.id%>'>
+                            <%= event.credit + event.get_likes.size%>
+                        </div>
+                    </div><!--End Of Like Button-->
                 </div>
-
-
-<div class="featured-tags"> <%= raw event.tag_list.map { |t| link_to t, tag_path(t), class:"disabled teal-text text-accent-4" }.join(' | ')%></div>
-
-                <div class="right hide">
-                    <div class="valign-wrapper timeforspecial">
-                        <i class="tiny material-icons">bookmark</i>Reserve
-                        Feature
+                <div class="card-action">
+                    <%= event.description %>
+                    <div>
+                        <div class="row">
+                            <div class="time-and-price">
+                                <div class="timeforspecial">
+                                    <i class="tiny material-icons">query_builder</i><%= event.time_conversion%>
+                                </div>
+                                <div class="right-align">
+                                    $<%=event.price%>
+                                </div>
+                            </div>
+                            <div class="featured-tags">
+                              <%= raw event.tag_list.map { |t| link_to t, tag_path(t), class:"disabled teal-text text-accent-4" }.join(' | ')%>
+                            </div>
+                            <div class="right hide">
+                                <div class="valign-wrapper timeforspecial">
+                                    <i class="tiny material-icons">bookmark</i>Reserve Feature
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
     </div>
-
-
-
-    </div>
-  </div>
-</div>
-
-
 <%end%>
 <div class = "hide">
 <%= link_to 'New Feature', new_daily_special_path, :id => "feat_dish" %>
