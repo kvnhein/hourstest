@@ -41,7 +41,7 @@
               <!---This is where it ends-->
               <%unievents.reverse.each do |event|%>
  <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-        <div class="chip-piece">
+              <div class="chip-piece">
                 <div class="chip" style="background-color:#17a787">
                      <%=event.special%>
                  </div>
@@ -58,7 +58,7 @@
                         <%= event.new_event%>
                    </div>
               </div>
-<%elsif @b < 2 && event.end < 24  &&  event.end > 23 %>
+<%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
               <div class="chip-piece">
         <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
@@ -86,6 +86,7 @@
                    </div>
               </div>
  <%end%>
+             
               <%end%>
             <!--div class="card-content">-->
 
@@ -133,8 +134,9 @@
  <% @e.reverse.each do |modal_event|%>
 <li>
       <div class="collapsible-header special-by-day">
-       <h4><%= modal_event.special %></h4>
-          <% @d = modal_event%>
+       <div class = "valign-wrapper">
+        <h4><%= modal_event.special %></h4>
+              <% @d = modal_event%>
             <div class="like-like">
               <div id = 'like-<%=modal_event.id%>'>
               <% if user_signed_in? %>
@@ -144,16 +146,16 @@
                 <%= render 'event_upvote' %>
               <% end %>
             <%else%>
-                <%= link_to new_user_session_path do%>
-                  <i class="tiny material-icons" style="opacity:0.4">favorite_border</i>
+               <%= link_to new_user_session_path do%>
+                <i class="tiny material-icons" style="opacity:0.4">favorite_border</i>
                 <%end%>
             <%end%>
               </div>
             </div>
+        </div>
 
-<div class="valign-wrapper timeforspecial">
+      <div class="valign-wrapper timeforspecial">
         <i class="tiny material-icons">query_builder</i><%=modal_event.time_conversion%>
-
       </div>
 
 
@@ -179,6 +181,8 @@
         <div class="later-tab">Later</div>
  <%end%>
 
+
+
 <div class="hide">
 <%if modal_event.any_details == 2%>
        <div class="dropdownarrow">
@@ -194,7 +198,9 @@
   </ul><br>
      <div class="row">
 
-      <%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br><br><br><br>
+      <%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
+       
+       <br><br><br><br>
 
 
     </div>
