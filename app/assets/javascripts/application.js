@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery-ui
+//= require nprogress
+//= require nprogress-turbolinks
 
 //= require jquery_ujs
 //= require autocomplete-rails

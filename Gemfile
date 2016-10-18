@@ -36,7 +36,7 @@ gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem 'pusher'
 gem 'sinatra'
-
+gem 'nprogress-rails'
 #EMAIL CSS
 gem 'premailer-rails'
 gem 'nokogiri'
