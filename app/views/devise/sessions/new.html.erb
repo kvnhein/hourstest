@@ -2,7 +2,7 @@
 <h1 class= "flow-text center-align teal-text text-accent-4">Log In</h1>
 <br>
 <div class = "center hide">
-<%= link_to "Sign In with Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-primary blue darken-3" %>
+
 </div>
 
 <div class="form-padding">
@@ -27,7 +27,7 @@
     <%= f.submit "Log in",  class:"btn-flat disabled teal-text text-accent-4"%>
   </div>
 <% end %>
-
+<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
   <div class = "hide">
 <%= render "devise/shared/links" %>
 </div>
@@ -35,7 +35,7 @@
   Not a member?
   <div><%= link_to "Sign up", new_registration_path(resource_name), class:"btn-flat disabled teal-text text-accent-4" %></div>
 <div class ="hide">
-<%= link_to "Sign In with Facebook", user_facebook_omniauth_authorize_path%>
+
   </div>
   <div class = "center">
   </div>

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  caches_action :landing, expires_in: 10.minutes
+  caches_action :landing, expires_in: 1.minutes
   caches_action :downtown, expires_in: 1.minute
   caches_action :shadyside, expires_in: 1.minute
   caches_action :south_side, expires_in: 1.minute

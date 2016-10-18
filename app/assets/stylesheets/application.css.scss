@@ -30,14 +30,36 @@ $primary-color: color("grey", "lighten-5") !default;
   background-color:rgba(0,0,0,0);
 }
 
+.under-con .carousel {
+      height: 530px;
+}
+
+.under-con .carousel .carousel-item {
+      margin-top: -150px;
+      width: 230px;
+}
+
 .main-con-header {
        height: 515px;
     position: relative;
-    margin-bottom: 73px;
+    margin-bottom: 55px;
 }
 
 .under-con .row{
   background-color:rgba(0,0,0,0)
+}
+
+.under-con .tabs .tab a {
+      font-size: 16px;
+    color: #17a787;
+}
+
+.under-con .tabs .indicator {
+    background-color: #17a787;
+}
+
+.under-con .tabs .tab a.active {
+  color: #555555;
 }
 
 h4.con-content-title {
@@ -117,10 +139,10 @@ h4.con-content-title {
     font-weight: 300;
     line-height: 30px;
     margin-top: 5px;
-    max-width: 440px;
+    max-width: 450px;
     margin: 0 auto;
     text-align: center;
-      margin: 0 auto 80px auto;
+      margin: 0 auto 50px auto;
 }
 
 .con-content2 .row .col.m4 {
@@ -128,7 +150,7 @@ h4.con-content-title {
 }
 
 .con-content2 {
-  background-color: #fafafa !important;
+  background-color: #fff;
   margin-bottom:20px;
 }
 
@@ -2411,7 +2433,7 @@ i.tiny {
 }
 
 .con-content2 {
-  background-color: #f2f2f2 !important;
+  background-color: #fff;
   margin-bottom:20px;
 }
 

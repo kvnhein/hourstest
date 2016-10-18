@@ -38,6 +38,10 @@
   <div id="learnmoreto"></div>
 
  <div class="container con-content" style="clear:both;" >
+
+
+
+
  <div class="row con-neighb" >
       <h4 class="con-content-title">Neighborhoods</h4>
    <p class="con-content-p">Find happy hours and featured dishes in the neighborhoods below and many more.</p>
@@ -71,12 +75,26 @@
 </div>
 
    <div class="container con-content2" style="clear:both;">
+
+      <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s6"><a class="active"  href="#test1">Guests</a></li>
+        <li class="tab col s6"><a href="#test2">Restraunts</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+
  <div class="row con-neighb">
 
-   <h4 class="con-content-title" style="padding-top: 76px;">Screens</h4>
-   <p class="con-content-p">Easily scroll through the current days specials, or featured dishes. Or look at particular venue's profile to view their weekly specials and details.</p>
 
-     <div class="col m4 s12">
+   <div id="test1">
+     <h4 class="con-content-title" style="padding-top: 65px;">As a guest...</h4>
+   <p class="con-content-p">Easily scroll through the current days specials, or featured dishes. Look at particular venue's profile to view their weekly specials and details. Also save the specials you like to your profile, and you will later be reminded of them!</p>
+
+<!--      <div class="col m4 s12">
        <h6>Weekly Specials</h6>
          <%= image_tag "screen1.jpg"%>
 
@@ -92,7 +110,51 @@
       <h6>Venue Details</h6>
          <%= image_tag "screen3.jpg"%>
 
+    </div> -->
+
+
+     <div class="carousel">
+    <a class="carousel-item" href="#one!"><h6>Weekly Specials</h6><%= image_tag "screen1.jpg"%></a>
+    <a class="carousel-item" href="#two!"> <h6>Featured Dishes</h6><%= image_tag "screen2.jpg"%></a>
+    <a class="carousel-item" href="#three!"><h6>Venue Details</h6><%= image_tag "screen3.jpg"%></a>
+       <a class="carousel-item" href="#four!"><h6>Save by Liking</h6><%= image_tag "userprofilesaveHour.jpg"%></a>
+    <a class="carousel-item" href="#five!"><h6>Saved Hours</h6><%= image_tag "userprofilepage.jpg"%></a>
+  </div>
+
+
+     </div>
+
+   <!--END Test1-->
+
+   <div id="test2">
+          <h4 class="con-content-title" style="padding-top: 65px;">As a restaurant owner...</h4>
+
+   <p class="con-content-p">Easily keep your happy hours and featured dishes up to date for the world to see. Simply log into your restraunts profile and start adding!</p>
+
+     <div class="col m4 s12">
+       <h6>Profile Page</h6>
+       <%= image_tag "restrUser2_v2.jpg"%>
+
+
     </div>
+
+   <div class="col m4 s12">
+     <h6>User Options</h6>
+
+ <%= image_tag "restrUser3.jpg"%>
+    </div>
+
+   <div class="col m4 s12">
+      <h6>Add a Special</h6>
+        <%= image_tag "restrUser1.jpg"%>
+
+    </div>
+
+     </div>
+
+
+
+   <!--EndTest2-->
 
 
      </div>
@@ -107,6 +169,11 @@
         scrollTop: $("#learnmoreto").offset().top},
         'slow');
 });
+
+
+   $(document).ready(function(){
+      $('.carousel').carousel();
+    });
 
 </script>
 
