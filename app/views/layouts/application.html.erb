@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 
+
+
   <%= favicon_link_tag 'favicon.png' %>
   <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
@@ -32,7 +34,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
    <link rel="stylesheet" href = "https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.min.css">
   <script src="https://use.typekit.net/juu2xhe.js"></script>
-
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 
@@ -44,7 +45,12 @@
 <%= yield :head%>
 
 </head>
+
 <body>
+  <div class="se-pre-con">
+
+  </div>
+
   <script>
   window.fbAsyncInit = function() {
     FB.init({

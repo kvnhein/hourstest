@@ -1,21 +1,23 @@
-/* require nprogress;
-require nprogress-bootstrap;
-require nprogress-turbolinks5; */
+
 @import "materialize/components/color";
 $primary-color: color("grey", "lighten-5") !default;
 @import "materialize";
 @import "toastr";
 
-/* NProgress.configure({
-  showSpinner: false,
-  ease: 'ease',
-  speed: 500
-}); */
+
+@import 'nprogress';
+@import 'nprogress-bootstrap';
+
 .under-con-nav {
        position: fixed;
     z-index: 1000;
     left: 0;
 }
+
+.nprogress-busy {
+  color:#fff;
+}
+
 
 .under-con-nav .nav-wrapper {
     position: relative;
@@ -23,6 +25,11 @@ $primary-color: color("grey", "lighten-5") !default;
     max-width: 800px;
     margin: 0 auto;
       padding: 0 10px;
+}
+
+#nprogress .spinner {
+  top: 15px;
+  right: 70px;
 }
 
 .under-con-nav img {
@@ -2181,7 +2188,7 @@ i.tiny {
     position: fixed;
     left: 0%;
     padding: 0;
-  z-index: 9000;
+  z-index: 998;
 }
 
 .card .card-reveal .specials-header{
