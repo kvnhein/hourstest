@@ -189,7 +189,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    fresh_when last_modified: @events.maximum(:updated_at)
+    @v = @venues.all
+    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     @l = Time.now.in_time_zone("Eastern Time (US & Canada)").min
@@ -200,6 +201,7 @@ class EventsController < ApplicationController
    @autocomplete_path = shadyside_autocomplete_event_special_path
    @neighborhood_path = shadyside_path
    @neighborhood_tag = 2
+
    @v = @venues.where( neighborhood_id: 2)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)

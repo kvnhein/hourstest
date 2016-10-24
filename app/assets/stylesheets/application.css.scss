@@ -45,11 +45,19 @@ $primary-color: color("grey", "lighten-5") !default;
 }
 
 .under-con .carousel {
-      height: 530px;
+      height: 575px;
 }
 
 .under-con .carousel h6 {
   color:#000
+}
+
+.under-con .carousel p {
+      font-size: 11px;
+    line-height: 14px;
+    padding: 0;
+    text-align: center;
+    color: #666666;
 }
 
 .under-con .carousel .carousel-item {
@@ -232,7 +240,7 @@ h4.con-content-title {
 }
 
 #dtn {
-  background: url(stripterm.jpg);
+  background: url(marketsquare.jpg);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
