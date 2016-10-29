@@ -19,6 +19,7 @@ class Venue < ActiveRecord::Base
   belongs_to :neighborhood
   has_many :events, dependent: :destroy
   has_many :daily_specials, dependent: :destroy
+  has_many :lists, dependent: :destroy
   has_many :beers
 
   def to_param
