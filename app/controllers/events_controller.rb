@@ -27,9 +27,9 @@ class EventsController < ApplicationController
   end
 
   def daily_mailer
-    @users = User.where(id: [1,2,4,5])
+    @users = User.where(id: [1,2,3,4,5])
     @users.each do |user|
-      users_likes = user.get_up_voted Event.where(day: @day_tag)
+      users_likes = user.get_up_voted Event.where(day: @day_specials)
       if users_likes != 0
         EventMailer.event_reminder_email(user, users_likes).deliver
       end

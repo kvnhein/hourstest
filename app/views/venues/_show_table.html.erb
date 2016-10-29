@@ -1,35 +1,32 @@
 
 <ul class="collection">
 
-       <% @v = @events.all.where( day: @d)%>
+<% @v = @events.all.where( day: @d)%>
 <% if @v.empty?%>
-<li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@h%></li>
+  <li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@h%></li>
 <%else%>
-<% @v.order(start: :asc, special: :asc).each do |x| %>
-<li class="collection-item grey lighten-3 special-by-day addonpadding">
+  <% @v.order(start: :asc, special: :asc).each do |x| %>
+  <li class="collection-item grey lighten-3 special-by-day addonpadding">
 
-        <h4><%= x.special %>
-  
-   <% @d = x%>
-            <div class="like-like">
-              <div id = 'like-<%=x.id%>'>
+    <h4>
+      <%= x.special %>
+       <% @d = x%>
+          <div class="like-like">
+            <div id = 'like-<%=x.id%>'>
               <% if user_signed_in? %>
                 <% if current_user.voted_as_when_voted_for x %>
-                <%= render partial: 'events/event_downvote'%>
+                  <%= render partial: 'events/event_downvote'%>
                 <% else %>
-                <%= render partial: 'events/event_upvote' %>
-              <% end %>
-            <%else%>
-               <%= link_to new_user_session_path do%>
+                  <%= render partial: 'events/event_upvote' %>
+                <% end %>
+              <%else%>
+                <%= link_to new_user_session_path do%>
                 <i class="tiny material-icons" style="opacity:0.4">favorite_border</i>
-                <%end%>
+              <%end%>
             <%end%>
-              </div>
-            </div>
-  
-  </h4>
-
-           
+          </div>
+        </div>
+</h4>
 
 <% start_minutes = "00"%>
 <%if x.start%1 > 0 %>

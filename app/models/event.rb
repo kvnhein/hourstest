@@ -48,10 +48,14 @@ class Event < ActiveRecord::Base
 
   def new_event
     a = Event.after(Date.today - 7).to_a
+    b = Event.after(Date.today - 7, field: :updated_at).to_a
     if a.include? self
       return "NEW"
+     elsif b.include? self
+      return "UPDATED"
     end
   end
+
 
    def time_conversion
   start_minutes = "00"

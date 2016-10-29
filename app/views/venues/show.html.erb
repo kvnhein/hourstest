@@ -24,6 +24,12 @@
     <li class="divider"></li>
     <li><%= link_to 'New Hour', new_event_path %></li>
     <li class="divider"></li>
+    <%if (user_signed_in?)%>
+       <%if current_user.admin?%>
+          <li><%= link_to 'Destroy', @venue, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <li class="divider"></li>
+        <%end%>
+     <%end%>
     <% if @venue.feature_dish_check < 2 %>
     <li><%= link_to 'New Feature', new_daily_special_path%></li>
     <li class="divider"></li>

@@ -17,7 +17,8 @@ class Venue < ActiveRecord::Base
   end
 
   belongs_to :neighborhood
-  has_many :events
+  has_many :events, dependent: :destroy
+  has_many :daily_specials, dependent: :destroy
   has_many :beers
 
   def to_param
@@ -37,5 +38,5 @@ class Venue < ActiveRecord::Base
     Rails.cache.fetch([self, "all"]) { all }
   end
 
-  
+
 end

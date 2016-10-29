@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
@@ -11,10 +10,10 @@
       <img src="http://i.imgur.com/sMcqJ6D.png" class="mailheader-logo"/>
       </div>
       <div class="mailheader-content">
-    <h1>Hi <%= @user.fullname %> here are the Happy Hours today you wanted to be reminded of. Get out there and meet somebody</h1>
+    <h1>Hi <%= @user.fullname %>! We just wanted to remind you of the Hours you saved that are happening today. Get out there and bring a friend!</h1> 
 
     <%x=[]%>
-<%liked_events = @user.get_up_voted Event%>
+<%liked_events = @user.get_up_voted Event.where(day: @day_specials)%>
 <%liked_events.shuffle.each do |event| %>
  <%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
@@ -23,78 +22,25 @@
 
 <%x.uniq.each do |d|%>
   <%@e = liked_events.where(venue_id: d).order(:start).reverse%>
-  <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span>
+  <span class="card-title activator"><%= Neighborhood.find(Venue.where( id: @e[0].venue_id).first.neighborhood_id).name%></span>
+  <h4><%= Venue.where( id: @e[0].venue_id).first.name%></h4>
   <ul class="collection">
     <% @e.each do |x| %>
 
       <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
-          <%= x.special %>
-        </h4>
-      </li>
 
-      <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
-         <%=x.detail%>
-        </h4>
-      </li>
+          <p class="detailonshow mailtit" style="font-weight:bold;"><%= x.special %></p>
+        <p class="detailonshow maildet"><%=x.detail%></p>
 
-      <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
+        <div class="valign-wrapper timeforspecial">
         <%= x.time_conversion %>
-        </h4>
+        </div>
       </li>
+
     <%end%>
     </ul>
 <%end%>
       </div>
  </div>
-    
-    
-
-    <div class="mailheader">
-      <div class="mailheader-header">
-      <img src="http://i.imgur.com/sMcqJ6D.png" class="mailheader-logo">
-      </div>
-      <div class="mailheader-content">
-    <h1>Hi <%= @user.fullname %> here are the Happy Hours today you wanted to be reminded of. Get out there and meet somebody</h1>
-
-    <%x=[]%>
-<%liked_events = @user.get_up_voted Event%>
-<%liked_events.shuffle.each do |event| %>
- <%x.push(Venue.where(id: event.venue_id).first.id)%>
-<%end%>
-
-
-
-<%x.uniq.each do |d|%>
-  <%@e = liked_events.where(venue_id: d).order(:start).reverse%>
-  <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span>
-  <ul class="collection">
-    <% @e.each do |x| %>
-
-      <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
-          <%= x.special %>
-        </h4>
-      </li>
-
-      <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
-         <%=x.detail%>
-        </h4>
-      </li>
-
-      <li class="collection-item grey lighten-3 special-by-day">
-        <h4>
-        <%= x.time_conversion %>
-        </h4>
-      </li>
-    <%end%>
-    </ul>
-<%end%>
-      </div>
- </div>
-  
   </body>
 </html>
