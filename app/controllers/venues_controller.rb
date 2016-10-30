@@ -8,7 +8,7 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all
-    fresh_when last_modified: @venues.maximum(:updated_at)
+    
 
 
 
@@ -36,7 +36,7 @@ class VenuesController < ApplicationController
     #past_specials.delete_all
     #end
 
-    
+
 
     @events = Event.where(venue_id: params[:id])
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -138,7 +138,7 @@ class VenuesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_venue
       @venue = Venue.find(params[:id])
-      fresh_when @venue
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
