@@ -1,3 +1,4 @@
+<div class = "hide">
 <h3 class="flow-text center landing-title">Yesterdays Top Feature</h3>
 <%if @daily_specials.count > 0 %>
   <%max = DailySpecial.maximum(:credit)%>
@@ -49,6 +50,7 @@
         </div>
     </div>
 <%end%>
+</div>
 
 <h3 class="flow-text center landing-title">Today's Features</h3>
   <%@daily_specials.shuffle.each do |event| %>
