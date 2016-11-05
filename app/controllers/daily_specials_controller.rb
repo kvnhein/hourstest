@@ -16,6 +16,7 @@ class DailySpecialsController < ApplicationController
     @daily_specials = DailySpecial.tagged_with(params[:tag])
   else
     @daily_specials = DailySpecial.all
+    fresh_when etag: @daily_specials
 
   end
 

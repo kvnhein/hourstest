@@ -46,7 +46,7 @@
                      <%=event.special%>
                  </div>
                   <div class="new-event">
-                        <%= event.new_event%>
+                        <%= event.new_event%>-
                    </div>
               </div>
 <%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
@@ -55,7 +55,8 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                        <%= event.new_event%>
+                 
+                        <%= event.new_event%>-
                    </div>
               </div>
 <%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
@@ -64,7 +65,7 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                        <%= event.new_event%>
+                        <%= event.new_event%>-
                    </div>
               </div>
 <%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
@@ -73,7 +74,7 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                        <%= event.new_event%>
+                        <%= event.new_event%>-
                    </div>
               </div>
 <%else%>
@@ -82,7 +83,7 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                        <%= event.new_event%>
+                        <%= event.new_event%>-
                    </div>
               </div>
  <%end%>
