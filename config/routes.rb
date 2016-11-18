@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   						:path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
   						:controllers => { :omniauth_callbacks => "omniauth_callbacks",:registrations => "users/registrations",:sessions => "users/sessions" }
 
+  get 'past_features/:past_tag', to: 'daily_specials#past_features', as: :past_tag
+  get 'past_features' => 'daily_specials#past_features'
   get 'tags/:tag', to: 'daily_specials#index', as: :tag
   resources :daily_specials do
      member do

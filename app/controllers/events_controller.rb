@@ -1,14 +1,5 @@
 class EventsController < ApplicationController
-  caches_action :landing, expires_in: 1.minutes
-  caches_action :downtown, expires_in: 1.minute
-  caches_action :shadyside, expires_in: 1.minute
-  caches_action :south_side, expires_in: 1.minute
-  caches_action :oakland, expires_in: 1.minute
-  caches_action :lawrenceville, expires_in: 1.minute
-  caches_action :strip_district, expires_in: 1.minute
-
-
-
+ 
 
   after_filter "save_my_previous_url", only: [:new]
   before_action :admin_redirect, only: [:under_construction]
@@ -255,9 +246,9 @@ class EventsController < ApplicationController
    @v = @venues.where( neighborhood_id: 3)
    @daily_specials =
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   if params[:search]
+    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
-   elsif params[:oakland_tag]
+    elsif params[:oakland_tag]
       @events = Event.tagged_with(params[:oakland_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
     end
 
@@ -282,7 +273,7 @@ class EventsController < ApplicationController
    @v = @venues.where( neighborhood_id: hood_id)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   if params[:search]
+    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
      elsif params[:down_tag]
       @events = Event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
@@ -484,10 +475,66 @@ class EventsController < ApplicationController
 
     expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
     @event = Event.new(event_params)
+    if @event.day == "Weekdays"
+        @event.day = "Monday"
+        @event_tue = Event.new(event_params)
+        @event_tue.day = "Tuesday"
+        @event_wed = Event.new(event_params)
+        @event_wed.day = "Wednesday"
+        @event_thu = Event.new(event_params)
+        @event_thu.day = "Thursday"
+        @event_fri = Event.new(event_params)
+        @event_fri.day = "Friday"
+
+
+        respond_to do |format|
+        if @event.save && @event_tue.save && @event_wed.save && @event_thu.save && @event_fri.save
+            EventMailer.sample_email(current_user, @event).deliver
+
+            Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
+            format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
+            format.json { head :no_content }
+        else
+            format.html { render :new }
+            format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
+    end
+    elsif @event.day == "Everyday"
+        @event.day = "Monday"
+        @event_tue = Event.new(event_params)
+        @event_tue.day = "Tuesday"
+        @event_wed = Event.new(event_params)
+        @event_wed.day = "Wednesday"
+        @event_thu = Event.new(event_params)
+        @event_thu.day = "Thursday"
+        @event_fri = Event.new(event_params)
+        @event_fri.day = "Friday"
+        @event_sat = Event.new(event_params)
+        @event_sat.day = "Saturday"
+        @event_sun = Event.new(event_params)
+        @event_sun.day = "Sunday"
+
+
+        respond_to do |format|
+            if @event.save && @event_tue.save && @event_wed.save && @event_thu.save && @event_fri.save && @event_sat.save && @event_sun.save
+            #EventMailer.sample_email(current_user, @event).deliver
+
+            Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
+            format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
+            format.json { head :no_content }
+            else
+            format.html { render :new }
+            format.json { render json: @event.errors, status: :unprocessable_entity }
+            end
+        end
+   elsif @event.day == "Weekend"
+    @event.day = "Saturday"
+    @event_sun = Event.new(event_params)
+    @event_sun.day = "Sunday"
 
     respond_to do |format|
-      if @event.save
-        EventMailer.sample_email(current_user, @event).deliver
+      if @event.save && @event_sun.save
+        #.sample_email(current_user, @event).deliver
 
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
@@ -496,6 +543,20 @@ class EventsController < ApplicationController
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
+    end
+    else
+      respond_to do |format|
+      if @event.save
+        #EventMailer.sample_email(current_user, @event).deliver
+
+        Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
+        format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
+        format.json { head :no_content }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
     end
   end
 

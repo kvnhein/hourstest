@@ -14,8 +14,10 @@ class DailySpecialsController < ApplicationController
   @topic_description = "Today's best off menu dishes from around Pittsburgh"
   if params[:tag]
     @daily_specials = DailySpecial.tagged_with(params[:tag])
+    #@daily_specials = DailySpecial.today.tagged_with(params[:tag])
   else
-    @daily_specials = DailySpecial.all
+     @daily_specials = DailySpecial.all
+    #@daily_specials = DailySpecial.today.all
     fresh_when etag: @daily_specials
 
   end
@@ -26,8 +28,8 @@ class DailySpecialsController < ApplicationController
     @page_url = "daily_specials"
     @topic = "Featured Dishes"
     @topic_description = "Today's best off menu dishes from around Pittsburgh"
-    if params[:tag]
-      @daily_specials = DailySpecial.tagged_with(params[:tag])
+    if params[:past_tag]
+      @daily_specials = DailySpecial.tagged_with(params[:past_tag])
     else
       @daily_specials = DailySpecial.all
     end

@@ -53,6 +53,9 @@
 </div>
 
 <h3 class="flow-text center landing-title">Today's Features</h3>
+<div class ="center" id="specials">
+  <%= render partial: "shared/featured_tags"%>
+</div>
   <%@daily_specials.shuffle.each do |event| %>
     <%@j=event%>
     <div class="row">
@@ -87,7 +90,9 @@
                                     <i class="tiny material-icons">query_builder</i><%= event.time_conversion%>
                                 </div>
                                 <div class="right-align">
+                                  <%if event.price.length > 0 %>
                                     $<%=event.price%>
+                                  <%end%>
                                 </div>
                             </div>
                             <div class="featured-tags">
@@ -109,4 +114,5 @@
 <%= link_to 'New Feature', new_daily_special_path, :id => "feat_dish" %>
 </div>
 <%end%>
+
 
