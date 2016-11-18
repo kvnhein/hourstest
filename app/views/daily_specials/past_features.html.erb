@@ -1,4 +1,4 @@
-<% cache("past_features", :expires_in => 2.hours) do %>
+
 <br/>
 <h3 class ="flow-text center landing-title">Past Features</h3>
 <h5 class ="flow-text center"><%=(Time.now - 7.days).in_time_zone("Eastern Time (US & Canada)").strftime("%B #{(Time.now - 7.days).in_time_zone("Eastern Time (US & Canada)").day.ordinalize}")%> - <%=(Time.now).in_time_zone("Eastern Time (US & Canada)").strftime("%B #{(Time.now).in_time_zone("Eastern Time (US & Canada)").day.ordinalize}")%></h5>
@@ -66,5 +66,5 @@
 
 <%end%>
 
-<%end%>
+
 
