@@ -4,6 +4,16 @@ class Users::RegistrationsController < DeviseController
   prepend_before_action :set_minimum_password_length, only: [:new, :edit]
 
   # GET /resource/sign_up
+  def reminders_on
+    @user.update_attribute(:email_reminder, true)
+    redirect_to action: "edit", notice: "Email Reminders ON"
+  end
+
+  def reminders_off
+    @user.update_attribute(:email_reminder, false)
+    redirect_to action: "edit", notice: "Email Reminders Off"
+  end
+  
   def new
     build_resource({})
     yield resource if block_given?

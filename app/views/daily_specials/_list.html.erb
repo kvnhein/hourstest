@@ -55,6 +55,7 @@
 <h3 class="flow-text center landing-title">Today's Features</h3>
 <div class ="center" id="specials">
   <%= render partial: "shared/featured_tags"%>
+   <h3><%= @topic%></h3>
 </div>
   <%@daily_specials.shuffle.each do |event| %>
     <%@j=event%>

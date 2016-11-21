@@ -489,7 +489,7 @@ class EventsController < ApplicationController
 
         respond_to do |format|
         if @event.save && @event_tue.save && @event_wed.save && @event_thu.save && @event_fri.save
-            EventMailer.sample_email(current_user, @event).deliver
+            #EventMailer.sample_email(current_user, @event).deliver
 
             Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
             format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
@@ -534,7 +534,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save && @event_sun.save
-        #.sample_email(current_user, @event).deliver
+        #EventMailer.sample_email(current_user, @event).deliver
 
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }

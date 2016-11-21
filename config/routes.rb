@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   root 'events#under_construction'
 
 
-
-
   devise_for 	:users,
   						:path => '',
   						:path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
   						:controllers => { :omniauth_callbacks => "omniauth_callbacks",:registrations => "users/registrations",:sessions => "users/sessions" }
+  						
+  
 
   get 'past_features/:past_tag', to: 'daily_specials#past_features', as: :past_tag
   get 'past_features' => 'daily_specials#past_features'
