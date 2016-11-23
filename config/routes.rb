@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'events#under_construction'
+  root 'events#landing'
 
 
   devise_for 	:users,

@@ -57,7 +57,7 @@
   <%= render partial: "shared/featured_tags"%>
    <h3><%= @topic%></h3>
 </div>
-  <%@daily_specials.shuffle.each do |event| %>
+  <%@daily_specials.order("created_at DESC").each do |event| %>
     <%@j=event%>
     <div class="row">
         <div class="col s12 m8 offset-m2 featured-dish-section">
