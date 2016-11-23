@@ -7,14 +7,14 @@
   <%= devise_error_messages! %>
 
 
-  <div class="field">
+  <div class="field col s8">
     <%= f.label :required %>
      <%= f.text_field :fullname, autofocus: true, :placeholder => "Full Name", :class => 'form-control' %>
     <%= f.label :required %><br />
     <%= f.email_field :email, autofocus: true, :placeholder => "Email", :class => 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field col s8">
     <%= f.label :required %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -22,16 +22,16 @@
     <%= f.password_field :password, autocomplete: "off", :placeholder => "Password", :class => 'form-control'  %>
   </div>
 
-  <div class="field">
+  <div class="field col s8">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Confirm Password", :class => 'form-control'   %>
   </div>
 
-  <div class="actions hide">
+  <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
   
-  <div><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></div>
+ <div class = "center"><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class:"btn-flat disabled red-text text-darken-2"%></div>
 <% end %>
 <div class = "hide">
 <%= render "devise/shared/links" %>

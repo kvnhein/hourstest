@@ -27,7 +27,7 @@
     <%= f.submit "Log in",  class:"btn-flat disabled teal-text text-accent-4"%>
   </div>
 <% end %>
-<div class = "hide"><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></div>
+<div><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class:"btn-flat disabled red-text text-darken-2"%></div>
   <div class = "hide">
 <%= render "devise/shared/links" %>
 </div>
