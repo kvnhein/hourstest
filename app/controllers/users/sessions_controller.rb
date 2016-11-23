@@ -1,6 +1,9 @@
 class Users::SessionsController < Devise::SessionsController
   skip_before_filter :verify_authenticity_token
   prepend_before_filter :verify_user, only: [:destroy]
+  
+  def save_login
+  end
 
   private
 

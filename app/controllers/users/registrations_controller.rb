@@ -19,6 +19,8 @@ class Users::RegistrationsController < DeviseController
     yield resource if block_given?
     respond_with resource
   end
+  
+
 
   # POST /resource
   def create
