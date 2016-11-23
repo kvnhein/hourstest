@@ -30,7 +30,9 @@
                                     <i class="tiny material-icons">query_builder</i><%= event.time_conversion%>
                                 </div>
                                 <div class="right-align">
-                                    $<%=event.price%>
+                                    <%if event.price.length > 0 %>
+                                        $<%=event.price%>
+                                  <%end%>
                                 </div>
                             </div>
                             <div class="featured-tags">
