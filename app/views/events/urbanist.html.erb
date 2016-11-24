@@ -110,7 +110,7 @@
     <h5><%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
     <a href="http://www.hourspgh.com/" target="_blank"><%= image_tag "powered-hours.png"%></a>
   </div>
-<%if DailySpecial.where(venue_id: @urbanist_venues.pluck(:id)).today.count > 0 %>
+
 <%if DailySpecial.where(venue_id: @market_square_venues.pluck(:id)).today.count > 0 %>
   <div class="title-sep">
     <hr>
@@ -177,10 +177,15 @@
  <%= render partial: "shared/featured_dish_table"%>
 <%end%>
 
+<%if DailySpecial.where(venue_id: @urbanist_venues.pluck(:id)).today.count == 0 %>
+<br>
+ <%= render partial: "shared/no_features"%>
+ <br>
+<%end%>
+
   </div>
-  <%else%>
-  No Features
-  <%end%>
+
+ 
 <!--   End of Features -->
 </div>
 
