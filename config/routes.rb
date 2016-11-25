@@ -111,6 +111,10 @@ resources :events do
      get 'north_side' => 'events#north_side'
         resources :events
 
+  get 'east_liberty/:east_tag', to: 'events#east_liberty', as: :east_tag
+  get 'east_liberty/autocomplete_event_special'
+     get 'east_liberty' => 'events#east_liberty'
+        resources :events
 
   resources :venues do
     member do
