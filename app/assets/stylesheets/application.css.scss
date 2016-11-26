@@ -239,6 +239,21 @@ h4.con-content-title {
   font-weight: 700;
 }
 
+.con-neighb .col.m4{
+         background: #aaa;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    padding: 0;
+
+   }
+
+.con-neighb .col.m4 h6 {
+  text-align: center;
+  color: #fff;
+    font-size: 16px;
+  font-weight: 700;
+}
+
 #dtn {
   background: url(marketsquare.jpg);
     background-repeat: no-repeat;
@@ -1813,14 +1828,14 @@ iframe {
 
 .image-btns {
     text-transform: none;
-   letter-spacing: normal !important;
-    height: 220px;
+    letter-spacing: normal !important;
+    height: auto;
     width: 100%;
-    font-size: 21px !important;
+    font-size: 16px !important;
     margin: 0;
     max-width: none;
-    padding: 89px 0;
-    margin-bottom: 1px;
+    padding: 84px 5px;
+    margin-bottom: 0;
 }
 
 .lawrenceville-btn {
@@ -1854,7 +1869,7 @@ iframe {
 }
 
 .featurebtn {
-    background: url(wings.jpg);
+    background: url(feature1.png);
   background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1901,6 +1916,7 @@ iframe {
     -o-background-size: cover;
     background-size: cover;
     background-position: center;
+        border-bottom: 1px solid #fff;
 }
 
 .brunch-btn {
@@ -2386,6 +2402,8 @@ i.tiny {
   nav a img {
      margin-left: 2px;
   }
+  
+  
 
   nav ul li {
     height: 50px;
@@ -2427,6 +2445,10 @@ i.tiny {
     margin-top: 70px;
     font-size: 39px;
 }
+
+.image-btns {
+    padding: 62px 5px;
+  }
 
 
 
