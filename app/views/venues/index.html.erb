@@ -17,6 +17,11 @@
         <li class="tab"><a href="#Oakland">Oakland</a></li>
         <li class="tab"><a href="#Lawrenceville">Lawrenceville</a></li>
         <li class="tab"><a href="#Strip_district">Strip District</a></li>
+        <% if (user_signed_in?)%>
+           <% if current_user.admin?%>
+            <li class="tab"><a href="#East_liberty">East Liberty</a></li>
+           <%end%>
+        <%end%>
       </ul>
     </div>
   </div>
@@ -69,4 +74,15 @@
      <%= render 'venue_index'%>
 <% end %>
 </div>
+
+<% if (user_signed_in?)%>
+    <% if current_user.admin?%>
+    <div id="East_liberty">
+     <% @venues.where(neighborhood_id: 9).order("name ASC").each do |venue| %>
+         <%@venue = venue %>
+         <%= render 'venue_index'%>
+    <% end %>
+    </div>
+  <%end%>
+<%end%>
 
