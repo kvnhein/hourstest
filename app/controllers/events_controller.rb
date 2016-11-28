@@ -365,10 +365,10 @@ class EventsController < ApplicationController
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
-    elsif
+  elsif params[:east_tag]
       @events = Event.tagged_with(params[:east_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
      @tag_topic = "##{params[:east_tag]}"
-    end
+  end
 
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).today
