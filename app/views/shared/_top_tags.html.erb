@@ -17,5 +17,7 @@
 <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, sq_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", squirrel_hill_path, class:"disabled teal-text text-accent-4"%>
 <%elsif @neighborhood_tag == 13%>
  <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, mt_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", mt_washington_path, class:"disabled teal-text text-accent-4"%>
+ <%elsif @neighborhood_tag == 9%>
+ <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, east_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", east_liberty_path, class:"disabled teal-text text-accent-4"%>
 <%end%>
 </div>
