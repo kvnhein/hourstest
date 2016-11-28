@@ -17,5 +17,5 @@
 <%elsif @neighborhood_tag == 13%>
  Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, mt_tag_path(t) }.join(', ')  %>
  <%elsif @neighborhood_tag == 9%>
- Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, mt_tag_path(t) }.join(', ')  %>
+ Tags: <%= raw @event_tag.tag_list.map { |t| link_to t, east_tag_path(t) }.join(', ')  %>
 <%end%>
