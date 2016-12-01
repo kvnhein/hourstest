@@ -31,11 +31,8 @@ class DailySpecialsController < ApplicationController
     @topic_description = "Today's best off menu dishes from around Pittsburgh"
     if params[:past_tag]
       @daily_specials = DailySpecial.tagged_with(params[:past_tag])
-<<<<<<< HEAD
       @topic = "##{params[:past_tag]}"
-=======
       @topic = "##{params[:tag]}"
->>>>>>> b9576aca3ca617d35d535cacb4d3c850537db0de
     else
       @daily_specials = DailySpecial.all
       @topic = ""
