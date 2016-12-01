@@ -4,7 +4,9 @@
  <%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 
-
+<% if x.count == 0 %> 
+  <%= render "no_prof_hour"%>
+<%else%>
 
 <%x.uniq.each do |d|%>
 
@@ -197,4 +199,5 @@
         </div>
 
       </div>
+ <%end%>
  <%end%>
