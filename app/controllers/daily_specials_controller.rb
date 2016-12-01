@@ -32,7 +32,6 @@ class DailySpecialsController < ApplicationController
     if params[:past_tag]
       @daily_specials = DailySpecial.tagged_with(params[:past_tag])
       @topic = "##{params[:past_tag]}"
-      @topic = "##{params[:tag]}"
     else
       @daily_specials = DailySpecial.all
       @topic = ""
