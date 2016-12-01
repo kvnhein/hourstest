@@ -1,3 +1,4 @@
+<%@hour_topic = @tag_topic%> 
 <% content_for :head do%>
 
 <meta property="og:site_name" content="HoursPGH" />
@@ -54,7 +55,6 @@
 <div class ="center" id="specials">
  <%=render partial: "shared/autocomplete"%>
  <div><%= render partial: "shared/top_tags"%></div>
- <div><h3><%= @tag_topic%></h3></div>
  <%=render partial: "shared/dynamic_table_card"%>
 </div>
 

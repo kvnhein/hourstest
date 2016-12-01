@@ -20,4 +20,5 @@
  <%elsif @neighborhood_tag == 9%>
  <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, east_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", east_liberty_path, class:"disabled teal-text text-accent-4"%>
 <%end%>
+<div><h3><%= @hour_topic%></h3></div>
 </div>
