@@ -23,7 +23,6 @@ class DailySpecialsController < ApplicationController
     fresh_when etag: @daily_specials
 
   end
-
   end
 
   def past_features
@@ -32,8 +31,10 @@ class DailySpecialsController < ApplicationController
     @topic_description = "Today's best off menu dishes from around Pittsburgh"
     if params[:past_tag]
       @daily_specials = DailySpecial.tagged_with(params[:past_tag])
+      @topic = "##{params[:tag]}"
     else
       @daily_specials = DailySpecial.all
+      @topic = ""
     end
   end
 
