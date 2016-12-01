@@ -36,8 +36,9 @@
               </div>
 
               <!---This is where it ends-->
-               <%unievents.reverse.each do |event|%>
- <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
+<%unievents.reverse.each do |event|%>
+  <%if @day == @d.first%>              
+     <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
               <div class="chip-piece">
                 <div class="chip" style="background-color:#17a787">
                      <%=event.special%>
@@ -46,7 +47,7 @@
                         <%= event.new_event%>
                    </div>
               </div>
-<%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
+    <%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
               <div class="chip-piece">
         <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
@@ -55,7 +56,7 @@
                         <%= event.new_event%>
                    </div>
               </div>
-<%elsif @b < 2 && event.end < 24  &&  event.end > 23 %>
+    <%elsif @b < 2 && event.end < 24  &&  event.end > 23 %>
               <div class="chip-piece">
         <div class="chip" style="background-color:#17a787">
                   <%=event.special%>
@@ -64,7 +65,7 @@
                         <%= event.new_event%>
                    </div>
               </div>
-<%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
+    <%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
               <div class="chip-piece">
         <div class="chip" style="background-color:#000000">
                   <%=event.special%>
@@ -73,7 +74,7 @@
                         <%= event.new_event%>
                    </div>
               </div>
-<%else%>
+    <%else%>
               <div class="chip-piece">
          <div class="chip" style="background-color:#bdbdbd">
                   <%=event.special%>
@@ -82,8 +83,19 @@
                         <%= event.new_event%>
                    </div>
               </div>
- <%end%>
-              <%end%>
+     <%end%>
+  <%else%>
+             <div class="chip-piece">
+                <div class="chip" style="background-color:#000000">
+                  <%=event.special%>
+                </div>
+               <div class="new-event">
+                  <%= event.new_event%>
+               </div>
+              </div>
+  <%end%>
+ 
+<%end%>
             <!--div class="card-content">-->
 
 <!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
@@ -151,17 +163,17 @@
     <%end%>
 
 
-
-<%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
+<%if @day == @d.first%>
+    <%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
         <div class="now-tab">Now</div>
-<%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
+    <%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
         <div class="now-tab">Now</div>
-<%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 %>
+    <%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 %>
         <div class="now-tab">Now</div>
-<%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
+    <%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
         <div class="later-tab">Later</div>
- <%end%>
-
+     <%end%>
+<%end%>
 
 
 <div class="hide">

@@ -11,21 +11,29 @@
     <%@f = ""%>
     <%@s = ""%>
     <%@st = ""%>
+    <%@day = ""%>
     <%@button = 0%>
     <%if t.wday == 1%>
       <%@m = "active"%>
+      <%@day = "Monday"%>
     <%elsif  t.wday==2%>
       <%@t = "active"%>
+      <%@day = "Tuesday"%>
     <%elsif  t.wday==3%>
       <%@w = "active"%>
+      <%@day = "Wednesday"%>
     <%elsif  t.wday==4%>
       <%@th = "active"%>
+      <%@day = "Thursday"%>
     <%elsif  t.wday==5%>
       <%@f = "active"%>
+      <%@day = "Friday"%>
     <%elsif  t.wday==6%>
       <%@st = "active"%>
+      <%@day = "Saturday"%>
      <%else%>
       <%@s = "active"%>
+      <%@day = "Sunday"%>
     <%end%>
  
 <h6 class= "flow-text center-align">Saved Hours</h6>
