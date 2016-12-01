@@ -77,9 +77,6 @@
                 <div class="card-image">
                     <%= image_tag event.image.url(:medium)%>
                 </div>
-                <div>
-                  <h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>
-                </div>
                 <div class="card-content">
                     <%=event.text%>
                     <!--Like Button-->
