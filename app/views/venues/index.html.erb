@@ -29,6 +29,8 @@
 </script>
 
 <div id="Market_Square">
+    <br>
+    <%= link_to 'See Downtown Hours', downtown_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
   <% @venues.where(neighborhood_id: 5).order("name ASC").each do |venue| %>
      <%@venue = venue %>
      <%= render 'venue_index'%>
@@ -36,6 +38,8 @@
 </div>
 
 <div id="Southside">
+    <br>
+    <%= link_to 'See South Side Hours', south_side_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
 <% @venues.where(neighborhood_id: 1).order("name ASC").each do |venue| %>
      <%@venue = venue %>
      <%= render 'venue_index'%>
@@ -43,6 +47,8 @@
 </div>
 
 <div id="Shadyside">
+    <br>
+    <%= link_to 'See Shadyside Hours', shadyside_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
  <% @venues.where(neighborhood_id: 2).order("name ASC").each do |venue| %>
      <%@venue = venue %>
      <%= render 'venue_index'%>
@@ -51,6 +57,8 @@
 
 
 <div id="Oakland">
+    <br>
+    <%= link_to 'See Oakland Hours', oakland_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
 <% @venues.where(neighborhood_id: 3).order("name ASC").each do |venue| %>
      <%@venue = venue %>
      <%= render 'venue_index'%>
@@ -58,6 +66,8 @@
 </div>
 
 <div id="Lawrenceville">
+    <br>
+    <%= link_to 'See Lawrenceville Hours', lawrenceville_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
  <% @venues.where(neighborhood_id: 7).order("name ASC").each do |venue| %>
      <%@venue = venue %>
      <%= render 'venue_index'%>
@@ -65,6 +75,8 @@
 </div>
 
 <div id="Strip_district">
+    <br>
+    <%= link_to 'See Strip District Hours', strip_district_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
  <% @venues.where(neighborhood_id: 11).order("name ASC").each do |venue| %>
      <%@venue = venue %>
      <%= render 'venue_index'%>
@@ -72,6 +84,8 @@
 </div>
 
     <div id="East_liberty">
+        <br>
+    <%= link_to 'See East Liberty Hours', east_liberty_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
      <% @venues.where(neighborhood_id: 9).order("name ASC").each do |venue| %>
          <%@venue = venue %>
          <%= render 'venue_index'%>
