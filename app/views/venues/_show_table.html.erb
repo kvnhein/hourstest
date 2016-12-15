@@ -1,6 +1,4 @@
-
 <ul class="collection">
-
 <% @v = @events.all.where( day: @d)%>
 <% if @v.empty?%>
   <li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@h%></li>
@@ -21,7 +19,8 @@
                 <% end %>
               <%else%>
                 <%= link_to new_user_session_path do%>
-                <i class="tiny material-icons" style="opacity:0.4">favorite_border</i>
+                <!--<i class="material-icons">edit_mode</i>-->
+                <i class="zmdi zmdi-edit"></i>
               <%end%>
             <%end%>
           </div>
@@ -66,7 +65,8 @@
 
 
 <div class="valign-wrapper timeforspecial">
-<i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
+<i class="zmdi zmdi-time"></i>
+<%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 
  </div>
 
@@ -94,7 +94,9 @@
     position: relative;
     border-left: 1px solid #ddd;">
     <%= link_to edit_event_path(@happy_hour) do%>
-    <i class="material-icons">edit_mode</i>
+    <!--<i class="material-icons">edit_mode</i>-->
+<i class="zmdi zmdi-edit"></i>
+
   <%end%>
   </div>
     <div style="width: 58px;
@@ -103,7 +105,8 @@
     position: relative;
     border-left: 1px solid #ddd;">
   <%= link_to x, method: :delete, data: { confirm: 'Are you sure?' } do%>
-  <i class="material-icons">delete_forever</i>
+  <!--<i class="material-icons">delete_forever</i>-->
+                  <i class="zmdi zmdi-delete"></i>
   <%end%>
     </div>
   </div>

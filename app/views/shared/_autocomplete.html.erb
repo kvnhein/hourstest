@@ -24,7 +24,9 @@
 
             <div class="search-tab-btn">
                 <div class="click-open-search">
-                    <i class="material-icons">search</i>
+                    <!--<i class="material-icons">search</i>-->
+                  <i class="zmdi zmdi-search"></i>
+                    
                 </div>
                 <%= form_tag(@neighborhood_path, :method => "get", id: "search-form") do %><!-- text field tag=action,args,identifier,placeholdertext... -->
                 <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: @autocomplete_path} %>

@@ -40,9 +40,14 @@
                 <div class="card-action">
                     <%= event.description%>
                     <div>
-                        <div class="hide">
+                        <div>
+                            <%if user_signed_in? %>
+                              <%if current_user.admin?%>
+                            %= link_to 'Show', event %>
                             <%= link_to 'Edit', edit_daily_special_path(event) %>
                             <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true  %><i class="material-icons">share</i>
+                            <%end%>
+                            <%end%>
                         </div>
                     </div>
                 </div>
@@ -85,11 +90,25 @@
                 <div class="card-action">
                     <%= event.description %>
                     <div>
+                        <div class = "hide">
+                            <%if user_signed_in? %>
+                              <%if current_user.admin?%>
+                            <%= link_to 'Show', event %>
+                            <%= link_to 'Edit', edit_daily_special_path(event) %>
+                            <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true  %>
+                            <%end%>
+                            <%end%>
+                        </div>
                         <div class="row">
                             <div class="time-and-price">
                                  <%if event.start != 0%>
                                 <div class="timeforspecial">
-                                    <i class="tiny material-icons">query_builder</i><%= event.time_conversion%>
+                                    <i class="zmdi zmdi-time"></i>
+
+                                   
+<i class="zmdi zmdi-time"></i>
+
+
                                 </div>
                                  <%end%>
                                 <div class="right-align">
@@ -101,11 +120,15 @@
                             <div class="featured-tags">
                               <%= raw event.tag_list.map { |t| link_to t, tag_path(t), class:"disabled teal-text text-accent-4" }.join(' | ')%>
                             </div>
-                            <div class="right hide">
+                            <%if user_signed_in? %>
+                              <%if current_user.admin?%>
+                            <div class="right">
                                 <div class="valign-wrapper timeforspecial">
-                                    <i class="tiny material-icons">bookmark</i>Reserve Feature
+                                    <i class="tiny material-icons">bookmark</i><%= link_to 'Reserve', event %>
                                 </div>
                             </div>
+                            <%end%>
+                            <%end%>
                         </div>
                     </div>
                 </div>

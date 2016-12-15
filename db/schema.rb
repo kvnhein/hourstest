@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120022900) do
+ActiveRecord::Schema.define(version: 20161214232835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20161120022900) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "credit"
+    t.integer  "available_credits"
   end
 
   add_index "daily_specials", ["venue_id"], name: "index_daily_specials_on_venue_id", using: :btree
@@ -96,9 +97,12 @@ ActiveRecord::Schema.define(version: 20161120022900) do
     t.integer  "venue_id"
     t.float    "start"
     t.float    "end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.text     "detail"
+    t.datetime "event_verify"
+    t.integer  "varified_user"
+    t.integer  "user_id"
   end
 
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
@@ -153,6 +157,17 @@ ActiveRecord::Schema.define(version: 20161120022900) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "daily_special_id"
+    t.integer  "credit"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "reservations", ["daily_special_id"], name: "index_reservations_on_daily_special_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -253,5 +268,7 @@ ActiveRecord::Schema.define(version: 20161120022900) do
   add_foreign_key "liqours", "venues"
   add_foreign_key "lists", "brews"
   add_foreign_key "lists", "venues"
+  add_foreign_key "reservations", "daily_specials"
+  add_foreign_key "reservations", "users"
   add_foreign_key "venues", "neighborhoods"
 end

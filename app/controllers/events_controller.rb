@@ -4,7 +4,7 @@ class EventsController < ApplicationController
    after_filter "save_my_previous_url", only: [:new]
  # before_action :admin_redirect, only: [:under_construction]
    #before_action :require_admin_construction, except: [:under_construction]
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :event_upvote, :event_downvote]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :event_upvote, :event_downvote, :event_verified]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
  # before_action :require_owner_event, only: [:edit, :update, :destroy]
   before_action :verified_venues, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
@@ -15,13 +15,22 @@ class EventsController < ApplicationController
 
   def under_construction
   end
+  
+  def event_verified
+    @event.update_attribute(:event_verify, Time.now)
+    @event.update_attribute(:varified_user, current_user.id)
+    current_user.increment!(:experience)
+  end
 
   def daily_mailer
-    @users = User.where(id: [1,2,3,4,5])
+    @new_events = Event.after(Date.today - 7).to_a
+    @updated_events = Event.after(Date.today - 7, field: :updated_at).to_a
+    @users = User.where(id: [1,4])
     @users.each do |user|
       users_likes = user.get_up_voted Event.where(day: @day_specials)
       if users_likes != 0
         EventMailer.event_reminder_email(user, users_likes).deliver
+        EventMailer.welcome_email(user, users_likes).deliver
       end
     end
   end
@@ -85,11 +94,13 @@ class EventsController < ApplicationController
 
   def event_upvote
   @event.liked_by current_user
+  @event.update_attribute(:event_verify, Time.now)
    current_user.increment!(:experience)
   end
 
   def event_downvote
   @event.unliked_by current_user
+  @event.update_attribute(:event_verify, Time.now)
   current_user.increment!(:experience)
   end
 
@@ -98,7 +109,8 @@ class EventsController < ApplicationController
     @topic = "Hours"
     @topic_description = "Hours provides Happy Hours/Specials and Featured dishes throughout Pittsburgh"
     @page_url = ""
-
+    @new_events = Event.after(Date.today - 7).to_a
+    @updated_events = Event.after(Date.today - 7, field: :updated_at).to_a
 
   end
 
@@ -490,7 +502,8 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = current_user.events.build
+    #@event = Event.new
     @back_url = session[:my_previous_url]
   end
 
@@ -503,16 +516,17 @@ class EventsController < ApplicationController
   def create
 
     expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
+    #@event = Event.new(event_params)
     if @event.day == "Weekdays"
         @event.day = "Monday"
-        @event_tue = Event.new(event_params)
+        @event_tue = current_user.events.build(event_params)
         @event_tue.day = "Tuesday"
-        @event_wed = Event.new(event_params)
+        @event_wed = current_user.events.build(event_params)
         @event_wed.day = "Wednesday"
-        @event_thu = Event.new(event_params)
+        @event_thu = current_user.events.build(event_params)
         @event_thu.day = "Thursday"
-        @event_fri = Event.new(event_params)
+        @event_fri = current_user.events.build(event_params)
         @event_fri.day = "Friday"
 
 
@@ -530,17 +544,17 @@ class EventsController < ApplicationController
     end
     elsif @event.day == "Everyday"
         @event.day = "Monday"
-        @event_tue = Event.new(event_params)
+        @event_tue = current_user.events.build(event_params)
         @event_tue.day = "Tuesday"
-        @event_wed = Event.new(event_params)
+        @event_wed = current_user.events.build(event_params)
         @event_wed.day = "Wednesday"
-        @event_thu = Event.new(event_params)
+        @event_thu = current_user.events.build(event_params)
         @event_thu.day = "Thursday"
-        @event_fri = Event.new(event_params)
+        @event_fri = current_user.events.build(event_params)
         @event_fri.day = "Friday"
-        @event_sat = Event.new(event_params)
+        @event_sat = current_user.events.build(event_params)
         @event_sat.day = "Saturday"
-        @event_sun = Event.new(event_params)
+        @event_sun = current_user.events.build(event_params)
         @event_sun.day = "Sunday"
 
 
@@ -557,8 +571,9 @@ class EventsController < ApplicationController
             end
         end
    elsif @event.day == "Weekend"
-    @event.day = "Saturday"
-    @event_sun = Event.new(event_params)
+    @event_sat = current_user.events.build(event_params)
+    @event_sat.day = "Saturday"
+    @event_sun = current_user.events.build(event_params)
     @event_sun.day = "Sunday"
 
     respond_to do |format|

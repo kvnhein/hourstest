@@ -25,6 +25,9 @@ class DailySpecialsController < ApplicationController
   end
   end
 
+  def add_reservation
+  end
+  
   def past_features
     @page_url = "daily_specials"
     @topic = "Featured Dishes"
@@ -50,6 +53,7 @@ class DailySpecialsController < ApplicationController
   # GET /daily_specials/1
   # GET /daily_specials/1.json
   def show
+    @reservation = Reservation.new
   end
 
   # GET /daily_specials/new
@@ -124,6 +128,6 @@ class DailySpecialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daily_special_params
-      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status, :start, :end, :day, :image, :credit, :tag_list)
+      params.require(:daily_special).permit(:text, :description, :price, :venue_id, :dish_type, :dish_status, :start, :end, :day, :image, :credit, :tag_list, :available_credits)
     end
 end

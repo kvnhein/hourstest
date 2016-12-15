@@ -49,7 +49,8 @@
 
 
 <div class="valign-wrapper timeforspecial">
-<i class="tiny material-icons">query_builder</i><%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
+<i class="zmdi zmdi-time"></i>
+<%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 </div>
 
   <%if Event.where(id: x.id).first.any_details == 2%>
@@ -76,7 +77,8 @@
     position: relative;
     border-left: 1px solid #ddd;">
     <%= link_to edit_event_path(@happy_hour) do%>
-    <i class="material-icons">edit_mode</i>
+    <!--<i class="material-icons">edit_mode</i>-->
+<i class="zmdi zmdi-edit"></i>
   <%end%>
   </div>
     <div style="width: 58px;
@@ -85,7 +87,8 @@
     position: relative;
     border-left: 1px solid #ddd;">
   <%= link_to x, method: :delete, data: { confirm: 'Are you sure?' } do%>
-  <i class="material-icons">delete_forever</i>
+  <!--<i class="material-icons">delete_forever</i>-->
+                  <i class="zmdi zmdi-delete"></i>
   <%end%>
     </div>
   </div>

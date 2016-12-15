@@ -4,9 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable,:omniauth_providers => [:google_oauth2]
 acts_as_voter
-
+has_many :reservations
+has_many :events
   validates :fullname, presence: true, length: {maximum: 50}
 
+  
+  
 def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
 

@@ -1,0 +1,3 @@
+$('#verified<%=@event.id%>').bind('ajax:success', function() {
+    $('#verify-<%=@event.id%>').html('<%=escape_javascript (render "verify_info") %>');
+    });

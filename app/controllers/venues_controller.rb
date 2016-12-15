@@ -8,10 +8,6 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all
-    
-
-
-
   end
 
   def users_venues
@@ -20,12 +16,16 @@ class VenuesController < ApplicationController
     @venues = Venue.where(owner: a)
     end
   end
+  
   def venue_verified
     @venue.update_attribute(:venue_verify, Time.now)
+    current_user.increment!(:experience)
     redirect_to action: "show", notice: "You are verified!"
   end
+  
   # GET /venues/1
   # GET /venues/1.json
+  
   def show
     @topic = "at #{@venue.name}"
     @topic_description = "Check out today's Happy Hours/Specials and Featured Dishes at #{@venue.name}"

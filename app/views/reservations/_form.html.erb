@@ -1,0 +1,32 @@
+<div class="col s4">
+<%= form_for(@reservation) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%if current_user.admin?%>
+  <div class="field hide">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id, :value => current_user.id %>
+  </div>
+<%end%>
+  <div class="field hide">
+    <%= f.label :daily_specials_id %><br>
+    <%= f.text_field :daily_special_id, :value => @daily_special.id%>
+  </div>
+  <div class="field">
+    <%= f.label :credit %><br>
+    <%= f.number_field :credit %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

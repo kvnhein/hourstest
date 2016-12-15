@@ -10,7 +10,7 @@
 
 <% cache("landing", :expires_in => 10.minutes) do %>
 <h4 class ="flow-text center landing-title"><%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h4>
-<div class = "z-depth-2"><%= link_to "Today's Features", daily_specials_path, class: "waves-effect waves-light btn newvenue menubtn image-btns featurebtn z-depth-3"%></div>
+<!--div class = "z-depth-2"--><%= link_to "Today's Features", daily_specials_path, class: "waves-effect waves-light btn newvenue menubtn image-btns featurebtn z-depth-3"%><!--/div-->
 
 <h4 class ="flow-text center landing-title">Happy Hours</h4>
 

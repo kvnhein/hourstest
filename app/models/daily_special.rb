@@ -5,6 +5,7 @@ class DailySpecial < ActiveRecord::Base
   validates :text, presence: true
   
   belongs_to :venue
+  has_many :reservations
 
   before_save :default_values
   before_save :upper_case

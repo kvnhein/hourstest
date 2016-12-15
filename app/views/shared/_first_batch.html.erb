@@ -1,224 +1,189 @@
-<%x=[]%>
-<%@first_batch.shuffle.each do |event| %>
- <%x.push(Venue.where(id: event.venue_id).first.id)%>
+<%x=[]%><%@first_batch.shuffle.each do |event| %>
+	<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
-
-
-
 <%x.uniq.each do |d|%>
-
-  <%@e = @events.where(venue_id: d).order(:start).reverse%>
-      <div class="row hourslist">
-        <div class="col s12">
-          <div class="card">
-
-            <div class="card-content">
-              <span class="card-title activator"><%= Venue.where( id: @e[0].venue_id).first.name%></span><br>
-
-              <!----This is where the uniq special code is going in -->
-<%unievents = []%>
-<%unispecials = []%>
-          <%@e.each do |event| %>
-                <% test = event.special.to_s %>
-                <%if unispecials.index(test) == nil%>
-                      <%unievents.push(event) %>
-                      <%unispecials.push(test)%>
-                  <%end%>
-          <%end%>
-              <div class="arrow">
-                <%= image_tag "arrow.png"%>
-                <div class = "hide">
-
-                </div>
-              </div>
-        <% if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
-              <div class="urbanist">
-                <a href="http://www.hourspgh.com/urbanist" target="_blank">
-                <%= image_tag "urbanist.png"%>
-                </a>
-              </div>
-          <% end %>
-              <!---This is where it ends-->
-              <%unievents.reverse.each do |event|%>
- <%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-              <div class="chip-piece">
-                <div class="chip" style="background-color:#17a787">
-                     <%=event.special%>
-                 </div>
-                  <div class="new-event">
-                        <%= event.new_event%>
-                   </div>
-              </div>
-<%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
-              <div class="chip-piece">
-        <div class="chip" style="background-color:#17a787">
-                  <%=event.special%>
-                </div>
-               <div class="new-event">
-
-                        <%= event.new_event%>
-                   </div>
-              </div>
-<%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
-              <div class="chip-piece">
-        <div class="chip" style="background-color:#17a787">
-                  <%=event.special%>
-                </div>
-               <div class="new-event">
-                        <%= event.new_event%>
-                   </div>
-              </div>
-<%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
-              <div class="chip-piece">
-        <div class="chip" style="background-color:#000000">
-                  <%=event.special%>
-                </div>
-               <div class="new-event">
-                        <%= event.new_event%>
-                   </div>
-              </div>
-<%else%>
-              <div class="chip-piece">
-         <div class="chip" style="background-color:#bdbdbd">
-                  <%=event.special%>
-                </div>
-               <div class="new-event">
-                        <%= event.new_event%>
-                   </div>
-              </div>
- <%end%>
-
-              <%end%>
-            <!--div class="card-content">-->
-
-<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
-       <a class="activator waves-effect waves-light btn openhours"></a>
-    </div>
-
-            <div class="card-reveal">
-
-
-              <div class="modal-header">
-                <span class="card-title activator"><%= @day_tag %> Hours
-                <i class="material-icons right xbox">close</i>
-                </span><br>
-
-              </div>
-
-             <div class="specials-header">
-               <h4><%= Venue.where( id: @e[0].venue_id).first.name%></h4>
-                 <h5 class="flow-text"><%=@e[0].event_type%></h5>
-             </div>
-
-              <div class="powered-by-ver">
-           <div class="verified">
-                  <% if @e[0].event_venue.venue_verify.nil?%>
-                    <p class="verified-date"> Venue has not been verified </p>
-                  <%else%>
-             <div class="veri">
-                    <%= image_tag "verified.png"%>
-             </div>
-                    <p class="verified-date"> Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p>
-                  <%end%>
-
-              <% if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
-                      <div class="urbanist">
-                        <a href="http://www.hourspgh.com/urbanist" target="_blank">
-                        <%= image_tag "urbanist-approved.png"%>
-                        </a>
-                      </div>
-                  <% end %>
-                  </div>
-          </div>
-
-<ul class="collapsible beerlist" data-collapsible="accordion">
- <% @e.reverse.each do |modal_event|%>
-<li>
-      <div class="collapsible-header special-by-day">
-       <div class = "valign-wrapper">
-        <h4><%= modal_event.special %></h4>
-              <% @d = modal_event%>
-            <div class="like-like">
-              <div id = 'like-<%=modal_event.id%>'>
-              <% if user_signed_in? %>
-                <% if current_user.voted_as_when_voted_for modal_event %>
-                <%= render 'event_downvote'%>
-                <% else %>
-                <%= render 'event_upvote' %>
-              <% end %>
-            <%else%>
-               <%= link_to new_user_session_path do%>
-                <i class="tiny material-icons" style="opacity:0.4">favorite_border</i>
-                <%end%>
-            <%end%>
-              </div>
-            </div>
-        </div>
-
-      <div class="valign-wrapper timeforspecial">
-        <i class="tiny material-icons">query_builder</i><%=modal_event.time_conversion%>
-      </div>
-
-
-       <%if modal_event.any_details == 2%>
-
-        <p>
-        <%=modal_event.detail%>
-        </p>
-        <%@event_tag = modal_event%>
-        <!--<%= render partial: "shared/tags"%>-->
-
-    <%end%>
-
-
-
-<%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
-        <div class="now-tab">Now</div>
-<%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
-        <div class="now-tab">Now</div>
-<%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 %>
-        <div class="now-tab">Now</div>
-<%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
-        <div class="later-tab">Later</div>
- <%end%>
-
-
-
-<div class="hide">
-<%if modal_event.any_details == 2%>
-       <div class="dropdownarrow">
-         <%= image_tag "dropdown.png"%>
-       </div>
-<%end%>
-        </div>
-
-       </div>
-
-    </li>
- <%end%>
-  </ul><br>
-     <div class="row">
-
-      <%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %>
-
-       <br><br><br><br>
-
-
-    </div>
-
-
-
-
-
-
-            </div>
-
-           <!-- <div class="card-action">
+	<%@e = @events.where(venue_id: d).order(:start).reverse%>
+	<div class="row hourslist">
+		<div class="col s12">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title activator">
+						<%= Venue.where( id: @e[0].venue_id).first.name%>
+					</span>
+					<br>
+					<!--==This is where the uniq special code is going in -->
+					<%unievents = []%> 
+					<%unispecials = []%> 
+					<%@e.each do |event| %> 
+						<%test = event.special.to_s %> 
+							<%if unispecials.index(test) == nil%> 
+								<%unievents.push(event) %> 
+								<%unispecials.push(test)%> 
+							<%end%> 
+					<%end%>
+					<div class="arrow">
+						<%= image_tag "arrow.png"%>
+		
+					</div>
+					<%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
+					<div class="urbanist">
+						<a href="http://www.hourspgh.com/urbanist" target="_blank">
+							<%= image_tag "urbanist.png"%>
+						</a>
+					</div>
+					<%end %>
+						<!---This is where it ends-->
+					<%unievents.reverse.each do |event|%><%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
+					<div class="chip-piece">
+						<div class="chip" style="background-color:#17a787">
+							<%=event.special%>
+						</div>
+						<div class="new-event">
+							<%= event.new_event%>
+						</div>
+					</div><%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
+					<div class="chip-piece">
+						<div class="chip" style="background-color:#17a787">
+							<%=event.special%>
+						</div>
+						<div class="new-event">
+							<%= event.new_event%>
+						</div>
+					</div><%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
+					<div class="chip-piece">
+						<div class="chip" style="background-color:#17a787">
+							<%=event.special%>
+						</div>
+						<div class="new-event">
+							<%= event.new_event%>
+						</div>
+					</div><%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
+					<div class="chip-piece">
+						<div class="chip" style="background-color:#000000">
+							<%=event.special%>
+						</div>
+						<div class="new-event">
+							<%= event.new_event%>
+						</div>
+					</div><%else%>
+					<div class="chip-piece">
+						<div class="chip" style="background-color:#bdbdbd">
+							<%=event.special%>
+						</div>
+						<div class="new-event">
+							<%= event.new_event%>
+						</div>
+					</div><%end%><%end%><!--div class="card-content">-->
+					<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
+					<a class="activator waves-effect waves-light btn openhours"></a>
+				</div>
+				<div class="card-reveal">
+					<div class="modal-header">
+						<span class="card-title activator"><%= @day_tag %> Hours 
+						
+						<!--<i class="material-icons right xbox">close</i>-->
+						<i class="zmdi zmdi-close right xbox"></i>
+						
+						</span><br>
+					</div>
+					<div class="specials-header">
+						<h4><%= Venue.where( id: @e[0].venue_id).first.name%></h4>
+						<h5 class="flow-text"><%=@e[0].event_type%></h5>
+					</div>
+					<div class="powered-by-ver">
+						<div class="verified">
+							<%if @e[0].event_venue.venue_verify.nil?%>
+							<p class="verified-date">Venue has not been verified</p><%else%>
+							<div class="veri">
+								<%= image_tag "verified.png"%>
+							</div>
+							<p class="verified-date">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
+							<div class="urbanist">
+								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist-approved.png"%></a>
+							</div><%end %>
+						</div>
+					</div>
+					<ul class="collapsible beerlist" data-collapsible="accordion">
+						<%@e.reverse.each do |modal_event|%>
+						<li>
+							<div class="collapsible-header special-by-day">
+								<div class="valign-wrapper">
+									<h4><%= modal_event.special %></h4><%@d = modal_event%>
+									<div class="like-like row">
+										<div class="valign-wrapper">
+										<div class="verified-hour" id='like-<%=modal_event.id%>'>
+											<%if user_signed_in? %>
+												<%if current_user.voted_as_when_voted_for modal_event %>
+													<%= render 'event_downvote'%>
+													
+												<%else %>
+													<%= render 'event_upvote' %>
+												<%end %>
+											<%else%>
+												<%= link_to new_user_session_path do%>
+													<!--<i class="tiny material-icons" style="opacity:0.4">favorite_border</i>-->
+													<i class="zmdi zmdi-favorite-outline"></i> 
+												<%end%> 
+											<%end%>
+										</div>
+										<div class="verified-hour" id= 'event<%=modal_event.id%>'>
+                            					<%= modal_event.get_likes.size%>
+                        				</div>
+                        				</div>
+									</div>
+								</div>
+								<div class="valign-wrapper timeforspecial">
+									<i class="zmdi zmdi-time"></i>
+<%=modal_event.time_conversion%>
+								</div><%if modal_event.any_details == 2%>
+								<p><%=modal_event.detail%></p><%@event_tag = modal_event%><!--<%= render partial: "shared/tags"%>-->
+								<%end%><%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
+								<div class="now-tab">
+									Now
+								</div><%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
+								<div class="now-tab">
+									Now
+								</div><%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 %>
+								<div class="now-tab">
+									Now
+								</div><%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
+								<div class="later-tab">
+									Later
+								</div><%end%>
+								<div class="hide">
+									<%if modal_event.any_details == 2%>
+									<div class="dropdownarrow">
+										<%= image_tag "dropdown.png"%>
+									</div><%end%>
+								</div><br>
+									<div><p>Submitted by <%=User.find(modal_event.user_id).fullname%> Level:<%=User.find(modal_event.user_id).experience%></p></div>
+									<div id='verify-<%=modal_event.id%>'>
+										<%unless modal_event.event_verify.nil?%>
+										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
+										<%end%>
+									</div>
+									<%if user_signed_in? %>
+										<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render "event_verified"%></div>
+										<%else%>
+											<%= link_to new_user_session_path do%>
+													<div class = "valign-wrapper"><i class="tiny material-icons" style="opacity:0.4">update</i><p>Verify</p></div>
+											<%end%>
+										<%end%>
+                			
+							</div>
+						</li><%end%>
+					</ul><br>
+					<div class="row">
+						<%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
+						<br>
+						<br>
+						<br>
+					</div>
+				</div><!-- <div class="card-action">
               <a href="#">Menu</a>
               <a href="#">Share</a>
             </div>-->
-          </div>
-        </div>
-
-      </div>
- <%end%>
+			</div>
+		</div>
+	</div>
+<%end%>

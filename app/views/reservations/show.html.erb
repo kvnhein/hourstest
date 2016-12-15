@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reservation.user.id %>
+</p>
+
+<p>
+  <strong>Daily specials:</strong>
+  <%= @reservation.daily_special.id %>
+</p>
+
+<p>
+  <strong>Credit:</strong>
+  <%= @reservation.credit %>
+</p>
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>

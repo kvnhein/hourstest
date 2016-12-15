@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reservations
   root 'events#landing'
 
 
@@ -53,6 +54,7 @@ resources :events do
     member do
           put "like", to: "events#event_upvote"
           put "dislike", to: "events#event_downvote"
+          get :event_verified
         end
    end
 
