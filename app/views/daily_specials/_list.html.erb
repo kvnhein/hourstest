@@ -103,12 +103,7 @@
                             <div class="time-and-price">
                                  <%if event.start != 0%>
                                 <div class="timeforspecial">
-                                    <i class="zmdi zmdi-time"></i>
-
-                                   
-<i class="zmdi zmdi-time"></i>
-
-
+                                     <i class="tiny material-icons">query_builder</i><%= event.time_conversion%>
                                 </div>
                                  <%end%>
                                 <div class="right-align">
@@ -122,7 +117,7 @@
                             </div>
                             <%if user_signed_in? %>
                               <%if current_user.admin?%>
-                            <div class="right">
+                            <div class="right hide">
                                 <div class="valign-wrapper timeforspecial">
                                     <i class="tiny material-icons">bookmark</i><%= link_to 'Reserve', event %>
                                 </div>

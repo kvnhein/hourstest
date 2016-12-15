@@ -1,6 +1,6 @@
 <%x=[]%>
 <%@second_batch.shuffle.each do |event| %>
-<%x.push(Venue.where(id: event.venue_id).first.id)%>
+	<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 <%x.uniq.each do |d|%>
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>
@@ -111,13 +111,7 @@
 								<div class="valign-wrapper">
 									<h4><%= modal_event.special %></h4><%@d = modal_event%>
 									<div class="like-like row">
-										<%if user_signed_in? %>
-										<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render "event_verified"%></div>
-										<%else%>
-											<%= link_to new_user_session_path do%>
-													<i class="tiny material-icons" style="opacity:0.4">update</i>
-											<%end%>
-										<%end%>
+										<div class="valign-wrapper">
 										<div class="verified-hour" id='like-<%=modal_event.id%>'>
 											<%if user_signed_in? %>
 												<%if current_user.voted_as_when_voted_for modal_event %>
@@ -133,6 +127,10 @@
 												<%end%> 
 											<%end%>
 										</div>
+										<div class="verified-hour" id= 'event<%=modal_event.id%>'>
+                            					<%= modal_event.get_likes.size%>
+                        				</div>
+                        				</div>
 									</div>
 								</div>
 								<div class="valign-wrapper timeforspecial">
@@ -165,6 +163,13 @@
 										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
 										<%end%>
 									</div>
+									<%if user_signed_in? %>
+										<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render "event_verified"%></div>
+										<%else%>
+											<%= link_to new_user_session_path do%>
+													<div class = "valign-wrapper"><i class="tiny material-icons" style="opacity:0.4">update</i><p>Verify</p></div>
+											<%end%>
+										<%end%>
                 			
 							</div>
 						</li><%end%>
