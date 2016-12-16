@@ -1,0 +1,25 @@
+<%= form_for(@claim) do |f| %>
+  <% if @claim.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@claim.errors.count, "error") %> prohibited this claim from being saved:</h2>
+
+      <ul>
+      <% @claim.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field hide">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id, :value => current_user.id %> %>
+  </div>
+  <div class="field hide">
+    <%= f.label :event_id %><br>
+    <%= f.text_field :event_id, :value => @event_claim.id %> %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

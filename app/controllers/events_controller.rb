@@ -37,6 +37,7 @@ class EventsController < ApplicationController
 
 
   def verified_venues
+    @claim = Claim.new
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago

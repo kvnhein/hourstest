@@ -1,0 +1,19 @@
+<div class="like-btn">
+        <div class="like-like">
+          <div id = 'claim-dislike-<%=@c.id%>'>
+                <% if user_signed_in? %>
+                     <% unless current_user.voted_as_when_voted_for @c %>
+				          <%= render 'claims/claim_downvote' %>
+			         <% end %>
+                <%else%>
+                   <%= link_to new_user_session_path do%>
+                    <!--<i class="tiny material-icons" style="opacity:0.4">favorite_border</i>-->
+                      <i class="zmdi zmdi-favorite-outline"></i>
+                  <%end%>
+                <%end%>
+            </div>
+        </div>
+        <div class="like-number" id='claim-down<%=@c.id%>'>
+            <%= @c.get_dislikes.size%>
+        </div>
+    </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214232835) do
+ActiveRecord::Schema.define(version: 20161215202218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20161214232835) do
     t.datetime "updated_at", null: false
     t.string   "style"
   end
+
+  create_table "claims", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "claims", ["event_id"], name: "index_claims_on_event_id", using: :btree
+  add_index "claims", ["user_id"], name: "index_claims_on_user_id", using: :btree
 
   create_table "daily_specials", force: :cascade do |t|
     t.string   "text"
@@ -261,6 +271,8 @@ ActiveRecord::Schema.define(version: 20161214232835) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "claims", "events"
+  add_foreign_key "claims", "users"
   add_foreign_key "daily_specials", "venues"
   add_foreign_key "drink_lists", "venues"
   add_foreign_key "drinks", "venues"

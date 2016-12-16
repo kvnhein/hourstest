@@ -161,13 +161,24 @@
 										<%unless modal_event.event_verify.nil?%>
 										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
 										<%end%>
+										<%unless Claim.where(event_id: modal_event.id).empty?%>
+										<%@c = Claim.where(event_id: modal_event.id).first%>
+										  <div class "valign-wrapper">
+											<p class = "red-text text-accent-4"> Contested by <%=Claim.where(event_id: modal_event.id).first.user.fullname%> </p>
+											<%=render partial: "claims/claim_like_form"%><%=render partial: "claims/claim_dislike_form"%> 
+										  </div>
+										<%end%>
 									</div>
 									<%if user_signed_in? %>
+										<%if Claim.where(event_id: modal_event.id).count == 0 %>
 											<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render "event_verified"%></div>
+										<%end%>
 										<%else%>
+											<%if Claim.where(event_id: modal_event.id).count == 0 %>
 												<%= link_to new_user_session_path do%>
 													<div class = "valign-wrapper"><i class="tiny material-icons" style="opacity:0.4">update</i><p>Verify</p></div>
 												<%end%>
+											<%end%>
 										<%end%>
 							<%@event_claim = modal_event%>
 							<%if Claim.where(event_id: modal_event.id).count == 0 %>
