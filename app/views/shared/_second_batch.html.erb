@@ -157,7 +157,7 @@
 										<%= image_tag "dropdown.png"%>
 									</div><%end%>
 								</div><br>
-									<div><p>Submitted by <%=User.find(modal_event.user_id).fullname%> Level:<%=User.find(modal_event.user_id).experience%></p></div>
+									<div><p>Submitted by <%=User.find(modal_event.user_id).fullname%><%User.find(modal_event.user_id).experience%></p></div>
 									<div id='verify-<%=modal_event.id%>'>
 										<%unless modal_event.event_verify.nil?%>
 										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
