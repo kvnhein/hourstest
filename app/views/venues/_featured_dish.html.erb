@@ -30,7 +30,20 @@
         </div>
         <div class="card-action">
            <%= event.description%>
-
+           <div class="row">
+              <div class="time-and-price">
+              <%if event.start != 0%>
+                  <div class="timeforspecial">
+                  <i class="tiny material-icons">query_builder</i><%= event.time_conversion%>
+                  </div>
+              <%end%>
+              <div class="right-align">
+                <%if event.price.length > 0 %>
+                  $<%=event.price%>
+                <%end%>
+              </div>
+          </div>
+        </div>
           <%if @button == 1 %>
           <div class="double-buttons">
               <div class="row">
