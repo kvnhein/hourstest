@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :claims do
       member do
-          put "like", to: "events#event_upvote"
-          put "dislike", to: "events#event_downvote"
+          put "like", to: "claims#claim_upvote"
+          put "dislike", to: "claims#claim_downvote"
         end
     end
   resources :reservations

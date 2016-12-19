@@ -14,7 +14,7 @@ class ClaimsController < ApplicationController
 
   # GET /claims/new
   def new
-    @claim = Claim.new
+    @claim = @event.claims.new
   end
 
   def claim_upvote
@@ -23,7 +23,7 @@ class ClaimsController < ApplicationController
   end
 
   def claim_downvote
-  @claim.unliked_by current_user
+  @claim.disliked_by current_user
   current_user.increment!(:experience)
   end
 
@@ -34,15 +34,10 @@ class ClaimsController < ApplicationController
   # POST /claims
   # POST /claims.json
   def create
-    @claim = Claim.new(claim_params)
-
-    respond_to do |format|
-      if @claim.save
-        format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
-        format.json { render :show, status: :created, location: @claim }
-      else
-        format.html { render :new }
-        format.json { render json: @claim.errors, status: :unprocessable_entity }
+    @claim = @event.claims.new(claim_params)
+    if @claim.save
+      respond_to do |format|
+        format.js
       end
     end
   end

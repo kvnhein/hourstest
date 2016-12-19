@@ -95,13 +95,11 @@ class EventsController < ApplicationController
 
   def event_upvote
   @event.liked_by current_user
-  @event.update_attribute(:event_verify, Time.now)
    current_user.increment!(:experience)
   end
 
   def event_downvote
   @event.unliked_by current_user
-  @event.update_attribute(:event_verify, Time.now)
   current_user.increment!(:experience)
   end
 

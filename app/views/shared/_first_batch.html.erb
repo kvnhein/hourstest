@@ -126,9 +126,9 @@
 												<%end%> 
 											<%end%>
 										</div>
-										<div class="verified-hour" id= 'event<%=modal_event.id%>'>
+									<!--<div class="verified-hour" id= 'event<%=modal_event.id%>'>
                             					<%= modal_event.get_likes.size%>
-                        				</div>
+                        				</div>-->
                         				</div>
 									</div>
 								</div>
@@ -155,25 +155,30 @@
 									<div class="dropdownarrow">
 										<%= image_tag "dropdown.png"%>
 									</div><%end%>
-								</div><br>
-									<div><p>Submitted by <%=User.find(modal_event.user_id).fullname%> Level:<%=User.find(modal_event.user_id).experience%></p></div>
+								</div>
+								<div>
+									<div>
+										<p>Submitted by <%=User.find(modal_event.user_id).fullname%><%User.find(modal_event.user_id).experience%></p>
+									</div>
 									<div id='verify-<%=modal_event.id%>'>
-										<%unless modal_event.event_verify.nil?%>
+										<%unless modal_event.event_verify.nil? || modal_event.varified_user.nil?%>
 										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
 										<%end%>
 									</div>
 									<%if user_signed_in? %>
-											<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render "event_verified"%></div>
-										<%else%>
-												<%= link_to new_user_session_path do%>
-													<div class = "valign-wrapper"><i class="tiny material-icons" style="opacity:0.4">update</i><p>Verify</p></div>
-												<%end%>
+										<div class="verified-hour" id='verified-<%=modal_event.id%>'>
+											<%= render "event_verified"%>
+										</div>
+									<%else%>
+										<%= link_to new_user_session_path do%>
+											<div class = "valign-wrapper">
+												<i class="tiny material-icons" style="opacity:0.4">update</i><p>Verify</p>
+											</div>
 										<%end%>
-							<%@event_claim = modal_event%>
-							<%if Claim.where(event_id: modal_event.id).count == 0 %>
-                			<%=render partial: "claims/form"%>
-                			<%end%>
+									<%end%>
 							</div>
+										
+								</div>
 						</li><%end%>
 					</ul><br>
 					<div class="row">
