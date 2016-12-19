@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @claims.each do |claim| %>
+    <% Claim.each do |claim| %>
       <tr>
         <td><%= claim.user %></td>
         <td><%= claim.event %></td>

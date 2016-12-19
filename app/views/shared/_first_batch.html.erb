@@ -105,6 +105,7 @@
 					</div>
 					<ul class="collapsible beerlist" data-collapsible="accordion">
 						<%@e.reverse.each do |modal_event|%>
+							<%@event = modal_event%>
 						<li>
 							<div class="collapsible-header special-by-day">
 								<div class="valign-wrapper">
@@ -166,10 +167,15 @@
 										<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render "event_verified"%></div>
 										<%else%>
 											<%= link_to new_user_session_path do%>
-													<div class = "valign-wrapper"><i class="tiny material-icons" style="opacity:0.4">update</i><p>Verify</p></div>
+													<div class = "valign-wrapper">
+														<i class="tiny material-icons" style="opacity:0.4">update</i>
+														<p>Verify</p>
+													</div>
 											<%end%>
 										<%end%>
-                			
+							
+                			<%= render partial: "claims/form"%>
+                			<div class = "claims" id = claim<%= modal_event.id%>></div>
 							</div>
 						</li><%end%>
 					</ul><br>

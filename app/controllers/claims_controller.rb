@@ -1,6 +1,7 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [:show, :edit, :update, :destroy, :claim_downvote, :claim_upvote]
 
+
   # GET /claims
   # GET /claims.json
   def index
@@ -14,7 +15,7 @@ class ClaimsController < ApplicationController
 
   # GET /claims/new
   def new
-    @claim = @event.claims.new
+    @claim = Claim.new
   end
 
   def claim_upvote
@@ -34,11 +35,12 @@ class ClaimsController < ApplicationController
   # POST /claims
   # POST /claims.json
   def create
-    @claim = @event.claims.new(claim_params)
-    if @claim.save
-      respond_to do |format|
-        format.js
-      end
+    @claim = Claim.new(claim_params)
+    @claim.save!
+    
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -68,6 +70,7 @@ class ClaimsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+  
     def set_claim
       @claim = Claim.find(params[:id])
     end
