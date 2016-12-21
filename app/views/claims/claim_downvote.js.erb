@@ -1,6 +1,6 @@
 $('#claim-down<%=@claim.id%>').bind('ajax:success', function() {
-    $('#claim-down<%=@claim.id%>').html('<%=escape_javascript @claim.get_downvotes.size.to_s %>');
-    $('#claim-dislike-<%=@claim.id%>').html('<%=escape_javascript (render "claim_downvote") %>');
+    $('#down_count<%=@claim.id%>').html('<%=escape_javascript @claim.get_downvotes.size.to_s %>');
+    $('#claim-down<%=@claim.id%>').html('<%=escape_javascript (render "claim_downvote") %>');
     });
     
     

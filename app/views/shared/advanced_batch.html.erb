@@ -176,7 +176,7 @@
 										<%else%>
 											<%if Claim.where(event_id: modal_event.id).count == 0 %>
 												<%= link_to new_user_session_path do%>
-													<div class = "valign-wrapper"><i class="tiny material-icons" style="opacity:0.4">update</i><p>Verify</p></div>
+													<div class = "valign-wrapper"><p>Verify</p><i class="tiny material-icons" style="opacity:0.4">update</i></div>
 												<%end%>
 											<%end%>
 										<%end%>

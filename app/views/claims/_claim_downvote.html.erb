@@ -1,4 +1,3 @@
-<%=@claim_id%>
-<%=link_to dislike_claim_path(@claim_d), method: :put, remote: true, id: "claim-down#{@claim_id}" do%>
+<%=link_to dislike_claim_path(@claim), method: :put, remote: true, id: "claim-down#{@claim}" do%>
 <i class="tiny material-icons">favorite</i>
 <%end%>

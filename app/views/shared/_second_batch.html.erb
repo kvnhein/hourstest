@@ -106,6 +106,7 @@
 					</div>
 					<ul class="collapsible beerlist" data-collapsible="accordion">
 						<%@e.reverse.each do |modal_event|%>
+							<%@event = modal_event%>
 						<li>
 							<div class="collapsible-header special-by-day">
 								<div class="valign-wrapper">
@@ -136,8 +137,9 @@
 								<div class="valign-wrapper timeforspecial">
 									<i class="zmdi zmdi-time"></i>
 <%=modal_event.time_conversion%>
-								</div><%if modal_event.any_details == 2%>
-								<p><%=modal_event.detail%></p><%@event_tag = modal_event%><!--<%= render partial: "shared/tags"%>-->
+								</div>
+								<p><span class="submit-by">Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(modal_event.user_id).experience%></span> <%if modal_event.any_details == 2%> ---
+								<%=modal_event.detail%></p><%@event_tag = modal_event%><!--<%= render partial: "shared/tags"%>-->
 								<%end%><%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
 								<div class="now-tab">
 									Now
@@ -156,21 +158,28 @@
 									<div class="dropdownarrow">
 										<%= image_tag "dropdown.png"%>
 									</div><%end%>
-								</div><br>
-									<div><p>Submitted by <%=User.find(modal_event.user_id).fullname%><%User.find(modal_event.user_id).experience%></p></div>
-									<div id='verify-<%=modal_event.id%>'>
-										<%unless modal_event.event_verify.nil?%>
+								</div>
+								
+									<div class="submitted-by hide"><p>Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(modal_event.user_id).experience%></p></div>
+									<div class="verified-by-w" id='verify-<%=modal_event.id%>'>
+										<%unless modal_event.event_verify.nil? || modal_event.varified_user.nil? %>
 										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
 										<%end%>
 									</div>
 									<%if user_signed_in? %>
 										<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render "event_verified"%></div>
 										<%else%>
-											<%= link_to new_user_session_path do%>
-													<div class = "valign-wrapper"><i class="tiny material-icons" style="opacity:0.4">update</i><p>Verify</p></div>
-											<%end%>
+											
+											<div class="verified-hour">
+												<%= link_to new_user_session_path do%>
+													<div class = "valign-wrapper" style="text-align:right;">
+														<p >Verify</p>
+														<i class="tiny material-icons" style="opacity:0.4">update</i>
+													</div>
+													<%end%>
+													</div>
+											
 										<%end%>
-                			
 							</div>
 						</li><%end%>
 					</ul><br>

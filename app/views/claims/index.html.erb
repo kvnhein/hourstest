@@ -12,13 +12,30 @@
   </thead>
 
   <tbody>
-    <% Claim.each do |claim| %>
+    <% @claims.each do |claim| %>
       <tr>
-        <td><%= claim.user %></td>
-        <td><%= claim.event %></td>
+        <td><%= claim.user.fullname %></td>
+        <td><% if claim.event%><%= claim.event.special %><%end%></td>
         <td><%= link_to 'Show', claim %></td>
         <td><%= link_to 'Edit', edit_claim_path(claim) %></td>
         <td><%= link_to 'Destroy', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <td class = "upvote">
+          <%=link_to like_claim_path(claim), method: :put, remote: true, id: "claim-up#{claim.id}" do%>
+              <i class="tiny material-icons">favorite</i>
+          <%end%>
+        </td>
+        
+        <td class = "upvote_count" id = "up_count<%=claim.id%>"><%= claim.get_likes.size%></td>
+        
+        <td class = "downvote">
+          <%=link_to dislike_claim_path(claim), method: :put, remote: true, id: "claim-down#{claim.id}" do%>
+              <i class="tiny material-icons">favorite</i>
+          <%end%>
+        </td>
+        
+        <td class = "downvote_count" id = "down_count<%=claim.id%>"><%= claim.get_dislikes.size%></td>
+        
       </tr>
     <% end %>
   </tbody>

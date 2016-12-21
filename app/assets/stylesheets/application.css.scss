@@ -149,8 +149,71 @@ h4.con-content-title {
     margin-bottom: 0;
 }
 
-.verified-hour {
+.verified-hour a{
       display: inline-block;
+          position: absolute;
+    bottom: 0px;
+   right: 0px;
+    font-size: 10px;
+}
+
+.verified-by-w {
+    position: absolute;
+    right: 34px;
+    font-size: 10px;
+    line-height: 0px;
+    bottom: 14px;
+    color: #aaa;
+    background-color: #fff;
+    z-index: 5;
+    height: 16px;
+    padding: 4px 0;
+}
+
+.submit-by {
+  /*font-style: italic;*/
+}
+
+.collapsible-header .valign-wrapper i {
+  font-size: 16px;
+}
+
+.verified-by-w p {
+  line-height: 1 !important;
+    letter-spacing: 0px !important;
+    text-align: right;
+}
+
+.like-like .verified-hour a {
+  left: 7px;
+}
+
+.verified-by-w .teal-text.text-accent-4 {
+  font-weight: 500 !important;
+}
+
+.submitted-by {
+position: absolute;
+    text-align: center;
+    font-size: 10px;
+    bottom: 11px;
+    width: 100%;
+    left: 0;
+}
+
+.submitted-by p {
+  margin: 0;
+    padding: 0 63px;
+}
+
+.beerlist .collapsible-header .like-like .zmdi{
+      line-height: 18px !important;
+    margin-top: -2px;
+    font-size: 16px !important;
+    vertical-align: middle;
+    color: #17a787;
+    position: absolute;
+    bottom: 10px;
 }
 
 .like-like i.tiny {
@@ -1442,16 +1505,16 @@ nav .button-collapse i {
 
 .beerlist .special-by-day {
   text-align:left;
-  padding: 10px 54px 10px 20px;
+  padding: 10px 54px 34px 15px;
   position:relative;
 }
 
 .beerlist .special-by-day p {
-      margin: 0px -42px 0px 0;
+      margin: 0px;
     height: auto;
     line-height: 18px;
     padding: 0 0px 0 0;
-    color: #999;
+    color: #595968;
     font-weight: 300;
 }
 
@@ -1511,7 +1574,7 @@ nav .button-collapse i {
 }
 
 .special-by-day .timeforspecial {
-  color: #555;
+  color: #595968;
     font-weight: 300;
     font-size: 12px;
     text-transform: uppercase;
@@ -2348,7 +2411,7 @@ i.tiny {
       margin-top: -1px;
     margin-right: 6px !important;
     font-size: 14px !important;
-    color: #555;
+    color: #595968;
     width: auto !important;
     height: auto !important;
 }

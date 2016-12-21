@@ -1,4 +1,4 @@
 $('#claim-up<%=@claim.id%>').bind('ajax:success', function() {
-    $('#claim-up<%=@claim.id%>').html('<%=escape_javascript @claim.get_upvotes.size.to_s %>');
-    $('#claim-like-<%=@claim.id%>').html('<%=escape_javascript (render partial: "claim/claim_upvote") %>');
+    $('#up_count<%=@claim.id%>').html('<%=escape_javascript @claim.get_upvotes.size.to_s %>');
+    $('#claim-up<%=@claim.id%>').html('<%=escape_javascript (render "claim_upvote") %>');
     });
