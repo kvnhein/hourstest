@@ -1,0 +1,4 @@
+$(".new_claim<%=@claim.event_id%>").show()
+$(".new_claim<%=@claim.event_id%>").html("<%= escape_javascript(render @claim) %>")
+$("#form_button<%=@claim.event_id%>").hide()
+$(".verify_button<%=@claim.event_id%>").hide()

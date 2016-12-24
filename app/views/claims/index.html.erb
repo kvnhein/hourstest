@@ -1,3 +1,20 @@
+<%= form_for Claim.new, remote: true do |f| %>
+  
+  <div class="field hide">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id, :value => 1 %> %>
+  </div>
+  <div class="field hide">
+    <%= f.label :event_id %><br>
+    <%= f.text_field :event_id, :value => 20 %> %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Claims</h1>
@@ -44,3 +61,7 @@
 <br>
 
 <%= link_to 'New Claim', new_claim_path %>
+<br>
+
+  <%=render @claims%>
+

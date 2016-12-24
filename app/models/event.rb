@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   validates :validate_tag, presence: true
 
   belongs_to :venue, touch: true
-  has_many :claims
+  has_many :claims, dependent: :destroy
   
 
   before_save :upper_case

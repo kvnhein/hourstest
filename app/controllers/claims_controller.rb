@@ -5,7 +5,8 @@ class ClaimsController < ApplicationController
   # GET /claims
   # GET /claims.json
   def index
-    @claims = Claim.all
+    @claims = Claim.where(event_id: 20)
+    @claim = Claim.new
   end
 
   # GET /claims/1
@@ -19,12 +20,20 @@ class ClaimsController < ApplicationController
   end
 
   def claim_upvote
-  @claim.liked_by current_user
+  if current_user.voted_up_on? @claim 
+    @claim.disliked_by current_user
+  else
+    @claim.liked_by current_user
+  end
    current_user.increment!(:experience)
   end
 
   def claim_downvote
-  @claim.disliked_by current_user
+  if current_user.voted_down_on? @claim 
+    @claim.liked_by current_user
+  else
+    @claim.disliked_by current_user
+  end
   current_user.increment!(:experience)
   end
 
@@ -35,15 +44,23 @@ class ClaimsController < ApplicationController
   # POST /claims
   # POST /claims.json
   def create
-    @claim = Claim.new(claim_params)
-    @claim.save!
-    
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @claim = Claim.create! claim_params
+
+  respond_to do |format|
+    format.html { redirect_to action: :index }
+    format.js
+  end
   end
 
+  def event_create
+    @claim = Claim.create! claim_params
+
+  respond_to do |format|
+    format.html { redirect_to action: :index }
+    format.js
+  end
+  end
+  
   # PATCH/PUT /claims/1
   # PATCH/PUT /claims/1.json
   def update
@@ -61,10 +78,12 @@ class ClaimsController < ApplicationController
   # DELETE /claims/1
   # DELETE /claims/1.json
   def destroy
+    
     @claim.destroy
     respond_to do |format|
       format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { render :layout => false }
     end
   end
 
