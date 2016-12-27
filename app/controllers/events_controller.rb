@@ -19,7 +19,7 @@ class EventsController < ApplicationController
   def event_verified
     @event.update_attribute(:event_verify, Time.now)
     @event.update_attribute(:varified_user, current_user.id)
-    current_user.increment!(:experience)
+    current_user.increment!(:experience, by = 10)
   end
 
   def daily_mailer
@@ -37,6 +37,7 @@ class EventsController < ApplicationController
 
 
   def verified_venues
+    
     @claim = Claim.new
     @today = Time.now
     @week_ago = 7.day.ago
@@ -100,7 +101,7 @@ class EventsController < ApplicationController
 
   def event_downvote
   @event.unliked_by current_user
-  current_user.increment!(:experience)
+  current_user.decrement!(:experience)
   end
 
   def landing
@@ -536,6 +537,7 @@ class EventsController < ApplicationController
             Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
             format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
             format.json { head :no_content }
+            format.js { render :layout => false }
         else
             format.html { render :new }
             format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -564,6 +566,7 @@ class EventsController < ApplicationController
             Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
             format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
             format.json { head :no_content }
+            format.js { render :layout => false } 
             else
             format.html { render :new }
             format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -582,6 +585,7 @@ class EventsController < ApplicationController
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
         format.json { head :no_content }
+        format.js { render :layout => false }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -595,6 +599,7 @@ class EventsController < ApplicationController
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
         format.json { head :no_content }
+        format.js { render :layout => false }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -639,6 +644,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end, :tag_list)
+      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end, :tag_list, :event_verify, :varified_user)
     end
 end

@@ -1,17 +1,48 @@
 <div class="claim">
-  <span><p class="red-text text-accent-4"><%= claim.user.fullname%> reported this a bad hour</p></span><%= link_to 'Destroy', claim, method: :delete, :remote => true, data: { confirm: 'Are you sure?' } %>
-  <!--<span><% if claim.event%><%= claim.event.special %><%end%></span>-->
+  <span>
+    <p class="red-text text-accent-4">
+      <%= claim.user.fullname%> reported this a bad hour. Agree?
+    </p>
+  </span>
+  <%if user_signed_in?%>
+    <%if current_user.id == claim.user_id%>
+      <%= link_to 'Cancel', claim, method: :delete, :remote => true, data: { confirm: 'Are you sure?' } %>
+    <%end%>
+  <%end%>
+<!--<span>
+      <% if claim.event%>
+        <%= claim.event.special %>
+      <%end%>
+    </span>-->
+  
   <div class = "upvote">
+    <%if user_signed_in?%>
           <%=link_to like_claim_path(claim), method: :put, remote: true, id: "claim-up#{claim.id}" do%>
               <i class="tiny material-icons">thumb_up</i>
           <%end%>
-  </div>
-  <div class = "upvote_count" id = "up_count<%=claim.id%>"><%= claim.get_likes.size%></div>
-   <div class = "downvote">
-          <%=link_to dislike_claim_path(claim), method: :put, remote: true, id: "claim-down#{claim.id}" do%>
-              <i class="tiny material-icons">thumb_down</i>
-          <%end%>
-        </div>
-        
-        <div class = "downvote_count" id = "down_count<%=claim.id%>"><%= claim.get_dislikes.size%></div>
+    <%else%>
+          <%= link_to new_user_session_path do%>
+						<i class="tiny material-icons" style="opacity:0.4">thumb_up</i>
+					<%end%>
+    <%end%>
+    </div>
+    <div class = "upvote_count" id = "up_count<%=claim.id%>">
+      <%= claim.get_likes.size%>
+    </div>
+    
+    
+    <div class = "downvote">
+    <%if user_signed_in?%>
+      <%=link_to dislike_claim_path(claim), method: :put, remote: true, id: "claim-down#{claim.id}" do%>
+        <i class="tiny material-icons">thumb_down</i>
+      <%end%>
+    <%else%>
+      <%= link_to new_user_session_path do%>
+						<i class="tiny material-icons" style="opacity:0.4">thumb_down</i>
+			<%end%>
+    <%end%>
+    </div>
+    <div class = "downvote_count" id = "down_count<%=claim.id%>">
+      <%= claim.get_dislikes.size%>
+    </div>
 </div>

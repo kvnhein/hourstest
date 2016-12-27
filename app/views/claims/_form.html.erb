@@ -5,9 +5,9 @@
   </div>
   <div class="field hide">
     <%= f.label :event_id %><br>
-    <%= f.text_field :event_id, :value => @m %> %>
+    <%= f.text_field :event_id, :value => @modal_id %> %>
   </div>
   <div class = "btn-flat disabled red-text text-accent-4">
-    <%= f.submit "not correct?", class:"btn-flat disabled red-text text-accent-4" %>
+    <%= f.submit "not correct?", class:"btn-flat disabled red-text text-accent-4",:data => {:disable_with => "Saving..."} %>
   </div>
 <% end %>

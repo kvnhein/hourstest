@@ -1,24 +1,24 @@
 <div class="tags-box">
-<% if @neighborhood_tag == 2%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, shady_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", shadyside_path, class:"disabled teal-text text-accent-4"%>
+<% if @neighborhood_tag == 2 && @events.count > 0%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, shady_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", shadyside_path, class:"disabled teal-text text-accent-4"%>
 <%elsif @neighborhood_tag == 1%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, south_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", south_side_path, class:"disabled teal-text text-accent-4"%>
-<%elsif @neighborhood_tag == 3%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, oakland_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", oakland_path, class:"disabled teal-text text-accent-4"%>
-<%elsif @neighborhood_tag == 5%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, down_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", downtown_path, class:"disabled teal-text text-accent-4"%>
-<%elsif @neighborhood_tag == 7%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, law_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", lawrenceville_path, class:"disabled teal-text text-accent-4"%>
-<%elsif @neighborhood_tag == 6%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, bloom_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", bloomfield_path, class:"disabled teal-text text-accent-4"%>
-<%elsif @neighborhood_tag == 11%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, strip_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", strip_district_path, class:"disabled teal-text text-accent-4"%>
-<%elsif @neighborhood_tag == 10%>
-<%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, sq_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", squirrel_hill_path, class:"disabled teal-text text-accent-4"%>
-<%elsif @neighborhood_tag == 13%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, mt_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", mt_washington_path, class:"disabled teal-text text-accent-4"%>
- <%elsif @neighborhood_tag == 9%>
- <%= raw Event.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, east_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", east_liberty_path, class:"disabled teal-text text-accent-4"%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, south_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", south_side_path, class:"disabled teal-text text-accent-4"%>
+<%elsif @neighborhood_tag == 3 && @events.count > 0%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, oakland_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", oakland_path, class:"disabled teal-text text-accent-4"%>
+<%elsif @neighborhood_tag == 5 && @events.count > 0%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, down_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", downtown_path, class:"disabled teal-text text-accent-4"%>
+<%elsif @neighborhood_tag == 7 && @events.count > 0%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, law_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", lawrenceville_path, class:"disabled teal-text text-accent-4"%>
+<%elsif @neighborhood_tag == 6 && @events.count > 0%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, bloom_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", bloomfield_path, class:"disabled teal-text text-accent-4"%>
+<%elsif @neighborhood_tag == 11 && @events.count > 0%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, strip_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", strip_district_path, class:"disabled teal-text text-accent-4"%>
+<%elsif @neighborhood_tag == 10 && @events.count > 0%>
+<%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, sq_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", squirrel_hill_path, class:"disabled teal-text text-accent-4"%>
+<%elsif @neighborhood_tag == 13 && @events.count > 0%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, mt_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", mt_washington_path, class:"disabled teal-text text-accent-4"%>
+ <%elsif @neighborhood_tag == 9 && @events.count > 0%>
+ <%= raw @events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, east_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", east_liberty_path, class:"disabled teal-text text-accent-4"%>
 <%end%>
 <div><h3><%= @hour_topic%></h3></div>
 </div>

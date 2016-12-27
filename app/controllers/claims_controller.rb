@@ -22,19 +22,22 @@ class ClaimsController < ApplicationController
   def claim_upvote
   if current_user.voted_up_on? @claim 
     @claim.disliked_by current_user
+    current_user.decrement!(:experience)
   else
     @claim.liked_by current_user
+    current_user.increment!(:experience)
   end
-   current_user.increment!(:experience)
+   
   end
 
   def claim_downvote
   if current_user.voted_down_on? @claim 
     @claim.liked_by current_user
+    current_user.decrement!(:experience)
   else
     @claim.disliked_by current_user
+    current_user.increment!(:experience)
   end
-  current_user.increment!(:experience)
   end
 
   # GET /claims/1/edit
@@ -45,7 +48,7 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.create! claim_params
-
+    current_user.increment!(:experience,by = 5 )
   respond_to do |format|
     format.html { redirect_to action: :index }
     format.js
@@ -54,7 +57,7 @@ class ClaimsController < ApplicationController
 
   def event_create
     @claim = Claim.create! claim_params
-
+    
   respond_to do |format|
     format.html { redirect_to action: :index }
     format.js
@@ -78,8 +81,9 @@ class ClaimsController < ApplicationController
   # DELETE /claims/1
   # DELETE /claims/1.json
   def destroy
-    
+    @modal_id = @claim.event_id
     @claim.destroy
+    current_user.decrement!(:experience,by = 5 )
     respond_to do |format|
       format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }
       format.json { head :no_content }

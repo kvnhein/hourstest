@@ -186,7 +186,7 @@
 								<%end%>
 								<!--end of verify button-->
 								<!--form for Claims-->
-								<div class = "hide">
+								
 								<% if Claim.where(event_id: modal_event.id).count == 0%>
 								<div id = "form_button<%=modal_event.id%>">
 									<%= form_for Claim.new, remote: true do |f| %>
@@ -214,7 +214,7 @@
 									<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
 									</div>
 							</div>
-							</div>
+							
 						</li><%end%>
 					</ul><br>
 					<div class="row">

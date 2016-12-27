@@ -162,7 +162,7 @@ h4.con-content-title {
     right: 34px;
     font-size: 10px;
     line-height: 0px;
-    bottom: 14px;
+    bottom: 11px;
     color: #aaa;
     background-color: #fff;
     z-index: 5;
@@ -1455,6 +1455,67 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     font-size: 9px;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+.new_claim .btn-flat.disabled {
+      position: absolute;
+    font-size: 10px;
+    bottom: 0px;
+}
+
+.claim {
+    position: absolute;
+    height: auto;
+    z-index: 90;
+    background-color: #fff;
+    bottom: 10px;
+    right: 13px;
+    line-height: 0;
+}
+
+.claim a {
+      font-size: 10px;
+}
+
+.claim i {
+      font-size: 16px;
+}
+
+.claim i.tiny {
+      margin-right: 6px;
+    margin-top: -2px;
+    line-height: 0;
+    width: 8px;
+}
+
+
+
+.claim p {
+      display: inline-block;
+    font-size: 10px;
+}
+
+.upvote {
+  display: inline-block;
+        margin-bottom: 0;
+    line-height: 0;
+}
+
+.upvote_count {
+  display: inline-block;
+      margin-right: 5px;
+    font-size: 10px;
+}
+
+.downvote {
+  display: inline-block;
+        margin-bottom: 0;
+    line-height: 0;
+}
+
+.downvote_count {
+  display: inline-block;
+  font-size: 10px;
 }
 
 

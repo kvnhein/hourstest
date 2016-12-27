@@ -1,6 +1,7 @@
 <div class="col s3">
      <div class="detailstitle">
 <h4 class= "flow-text center-align userfirstname"><%= current_user.fullname%>'s Profile</h4>
+<div><h4 class= "flow-text center-align userfirstname"><%=current_user.experience%></h4></div>
 <%@b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour%>
 <%@c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)%>
 <%t= Time.now.in_time_zone("Eastern Time (US & Canada)")%>
@@ -156,7 +157,7 @@
   </li>
 </ul>
 
-<ul class="collection">
+<ul class="collection hide">
 <% current_user.reservations.each do |reservation|%>
 <%if !reservation.daily_special.price.blank?%>
     <%price = "$#{reservation.daily_special.price.to_f*reservation.credit}"%>
@@ -172,6 +173,14 @@
  </li>
 <%end%>
  </ul>
+
+<ul class="collection">
+<% Event.where(user_id: current_user.id).each do |event|%>
+ <li class="collection-item">
+     <%=event.special%>
+ </li>
+ <%end%>
+</ul>
 
 <div class = "hide">
   <h3  class= "flow-text">Cancel my account</h3>

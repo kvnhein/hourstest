@@ -8,31 +8,40 @@ class Event < ActiveRecord::Base
   belongs_to :venue, touch: true
   has_many :claims, dependent: :destroy
   
-
   before_save :upper_case
 
   scope :special_like, -> (special) { where("special ilike ?", special)}
 
+ def default_values
+  self.event_verify ||= Time.now 
+  self.varified_user ||= current_user.id
+ end
 
-
-   def upper_case
+ def upper_case
     self.tag_list.each do |tag|
       tag.capitalize!
     end
  end
 
-  def validate_tag
+ def week_verification
+   if self.event_verify < 7.days.ago 
+    return true
+   end
+ end
+ 
+ def validate_tag
     tag_list.each do |tag|
       # This will only accept two character alphanumeric entry such as A1, B2, C3. The alpha character has to precede the numeric.
       errors.add(:tag_list, "can only have Food, Drinks, Late Nite, Entertainment as tags***") unless ["food","drinks","late nite","entertainment"].include? tag.downcase
     end
-  end
+ end
 
+ 
  def event_venue
   Venue.where(id: self.venue_id).first
  end
 
-  def event_type
+ def event_type
     Venue.where(id: self.venue_id).first.genre unless Venue.where(id: self.venue_id).first.genre.nil?
  end
 

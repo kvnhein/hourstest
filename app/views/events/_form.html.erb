@@ -46,10 +46,18 @@
       <%= f.label :tag_list, "Tags (Food, Drinks, Late Nite, Entertainment separated by commas)" %><br />
       <%= f.text_field :tag_list, value: @event.tag_list.to_s %>
   </div>
+  <div class="field hide">
+    <%= f.label :event_verify %><br>
+    <%= f.text_field :event_verify, :value => Time.now %> %>
+  </div>
+  <div class="field hide">
+    <%= f.label :varified_user %><br>
+    <%= f.text_field :varified_user, :value => current_user.id%> %>
+  </div>
   </div>
   <div class="row">
    <div class = "btn-flat disabled teal-text text-accent-4">
-    <%= f.submit "Done", class:"btn-flat disabled teal-text text-accent-4" %>
+    <%= f.submit "Done", class:"btn-flat disabled teal-text text-accent-4", id: "event-button",:data => {:disable_with => "Saving..."} %>
   </div>
     <div class = 'hide'>
     <%= link_to 'Back', Venue.where(owner: current_user.id).first, 'data-no-turbolink' => true, class:"btn-flat disabled teal-text text-accent-4" %>

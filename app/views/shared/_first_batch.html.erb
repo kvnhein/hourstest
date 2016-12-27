@@ -159,7 +159,7 @@
 									</div><%end%>
 								</div>
 								
-									<div class="submitted-by hide"><p>Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(modal_event.user_id).experience%></p></div>
+									<div class="submitted-by hide"><p>Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(1).experience%> </p></div>
 									<div class="verified-by-w" id='verify-<%=modal_event.id%>'>
 										<%unless modal_event.event_verify.nil? || modal_event.varified_user.nil? %>
 										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
@@ -167,8 +167,10 @@
 									</div>
 									
 									<!-- Verify Button-->
+							<% if modal_event.week_verification%>
+								<div class = "verify_button<%=modal_event.id%>">
 								<% if Claim.where(event_id: modal_event.id).count == 0%>
-									<div class = "verify_button<%=modal_event.id%>">
+									
 										<%if user_signed_in? %>
 											<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render "event_verified"%></div>
 										<%else%>
@@ -181,38 +183,43 @@
 												<%end%>
 											</div>
 										<%end%>
-									</div>
-								<%end%>
-								<!--end of verify button-->
-								<!--form for Claims-->
-								<div class = "hide">
-								<% if Claim.where(event_id: modal_event.id).count == 0%>
-								<div id = "form_button<%=modal_event.id%>">
-									<%= form_for Claim.new, remote: true do |f| %>
-  										<div class="field hide">
-    										<%= f.label :user_id %><br>
-    										<%= f.text_field :user_id, :value => 1 %> %>
-  										</div>
-  										<div class="field hide">
-    										<%= f.label :event_id %><br>
-    										<%= f.text_field :event_id, :value => modal_event.id %> %>
-  										</div>
-  										<div class = "btn-flat disabled red-text text-accent-4">
-    										<%= f.submit "not correct?", class:"btn-flat disabled red-text text-accent-4" %>
-  										</div>
-									<% end %>
+									<%end%>
 								</div>
 							<%end%>
+								<!--end of verify button-->
+								<!--form for Claims-->
+								<%@modal_event = modal_event%>
+								<div id = "form_button<%=modal_event.id%>">
+									<% if Claim.where(event_id: modal_event.id).count == 0%>
+										<% if user_signed_in?%>
+											<%= form_for Claim.new, remote: true do |f| %>
+  												<div class="field hide">
+    												<%= f.label :user_id %><br>
+    												<%= f.text_field :user_id, :value => current_user.id %> %>
+  												</div>
+  												<div class="field hide">
+    												<%= f.label :event_id %><br>
+    												<%= f.text_field :event_id, :value => modal_event.id %> %>
+  												</div>
+  												<div class = "btn-flat disabled red-text text-accent-4">
+    												<%= f.submit "not correct?", class:"btn-flat disabled red-text text-accent-4", id: "form-hide#{modal_event.id}" %>
+  												</div>
+											<% end %>
+										<%else%>
+										<!--<div  class = "btn-flat disabled red-text text-accent-4">
+												<%= link_to "not correct?", new_user_session_path, class:"btn-flat disabled red-text text-accent-4", id: "form-hide#{modal_event.id}" %>
+											</div>-->
+										<%end%>
+									<%end%>
+								</div>
+						
 							<%@m = modal_event.id%>
 							<div id = "second_form_button<%=modal_event.id%>"></div>
 							<!-- end of form -->
-							
-									
-									<%@claims = Claim.where(event_id: modal_event.id)%>
+								<%@claims = Claim.where(event_id: modal_event.id)%>
 									<div class = "new_claim<%=modal_event.id%>">
-									<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
+										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
 									</div>
-							</div>
 							</div>
 						</li><%end%>
 					</ul><br>

@@ -67,7 +67,7 @@
 
 <div class="row">
   <div class = "btn-flat disabled teal-text text-accent-4">
-    <%= f.submit "Done", class:"btn-flat disabled teal-text text-accent-4" %>
+    <%= f.submit "Done", class:"btn-flat disabled teal-text text-accent-4", :data => {:disable_with => "Saving..."} %>
   </div>
   <div class = 'hide'>
    <%= link_to 'Back', Venue.where(owner: current_user.id).first, 'data-no-turbolink' => true, class:"btn-flat disabled teal-text text-accent-4" %>

@@ -1,0 +1,13 @@
+<%if user_signed_in? %>
+											<%@d = Event.find(@modal_id)%>
+											<div class="verified-hour" id='verified-<%=@modal_id%>'><%= render partial: "events/event_verified"%></div>
+										<%else%>
+											<div class="verified-hour">
+												<%= link_to new_user_session_path do%>
+													<div class = "valign-wrapper" style="text-align:right;">
+														<p >Verify</p>
+														<i class="tiny material-icons" style="opacity:0.4">update</i>
+													</div>
+												<%end%>
+											</div>
+										<%end%>
