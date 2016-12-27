@@ -24,9 +24,13 @@ class Event < ActiveRecord::Base
  end
 
  def week_verification
+  if self.event_verify
    if self.event_verify < 7.days.ago 
     return true
    end
+  else
+   return true
+  end
  end
  
  def validate_tag
