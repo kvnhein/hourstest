@@ -97,7 +97,7 @@
 
     <li><a class="dropdown-button" data-activates="venue-menu-dropdown4"><%=current_user.fullname%><i class="material-icons right" style="color: #fff;
     padding-top: 0px; margin-left:0;">arrow_drop_down</i></a></li>
-    <li class = "user-points"><%=link_to "Points: #{current_user.experience}"%></li>
+    <li class = "user-points hide"><%=link_to "Points: #{current_user.experience}"%></li>
 
 
   <ul id="venue-menu-dropdown4" class="dropdown-content nav-drop" style="top: 51px !important;">
@@ -164,8 +164,8 @@
 
   <ul id="slide-out" class="side-nav">
      <%if (user_signed_in?)%>
-     <li class="divider"></li>
-     <li class = "user-points"><%=link_to "Points: #{current_user.experience}"%></li>
+     <li class="divider hide"></li>
+     <li class = "user-points hide"><%=link_to "Points: #{current_user.experience}"%></li>
      <%end%>
     <li class="divider"></li>
     <li style="display:none;"><a class="dropdown-button" data-activates="venue-menu-dropdown">Neighborhoods<i class="material-icons right" style="color: #444;
