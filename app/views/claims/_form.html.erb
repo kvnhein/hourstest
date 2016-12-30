@@ -8,6 +8,7 @@
     <%= f.text_field :event_id, :value => @modal_id %> %>
   </div>
   <div class = "btn-flat disabled red-text text-accent-4">
-    <%= f.submit "not correct?", class:"btn-flat disabled red-text text-accent-4",:data => {:disable_with => "Saving..."} %>
+    <i class="zmdi zmdi-flag"></i>
+    <%= f.submit "not correct?", class:"btn-flat disabled cantsee",:data => {:disable_with => "Saving..."} %>
   </div>
 <% end %>

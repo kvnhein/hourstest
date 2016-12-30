@@ -3,19 +3,19 @@ $('#up<%=@event.id%>').bind('ajax:success', function() {
     $('#like-<%=@event.id%>').html('<%=escape_javascript (render partial: "shared/event_downvote") %>');
      $('.user-points>').html('<%=escape_javascript link_to "Points: #{current_user.experience}" %>');
 <%if current_user.experience > 1 %>
-Command: toastr["success"]("Hour is saved to you profile!")
+Command: toastr["success"]("Hour is saved to you profile! ")
 
 toastr.options = {
   "closeButton": false,
   "debug": false,
   "newestOnTop": false,
   "progressBar": false,
-  "positionClass": "toast-top-right",
+  "positionClass": "toast-bottom-full-width",
   "preventDuplicates": false,
   "onclick": null,
-  "showDuration": "100",
+  "showDuration": "300",
   "hideDuration": "1000",
-  "timeOut": "1000",
+  "timeOut": "5000",
   "extendedTimeOut": "1000",
   "showEasing": "swing",
   "hideEasing": "linear",

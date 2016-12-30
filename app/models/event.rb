@@ -25,7 +25,7 @@ class Event < ActiveRecord::Base
 
  def week_verification
   if self.event_verify
-   if self.event_verify < 7.days.ago 
+   if self.event_verify < 3.days.ago 
     return true
    end
   else
@@ -71,6 +71,11 @@ class Event < ActiveRecord::Base
     end
   end
 
+ def claims?
+  if Claim.where(event_id: self.id).count > 0 
+   return "CONTESTED"
+  end
+ end
 
    def time_conversion
   start_minutes = "00"

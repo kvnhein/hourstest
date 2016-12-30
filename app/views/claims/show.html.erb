@@ -2,13 +2,20 @@
 
 <p>
   <strong>User:</strong>
-  <%= @claim.user %>
+  <%= @claim.user.fullname %>
 </p>
 
 <p>
   <strong>Event:</strong>
-  <%= @claim.event %>
+  <%= @claim.event.special %>
 </p>
 
+<p>
+  <strong>Description:</strong>
+  <%= @claim.description %>
+</p>
+<div class = "valign-wrapper">
+<p>Votes:</p><p>6</p>
+</div>
 <%= link_to 'Edit', edit_claim_path(@claim) %> |
 <%= link_to 'Back', claims_path %>

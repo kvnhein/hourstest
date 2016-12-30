@@ -31,4 +31,43 @@ def self.from_omniauth(auth)
   def admin?
   	self.id == 1
   end
+  
+  def can_verify?
+    if self.experience < 10 
+      return false
+    else
+      return true
+    end
+  end
+  
+  def can_claim?
+    if self.experience < 100
+      return false
+    else
+      return true
+    end
+  end
+  
+  def can_create_hour
+    if self.experience < 200 
+      return false
+    else
+      return true
+    end
+  end 
+  
+  def badges
+    if self.experience < 10 
+     return "extension"
+    elsif self.experience >= 10 && self.experience < 50
+      return "fingerprints"
+    elsif self.experience >= 50 && self.experience < 100
+      return "album"
+    elsif self.experience >= 100 && self.experience < 150
+      return "hearing"
+    elsif self.experience >= 150
+      return "mic"
+    end
+  end 
+  
 end

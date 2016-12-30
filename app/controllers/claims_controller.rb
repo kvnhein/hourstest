@@ -5,7 +5,7 @@ class ClaimsController < ApplicationController
   # GET /claims
   # GET /claims.json
   def index
-    @claims = Claim.where(event_id: 20)
+    @claims = Claim.all
     @claim = Claim.new
   end
 
@@ -100,6 +100,6 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:user_id, :event_id)
+      params.require(:claim).permit(:user_id, :event_id, :description)
     end
 end

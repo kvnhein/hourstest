@@ -8,6 +8,11 @@ $primary-color: color("grey", "lighten-5") !default;
 @import 'nprogress';
 @import 'nprogress-bootstrap';
 
+
+.cantsee {
+  color:rgba(0,0,0,0) !important;
+}
+
 .under-con-nav {
        position: fixed;
     z-index: 1000;
@@ -150,16 +155,16 @@ h4.con-content-title {
 }
 
 .verified-hour a{
-      display: inline-block;
-          position: absolute;
-    bottom: 0px;
-   right: 0px;
+          display: inline-block;
+    position: absolute;
+    bottom: -2px;
+    left: 48px;
     font-size: 10px;
 }
 
 .verified-by-w {
     position: absolute;
-    right: 34px;
+    left: 47px;
     font-size: 10px;
     line-height: 0px;
     bottom: 11px;
@@ -1458,9 +1463,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .new_claim .btn-flat.disabled {
-      position: absolute;
+   position: absolute;
     font-size: 10px;
-    bottom: 0px;
+    bottom: 2px;
+    width: auto;
+    right: 5px;
+    padding: 0;
+    text-align: right;
+    font-size: 4px;
+}
+
+.new_claim i {
+     width: 20px;
+    font-size: 18px;
+    line-height: 3rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 0;
 }
 
 .claim {
@@ -1469,8 +1489,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     z-index: 90;
     background-color: #fff;
     bottom: 10px;
-    right: 13px;
+    right: 0px;
     line-height: 0;
+    width: 100%;
+    text-align: right;
+    padding-right: 15px;
 }
 
 .claim a {
@@ -2832,3 +2855,4 @@ i.tiny {
     margin: 20px 0;
 }
 }
+
