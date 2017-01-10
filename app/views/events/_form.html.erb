@@ -29,17 +29,17 @@
   <div class="row datepicktabs">
     
     <ul class="tabs">
-        <li class="tab col s3"><a href="#test1">Scheduled Hour</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Weekly Hour</a></li>
+        <li class="tab col s3"><a class="active" href="#test1">Weekly Hour</a></li>
+        <li class="tab col s3"><a href="#test2">Scheduled Hour</a></li>
       </ul>
       
-      <div id="test1" class="col s12">
+      <div id="test1">
       <div class="field" id = "day_of_week">
     <%= f.label :day %><br>
     <%= f.select :day, [[' ', ' '],['Monday', 'Monday'],['Tuesday','Tuesday'],['Wednesday', 'Wednesday'],['Thursday','Thursday'],['Friday','Friday'],['Saturday','Saturday'],['Sunday','Sunday'],['Everyday','Everyday'],['Weekdays','Weekdays'],['Weekend','Weekend']]  %>
   </div>
       </div>
-    <div id="test2" class="col s12">
+    <div id="test2">
       <div class="field" id = "event_date">
     <%= f.label :event_date %><br>
     <%= f.text_field :event_date, class: "datepicker"%>
