@@ -1771,6 +1771,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 10px;
 }
 
+.datepicktabs .tabs .tab a {
+      color: #17a787;
+}
+
+.datepicktabs .tabs .indicator {
+      background-color: #17a787;
+}
+
 .datepicktabs .tabs .tab a.active {
   color: #000;
 }

@@ -80,7 +80,7 @@
 <div class = "contributors">
 	<ul class="collapsible beerlist">
 	
-		<% User.order("experience desc ").limit(5).each do |user|%>
+		<% @top_users.order("experience desc ").limit(5).each do |user|%>
 		<div class="collapsible-header special-by-day">
 			<li>
 			<p class="namecont"><%= user.fullname%></p>
@@ -93,5 +93,5 @@
 	</div>
 	
 
-<%= @city3%>
+
 

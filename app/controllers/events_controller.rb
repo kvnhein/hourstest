@@ -124,6 +124,14 @@ class EventsController < ApplicationController
     @page_url = ""
     @new_events = Event.after(Date.today - 7).to_a
     @updated_events = Event.after(Date.today - 7, field: :updated_at).to_a
+    
+    @top_users = []
+    User.all.each do |user|
+        if user.fullname
+            @top_users.push(user)
+        end 
+    end 
+   
   end
 
   def urbanist
