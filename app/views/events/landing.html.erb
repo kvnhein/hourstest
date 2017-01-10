@@ -79,18 +79,23 @@
 </div>
 <div class = "contributors">
 	<ul class="collapsible beerlist">
-	
-		<% @top_users.order("experience desc ").limit(5).each do |user|%>
-		<div class="collapsible-header special-by-day">
-			<li>
-			<p class="namecont"><%= user.fullname%></p>
-			<p>Hours: <%=user.experience%></p>
-			</li>
-		</div>
-	
-	<%end%>
-		</ul>
-	</div>
+		<%top_5 = 0%>
+		<% User.all.order("experience desc ").each do |user|%>
+			
+			<%if top_5 < 5%>
+				<%if user.fullname%>
+					<div class="collapsible-header special-by-day">
+						<li>
+							<p class="namecont"><%= user.fullname%></p>
+							<p>Hours: <%=user.experience%></p>
+						</li>
+					</div>
+					<%top_5 = top_5 + 1 %>
+				<%end%>
+			<%end%>
+		<%end%>
+	</ul>
+</div>
 	
 
 
