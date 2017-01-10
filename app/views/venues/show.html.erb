@@ -73,7 +73,7 @@ Verify Venue
 
               <% if @venue.urbanist == true %>
                       <div class="urbanist">
-                        <a href="http://www.hourspgh.com/urbanist" target="_blank">
+                        <a href="http://pittsburgh.urbanistguide.com/" target="_blank">
                         <%= image_tag "urbanist-approved.png"%>
                         </a>
                       </div>
@@ -308,6 +308,7 @@ Verify Venue
           zoom: 18,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
+        
         var map = new google.maps.Map(mapCanvas, mapOptions);
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(<%= @venue.latitude %>,<%= @venue.longitude %>),

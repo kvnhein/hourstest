@@ -1,48 +1,134 @@
-<div class="claim">
-  <span>
-    <p class="red-text text-accent-4">
+<div class="claim-top">
+    <p class="red-text text-accent-4" style="display:inline-block;">
       <%= claim.user.fullname%> reported this a bad hour. Agree?
     </p>
-  </span>
+    <p style="display:inline-block;">
   <%if user_signed_in?%>
     <%if current_user.id == claim.user_id%>
       <%= link_to 'Cancel', claim, method: :delete, :remote => true, data: { confirm: 'Are you sure?' } %>
     <%end%>
   <%end%>
+  </p>
+  
+  <div class="hide">
+  <%= link_to "view", claim_path(claim)%>
+  
 <!--<span>
       <% if claim.event%>
         <%= claim.event.special %>
       <%end%>
     </span>-->
+    </div>
+    
+    
+    
+<button id="show2<%=claim.id%>" class="btn-flat disabled veiw-details">
+												View
+											</button>
+											</div>
+											
+<div class="outer-claim-box posh2<%=claim.id%> theshowform2" id ="outer-claim-box" >
   
-  <div class = "upvote">
+  <div class="desc-claim">
+  <i class="zmdi zmdi-flag"></i><p><%=claim.description%></p>
+  </div>
+  
+   <div class="claim-time">
+    <% claim_end = claim.created_at + 10.days%>
+    
+    <p class="hide">
+    (Start Date:<%=claim.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{claim.created_at.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%>)---
+    (End date:<%=claim_end.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{claim_end.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%>) ---(
+    </p>
+    
+    <div class = "upvote_count" id = "count<%=claim.id%>">
+      <%= claim.get_likes.size%> 
+    </div>
+    Confirmed this flag.
+    
+    <%= distance_of_time_in_words(Time.now, claim_end)  %> left to Agree.
+    
+    
+    
+    <% days = (claim_end.to_date - Time.now.to_date).to_i%>
+    </div>
+    
+    
+<div class="claim">
+  
+    
+    
+
+<div class="range-slider<%=claim.id%> slider-margin">
+  <!--<input class="range-slider__range" type="range" value="<%= claim.get_likes.size%>" min="0" max="10" disabled>-->
+  <!--<span class="range-slider__value">0</span>-->
+  <progress value="<%= claim.get_likes.size%>" max="10">
+</progress>
+</div>
+
+
+ <div class = "upvote">
     <%if user_signed_in?%>
-          <%=link_to like_claim_path(claim), method: :put, remote: true, id: "claim-up#{claim.id}" do%>
+          <div id = "claim_likes<%=claim.id%>">
+            <% if current_user.voted_as_when_voted_for claim%>
+              
+              <%=link_to dislike_claim_path(claim), method: :put,onclick: "Materialize.toast('-5 HOURS', 2000)", remote: true, id: "down-claim#{claim.id}" do%>
               <i class="tiny material-icons">thumb_up</i>
-          <%end%>
+              <%end%>
+            <%else%>
+              
+              <%=link_to like_claim_path(claim), method: :put,onclick: "Materialize.toast('+5 HOURS', 2000)", remote: true, id: "up-claim#{claim.id}" do%>
+              <i class="tiny material-icons" style= "opacity:0.4">thumb_up</i>
+              <%end%>
+            <%end%>
+          </div>
+            
     <%else%>
           <%= link_to new_user_session_path do%>
 						<i class="tiny material-icons" style="opacity:0.4">thumb_up</i>
 					<%end%>
     <%end%>
     </div>
-    <div class = "upvote_count" id = "up_count<%=claim.id%>">
-      <%= claim.get_likes.size%>
-    </div>
     
-    
-    <div class = "downvote">
-    <%if user_signed_in?%>
-      <%=link_to dislike_claim_path(claim), method: :put, remote: true, id: "claim-down#{claim.id}" do%>
-        <i class="tiny material-icons">thumb_down</i>
-      <%end%>
-    <%else%>
-      <%= link_to new_user_session_path do%>
-						<i class="tiny material-icons" style="opacity:0.4">thumb_down</i>
-			<%end%>
-    <%end%>
-    </div>
-    <div class = "downvote_count" id = "down_count<%=claim.id%>">
-      <%= claim.get_dislikes.size%>
-    </div>
+<br>
+<div class="day_range-slider<%=claim.id%> hide">
+  <input class="range-slider__range" type="range" value="<%= days%>" min="0" max="10" disabled>
+  <!--<span class="range-slider__value">0</span>-->
 </div>
+
+<div class = "chips<%=claim.id%>" style="text-align:left">
+      <%voters = claim.votes_for.up.by_type(User).voters%>
+          <% voters.each do |user|%>
+            <div class="chip">
+              <%=user.fullname%>
+            </div>
+          <%end%>
+    </div>
+    
+    
+    </div>
+    
+    <button id="hide2<%=claim.id%>" class="btn-flat disabled btnshowless" >
+												Show Less
+											</button>
+
+</div>
+
+
+	<script>
+												$(document).ready(function(){
+    												$("#hide2<%=claim.id%>").click(function(){
+        												$(".posh2<%=claim.id%>").hide();
+    													});
+    												$("#show2<%=claim.id%>").click(function(){
+											        	$(".posh2<%=claim.id%>").show();
+    													});
+    												
+    												
+    												$(".posh2<%=claim.id%>").hide();
+    												$(".new_claim2<%=claim.id%>").hide();
+    											
+												});
+											</script>
+
+

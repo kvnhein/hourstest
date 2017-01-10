@@ -1,100 +1,55 @@
-<div class = "hide">
-<%= form_for Claim.new, remote: true do |f| %>
-  
-  <div class="field hide">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id, :value => 1 %> %>
-  </div>
-  <div class="field hide">
-    <%= f.label :event_id %><br>
-    <%= f.text_field :event_id, :value => 20 %> %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 
 
-
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Claims</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Event</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @claims.each do |claim| %>
-      <tr>
-        <td><%= claim.user.fullname %></td>
-        <td><% if claim.event%><%= claim.event.special %><%end%></td>
-        <td><%= link_to 'Show', claim %></td>
-        <td><%= link_to 'Edit', edit_claim_path(claim) %></td>
-        <td><%= link_to 'Destroy', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        
-        <td class = "upvote">
-          <%=link_to like_claim_path(claim), method: :put, remote: true, id: "claim-up#{claim.id}" do%>
-              <i class="tiny material-icons">favorite</i>
-          <%end%>
-        </td>
-        
-        <td class = "upvote_count" id = "up_count<%=claim.id%>"><%= claim.get_likes.size%></td>
-        
-        <td class = "downvote">
-          <%=link_to dislike_claim_path(claim), method: :put, remote: true, id: "claim-down#{claim.id}" do%>
-              <i class="tiny material-icons">favorite</i>
-          <%end%>
-        </td>
-        
-        <td class = "downvote_count" id = "down_count<%=claim.id%>"><%= claim.get_dislikes.size%></td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Claim', new_claim_path %>
-
-<br>
-
-  <%=render @claims%>
-</div>
-<br>
 <% @claims.each do |claim| %>
-<div class="z-depth-3">
- <ul class="collection">
-    <li class="collection-item">
+<div class="row">
+        <div class="col s12 m6">
+          <div class = z-depth-2>
+          <div class="card grey lighten-4">
+            <div class="card-content black-text">
+              <span class="card-title"><%=claim.event.venue.name%> | <%=claim.event.venue.neighborhood.name%></span>
+              <div class="valign-wrapper timeforspecial">
+							 <%=claim.event.day%>	||  <i class="zmdi zmdi-time"></i>
+                  <%=claim.event.time_conversion%>
+								</div>
+              <p>Special: <%=claim.event.special%><br>
+              Claim: <%=claim.description%>
+              </p><br>
       
-      <span class="title"><% if claim.event%><%= claim.event.special %><%end%></span>
-      <p><%= claim.description%> <br>
-         <%= link_to 'Show Claim', claim, class:"btn-flat disabled teal-text text-accent-4" %>
-      </p>
-      
-      
-      <div class="chip secondary-content black-text" style="background-color:#b2dfdb">
-        <%=image_tag("favicon.png", alt: "Contact Person")%>
-          <%= claim.user.fullname %>
+      <div class = "upvote">
+        <%if user_signed_in?%>
+          <div id = "claim_likes<%=claim.id%>">
+            <% if current_user.voted_as_when_voted_for claim%>
+              <%=link_to dislike_claim_path(claim), method: :put,onclick: "Materialize.toast('-5 HOURS', 2000)", remote: true, id: "down-claim#{claim.id}" do%>
+              <i class="tiny material-icons">thumb_up</i>
+              <%end%>
+            <%else%>
+              <%=link_to like_claim_path(claim), method: :put,onclick: "Materialize.toast('+5 HOURS', 2000)", remote: true, id: "up-claim#{claim.id}" do%>
+              <i class="tiny material-icons" style= "opacity:0.4">thumb_up</i>
+              <%end%>
+            <%end%>
+          </div>
+      <%else%>
+          <%= link_to new_user_session_path do%>
+						<i class="tiny material-icons" style="opacity:0.4">thumb_up</i>
+					<%end%>
+      <%end%>
+    </div>
+    
+    <div class = "upvote_count" id = "count<%=claim.id%>">
+      <%= claim.get_likes.size%>
+    </div>
+    
+            </div>
+            <div class="card-action">
+              <div class="chip secondary-content white-text left" style="background-color:#000000">
+                <%=image_tag("verified.png", alt: "Contact Person")%>
+                <%= claim.user.fullname %>
+              </div>
+            </div>
+          
+          </div>
+          </div>
+        </div>
       </div>
-    </li>
-    </ul>
-  </div>
-<br/>
-<%end%>
-
-<ul class="collection with-header">
-        <li class="collection-header"><h4>First Names</h4></li>
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
-</ul>
-
+   <%end%>         
 

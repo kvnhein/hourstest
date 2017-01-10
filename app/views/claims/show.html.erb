@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>
 
 <p>
   <strong>User:</strong>
@@ -19,3 +19,80 @@
 </div>
 <%= link_to 'Edit', edit_claim_path(@claim) %> |
 <%= link_to 'Back', claims_path %>
+-->
+
+
+<br>
+<div class="row">
+        <div class="col s12 m6">
+          <div class = z-depth-2>
+          <div class="card grey lighten-4">
+            <div class="card-content black-text">
+              
+              
+              <span class="card-title"><%=@claim.event.venue.name%> | <%=@claim.event.venue.neighborhood.name%></span>
+              
+              <div class="chip secondary-content white-text" style="background-color:#000000">
+               
+                <%=image_tag("mikemcallister.jpg", alt: "Contact Person")%>
+                <%= @claim.user.fullname %>
+              </div>
+              
+              
+              
+              <div class="valign-wrapper timeforspecial">
+							 <%=@claim.event.day%>	||  <i class="zmdi zmdi-time"></i>
+                  <%=@claim.event.time_conversion%>
+								</div>
+              <p>Special: <%=@claim.event.special%><br>
+              Claim: <%=@claim.description%>
+              </p>
+               
+              <br>
+              <br>
+      
+      <div class = "upvote">
+        <%if user_signed_in?%>
+          <div id = "claim_likes<%=@claim.id%>">
+            <% if current_user.voted_as_when_voted_for @claim%>
+              <div class = "valign-wrapper">
+              <p>Agree?</p>
+              <%=link_to dislike_claim_path(@claim), method: :put,onclick: "Materialize.toast('-5 HOURS', 2000)", remote: true, id: "down-claim#{@claim.id}" do%>
+              <i class="tiny material-icons">thumb_up</i>
+              <%end%>
+              </div>
+            <%else%>
+              <%=link_to like_claim_path(@claim), method: :put,onclick: "Materialize.toast('+5 HOURS', 2000)", remote: true, id: "up-claim#{@claim.id}" do%>
+              <i class="tiny material-icons" style= "opacity:0.4">thumb_up</i>
+              
+              <%end%>
+            <%end%>
+          </div>
+      <%else%>
+          <%= link_to new_user_session_path do%>
+						<i class="tiny material-icons" style="opacity:0.4">thumb_up</i>
+					<%end%>
+      <%end%>
+    </div>
+    
+    <div class = "upvote_count" id = "count<%=@claim.id%>">
+      <%= @claim.get_likes.size%>
+    </div>
+    
+            </div>
+            <div class="card-action">
+             <div class = "chips">
+              <%voters = @claim.votes_for.up.by_type(User).voters%>
+                <% voters.each do |user|%>
+                  <div class="chip">
+                    <%=user.fullname%>
+                  </div>
+              <%end%>
+            </div>
+            </div>
+          
+          </div>
+          </div>
+        </div>
+      </div>
+      

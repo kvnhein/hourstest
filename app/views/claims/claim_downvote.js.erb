@@ -1,6 +1,8 @@
-$('#claim-down<%=@claim.id%>').bind('ajax:success', function() {
-    $('#down_count<%=@claim.id%>').html('<%=escape_javascript @claim.get_downvotes.size.to_s %>');
-    $('#claim-down<%=@claim.id%>').html('<%=escape_javascript (render "claim_downvote") %>');
+$('#down-claim<%=@claim.id%>').bind('ajax:success', function() {
+    $('#count<%=@claim.id%>').html('<%=escape_javascript @claim.get_likes.size.to_s %>');
+    $('#claim_likes<%=@claim.id%>').html('<%=escape_javascript (render "claim_upvote") %>');
+    $('.chips<%=@claim.id%>').html('<%=escape_javascript (render "chips") %>');
+    $('.range-slider<%=@claim.id%>').html('<%=escape_javascript (render "claim_slider") %>');
     });
     
     

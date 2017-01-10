@@ -1,0 +1,6 @@
+<%voters = @claim.votes_for.up.by_type(User).voters%>
+  <% voters.each do |user|%>
+  <div class="chip">
+    <%=user.fullname%>
+</div>
+  <%end%>

@@ -2,25 +2,9 @@ $('#down<%=@event.id%>').bind('ajax:success', function() {
     $('#event<%=@event.id%>').html('<%=escape_javascript @event.get_upvotes.size.to_s %>');
     $('#like-<%=@event.id%>').html('<%=escape_javascript (render partial: "shared/event_upvote") %>');
     $('.user-points>').html('<%=escape_javascript link_to "Points: #{current_user.experience}" %>');
-<%if current_user.experience > 1 %>
-Command: toastr["success"]("Hour is no longer saved")
-
-toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-bottom-full-width",
-  "preventDuplicates": true,
-  "onclick": null,
-  "showDuration": "100",
-  "hideDuration": "1000",
-  "timeOut": "1000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
+<%if current_user.experience <= 5 %>
+Materialize.toast('Unsaved To Profile (-5 Hours)', 4000)
+<%elsif current_user.experience == 10%>
+Materialize.toast('Unsaved', 4000)
 <%end%>
 });

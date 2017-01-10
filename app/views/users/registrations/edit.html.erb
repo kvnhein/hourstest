@@ -1,7 +1,8 @@
 <div class="col s3">
      <div class="detailstitle">
 <h4 class= "flow-text center-align userfirstname"><%= current_user.fullname%>'s Profile</h4>
-<div><h4 class= "flow-text center-align userfirstname"><%=current_user.experience%></h4></div>
+
+    
 <%@b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour%>
 <%@c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)%>
 <%t= Time.now.in_time_zone("Eastern Time (US & Canada)")%>
@@ -37,10 +38,22 @@
       <%@day = "Sunday"%>
     <%end%>
  
-<h6 class= "flow-text center-align">Saved Hours</h6>
+<h6 class= "flow-text center-align">Saved Hours  |  Rank: <%=current_user.experience%></h6>
      </div>
 </div>
-
+<div class="timeforspecial">
+    
+    <div class="hide">
+    <h4>Badges</h4>
+    <span class = "left">
+    <i class="small material-icons">new_releases</i>
+    <i class="small material-icons">queue</i>
+    <i class="small material-icons">schedule</i>
+    <i class="small material-icons">vpn_key</i>
+    </span>
+    </div>
+    
+</div>
 <div class="profee">
 <div class="add-height"></div>
 
@@ -174,7 +187,7 @@
 <%end%>
  </ul>
 
-<ul class="collection">
+<ul class="collection hide">
 <% Event.where(user_id: current_user.id).each do |event|%>
  <li class="collection-item">
      <%=event.special%>

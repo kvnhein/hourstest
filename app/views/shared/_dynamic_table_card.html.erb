@@ -1,9 +1,10 @@
 
+
 <%@first_batch = []%>
 <%@verified_this_week.each do |venue|%>
  <%a= venue.id%>
  <%events = @events.where(venue_id: a).to_a%>
-  <%events.shuffle.each do |event|%>
+  <%events.each do |event|%>
      <%@first_batch.push(event)%>
     <%end%>
     <%end%>

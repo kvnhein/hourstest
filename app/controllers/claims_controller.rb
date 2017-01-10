@@ -6,7 +6,7 @@ class ClaimsController < ApplicationController
   # GET /claims.json
   def index
     @claims = Claim.all
-    @claim = Claim.new
+    
   end
 
   # GET /claims/1
@@ -20,24 +20,19 @@ class ClaimsController < ApplicationController
   end
 
   def claim_upvote
-  if current_user.voted_up_on? @claim 
-    @claim.disliked_by current_user
-    current_user.decrement!(:experience)
-  else
     @claim.liked_by current_user
-    current_user.increment!(:experience)
-  end
-   
+    current_user.increment!(:experience,by = 5)
+    if @claim.get_likes.size >= 10 
+       @claim.status = 1 
+    end
   end
 
   def claim_downvote
-  if current_user.voted_down_on? @claim 
-    @claim.liked_by current_user
-    current_user.decrement!(:experience)
-  else
     @claim.disliked_by current_user
-    current_user.increment!(:experience)
-  end
+    current_user.decrement!(:experience,by = 5)
+    if @claim.get_likes.size <10 
+      @claim.status = 0
+    end
   end
 
   # GET /claims/1/edit
@@ -48,7 +43,7 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.create! claim_params
-    current_user.increment!(:experience,by = 5 )
+    current_user.increment!(:experience,by = 15 )
   respond_to do |format|
     format.html { redirect_to action: :index }
     format.js
@@ -82,8 +77,9 @@ class ClaimsController < ApplicationController
   # DELETE /claims/1.json
   def destroy
     @modal_id = @claim.event_id
+    @modal_event = @claim.event
     @claim.destroy
-    current_user.decrement!(:experience,by = 5 )
+    current_user.decrement!(:experience,by = 15 )
     respond_to do |format|
       format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }
       format.json { head :no_content }
@@ -96,6 +92,7 @@ class ClaimsController < ApplicationController
   
     def set_claim
       @claim = Claim.find(params[:id])
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

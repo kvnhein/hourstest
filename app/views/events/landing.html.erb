@@ -9,8 +9,8 @@
 <%end%>
 
 <% cache("landing", :expires_in => 10.minutes) do %>
-<h4 class ="flow-text center landing-title"><%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h4>
-<!--div class = "z-depth-2"--><%= link_to "Today's Features", daily_specials_path, class: "waves-effect waves-light btn newvenue menubtn image-btns featurebtn z-depth-3"%><!--/div-->
+<h4 class ="flow-text center landing-title hide"><%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h4>
+<!--div class = "z-depth-2"--><%= link_to "Today's Features", daily_specials_path, class: "hide waves-effect waves-light btn newvenue menubtn image-btns featurebtn z-depth-3"%><!--/div-->
 
 <h4 class ="flow-text center landing-title">Happy Hours</h4>
 
@@ -50,56 +50,48 @@
 <div>
 <%=link_to "Send Reminders", daily_mailer_path, method: :get, remote: true%>
 </div>
+
+</div>
     <%end%>
 <%end%>
-<%= evil_icon 'ei-arrow-right', size: :m %>
-<div class = "hide">
-  <h4 class ="flow-text center landing-title">Coming Soon</h4>
-<%= link_to "Strip District", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn strip_district-btn"%>
-<%= link_to "East Liberty", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn east_liberty-btn"%>
-<div style="display:none;">
+
 <%end%><!--cache end-->
 </div>
 </div>
-
-<!-- 	<input class="create-notification" placeholder="Send a notification :)"></input>
-
-	<button class="submit-notification">Go!</button>
-
-	<div class="notification">
+<div class="contributors-section">
+	<h4 class ="flow-text center landing-title">TOP CONTRIBUTORS</h4>
+	<p class="center">
+		Help Build HoursPGH By verifying Hours. 
+		<% if user_signed_in?%>
+		
+		<%else%>
+		<%= link_to new_user_session_path, class:"" do%>
+		Sign Up
+		<%end%>
+		<%end%>
+		
+		
+		
+	</p>
+	<div class = "center hide">
+	<a class="waves-effect waves-light btn black"><i class="material-icons left">history</i>Join</a>
 	</div>
+</div>
+<div class = "contributors">
+	<ul class="collapsible beerlist">
+	
+		<% User.all.order("experience desc ").each do |user|%>
+		<div class="collapsible-header special-by-day">
+			<li>
+			<p class="namecont"><%= user.fullname%></p>
+			<p>Hours: <%=user.experience%></p>
+			</li>
+		</div>
+	
+	<%end%>
+		</ul>
+	</div>
+	
 
-
-	<script>
-	var pusher = new Pusher('e29028c930b5a4a8f36e');
-	var notificationsChannel = pusher.subscribe('notifications');
-	notificationsChannel.bind('new_notification', function(notification){
-		var message = notification.message;
-		toastr.success(message)
-	});
-	var sendNotification = function(){
-		var text = $('input.create-notification').val();
-		$.post('/notification', {message: text}).success(function(){
-			console.log('Notification sent!');
-		});
-	};
-	$('button.submit-notification').on('click', sendNotification);
-	</script> -->
-
-
-<!--
-<script>
-
-
-
-    var pusher = new Pusher('e29028c930b5a4a8f36e', {
-      encrypted: true
-    });
-
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('my_event', function(data) {
-      alert(data.message);
-    });
-  </script>  -->
-
+<%= @city3%>
 

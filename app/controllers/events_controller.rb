@@ -37,7 +37,6 @@ class EventsController < ApplicationController
 
 
   def verified_venues
-    
     @claim = Claim.new
     @today = Time.now
     @week_ago = 7.day.ago
@@ -45,6 +44,20 @@ class EventsController < ApplicationController
     @verified_this_week = Venue.between_times(@week_ago, @today)
     @verified_after_week = Venue.between_times(@month_ago,@week_ago)
     @verified_month_ago = Venue.before(@month_ago)
+    @owned_venues = Venue.where("owner > ?", 1)
+    
+    claim_index = Claim.all
+    claim_index.each do |claim|
+        if claim.status == 1 && (claim.created_at + 7.days).to_date == Date.current
+            claim.event.status = 1
+            claim.event.save
+            claim.destroy
+        elsif claim.status == 0 && (claim.created_at + 7.days).to_date == Date.current
+            claim.destroy
+        end
+    end
+    
+    
   end
 
   def event_time
@@ -96,12 +109,12 @@ class EventsController < ApplicationController
 
   def event_upvote
   @event.liked_by current_user
-   current_user.increment!(:experience)
+    current_user.increment!(:experience, by = 5)
   end
 
   def event_downvote
   @event.unliked_by current_user
-  current_user.decrement!(:experience)
+    current_user.decrement!(:experience, by = 5)
   end
 
   def landing
@@ -111,7 +124,6 @@ class EventsController < ApplicationController
     @page_url = ""
     @new_events = Event.after(Date.today - 7).to_a
     @updated_events = Event.after(Date.today - 7, field: :updated_at).to_a
-
   end
 
   def urbanist
@@ -180,8 +192,6 @@ class EventsController < ApplicationController
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
     end
-
-
   end
 
   def save_my_previous_url
@@ -206,6 +216,7 @@ class EventsController < ApplicationController
 
    @v = @venues.where( neighborhood_id: 2)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
+   @scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_topic = ""
@@ -233,6 +244,7 @@ class EventsController < ApplicationController
    @neighborhood_tag = 1
    @v = @venues.where( neighborhood_id: 1)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_topic = ""
@@ -261,7 +273,7 @@ class EventsController < ApplicationController
 
    @neighborhood_tag = 3
    @v = @venues.where( neighborhood_id: 3)
-   @daily_specials =
+   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_topic = ""
@@ -288,13 +300,14 @@ class EventsController < ApplicationController
     @neighborhood_path = downtown_path
 
 
-   @v = @venues.where( neighborhood_id: 5)
    @neighborhood_tag = 5
-   hood_id = Neighborhood.where(id: 5).first.id
-   @v = @venues.where( neighborhood_id: hood_id)
+   @v = @venues.where( neighborhood_id: 5)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
+   @scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   
+   
    @tag_topic = ""
     if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
@@ -655,6 +668,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end, :tag_list, :event_verify, :varified_user)
+      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end, :tag_list, :event_verify, :varified_user, :event_date)
     end
 end

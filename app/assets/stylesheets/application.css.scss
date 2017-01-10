@@ -9,9 +9,82 @@ $primary-color: color("grey", "lighten-5") !default;
 @import 'nprogress-bootstrap';
 
 
+.range-slider {
+  position:relative;
+   position: absolute;
+    width: 94%;
+    margin-left: 12px;
+    bottom: 23px;
+
+}
+
+
+
+button:focus {
+  outline: none;
+    background-color: rgba(0,0,0,0);
+}
+
+.outer-claim-box {
+      margin-bottom: 30px;
+}
+
+input[type=range] + .thumb {
+  display:none;
+    position: absolute;
+    border: none;
+    height: 0;
+    width: 0;
+    border-radius: 50%;
+    background-color: #26a69a;
+    top: 10px;
+    margin-left: -6px;
+    transform-origin: 50% 50%;
+    transform: rotate(-45deg);
+    left: auto !important;
+    right: -40px;
+}
+
 .cantsee {
   color:rgba(0,0,0,0) !important;
 }
+
+.hide-btn2 {
+        position: absolute;
+    bottom: 0;
+    width: 50%;
+    right: 0;
+    color: #b3b3b3;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: rgba(0,0,0,0);
+    text-transform: uppercase;
+    border: 0;
+}
+
+.submit-btn2 {
+      position: absolute;
+    bottom: 0;
+    width: 50%;
+    padding: 19px;
+    color: #D50000;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    outline:0;
+}
+
+form.new_claim {
+      padding-bottom: 43px;
+    background-color: #F7F7F7;
+    margin-bottom: -34px;
+}
+
+
 
 .under-con-nav {
        position: fixed;
@@ -162,17 +235,67 @@ h4.con-content-title {
     font-size: 10px;
 }
 
-.verified-by-w {
+.verified-hour button {
+  display: inline-block;
     position: absolute;
-    left: 47px;
+    bottom: 0px;
+    left: 13px;
+    font-size: 10px;
+}
+
+.verified-hour button i {
+  font-size: 20px;
+}
+
+.verified-by-w {
+        position: absolute;
+    left: 80px;
     font-size: 10px;
     line-height: 0px;
     bottom: 11px;
     color: #aaa;
     background-color: #fff;
-    z-index: 5;
+    z-index: 2;
     height: 16px;
-    padding: 4px 0;
+    padding: 6px 0;
+}
+
+progress {
+  background-color: #eee;
+  height:5px;
+  width:100%;
+  border-radius: 0px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 0px;
+  height:5px;
+  width:97%;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color:#17a787;
+}
+
+
+
+.theshowform {
+    position: relative;
+    z-index: 12;
+    margin-right: -40px;
+    background-color: #F7F7F7;
+    padding: 10px 20px 0px 20px;
+    margin: 28px -55px -40px -15px;
+}
+
+.theshowform2 {
+  position: relative;
+    z-index: 12;
+    margin-right: -40px;
+    background-color: #F7F7F7;
+    padding: 20px 20px 0px 20px;
+    margin: 24px -55px -4px -20px;
 }
 
 .submit-by {
@@ -180,7 +303,8 @@ h4.con-content-title {
 }
 
 .collapsible-header .valign-wrapper i {
-  font-size: 16px;
+  font-size: 18px;
+    line-height: 38px;
 }
 
 .verified-by-w p {
@@ -830,6 +954,25 @@ footer.page-footer {
     letter-spacing: 5px;
 }
 
+.contributors-section .landing-title {
+  margin-bottom: 0;
+}
+
+
+.contributors-section p {
+  margin-top: 0;
+    color: #979797;
+    margin-bottom: 20px;
+}
+
+.contributors .beerlist .special-by-day {
+  padding: 10px 54px 10px 15px;
+}
+
+.contributors .beerlist .special-by-day .namecont {
+  font-weight:400;
+}
+
 #specials .collection {
   border: 0;
     margin: 0;
@@ -1035,6 +1178,21 @@ footer.page-footer {
       z-index: 99;
 }
 
+.directions-btn {
+   position: absolute;
+    bottom: 0;
+      right: 0px;
+      z-index: 99;
+}
+
+.directions-btn .teal-text.text-accent-4 {
+      padding: 0 20px;
+}
+
+.directions-btn .teal-text.text-accent-4 i{
+  color: #17a787;
+}
+
 .urbanist img {
     width: 50%;
 }
@@ -1166,6 +1324,8 @@ main .container {
   width:100%;
   height:auto;
 }
+
+
 
 .remove-btn {
      margin-left:20px;
@@ -1455,6 +1615,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   margin:0;
 }
 
+
+.signin_flag {
+      position: absolute;
+    right: 0;
+    bottom: 4px;
+}
+
 .tabs .tab a {
     color: #1fdeb4;
     font-size: 9px;
@@ -1467,10 +1634,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     font-size: 10px;
     bottom: 2px;
     width: auto;
-    right: 5px;
+    right: 15px;
     padding: 0;
     text-align: right;
     font-size: 4px;
+}
+
+.new_claim .btn-flat.disabled:focus {
+  background-color: rgba(0,0,0,0);
 }
 
 .new_claim i {
@@ -1481,19 +1652,57 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     float: left;
     text-align: center;
     margin-right: 0;
+    color: #aaa;
+}
+
+
+
+.theshowform2 .desc-claim i {
+ line-height: 14px;
+    padding: 0;
+    margin-right: 10px;
+    font-size: 18px;
+    color: #CC0000;
+    width: auto;
 }
 
 .claim {
-    position: absolute;
     height: auto;
     z-index: 90;
-    background-color: #fff;
     bottom: 10px;
     right: 0px;
     line-height: 0;
     width: 100%;
     text-align: right;
     padding-right: 15px;
+    position:relative;
+}
+
+.btnshowless {
+  position: absolute;
+    width: 100%;
+    margin-left: -20px;
+    background-color: #f7f7f7;
+}
+
+.veiw-details {
+      display: inline-block;
+    padding: 0;
+}
+
+.claim-top {
+      text-align: right;
+    width: 97%;
+    margin-right: 0;
+    font-size: 12px;
+    display: block;
+    position: absolute;
+    bottom: 3px;
+    z-index: 9;
+    background-color: #fff;
+    right: 15px;
+    height: 26px;
+    padding-bottom: 38px;
 }
 
 .claim a {
@@ -1519,9 +1728,48 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .upvote {
-  display: inline-block;
-        margin-bottom: 0;
+      display: inline-block;
+    margin-bottom: 0;
     line-height: 0;
+    position: absolute;
+    right: -10px;
+    top: 6px;
+}
+
+.claim-time {
+      margin-bottom: 8px;
+}
+
+
+.slider-margin{
+      margin-bottom: 15px;
+}
+
+.date-buttons button {
+      font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #555;
+}
+
+// .date-buttons .btn1 {
+//   position: absolute;
+//     right: 10px;
+//     top: 302px;
+// }
+
+// .date-buttons .btn2 {
+//       position: absolute;
+//     right: 150px;
+//     top: 302px;
+// }
+
+.datepicktabs .tabs .tab a.active {
+  color: #000;
+}
+
+.datepicktabs .tabs .tab a:hover {
+  color:#000;
 }
 
 .upvote_count {
@@ -1689,7 +1937,7 @@ nav .button-collapse i {
 
 .beerlist .special-by-day {
   text-align:left;
-  padding: 10px 54px 34px 15px;
+  padding: 10px 54px 40px 15px;
   position:relative;
 }
 
@@ -1877,6 +2125,7 @@ nav .button-collapse i {
 
 .collapsible.beerlist {
   margin-bottom:0;
+  box-shadow: none;
 }
 
 .newvenuebtn {
@@ -2103,7 +2352,7 @@ iframe {
 }
 
 .card .card-content {
-    padding: 20px 20px 16px 20px;
+    padding: 20px 20px 30px 20px;
     border-radius: 0;
 }
 

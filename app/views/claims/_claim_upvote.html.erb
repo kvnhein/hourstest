@@ -1,3 +1,4 @@
-<%=link_to like_claim_path(@claim), method: :put, remote: true, id: "claim-up#{@claim.id}" do%>
-<i class="tiny material-icons">thumb_up</i>
+<%=link_to like_claim_path(@claim), method: :put,onclick: "Materialize.toast('+5 HOURS', 2000)",remote: true, id: "up-claim#{@claim.id}" do%>
+<i class="tiny material-icons" style= "opacity:0.4">thumb_up</i>
 <%end%>
+

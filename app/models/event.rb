@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
   has_many :claims, dependent: :destroy
   
   before_save :upper_case
+  before_save :default_values
 
   scope :special_like, -> (special) { where("special ilike ?", special)}
 
@@ -25,7 +26,7 @@ class Event < ActiveRecord::Base
 
  def week_verification
   if self.event_verify
-   if self.event_verify < 3.days.ago 
+   if self.event_verify < 1.days.ago 
     return true
    end
   else

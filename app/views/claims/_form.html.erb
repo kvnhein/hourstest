@@ -1,7 +1,7 @@
 <%= form_for Claim.new, remote: true do |f| %>
   <div class="field hide">
     <%= f.label :user_id %><br>
-    <%= f.text_field :user_id, :value => 1 %> %>
+    <%= f.text_field :user_id, :value => current_user.id %> %>
   </div>
   <div class="field hide">
     <%= f.label :event_id %><br>
@@ -9,6 +9,12 @@
   </div>
   <div class = "btn-flat disabled red-text text-accent-4">
     <i class="zmdi zmdi-flag"></i>
-    <%= f.submit "not correct?", class:"btn-flat disabled cantsee",:data => {:disable_with => "Saving..."} %>
+    <%= f.submit "not correct?", class:"btn-flat disabled cantsee",:data => {:disable_with => "Saving..."},data: { confirm: 'Do you think this Hour is incorrect?' }  %>
   </div>
 <% end %>
+
+
+
+
+
+											

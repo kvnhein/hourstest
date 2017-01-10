@@ -1,0 +1,71 @@
+<%modal_event = @event%>
+<%@modal_event = modal_event%>
+								<div id = "form_button<%=modal_event.id%>" display ="none">
+									<% if Claim.where(event_id: modal_event.id).count == 0%>
+										<% if user_signed_in?%>
+											<% if current_user.can_verify?%>
+											<!-- This is the code to hide form-->
+											<script>
+												$(document).ready(function(){
+    												$("#hide<%=modal_event.id%>").click(function(){
+        												$(".posh<%=modal_event.id%>").hide();
+    													});
+    												$("#show<%=modal_event.id%>").click(function(){
+											        	$(".posh<%=modal_event.id%>").show();
+    													});
+    												
+    												
+    												$(".posh<%=modal_event.id%>").hide();
+    												$(".new_claim<%=modal_event.id%>").hide();
+    											
+												});
+											</script>
+											
+											
+											
+											
+											<div class="new_claim">
+											<button id="show<%=modal_event.id%>" class="btn-flat disabled">
+												<i class="zmdi zmdi-flag"></i>
+											</button>
+											</div>
+											<!-- End of code to hide form--> 
+											<div class = "posh<%=modal_event.id%> theshowform" style="position: relative;">
+												
+												<%= form_for Claim.new, remote: true do |f| %>
+  													<div class="field">
+    													<%= f.label :description, "What's Wrong?" %><br> jjhbj
+    													<%= f.text_area :description %>
+  													</div>
+  													
+  													<div class="field hide">
+    													<%= f.label :user_id %><br>
+    													<%= f.text_field :user_id, :value => current_user.id %> %>
+  													</div>
+  													<div class="field hide">
+    													<%= f.label :event_id %><br>
+    													<%= f.text_field :event_id, :value => modal_event.id %> %>
+  													</div>
+  													<div class = "">
+    													<%= f.submit "submit", class:"submit-btn2", id: "form-hide#{modal_event.id}"%>
+  													</div>
+												<% end %>
+												<button id="hide<%=modal_event.id%>" class="hide-btn2">Cancle</button>
+												</div>
+											<%else%>
+													<a class="btn-flat disabled red-text text-accent-4" onclick="Materialize.toast('You dont have enough hours yet to contest happy hours. Save more hours to you profile to earn Hours.', 4000)"><i class="zmdi zmdi-flag"></i></a>
+											<%end%>
+											<%else%>
+											<div  class = "btn-flat disabled red-text text-accent-4 new_claim signin_flag">
+													
+													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee", id: "form-hide#{modal_event.id}" do%>
+													<i class="zmdi zmdi-flag"></i>
+													<%end%>
+													
+											</div>
+										<%end%>
+									<%end%>
+								</div>
+						
+							<%@m = modal_event.id%>
+							<div id = "second_form_button<%=modal_event.id%>"></div>

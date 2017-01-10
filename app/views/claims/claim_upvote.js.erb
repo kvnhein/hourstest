@@ -1,4 +1,7 @@
-$('#claim-up<%=@claim.id%>').bind('ajax:success', function() {
-    $('#up_count<%=@claim.id%>').html('<%=escape_javascript @claim.get_upvotes.size.to_s %>');
-    $('#claim-up<%=@claim.id%>').html('<%=escape_javascript (render "claim_upvote") %>');
+$('#up-claim<%=@claim.id%>').bind('ajax:success', function() {
+    $('#count<%=@claim.id%>').html('<%=escape_javascript @claim.get_likes.size.to_s %>');
+    $('#claim_likes<%=@claim.id%>').html('<%=escape_javascript (render "claim_downvote") %>');
+    $('.chips<%=@claim.id%>').html('<%=escape_javascript (render "chips") %>');
+    $('.range-slider<%=@claim.id%>').html('<%=escape_javascript (render "claim_slider") %>');
+    
     });
