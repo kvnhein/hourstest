@@ -83,7 +83,7 @@
 		<% User.all.order("experience desc ").each do |user|%>
 			
 			<%if top_5 < 5%>
-				<%if user.fullname%>
+				<%if user.fullname && user.experience%>
 					<div class="collapsible-header special-by-day">
 						<li>
 							<p class="namecont"><%= user.fullname%></p>
