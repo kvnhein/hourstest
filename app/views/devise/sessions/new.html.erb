@@ -35,15 +35,19 @@
   </div>
 <% end %>
   <div class = "center"><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class:"btn-flat disabled red-text text-darken-2"%></div>
+ 
+  
+              
+  
   
   
   <div class = "hide">
     <%= render "devise/shared/links" %>
   </div>
 <br>
-<div>
-  <div class="center">Not a member?</div>
-    <div class="center">
+<div class = "hide">
+  <div class="center hide">Not a member?</div>
+    <div class="center hide">
       <%= link_to "Sign up", new_registration_path(resource_name), class:"btn-flat disabled teal-text text-accent-4" %>
     </div>
   </div>
