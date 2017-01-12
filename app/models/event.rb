@@ -68,7 +68,11 @@ class Event < ActiveRecord::Base
     if a.include? self
       return "NEW"
      elsif b.include? self
-      return "UPDATED"
+      if  self.updated_at < self.event_verify + 10.seconds 
+        return "Verified"
+      else
+       return "UPDATED"
+     end
     end
   end
 
