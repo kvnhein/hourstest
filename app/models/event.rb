@@ -68,9 +68,9 @@ class Event < ActiveRecord::Base
     if a.include? self
       return "NEW"
      elsif b.include? self
-      if  self.updated_at < self.event_verify + 10.seconds 
+      if  self.updated_at < self.event_verify + 10.seconds && Claim.where(event_id: self.id).count == 0 
         return "Verified"
-      else
+      elsif self.updated_at > self.event_verify + 10.seconds && Claim.where(event_id: self.id).count == 0 
        return "UPDATED"
      end
     end
