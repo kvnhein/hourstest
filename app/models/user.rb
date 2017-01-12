@@ -71,7 +71,7 @@ def self.from_omniauth(auth)
   end
   
   def can_claim?
-    if self.experience < 100
+    if self.experience < 50
       return false
     else
       return true

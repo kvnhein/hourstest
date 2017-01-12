@@ -17,7 +17,7 @@
 <div class="container">
 <div class="row con-neighb">
 <div class="col m4 s6">
-<%= link_to "Downtown", downtown_path, class: "waves-effect waves-light btn newvenue image-btns menubtn marketsquare-btn"%>
+<%= link_to "Downtown", downtown_path, class: "waves-effect waves-light btn newvenue image-btns menubtn marketsquare-btn", 'data-no-turbolink' => true%>
 </div>
 
 <div class="col m4 s6">
@@ -47,7 +47,7 @@
 <div class = "hide"><%= link_to "Brunch", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn brunch-btn"%></div>
 <% if (user_signed_in?)%>
    <% if current_user.admin?%>
-<div>
+<div class = "hide">
 <%=link_to "Send Reminders", daily_mailer_path, method: :get, remote: true%>
 </div>
 
@@ -59,13 +59,14 @@
 </div>
 </div>
 <div class="contributors-section">
-	<h4 class ="flow-text center landing-title">TOP CONTRIBUTORS</h4>
+	<h4 class ="flow-text center landing-title">HELP BUILD HOURSPGH BY VERIFYING HOURS.</h4>
 	<p class="center">
-		Help Build HoursPGH By verifying Hours. 
+		
 		<% if user_signed_in?%>
 		
 		<%else%>
-		<%= link_to new_user_session_path, class:"" do%>
+		
+		<%= link_to new_user_session_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%>
 		Sign Up
 		<%end%>
 		<%end%>
@@ -73,6 +74,7 @@
 		
 		
 	</p>
+	<h4 class ="flow-text center landing-title">TOP CONTRIBUTORS</h4>
 	<div class = "center hide">
 	<a class="waves-effect waves-light btn black"><i class="material-icons left">history</i>Join</a>
 	</div>

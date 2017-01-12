@@ -243,7 +243,19 @@ h4.con-content-title {
     font-size: 10px;
 }
 
+.verified-hour2 button {
+  display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 13px;
+    font-size: 10px;
+}
+
 .verified-hour button i {
+  font-size: 20px;
+}
+
+.verified-hour2 button i {
   font-size: 20px;
 }
 
@@ -959,6 +971,7 @@ footer.page-footer {
 }
 
 
+
 .contributors-section p {
   margin-top: 0;
     color: #979797;
@@ -966,7 +979,7 @@ footer.page-footer {
 }
 
 .contributors .beerlist .special-by-day {
-  padding: 10px 54px 10px 15px;
+  padding: 10px 5px 10px 15px;
 }
 
 .contributors .beerlist .special-by-day .namecont {
@@ -1216,6 +1229,10 @@ footer.page-footer {
     color: #17a787 !important;
     letter-spacing: 0px;
     margin-left: 5px;
+}
+
+.tags-box h3 {
+  margin:0;
 }
 
 .tags-box {
