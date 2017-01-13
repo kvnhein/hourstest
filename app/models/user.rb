@@ -62,7 +62,7 @@ def self.from_omniauth(auth)
   
   def can_verify?
   if self.experience
-    if self.experience < 50 
+    if self.experience < 0 
       return false
     else
       return true
