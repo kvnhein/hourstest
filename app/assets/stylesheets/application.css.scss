@@ -239,8 +239,9 @@ h4.con-content-title {
   display: inline-block;
     position: absolute;
     bottom: 0px;
-    left: 13px;
+        left: 45px;
     font-size: 10px;
+    padding:0;
 }
 
 .verified-hour2 button {
@@ -350,11 +351,12 @@ position: absolute;
 .beerlist .collapsible-header .like-like .zmdi{
       line-height: 18px !important;
     margin-top: -2px;
-    font-size: 16px !important;
+    font-size: 18px !important;
     vertical-align: middle;
     color: #17a787;
     position: absolute;
     bottom: 10px;
+        left: 0px;
 }
 
 .like-like i.tiny {
@@ -965,6 +967,8 @@ footer.page-footer {
     font-size: 14px;
     letter-spacing: 5px;
 }
+
+
 
 .contributors-section .landing-title {
   margin-bottom: 0;
@@ -1649,7 +1653,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .new_claim .btn-flat.disabled {
    position: absolute;
     font-size: 10px;
-    bottom: 2px;
+    bottom: 0px;
     width: auto;
     right: 15px;
     padding: 0;
@@ -2273,6 +2277,24 @@ nav .button-collapse i {
     background-color: #2e2e2e;
 }
 
+#toast-container > div {
+      width: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+#toast-container {
+  position: fixed;
+    z-index: 9999;
+    top: 0;
+    width: 100%;
+    bottom: initial;
+}
+
+.toast {
+  word-break: normal;
+}
+
 .new-event {
 width: 50px;
     display: inline-block;
@@ -2285,6 +2307,18 @@ width: 50px;
     line-height: 14px;
         padding: 0 10px;
     letter-spacing: 1px;
+}
+
+.chip-piece .new-event {
+        text-transform: capitalize;
+    font-weight: 500;
+    color: #555;
+    letter-spacing: .5px;
+}
+
+.chip-piece .new-event .zmdi {
+      font-size: 20px;
+          color: #D50000;
 }
 
 .chip-piece {

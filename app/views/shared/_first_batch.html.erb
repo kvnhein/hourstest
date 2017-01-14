@@ -40,8 +40,11 @@
 							<%=event.special%>
 						</div>
 						<div class="new-event">
+						
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
 					<div class="chip-piece">
@@ -50,7 +53,9 @@
 						</div>
 						<div class="new-event">
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
 					<div class="chip-piece">
@@ -59,7 +64,9 @@
 						</div>
 						<div class="new-event">
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
 					<div class="chip-piece">
@@ -68,7 +75,9 @@
 						</div>
 						<div class="new-event">
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%else%>
 					<div class="chip-piece">
@@ -77,7 +86,9 @@
 						</div>
 						<div class="new-event">
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%end%><%end%>
 					<div class="directions-btn">
@@ -135,10 +146,15 @@
 													
 												<%end %>
 											<%else%>
-												<%= link_to new_user_session_path do%>
+												<%= link_to new_user_session_path, class:"hide" do%>
 													<!--<i class="tiny material-icons" style="opacity:0.4">favorite_border</i>-->
 													<i class="zmdi zmdi-favorite-outline"></i> 
 												<%end%> 
+												  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save Hours">
+
+												<i class="zmdi zmdi-favorite-outline" style=""></i> 
+											</a>
+											
 											<%end%>
 										</div>
 										<!--<div class="verified-hour" id= 'event<%=modal_event.id%>'>
@@ -248,9 +264,12 @@
 											<%end%>
 											<%else%>
 												<div  class = "btn-flat disabled red-text text-accent-4 new_claim signin_flag">
-													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee", id: "form-hide#{modal_event.id}" do%>
+													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee hide", id: "form-hide#{modal_event.id}" do%>
 														<i class="zmdi zmdi-flag"></i>
 													<%end%>
+													 <a class="tooltipped btn-flat disabled red-text text-accent-4 cantsee" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag Hours">
+														<i class="zmdi zmdi-flag"></i>
+														</a>
 												</div>
 										<%end%>
 									<%end%>
@@ -282,6 +301,7 @@
 		</div>
 	</div>
 <%end%>
+
 
 
 	<!-- This is the code to hide form-->

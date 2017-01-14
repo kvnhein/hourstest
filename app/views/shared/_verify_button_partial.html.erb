@@ -15,14 +15,12 @@
 												</div>
 											<%end%>
 										<%else%>
-											<div class="verified-hour">
-												<%= link_to new_user_session_path do%>
-													<div class = "valign-wrapper" style="text-align:left;">
-														<i class="tiny material-icons" style="opacity:0.4">update</i>
-														<p>Verify</p>
-													</div>
-												<%end%>
-											</div>
+											<div class="verified-hour" id='verified-<%=modal_event.id%>'>
+												<button id="show" class="btn-flat disabled tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to verify hours" >
+													<i class="tiny material-icons">update</i>
+												</button>
+												</div>
+											
 										<%end%>
 									<%end%>
 									

@@ -76,3 +76,13 @@
   ga('send', 'pageview');
 
 </script>
+
+<script>
+$(document).ready(function() {
+    <% if user_signed_in?%>
+    <%if current_user.experience < 1000 %>
+     Materialize.toast('You can save Hours to your profile by liking them! ', 4000)
+     <%end%>
+     <%end%>
+  });
+</script>

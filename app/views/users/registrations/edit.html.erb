@@ -201,3 +201,12 @@
 <%= link_to "Back", :back %>
    </div>
   
+<script>
+$(document).ready(function() {
+    <% if user_signed_in?%>
+    <%if current_user.experience < 1000 %>
+     Materialize.toast('Here is where you keep all of your favorite hours of the Week! ', 4000)
+     <%end%>
+     <%end%>
+  });
+</script>

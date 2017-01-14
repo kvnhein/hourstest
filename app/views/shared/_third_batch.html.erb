@@ -1,6 +1,6 @@
 <%x=[]%>
 <%@third_batch.shuffle.each do |event| %>
-	<%x.push(Venue.where(id: event.venue_id).first.id)%>
+<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 <%x.uniq.each do |d|%>
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>

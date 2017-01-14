@@ -66,19 +66,19 @@ class Event < ActiveRecord::Base
     a = Event.after(Date.today - 7).to_a
     b = Event.after(Date.today - 7, field: :updated_at).to_a
     if a.include? self
-      return "NEW"
+      return "New"
      elsif b.include? self
       if  self.updated_at < self.event_verify + 10.seconds && Claim.where(event_id: self.id).count == 0 
         return "Verified"
       elsif self.updated_at > self.event_verify + 10.seconds && Claim.where(event_id: self.id).count == 0 
-       return "UPDATED"
+       return "Updated"
      end
     end
   end
 
  def claims?
   if Claim.where(event_id: self.id).count > 0 
-   return "CONTESTED"
+   return true
   end
  end
 
