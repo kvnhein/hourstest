@@ -24,6 +24,7 @@ class EventsController < ApplicationController
     else
         @event.event_verify = Time.now
         @event.varified_user = current_user.id
+        @event.save
     end 
   end
 
