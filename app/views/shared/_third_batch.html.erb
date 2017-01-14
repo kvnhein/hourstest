@@ -1,6 +1,6 @@
 <%x=[]%>
 <%@third_batch.shuffle.each do |event| %>
-<%x.push(Venue.where(id: event.venue_id).first.id)%>
+	<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 <%x.uniq.each do |d|%>
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>
@@ -40,8 +40,11 @@
 							<%=event.special%>
 						</div>
 						<div class="new-event">
+						
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
 					<div class="chip-piece">
@@ -50,7 +53,9 @@
 						</div>
 						<div class="new-event">
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
 					<div class="chip-piece">
@@ -59,7 +64,9 @@
 						</div>
 						<div class="new-event">
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
 					<div class="chip-piece">
@@ -68,7 +75,9 @@
 						</div>
 						<div class="new-event">
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%else%>
 					<div class="chip-piece">
@@ -77,7 +86,9 @@
 						</div>
 						<div class="new-event">
 							<%= event.new_event%>
-							<%= event.claims?%>
+							<%if  event.claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
 						</div>
 					</div><%end%><%end%>
 					<div class="directions-btn">
