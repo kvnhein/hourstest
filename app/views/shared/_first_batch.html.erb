@@ -150,11 +150,8 @@
 													<!--<i class="tiny material-icons" style="opacity:0.4">favorite_border</i>-->
 													<i class="zmdi zmdi-favorite-outline"></i> 
 												<%end%> 
-												  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save Hours">
-
-												<i class="zmdi zmdi-favorite-outline" style=""></i> 
-											</a>
-											
+												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-favorite-outline"></i> </a>
+												
 											<%end%>
 										</div>
 										<!--<div class="verified-hour" id= 'event<%=modal_event.id%>'>
@@ -267,9 +264,8 @@
 													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee hide", id: "form-hide#{modal_event.id}" do%>
 														<i class="zmdi zmdi-flag"></i>
 													<%end%>
-													 <a class="tooltipped btn-flat disabled red-text text-accent-4 cantsee" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag Hours">
-														<i class="zmdi zmdi-flag"></i>
-														</a>
+													<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag hours"><i class="zmdi zmdi-flag"></i></a>
+        
 												</div>
 										<%end%>
 									<%end%>
@@ -301,7 +297,6 @@
 		</div>
 	</div>
 <%end%>
-
 
 
 	<!-- This is the code to hide form-->

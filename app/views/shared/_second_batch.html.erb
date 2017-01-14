@@ -146,10 +146,12 @@
 													
 												<%end %>
 											<%else%>
-												<%= link_to new_user_session_path do%>
+												<%= link_to new_user_session_path, class:"hide" do%>
 													<!--<i class="tiny material-icons" style="opacity:0.4">favorite_border</i>-->
 													<i class="zmdi zmdi-favorite-outline"></i> 
 												<%end%> 
+												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-favorite-outline"></i> </a>
+												
 											<%end%>
 										</div>
 										<!--<div class="verified-hour" id= 'event<%=modal_event.id%>'>
@@ -259,9 +261,11 @@
 											<%end%>
 											<%else%>
 												<div  class = "btn-flat disabled red-text text-accent-4 new_claim signin_flag">
-													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee", id: "form-hide#{modal_event.id}" do%>
+													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee hide", id: "form-hide#{modal_event.id}" do%>
 														<i class="zmdi zmdi-flag"></i>
 													<%end%>
+													<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag hours"><i class="zmdi zmdi-flag"></i></a>
+        
 												</div>
 										<%end%>
 									<%end%>
