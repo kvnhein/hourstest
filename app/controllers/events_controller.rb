@@ -17,9 +17,14 @@ class EventsController < ApplicationController
   end
   
   def event_verified
-    @event.update_attribute(:event_verify, Time.now)
-    @event.update_attribute(:varified_user, current_user.id)
-    current_user.increment!(:experience, by = 10)
+    if @event.event_verify || @event.varified_user
+        @event.update_attribute(:event_verify, Time.now)
+        @event.update_attribute(:varified_user, current_user.id)
+        current_user.increment!(:experience, by = 10)
+    else
+        @event.event_verify = Time.now
+        @event.varified_user = current_user.id
+    end 
   end
 
   def daily_mailer
