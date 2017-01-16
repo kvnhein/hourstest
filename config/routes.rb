@@ -135,7 +135,7 @@ resources :events do
    get 'landing' => 'events#landing'
    get 'past_features' => 'daily_specials#past_features'
    get 'underconstruction' => 'daily_specials#underconstruction'
-
+   get 'user_index' => 'events#user_index'
    get 'venue_beer_list' => 'beers#venue_beer_list'
    get 'venue_liqour_list' => 'liqours#venue_liqour_list'
    get 'venue_drink_list' => 'drinks#venue_drink_list'

@@ -164,7 +164,10 @@
 									<i class="zmdi zmdi-time"></i>
 <%=modal_event.time_conversion%>
 								</div>
-								<p><span class="submit-by">Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(modal_event.user_id).experience%></span> <%if modal_event.any_details == 2%></p><p class="teal-text text-accent-4"> Details:</p><p>
+								<p><span class="submit-by">Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(modal_event.user_id).experience%></span> <%if modal_event.any_details == 2%></p>
+								
+								<p>
+								Details: 
 								<%=modal_event.detail%></p><%@event_tag = modal_event%><!--<%= render partial: "shared/tags"%>-->
 								<%end%><%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
 								<div class="now-tab">

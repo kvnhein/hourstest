@@ -16,6 +16,10 @@ class EventsController < ApplicationController
   def under_construction
   end
   
+  def user_index
+      @users = User.all 
+  end
+  
   def event_verified
     if @event.event_verify || @event.varified_user
         @event.update_attribute(:event_verify, Time.now)

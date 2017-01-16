@@ -1728,10 +1728,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .claim a {
       font-size: 10px;
+      
+}
+
+.claim a i {
+   border: 1px solid #4db6ac;
+    width: 46px !important;
+    margin-top: -28px !important;
+    height: 46px;
+    padding-top: 22px;
+    border-radius: 100%;
 }
 
 .claim i {
       font-size: 16px;
+         
 }
 
 .claim i.tiny {
@@ -1764,6 +1775,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .slider-margin{
       margin-bottom: 15px;
+          padding-right: 46px;
 }
 
 .date-buttons button {
