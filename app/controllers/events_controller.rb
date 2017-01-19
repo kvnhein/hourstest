@@ -52,6 +52,7 @@ class EventsController < ApplicationController
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
+    Venue.all.each {|venue| venue.venue_avg_verify}
     #@verified_this_week = Venue.between_times(@week_ago, @today)
     #@verified_after_week = Venue.between_times(@month_ago,@week_ago)
     #@verified_month_ago = Venue.before(@month_ago)
