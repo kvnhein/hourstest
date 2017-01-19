@@ -24,6 +24,7 @@ class EventsController < ApplicationController
     if @event.event_verify || @event.varified_user
         @event.update_attribute(:event_verify, Time.now)
         @event.update_attribute(:varified_user, current_user.id)
+        Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
         current_user.increment!(:experience, by = 10)
     else
         @event.event_verify = Time.now
@@ -51,10 +52,14 @@ class EventsController < ApplicationController
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
-    @verified_this_week = Venue.between_times(@week_ago, @today)
-    @verified_after_week = Venue.between_times(@month_ago,@week_ago)
-    @verified_month_ago = Venue.before(@month_ago)
-    @owned_venues = Venue.where("owner > ?", 1)
+    #@verified_this_week = Venue.between_times(@week_ago, @today)
+    #@verified_after_week = Venue.between_times(@month_ago,@week_ago)
+    #@verified_month_ago = Venue.before(@month_ago)
+    #@owned_venues = Venue.where("owner > ?", 1)
+    @verified_this_week = Venue.where("avg_verify < ?", 7)
+    @verified_after_week = Venue.where(avg_verify: [7...30] )
+    @verified_month_ago = Venue.where("avg_verify > ?", 29)
+    
     
     claim_index = Claim.all
     claim_index.each do |claim|

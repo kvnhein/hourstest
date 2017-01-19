@@ -9,7 +9,8 @@ class Venue < ActiveRecord::Base
     self.venue_verify ||= Time.now
   end
 
-
+  
+ 
   def varified_array
     a = 7.day.ago
     b = time.now
@@ -20,12 +21,12 @@ class Venue < ActiveRecord::Base
   has_many :events, dependent: :destroy
   has_many :daily_specials, dependent: :destroy
   has_many :lists, dependent: :destroy
-  has_many :beers
+  has_many :bees
 
   def to_param
     "#{id} #{name}".parameterize
   end
-
+  
   def venue_area
      "#{name} (#{neighborhood_id})"
   end
@@ -38,6 +39,23 @@ class Venue < ActiveRecord::Base
   def cached_all
     Rails.cache.fetch([self, "all"]) { all }
   end
+  
+  def venue_avg_verify
+    days = 0
+    Event.where(venue_id: self.id).each do |event| 
+     if event.event_verify
+      days = days + (Time.now - event.event_verify).to_i/(24*60*60)
+    else
+      days = days + (Time.now - event.created_at).to_i/(24*60*60)
+    end
+  end
+      puts days/Event.where(venue_id: self.id).count
+      self.avg_verify = days/Event.where(venue_id: self.id).count
+      self.save!
+  end
+  
+  
+
 
 
 end

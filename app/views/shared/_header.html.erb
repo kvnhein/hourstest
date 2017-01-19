@@ -104,8 +104,13 @@
     <li><%=link_to "My Profile", edit_user_registration_path%></li>
     <%if Venue.where(owner: current_user.id).count > 0 %>
       <li><%= link_to "My Venues", users_venues_path%></li>
-      <li><%= link_to 'New Hour', new_event_path%></li>
-      <li><%= link_to 'New Feature', new_daily_special_path%></li>
+    <%end%>
+    <%if current_user.experience < 100 %>
+     <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Hours"><i class="material-icons left">lock</i>New Hour</a></li>
+      <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Feature"><i class="material-icons left">lock</i>New Feature</a></li>
+    <%else%>
+      <li><%= link_to "New Hour", new_event_path %></li>
+      <li><%= link_to "New Feature", new_daily_special_path%></li>
     <%end%>
     <li>
       <div class="log-out">
@@ -160,16 +165,13 @@
     <%end%>
   </ul>
 
-
+<!-- Mobile nav bar start-->
 
   <ul id="slide-out" class="side-nav">
      <%if (user_signed_in?)%>
-     <li class="divider"></li>
+     <li class="divider hide"></li>
      <li class = "user-points hide"><%=link_to "Hours: #{current_user.experience}"%></li>
      <%end%>
-    <li class="divider"></li>
-    <li style="display:none;"><a class="dropdown-button" data-activates="venue-menu-dropdown">Neighborhoods<i class="material-icons right" style="color: #444;
-    padding-top: 4px;">arrow_drop_down</i></a></li>
     <li class="divider"></li>
     <li><%= link_to "Features", daily_specials_path%></li>
     <li class="divider"></li>
@@ -187,28 +189,35 @@
 
 
     <% if (user_signed_in?)%>
-     <%if Venue.where(owner: current_user.id).count > 0 %>
-      <li class="divider"></li>
-      <li><%= link_to 'New Hour', new_event_path%></li>
-    <li class="divider"></li>
-      <li><%= link_to 'New Feature', new_daily_special_path%></li>
-     <%end%>
-    <li class="divider"></li>
-    <li>
+     
+        <%if current_user.experience < 100 %>
+          <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create hours"><i class="material-icons left">lock</i>New Hour</a></li>
+          <li class="divider"></li>
+          <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a feature"><i class="material-icons left">lock</i>New Feature</a></li>
+        <%else%>
+          <li class="divider"></li>
+          <li><%= link_to 'New Hour',new_event_path%></li>
+          <li class="divider"></li>
+          <li><%= link_to 'New Feature', new_daily_special_path%></li>
+        <%end%>
+        
+     <li class="divider"></li>
+     <li>
       <div class="log-out">
         <%= link_to "Log Out", destroy_user_session_path,method: :delete%>
       </div>
-    </li>
+     </li>
+     <li class="divider"></li>
+    <%else%>
       <li class="divider"></li>
-      <%else%>
-       <li class="divider"></li>
-       <li><%= link_to "Login", new_user_session_path%></li>
-       <li class="divider"></li>
-      <%end%>
-    <li><%= link_to 'About Us', about_us_path%></li>
-    <li class="divider"></li>
-
+      <li><%= link_to "Login", new_user_session_path%></li>
+      <li class="divider"></li>
+    <%end%>
+      <li><%= link_to 'About Us', about_us_path%></li>
+      <li class="divider"></li>
+      
   </ul>
+  <!-- mobile nav bar end -->
   
   <a href="#" data-activates="slide-out" class="button-collapse menu-icon">
     <!--<i class="mdi-navigation-menu"></i>-->

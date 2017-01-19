@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
 
   scope :special_like, -> (special) { where("special ilike ?", special)}
 
+
+ 
  def default_values
   self.event_verify ||= Time.now 
   self.varified_user ||= current_user.id
@@ -26,7 +28,7 @@ class Event < ActiveRecord::Base
 
  def week_verification
   if self.event_verify
-   if self.event_verify < 1.days.ago 
+   if self.event_verify < 14.days.ago 
     return true
    end
   else
@@ -65,16 +67,14 @@ class Event < ActiveRecord::Base
   def new_event
     a = Event.after(Date.today - 7).to_a
     b = Event.after(Date.today - 7, field: :updated_at).to_a
+    c = Event.before(Date.today - 30, field: :event_verify).to_a
     if a.include? self
       return "New"
-     elsif b.include? self
-      if  self.updated_at < self.event_verify + 10.seconds && Claim.where(event_id: self.id).count == 0 
-        return "Verified"
-      elsif self.updated_at > self.event_verify + 10.seconds && Claim.where(event_id: self.id).count == 0 
-       return "Updated"
-     end
+    elsif c.include? self 
+     return "Not Verified"
     end
   end
+
 
  def claims?
   if Claim.where(event_id: self.id).count > 0 
