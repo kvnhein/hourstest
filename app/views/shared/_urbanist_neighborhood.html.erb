@@ -2,7 +2,7 @@
     <div class="col s12 profile-tabs neiborhoodprofile">
       <%if @b > 4 && @b < 22 %>
       <ul class="tabs">
-        <li class="tab col s4"><a href="#venues">Venues</a></li>
+        <!--li class="tab col s4 hide"><a href="#venues">Venues</a></li-->
         <li class="tab col s4"><a class="active" href="#specials">Hours</a></li>
         <%unless @daily_specials.empty?%>
        <!-- <li class="tab col s4"><a href="#featured-dish">Features</a></li>-->
@@ -10,7 +10,7 @@
       </ul>
   <%else%>
       <ul class="tabs">
-        <li class="tab col s4"><a class="active" href="#venues">Venues</a></li>
+        <!--li class="tab col s4"><a class="active" href="#venues">Venues</a></li-->
         <li class="tab col s4"><a href="#specials">Hours</a></li>
         <%unless @daily_specials.empty?%>
         <!--<li class="tab col s4"><a href="#featured-dish">Features</a></li>-->
@@ -29,9 +29,9 @@
 <!--END TABS-->
 
 
-<div class ="center" id="venues">
+<!--div class ="center" id="venues">
   <%=render partial: "shared/venue_index"%>
-</div>
+</div-->
 <div class ="center" id="specials">
   <div class="key-color" style="position:relative;">
 
