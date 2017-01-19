@@ -51,10 +51,10 @@ class Venue < ActiveRecord::Base
   end
       if Event.where(venue_id: self.id).count > 0
         self.avg_verify = days/Event.where(venue_id: self.id).count
-        self.save!
+        
       else 
         self.avg_verify = 60 
-        self.save!
+        
       end
   end
   
