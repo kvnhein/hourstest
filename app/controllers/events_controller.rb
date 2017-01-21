@@ -26,9 +26,12 @@ class EventsController < ApplicationController
         @event.update_attribute(:varified_user, current_user.id)
         Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
         current_user.increment!(:experience, by = 10)
+        current_user.increment!(:num_verified, by = 1)
     else
         @event.event_verify = Time.now
         @event.varified_user = current_user.id
+        current_user.increment!(:experience, by = 10)
+        current_user.increment!(:num_verified, by = 1)
         @event.save
     end 
   end

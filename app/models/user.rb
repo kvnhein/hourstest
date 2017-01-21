@@ -79,7 +79,7 @@ def self.from_omniauth(auth)
   end
   
   def can_create_hour
-    if self.experience < 200 
+    if self.experience < 1000 
       return false
     else
       return true
@@ -97,6 +97,32 @@ def self.from_omniauth(auth)
       return "hearing"
     elsif self.experience >= 150
       return "mic"
+    end
+  end 
+  
+  def voting_power
+    if self.experience < 1000 
+     return 1
+    elsif self.experience >= 1000 && self.experience < 2000
+      return 2
+    elsif self.experience >= 2000 && self.experience < 3000
+      return 3
+    elsif self.experience >= 3000 && self.experience < 4000
+      return 4
+    elsif self.experience >= 4000 && self.experience < 5000
+      return 5
+    elsif self.experience >= 5000 && self.experience < 6000
+      return 6
+    elsif self.experience >= 6000 && self.experience < 7000
+      return 7
+    elsif self.experience >= 7000 && self.experience < 8000
+      return 8 
+    elsif self.experience >= 8000 && self.experience < 9000
+      return 9
+    elsif self.experience >= 9000 && self.experience < 10000
+      return 10 
+    else 
+      return 10 
     end
   end 
   

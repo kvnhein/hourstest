@@ -22,6 +22,7 @@ class ClaimsController < ApplicationController
   def claim_upvote
     @claim.liked_by current_user
     current_user.increment!(:experience,by = 5)
+    current_user.increment!(:num_claim_votes,by = 1)
     if @claim.get_likes.size >= 10 
        @claim.status = 1 
     end
@@ -30,6 +31,7 @@ class ClaimsController < ApplicationController
   def claim_downvote
     @claim.disliked_by current_user
     current_user.decrement!(:experience,by = 5)
+    current_user.decrement!(:num_claim_votes,by = 1)
     if @claim.get_likes.size <10 
       @claim.status = 0
     end

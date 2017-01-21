@@ -1,5 +1,5 @@
 $('#up-claim<%=@claim.id%>').bind('ajax:success', function() {
-    $('#count<%=@claim.id%>').html('<%=escape_javascript @claim.get_likes.size.to_s %>');
+    $('#count<%=@claim.id%>').html('<%=escape_javascript @claim.claim_votes.to_s %>');
     $('#claim_likes<%=@claim.id%>').html('<%=escape_javascript (render "claim_downvote") %>');
     $('.chips<%=@claim.id%>').html('<%=escape_javascript (render "chips") %>');
     $('.range-slider<%=@claim.id%>').html('<%=escape_javascript (render "claim_slider") %>');
