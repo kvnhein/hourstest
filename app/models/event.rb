@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
 
  def week_verification
   if self.event_verify
-   if self.event_verify < 14.days.ago 
+   if self.event_verify < 7.days.ago 
     return true
    end
   else

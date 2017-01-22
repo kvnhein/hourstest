@@ -166,7 +166,7 @@
 								</div>
 								<p><span class="submit-by">Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(modal_event.user_id).experience%></span> <%if modal_event.any_details == 2%></p>
 								
-								<p>
+								<p class="deets">
 								Details: 
 								<%=modal_event.detail%></p><%@event_tag = modal_event%><!--<%= render partial: "shared/tags"%>-->
 								<%end%><%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
@@ -217,6 +217,7 @@
 											        	$(".posh<%=modal_event.id%>").show();
     													});
     												
+  													
     												
     												$(".posh<%=modal_event.id%>").hide();
     												$(".new_claim<%=modal_event.id%>").hide();
@@ -236,7 +237,7 @@
 											<div class = "posh<%=modal_event.id%> theshowform" style="position: relative;">
 												
 												<%= form_for Claim.new, remote: true do |f| %>
-  													<div class="field">
+  													<div class="input-field">
     													<%= f.label :description, "What's Wrong? (Required)" %><br>
     													<%= f.text_area :description %>
   													</div>
@@ -255,6 +256,7 @@
 												<% end %>
 												<button id="hide<%=modal_event.id%>" class="hide-btn2">Cancle</button>
 												</div>
+												
 											<%else%>
 												<div class="new_claim">
 													<button id="show" class="btn-flat disabled" onclick="Materialize.toast('You dont have enough hours yet to contest happy hours. Save more hours to you profile to earn Hours.', 4000)">

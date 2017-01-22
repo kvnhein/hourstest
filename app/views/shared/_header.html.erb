@@ -190,7 +190,7 @@
 
     <% if (user_signed_in?)%>
      
-        <%if current_user.experience < 100 %>
+        <%if current_user.experience < 1000%>
           <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create hours"><i class="material-icons left">lock</i>New Hour</a></li>
           <li class="divider"></li>
           <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a feature"><i class="material-icons left">lock</i>New Feature</a></li>
