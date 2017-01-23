@@ -1370,6 +1370,7 @@ main .container {
   position: fixed;
     width: 100%;
   -webkit-overflow-scrolling: touch;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .urbanist-page .urbanist{
@@ -1640,8 +1641,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     font-style: italic;
 }
 
+.input-field.col label {
+  left:0;
+}
+
+.new_claim .input-field label {
+  left: 0;
+  height: 20px;
+}
+
 .nav-wrapper i {
   font-size: 20px !important;
+}
+
+textarea.materialize-textarea {
+  line-height: 20px;
 }
 
 .dropdown-content li {
@@ -2327,7 +2341,7 @@ nav .button-collapse i {
 width: 50px;
     display: inline-block;
     position: absolute;
-    top: 10px;
+    top: 5px;
     font-size: 11px;
     text-transform: uppercase;
     font-weight: 800;
@@ -2337,11 +2351,17 @@ width: 50px;
     letter-spacing: 1px;
 }
 
+.new_daily_special .row .deets {
+  padding:0;
+}
+
 .chip-piece .new-event {
         text-transform: capitalize;
     font-weight: 500;
     color: #555;
     letter-spacing: .5px;
+        padding: 0;
+    width: 35px;
 }
 
 .chip-piece .new-event .zmdi {

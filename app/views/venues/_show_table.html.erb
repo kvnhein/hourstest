@@ -1,4 +1,4 @@
-<ul class="collection">
+<ul class="collection z-depth-1">
 <% @v = @events.all.where( day: @d)%>
 <% if @v.empty?%>
   <li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@h%></li>

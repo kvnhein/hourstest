@@ -17,13 +17,15 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="input-field col s12">
     <%= f.label :special %><br>
     <%= f.text_field :special, :maxlength => 40, :size => 20 %>
   </div>
-<div class="field">
+  <div class="row">
+<div class="input-field col s12">
     <%= f.label :detail %><br>
     <%= f.text_field :detail %>
+  </div>
   </div>
 
   <div class="row datepicktabs">
@@ -48,7 +50,7 @@
       
   
   
-  <div class="field">
+  <div class="input-field col s12">
     <%= f.label :venue_id %><br>
     <% if current_user.admin?%>
     <%=collection_select( :event, :venue_id, Venue.order('name ASC').all, :id, :venue_area, { :multiple => false})%>
@@ -58,11 +60,11 @@
   </div>
   </div>
   <div class="row">
-    <div class="field col s6 m6">
+    <div class="input-field col s6">
     <%= f.label :start %><br>
    <%= f.select :start, options_for_select([['10:00 am', '8.0'],['10:30 am', '8.5'],['11:00 am', '9.0'],['11:30 am', '9.5'],['12:00 pm', '10.0'],['12:30 pm', '10.5'],['1:00 pm', '11.0'],['1:30 pm', '11.5'],['2:00 pm', '12.0'],['2:30 pm', '12.5'],['3:00 pm', '13.0'],['3:30 pm', '13.5'],['4:00 pm','14.0'],['4:30 pm','14.5'],['5:00 pm', '15.0'],['5:30 pm', '15.5'],['6:00 pm','16.0'],['6:30 pm','16.5'],['7:00 pm','17.0'],['7:30 pm','17.5'],['8:00 pm','18.0'],['8:30 pm','18.5'],['9:00 pm','19.0'],['9:30 pm','19.5'],['10:00 pm','20.0'],['10:30 pm','20.5'],['11:00 pm','21.0'],['11:30 pm','21.5'],['12:00 am','22,0']], @event.start), class: "list-select" %>
     </div>
-    <div class="field col s6 m6">
+    <div class="input-field col s6">
     <%= f.label :end %><br>
     <%= f.select :end, options_for_select([['1:00 pm', '11.0'],['1:30 pm', '11.5'],['2:00 pm', '12.0'],['2:30 pm', '12.5'],['3:00 pm', '13.0'],['3:30 pm', '13.5'],['4:00 pm','14.0'],['4:30 pm','14.5'],['5:00 pm', '15.0'],['5:30 pm', '15.5'],['6:00 pm','16.0'],['6:30 pm','16.5'],['7:00 pm','17.0'],['7:30 pm','17.5'],['8:00 pm','18.0'],['8:30 pm','18.5'],['9:00 pm','19.0'],['9:30 pm','19.5'],['10:00 pm','20.0'],['10:30 pm','20.5'],['11:00 pm','21.0'],['11:30 pm','21.5'],['12:00 am','22.0'],['12:30 am','22.5'],['1:00 am','23.0'],['1:30 am','23.5'],['2:00 am','24.0']], @event.end), class: "list-select" %>
     </div>

@@ -16,34 +16,36 @@
 
 <div class="container">
 <div class="row con-neighb">
-<div class="col m4 s6">
-<%= link_to "Downtown", downtown_path, class: "waves-effect waves-light btn newvenue image-btns menubtn marketsquare-btn"%>
+<div class="col m4 s6 z-depth-1">
+<%= link_to "Downtown", downtown_path, class: "waves-effect waves-light btn newvenue image-btns menubtn marketsquare-btn "%>
 </div>
 
-<div class="col m4 s6">
+<div class="col m4 s6 z-depth-1">
 <%= link_to "Oakland", oakland_path, class: "waves-effect waves-light btn newvenue menubtn image-btns oaklandbtn"%>
 </div>
 
-<div class="col m4 s6">
+<div class="col m4 s6 z-depth-1">
 <%= link_to "Shadyside", shadyside_path, class: "waves-effect waves-light btn newvenue menubtn image-btns shadyside-btn"%>
 </div>
 
-<div class="col m4 s6">
+<div class="col m4 s6 z-depth-1">
 <%= link_to "Lawrenceville", lawrenceville_path, class: "waves-effect waves-light btn newvenue menubtn image-btns lawrenceville-btn"%>
 </div>
 
-<div class="col m4 s6">
+<div class="col m4 s6 z-depth-1">
 <%= link_to "South Side", south_side_path, class: "waves-effect waves-light btn newvenue menubtn image-btns southside-btn"%>
 </div>
 
-<div class="col m4 s6">
+<div class="col m4 s6 z-depth-1">
 <%= link_to "Strip District", strip_district_path, class: "waves-effect waves-light btn newvenue image-btns menubtn strip_district-btn"%>
 </div>
 </div>
 </div>
 
 <h4 class ="flow-text center landing-title">New Arrival</h4>
+<div class = "z-depth-1">
 <%= link_to "East Liberty", east_liberty_path, class: "waves-effect waves-light btn newvenue image-btns menubtn east_liberty-btn"%>
+</div>
 <div class = "hide"><%= link_to "Brunch", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn brunch-btn"%></div>
 <% if (user_signed_in?)%>
    <% if current_user.admin?%>
@@ -80,15 +82,17 @@
 	<a class="waves-effect waves-light btn black"><i class="material-icons left">history</i>Join</a>
 	</div>
 </div><br>
-<div class = "contributors">
+<div class = "contributors z-depth-1">
+	
 	<ul class="collapsible beerlist">
 		<%top_5 = 0%>
 		<% User.all.order("experience desc ").each do |user|%>
 			
 			<%if top_5 < 5%>
 				<%if user.fullname && user.experience%>
-					<div class="collapsible-header special-by-day">
-						<li>
+					<div class="collapsible-header special-by-day ">
+						
+						<li >
 							<% if user.experience > 100 %>
 								<div class = "right"><i class="tiny material-icons" >verified_user</i></div>
 							<%end%>
@@ -102,6 +106,7 @@
 			<%end%>
 		<%end%>
 	</ul>
+
 </div>
 <br>
 	

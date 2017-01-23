@@ -19,11 +19,14 @@
   <div class="field">
     
   </div>
-  <div class="input-field col s12">
+  
+  <div class="row">
+  <div class="input-field col s12 deets">
           <!--<textarea id="textarea1" class="materialize-textarea"></textarea>-->
           <!--<%= f.label :description %><br>-->
     <%= f.text_area :description, id:"textarea1", class:"materialize-textarea" %>
           <label for="textarea1">Description</label>
+        </div>
         </div>
   <div class="input-field col s12">
     <!--<%= f.label :price %>-->
@@ -54,12 +57,12 @@
     <%= f.file_field :image %>
   </div>
    <%if current_user.admin?%>
-   <div class="field">
-    <%= f.label :credit %><br>
+   <div class="input-field col s12">
+    <%= f.label :credit %>
     <%= f.number_field :credit %>
   </div>
-  <div class="field">
-    <%= f.label :available_credits %><br>
+   <div class="input-field col s12">
+    <%= f.label :available_credits %>
     <%= f.number_field :available_credits %>
   </div>
    <%end%>

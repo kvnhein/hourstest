@@ -30,11 +30,10 @@
 											<div class = "posh<%=@modal_event.id%> theshowform" style="position: relative;">
 												
 												<%= form_for Claim.new, remote: true do |f| %>
-  													<div class="input-field">
-    													<%= f.label :description, "What's Wrong? (Required)" %><br>
-    													<div class = "input-field">
-    													<%= f.text_area :description%>
-    													</div>
+  													<div class="input-field col s12">
+    													<!--<%= f.label :description, "What's Wrong? (Required)" %>-->
+    													<%= f.text_area :description, class:"materialize-textarea", id:"claimarea1" %>
+    													 <label for="claimarea1">What's Wrong</label>
   													</div>
   													
   													<div class="field hide">
