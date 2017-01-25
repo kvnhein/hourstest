@@ -60,6 +60,10 @@ def self.from_omniauth(auth)
   	self.id == 1
   end
   
+  def super_user?
+    self.experience >= 10000
+  end
+  
   def can_verify?
   if self.experience
     if self.experience < 50 

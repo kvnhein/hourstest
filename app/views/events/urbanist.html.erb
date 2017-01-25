@@ -188,7 +188,7 @@
 <div id="featured-urbanist">
 
    <div class="specials-header urbanist-featured urbanist-header neighborhoodtop">
-      <h4 class="flow-text">HOURS</h4>
+      <h4 class="flow-text">Hours</h4>
       <div style="display:none;">
         <h5 class="flow-text">Hours for <%= @day_tag %>, <%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h5>
       </div>
@@ -200,8 +200,9 @@
     <a href="http://www.hourspgh.com/" target="_blank"><%= image_tag "powered-hours.png"%></a>
   </div>
 
-    <%= render partial: "shared/autocomplete"%>
+    
 
+<div class="hide">
   <%if Event.where(venue_id: @market_square_venues.pluck(:id), day: @day_tag).count > 0 %>
   <div class="title-sep">
     <hr>
@@ -274,5 +275,200 @@
    <% end %>
 
   </div>
+
+
+
+<!--START URBANISTHOURS --> 
+<div class="row" style="margin: 3px 0 8px 0;">
+    <div class="col s12 profile-tabs venues">
+      <ul class="tabs tab-demo" style="width: 100%;">
+        <li class="tab Market_Square"><a class="active" href="#Market_Square">Downtown</a></li>
+        <li class="tab Southside"><a class="" href="#Southside">South Side</a></li>
+        <li class="tab Shadyside"><a class="" href="#Shadyside">Shadyside</a></li>
+        <li class="tab Oakland"><a class="" href="#Oakland">Oakland</a></li>
+        <li class="tab Lawrenceville"><a class="" href="#Lawrenceville">Lawrenceville</a></li>
+        <li class="tab Strip_district"><a class="" href="#Strip_district">Strip District</a></li>
+        <li class="tab East_liberty"><a class="" href="#East_liberty">East Liberty</a></li>
+      </ul>
+    </div>
+  </div>
+
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+
+
+<div class="add-height"></div>
+
+<div id="key-fixed">
+<div class="key-color">
+            <div style="display:block; text-align:center">
+                <div class="later-tab" style=
+                "position: inherit; width: 45px; display:inline-block;background-color:#bdbdbd">
+                Past
+                </div>
+
+
+                <div class="now-tab" style=
+                "position: inherit; width: 45px; display:inline-block;">
+                    Now
+                </div>
+
+
+                <div class="later-tab" style=
+                "position: inherit; width: 45px; display:inline-block;">
+                    Later
+                </div>
+            </div>
+
+
+            <div class="search-tab-btn">
+                <div class="click-open-search">
+                    <!--<i class="material-icons">search</i>-->
+                  <i class="zmdi zmdi-search"></i>
+                    
+                </div>
+                <%= form_tag(@neighborhood_path, :method => "get", id: "search-form") do %><!-- text field tag=action,args,identifier,placeholdertext... -->
+                <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search Specials", type: "search", data: {autocomplete: @autocomplete_path} %>
+
+                <div class="search-btn">
+                    <%= submit_tag "Search" %>
+                </div>
+                <%end%>
+                <script charset="utf-8" type="text/javascript">
+                $('#search').bind('railsAutocomplete.select', function(event, data){
+                $('#search-form').submit()
+                });
+                </script> <%= link_to "clear", @neighborhood_path%>
+            </div>
+            <script>
+
+            $( ".click-open-search" ).click(function() {
+            $( ".search-tab-btn" ).toggleClass( "slide-out-search" );
+            });
+
+            </script>
+        </div>
 </div>
 
+
+<script>
+  $(document).ready(function() {
+    
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the
+      //nav bar to stick.
+//    console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 387) {
+      $('#key-fixed').addClass('navbar-fixed2');
+       $('.add-height').addClass('show-height');
+    }
+    if ($(window).scrollTop() < 387) {
+      $('#key-fixed').removeClass('navbar-fixed2');
+      $('.add-height').removeClass('show-height');
+    }
+  });
+});
+</script>
+
+<div id="Market_Square">
+     <p class="center-tit"><%= link_to 'See Downtown Hours', downtown_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 5).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+     
+     <%= render 'urbanist_batch'%>
+</div>
+
+<div id="Southside">
+  
+    <p class="center-tit"><%= link_to 'See South Side Hours', south_side_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+     <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 1).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+     <%= render 'urbanist_batch'%>
+
+</div>
+
+<div id="Shadyside">
+     <p class="center-tit"><%= link_to 'See Shadyside Hours', shadyside_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 2).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+        <%= render 'urbanist_batch'%>
+</div>
+
+
+<div id="Oakland">
+     <p class="center-tit"><%= link_to 'See Oakland Hours', oakland_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 3).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(neighborhood_id: 5,venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+        <%= render 'urbanist_batch'%>
+</div>
+
+<div id="Lawrenceville">
+     <p class="center-tit"><%= link_to 'See Lawrenceville Hours', lawrenceville_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 7).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+        <%= render 'urbanist_batch'%>
+</div>
+
+<div id="Strip_district">
+     <p class="center-tit"><%= link_to 'See Strip District Hours', strip_district_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 11).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+        <%= render 'urbanist_batch'%>
+</div>
+
+    <div id="East_liberty">
+     <p class="center-tit"><%= link_to 'See East Liberty Hours', east_liberty_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 9).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+         <%= render 'urbanist_batch'%>
+    </div>
+
+<!--END URBANISTHOURS --> 
+</div>
+</div>

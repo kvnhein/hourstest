@@ -82,15 +82,15 @@
 	<a class="waves-effect waves-light btn black"><i class="material-icons left">history</i>Join</a>
 	</div>
 </div><br>
-<div class = "contributors z-depth-1">
+<div class = "contributors ">
 	
-	<ul class="collapsible beerlist">
+	<ul class="collapsible beerlist ">
 		<%top_5 = 0%>
 		<% User.all.order("experience desc ").each do |user|%>
 			
 			<%if top_5 < 5%>
 				<%if user.fullname && user.experience%>
-					<div class="collapsible-header special-by-day ">
+					<div class="collapsible-header special-by-day z-depth-1">
 						
 						<li >
 							<% if user.experience > 100 %>

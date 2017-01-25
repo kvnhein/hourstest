@@ -42,7 +42,7 @@
   <li><%= link_to "South Side", south_side_path%></li>
 </ul>
 <div class="navbar-fixed">
-<nav>
+<nav id="header22">
   <div class = "container">
   <div class="nav-wrapper">
   <div class = "row">
@@ -238,6 +238,16 @@
      $(document).ready(function(){
       $(".dropdown-button").dropdown();
     });
+    
+    $(window).scroll(function() {     
+    var scroll = $(window).scrollTop();
+    if (scroll > 0) {
+        $("#header22").addClass("active22");
+    }
+    else {
+        $("#header22").removeClass("active22");
+    }
+});
     </script>
     </div>
   </div>

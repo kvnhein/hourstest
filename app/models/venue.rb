@@ -28,7 +28,7 @@ class Venue < ActiveRecord::Base
   end
   
   def venue_area
-     "#{name} (#{neighborhood_id})"
+     "#{name} | #{Neighborhood.find(neighborhood_id).name}"
   end
 
   def feature_dish_check

@@ -1,0 +1,127 @@
+<p id="notice"><%= notice %></p>
+
+
+<!--<div class="col s3">-->
+<!--     <div class="detailstitle">-->
+<!--           <h2 class= "flow-text center-align">Venues</h2>-->
+
+<!--     </div>-->
+<!--</div>-->
+
+<!--START URBANISTHOURS --> 
+<div class="row" style="margin: 3px 0 0 0;">
+    <div class="col s12 profile-tabs venues">
+      <ul class="tabs tab-demo" style="width: 100%;">
+        <li class="tab Market_Square"><a class="active" href="#Market_Square">Downtown</a></li>
+        <li class="tab Southside"><a class="" href="#Southside">South Side</a></li>
+        <li class="tab Shadyside"><a class="" href="#Shadyside">Shadyside</a></li>
+        <li class="tab Oakland"><a class="" href="#Oakland">Oakland</a></li>
+        <li class="tab Lawrenceville"><a class="" href="#Lawrenceville">Lawrenceville</a></li>
+        <li class="tab Strip_district"><a class="" href="#Strip_district">Strip District</a></li>
+        <li class="tab East_liberty"><a class="" href="#East_liberty">East Liberty</a></li>
+      </ul>
+    </div>
+  </div>
+
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+
+<div id="Market_Square">
+     <p class="center-tit"><%= link_to 'See Downtown Hours', downtown_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 5).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+     
+     <%= render 'urbanist_batch'%>
+</div>
+
+<div id="Southside">
+  
+    <p class="center-tit"><%= link_to 'See South Side Hours', south_side_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+     <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 1).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+     <%= render 'urbanist_batch'%>
+
+</div>
+
+<div id="Shadyside">
+     <p class="center-tit"><%= link_to 'See Shadyside Hours', shadyside_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 2).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+        <%= render 'urbanist_batch'%>
+</div>
+
+
+<div id="Oakland">
+     <p class="center-tit"><%= link_to 'See Oakland Hours', oakland_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 3).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(neighborhood_id: 5,venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+        <%= render 'urbanist_batch'%>
+</div>
+
+<div id="Lawrenceville">
+     <p class="center-tit"><%= link_to 'See Lawrenceville Hours', lawrenceville_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 7).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+        <%= render 'urbanist_batch'%>
+</div>
+
+<div id="Strip_district">
+     <p class="center-tit"><%= link_to 'See Strip District Hours', strip_district_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 11).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+        <%= render 'urbanist_batch'%>
+</div>
+
+    <div id="East_liberty">
+     <p class="center-tit"><%= link_to 'See East Liberty Hours', east_liberty_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+    <%@urbanist_batch = []%>
+    <%@urbanist_venues.where(neighborhood_id: 9).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
+         <%@urbanist_batch.push(event)%>
+    <%end%>
+    <%end%>
+         <%= render 'urbanist_batch'%>
+    </div>
+
+<!--END URBANISTHOURS --> 

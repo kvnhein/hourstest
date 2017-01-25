@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
  # before_action :require_owner_event, only: [:edit, :update, :destroy]
   before_action :verified_venues, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
-  before_action :event_time, only: [:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill]
+  before_action :event_time, only: [:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill, :user_index]
   autocomplete :event, :special, :full => true
   # GET /events
   # GET /events.json
@@ -17,7 +17,9 @@ class EventsController < ApplicationController
   end
   
   def user_index
-      @users = User.all 
+      @users = User.all
+      @urbanist_venues = Venue.where(urbanist: true)
+      @events = Event.where(day: @day_specials)
   end
   
   def event_verified
