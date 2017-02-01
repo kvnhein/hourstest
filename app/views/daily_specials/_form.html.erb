@@ -52,6 +52,10 @@
     <%= f.label :dish_type %><br>
     <%= f.text_field :dish_type %>
   </div>
+  <div class="field" id = "event_date">
+    <%= f.label :special_date %><br>
+    <%= f.text_field :special_date, class: "datepicker"%>
+  </div>
   <div class="field">
     <%= f.label :image %><br>
     <%= f.file_field :image %>
@@ -88,5 +92,24 @@
   </div>
 </div>
 <% end %>
+
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
+<script>
+   $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+</script>
+
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
 
 

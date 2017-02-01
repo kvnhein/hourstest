@@ -3,5 +3,5 @@ $("#form_button<%=@claim.event_id%>").show()
 $("#form_button<%=@claim.event_id%>").html('<%=escape_javascript (render partial: "claims/form2") %>');
 $(".verify_button<%=@claim.event_id%>").show()
 $(".verify_button<%=@claim.event_id%>").html('<%=escape_javascript (render partial: "claims/verify_button") %>');
-
+$('#new-event<%=@claim.event.id%>').html('<%=escape_javascript (render "claim_partial") %>');
 

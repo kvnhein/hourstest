@@ -156,10 +156,14 @@ class EventsController < ApplicationController
   end
 
   def urbanist
+      
+    @users = User.all
+    @urbanist_venues = Venue.where(urbanist: true)
+    @events = Event.where(day: @day_specials)
+      
     #this is for OG
     @topic = "Happy Hours at Urbanist Approved Venues in Pittsburgh"
     @topic_description = "URBANIST guide aims to produce the best printed city guides in the nation"
-
 
     @autocomplete_path = urbanist_autocomplete_event_special_path
     @neighborhood_path = urbanist_path
@@ -352,6 +356,9 @@ class EventsController < ApplicationController
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+
+
+ 
 
   end
 

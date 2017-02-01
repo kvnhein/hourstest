@@ -1,6 +1,6 @@
 <%x=[]%>
 <%@third_batch.shuffle.each do |event| %>
-	<%x.push(Venue.where(id: event.venue_id).first.id)%>
+<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 <%x.uniq.each do |d|%>
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>
@@ -39,7 +39,7 @@
 						<div class="chip" style="background-color:#17a787">
 							<%=event.special%>
 						</div>
-						<div class="new-event">
+						<div class="new-event" id = "new-event<%=event.id%>">
 						
 							<%= event.new_event%>
 							<%if  event.claims?%>
@@ -51,7 +51,7 @@
 						<div class="chip" style="background-color:#17a787">
 							<%=event.special%>
 						</div>
-						<div class="new-event">
+						<div class="new-event" id = "new-event<%=event.id%>">
 							<%= event.new_event%>
 							<%if  event.claims?%>
 								<i class="zmdi zmdi-flag"></i>
@@ -62,7 +62,7 @@
 						<div class="chip" style="background-color:#17a787">
 							<%=event.special%>
 						</div>
-						<div class="new-event">
+						<div class="new-event" id = "new-event<%=event.id%>">
 							<%= event.new_event%>
 							<%if  event.claims?%>
 								<i class="zmdi zmdi-flag"></i>
@@ -73,7 +73,7 @@
 						<div class="chip" style="background-color:#000000">
 							<%=event.special%>
 						</div>
-						<div class="new-event">
+						<div class="new-event" id = "new-event<%=event.id%>">
 							<%= event.new_event%>
 							<%if  event.claims?%>
 								<i class="zmdi zmdi-flag"></i>
@@ -84,7 +84,7 @@
 						<div class="chip" style="background-color:#bdbdbd">
 							<%=event.special%>
 						</div>
-						<div class="new-event">
+						<div class="new-event" id = "new-event<%=event.id%>">
 							<%= event.new_event%>
 							<%if  event.claims?%>
 								<i class="zmdi zmdi-flag"></i>
@@ -165,7 +165,9 @@
 <%=modal_event.time_conversion%>
 								</div>
 								<p><span class="submit-by">Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(modal_event.user_id).experience%></span> <%if modal_event.any_details == 2%></p>
-								<p class="deets"> Details:
+								
+								<p class="deets">
+								Details: 
 								<%=modal_event.detail%></p><%@event_tag = modal_event%><!--<%= render partial: "shared/tags"%>-->
 								<%end%><%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
 								<div class="now-tab">
@@ -215,6 +217,7 @@
 											        	$(".posh<%=modal_event.id%>").show();
     													});
     												
+  													
     												
     												$(".posh<%=modal_event.id%>").hide();
     												$(".new_claim<%=modal_event.id%>").hide();
@@ -234,9 +237,10 @@
 											<div class = "posh<%=modal_event.id%> theshowform" style="position: relative;">
 												
 												<%= form_for Claim.new, remote: true do |f| %>
-  													<div class="field">
-    													<%= f.label :description, "What's Wrong? (Required)" %>
-    													<%= f.text_area :description, class:"materialize-textarea" %>
+  													<div class="input-field">
+    													<!--<%= f.label :description, "What's Wrong? (Required)" %>-->
+    													<%= f.text_area :description, class:"materialize-textarea", id:"claimarea1" %>
+    													 <label for="claimarea1">What's Wrong</label>
   													</div>
   													
   													<div class="field hide">
@@ -253,6 +257,7 @@
 												<% end %>
 												<button id="hide<%=modal_event.id%>" class="hide-btn2">Cancle</button>
 												</div>
+												
 											<%else%>
 												<div class="new_claim">
 													<button id="show" class="btn-flat disabled" onclick="Materialize.toast('You dont have enough hours yet to contest happy hours. Save more hours to you profile to earn Hours.', 4000)">
