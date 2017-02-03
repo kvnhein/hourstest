@@ -58,7 +58,7 @@ class DailySpecialsController < ApplicationController
 
   # GET /daily_specials/new
   def new
-    @daily_special = DailySpecial.new
+    @daily_special = current_user.daily_specials.build
   end
 
   # GET /daily_specials/1/edit
@@ -68,7 +68,7 @@ class DailySpecialsController < ApplicationController
   # POST /daily_specials
   # POST /daily_specials.json
   def create
-    @daily_special = DailySpecial.new(daily_special_params)
+    @daily_special = current_user.daily_specials.build(daily_special_params)
 
     respond_to do |format|
       if @daily_special.save

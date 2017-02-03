@@ -1,0 +1,84 @@
+<%modal_event = @modal_event%>
+								<div id = "form_button<%=modal_event.id%>" display ="none">
+									<% if Claim.where(event_id: modal_event.id).count == 0%>
+										<% if user_signed_in?%>
+											<% if current_user.can_verify?%>
+											
+											<!-- This is the code to hide form-->
+											<script>
+												$(document).ready(function(){
+    												$("#hide<%=modal_event.id%>").click(function(){
+        												$(".posh<%=modal_event.id%>").hide();
+    													});
+    												$("#show<%=modal_event.id%>").click(function(){
+											        	$(".posh<%=modal_event.id%>").show();
+    													});
+    												
+  													
+    												
+    												$(".posh<%=modal_event.id%>").hide();
+    												$(".new_claim<%=modal_event.id%>").hide();
+    											
+												});
+											</script>
+											
+											
+											
+											
+											<div class="new_claim">
+											<button id="show<%=modal_event.id%>" class="btn-flat disabled">
+												<i class="zmdi zmdi-flag"></i>
+											</button>
+											</div>
+											<!-- End of code to hide form--> 
+											<div class = "posh<%=modal_event.id%> theshowform" style="position: relative;">
+												
+												<%= form_for Claim.new, remote: true do |f| %>
+  													<div class="input-field">
+    													<!--<%= f.label :description, "What's Wrong? (Required)" %>-->
+    													<%= f.text_area :description, class:"materialize-textarea", id:"claimarea1" %>
+    													 <label for="claimarea1">What's Wrong</label>
+  													</div>
+  													
+  													<div class="field hide">
+    													<%= f.label :user_id %><br>
+    													<%= f.text_field :user_id, :value => current_user.id %> %>
+  													</div>
+  													<div class="field hide">
+    													<%= f.label :event_id %><br>
+    													<%= f.text_field :event_id, :value => modal_event.id %> %>
+  													</div>
+  													<div class = "">
+    													<%= f.submit "submit", class:"submit-btn2", id: "form-hide#{modal_event.id}"%>
+  													</div>
+												<% end %>
+												<button id="hide<%=modal_event.id%>" class="hide-btn2">Cancle</button>
+												</div>
+												
+											<%else%>
+												<div class="new_claim">
+													<button id="show" class="btn-flat disabled" onclick="Materialize.toast('You dont have enough hours yet to contest happy hours. Save more hours to you profile to earn Hours.', 4000)">
+														<i class="zmdi zmdi-flag"></i>
+													</button>
+												</div>
+											<%end%>
+											<%else%>
+												<div  class = "btn-flat disabled red-text text-accent-4 new_claim signin_flag">
+													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee hide", id: "form-hide#{modal_event.id}" do%>
+														<i class="zmdi zmdi-flag"></i>
+													<%end%>
+													<a class="tooltipped btn-flat disabled red-text text-accent-4 cantsee"  data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag hours"><i class="zmdi zmdi-flag"></i></a>
+        
+												</div>
+										<%end%>
+									<%end%>
+								</div>
+								
+								<%@m = modal_event.id%>
+							<div id = "second_form_button<%=modal_event.id%>"></div>
+							<!-- end of form -->
+						    	<%@claims = Claim.where(event_id: modal_event.id)%>
+									<div class = "new_claim<%=modal_event.id%>">
+										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
+									</div>
+								

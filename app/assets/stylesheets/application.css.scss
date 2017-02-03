@@ -313,6 +313,11 @@ progress[value]::-webkit-progress-value {
 
 .submit-by {
   /*font-style: italic;*/
+  font-size: 12px;
+}
+
+.submit-by a{
+  color: #17a787;
 }
 
 .collapsible-header .valign-wrapper i {
@@ -357,6 +362,54 @@ position: absolute;
     position: absolute;
     bottom: 10px;
         left: 0px;
+}
+
+.like-on-profile {
+  position: absolute;
+    bottom: 6px;
+    left: 20px;
+}
+
+.verifyprofile i.tiny{
+  opacity: 0.9;
+    font-size: 20px;
+}
+
+.flagprofile .theshowform {
+  margin: 28px -20px 0px -20px;
+}
+
+.flagprofile .theshowform2 {
+  margin: 28px -20px 0px -20px;
+}
+
+.flagprofile .claim a i {
+  padding-right: 13px;
+}
+
+.flagprofile .beerlist .special-by-day p {
+      display: inline-block !important;
+}
+
+.flagprofile .hide-btn2 {
+      bottom: 11px;
+}
+
+.verifyprofile .valign-wrapper .verified-hour a{
+ display: inline-block;
+    position: absolute;
+    bottom: 5px;
+    left: 56px;
+    font-size: 10px;
+}
+
+.verifyprofile .verified-hour a {
+      bottom: 5px;
+      left: 54px;
+}
+
+.verifyprofile .verified-by-w {
+      bottom: 8px;
 }
 
 .like-like i.tiny {
@@ -893,8 +946,8 @@ margin: 0 0px 0 0 !important;
 }
 
 .weeklyhours.beerlist .special-by-day {
-  padding: 10px 20px;
-      background-color: #f2f2f2 !important;
+  padding: 10px 20px 38px 20px;
+      background-color: #fff !important;
 }
 
 .slider.weeklyslider .indicators {
@@ -1049,6 +1102,44 @@ footer.page-footer {
     margin-right: 0;
 } 
 
+.profile-btn-edit {
+  width: 20px;
+    font-size: 18px;
+    color: #aaa;
+}
+
+.imhere .zmdi-delete {
+  position: absolute;
+    right: 75px;
+    bottom: 6px;
+}
+
+.imhere .zmdi-edit {
+      position: absolute;
+    right: 44px;
+    bottom: 6px;
+    
+}
+
+.name-to-profile p{
+   width: auto !important;
+    text-transform: capitalize !important;
+    font-size: 12px !important;
+    padding-top: 0 !important;
+    display: inline-block;  
+        margin: 0 0 15px 0;
+}
+
+.name-to-profile a {
+      width: auto !important;
+    text-transform: capitalize !important;
+    font-size: 12px !important;
+    padding-top: 0 !important;
+   color: #17a787 !important;
+   display: inline-block !important;
+       margin: 0px 0 15px 0;
+}
+
 #featured-urbanist {
       display: none;
     max-width: 800px;
@@ -1088,7 +1179,7 @@ footer.page-footer {
 }
 
 .featured-dish-section .card .card-content {
-    padding: 10px 90px 8px 0;
+    padding: 10px 90px 0px 0;
     border-radius: 0;
     font-weight: 800;
     font-size: 14px;

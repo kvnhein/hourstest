@@ -350,7 +350,7 @@
     <%@urbanist_batch = []%>
     <%@urbanist_venues.where(neighborhood_id: 3).each do |venue|%>
         <%a= venue.id%>
-        <%events = @events.where(neighborhood_id: 5,venue_id: a).to_a%>
+        <%events = @events.where(venue_id: a).to_a%>
         <%events.each do |event|%>
          <%@urbanist_batch.push(event)%>
     <%end%>

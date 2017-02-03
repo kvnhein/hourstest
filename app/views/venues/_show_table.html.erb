@@ -9,18 +9,20 @@
     <h4>
       <%= x.special %>
        <% @d = x%>
-          <div class="like-like">
+          <div class="like-like like-on-profile">
             <div id = 'like-<%=x.id%>'>
               <% if user_signed_in? %>
+              <div class="">
                 <% if current_user.voted_as_when_voted_for x %>
                   <%= render partial: 'events/event_downvote'%>
                 <% else %>
                   <%= render partial: 'events/event_upvote' %>
                 <% end %>
+                </div>
               <%else%>
                 <%= link_to new_user_session_path do%>
                 <!--<i class="material-icons">edit_mode</i>-->
-                <i class="zmdi zmdi-favorite-outline"></i>
+                <i class="zmdi zmdi-favorite-outline like-on-profile"></i>
               <%end%>
             <%end%>
           </div>
@@ -89,31 +91,36 @@
  <%@happy_hour = Event.where(id: x.id).first%>
 
 
-  <div class="edit-button-user imhere">
-  <div style="width: 58px;
-    display: inline-block;
-    height: 100%;
-    position: relative;
-    border-left: 1px solid #ddd;">
+  <div class="imhere">
+  <div style="">
     <%= link_to edit_event_path(@happy_hour) do%>
     <!--<i class="material-icons">edit_mode</i>-->
-<i class="zmdi zmdi-edit"></i>
+<i class="zmdi zmdi-edit profile-btn-edit"></i>
 
   <%end%>
   </div>
-    <div style="width: 58px;
-    display: inline-block;
-    height: 100%;
-    position: relative;
-    border-left: 1px solid #ddd;">
+    <div style="">
   <%= link_to x, method: :delete, data: { confirm: 'Are you sure?' } do%>
   <!--<i class="material-icons">delete_forever</i>-->
-                  <i class="zmdi zmdi-delete"></i>
+                  <i class="zmdi zmdi-delete profile-btn-edit"></i>
   <%end%>
     </div>
   </div>
 <%end%>
+<div class="verifyprofile">
+<%@event = x%>
+<%= render partial: "shared/verify_button_partial"%>
+<div class="verified-by-w" id='verify-<%=@event.id%>'>
+    <%unless @event.event_verify.nil? || @event.varified_user.nil? %>
+	    <p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(@event.event_verify, Time.now)%> ago by <%=User.find(@event.varified_user).fullname%></p>
+	<%end%>
+</div>
+</div>
 
+<%@modal_event = x%>
+<div class="flagprofile">
+<%= render partial: "venues/claim_partial"%>
+</div>
       </li>
        <%end%>
     </ul>

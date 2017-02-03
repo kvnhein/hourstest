@@ -70,8 +70,18 @@
     </div>
     
     <div class="field">
-      <%= f.label :tag_list, "Tags (Food, Drinks, Late Nite, Entertainment separated by commas)" %><br />
-      <%= f.text_field :tag_list, value: @event.tag_list.to_s %>
+      <%= f.label :tag_list, "Tags" %><br />
+      <% f.text_field :tag_list, value: @event.tag_list.to_s %>
+  </div>
+  <div class = "field">
+    <%= f.check_box :food %>
+    <%= f.label 'food', id:'food' %>
+    <%= f.check_box :drinks %>
+    <%= f.label 'drinks', id:'drinks' %>
+    <%= f.check_box :late_nite %>
+    <%= f.label 'late_nite', id:'late_nite' %>
+    <%= f.check_box :entertainment %>
+    <%= f.label 'entertainment', id:'entertainment' %>
   </div>
   <div class="field hide">
     <%= f.label :event_verify %><br>

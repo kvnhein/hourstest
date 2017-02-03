@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 acts_as_voter
 has_many :reservations
 has_many :events
+has_many :daily_specials
   validates :fullname, presence: true, length: {maximum: 50}
 before_save :default_values
 
@@ -63,7 +64,11 @@ def self.from_omniauth(auth)
   def super_user?
     self.experience >= 10000
   end
-  
+ 
+  def user_specials
+    DailySpecial.where(user_id: self.id)
+  end 
+ 
   def can_verify?
   if self.experience
     if self.experience < 50 

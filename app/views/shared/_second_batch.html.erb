@@ -164,7 +164,7 @@
 									<i class="zmdi zmdi-time"></i>
 <%=modal_event.time_conversion%>
 								</div>
-								<p><span class="submit-by">Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(modal_event.user_id).experience%></span> <%if modal_event.any_details == 2%></p>
+								<p><span class="submit-by">Submitted by  <%= link_to "#{User.find(modal_event.user_id).fullname}", User.find(modal_event.user_id) %></span> <%if modal_event.any_details == 2%></p>
 								
 								<p class="deets">
 								Details: 

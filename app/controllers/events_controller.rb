@@ -569,6 +569,27 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    event2 = @event
+    if event2.food == false    
+        event2.tag_list.remove("Food")
+    elsif event2.food == true 
+        event2.tag_list.add("Food")
+    end
+    if event2.drinks == false    
+        event2.tag_list.remove("Drinks")
+    elsif event2.drinks == true 
+        event2.tag_list.add("Drinks")
+    end
+    if event2.late_nite == false    
+        event2.tag_list.remove("Late nite")
+    elsif event2.late_nite == true 
+        event2.tag_list.add("Late nite")
+    end
+    if event2.entertainment == false    
+        event2.tag_list.remove("Entertainment")
+    elsif event2.entertainment == true 
+        event2.tag_list.add("Entertainment")
+    end
   end
 
   # POST /events
@@ -577,6 +598,28 @@ class EventsController < ApplicationController
 
     expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
     @event = current_user.events.build(event_params)
+    
+    event2 = @event
+    if event2.food == false    
+        event2.tag_list.remove("Food")
+    elsif event2.food == true 
+        event2.tag_list.add("Food")
+    end
+    if event2.drinks == false    
+        event2.tag_list.remove("Drinks")
+    elsif event2.drinks == true 
+        event2.tag_list.add("Drinks")
+    end
+    if event2.late_nite == false    
+        event2.tag_list.remove("Late nite")
+    elsif event2.late_nite == true 
+        event2.tag_list.add("Late nite")
+    end
+    if event2.entertainment == false    
+        event2.tag_list.remove("Entertainment")
+    elsif event2.entertainment == true 
+        event2.tag_list.add("Entertainment")
+    end
     #@event = Event.new(event_params)
     if @event.day == "Weekdays"
         @event.day = "Monday"
@@ -671,7 +714,9 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-     expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
+    expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
+    
+        
     respond_to do |format|
       if @event.update(event_params)
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
@@ -704,6 +749,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end, :tag_list, :event_verify, :varified_user, :event_date)
+      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end, :tag_list, :event_verify, :varified_user, :event_date, :food, :drinks, :entertainment, :late_nite)
     end
 end
