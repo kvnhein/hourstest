@@ -88,9 +88,7 @@
                     </div><!--End Of Like Button-->
                 </div>
                 <div class="card-action">
-                     <div class="name-to-profile">
-                       <p>Submitted by</p> <%= link_to "#{User.find(event.user_id).fullname}", User.find(event.user_id) %>
-                    </div>
+                     
                     <%= event.description %>
                    
                     <div>
