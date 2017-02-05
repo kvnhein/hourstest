@@ -73,7 +73,7 @@
       <%= f.label :tag_list, "Tags" %><br />
       <% f.text_field :tag_list, value: @event.tag_list.to_s %>
   </div>
-  <div class = "field">
+  <div class = "field tag-checks">
     <%= f.check_box :food %>
     <%= f.label 'food', id:'food' %>
     <%= f.check_box :drinks %>
