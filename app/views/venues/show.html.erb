@@ -273,7 +273,9 @@ Verify Venue
         <p class="phonea"> Phone: <%=phone_number_link("#{phone_string}")%></p>
         <p>Address: <%= @venue.address%></p>
         <p>Venue Type: <%= @venue.genre%></p>
-
+        <% if @venue.open_table_id %>
+            <script type='text/javascript' src='//www.opentable.com/widget/reservation/loader?rid=<%= @venue.open_table_id%>&domain=com&type=standard&theme=standard&lang=en&overlay=false&iframe=true'></script>
+        <%end%>
     </div>
   </div>
   

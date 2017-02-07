@@ -1,6 +1,6 @@
 <%x=[]%>
 <%@second_batch.shuffle.each do |event| %>
-	<%x.push(Venue.where(id: event.venue_id).first.id)%>
+<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 <%x.uniq.each do |d|%>
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>
@@ -140,18 +140,11 @@
 											<%if user_signed_in? %>
 												<%if current_user.voted_as_when_voted_for modal_event %>
 													<%= render 'event_downvote'%>
-													
 												<%else %>
 													<%= render 'event_upvote' %>
-													
 												<%end %>
 											<%else%>
-												<%= link_to new_user_session_path, class:"hide" do%>
-													<!--<i class="tiny material-icons" style="opacity:0.4">favorite_border</i>-->
-													<i class="zmdi zmdi-favorite-outline"></i> 
-												<%end%> 
 												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-favorite-outline"></i> </a>
-												
 											<%end%>
 										</div>
 										<!--<div class="verified-hour" id= 'event<%=modal_event.id%>'>
@@ -307,5 +300,3 @@
 
 	<!-- This is the code to hide form-->
 										
-
-
