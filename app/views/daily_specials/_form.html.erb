@@ -36,7 +36,7 @@
     <label for="price1">Price</label>
   </div>
   <div class="field">
-    <%if current_user.admin?%>
+    <%if current_user.admin? || current_user.super_user?%>
     <%= f.label :venue_id %><br>
      <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id).order("name"), :id, :venue_area, { :multiple => false})%>
     <%else%>
