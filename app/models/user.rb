@@ -62,7 +62,9 @@ def self.from_omniauth(auth)
   end
   
   def super_user?
-    self.experience >= 10000
+    if self.experience >= 10000
+      return true
+    end
   end
  
   def user_specials
