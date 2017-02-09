@@ -1,6 +1,7 @@
 	<%modal_event = @event%>
 	<% if modal_event.week_verification%>
 							
+								<div class="verifyprofile">
 								<div class = "verify_button<%=modal_event.id%>">
 								<% if Claim.where(event_id: modal_event.id).count == 0%>
 									
@@ -22,6 +23,8 @@
 											</div>
 											
 										<%end%>
+										</div>
 									<%end%>
+								
 								</div>
 	<%end%>

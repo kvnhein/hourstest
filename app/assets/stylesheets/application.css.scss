@@ -414,6 +414,16 @@ position: absolute;
       left: 54px;
 }
 
+.verifyprofile .verified-hour button {
+      bottom: 5px;
+      left: 54px;
+          height: 20px;
+}
+
+.verifyprofile .verified-hour i {
+      line-height:0;
+}
+
 .verifyprofile .verified-by-w {
       bottom: 8px;
 }
@@ -2680,6 +2690,17 @@ iframe {
         border-bottom: 1px solid #fff;
 }
 
+.bloomfield-btn {
+    background: url(bloomfield-btn2.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+        border-bottom: 1px solid #fff;
+}
+
 .brunch-btn {
     background: url(brunch.png);
   background-repeat: no-repeat;
@@ -2804,6 +2825,17 @@ background-position:center;
 
 .specials-header.marketsquare-header {
    background: url(market-square.jpg);
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
+}
+
+.specials-header.bloomfield-header {
+   background: url(bloomfield-btn3.jpg);
    background-repeat:no-repeat;
 -webkit-background-size:cover;
 -moz-background-size:cover;

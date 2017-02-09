@@ -42,9 +42,14 @@
 </div>
 </div>
 
-<h4 class ="flow-text center landing-title">New Arrival</h4>
-<div class = "z-depth-1">
+<h4 class ="flow-text center landing-title">New Arrivals</h4>
+<div class="row con-neighb">
+<div class = "col m4 s6 z-depth-1">
 <%= link_to "East Liberty", east_liberty_path, class: "waves-effect waves-light btn newvenue image-btns menubtn east_liberty-btn"%>
+</div>
+<div class = "col m4 s6 z-depth-1">
+<%= link_to "Bloomfield", bloomfield_path, class: "waves-effect waves-light btn newvenue image-btns menubtn bloomfield-btn"%>
+</div>
 </div>
 <div class = "hide"><%= link_to "Brunch", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn brunch-btn"%></div>
 <% if (user_signed_in?)%>

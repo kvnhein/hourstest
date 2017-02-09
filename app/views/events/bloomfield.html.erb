@@ -9,7 +9,7 @@
 <%end%>
 
 <% cache("bloomfield_header", :expires_in => 10.minutes) do %>
-<div class="specials-header">
+<div class="specials-header bloomfield-header neighborhoodtop">
 
 <h4 class="flow-text">Bloomfield</h4>
 <h5 class="flow-text">Hours for <%= @day_tag %>, <%= Time.now.strftime("%B #{Time.now.day.ordinalize}, %Y") %></h5>
@@ -39,7 +39,6 @@
    <%end%>
     </div>
   </div>
-
 <!--TABS-->
 <script>
    $(document).ready(function(){
@@ -53,17 +52,16 @@
 
 <div class ="center" id="specials">
  <%=render partial: "shared/autocomplete"%>
-  <div><%= render partial: "shared/top_tags"%></div>
+ <div><%= render partial: "shared/top_tags"%></div>
  <%=render partial: "shared/dynamic_table_card"%>
 </div>
 
-<div class = "hide-on-med-and-up">
+
 <%unless @todays_feature.count== 0%>
 <div id="featured-dish">
   <%=render partial: "shared/featured_dish_table"%>
 </div>
 <%end%>
-</div>
 
 <!-- This script is for Google Analytics -->
 <script>
@@ -76,3 +74,14 @@
   ga('send', 'pageview');
 
 </script>
+
+<script>
+$(document).ready(function() {
+    <% if user_signed_in?%>
+    <%if current_user.experience < 1000 %>
+     Materialize.toast('You can save Hours to your profile by liking them! ', 3000)
+     <%end%>
+     <%end%>
+  });
+</script>
+
