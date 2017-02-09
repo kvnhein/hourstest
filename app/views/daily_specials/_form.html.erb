@@ -38,9 +38,12 @@
   <div class="field">
     <% if current_user.admin? || current_user.super_user?%>
     <%= f.label :venue_id %><br>
-     <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id).order("name"), :id, :venue_area, { :multiple => false})%>
+     <%=collection_select( :daily_special, :venue_id, Venue.all.order('name ASC'), :id, :venue_area, { :multiple => false})%>
+    <%elsif current_user.experience > 1000%>
+     <%= f.label :venue_id %><br>
+     <%=collection_select( :daily_special, :venue_id, Venue.all.order('name ASC'), :id, :venue_area, { :multiple => false})%>
     <%else%>
-     <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id), :id, :name, { :multiple => false})%>
+     <%=collection_select( :daily_special, :venue_id, Venue.where(owner: current_user.id).order("name"), :id, :venue_area, { :multiple => false})%>
     <%end%>
   </div>
     <div class="input-field col s12">
@@ -111,5 +114,4 @@ $(document).ready(function() {
     $('ul.tabs').tabs();
   });
 </script>
-
 
