@@ -36,6 +36,7 @@ class EventsController < ApplicationController
         current_user.increment!(:num_verified, by = 1)
         @event.save
     end 
+    Venue.find(@event.venue_id).venue_avg_verify
   end
 
   def daily_mailer
@@ -269,7 +270,6 @@ class EventsController < ApplicationController
 
 
   def south_side
-   Venue.where(neighborhood_id: 1).each {|venue| venue.venue_avg_verify}
    @page_url = "southside"
    @autocomplete_path = south_side_autocomplete_event_special_path
    @neighborhood_path = south_side_path
