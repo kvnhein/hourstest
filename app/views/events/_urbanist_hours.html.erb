@@ -86,9 +86,12 @@
 </div>
 
 <div id="Lawrenceville">
-     <p class="center-tit"><%= link_to 'See Lawrenceville Hours', lawrenceville_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+     <p class="center-tit"><%= link_to 'See Lawrenceville/Bloomfield Hours', lawrenceville_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
     <%@urbanist_batch = []%>
+    jknkjnkn
     <%@urbanist_venues.where(neighborhood_id: 7).each do |venue|%>
+    <%@urbanist_venues.where(neighborhood_id: 6).each do |venue|%>
+        
         <%a= venue.id%>
         <%events = @events.where(venue_id: a).to_a%>
         <%events.each do |event|%>

@@ -14,12 +14,12 @@ class DailySpecialsController < ApplicationController
   @topic_description = "Today's best off menu dishes from around Pittsburgh"
   if params[:tag]
     #@daily_specials = DailySpecial.tagged_with(params[:tag])
-    @daily_specials = DailySpecial.where(special_date: Date.today).tagged_with(params[:tag])
+    @daily_specials = DailySpecial.where(special_date: Date.current).tagged_with(params[:tag])
     @topic = "##{params[:tag]}"
   else
      @topic = ""
      #@daily_specials = DailySpecial.all
-     @daily_specials = DailySpecial.where(special_date: Date.today)
+     @daily_specials = DailySpecial.where(special_date: Date.current)
     fresh_when etag: @daily_specials
 
   end
