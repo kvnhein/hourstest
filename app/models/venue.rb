@@ -42,20 +42,16 @@ class Venue < ActiveRecord::Base
   
   def venue_avg_verify
     days = 0
-    Event.where(venue_id: self.id).each do |event| 
-     if event.event_verify
-      days = days + (Time.now - event.event_verify).to_i/(24*60*60)
-    else
-      days = days + (Time.now - event.created_at).to_i/(24*60*60)
-    end
-  end
-      if Event.where(venue_id: self.id).count > 0
-        self.avg_verify = days/Event.where(venue_id: self.id).count
-        
-      else 
-        self.avg_verify = 60 
-        
+    Event.where(venue_id: self.id, day: Time.current.strftime("%A")).each do |event| 
+      if event.event_verify
+        days = days + (Time.current - event.event_verify).to_i/(24*60*60)
+      else
+        days = days + (Time.current - event.created_at).to_i/(24*60*60)
       end
+    end
+
+      self.avg_verify = days/Event.where(venue_id: self.id,day: Time.current.strftime("%A")).count
+      self.save 
   end
   
   
