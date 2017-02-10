@@ -57,7 +57,7 @@ class EventsController < ApplicationController
     @today = Time.now
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
-    Venue.all.each {|venue| venue.venue_avg_verify}
+    
     #@verified_this_week = Venue.between_times(@week_ago, @today)
     #@verified_after_week = Venue.between_times(@month_ago,@week_ago)
     #@verified_month_ago = Venue.before(@month_ago)
@@ -269,6 +269,7 @@ class EventsController < ApplicationController
 
 
   def south_side
+   Venue.where(neighborhood_id: 1).each {|venue| venue.venue_avg_verify}
    @page_url = "southside"
    @autocomplete_path = south_side_autocomplete_event_special_path
    @neighborhood_path = south_side_path
