@@ -207,16 +207,16 @@
 
 
 <!--START URBANISTHOURS --> 
-<div class="row" style="margin: 3px 0 8px 0;">
+<div class="row urbanist-tabs" style="margin: 3px 0 8px 0;">
     <div class="col s12 profile-tabs venues">
       <ul class="tabs tab-demo" style="width: 100%;">
-        <li class="tab Market_Square"><a class="active" href="#Market_Square">Downtown</a></li>
-        <li class="tab Southside"><a class="" href="#Southside">South Side</a></li>
-        <li class="tab Shadyside"><a class="" href="#Shadyside">Shadyside</a></li>
-        <li class="tab Oakland"><a class="" href="#Oakland">Oakland</a></li>
-        <li class="tab Lawrenceville/Bloomfield"><a class="" href="#Lawrenceville">Lawrenceville</a></li>
-        <li class="tab Strip_district"><a class="" href="#Strip_district">Strip District</a></li>
-        <li class="tab East_liberty"><a class="" href="#East_liberty">East Liberty</a></li>
+        <li class="tab Market_Square"><a class="active" href="#Market_Square"><br/>Downtown</a></li>
+        <li class="tab Southside"><a class="" href="#Southside"><br/>South Side</a></li>
+        <li class="tab Shadyside"><a class="" href="#Shadyside"><br/>Shadyside</a></li>
+        <li class="tab Oakland"><a class="" href="#Oakland"><br/>Oakland</a></li>
+        <li class="tab Lawrenceville"><a class="" href="#Lawrenceville">Lawrenceville/<br/>Bloomfield</a></li>
+        <li class="tab Strip_district"><a class="" href="#Strip_district"><br/>Strip District</a></li>
+        <li class="tab East_liberty"><a class="" href="#East_liberty"><br/>East Liberty</a></li>
       </ul>
     </div>
   </div>
@@ -362,7 +362,7 @@
      <p class="center-tit"><%= link_to 'See Lawrenceville Hours', lawrenceville_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
      <p class="center-tit"><%= link_to 'See Bloomfield Hours', bloomfield_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
     <%@urbanist_batch = []%>
-    <%@urbanist_venues.where(neighborhood_id: 7).each do |venue|%>
+    <%@urbanist_venues.where(neighborhood_id: [7,6]).each do |venue|%>
         <%a= venue.id%>
         <%events = @events.where(venue_id: a).to_a%>
         <%events.each do |event|%>

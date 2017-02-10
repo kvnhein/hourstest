@@ -1756,6 +1756,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
         
 }
 
+.urbanist-tabs .profile-tabs.venues .tabs .tab a {
+  padding: 112px 47px 18px 12px;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #fff;
+    background: -moz-linear-gradient(top, transparent 1%, transparent 56%, rgba(0, 0, 0, 0.65) 100%);
+    background: -webkit-linear-gradient(top, transparent 1%, transparent 56%, rgba(0, 0, 0, 0.65) 100%);
+    background: linear-gradient(to bottom, transparent 1%, transparent 56%, rgba(0, 0, 0, 0.65) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+    line-height: 18px;
+    text-align: left; 
+        
+}
+
 .profile-tabs.venues .tabs {
       height: auto;
 }
@@ -2845,7 +2860,7 @@ background-position:center;
 }
 
 .specials-header.urbanist-header.neighborhoodtop h4 {
-      margin: 32px 0 0 0;
+      margin: 5px 0 0 0;
 }
 
 .specials-header.marketsquare-header {
