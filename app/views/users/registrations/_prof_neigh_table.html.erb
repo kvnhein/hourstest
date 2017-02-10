@@ -5,7 +5,7 @@
 <%end%>
 
 <% if x.count == 0 %> 
-  <%= render "no_prof_hour"%>
+  <%= render partial: "users/registrations/no_prof_hour"%>
 <%else%>
 
 <%x.uniq.each do |d|%>
