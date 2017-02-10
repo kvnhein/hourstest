@@ -49,9 +49,13 @@ class Venue < ActiveRecord::Base
         days = days + (Time.current - event.created_at).to_i/(24*60*60)
       end
     end
-
+    if Event.where(venue_id: self.id,day: Time.current.strftime("%A")).count > 0
       self.avg_verify = days/Event.where(venue_id: self.id,day: Time.current.strftime("%A")).count
       self.save 
+    else
+      self.avg_verify = 0 
+      self.save
+    end
   end
   
   
