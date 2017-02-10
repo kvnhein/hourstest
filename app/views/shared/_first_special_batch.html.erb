@@ -1,13 +1,13 @@
 <%@first_special_batch.shuffle.each do |event| %>
 
 
-<div class="row">
-  <div class="col s12 m8 offset-m2 featured-dish-section ">
+
+ <div class="col s12 m8 offset-m2 featured-dish-section ">
     <h5>
     <%= link_to "#{Venue.where(id: event.venue_id).first.name}", venue_path(Venue.where( id: event.venue_id).first.id), class: "teal-text text-accent-4", 'data-no-turbolink' => true %>
     </h5>
 
-<h6><%=event.special_neighborhood%></h6>
+    <h6><%=event.special_neighborhood%></h6>
 
     <!--<h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>-->
     <div class="card">
@@ -25,8 +25,7 @@
      </div>
      <div class="card-action">
        <%= event.description%>
-       <div>
-                        <div class="row">
+        <div class="row">
                             <div class="time-and-price">
                                 <%if event.start != 0%>
                                 <div class="timeforspecial">
@@ -48,13 +47,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
   </div>
    
-
- </div>
 </div>
-
+</div>
 
 <%end%>
 
