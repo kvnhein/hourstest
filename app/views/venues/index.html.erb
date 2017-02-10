@@ -18,6 +18,7 @@
         <li class="tab Lawrenceville"><a class="" href="#Lawrenceville">Lawrenceville</a></li>
         <li class="tab Strip_district"><a class="" href="#Strip_district">Strip District</a></li>
         <li class="tab East_liberty"><a class="" href="#East_liberty">East Liberty</a></li>
+        <li class="tab bloomfield_tab"><a class="" href="#bloomfield_tab">Bloomfield</a></li>
       </ul>
     </div>
   </div>
@@ -80,6 +81,14 @@
 
     <div id="East_liberty">
      <p class="center-tit"><%= link_to 'See East Liberty Hours', east_liberty_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+     <% @venues.where(neighborhood_id: 9).order("name ASC").each do |venue| %>
+         <%@venue = venue %>
+         <%= render 'venue_index'%>
+    <% end %>
+    </div>
+    
+     <div id="bloomfield_tab">
+     <p class="center-tit"><%= link_to 'See East Bloomfield Hours', bloomfield_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
      <% @venues.where(neighborhood_id: 9).order("name ASC").each do |venue| %>
          <%@venue = venue %>
          <%= render 'venue_index'%>
