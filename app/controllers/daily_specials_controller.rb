@@ -54,6 +54,9 @@ class DailySpecialsController < ApplicationController
   # GET /daily_specials/1.json
   def show
     @reservation = Reservation.new
+    @key_special = DailySpecial.find(params[:id])
+		@collection_user = User.find(@key_special.id)
+		@daily_specials = DailySpecial.where(user_id: @key_special.user_id, venue_id: @key_special.venue_id)
   end
 
   # GET /daily_specials/new

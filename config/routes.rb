@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   						
  
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :special_collection]
   
   get 'past_features/:past_tag', to: 'daily_specials#past_features', as: :past_tag
   get 'past_features' => 'daily_specials#past_features'

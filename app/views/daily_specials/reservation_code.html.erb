@@ -1,0 +1,76 @@
+<!--<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @daily_special.text %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @daily_special.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @daily_special.price %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @daily_special.venue %>
+</p>
+
+<p>
+  <strong>Dish type:</strong>
+  <%= @daily_special.dish_type %>
+</p>
+
+<%= link_to 'Edit', edit_daily_special_path(@daily_special) %> |
+<%= link_to 'Back', daily_specials_path %>
+-->
+<%total_credits = 0%>
+<% @daily_special.reservations.each do |reservation|%>
+<%total_credits = total_credits + reservation.credit%>
+<%end%>
+<div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <%= image_tag @daily_special.image.url(:medium)%>
+              <span class="card-title"><%= @daily_special.text%></span>
+            </div>
+            <div class="card-content">
+             Available Reservations: <%=@daily_special.available_credits - total_credits%>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+      
+<%credits = 0%>
+<ul class="collection">
+<% @daily_special.reservations.each do |reservation|%>
+<%credits = credits + reservation.credit%>
+ <li class="collection-item avatar">
+      <i class="material-icons circle">bookmark</i>
+      <span class="title"><%=reservation.user.fullname%></span>
+      <p><%=reservation.credit%> Reservations</p>
+      <a href="#!" class="secondary-content"><i class="material-icons">info</i></a>
+ </li>
+<%end%>
+ </ul>
+ 
+
+<ul class="collapsible popout" data-collapsible="accordion">
+     <li>
+      <div class="collapsible-header"><i class="material-icons">schedule</i>New Reservation</div>
+      <div class="collapsible-body col s4">
+          <div class="col s4">
+              <%= render partial: "reservations/form"%>
+          </div>
+      </div>
+    </li>
+</ul>
+<br>
+
+ 
