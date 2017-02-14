@@ -16,6 +16,7 @@
      </div>
      <div class="card-content">
        <%=event.text%>
+       <p><span class="submit-by">Submitted by  <%= link_to "#{User.find(event.user_id).fullname}", User.find(event.user_id) %></span></p>
        <!--Like Button-->
        <div>
          <%@j = event%>

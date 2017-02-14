@@ -102,7 +102,7 @@
 								<div class = "right"><i class="tiny material-icons" >verified_user</i></div>
 							<%end%>
 							<p class="namecont"><%= user.fullname%></p>
-							<p>Hours: <%=user.experience%></p>
+							<p>Hours: <%= number_with_delimiter(user.experience, :delimiter => ',') %></p>
 						
 						</li>
 					</div>
@@ -117,5 +117,6 @@
 
 
 
-
+<a href="https://m.uber.com/ul/?action=setPickup">UBER</a>
+<%@embed%>
 

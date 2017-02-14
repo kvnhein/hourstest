@@ -153,6 +153,7 @@ class EventsController < ApplicationController
             @top_users.push(user)
         end 
     end 
+    
   end
 
   def urbanist
