@@ -132,11 +132,13 @@ class EventsController < ApplicationController
   def event_upvote
   @event.liked_by current_user
     current_user.increment!(:experience, by = 5)
+    current_user.count_events_saved
   end
 
   def event_downvote
   @event.unliked_by current_user
     current_user.decrement!(:experience, by = 5)
+    current_user.decrement!(:num_events_saved, by = 1)
   end
 
   def landing

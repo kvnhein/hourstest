@@ -834,16 +834,20 @@ body,html {
 }
 
 .detailstitle h6 {
-      padding-top: 0;
+    padding-top: 0;
     padding: 0 50px 54px 50px;
     color: #fff;
     margin-top: 0;
-  color: #1fdeb4;
+    color: #1fdeb4;
     font-size: 9px;
     font-weight: bold;
     letter-spacing: 1px;
-  text-transform: uppercase;
-      margin-bottom: 0;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.profilepage .detailstitle h6 {
+    padding: 0 50px 74px 50px;
 }
 
 .time-and-price .material-icons {
@@ -3047,6 +3051,31 @@ background-position:center;
     font-weight: 700;
     letter-spacing: 1.5px;
     box-shadow: none;
+}
+
+.badge-section img {
+       width: 48px;
+    height: auto;
+    margin: 10px auto;
+    display: block;
+}
+
+.badge-section h6 {
+      font-size: 10px;
+    color: #000000;
+    letter-spacing: 0;
+    text-align: center;
+        font-weight: 600;
+            height: 20px;
+}
+
+.badge-section .row .col.s4 {
+      padding: 10px 0.75rem;
+          height: 120px;
+}
+
+.badge-section {
+  padding-top:8px;
 }
 
 .specials-header h4 {

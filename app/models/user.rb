@@ -14,6 +14,10 @@ before_save :default_values
 
 def default_values
     self.experience ||= 0
+    self.num_verified ||= 0
+    self.num_event_votes ||= 0
+    self.num_claim_votes ||= 0
+    self.num_events_saved ||= 0
  end
   
 def self.from_omniauth(auth)
@@ -110,6 +114,115 @@ def self.from_omniauth(auth)
       return "mic"
     end
   end 
+  
+  def created_profile_badge
+    return true
+  end 
+  
+  def saved_first_hour
+    if self.num_events_saved == 1
+      return true
+    end
+  end 
+  
+  def count_events_saved
+    self.increment!(:num_events_saved, by = 1)
+    if (self.get_up_voted Event).count > 0 && (self.get_up_voted Event).count < 10 
+      self.num_events_saved = 1 
+      self.save!
+    elsif (self.get_up_voted Event).count > 9 && (self.get_up_voted Event).count < 50 
+      self.num_events_saved = 10 
+      self.save!
+    elsif (self.get_up_voted Event.all).count > 49
+      self.num_events_saved = 50
+      self.save!
+    end 
+  end
+  def count_features_liked
+    self.increment!(:num_features_liked, by = 1)
+    if (self.get_up_voted DailySpecial).count > 0 && (self.get_up_voted DailySpecial).count < 10 
+      self.num_features_liked = 1 
+      self.save!
+    elsif (self.get_up_voted DailySpecial).count > 9 && (self.get_up_voted DailySpecial).count < 50 
+      self.num_features_liked = 10 
+      self.save!
+    elsif (self.get_up_voted DailySpecial).count > 49
+      self.num_features_liked = 50
+      self.save!
+    end 
+  end
+  def verified_first_hour
+    if self.num_verified >= 1
+      return true
+    end 
+  end 
+  
+  def created_first_claim
+    if Claim.where(user_id: self.id).count > 0
+      return true 
+    end
+  end
+  
+  def liked_first_feature
+  if self.num_features_liked
+    if self.num_features_liked > 0
+      return true
+    end
+  end
+  end 
+  
+  def saved_10_hours
+    if self.num_events_saved == 10
+      return true
+    end
+  end 
+  
+  def liked_10_features
+  if self.num_features_liked
+    if self.num_features_liked > 10
+      return true
+    end
+  end
+  end
+  
+  def verified_10_hours
+    if self.num_verified >= 10
+      return true
+    end 
+  end 
+  
+  def created_feature
+    if DailySpecial.where(user_id: self.id).count > 0 
+      return true
+    end 
+  end 
+  
+  def voted_on_claim
+    if self.num_claim_votes > 0
+      return true 
+    end
+  end 
+  
+  def verified_50_hours
+    if self.num_verified >= 50
+      return true
+    end 
+  end 
+  
+  def saved_50_specials
+    if self.num_events_saved == 50
+      return true
+    end
+  end 
+  
+  def liked_50_features
+  if self.num_features_liked
+    if self.num_features_liked > 50
+      return true
+    end
+  end
+  end 
+  
   
   def voting_power
     if self.experience < 1000 

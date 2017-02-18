@@ -1,4 +1,4 @@
-<div class="col s3">
+<div class="col s3 profilepage">
      <div class="detailstitle">
 <h4 class= "flow-text center-align userfirstname"><%= current_user.fullname%>'s Profile</h4>
 
@@ -41,6 +41,22 @@
 <h6 class= "flow-text center-align">Saved Hours  |  Rank: <%=current_user.experience%></h6>
      </div>
 </div>
+<div class="row" style="margin:0;">
+    <div class="col s12 profile-tabs neiborhoodprofile" style="top: 216px;">
+      <ul class="tabs">
+        <!--li class="tab col s4 hide"><a href="#venues">Venues</a></li-->
+        <li class="tab col s4"><a class="active" href="#weekly">Saved Hours</a></li>
+        <li class="tab col s4"><a  href="#badges">Badges</a></li>
+      </ul>
+    </div>
+  </div>
+<!--TABS-->
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+<!--END TABS-->
 <div class="timeforspecial">
     
     <div class="hide">
@@ -119,13 +135,199 @@
    </div>
    </div>
   </div>
-
+</div>
+</div>
   <script>
      $(document).ready(function(){
     $('ul.tabs').tabs();
        $('#firstfade').delay(1000).fadeIn(500);
   });
   </script>
+
+<div id="badges" class="badge-section">
+    <div class="row">
+        <div class="tab col s4 m3">
+            <%= image_tag "1-PROFILE.png"%>
+            <h6>CREATED PROFILE</h6>
+        </div>
+        <div class="tab col s4 m3">
+        <%if current_user.saved_first_hour%>
+            <div class="">
+            <%= image_tag "2-SAVED.png"%>
+            <h6>SAVED A SPECIAL</h6>
+            </div>
+        <%else%>
+            <div>
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+        <% if current_user.verified_first_hour%>
+            <div class="">
+            <%= image_tag "3-VERIFIED.png"%>
+            <h6>VERIFIED HOUR</h6>
+            </div>
+        <%else%>
+            <div>
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%> 
+        </div>
+        
+        <div class="tab col s4 m3">
+        <% if current_user.created_first_claim%>
+            <div class="">
+                <%= image_tag "4-CLAIM.png"%>
+                <h6>CREATED A CLAIM</h6>
+            </div>
+        <%else%>
+            <div>
+                <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+        <% if current_user.liked_first_feature%>
+            <div class="">
+                <%= image_tag "5-LIKED-FEATURE.png"%>
+                <h6>LIKED A FEATURE</h6>
+            </div>
+        <%else%>
+            <div>
+                <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        
+        <div class="tab col s4 m3">
+        <%if current_user.saved_10_hours%>
+            <div class="">
+            <%= image_tag "6-SAVED-50.png"%>
+            <h6>SAVED 10 SPECIALS</h6>
+            </div>
+        <%else%>
+            <div>
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+        <%if current_user.liked_10_features%>
+            <div class="">
+            <%= image_tag "7-LIKED-50.png"%>
+            <h6>LIKED 10 FEATURES</h6>
+            </div>
+        <%else%>
+            <div>
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+        <% if current_user.verified_10_hours%>
+            <div class="">
+            <%= image_tag "8-VERIFIED-50.png"%>
+            <h6>VERIFIED 10 HOURS</h6>
+            </div>
+        <%else%>
+            <div>
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+        <% if current_user.created_feature %> 
+            <div class="">
+                <%= image_tag "9-CREATED-FEATURE.png"%>
+                <h6>CREATED A FEATURE</h6>
+            </div>
+        <%else%>
+            <div>
+                <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+        <% if current_user.voted_on_claim%>
+            <div class="">
+            <%= image_tag "10-VOTED.png"%>
+            <h6>VOTED ON A CLAIM</h6>
+            </div>
+        <%else%>
+            <div>
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+        <% if current_user.verified_50_hours%>
+            <div class="">
+            <%= image_tag "11-VERIFIED-100.png"%>
+            <h6>VERIFIED 50 HOURS</h6>
+            </div>
+        <%else%>
+            <div>
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+        <% if current_user.saved_50_specials%>
+            <div class="">
+            <%= image_tag "12-SAVED-100.png"%>
+            <h6>SAVED 50 SPECIALS</h6>
+            </div>
+        <%else%>
+            <div class="">
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+         <div class="tab col s4 m3">
+         <% if current_user.liked_50_features%>
+             <div class="">
+            <%= image_tag "13-LIKED-100.png"%>
+            <h6>LIKED 50 FEATURES</h6>
+            </div>
+        <%else%>
+             <div>
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        <%end%>
+        </div>
+        
+        <div class="tab col s4 m3">
+            <div class="hide">
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+            <div class="">
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        </div>
+         <div class="tab col s4 m3">
+             <div class="hide">
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+            <div class="">
+            <%= image_tag "13-LOCK.png"%>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
 
 <ul class="collapsible hide" data-collapsible="accordion">
   <li><div class="collapsible-header">Change Info</div>
@@ -163,7 +365,8 @@
     <%= f.submit "Update" %>
   </div>
 <% end %>
-
+</div>
+</div>
 
 
     </div>

@@ -34,9 +34,10 @@
 					</div>
 					<%end %>
 						<!---This is where it ends-->
-					<%unievents.reverse.each do |event|%><%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
+					<%unievents.reverse.each do |event|%>
+					<%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
 					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787">
+						<div class="chip" style="background-color:#17a787"><!--green-->
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
@@ -46,9 +47,10 @@
 								<i class="zmdi zmdi-flag"></i>
 							<%end%>
 						</div>
-					</div><%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
+					</div>
+					<%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
 					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787">
+						<div class="chip" style="background-color:#17a787"><!--green-->
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
@@ -57,9 +59,10 @@
 								<i class="zmdi zmdi-flag"></i>
 							<%end%>
 						</div>
-					</div><%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
+					</div>
+					<%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
 					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787">
+						<div class="chip" style="background-color:#17a787"><!--green-->
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
@@ -70,7 +73,7 @@
 						</div>
 					</div><%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
 					<div class="chip-piece">
-						<div class="chip" style="background-color:#000000">
+						<div class="chip" style="background-color:#000000"><!--black-->
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">

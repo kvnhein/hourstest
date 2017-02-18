@@ -43,7 +43,7 @@ class DailySpecialsController < ApplicationController
 
   def upvote
   @daily_special.liked_by current_user
-
+  current_user.count_features_liked
   end
 
   def downvote
