@@ -60,20 +60,20 @@ Verify Venue
 <div class="powered-by-ver onprofile">
            <div class="verified">
 <%if @venue.venue_verify.nil?%>
- <p class="verified-date">Venue not verified<p/>
+ <p class="verified-date hide">Venue not verified<p/>
 <%else%>
-      <div class="veri">
+      <div class="veri hide">
          <%= image_tag "verified.png"%>
       </div>
 <!--   <div class="verified-date">
 <#%=@venue.venue_verify.strftime("Verified on %m/%d/%Y")%>
   </div> -->
-  <p class="verified-date"> Verified <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%> Ago</p>
+  <p class="verified-date hide"> Verified <%=distance_of_time_in_words(@venue.venue_verify, Time.now)%> Ago</p>
 <%end%>
 
               <% if @venue.urbanist == true %>
                       <div class="urbanist">
-                        <a href="http://pittsburgh.urbanistguide.com/" target="_blank">
+                        <a href="http://www.hourspgh.com/urbanist" target="_blank">
                         <%= image_tag "urbanist-approved.png"%>
                         </a>
                       </div>
@@ -357,7 +357,7 @@ Verify Venue
 
 <!-- <div class="verified">
 <#%if @venue.venue_verify.nil?%>
- <p class="verified-date">Venue not verified<p/>
+ <p class="verified-date hide">Venue not verified<p/>
 <#%else%>
 <#%= image_tag "verified.png"%>
   <div class="verified-date">

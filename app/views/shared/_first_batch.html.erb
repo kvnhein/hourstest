@@ -28,7 +28,7 @@
 					</div>
 					<%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
 					<div class="urbanist">
-						<a href="http://pittsburgh.urbanistguide.com/" target="_blank">
+						<a href="http://www.hourspgh.com/urbanist" target="_blank">
 							<%= image_tag "urbanist.png"%>
 						</a>
 					</div>
@@ -119,13 +119,13 @@
 					<div class="powered-by-ver">
 						<div class="verified">
 							<%if @e[0].event_venue.venue_verify.nil?%>
-							<p class="verified-date">Venue has not been verified</p><%else%>
-							<div class="veri">
+							<p class="verified-date hide">Venue has not been verified</p><%else%>
+							<div class="veri hide">
 								<%= image_tag "verified.png"%>
 							</div>
-							<p class="verified-date">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
+							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
 							<div class="urbanist">
-								<a href="http://pittsburgh.urbanistguide.com/" target="_blank"><%= image_tag "urbanist-approved.png"%></a>
+								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist-approved.png"%></a>
 							</div><%end %>
 							
 						</div>

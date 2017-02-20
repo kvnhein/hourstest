@@ -723,6 +723,7 @@ class EventsController < ApplicationController
         Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
+        Venue.find(@event.venue_id).venue_avg_verify
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }

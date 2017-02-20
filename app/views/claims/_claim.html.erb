@@ -72,12 +72,12 @@
           <div id = "claim_likes<%=claim.id%>">
             <% if current_user.voted_as_when_voted_for claim%>
               
-              <%=link_to dislike_claim_path(claim), method: :put,onclick: "Materialize.toast('-5 HOURS', 2000)", remote: true, id: "down-claim#{claim.id}" do%>
+              <%=link_to dislike_claim_path(claim), method: :put,onclick: "Materialize.toast('-5 HOURS', 9000)", remote: true, id: "down-claim#{claim.id}" do%>
               <i class="tiny material-icons">thumb_up</i>
               <%end%>
             <%else%>
               
-              <%=link_to like_claim_path(claim), method: :put,onclick: "Materialize.toast('+5 HOURS', 2000)", remote: true, id: "up-claim#{claim.id}" do%>
+              <%=link_to like_claim_path(claim), method: :put,onclick: "Materialize.toast('+5 HOURS', 9000)", remote: true, id: "up-claim#{claim.id}" do%>
               <i class="tiny material-icons" style= "opacity:0.4">thumb_up</i>
               <%end%>
             <%end%>

@@ -312,8 +312,8 @@ progress[value]::-webkit-progress-value {
 }
 
 .submit-by {
-  /*font-style: italic;*/
   font-size: 12px;
+    font-weight: 500;
 }
 
 .submit-by a{
@@ -1332,8 +1332,8 @@ footer.page-footer {
 
 .urbanist {
       position: absolute;
-    top: 0;
-      left: 0px;
+    top: 10px;
+      left: 10px;
       z-index: 99;
 }
 
@@ -1353,7 +1353,7 @@ footer.page-footer {
 }
 
 .urbanist img {
-    width: 50%;
+    width: 30px;
 }
 
 .powered-by-ver {
@@ -1395,7 +1395,7 @@ footer.page-footer {
 
 .powered-by-ver .urbanist img{
          position: absolute;
-    top: -5px;
+        top: -27px;
     right: 10px;
     margin: 0;
     width: 52px;
@@ -2486,9 +2486,13 @@ nav .button-collapse i {
 #toast-container {
   position: fixed;
     z-index: 9999;
-    top: 0;
+    top: initial !important;
     width: 100%;
-    bottom: initial;
+    bottom: 0 !important;
+}
+
+footer.page-footer .footer-copyright {
+  padding: 0 0 0 10px;
 }
 
 .toast {
@@ -2514,12 +2518,13 @@ width: 50px;
 }
 
 .chip-piece .new-event {
-        text-transform: capitalize;
+    text-transform: capitalize;
     font-weight: 500;
     color: #555;
     letter-spacing: .5px;
-        padding: 0;
+    padding: 0 0 0 6px;
     width: 35px;
+    text-align: left;
 }
 
 .chip-piece .new-event .zmdi {

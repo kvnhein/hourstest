@@ -43,6 +43,8 @@
 </div>
 
 <h4 class ="flow-text center landing-title">New Arrivals</h4>
+
+
 <div class="row con-neighb">
 <div class = "col m6 s6 z-depth-1">
 <%= link_to "East Liberty", east_liberty_path, class: "waves-effect waves-light btn newvenue image-btns menubtn east_liberty-btn"%>
@@ -101,7 +103,7 @@
 							<% if user.experience > 100 %>
 								<div class = "right"><i class="tiny material-icons" >verified_user</i></div>
 							<%end%>
-							<p class="namecont"><%= user.fullname%></p>
+							<p class="namecont"><%= link_to "#{User.find(user.id).fullname}", User.find(user.id) %></p>
 							<p>Hours: <%= number_with_delimiter(user.experience, :delimiter => ',') %></p>
 						
 						</li>
