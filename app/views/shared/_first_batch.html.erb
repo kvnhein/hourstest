@@ -125,7 +125,7 @@
 							</div>
 							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
 							<div class="urbanist">
-								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist-approved.png"%></a>
+								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist.png"%></a>
 							</div><%end %>
 							
 						</div>

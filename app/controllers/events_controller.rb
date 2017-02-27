@@ -599,6 +599,7 @@ class EventsController < ApplicationController
 
     expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
     @event = current_user.events.build(event_params)
+    Venue.find(@event.venue_id).venue_avg_verify
     
     event2 = @event
     if event2.food == false    

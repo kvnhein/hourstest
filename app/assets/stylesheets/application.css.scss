@@ -337,6 +337,7 @@ progress[value]::-webkit-progress-value {
 
 .verified-by-w .teal-text.text-accent-4 {
   font-weight: 500 !important;
+    text-align: left;
 }
 
 .submitted-by {
@@ -380,6 +381,8 @@ position: absolute;
   opacity: 0.9;
     font-size: 20px;
 }
+
+
 
 .flagprofile .theshowform {
   margin: 28px -20px 0px -20px;
@@ -426,6 +429,8 @@ position: absolute;
 
 .verifyprofile .verified-by-w {
       bottom: 8px;
+      margin-right: 100px;
+    text-align: left;
 }
 
 .like-like i.tiny {
@@ -1072,12 +1077,18 @@ footer.page-footer {
   margin-bottom: 0;
 }
 
+.contributors-section a {
+      padding: 0;
+    line-height: 33px;
+    text-transform: none;
+}
+
 
 
 .contributors-section p {
-  margin-top: 0;
+  margin-top: -5px;
     color: #979797;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .contributors .beerlist .special-by-day {
@@ -1092,6 +1103,10 @@ footer.page-footer {
   border: 0;
     margin: 0;
     padding: 10px;
+}
+
+.contributors a {
+  color: #17a787;
 }
 
 .tag-checks label {
@@ -1367,6 +1382,8 @@ footer.page-footer {
   margin-top: -20px;
 }
 
+
+
 .powered-by-ver.onprofile {
   margin-top: -21px;
 }
@@ -1398,7 +1415,13 @@ footer.page-footer {
         top: -27px;
     right: 10px;
     margin: 0;
-    width: 52px;
+    border: 1px solid #1fdeb4;
+    border-radius: 100%;
+    width: 25px;
+}
+
+.ot-dtp-picker {
+  width: 99% !important;
 }
 
 .powered-by-ver .urbanist {
@@ -1672,6 +1695,7 @@ main .container {
       background-color: #0e0e0e;
     margin: 0;
     margin-top: -1px;
+        padding: 0 0 26px 0 !important;
 }
 
  .profile-tabs.neiborhoodprofile {
