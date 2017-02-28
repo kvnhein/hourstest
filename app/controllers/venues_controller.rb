@@ -75,7 +75,9 @@ class VenuesController < ApplicationController
     if (user_signed_in?)
      if current_user.id == @venue.owner || current_user.admin?
        @button = 1
-     else
+     elsif current_user.experience > 10000
+      @button = 1
+    else
        @button = 0
      end
    end
