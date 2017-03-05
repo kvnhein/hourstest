@@ -1,0 +1,108 @@
+<%@b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour%>
+<%@c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)%>
+<%t= Time.now.in_time_zone("Eastern Time (US & Canada)")%>
+  <%  @m = ""%>
+    <%@t = ""%>
+    <%@w = ""%>
+    <%@th = ""%>
+    <%@f = ""%>
+    <%@s = ""%>
+    <%@st = ""%>
+    <%@day = ""%>
+    <%@button = 0%>
+    <%if t.wday == 1%>
+      <%@m = "active"%>
+      <%@day = "Monday"%>
+    <%elsif  t.wday==2%>
+      <%@t = "active"%>
+      <%@day = "Tuesday"%>
+    <%elsif  t.wday==3%>
+      <%@w = "active"%>
+      <%@day = "Wednesday"%>
+    <%elsif  t.wday==4%>
+      <%@th = "active"%>
+      <%@day = "Thursday"%>
+    <%elsif  t.wday==5%>
+      <%@f = "active"%>
+      <%@day = "Friday"%>
+    <%elsif  t.wday==6%>
+      <%@st = "active"%>
+      <%@day = "Saturday"%>
+     <%else%>
+      <%@s = "active"%>
+      <%@day = "Sunday"%>
+    <%end%>
+
+
+<div id="weekly" class="col s12">
+ <div class="weeklyhours beerlist">
+ <div class="row">
+    <div class="col s12 weektab">
+      <ul class="tabs">
+        <li class="tab col s1"><a class="<%=@s%>" href="#SunTab">Sun</a></li>
+        <li class="tab col s1"><a class="<%=@m%>" href="#MonTab">Mon</a></li>
+        <li class="tab col s1"><a class="<%=@t%>" href="#TueTab">Tue</a></li>
+        <li class="tab col s1"><a class="<%=@w%>" href="#WedTab">Wed</a></li>
+        <li class="tab col s1"><a class="<%=@th%>" href="#ThurTab">Thu</a></li>
+        <li class="tab col s1"><a class="<%=@f%>" href="#FriTab">Fri</a></li>
+       <li class="tab col s1"><a class="<%=@st%>" href="#SatTab">Sat</a></li>
+      </ul>
+    </div>
+ 
+   <div class="weeklyhours beerlist" id="firstfade">
+    <div id="SunTab" class="col s12 showday center">
+
+        <% @d = ["Sunday","Everyday","Weekdays"] %>
+        <%= render "claim_events"%>
+   </div>
+    <div id="MonTab" class="col s12 showday center">
+
+        <% @d = ["Monday","Everyday","Weekdays"] %>
+        <%= render "claim_events"%>
+   </div>
+    <div id="TueTab" class="col s12 showday center">
+
+      <% @h = "Tuesday"%>
+      <% @d = ["Tuesday","Everyday","Weekdays"] %>
+        <%= render "claim_events"%>
+   </div>
+    <div id="WedTab" class="col s12 showday center">
+
+       <% @h = "Wednesday"%>
+        <% @d = ["Wednesday","Everyday","Weekdays"] %>
+       <%= render "claim_events"%>
+   </div>
+     <div id="ThurTab" class="col s12 showday center">
+
+       <% @h = "Thursday"%>
+        <% @d = ["Thursday","Everyday","Weekdays"] %>
+       <%= render "claim_events"%>
+   </div>
+     <div id="FriTab" class="col s12 showday center">
+
+       <% @h = "Friday"%>
+        <% @d = ["Friday","Everyday","Weekdays"] %>
+        <%= render "claim_events"%>
+   </div>
+   <div id="SatTab" class="col s12 showday center">
+
+       <% @h = "Saturday"%>
+        <% @d = ["Saturday","Everyday","Weekend"] %>
+        <%= render "claim_events"%>
+   </div>
+   </div>
+  </div>
+
+  <script>
+     $(document).ready(function(){
+    $('ul.tabs').tabs();
+       $('#firstfade').delay(1000).fadeIn(500);
+  });
+  </script>
+
+
+
+
+
+    </div>
+</div>

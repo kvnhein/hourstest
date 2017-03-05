@@ -23,8 +23,10 @@ class ClaimsController < ApplicationController
     @claim.liked_by current_user
     current_user.increment!(:experience,by = 5)
     current_user.increment!(:num_claim_votes,by = 1)
-    if @claim.get_likes.size >= 10 
+    if @claim.claim_votes >= 10 
        @claim.status = 1 
+       @claim.delete_date = Date.tomorrow
+       @claim.save!
     end
   end
 
@@ -32,8 +34,10 @@ class ClaimsController < ApplicationController
     @claim.disliked_by current_user
     current_user.decrement!(:experience,by = 5)
     current_user.decrement!(:num_claim_votes,by = 1)
-    if @claim.get_likes.size <10 
+    if @claim.claim_votes <10 
       @claim.status = 0
+      @claim.delete_date = Date.yesterday
+      @claim.save!
     end
   end
 
@@ -45,6 +49,8 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.create! claim_params
+    @claim.event.event_verify = Time.now 
+    @claim.event.save! 
     current_user.increment!(:experience,by = 15 )
   respond_to do |format|
     format.html { redirect_to action: :index }

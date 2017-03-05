@@ -1,9 +1,10 @@
 
 <%if @daily_specials.count > 0 %>
 <br/>
-<p class ="flow-text center landing-title">Past Features</p>
+<p class ="flow-text center landing-title">Past Features dish</p>
 
 <ul class="collection with-header">
+  
  <%@daily_specials.order("created_at DESC").each do |event| %>
 
 <div class="row">
@@ -68,6 +69,8 @@
   </div>
 </div>
 
+
+
 <%end%>
 <%if @button == 1 %>
   <div class ="hide">
@@ -77,3 +80,6 @@
 <%end%>
 
   <%= social_share_button_tag("My Site") %>
+<div id="page_links">
+<%= will_paginate @daily_specials %>
+</div>

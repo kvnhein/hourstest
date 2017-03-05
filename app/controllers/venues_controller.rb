@@ -35,8 +35,8 @@ class VenuesController < ApplicationController
     #past_specials = DailySpecial.before(Date.today - 7)
     #past_specials.delete_all
     #end
-
-
+   
+    
 
     @events = Event.where(venue_id: params[:id])
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -63,11 +63,20 @@ class VenuesController < ApplicationController
      else
       @s = "active"
     end
-
+    
+    @events.each do |event|
+      if Claim.where(event_id: event.id).first
+        current_claim = Claim.where(event_id: event.id).first
+        if current_claim.delete_date == Date.current
+          current_claim.destroy!
+          event.destroy!
+        end 
+      end 
+    end 
 
     @beers = Beer.where(venue_id: @venue.id) #did this so no beer list would show
     @liquors = Liqour.where(venue_id: params[:id])
-    @daily_specials = DailySpecial.where(venue_id: params[:id])
+    @daily_specials = DailySpecial.where(venue_id: params[:id]).page(params[:page]).per_page(5)
     @drinks = Drink.where(venue_id: params[:id])
 
 
@@ -80,6 +89,8 @@ class VenuesController < ApplicationController
     else
        @button = 0
      end
+     
+    
    end
 
       @venue_features = DailySpecial.today

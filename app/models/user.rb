@@ -120,7 +120,7 @@ def self.from_omniauth(auth)
   end 
   
   def saved_first_hour
-    if self.num_events_saved == 1
+    if self.num_events_saved >= 1
       return true
     end
   end 

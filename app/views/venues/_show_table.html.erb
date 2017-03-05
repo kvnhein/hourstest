@@ -9,6 +9,7 @@
     <h4>
       <%= x.special %>
        <% @d = x%>
+       
           <div class="like-like like-on-profile">
             <div id = 'like-<%=x.id%>'>
               <% if user_signed_in? %>
@@ -68,6 +69,8 @@
 <%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 
  </div>
+
+                        				
 <p><span class="submit-by">Submitted by  <%= link_to "#{User.find(x.user_id).fullname}", User.find(x.user_id) %></span></p>
   <%if Event.where(id: x.id).first.any_details == 2%>
       <p class="deets">

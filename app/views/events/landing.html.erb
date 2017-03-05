@@ -67,10 +67,42 @@
 <%end%><!--cache end-->
 </div>
 </div>
+<br>
+
+<% if @new_events.count > 0%>
+<div class="container cont-sec">
+	<div class="contributors-section">
+<h4 class ="flow-text center landing-title">NEW HOURS</h4>
+<p class="center">At least 10 users or one superuser need to like new hours for them to become verified Hours</p>
+</div>
+<div class ="center" id="specials">
+	<div class="col s3 profilepage">
+			<%= render "new_hours_partial"%>
+	</div>
+</div>
+<div class = "center">
+<%if (user_signed_in?)%>
+<%= link_to new_event_path, class: "btn-flat disabled text-accent-4 venue-profile-buttons" do%>
+	<i class="material-icons">access_time</i>
+	Create New Hour
+
+<%end%>
+<%else%>
+<%= link_to new_user_session_path, class: "btn-flat disabled text-accent-4 venue-profile-buttons" do%>
+	<i class="material-icons">access_time</i>
+	Create New Hour
+<%end%>
+<%end%>
+</div>
+
+
+<%end%>
+</div>
+<br>
 <div class="contributors-section">
 	<h4 class ="flow-text center landing-title">TOP CONTRIBUTORS</h4>
 	<p class="center">
-		Help build HoursPGH by verifying hours.
+		Help build HoursPGH by creating and verifying hours
 		<% if user_signed_in?%>
 		
 		<%else%>
@@ -116,7 +148,18 @@
 
 </div>
 <br>
+<!-- this is testing for new events--> 
 
+
+<% if @events_with_claims.count < 0%>
+<h4 class ="flow-text center landing-title">HOUR Claims</h4>
+
+
+<div class ="center" id="specials">
+	<div class="col s3 profilepage">
+<%= render "new_hours_partial"%>
+</div>
+<%end%>
 
 
 <!--<a href="https://m.uber.com/ul/?action=setPickup">UBER</a>

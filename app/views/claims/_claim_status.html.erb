@@ -1,0 +1,19 @@
+<div class = "upvote_count" id = "count<%=claim.id%>">
+      <%= @claim.claim_votes%> 
+    </div>
+    Confirmed this claim 
+    <%if @claim.status == 0%>
+    <%= distance_of_time_in_words(Time.now, @claim_end)  %> left to Agree.
+    <% days = (claim_end.to_date - Time.now.to_date).to_i%>
+    <%else%>
+    so it will be removed.
+    <%end%>
+    </div>
+    
+    <%if @claim.status == 0%>
+    <p><%= @claim.claim_votes%> users have verified this claim. <%= distance_of_time_in_words(Time.now, @claim_end)  %> left to verify.</p>
+    <% days = (claim_end.to_date - Time.now.to_date).to_i%>
+    <%else%>
+    <p>This claim has been verified</p>so it will be removed.
+    <%end%>
+    

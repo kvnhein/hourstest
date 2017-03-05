@@ -36,7 +36,7 @@ class DailySpecialsController < ApplicationController
       @daily_specials = DailySpecial.tagged_with(params[:past_tag])
       @topic = "##{params[:past_tag]}"
     else
-      @daily_specials = DailySpecial.all
+      @daily_specials = DailySpecial.after(Date.today - 7)
       @topic = ""
     end
   end

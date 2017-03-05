@@ -18,6 +18,7 @@ class Event < ActiveRecord::Base
  def default_values
   self.event_verify ||= Time.now 
   self.varified_user ||= current_user.id
+  
  end
 
  def upper_case
@@ -69,12 +70,42 @@ class Event < ActiveRecord::Base
     b = Event.after(Date.today - 7, field: :updated_at).to_a
     c = Event.before(Date.today - 30, field: :event_verify).to_a
     if a.include? self
-      return "New"
+      if self.legit_hour == true 
+       return "Verified"
+      else 
+       return "New"
+     end
     elsif c.include? self 
      return "Not Verified"
     end
   end
-
+ 
+ def super_vote?
+  voters = self.votes_for.up.by_type(User).voters
+  voters.each do |voter|
+   if voter.experience > 10000
+    return true
+   end
+  end 
+ end 
+ 
+ def legit_hour?
+   if self.created_at > "Sat, 04 Mar 2017".to_date
+    if self.legit_hour = true
+      return true
+    elsif self.votes_for.up.count >= 10
+      self.legit_hour = true
+      self.save!
+      voters = self.votes_for.up.by_type(User).voters
+      voters.each do |voter|
+       voter.experience = voter.experience + 30 
+      end 
+      self.user.experience = self.user.experience + 60 
+    elsif self.created_at  < 1.week.ago && self.legit_hour == false
+       self.destroy!
+    end
+   end
+ end 
 
  def claims?
   if Claim.where(event_id: self.id).count > 0 
@@ -123,7 +154,58 @@ class Event < ActiveRecord::Base
     return "#{start_time}:#{start_minutes} #{start_am} - #{end_time}:#{end_minutes} #{end_am}"
  end
 
+def next_monday
+ date = Date.today
+ date += 1 + ((0-date.wday) % 7)
+ if self.event_date == date
+  return true
+ end
+end 
+def next_tuesday
+ date = Date.today
+ date += 1 + ((1-date.wday) % 7)
+ if self.event_date == date
+  return true
+ end
+end 
+def next_wednesday
+ date = Date.today
+ date += 1 + ((2-date.wday) % 7)
+ if self.event_date == date
+  return true
+ end
+end 
+def next_thursday
+ date = Date.today
+ date += 1 + ((3-date.wday) % 7)
+ if self.event_date == date
+  return true
+ end
+end 
 
+def next_friday
+ date = Date.today
+ date += 1 + ((4-date.wday) % 7)
+ if self.event_date == date
+  return true
+ end
+end 
+
+def next_saturday
+ date = Date.today
+ date += 1 + ((5-date.wday) % 7)
+ if self.event_date == date
+  return true
+ end
+end 
+
+def next_sunday
+ date = Date.today
+ date += 1 + ((6-date.wday) % 7)
+ if self.event_date == date
+  return true
+ end
+end 
 
 end
 

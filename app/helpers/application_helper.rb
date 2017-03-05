@@ -14,5 +14,8 @@ module ApplicationHelper
     link_to text, "tel:#{number}"
   end
 
+  def paginate(collection, params= {})
+   will_paginate @collection, {link_options: {'data-remote': true}, params: {action: 'other_action'}}
+  end
 
 end

@@ -3,6 +3,7 @@
 	<%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 <%x.uniq.each do |d|%>
+<%= will_paginate @events %>
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>
 	<div class="row hourslist">
 		<div class="col s12">
@@ -40,8 +41,11 @@
 						<div class="chip" style="background-color:#17a787"><!--green-->
 							<%=event.special%>
 						</div>
+						
 						<div class="new-event" id = "new-event<%=event.id%>">
 						
+						
+					
 							<%= event.new_event%>
 							<%if  event.claims?%>
 								<i class="zmdi zmdi-flag"></i>
@@ -54,6 +58,7 @@
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
+								
 							<%= event.new_event%>
 							<%if  event.claims?%>
 								<i class="zmdi zmdi-flag"></i>
@@ -66,6 +71,7 @@
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
+							
 							<%= event.new_event%>
 							<%if  event.claims?%>
 								<i class="zmdi zmdi-flag"></i>
@@ -150,9 +156,9 @@
 												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-favorite-outline"></i> </a>
 											<%end%>
 										</div>
-										<!--<div class="verified-hour" id= 'event<%=modal_event.id%>'>
+										<div class="verified-hour-like" id= 'event<%=modal_event.id%>'>
                             					<%= modal_event.get_likes.size%>
-                        				</div>-->
+                        				</div>
                         				</div>
 									</div>
 								</div>
@@ -300,6 +306,7 @@
 			</div>
 		</div>
 	</div>
+	
 <%end%>
 
 

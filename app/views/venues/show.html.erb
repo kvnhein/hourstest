@@ -10,6 +10,30 @@
 <div class="col s3">
      <div class="detailstitle">
            <h4 class= "flow-text center-align"><%= @venue.name%><%=@l%></h4>
+           
+           <div class="powered-by-ver">
+          <div class="urbanist-badge-venue">
+              <% if @venue.urbanist == true %>
+                      <div class="urbanist on-profile">
+                        <a href="http://www.hourspgh.com/urbanist" target="_blank">
+                        <%= image_tag "urbanist.png"%>
+                        </a>
+                      </div>
+                  <% end %>
+                  </div>
+          </div>
+         
+          
+          
+          <a class='dropdown-button btn edit-btn hide' href='#' data-activates='dropdown33'>
+           <!--<i class="material-icons">settings</i>-->
+          <i class="zmdi zmdi-more-vert"></i>
+           </a>
+           
+              <!-- Dropdown Structure -->
+  <ul id='dropdown33' class='dropdown-content thedropdownmenu'>
+    <li><a>Flag Venue</a></li>
+  </ul>
 
        <% if (user_signed_in?)%>
         <% if current_user.admin? || @venue.owner == current_user.id%>
@@ -25,7 +49,7 @@
 
 
  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
+  <ul id='dropdown1' class='dropdown-content thedropdownmenu'>
     <li><%= link_to 'Edit Venue', edit_venue_path(@venue)%></li>
     <li class="divider"></li>
     <li><%= link_to 'New Hour', new_event_path %></li>
@@ -45,7 +69,7 @@ Verify Venue
                 <%end%>
     </li>
   </ul>
-<div class="row">
+
     <div class="col s12 profile-tabs">
       <ul class="tabs">
         <li class="tab col s4"><a class="active" href="#weekly">Weekly Hours</a></li>
@@ -55,9 +79,9 @@ Verify Venue
         <li class="tab col s4"><a href="#venueinfo">Info</a></li>
       </ul>
     </div>
-  </div>
 
-<div class="powered-by-ver onprofile">
+
+<div class="powered-by-ver onprofile hide">
            <div class="verified">
 <%if @venue.venue_verify.nil?%>
  <p class="verified-date hide">Venue not verified<p/>
@@ -247,6 +271,7 @@ Verify Venue
 
 <div id="beerlist" class="col s12">
   <div id = 'specials'><%= render partial: "featured_dish"%></div>
+  
 </div>
 
 
@@ -256,28 +281,48 @@ Verify Venue
 
 
  <div id="venueinfo" class="col s12">
-   <br><br/>
-   <div class = "center">
-    <a class="btn-flat disabled teal-text text-accent-4" href=
+   
+   <div class="row buttonsonprofile">
+   <div class = "col s4">
+    <a class="btn-flat disabled teal-text text-accent-4 venue-profile-buttons" href=
         "http://<%= @venue.menu_address %>">Visit <%=@venue.name%></a>
    </div>
-   <div class = "center">
-    <a class="btn-flat disabled teal-text text-accent-4" href=
+   <div class = "col s4">
+    <a class="btn-flat disabled teal-text text-accent-4 venue-profile-buttons" href=
         "http://www.google.com/maps/place/<%= @venue.address %>" target="_blank">Directions</a>
    </div>
-   <br>
-      <!-- End OF Drop Down -->
-<div class="venue-details">
-        <h3 class="flow-text">Contact Info:</h3>
-         <%phone_string = "(#{@venue.phone_number[0..2].to_s}) #{@venue.phone_number[3..5].to_s} - #{@venue.phone_number[6..9].to_s}"%>
-        <p class="phonea"> Phone: <%=phone_number_link("#{phone_string}")%></p>
-        <p>Address: <%= @venue.address%></p>
-        <p>Venue Type: <%= @venue.genre%></p>
-        <% if @venue.open_table_id %>
+   <div class = "col s4">
+       <a class="btn-flat disabled teal-text text-accent-4 venue-profile-buttons make-res modal-trigger" href="#makeares">MAKE A RESERVATION</a>
+    </div>
+    </div>
+    
+    <!-- Modal Structure -->
+  <div id="makeares" class="modal">
+    <div class="modal-content">
+       <% if @venue.open_table_id %>
             <script type='text/javascript' src='//www.opentable.com/widget/reservation/loader?rid=<%= @venue.open_table_id%>&domain=com&type=standard&theme=standard&lang=en&overlay=false&iframe=true'></script>
         <%end%>
-    </div>
   </div>
+  </div>
+  
+  
+   
+      <!-- End OF Drop Down -->
+<div class="venue-details">
+        <h3 class="flow-text hide">Contact Info:</h3>
+         <%phone_string = "(#{@venue.phone_number[0..2].to_s}) #{@venue.phone_number[3..5].to_s} - #{@venue.phone_number[6..9].to_s}"%>
+        <p class="phonea"> <b>Phone:</b> <%=phone_number_link("#{phone_string}")%></p>
+        <p><b>Address:</b> <%= @venue.address%></p>
+        <p><b>Venue Type:</b> <%= @venue.genre%></p>
+       
+    </div>
+    
+     
+
+
+  </div>
+  
+ 
   
 <div class="col s12">
 

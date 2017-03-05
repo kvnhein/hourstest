@@ -19,7 +19,7 @@ class EventsController < ApplicationController
   def user_index
       @users = User.all
       @urbanist_venues = Venue.where(urbanist: true)
-      @events = Event.where(day: @day_specials)
+      @events = Event.where(day: @day_specials).page(params[:page])
   end
   
   def event_verified
@@ -133,6 +133,10 @@ class EventsController < ApplicationController
   @event.liked_by current_user
     current_user.increment!(:experience, by = 5)
     current_user.count_events_saved
+    if @event.super_vote?
+        @event.legit_hour = true
+        @event.save!
+    end
   end
 
   def event_downvote
@@ -146,8 +150,13 @@ class EventsController < ApplicationController
     @topic = "Hours"
     @topic_description = "Hours provides Happy Hours/Specials and Featured dishes throughout Pittsburgh"
     @page_url = ""
-    @new_events = Event.after(Date.today - 7).to_a
+    @new_events = Event.after(Date.today - 7)
+    @date = Date.today 
     @updated_events = Event.after(Date.today - 7, field: :updated_at).to_a
+    @events_with_claims = []
+    Claim.all.each do |claim|
+        @events_with_claims.push(claim.event)
+    end 
     
     @top_users = []
     User.all.each do |user|
@@ -155,6 +164,8 @@ class EventsController < ApplicationController
             @top_users.push(user)
         end 
     end 
+    
+
     
   end
 
@@ -601,6 +612,11 @@ class EventsController < ApplicationController
     @event = current_user.events.build(event_params)
     Venue.find(@event.venue_id).venue_avg_verify
     
+    if User.find(@event.user_id).super_user?
+        @event.legit_hour = true
+        @event.save! 
+    end
+    
     event2 = @event
     if event2.food == false    
         event2.tag_list.remove("Food")
@@ -752,6 +768,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end, :tag_list, :event_verify, :varified_user, :event_date, :food, :drinks, :entertainment, :late_nite)
+      params.require(:event).permit(:special,:detail, :day, :venue_id, :start, :end, :tag_list, :event_verify, :varified_user, :event_date, :food, :drinks, :entertainment, :late_nite, :legit_hour)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216112304) do
+ActiveRecord::Schema.define(version: 20170304175924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170216112304) do
     t.datetime "updated_at",  null: false
     t.text     "description"
     t.integer  "status"
+    t.date     "delete_date"
   end
 
   add_index "claims", ["event_id"], name: "index_claims_on_event_id", using: :btree
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 20170216112304) do
     t.boolean  "drinks"
     t.boolean  "late_nite"
     t.boolean  "entertainment"
+    t.boolean  "legit_hour"
   end
 
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
@@ -248,6 +250,7 @@ ActiveRecord::Schema.define(version: 20170216112304) do
     t.integer  "num_claim_votes"
     t.integer  "num_events_saved"
     t.integer  "num_features_liked"
+    t.boolean  "feature_rights"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

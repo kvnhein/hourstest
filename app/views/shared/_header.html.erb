@@ -105,12 +105,16 @@
     <%if Venue.where(owner: current_user.id).count > 0 %>
       <li><%= link_to "My Venues", users_venues_path%></li>
     <%end%>
-    <%if current_user.experience < 100 %>
+    <%if current_user.experience < 1000 %>
      <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Hours"><i class="material-icons left">lock</i>New Hour</a></li>
       <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Feature"><i class="material-icons left">lock</i>New Feature</a></li>
     <%else%>
       <li><%= link_to "New Hour", new_event_path %></li>
-      <li><%= link_to "New Feature", new_daily_special_path%></li>
+      <%if current_user.feature_rights == true%>
+        <li><%= link_to "New Feature", new_daily_special_path%></li>
+      <%else%>
+        <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Feature"><i class="material-icons left">lock</i>New Feature</a></li>
+      <%end%>
     <%end%>
     <li>
       <div class="log-out">
@@ -197,8 +201,12 @@
         <%else%>
           <li class="divider"></li>
           <li><%= link_to 'New Hour',new_event_path%></li>
+          <%if current_user.feature_rights == true %>
           <li class="divider"></li>
           <li><%= link_to 'New Feature', new_daily_special_path%></li>
+          <%else%>
+            <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a feature"><i class="material-icons left">lock</i>New Feature</a></li>
+          <%end%>
         <%end%>
         
      <li class="divider"></li>

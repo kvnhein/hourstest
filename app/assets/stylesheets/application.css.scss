@@ -340,6 +340,64 @@ progress[value]::-webkit-progress-value {
     text-align: left;
 }
 
+.buttonsonprofile {
+  padding: 10px;
+}
+
+#makeares .modal-content {
+  padding: 30px;
+    height: auto;
+    background-color: #fff;
+}
+
+.buttonsonprofile .col.s4  {
+  padding: 3px;
+}
+
+.venue-profile-buttons {
+      font-size: 10px;
+    line-height: 11px;
+    text-align: center;
+    padding: 23px 9px;
+    border: 1px solid #17a787;
+    height: 57px;
+    vertical-align: text-bottom;
+    width: 100%;
+    font-weight:600;
+    letter-spacing:normal !important;
+}
+
+.venue-profile-buttons i {
+  position: inherit;
+  vertical-align: middle;
+    
+}
+
+.center .venue-profile-buttons {
+      max-width: 300px;
+}
+
+.cont-sec .tabs {
+      background-color: #f1f1f1;
+}
+
+.cont-sec .venue-profile-buttons {
+      color: #fff !important;
+    background-color: #17a787 !important;
+}
+
+.venue-profile-buttons i {
+  color:#fff;
+}
+
+.makeares {
+  max-width:300px;
+}
+
+.venue-profile-buttons.make-res {
+  padding-top: 19px;
+}
+
 .submitted-by {
 position: absolute;
     text-align: center;
@@ -1086,9 +1144,10 @@ footer.page-footer {
 
 
 .contributors-section p {
-  margin-top: -5px;
+      margin-top: 5px;
     color: #979797;
     margin-bottom: 10px;
+    padding: 0 20px;
 }
 
 .contributors .beerlist .special-by-day {
@@ -1420,6 +1479,11 @@ footer.page-footer {
     width: 25px;
 }
 
+.powered-by-ver .urbanist.on-profile img {
+  left: 10px;
+  top: -33px;
+}
+
 .ot-dtp-picker {
   width: 99% !important;
 }
@@ -1637,6 +1701,10 @@ main .container {
     margin: 0 auto;
 }
 
+.venue-details p {
+  margin:0;
+}
+
 #venue-menu-dropdown2 {
     top: 51px !important;
 }
@@ -1695,7 +1763,7 @@ main .container {
       background-color: #0e0e0e;
     margin: 0;
     margin-top: -1px;
-        padding: 0 0 26px 0 !important;
+        padding: 0 0 0px 0 !important;
 }
 
  .profile-tabs.neiborhoodprofile {
@@ -2193,6 +2261,7 @@ nav .button-collapse i {
 
 .phonea a {
   background-color:#fff !important;
+  color: #17a787;
 }
 
 .beerlist .special-by-day {
@@ -2377,11 +2446,21 @@ nav .button-collapse i {
   padding-top:15px;
 }
 
-#dropdown1 {
+.thedropdownmenu {
   width:100% !important;
   top: 73px !important;
   left:0 !important;
 }
+
+.verified-hour-like {
+      position: absolute;
+    bottom: 16px;
+    left: 34px;
+    color:#17a787;
+    font-size: 10px;
+}
+
+
 
 .collapsible.beerlist {
   margin-bottom:0;

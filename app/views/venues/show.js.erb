@@ -1,0 +1,6 @@
+$('#beerlist').append('<%= j render(@daily_specials) %>');
+<% if @daily_specials.next_page %>
+$('pagination').replaceWith('<%= j will_paginate(@daily_specials) %>');
+<% else %>
+    $('.pagination').remove();
+    <%end%>
