@@ -373,8 +373,61 @@ progress[value]::-webkit-progress-value {
     
 }
 
+
+
 .center .venue-profile-buttons {
       max-width: 300px;
+}
+
+.awards-key .icon-circle img {
+      width: 30px;
+    height: auto;
+}
+
+.icon-circle {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.awards-key .arrow img {
+  top: 25px;
+    right: 15px;
+}
+
+.icon-logo {
+  display: inline-block;
+}
+
+.awards-key .icon-logo img {
+         width: 56px;
+    height: auto;
+}
+
+.awards-key .modal-content {
+      padding: 0;
+}
+
+.awards-key h4 {
+      background-color: #ddd;
+    color: #000;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 13px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.awards-key .card {
+  padding: 16px;
+  display: block;
+}
+
+.awards-key .modal-close {
+  position: absolute;
+    top: 0px;
+    right: -13px;
+    font-weight:600;
 }
 
 .cont-sec .tabs {

@@ -29,10 +29,29 @@
 					</div>
 					<%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
 					<div class="urbanist">
-						<a href="http://www.hourspgh.com/urbanist" target="_blank">
+						<a href="#modal1" class="modal-trigger">
 							<%= image_tag "urbanist.png"%>
 						</a>
 					</div>
+					<!-- Modal Structure -->
+					  <div id="modal1" class="modal awards-key">
+					    <div class="modal-content">
+					      <h4>restraunt awards key</h4><a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="zmdi zmdi-close"></i></a>
+					    </div>
+					      <a href="http://www.hourspgh.com/urbanist" class="card" target="_blank">
+						      <div class="icon-circle">
+						      	<%= image_tag "urbanist.png"%>
+						      </div>
+						      <div class="icon-logo">
+						      	<%= image_tag "urbanistapprovedseal.png"%>
+						      </div>
+						      <div class="arrow">
+						<%= image_tag "arrow.png"%>
+		
+					</div>
+						  </a>
+					    </div>
+					   
 					<%end %>
 						<!---This is where it ends-->
 					<%unievents.reverse.each do |event|%>

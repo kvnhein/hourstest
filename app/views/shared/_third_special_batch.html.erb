@@ -4,9 +4,7 @@
     <%= link_to "#{Venue.where(id: event.venue_id).first.name}", venue_path(Venue.where( id: event.venue_id).first.id), class: "teal-text text-accent-4", 'data-no-turbolink' => true %>
     </h5>
 
-    <h6><%=event.special_neighborhood%></h6>
-
-    <!--<h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>-->
+    <h6><%event.special_neighborhood%>  <%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>
     <div class="card">
      <div class="card-image z-depth-2">
         <%= image_tag event.image.url(:medium)%>
