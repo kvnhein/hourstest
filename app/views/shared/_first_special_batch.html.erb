@@ -1,4 +1,4 @@
-<%@first_special_batch.sort.each do |event| %>
+<%@first_special_batch.sort  { |x,y| y <=> x }.each do |event| %>
 
 
 
