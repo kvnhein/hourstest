@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   						:controllers => { :omniauth_callbacks => "omniauth_callbacks",:registrations => "users/registrations",:sessions => "users/sessions" }
   						
  
-
-  resources :users, only: [:show, :special_collection]
+  get 'user_list', to: 'users#user_list'
+  resources :users, only: [:show, :special_collection, :user_list] do
+   member do
+          patch :add_super_user, :remove_super_user
+        end
+ end
   
   get 'past_features/:past_tag', to: 'daily_specials#past_features', as: :past_tag
   get 'past_features' => 'daily_specials#past_features'

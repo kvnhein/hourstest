@@ -265,7 +265,7 @@ class EventsController < ApplicationController
    @v = @venues.where( neighborhood_id: 2)
    #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
+   #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_topic = ""
@@ -293,7 +293,7 @@ class EventsController < ApplicationController
    @neighborhood_tag = 1
    @v = @venues.where( neighborhood_id: 1)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
+   #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_topic = ""
@@ -307,7 +307,7 @@ class EventsController < ApplicationController
 
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
     @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
@@ -355,7 +355,7 @@ class EventsController < ApplicationController
    @neighborhood_tag = 5
    @v = @venues.where( neighborhood_id: 5)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
+   #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
    @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    
@@ -371,7 +371,7 @@ class EventsController < ApplicationController
 
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
+    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
     
 
      #this is for OG

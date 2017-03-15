@@ -102,9 +102,11 @@
 
   <ul id="venue-menu-dropdown4" class="dropdown-content nav-drop" style="top: 51px !important;">
     <li><%=link_to "My Profile", edit_user_registration_path%></li>
+    <!--
     <%if Venue.where(owner: current_user.id).count > 0 %>
       <li><%= link_to "My Venues", users_venues_path%></li>
     <%end%>
+    -->
     <%if current_user.experience < 1000 %>
      <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Hours"><i class="material-icons left">lock</i>New Hour</a></li>
       <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Feature"><i class="material-icons left">lock</i>New Feature</a></li>
@@ -185,12 +187,13 @@
     <li class="divider"></li>
     <%if (user_signed_in?)%>
     <li><%=link_to "My Profile", edit_user_registration_path%></li>
-    <li class="divider"></li>
+    
+    <!--<li class="divider"></li>
       <%if Venue.where(owner: current_user.id).count > 0 %>
           <li><%= link_to "My Venues", users_venues_path%></li>
        <%end%>
     <%end%>
-
+    -->
 
     <% if (user_signed_in?)%>
      
@@ -221,9 +224,10 @@
       <li><%= link_to "Login", new_user_session_path%></li>
       <li class="divider"></li>
     <%end%>
+     <!--
       <li><%= link_to 'About Us', about_us_path%></li>
       <li class="divider"></li>
-      
+      -->
   </ul>
   <!-- mobile nav bar end -->
   

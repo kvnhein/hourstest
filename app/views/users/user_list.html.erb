@@ -1,0 +1,39 @@
+<br>
+<div class = "contributors ">
+	
+	<ul class="collapsible beerlist ">
+		<%top_5 = 0%>
+		<% User.all.order("experience desc ").each do |user|%>
+			
+			<%if top_5 < 100%>
+				<%if user.fullname && user.experience%>
+					<div class="collapsible-header special-by-day z-depth-1">
+						
+						<li >
+						
+								<div class = "right">
+								     <div class="remove-btn">
+                                        <%=link_to add_super_user_user_path(user),remote: true, method: :patch do%>
+                                        | Add |
+                                        <%end%>
+                                    </div>
+								
+								</div>
+							
+							<p class="namecont"><%= link_to "#{User.find(user.id).fullname}", User.find(user.id) %></p>
+							<p>Hours: <%= number_with_delimiter(user.experience, :delimiter => ',') %></p>
+						    <div class="remove-btn hide">
+                                <%=link_to remove_super_user_user_path(user),remote: true, method: :patch do%>
+                                    | Remove |
+                                <%end%>
+                            </div>
+                           
+						</li>
+					</div>
+					<%top_5 = top_5 + 1 %>
+				<%end%>
+			<%end%>
+		<%end%>
+	</ul>
+
+</div>

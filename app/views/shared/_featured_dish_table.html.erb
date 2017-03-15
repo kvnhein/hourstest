@@ -2,7 +2,7 @@
 <%@first_special_batch = []%>
 <%@verified_this_week.each do |venue|%>
  <%a= venue.id%>
- <%ds = @todays_feature.where(venue_id: a)%>
+ <%ds = @daily_specials.where(venue_id: a)%>
  <%ds.each do |special|%>
      <%@first_special_batch.push(special)%>
     <%end%>
@@ -11,7 +11,7 @@
 <%@second_special_batch =[]%>
 <%@verified_after_week.each do |venue|%>
  <%a= venue.id%>
- <%ds = @todays_feature.where(venue_id: a)%>
+ <%ds = @daily_specials.where(venue_id: a)%>
   <%ds.each do |special|%>
      <%@second_special_batch.push(special)%>
     <%end%>
@@ -20,7 +20,7 @@
 <%@third_special_batch = []%>
 <%@verified_month_ago.each do |venue|%>
  <%a= venue.id%>
- <%ds = @todays_feature.where(venue_id: a)%>
+ <%ds = @daily_specials.where(venue_id: a)%>
   <%ds.each do |special|%>
      <%@third_special_batch.push(special)%>
     <%end%>
