@@ -356,7 +356,7 @@ class EventsController < ApplicationController
    @v = @venues.where( neighborhood_id: 5)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
    #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
    @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    
    
