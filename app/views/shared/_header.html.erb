@@ -1,25 +1,7 @@
 
-<ul id="dropdown4" class="dropdown-content">
-  <li class="divider"></li>
-  <li><%= link_to "My Profile", edit_user_registration_path%></li>
-  <li class="divider"></li>
-  <li><%= link_to "Log Out",  destroy_user_session_path,method: :delete%></li>
-</ul>
-<ul id="dropdown3" class="dropdown-content">
-  <li class="divider"></li>
-  <li><%= link_to "South Side", south_side_path%></li>
-  <li class="divider"></li>
-  <li><%= link_to "Login", new_user_session_path%></li>
-</ul>
 
-<ul id="dropdown2" class="dropdown-content">
-  <li class="divider"></li>
-  <li><%= link_to "Shadyside", shadyside_path%></li>
-  <li class="divider"></li>
-  <li><%= link_to "Oakland", oakland_path%></li>
-  <li class="divider"></li>
-  <li><%= link_to "South Side", south_side_path%></li>
-</ul>
+
+
 <ul id="dropdown8" class="dropdown-content">
   <li class="divider"></li>
   <li><%= link_to "My Profile", edit_user_registration_path%></li>
@@ -33,14 +15,7 @@
   <li><%= link_to "Login", new_user_session_path%></li>
 </ul>
 
-<ul id="dropdown6" class="dropdown-content">
-  <li class="divider"></li>
-  <li><%= link_to "Shadyside", shadyside_path%></li>
-  <li class="divider"></li>
-  <li><%= link_to "Oakland", oakland_path%></li>
-  <li class="divider"></li>
-  <li><%= link_to "South Side", south_side_path%></li>
-</ul>
+
 <div class="navbar-fixed">
 <nav id="header22">
   <div class = "container">
@@ -48,39 +23,7 @@
   <div class = "row">
 
     <!-- Dropdown Structure -->
-<% if (user_signed_in?)%>
-<ul id="venue-menu-dropdown" class="dropdown-content nav-drop">
 
-    <li class="divider"></li>
-    <li><%= link_to "Downtown", downtown_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "South Side", south_side_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "Shadyside", shadyside_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "Oakland", oakland_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "Lawrenceville", lawrenceville_path%></li>
-  <li class="divider"></li>
-    <li><%= link_to "Strip District", strip_district_path%></li>
-</ul>
-
-    <ul id="venue-menu-dropdown2" class="dropdown-content nav-drop" style="top: 51px !important;">
-
-    <li class="divider"></li>
-    <li><%= link_to "Downtown", downtown_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "South Side", south_side_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "Shadyside", shadyside_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "Oakland", oakland_path%></li>
-    <li class="divider"></li>
-    <li><%= link_to "Lawrenceville", lawrenceville_path%></li>
-      <li class="divider"></li>
-    <li><%= link_to "Strip District", strip_district_path%></li>
-</ul>
-<%end%>
 
 
   <ul class="right hide-on-med-and-down">

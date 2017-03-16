@@ -280,7 +280,7 @@ class EventsController < ApplicationController
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today).after(Date.today - 7)
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
     #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
   end
@@ -310,7 +310,7 @@ class EventsController < ApplicationController
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
   end
@@ -341,7 +341,7 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
   end
@@ -375,7 +375,7 @@ class EventsController < ApplicationController
     
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
 
@@ -409,7 +409,7 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
@@ -449,7 +449,7 @@ class EventsController < ApplicationController
    @autocomplete_path = east_liberty_autocomplete_event_special_path
    @neighborhood_path = east_liberty_path
    @neighborhood_tag = 9
-   hood_id = Neighborhood.where(id: 9).first.id
+   hood_id = Neighborhood.find(9).id
    @v = @venues.where( neighborhood_id: hood_id)
    #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
@@ -469,7 +469,7 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
@@ -479,7 +479,7 @@ class EventsController < ApplicationController
    @autocomplete_path = strip_district_autocomplete_event_special_path
    @neighborhood_path = strip_district_path
    @neighborhood_tag = 11
-   hood_id = Neighborhood.where(id: 11).first.id
+   hood_id = Neighborhood.find(11).id
    @v = @venues.where( neighborhood_id: hood_id)
    #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
@@ -498,7 +498,7 @@ class EventsController < ApplicationController
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
@@ -507,7 +507,7 @@ class EventsController < ApplicationController
    @autocomplete_path = bloomfield_autocomplete_event_special_path
    @neighborhood_path = bloomfield_path
    @neighborhood_tag = 10
-   hood_id = Neighborhood.where(id: 10).first.id
+   hood_id = Neighborhood.find(10).id
    @v = @venues.where( neighborhood_id: hood_id)
    #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
@@ -527,7 +527,7 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
@@ -536,7 +536,7 @@ class EventsController < ApplicationController
    @autocomplete_path = north_side_autocomplete_event_special_path
    @neighborhood_path = north_side_path
    @neighborhood_tag = 12
-   hood_id = Neighborhood.where(id: 12).first.id
+   hood_id = Neighborhood.find(12).id
    @v = @venues.where( neighborhood_id: hood_id)
    #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
@@ -556,7 +556,7 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
@@ -565,7 +565,7 @@ class EventsController < ApplicationController
    @autocomplete_path = mt_washington_autocomplete_event_special_path
    @neighborhood_path = mt_washington_path
    @neighborhood_tag = 13
-   hood_id = Neighborhood.where(id: 13).first.id
+   hood_id = Neighborhood.find(13).id
    @v = @venues.where( neighborhood_id: hood_id)
    #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
@@ -585,7 +585,7 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
@@ -677,8 +677,8 @@ class EventsController < ApplicationController
         if @event.save && @event_tue.save && @event_wed.save && @event_thu.save && @event_fri.save
             #EventMailer.sample_email(current_user, @event).deliver
 
-            Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
-            format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
+            Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
+            format.html { redirect_to Venue.find(@event.venue_id), notice: 'Hour was successfully created.' }
             format.json { head :no_content }
             format.js { render :layout => false }
         else
@@ -706,8 +706,8 @@ class EventsController < ApplicationController
             if @event.save && @event_tue.save && @event_wed.save && @event_thu.save && @event_fri.save && @event_sat.save && @event_sun.save
             #EventMailer.sample_email(current_user, @event).deliver
 
-            Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
-            format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
+            Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
+            format.html { redirect_to Venue.find(@event.venue_id), notice: 'Hour was successfully created.' }
             format.json { head :no_content }
             format.js { render :layout => false } 
             else
@@ -725,8 +725,8 @@ class EventsController < ApplicationController
       if @event.save && @event_sun.save
         #EventMailer.sample_email(current_user, @event).deliver
 
-        Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
-        format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
+        Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
+        format.html { redirect_to Venue.find(@event.venue_id), notice: 'Hour was successfully created.' }
         format.json { head :no_content }
         format.js { render :layout => false }
       else
@@ -739,8 +739,8 @@ class EventsController < ApplicationController
       if @event.save
         #EventMailer.sample_email(current_user, @event).deliver
 
-        Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
-        format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully created.' }
+        Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
+        format.html { redirect_to Venue.find(@event.venue_id), notice: 'Hour was successfully created.' }
         format.json { head :no_content }
         format.js { render :layout => false }
       else
