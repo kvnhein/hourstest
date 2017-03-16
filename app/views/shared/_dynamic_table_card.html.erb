@@ -8,7 +8,7 @@
      <%@first_batch.push(event)%>
     <%end%>
     <%end%>
-
+<%@first_batch.sort! { |a,b| a.event_verify <=> b.event_verify }%>
 <%@second_batch =[]%>
 <%@verified_after_week.each do |venue|%>
  <%a= venue.id%>
