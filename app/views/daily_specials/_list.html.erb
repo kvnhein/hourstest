@@ -1,61 +1,3 @@
-<div class = "hide">
-<h3 class="flow-text center landing-title">Yesterdays Top Feature</h3>
-<%if @daily_specials.count > 0 %>
-  <%max = DailySpecial.maximum(:credit)%>
-  <%DailySpecial.where(credit: max).each do |event|%>
-    <%@j=event%>
-    <div class="row">
-        <div class="col s12 m8 offset-m2 featured-dish-section">
-            <h5>
-            <%=link_to "#{Venue.where(id: event.venue_id).first.name}", venue_path(Venue.where(id: event.venue_id).first), class: "teal-text text-accent-4",'data-no-turbolink' => true %></h5>
-            <h6><%=event.created_at.strftime("%B #{event.created_at.day.ordinalize}, %Y")%></h6>
-            <div class="card">
-                <div class="card-image z-depth-2">
-                    <%= image_tag event.image.url(:medium)%>
-                </div>
-                <div class="card-content">
-                    <%=event.text%><!--Like Button-->
-                    <div class="like-btn">
-                        <!--<div class = "Left">Available til 10:00 pm</div>-->
-                        <%@j = event%>
-                        <div class="like-like">
-                            <div id='like-<%=event.id%>'>
-                                <%if user_signed_in? %>
-                                  <%if current_user.voted_as_when_voted_for event %>
-                                      <%= render 'downvote'%>
-                                  <%else %>
-                                      <%= render 'upvote' %>
-                                  <%end %>
-                              <%else%>
-                                <%= link_to new_user_session_path%><i class="tiny material-icons"
-                                style="opacity:0.4">favorite_border</i>
-                              <%end%>
-                            </div>
-                        </div>
-                        <div class="like-number" id='special<%=event.id%>'>
-                            <%= event.credit + event.get_likes.size%>
-                        </div>
-                    </div><!--End Of Like Button-->
-                </div>
-                <div class="card-action">
-                    <%= event.description%>
-                    <div>
-                        <div>
-                            <%if user_signed_in? %>
-                              <%if current_user.admin?%>
-                            %= link_to 'Show', event %>
-                            <%= link_to 'Edit', edit_daily_special_path(event) %>
-                            <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true  %><i class="material-icons">share</i>
-                            <%end%>
-                            <%end%>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<%end%>
-</div>
 
 <h3 class="flow-text center landing-title">Today's Features</h3>
 <div class ="center" id="specials">
@@ -137,6 +79,6 @@
 <div class = "hide">
 <%= link_to 'New Feature', new_daily_special_path, :id => "feat_dish" %>
 </div>
-<%end%>
+
 
 

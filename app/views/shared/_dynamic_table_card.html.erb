@@ -1,35 +1,9 @@
 
 
-<%@first_batch = []%>
-<%@verified_this_week.each do |venue|%>
- <%a= venue.id%>
- <%events = @events.where(venue_id: a).to_a%>
-  <%events.each do |event|%>
-     <%@first_batch.push(event)%>
-    <%end%>
-    <%end%>
 
-<%@second_batch =[]%>
-<%@verified_after_week.each do |venue|%>
- <%a= venue.id%>
- <%events = @events.where(venue_id: a)%>
-  <%events.each do |event|%>
-     <%@second_batch.push(event)%>
-    <%end%>
-    <%end%>
-
-<%@third_batch = []%>
-<%@verified_month_ago.each do |venue|%>
- <%a= venue.id%>
- <%events = @events.where(venue_id: a)%>
-  <%events.each do |event|%>
-     <%@third_batch.push(event)%>
-    <%end%>
-    <%end%>
 
 
 
 <%=render partial: "shared/first_batch"%>
-<%render partial: "shared/second_batch"%>
-<%render partial: "shared/third_batch"%>
+
 
