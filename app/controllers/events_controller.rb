@@ -194,7 +194,7 @@ class EventsController < ApplicationController
     @strip_district_venues = Venue.where(urbanist: true, neighborhood_id: 11)
 
     @urbanist_venues = Venue.where(urbanist: true)
-    @todays_feature =  DailySpecial.today
+    @daily_specials =  DailySpecial.today
 
     @verified_this_weeku = Venue.between_times(@week_ago, @today).where(urbanist: true)
     @verified_after_weeku = Venue.between_times(@month_ago,@week_ago).where(urbanist: true)
