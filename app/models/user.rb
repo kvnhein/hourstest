@@ -19,6 +19,10 @@ def default_values
     self.num_claim_votes ||= 0
     self.num_events_saved ||= 0
  end
+ 
+ def self.all_cached
+  Rails.cache.fetch('User.all') { all }
+ end
   
 def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first

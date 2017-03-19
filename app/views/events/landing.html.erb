@@ -125,7 +125,7 @@
 	
 	<ul class="collapsible beerlist ">
 		<%top_5 = 0%>
-		<% User.all.order("experience desc ").each do |user|%>
+		<% @users.all.order("experience desc ").each do |user|%>
 			
 			<%if top_5 < 5%>
 				<%if user.fullname && user.experience%>
@@ -135,7 +135,7 @@
 							<% if user.experience > 100 %>
 								<div class = "right"><i class="tiny material-icons" >verified_user</i></div>
 							<%end%>
-							<p class="namecont"><%= link_to "#{User.find(user.id).fullname}", User.find(user.id) %></p>
+							<p class="namecont"><%= link_to "#{@users.find(user.id).fullname}", @users.find(user.id) %></p>
 							<p>Hours: <%= number_with_delimiter(user.experience, :delimiter => ',') %></p>
 						
 						</li>

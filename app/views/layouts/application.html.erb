@@ -4,41 +4,14 @@
   <title>HoursPGH</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
-  
   <!--NEW ONE-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-    
-  <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
-    
-
-
-
   <%= favicon_link_tag 'favicon.png' %>
   <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-
-  <%if (user_signed_in?)%>
-  <script>
-   var OneSignal = window.OneSignal || [];
-    OneSignal.push(["init", {
-      appId: "03e86ca5-e989-4cf9-8d42-07c6ac901042",
-      autoRegister: false, /* Set to true to automatically prompt visitors */
-      subdomainName: 'https://hourspgh.onesignal.com',
-      notifyButton: {
-          enable: true/* Set to false to hide */
-      }
-    }]);
-  </script>
-  <%end%>
-
-
-
-
 <meta property="fb:app_id" content="617946341715685" />
 <meta property="og:url" content="http://www.hourspgh.com/<%=@page_url%>"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-   <link rel="stylesheet" href = "https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.min.css">
+   
   <script src="https://use.typekit.net/juu2xhe.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
@@ -87,7 +60,7 @@
 <%= yield %>
 </div>
 </main>
-
+<link rel="stylesheet" href = "https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.min.css">
 <%= render partial: "shared/footer"%>
 
 <!--<script src="//load.sumome.com/" data-sumo-site-id="33b3c952f7e3243fe90e7f68df49961a016a5ca309bebb539f19953284aa1713" async="async"></script>-->
@@ -112,6 +85,14 @@ $(document).ready(function() {
     $('.tooltipped').tooltip({delay: 50});
   });
 </script>
+
+<!--TABS-->
+<script>
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+<!--END TABS-->
 
 
 

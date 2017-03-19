@@ -158,9 +158,9 @@ class EventsController < ApplicationController
     Claim.all.each do |claim|
         @events_with_claims.push(claim.event)
     end 
-    
+    @users = User.all_cached
     @top_users = []
-    User.all.each do |user|
+    @users.all.each do |user|
         if user.fullname
             @top_users.push(user)
         end 
@@ -350,22 +350,22 @@ class EventsController < ApplicationController
     @page_url = "downtown"
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
-
-
+    @event = Event.all_cached
+   
    @neighborhood_tag = 5
    @v = @venues.where( neighborhood_id: 5)
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
    #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   @events = @event.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
+   @tag_events = @event.where(venue_id: @v.pluck(:id), day: @day_specials)
    
    
    @tag_topic = ""
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = @event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
      elsif params[:down_tag]
-      @events = Event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = @event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
      @tag_topic = "##{params[:down_tag]}"
     end
 
@@ -389,7 +389,7 @@ class EventsController < ApplicationController
    @autocomplete_path = lawrenceville_autocomplete_event_special_path
    @neighborhood_path = lawrenceville_path
    @neighborhood_tag = 7
-   hood_id = Neighborhood.where(id: 7).first.id
+   hood_id = Neighborhood.find(7).id
    @v = @venues.where( neighborhood_id: hood_id)
    #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
@@ -419,7 +419,7 @@ class EventsController < ApplicationController
    @autocomplete_path = bloomfield_autocomplete_event_special_path
    @neighborhood_path = bloomfield_path
    @neighborhood_tag = 6
-   hood_id = Neighborhood.where(id: 6).first.id
+   hood_id = Neighborhood.find(6).id
    @v = @venues.where( neighborhood_id: hood_id)
    #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
@@ -439,7 +439,7 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.where(id: @neighborhood_tag).first.name}"
+    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
@@ -759,8 +759,8 @@ class EventsController < ApplicationController
         
     respond_to do |format|
       if @event.update(event_params)
-        Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
-        format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Hour was successfully updated.' }
+        Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
+        format.html { redirect_to Venue.find(@event.venue_id), notice: 'Hour was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
         Venue.find(@event.venue_id).venue_avg_verify
       else
@@ -776,8 +776,8 @@ class EventsController < ApplicationController
      expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
     @event.destroy
     respond_to do |format|
-      Venue.where(id: @event.venue_id).first.update_attribute(:venue_verify, Time.now)
-      format.html { redirect_to Venue.where(id: @event.venue_id).first, notice: 'Event was successfully destroyed.' }
+      Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
+      format.html { redirect_to Venue.find(@event.venue_id), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

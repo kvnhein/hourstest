@@ -18,11 +18,7 @@
     </div>
   </div>
 
-<script>
-   $(document).ready(function(){
-    $('ul.tabs').tabs();
-  });
-</script>
+
 
 <div id="Market_Square">
      <%@neighborhood_venues = Venue.where(neighborhood_id: 5).pluck(:id)%>

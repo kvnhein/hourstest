@@ -14,7 +14,10 @@ class Event < ActiveRecord::Base
   scope :special_like, -> (special) { where("special ilike ?", special)}
 
 
- 
+ def self.all_cached
+  Rails.cache.fetch('Event.all') { all }
+ end
+
  def default_values
   self.event_verify ||= Time.now 
   self.varified_user ||= current_user.id
@@ -66,6 +69,7 @@ class Event < ActiveRecord::Base
  end
 
   def new_event
+   
     a = Event.after(Date.today - 7).to_a
     b = Event.after(Date.today - 7, field: :updated_at).to_a
     c = Event.before(Date.today - 30, field: :event_verify).to_a
