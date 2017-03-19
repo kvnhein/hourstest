@@ -18,6 +18,12 @@ class Event < ActiveRecord::Base
   Rails.cache.fetch('Event.all') { all }
  end
 
+ def self.credit_cached
+  Rails.cache.fetch('Event.all') { all }
+end
+
+def self.likes_cached
+end
  def default_values
   self.event_verify ||= Time.now 
   self.varified_user ||= current_user.id
@@ -72,7 +78,7 @@ class Event < ActiveRecord::Base
    
     a = Event.after(Date.today - 7).to_a
     b = Event.after(Date.today - 7, field: :updated_at).to_a
-    c = Event.before(Date.today - 30, field: :event_verify).to_a
+    c = Event.before(Date.today - 60, field: :event_verify).to_a
     if a.include? self
       if self.legit_hour == true 
        return "Verified"
@@ -82,6 +88,10 @@ class Event < ActiveRecord::Base
     elsif c.include? self 
      return "Not Verified"
     end
+  end
+  
+  def cached_new_event
+   Rails.cache.fetch([self, "new_event"]) {new_event}
   end
  
  def super_vote?
@@ -115,6 +125,10 @@ class Event < ActiveRecord::Base
   if Claim.where(event_id: self.id).count > 0 
    return true
   end
+ end
+ 
+ def cached_claims?
+  Rails.cache.fetch([self, "claims?"]) {claims?}
  end
 
    def time_conversion

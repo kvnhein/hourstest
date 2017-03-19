@@ -350,22 +350,23 @@ class EventsController < ApplicationController
     @page_url = "downtown"
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
-    @event = Event.all_cached
+    
    
    @neighborhood_tag = 5
-   @v = @venues.where( neighborhood_id: 5)
+   
+   @v = Rails.cache.fetch('downotown_venues') {Neighborhood.find(5).venues}
    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
    #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
-   @events = @event.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
-   @tag_events = @event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
+   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
    
    
    @tag_topic = ""
     if params[:search]
-      @events = @event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
      elsif params[:down_tag]
-      @events = @event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = Event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
      @tag_topic = "##{params[:down_tag]}"
     end
 

@@ -40,6 +40,10 @@ class Venue < ActiveRecord::Base
     Rails.cache.fetch([self, "all"]) { all }
   end
   
+  def self.downtown_venues
+    Rails.cache.fetch('downotown_venues') {Neighborhood.find(5).venues}
+  end 
+
   def venue_avg_verify
     days = 0
     Event.where(venue_id: self.id, day: Time.current.strftime("%A")).each do |event| 
