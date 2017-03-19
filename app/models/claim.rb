@@ -1,6 +1,6 @@
 class Claim < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :event
+  belongs_to :user, touch: true
+  belongs_to :event, touch: true
   acts_as_votable
   before_save :default_values
   validates :description, presence: true

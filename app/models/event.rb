@@ -91,8 +91,10 @@ end
   end
   
   def cached_new_event
-   Rails.cache.fetch([self, "new_event"]) {new_event}
+   Rails.cache.fetch([self, "new_event"], expires_in: 24.hours) {new_event}
   end
+  
+  
  
  def super_vote?
   voters = self.votes_for.up.by_type(User).voters
