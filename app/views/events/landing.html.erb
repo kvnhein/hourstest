@@ -8,7 +8,7 @@
 <meta property="og:image" content="http://www.hourspgh.com/assets/HoursAd_V4-9f36b77e65320ff624eacd4c4c7d44660d31dabd977c9aef2782ee9fc879232c.jpg" />
 <%end%>
 
-<% cache("landing", :expires_in => 10.minutes) do %>
+<% cache("landing", :expires_in => 24.hours) do %>
 <h4 class ="flow-text center landing-title hide"><%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h4>
 <!--div class = "z-depth-2"--><%= link_to "Today's Features", daily_specials_path, class: "hide waves-effect waves-light btn newvenue menubtn image-btns featurebtn z-depth-3"%><!--/div-->
 
@@ -68,6 +68,8 @@
 </div>
 </div>
 <br>
+
+
 
 <% if @new_events.count > 0%>
 <div class="container cont-sec">

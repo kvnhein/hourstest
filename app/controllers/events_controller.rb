@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   before_action :verified_venues, only: [:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :squirrel_hill]
   before_action :event_time, only: [:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill, :user_index]
   autocomplete :event, :special, :full => true
+  
   # GET /events
   # GET /events.json
 
