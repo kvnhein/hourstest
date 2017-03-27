@@ -36,8 +36,8 @@ class Venue < ActiveRecord::Base
     b = DailySpecial.where(venue_id: a).today.count
   end
 
-  def cached_all
-    Rails.cache.fetch([self, "all"]) { all }
+  def self.all_cached
+    Rails.cache.fetch([ "Venue.all"]) { all }
   end
   
   def self.downtown_venues

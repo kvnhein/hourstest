@@ -85,6 +85,10 @@ class EventsController < ApplicationController
   end
 
   def event_time
+    #@event_all = Event.all
+    #@venue_all = Venue.all
+    #@daily_special_all = DailySpecial.all
+    #@claim_all = Claim.all
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
@@ -311,7 +315,7 @@ class EventsController < ApplicationController
     #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @topic = "Hours in South Side"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
   end
@@ -342,32 +346,35 @@ class EventsController < ApplicationController
     @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @topic = "Hours in Oakland"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
   end
 
   def downtown
+    @event_all = Event.all
+    
     @page_url = "downtown"
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
-    
+    specials = DailySpecial.all 
+    events = @event_all.all_cached
    
    @neighborhood_tag = 5
    
    @v = Rails.cache.fetch('downotown_venues') {Neighborhood.find(5).venues}
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
+   @daily_specials = specials.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
    #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   @events = events.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
+   @tag_events = events.where(venue_id: @v.pluck(:id), day: @day_specials)
    
    
    @tag_topic = ""
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = events.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
      elsif params[:down_tag]
-      @events = Event.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = events.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
      @tag_topic = "##{params[:down_tag]}"
     end
 
@@ -377,7 +384,7 @@ class EventsController < ApplicationController
     
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @topic = "Hours in Downtown"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
 

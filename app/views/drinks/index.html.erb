@@ -1,11 +1,4 @@
 <h1>Drinkss list...</h1>
 
-<div id="drink_form">
-  <%= render partial: 'form' %>
-</div>
-
-<ol id = "drink-list">
-  <%= render @drinks %>
-</ol>
-
-<%= link_to "Add drink", "#",  :id => "new_drink_link" %>
+<%= @drinks_count%>
+<%= @drinks.last%> 

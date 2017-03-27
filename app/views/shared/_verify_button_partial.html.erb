@@ -3,7 +3,7 @@
 							
 								<div class="verifyprofile">
 								<div class = "verify_button<%=modal_event.id%>">
-								<% if Claim.where(event_id: modal_event.id).count == 0%>
+								<% if Claim.where(event_id: modal_event.id)%>
 									
 										<%if user_signed_in? %>
 											<%if current_user.can_verify?%>

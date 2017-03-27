@@ -59,7 +59,7 @@ end
  end
 
  def event_type
-    Venue.where(id: self.venue_id).first.genre unless Venue.where(id: self.venue_id).first.genre.nil?
+    Venue.all_cached.where(id: self.venue_id).first.genre unless Venue.all_cached.where(id: self.venue_id).first.genre.nil?
  end
 
   def any_details
