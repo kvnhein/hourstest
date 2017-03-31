@@ -110,6 +110,7 @@
     <% if (user_signed_in?)%>
      
         <%if current_user.experience < 1000%>
+          <li class="divider"></li>
           <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create hours"><i class="material-icons left">lock</i>New Hour</a></li>
           <li class="divider"></li>
           <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a feature"><i class="material-icons left">lock</i>New Feature</a></li>
@@ -136,10 +137,10 @@
       <li><%= link_to "Login", new_user_session_path%></li>
       <li class="divider"></li>
     <%end%>
-     <!--
+     
       <li><%= link_to 'About Us', about_us_path%></li>
       <li class="divider"></li>
-      -->
+      
   </ul>
   <!-- mobile nav bar end -->
   
