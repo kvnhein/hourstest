@@ -2,6 +2,42 @@
      <div class="detailstitle">
 <h4 class= "flow-text center-align userfirstname"><%= current_user.fullname%>'s Profile</h4>
 
+
+              <!-- Modal Structure for the neigborhoods -->
+              <div id="modal1" class="modal nabehoodpicker">
+                <div class="modal-content">
+                    <p>Choose a neigborhood to explore the happy hours and specials!</p>
+                    
+                    <div class="row con-neighb">
+<div class="col m4 s12 z-depth-1">
+<%= link_to "Downtown", downtown_path, class: "waves-effect waves-light btn newvenue image-btns menubtn marketsquare-btn "%>
+</div>
+
+<div class="col m4 s12 z-depth-1">
+<%= link_to "Oakland", oakland_path, class: "waves-effect waves-light btn newvenue menubtn image-btns oaklandbtn"%>
+</div>
+
+<div class="col m4 s12 z-depth-1">
+<%= link_to "Shadyside", shadyside_path, class: "waves-effect waves-light btn newvenue menubtn image-btns shadyside-btn"%>
+</div>
+
+<div class="col m4 s12 z-depth-1">
+<%= link_to "Lawrenceville", lawrenceville_path, class: "waves-effect waves-light btn newvenue menubtn image-btns lawrenceville-btn"%>
+</div>
+
+<div class="col m4 s12 z-depth-1">
+<%= link_to "South Side", south_side_path, class: "waves-effect waves-light btn newvenue menubtn image-btns southside-btn"%>
+</div>
+
+<div class="col m4 s12 z-depth-1">
+<%= link_to "Strip District", strip_district_path, class: "waves-effect waves-light btn newvenue image-btns menubtn strip_district-btn"%>
+</div>
+
+
+</div>
+                  
+                  </div>
+              </div>
     
 <%@b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour%>
 <%@c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)%>

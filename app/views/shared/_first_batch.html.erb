@@ -1,16 +1,18 @@
 
 <%x=[]%><%@events.each do |event| %>
-	<%x.push(@venues.find(event.venue_id).id)%>
+	<!--x.push(@venues.find(event.venue_id).id)-->
+	<%x.push(event.venue_id)%>
 <%end%>
 <%x.uniq.each do |d|%>
 
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>
+	<%current_venue = @venues.find(@e[0].venue_id)%>
 	<div class="row hourslist">
 		<div class="col s12">
 			<div class="card">
 				<div class="card-content">
 					<span class="card-title activator">
-						<%= @venues.find(@e[0].venue_id).name%>
+						<%= current_venue.name%>
 					</span>
 					<br>
 					<!--==This is where the uniq special code is going in -->
@@ -27,14 +29,14 @@
 						<%= image_tag "arrow.png"%>
 		
 					</div>
-					<%if @venues.find(@e[0].venue_id).urbanist == true %>
+					<%if current_venue.urbanist == true %>
 					<div class="urbanist">
-						<a href="#modal1" class="modal-trigger">
+						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
 							<%= image_tag "urbanist.png"%>
 						</a>
 					</div>
 					<!-- Modal Structure -->
-					  <div id="modal1" class="modal awards-key">
+					  <div id="modal1<%=current_venue.id%>" class="modal awards-key">
 					    <div class="modal-content">
 					      <h4>restraunt awards key</h4><a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="zmdi zmdi-close"></i></a>
 					    </div>
@@ -119,9 +121,10 @@
 							<%end%>
 						</div>
 					</div><%end%><%end%>
+					
 					<div class="directions-btn">
 					<a class="btn-flat disabled teal-text text-accent-4" href=
-        "http://www.google.com/maps/place/<%= @venues.find(@e[0].venue_id).address %>" target="_blank"><i class="material-icons">directions</i></a>
+        "http://www.google.com/maps/place/<%= current_venue.address %>" target="_blank"><i class="material-icons">directions</i></a>
 					</div>
 					
 					<!--div class="card-content">-->
@@ -138,17 +141,17 @@
 						</span><br>
 					</div>
 					<div class="specials-header">
-						<h4><%= @venues.find(@e[0].venue_id).name%></h4>
+						<h4><%= current_venue.name%></h4>
 						<h5 class="flow-text"><%=@e[0].event_type%></h5>
 					</div>
 					<div class="powered-by-ver">
 						<div class="verified">
-							<%if @e[0].event_venue.venue_verify.nil?%>
+							<%if current_venue.venue_verify.nil?%>
 							<p class="verified-date hide">Venue has not been verified</p><%else%>
 							<div class="veri hide">
 								<%= image_tag "verified.png"%>
 							</div>
-							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if @venues.find(@e[0].venue_id).urbanist == true %>
+							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if current_venue.urbanist == true %>
 							<div class="urbanist">
 								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist.png"%></a>
 							</div><%end %>
@@ -172,7 +175,7 @@
 													<%= render 'event_upvote' %>
 												<%end %>
 											<%else%>
-												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-favorite-outline"></i> </a>
+												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-plus-circle-o"></i> </a>
 											<%end%>
 										</div>
 										<div class="verified-hour-like" id= 'event<%=modal_event.id%>'>
@@ -312,8 +315,9 @@
 							
 						</li><%end%>
 					</ul><br>
+					 
 					<div class="row">
-						<%= link_to 'View Profile', venue_path(@venues.find(@e[0].venue_id).id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
+						<%= link_to 'View Profile', venue_path(current_venue.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
 						<br>
 						<br>
 						<br>

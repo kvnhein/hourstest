@@ -11,7 +11,7 @@
 <meta property="fb:app_id" content="617946341715685" />
 <meta property="og:url" content="http://www.hourspgh.com/<%=@page_url%>"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-   
+
   <script src="https://use.typekit.net/juu2xhe.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
@@ -26,6 +26,7 @@
 </head>
 
 <body>
+    
   <div class="se-pre-con">
 
   </div>
@@ -57,10 +58,12 @@
 
 <main>
 <div class = "container">
+   
 <%= yield %>
 </div>
 </main>
 <link rel="stylesheet" href = "https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.min.css">
+
 <%= render partial: "shared/footer"%>
 
 <!--<script src="//load.sumome.com/" data-sumo-site-id="33b3c952f7e3243fe90e7f68df49961a016a5ca309bebb539f19953284aa1713" async="async"></script>-->
@@ -93,6 +96,23 @@ $(document).ready(function() {
   });
 </script>
 <!--END TABS-->
+
+<script>
+
+  
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+   $('.modal-trigger').leanModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+
+    }
+  );
+  });
+  
+</script>
 
 
 

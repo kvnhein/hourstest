@@ -4,18 +4,11 @@
  <%x.push(Venue.where(id: event.venue_id).first.id)%>
 <%end%>
 
-
-
 <% if x.count == 0 %> 
-  <%= render partial: "users/registrations/no_prof_hour"%>
+  <%= render partial: "users/registrations/no_prof_hour2"%>
 <%else%>
 
-<div class="addhoursbutton">
-<a class="modal-trigger btn-flat disabled text-accent-4 venue-profile-buttons" href="#modal1">ADD HOURS!</a>
-</div>
-
 <%x.uniq.each do |d|%>
-
 
   <%@e = @v.where(venue_id: d).order(:start).reverse%>
       <div class="row hourslist">

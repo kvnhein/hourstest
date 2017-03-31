@@ -21,7 +21,7 @@
                     <% end %>
                 </div>
               <%else%>
-                  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-favorite-outline"></i> </a>
+                  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to add hours to your profile"><i class="zmdi zmdi-plus-circle-o"></i> </a>
               <%end%>
           </div>
         </div>
@@ -72,7 +72,7 @@
 
                         				
 <p><span class="submit-by">Submitted by  <%= link_to "#{User.find(x.user_id).fullname}", User.find(x.user_id) %></span></p>
-  <%if Event.where(id: x.id).first.any_details == 2%>
+  <%if x.any_details == 2%>
       <p class="deets">
 		Details: <%=x.detail%></p><%@event_tag = x%><!--<%= render partial: "shared/tags"%>-->
 	  </p>
@@ -88,7 +88,7 @@
   
 
 <%if @button == 1 %>
- <%@happy_hour = Event.where(id: x.id).first%>
+ <%@happy_hour = x%>
 
 
   <div class="imhere">
@@ -119,7 +119,17 @@
 
 <%@modal_event = x%>
 <div class="flagprofile">
+    
+<% if user_signed_in?%>    
 <%= render partial: "venues/claim_partial"%>
+<%else%>
+<div  class = "btn-flat disabled red-text text-accent-4 new_claim signin_flag">
+	<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee hide", id: "form-hide#{@event.id}" do%>
+			<i class="zmdi zmdi-flag"></i>
+	<%end%>
+	<a class="tooltipped btn-flat disabled red-text text-accent-4 cantsee"  data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag hours"><i class="zmdi zmdi-flag"></i></a>
+</div>
+<%end%>
 </div>
       </li>
        <%end%>

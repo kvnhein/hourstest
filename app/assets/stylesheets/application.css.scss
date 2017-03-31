@@ -373,10 +373,25 @@ progress[value]::-webkit-progress-value {
     
 }
 
-
+.addhoursbutton2 i {
+  color: #17a787 !important;
+    margin-right: 4px;
+}
 
 .center .venue-profile-buttons {
       max-width: 300px;
+      color: #17a787;
+}
+
+.addhoursbutton {
+  padding: 15px;
+  border-bottom: 1px solid #D6D5D5;
+}
+
+.addhoursbutton2 {
+  padding: 15px;
+  border-top: 1px solid #D6D5D5;
+      clear: both;
 }
 
 .awards-key .icon-circle img {
@@ -1134,6 +1149,38 @@ footer.page-footer {
     display: block;
 }
 
+.nabehoodpicker .modal-content {
+  padding:0;
+}
+
+.card-panel.nohourssaved {
+  margin: 0;
+}
+
+.card-panel.nohourssaved p {
+  margin-top:0;
+  color: #717171;
+}
+
+.nabehoodpicker .con-neighb {
+  margin-bottom:0;
+}
+
+.nabehoodpicker p {
+  text-align:center;
+  margin:15px;
+  color:#717171;
+}
+
+.nabehoodpicker .con-neighb .col.m4 {
+  border-right:0;
+      border-bottom: 4px solid #fff;
+}
+
+.nabehoodpicker .image-btns {
+  padding: 21px 5px;
+}
+
 .about-top {
    background: url(aboutHours.jpg);
   background-repeat: no-repeat;
@@ -1142,7 +1189,12 @@ footer.page-footer {
     -o-background-size: cover;
     background-size: cover;
     background-position: center;
-    padding: 101px 20px;
+    padding: 50px 20px;
+}
+
+.about-top .venue-profile-buttons {
+      border: 1px solid #1fdeb4;
+    color: #1fdeb4;
 }
 
 .about-top h2 {
@@ -1152,6 +1204,12 @@ footer.page-footer {
     color: #fff;
     letter-spacing: .5px;
       text-align: center;
+}
+
+.about-top p {
+      color: #fff;
+    margin-top: 5px;
+    font-weight: 100;
 }
 
 .slider .slides li img {

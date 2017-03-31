@@ -42,6 +42,8 @@
     <%end%>
  
 <h6 class= "flow-text center-align">Saved Hours  |  Rank: <%=@user.experience%></h6>
+
+
      </div>
 </div>
 <div class="row" style="margin:0;">
@@ -100,42 +102,42 @@
     <div id="SunTab" class="col s12 showday center">
 
         <% @d = ["Sunday","Everyday","Weekdays"] %>
-        <%= render partial:  "users/registrations/prof_neigh_table" %>
+        <%= render partial:  "users/registrations/prof_neigh_table2" %>
    </div>
     <div id="MonTab" class="col s12 showday center">
 
         <% @d = ["Monday","Everyday","Weekdays"] %>
-        <%= render partial:  "users/registrations/prof_neigh_table" %>
+        <%= render partial:  "users/registrations/prof_neigh_table2" %>
    </div>
     <div id="TueTab" class="col s12 showday center">
 
       <% @h = "Tuesday"%>
       <% @d = ["Tuesday","Everyday","Weekdays"] %>
-        <%= render partial:  "users/registrations/prof_neigh_table" %>
+        <%= render partial:  "users/registrations/prof_neigh_table2" %>
    </div>
     <div id="WedTab" class="col s12 showday center">
 
        <% @h = "Wednesday"%>
         <% @d = ["Wednesday","Everyday","Weekdays"] %>
-       <%= render partial:  "users/registrations/prof_neigh_table" %>
+       <%= render partial:  "users/registrations/prof_neigh_table2" %>
    </div>
      <div id="ThurTab" class="col s12 showday center">
 
        <% @h = "Thursday"%>
         <% @d = ["Thursday","Everyday","Weekdays"] %>
-       <%= render partial:  "users/registrations/prof_neigh_table" %>
+       <%= render partial:  "users/registrations/prof_neigh_table2" %>
    </div>
      <div id="FriTab" class="col s12 showday center">
 
        <% @h = "Friday"%>
         <% @d = ["Friday","Everyday","Weekdays"] %>
-        <%= render partial:  "users/registrations/prof_neigh_table" %>
+        <%= render partial:  "users/registrations/prof_neigh_table2" %>
    </div>
    <div id="SatTab" class="col s12 showday center">
 
        <% @h = "Saturday"%>
         <% @d = ["Saturday","Everyday","Weekend"] %>
-        <%= render partial:  "users/registrations/prof_neigh_table" %>
+        <%= render partial:  "users/registrations/prof_neigh_table2" %>
    </div>
    </div>
   </div>

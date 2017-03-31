@@ -1,6 +1,6 @@
 <%modal_event = @modal_event%>
 								<div id = "form_button<%=modal_event.id%>" display ="none">
-									<% if Claim.where(event_id: modal_event.id).count == 0%>
+									<% if modal_event.claims.count == 0%>
 										<% if user_signed_in?%>
 											<% if current_user.can_verify?%>
 											

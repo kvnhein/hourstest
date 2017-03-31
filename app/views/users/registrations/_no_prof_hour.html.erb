@@ -1,5 +1,31 @@
 <div>
-	 	 <div class="card-panel grey lighten-3 z-depth-1">
-           <h2 class= "flow-text">Currently you have no saved Hours on <%=@d.first%>.</h2>
+	 	 <div class="card-panel nohourssaved">
+           <p>Currently you have no saved Hours on <%=@d.first%>.</p>
+                  
+                  <a class="modal-trigger btn-flat disabled text-accent-4 venue-profile-buttons" href="#modal1">ADD HOURS!</a> 
+                  
+  
+  
 	 	 </div>
 </div>
+
+  
+
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+   $('.modal-trigger').leanModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+
+    }
+  );
+  });
+  
+  
+  
+  
+  
+</script>

@@ -81,7 +81,7 @@ def self.from_omniauth(auth)
  
   def can_verify?
   if self.experience
-    if self.experience < 50 
+    if self.experience < 0 
       return false
     else
       return true
@@ -124,9 +124,11 @@ def self.from_omniauth(auth)
   end 
   
   def saved_first_hour
-    if self.num_events_saved >= 1
-      return true
-    end
+    if self.num_events_saved
+      if self.num_events_saved >= 1
+        return true
+      end
+    end 
   end 
   
   def count_events_saved
@@ -155,10 +157,13 @@ def self.from_omniauth(auth)
       self.save!
     end 
   end
+  
   def verified_first_hour
-    if self.num_verified >= 1
-      return true
-    end 
+    if self.num_verified
+      if self.num_verified >= 1
+        return true
+      end 
+    end
   end 
   
   def created_first_claim

@@ -7,6 +7,18 @@
 <meta property="og:image" content="<%=@page_image%>" />
 <%end%>
 
+ 
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>New Hour</h4>
+      <%= render partial: "events/venue_events_form"%>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+    </div>
+  </div>
 <div class="col s3">
      <div class="detailstitle">
            <h4 class= "flow-text center-align"><%= @venue.name%><%=@l%></h4>
@@ -120,6 +132,11 @@ Verify Venue
        <li class="tab col s1"><a class="<%=@st%>" href="#SatTab">Sat</a></li>
       </ul>
     </div>
+    <!-- Modal Trigger -->
+    <div class="addhoursbutton2 center">
+  <a class="modal-trigger btn-flat disabled text-accent-4 venue-profile-buttons" href="#modal1"><i class="material-icons">queue</i>Create New Hour</a>
+  </div>
+  
    <div class="weeklyhours beerlist" id="firstfade">
     <div id="SunTab" class="col s12 showday">
       <% @h = "Sunday"%>
@@ -165,95 +182,7 @@ Verify Venue
 
 
   </script>
-<ul class="collapsible beerlist hide" data-collapsible="accordion">
-     <li>
-      <div class="collapsible-header <%=@s%>"><i class="material-icons">query_builder</i>Sunday
-        <div class="dropdownarrow">
-         <%= image_tag "dropdown.png"%>
-       </div>
-       </div>
-      <div class="collapsible-body">
-        <% @h = "Sunday"%>
-        <% @d = ["Sunday","Everyday","Weekend"] %>
-        <%= render "show_table" %>
 
-      </div>
-
-
-    </li>
-    <li>
-      <div class="collapsible-header <%=@m%>"><i class="material-icons">query_builder</i>Monday
-      <div class="dropdownarrow">
-         <%= image_tag "dropdown.png"%>
-       </div>
-      </div>
-      <div class="collapsible-body">
-        <% @h = "Monday"%>
-        <% @d = ["Monday","Everyday","Weekdays"] %>
-        <%= render "show_table" %>
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-header <%=@t%>"><i class="material-icons">query_builder</i>Tuesday
-      <div class="dropdownarrow">
-         <%= image_tag "dropdown.png"%>
-       </div>
-      </div>
-      <div class="collapsible-body">
-      <% @h = "Tuesday"%>
-      <% @d = ["Tuesday","Everyday","Weekdays"] %>
-        <%= render "show_table" %>
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-header <%=@w%>"><i class="material-icons">query_builder</i>Wednesday
-      <div class="dropdownarrow">
-         <%= image_tag "dropdown.png"%>
-       </div>
-      </div>
-      <div class="collapsible-body">
-        <% @h = "Wednesday"%>
-        <% @d = ["Wednesday","Everyday","Weekdays"] %>
-        <%= render "show_table" %>
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-header <%=@th%>"><i class="material-icons">query_builder</i>Thursday
-      <div class="dropdownarrow">
-         <%= image_tag "dropdown.png"%>
-       </div>
-      </div>
-      <div class="collapsible-body">
-         <% @h = "Thursday"%>
-        <% @d = ["Thursday","Everyday","Weekdays"] %>
-        <%= render "show_table" %>
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-header <%=@f%>"><i class="material-icons">query_builder</i>Friday
-      <div class="dropdownarrow">
-         <%= image_tag "dropdown.png"%>
-       </div>
-      </div>
-      <div class="collapsible-body">
-         <% @h = "Friday"%>
-        <% @d = ["Friday","Everyday","Weekdays"] %>
-        <%= render "show_table" %>
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-header <%=@st%>"><i class="material-icons">query_builder</i>Saturday
-      <div class="dropdownarrow">
-         <%= image_tag "dropdown.png"%>
-       </div>
-      </div>
-      <div class="collapsible-body">
-         <% @h = "Saturday"%>
-        <% @d = ["Saturday","Everyday","Weekend"] %>
-        <%= render "show_table" %>
-      </div>
-     </li>
-  </ul>
 
   <br>
 
@@ -271,7 +200,6 @@ Verify Venue
 
 <div id="beerlist" class="col s12">
   <div id = 'specials'><%= render partial: "featured_dish"%></div>
-  
 </div>
 
 
