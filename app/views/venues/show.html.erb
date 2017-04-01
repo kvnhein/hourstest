@@ -7,7 +7,10 @@
 <meta property="og:image" content="<%=@page_image%>" />
 <%end%>
 
- 
+  <!-- Modal Trigger -->
+    <div class="addhoursbutton2 center">
+  <a class="modal-trigger btn-flat disabled text-accent-4 venue-profile-buttons floating-one" href="#modal1"><i class="material-icons">queue</i></a>
+  </div>
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
@@ -132,10 +135,7 @@ Verify Venue
        <li class="tab col s1"><a class="<%=@st%>" href="#SatTab">Sat</a></li>
       </ul>
     </div>
-    <!-- Modal Trigger -->
-    <div class="addhoursbutton2 center">
-  <a class="modal-trigger btn-flat disabled text-accent-4 venue-profile-buttons" href="#modal1"><i class="material-icons">queue</i>Create New Hour</a>
-  </div>
+   
   
    <div class="weeklyhours beerlist" id="firstfade">
     <div id="SunTab" class="col s12 showday">

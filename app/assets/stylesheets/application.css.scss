@@ -367,6 +367,19 @@ progress[value]::-webkit-progress-value {
     letter-spacing:normal !important;
 }
 
+.venue-profile-buttons.floating-one {
+      height: 56px;
+    width: 56px;
+    border-radius: 50px;
+            padding: 21px 18px;
+        background-color:#17a787;
+}
+
+.venue-profile-buttons.floating-one i {
+  color:#fff;
+  
+}
+
 .venue-profile-buttons i {
   position: inherit;
   vertical-align: middle;
@@ -374,8 +387,10 @@ progress[value]::-webkit-progress-value {
 }
 
 .addhoursbutton2 i {
-  color: #17a787 !important;
-    margin-right: 4px;
+      padding: 15px;
+    border-top: 0;
+    clear: both;
+        padding: 0;
 }
 
 .center .venue-profile-buttons {
@@ -390,8 +405,11 @@ progress[value]::-webkit-progress-value {
 
 .addhoursbutton2 {
   padding: 15px;
-  border-top: 1px solid #D6D5D5;
       clear: both;
+      position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    right: 0;
 }
 
 .awards-key .icon-circle img {
