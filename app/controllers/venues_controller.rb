@@ -36,7 +36,7 @@ class VenuesController < ApplicationController
     #past_specials.delete_all
     #end
    
-    @event = Event.new
+    @event = Event.new 
 
     @events = Event.where(venue_id: params[:id])
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")

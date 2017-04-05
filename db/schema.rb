@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170304175924) do
+ActiveRecord::Schema.define(version: 20170404163256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170304175924) do
     t.string   "drink_Status"
     t.string   "drink_type"
     t.integer  "venue_id"
+    t.integer  "spr"
   end
 
   add_index "drinks", ["venue_id"], name: "index_drinks_on_venue_id", using: :btree
@@ -272,6 +273,7 @@ ActiveRecord::Schema.define(version: 20170304175924) do
     t.boolean  "urbanist"
     t.integer  "avg_verify"
     t.string   "open_table_id"
+    t.integer  "spr_rank"
   end
 
   add_index "venues", ["neighborhood_id"], name: "index_venues_on_neighborhood_id", using: :btree

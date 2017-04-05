@@ -63,7 +63,7 @@ class ApplicationMailer < ActionMailer::Base
         mail(to: @user.email, subject: @user.fullname)
       end
       
-      def welcome_email(user, events)
+      def welcome_email(user)
        
     @new_events = Event.after(Date.today - 7).to_a
     @updated_events = Event.after(Date.today - 7, field: :updated_at).to_a
@@ -113,7 +113,7 @@ class ApplicationMailer < ActionMailer::Base
       end
 
         @user = user
-        @users_likes = events
+        
         mail(to: @user.email, subject: @user.fullname)
       end
 end

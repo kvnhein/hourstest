@@ -34,27 +34,52 @@
 						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
 							<%= image_tag "urbanist.png"%>
 						</a>
+						
 					</div>
+					<%end%>
+					<%if current_venue.spr_rank == 1 %>
+					<div class="sustainablepgh">
+						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
+							<%= image_tag "SustainablePittsburgh.png"%>
+						</a>
+
+					</div>
+					<%end%>
 					<!-- Modal Structure -->
+					
 					  <div id="modal1<%=current_venue.id%>" class="modal awards-key">
 					    <div class="modal-content">
-					      <h4>restraunt awards key</h4><a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="zmdi zmdi-close"></i></a>
+					      <h4>restraunt awards key</h4>
+					      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="zmdi zmdi-close"></i></a>
 					    </div>
+					    <%if current_venue.urbanist == true %>
 					      <a href="http://www.hourspgh.com/urbanist" class="card" target="_blank">
-						      <div class="icon-circle">
-						      	<%= image_tag "urbanist.png"%>
-						      </div>
-						      <div class="icon-logo">
-						      	<%= image_tag "urbanistapprovedseal.png"%>
-						      </div>
-						      <div class="arrow">
-						<%= image_tag "arrow.png"%>
-		
-					</div>
+						<div class="icon-circle">
+						  <%= image_tag "urbanist.png"%>
+						</div>
+						<div class="icon-logo">
+						  <%= image_tag "urbanistapprovedseal.png"%>
+						</div>
+						<div class="arrow">
+						  <%= image_tag "arrow.png"%>
+						</div>
 						  </a>
+						<%end %>
+						<%if current_venue.spr_rank == 1 %>
+						  <a href="http://www.sustainablepghrestaurants.org/site/about/overview/" class="card" target="_blank">
+						<div class="icon-circle suspit">
+						  <%= image_tag "SustainablePittsburgh.png"%>
+						</div>
+						<div class="icon-logo">
+						  <%= image_tag "SustainablePittsburghlogo.jpg"%>
+						</div>
+						<div class="arrow">
+						  <%= image_tag "arrow.png"%>
+						</div>
+						  </a>
+						<%end%>
 					    </div>
-					   
-					<%end %>
+					
 						<!---This is where it ends-->
 					<%unievents.reverse.each do |event|%>
 					<%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
@@ -151,11 +176,13 @@
 							<div class="veri hide">
 								<%= image_tag "verified.png"%>
 							</div>
-							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if current_venue.urbanist == true %>
+							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p>
+							<%end%>
+							<%if current_venue.urbanist == true %>
 							<div class="urbanist">
 								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist.png"%></a>
-							</div><%end %>
-							
+							</div>
+							<%end %>
 						</div>
 					</div>
 					<ul class="collapsible beerlist" data-collapsible="accordion">

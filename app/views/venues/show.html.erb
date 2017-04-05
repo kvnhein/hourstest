@@ -211,17 +211,21 @@ Verify Venue
  <div id="venueinfo" class="col s12">
    
    <div class="row buttonsonprofile">
+    <%if @venue.menu_address%>
    <div class = "col s4">
     <a class="btn-flat disabled teal-text text-accent-4 venue-profile-buttons" href=
         "http://<%= @venue.menu_address %>">Visit <%=@venue.name%></a>
    </div>
+   <%end%>
    <div class = "col s4">
     <a class="btn-flat disabled teal-text text-accent-4 venue-profile-buttons" href=
         "http://www.google.com/maps/place/<%= @venue.address %>" target="_blank">Directions</a>
    </div>
+   <%if @venue.open_table_id%> 
    <div class = "col s4">
        <a class="btn-flat disabled teal-text text-accent-4 venue-profile-buttons make-res modal-trigger" href="#makeares">MAKE A RESERVATION</a>
     </div>
+    <%end%>
     </div>
     
     <!-- Modal Structure -->

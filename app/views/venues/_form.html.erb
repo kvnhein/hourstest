@@ -53,6 +53,10 @@
     <%= f.label 'urbanist', id:'urbanist' %>
 
   </div>
+  <div class="input-field col s6">
+    <%= f.label :spr_rank %><br>
+   <%= f.select :spr_rank, options_for_select([['None', '0'],['starter', '1']], @venue.spr_rank), class: "list-select" %>
+    </div>
 <%end%>
   <div class="waves-effect waves-light btn menubtn">
     <%= f.submit %>

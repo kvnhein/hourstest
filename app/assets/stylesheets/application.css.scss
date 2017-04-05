@@ -261,11 +261,11 @@ h4.con-content-title {
 }
 
 .verified-by-w {
-        position: absolute;
+     position: absolute;
     left: 80px;
     font-size: 10px;
     line-height: 0px;
-    bottom: 11px;
+    bottom: 5px;
     color: #aaa;
     background-color: #fff;
     z-index: 2;
@@ -326,7 +326,7 @@ progress[value]::-webkit-progress-value {
 }
 
 .verified-by-w p {
-  line-height: 1 !important;
+  line-height: 0 !important;
     letter-spacing: 0px !important;
     text-align: right;
 }
@@ -373,6 +373,10 @@ progress[value]::-webkit-progress-value {
     border-radius: 50px;
             padding: 21px 18px;
         background-color:#17a787;
+}
+
+.white-text {
+  color:#fff;
 }
 
 .venue-profile-buttons.floating-one i {
@@ -422,8 +426,13 @@ progress[value]::-webkit-progress-value {
   margin-right: 5px;
 }
 
+.icon-circle.suspit {
+  vertical-align: top;
+    margin-top: 15px;
+}
+
 .awards-key .arrow img {
-  top: 25px;
+  top: 40%;
     right: 15px;
 }
 
@@ -901,7 +910,7 @@ body,html {
 }
 
 .mailheader {
-  background-color:#fafafa;
+  background-color:#ffffff;
   padding:0;
   display:block;
 }
@@ -1030,8 +1039,10 @@ body,html {
 }
 
 .mailheader-header {
-  background-color:#0e0e0e;
-  padding:20px;
+  /*background-color:#0e0e0e;*/
+      padding: 40px 20px;
+      background: url(http://i.imgur.com/L9mJ7lL.jpg) !important;
+  background-size: cover !important;
 }
 
 .mailheader h1 {
@@ -1040,9 +1051,62 @@ body,html {
   margin: 35px 20px;
 }
 
+.mailheader h5 {
+  color:#fff;
+  text-align:center;
+  margin-bottom:0;
+}
+
+.mailheader p {
+  color: #fff;
+    font-weight: 100 !important;
+    margin-top: 0px !important;
+    font-size: 17px;
+}
+
+.emailbtn-cta {
+      display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    padding: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #1fdeb4;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    border:1px solid #1fdeb4;
+}
+
+.full-email-set {
+  padding: 20px;
+}
+
+.lefty-side {
+    margin: 0 !important;
+    width: 80px !important;
+    float: left !important;
+}
+
+.ptags-left {
+      font-size: 17px;
+    font-weight: 100!important;
+    margin-top: 8px!important;
+    margin-left: 93px;
+    color:#000 !important;
+}
+
+.righty-side {
+    margin: 0 !important;
+    width: 70% !important;
+    color: #000 !important;
+}
+
 .mailheader-logo {
   height:auto;
   width:128px;
+  margin: 0 auto;
+    display: block;
 }
 
 body.mailpiece {
@@ -1167,6 +1231,10 @@ footer.page-footer {
     display: block;
 }
 
+.nabehoodpicker {
+  max-width:400px;
+}
+
 .nabehoodpicker .modal-content {
   padding:0;
 }
@@ -1190,13 +1258,16 @@ footer.page-footer {
   color:#717171;
 }
 
-.nabehoodpicker .con-neighb .col.m4 {
-  border-right:0;
-      border-bottom: 4px solid #fff;
+.nabehoodpicker .con-neighb .col.s12 {
+  border-right: 0;
+    border-bottom: 4px solid #fff;
+    padding: 0;
 }
 
 .nabehoodpicker .image-btns {
   padding: 21px 5px;
+  margin-bottom: 2px;
+  border-radius: 0;
 }
 
 .about-top {
@@ -1227,7 +1298,7 @@ footer.page-footer {
 .about-top p {
       color: #fff;
     margin-top: 5px;
-    font-weight: 100;
+    font-weight: normal;
 }
 
 .slider .slides li img {
@@ -1538,6 +1609,18 @@ footer.page-footer {
     top: 10px;
       left: 10px;
       z-index: 99;
+}
+
+
+.sustainablepgh {
+      position: absolute;
+    top: 46px;
+      left: 10px;
+      z-index: 99;
+}
+
+.sustainablepgh img {
+  width: 30px;
 }
 
 .directions-btn {
@@ -2504,12 +2587,15 @@ nav .button-collapse i {
     height: 100% !important;
 }
 
+
 .modal-style-new .modal-footer .modal-close .xbox {
   font-size: 25px;
     margin-top: -15px;
     margin-right: -10px;
     font-weight: 600;
 }
+
+
 
 .modal-style-new .modal-footer {
   width: 50px;
@@ -2586,6 +2672,14 @@ nav .button-collapse i {
     bottom: 16px;
     left: 34px;
     color:#17a787;
+    font-size: 10px;
+}
+
+.verified-hour-like2 {
+        position: absolute;
+    bottom: 8px;
+    left: 21px;
+    color: #17a787;
     font-size: 10px;
 }
 
@@ -3561,6 +3655,8 @@ i.tiny {
      margin-left: 2px;
   }
   
+  
+
   
 
   nav ul li {

@@ -107,7 +107,7 @@
       <%voters = claim.votes_for.up.by_type(User).voters%>
           <% voters.each do |user|%>
             <div class="chip">
-              <%=user.fullname%> <%=current_user.experience%> 
+              <%=user.fullname%> <%=user.voting_power%> 
             </div>
           <%end%>
     </div>

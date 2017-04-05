@@ -1,15 +1,17 @@
-<%x=[]%>
-<%@second_batch.shuffle.each do |event| %>
-<%x.push(Venue.where(id: event.venue_id).first.id)%>
+<%x=[]%><%@events.each do |event| %>
+	<!--x.push(@venues.find(event.venue_id).id)-->
+	<%x.push(event.venue_id)%>
 <%end%>
 <%x.uniq.each do |d|%>
+
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>
+	<%current_venue = @venues.find(@e[0].venue_id)%>
 	<div class="row hourslist">
 		<div class="col s12">
 			<div class="card">
 				<div class="card-content">
 					<span class="card-title activator">
-						<%= Venue.where( id: @e[0].venue_id).first.name%>
+						<%= current_venue.name%>
 					</span>
 					<br>
 					<!--==This is where the uniq special code is going in -->
@@ -26,14 +28,14 @@
 						<%= image_tag "arrow.png"%>
 		
 					</div>
-					<%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
+					<%if current_venue.urbanist == true %>
 					<div class="urbanist">
-						<a href="#modal1" class="modal-trigger">
+						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
 							<%= image_tag "urbanist.png"%>
 						</a>
 					</div>
 					<!-- Modal Structure -->
-					  <div id="modal1" class="modal awards-key">
+					  <div id="modal1<%=current_venue.id%>" class="modal awards-key">
 					    <div class="modal-content">
 					      <h4>restraunt awards key</h4><a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="zmdi zmdi-close"></i></a>
 					    </div>
@@ -53,48 +55,56 @@
 					   
 					<%end %>
 						<!---This is where it ends-->
-					<%unievents.reverse.each do |event|%><%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
+					<%unievents.reverse.each do |event|%>
+					<%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
 					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787">
+						<div class="chip" style="background-color:#17a787"><!--green-->
 							<%=event.special%>
 						</div>
+						
 						<div class="new-event" id = "new-event<%=event.id%>">
 						
-							<%= event.new_event%>
-							<%if  event.claims?%>
+						
+					
+							<%= event.cached_new_event%>
+							<%if  event.cached_claims?%>
 								<i class="zmdi zmdi-flag"></i>
 							<%end%>
 						</div>
-					</div><%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
+					</div>
+					<%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
 					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787">
+						<div class="chip" style="background-color:#17a787"><!--green-->
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
-							<%= event.new_event%>
-							<%if  event.claims?%>
+								
+							<%= event.cached_new_event%>
+							<%if  event.cached_claims?%>
 								<i class="zmdi zmdi-flag"></i>
 							<%end%>
 						</div>
-					</div><%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
+					</div>
+					<%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
 					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787">
+						<div class="chip" style="background-color:#17a787"><!--green-->
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
-							<%= event.new_event%>
-							<%if  event.claims?%>
+							
+							<%= event.cached_new_event%>
+							<%if  event.cached_claims?%>
 								<i class="zmdi zmdi-flag"></i>
 							<%end%>
 						</div>
 					</div><%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
 					<div class="chip-piece">
-						<div class="chip" style="background-color:#000000">
+						<div class="chip" style="background-color:#000000"><!--black-->
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
-							<%= event.new_event%>
-							<%if  event.claims?%>
+							<%= event.cached_new_event%>
+							<%if  event.cached_claims?%>
 								<i class="zmdi zmdi-flag"></i>
 							<%end%>
 						</div>
@@ -104,15 +114,16 @@
 							<%=event.special%>
 						</div>
 						<div class="new-event" id = "new-event<%=event.id%>">
-							<%= event.new_event%>
-							<%if  event.claims?%>
+							<%= event.cached_new_event%>
+							<%if  event.cached_claims?%>
 								<i class="zmdi zmdi-flag"></i>
 							<%end%>
 						</div>
 					</div><%end%><%end%>
+					
 					<div class="directions-btn">
 					<a class="btn-flat disabled teal-text text-accent-4" href=
-        "http://www.google.com/maps/place/<%= Venue.where( id: @e[0].venue_id).first.address %>" target="_blank"><i class="material-icons">directions</i></a>
+        "http://www.google.com/maps/place/<%= current_venue.address %>" target="_blank"><i class="material-icons">directions</i></a>
 					</div>
 					
 					<!--div class="card-content">-->
@@ -129,17 +140,17 @@
 						</span><br>
 					</div>
 					<div class="specials-header">
-						<h4><%= Venue.where( id: @e[0].venue_id).first.name%></h4>
+						<h4><%= current_venue.name%></h4>
 						<h5 class="flow-text"><%=@e[0].event_type%></h5>
 					</div>
 					<div class="powered-by-ver">
 						<div class="verified">
-							<%if @e[0].event_venue.venue_verify.nil?%>
+							<%if current_venue.venue_verify.nil?%>
 							<p class="verified-date hide">Venue has not been verified</p><%else%>
 							<div class="veri hide">
 								<%= image_tag "verified.png"%>
 							</div>
-							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
+							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if current_venue.urbanist == true %>
 							<div class="urbanist">
 								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist.png"%></a>
 							</div><%end %>
@@ -181,7 +192,9 @@
 								<p class="deets">
 								Details: 
 								<%=modal_event.detail%></p><%@event_tag = modal_event%><!--<%= render partial: "shared/tags"%>-->
-								<%end%><%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
+								<%end%>
+								
+								<%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
 								<div class="now-tab">
 									Now
 								</div><%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
@@ -301,8 +314,9 @@
 							
 						</li><%end%>
 					</ul><br>
+					 
 					<div class="row">
-						<%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
+						<%= link_to 'View Profile', venue_path(current_venue.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
 						<br>
 						<br>
 						<br>
@@ -314,8 +328,11 @@
 			</div>
 		</div>
 	</div>
+	
 <%end%>
 
 
 	<!-- This is the code to hide form-->
 										
+
+
