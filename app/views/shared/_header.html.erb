@@ -50,7 +50,7 @@
       <li><%= link_to "My Venues", users_venues_path%></li>
     <%end%>
     -->
-    <%if current_user.experience < 1000 %>
+    <%if current_user.experience < 0 %>
      <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Hours"><i class="material-icons left">lock</i>New Hour</a></li>
       <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Feature"><i class="material-icons left">lock</i>New Feature</a></li>
     <%else%>
@@ -109,7 +109,7 @@
 
     <% if (user_signed_in?)%>
      
-        <%if current_user.experience < 1000%>
+        <%if current_user.experience < 0%>
           <li class="divider"></li>
           <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create hours"><i class="material-icons left">lock</i>New Hour</a></li>
           <li class="divider"></li>
