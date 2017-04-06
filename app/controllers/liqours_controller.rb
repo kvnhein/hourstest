@@ -6,6 +6,7 @@ class LiqoursController < ApplicationController
   # GET /liqours.json
   def index
     @liqours = Liqour.all
+    @venues_now = Venue.includes(:events)
   end
 
   # GET /liqours/1

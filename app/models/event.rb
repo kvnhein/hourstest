@@ -29,6 +29,30 @@ end
   self.varified_user ||= current_user.id
   
  end
+ 
+ def add_tags
+  if self.food == false    
+        self.tag_list.remove("Food")
+    elsif self.food == true 
+        self.tag_list.add("Food")
+    end
+    if self.drinks == false    
+        self.tag_list.remove("Drinks")
+    elsif self.drinks == true 
+        self.tag_list.add("Drinks")
+    end
+    if self.late_nite == false    
+        self.tag_list.remove("Late nite")
+    elsif self.late_nite == true 
+        self.tag_list.add("Late nite")
+    end
+    if self.entertainment == false    
+        self.tag_list.remove("Entertainment")
+    elsif self.entertainment == true 
+        self.tag_list.add("Entertainment")
+    end
+    self.save!
+ end 
 
  def upper_case
     self.tag_list.each do |tag|

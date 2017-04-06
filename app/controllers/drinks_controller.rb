@@ -13,6 +13,7 @@ class DrinksController < ApplicationController
   # GET /drinks/1
   # GET /drinks/1.json
   def show
+    
   end
 
   def add_to_current

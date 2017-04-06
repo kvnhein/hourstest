@@ -94,7 +94,14 @@
 </div>
 <br>
 
+<% if (user_signed_in?)%>
+   <% if current_user.admin?%>
+<div>
+<%=link_to "Send Reminders", daily_mailer_path, method: :get, remote: true%>
+</div>
 
+    <%end%>
+<%end%>
 
 <% if @new_events.count > 0%>
 <div class="container cont-sec">

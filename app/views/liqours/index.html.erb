@@ -1,2 +1,7 @@
-
+<%=@venues_now.each do |venue|%>
+  <%= venue.events.count%>
+  <%=venue.events.each do |event|%>
+      <%= event.day %> 
+  <%end%>
+ <%end%>
 <div id = 'liqours'><%= render 'list'%></div>

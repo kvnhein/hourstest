@@ -1080,12 +1080,35 @@ body,html {
 
 .full-email-set {
   padding: 20px;
+   position: relative !important;
+
 }
 
 .lefty-side {
     margin: 0 !important;
     width: 80px !important;
     float: left !important;
+}
+
+.center-side {
+    margin: 0 auto !important;
+    width: 40px !important;
+        display: block !important;
+}
+
+.emailpleftalign {
+  color: #000 !important;
+  margin-top: 20px !important;
+}
+
+
+
+.righty-side {
+    width: 80px !important;
+   display: inline-block;
+   float: right !important;
+    width: 18% !important;
+   
 }
 
 .ptags-left {
@@ -1096,11 +1119,35 @@ body,html {
     color:#000 !important;
 }
 
-.righty-side {
-    margin: 0 !important;
-    width: 70% !important;
-    color: #000 !important;
+.ptags-center {
+      font-size: 17px;
+    font-weight: 100!important;
+    text-align: center;
+    color:#000 !important;
 }
+
+.headline-center {
+  font-weight: bold !important;
+    text-align: center;
+    color:#000 !important;
+    margin-bottom:8px !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    margin-bottom: 8px !important;
+}
+
+.ptags-right {
+      font-size: 17px;
+    font-weight: 100!important;
+    margin-top: 8px!important;
+    margin-right: 10px;
+    color:#000 !important;
+    text-align:right;
+    width: 70%;
+    display: inline-block;
+    float: right;
+}
+
 
 .mailheader-logo {
   height:auto;

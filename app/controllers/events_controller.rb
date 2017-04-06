@@ -670,17 +670,23 @@ class EventsController < ApplicationController
     elsif event2.entertainment == true 
         event2.tag_list.add("Entertainment")
     end
+    
+    @event = event2
     #@event = Event.new(event_params)
     if @event.day == "Weekdays"
         @event.day = "Monday"
         @event_tue = current_user.events.build(event_params)
         @event_tue.day = "Tuesday"
+        @event_tue.add_tags
         @event_wed = current_user.events.build(event_params)
         @event_wed.day = "Wednesday"
+        @event_wed.add_tags
         @event_thu = current_user.events.build(event_params)
         @event_thu.day = "Thursday"
+        @event_thu.add_tags
         @event_fri = current_user.events.build(event_params)
         @event_fri.day = "Friday"
+        @event_fri.add_tags
 
 
         respond_to do |format|
@@ -726,8 +732,7 @@ class EventsController < ApplicationController
             end
         end
    elsif @event.day == "Weekend"
-    @event_sat = current_user.events.build(event_params)
-    @event_sat.day = "Saturday"
+    @event.day = "Saturday"
     @event_sun = current_user.events.build(event_params)
     @event_sun.day = "Sunday"
 
