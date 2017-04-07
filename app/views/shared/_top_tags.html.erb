@@ -1,3 +1,4 @@
+
 <div class="tags-box">
 <% if @neighborhood_tag == 2 && @events.count > 0%>
  <%= raw @tag_events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, shady_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", shadyside_path, class:"disabled teal-text text-accent-4"%>

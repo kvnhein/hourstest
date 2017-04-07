@@ -6,7 +6,7 @@
 <%x.uniq.each do |d|%>
 
 	<%@e = @events.where(venue_id: d).order(:start).reverse%>
-	<%current_venue = @venues.find(@e[0].venue_id)%>
+	<%current_venue = @venues.find(d)%>
 	<div class="row hourslist">
 		<div class="col s12">
 			<div class="card">
@@ -228,12 +228,7 @@
 								<div class="later-tab">
 									Later
 								</div><%end%>
-								<div class="hide">
-									<%if modal_event.any_details == 2%>
-									<div class="dropdownarrow">
-										<%= image_tag "dropdown.png"%>
-									</div><%end%>
-								</div>
+								
 								
 									<div class="submitted-by hide"><p>Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(1).experience%> </p></div>
 									<div class="verified-by-w" id='verify-<%=modal_event.id%>'>
@@ -249,7 +244,8 @@
 								<!--form for Claims-->
 								<%@modal_event = modal_event%>
 								<div id = "form_button<%=modal_event.id%>" display ="none">
-									<% if Claim.where(event_id: modal_event.id).count == 0%>
+									<% if modal_event.claims.count == 0 %>
+									
 										<% if user_signed_in?%>
 											<% if current_user.can_verify?%>
 											

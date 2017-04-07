@@ -1,19 +1,12 @@
 
+<%if (user_signed_in?)%>
+      <%@signed_in == true%>
+    <%else%>
+      <%@signed_in == false%>
+    <%end%>
 
 
 
-<ul id="dropdown8" class="dropdown-content">
-  <li class="divider"></li>
-  <li><%= link_to "My Profile", edit_user_registration_path%></li>
-  <li class="divider"></li>
-  <li><%= link_to "Log Out",  destroy_user_session_path,method: :delete%></li>
-</ul>
-<ul id="dropdown7" class="dropdown-content">
-  <li class="divider"></li>
-   <li><%= link_to "Sign Up", new_user_registration_path%></li>
-  <li class="divider"></li>
-  <li><%= link_to "Login", new_user_session_path%></li>
-</ul>
 
 
 <div class="navbar-fixed">
@@ -46,7 +39,7 @@
   <ul id="venue-menu-dropdown4" class="dropdown-content nav-drop" style="top: 51px !important;">
     <li><%=link_to "My Profile", edit_user_registration_path%></li>
     <!--
-    <%if Venue.where(owner: current_user.id).count > 0 %>
+    <%if @venues.where(owner: current_user.id).count > 0 %>
       <li><%= link_to "My Venues", users_venues_path%></li>
     <%end%>
     -->
@@ -78,7 +71,7 @@
 
     
 
-    <%if (user_signed_in?)%>
+    <%if @signed_in%>
    <!-- <li> <%= current_user.fullname %> Profile</li>-->
     <%end%>
   </ul>
@@ -86,7 +79,7 @@
 <!-- Mobile nav bar start-->
 
   <ul id="slide-out" class="side-nav">
-     <%if (user_signed_in?)%>
+     <%if @signed_in%>
      <li class="divider hide"></li>
      <li class = "user-points hide"><%=link_to "Hours: #{current_user.experience}"%></li>
      <%end%>
@@ -101,9 +94,7 @@
     <li><%=link_to "My Profile", edit_user_registration_path%></li>
     
     <!--<li class="divider"></li>
-      <%if Venue.where(owner: current_user.id).count > 0 %>
-          <li><%= link_to "My Venues", users_venues_path%></li>
-       <%end%>
+      
     <%end%>
     -->
 

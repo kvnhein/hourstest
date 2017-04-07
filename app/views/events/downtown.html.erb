@@ -44,16 +44,18 @@
 
 <div class ="center" id="specials">
  <%=render partial: "shared/autocomplete"%>
+ <% cache "tag" do %>
  <div><%= render partial: "shared/top_tags"%></div>
+ <%end%>
  <%=render partial: "shared/dynamic_table_card"%>
 </div>
 
 
-<%unless @daily_specials.count== 0%>
+
 <div id="featured-dish">
   <%=render partial: "shared/featured_dish_table"%>
 </div>
-<%end%>
+
 
 <!-- This script is for Google Analytics -->
 <script>

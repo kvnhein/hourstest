@@ -8,6 +8,8 @@ class DrinksController < ApplicationController
     @drink = Drink.new
     @drinks_count = Event.all.count
     @drinks_last = @drinks.last
+    
+      
   end
 
   # GET /drinks/1
