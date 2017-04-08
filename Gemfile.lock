@@ -76,6 +76,7 @@ GEM
     concurrent-ruby (1.0.1)
     css_parser (1.4.5)
       addressable
+    dalli (2.7.6)
     debug_inspector (0.0.2)
     devise (4.0.0)
       bcrypt (~> 3.0)
@@ -262,6 +263,7 @@ DEPENDENCIES
   by_star!
   byebug
   coffee-rails (~> 4.1.0)
+  dalli
   devise
   evil_icons
   foreman

@@ -354,7 +354,7 @@ class EventsController < ApplicationController
 
   def downtown
     #@event_all = Event.all
-    
+    @venues = Venue.all
     @page_url = "downtown"
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path

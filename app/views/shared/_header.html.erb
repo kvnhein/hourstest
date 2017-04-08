@@ -39,9 +39,7 @@
   <ul id="venue-menu-dropdown4" class="dropdown-content nav-drop" style="top: 51px !important;">
     <li><%=link_to "My Profile", edit_user_registration_path%></li>
     <!--
-    <%if @venues.where(owner: current_user.id).count > 0 %>
-      <li><%= link_to "My Venues", users_venues_path%></li>
-    <%end%>
+   
     -->
     <%if current_user.experience < 0 %>
      <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="You need to earn more hours to create a New Hours"><i class="material-icons left">lock</i>New Hour</a></li>

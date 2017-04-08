@@ -265,12 +265,11 @@ h4.con-content-title {
     left: 80px;
     font-size: 10px;
     line-height: 0px;
-    bottom: 5px;
+    bottom: 9px;
     color: #aaa;
     background-color: #fff;
     z-index: 2;
     height: 16px;
-    padding: 6px 0;
 }
 
 progress {
@@ -338,6 +337,13 @@ progress[value]::-webkit-progress-value {
 .verified-by-w .teal-text.text-accent-4 {
   font-weight: 500 !important;
     text-align: left;
+    white-space: nowrap;
+    width: 189px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 22px;
+    line-height: 20px !important;
+    background-color: #fff;
 }
 
 .buttonsonprofile {
@@ -581,8 +587,8 @@ position: absolute;
 }
 
 .verifyprofile .verified-by-w {
-      bottom: 8px;
-      margin-right: 100px;
+        bottom: 8px;
+    margin-right: 100px;
     text-align: left;
 }
 
@@ -2261,12 +2267,13 @@ textarea.materialize-textarea {
     font-size: 12px;
     display: block;
     position: absolute;
-    bottom: 3px;
+    bottom: 4px;
     z-index: 9;
     background-color: #fff;
     right: 15px;
     height: 26px;
-    padding-bottom: 38px;
+    padding-bottom: 0;
+    padding: 0;
 }
 
 .claim a {
