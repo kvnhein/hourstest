@@ -359,11 +359,11 @@ class EventsController < ApplicationController
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
     specials = DailySpecial.all 
-    events = Event.all_cached
+    events = Event.all
    
    @neighborhood_tag = 5
    
-   @v = @neighborhoods.find(5).venues
+   @v = Neighborhood.find(5).venues
    @daily_specials = specials.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
    #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
    @events = events.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
