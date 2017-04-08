@@ -45,7 +45,7 @@ class EventsController < ApplicationController
     @updated_events = Event.after(Date.today - 7, field: :updated_at).to_a
     @users = User.all
     @users.each do |user|
-        EventMailer.welcome_email(user).deliver
+        #EventMailer.welcome_email(user).deliver
       #users_likes = user.get_up_voted Event.where(day: @day_specials)
       #if users_likes != 0
         #EventMailer.event_reminder_email(user, users_likes).deliver
