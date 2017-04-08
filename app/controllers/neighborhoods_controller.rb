@@ -5,7 +5,7 @@ class NeighborhoodsController < ApplicationController
   # GET /neighborhoods
   # GET /neighborhoods.json
   def index
-    @neighborhoods = Neighborhood.all
+    @neighborhoods = Neighborhood.all_cached
   end
 
   # GET /neighborhoods/1
