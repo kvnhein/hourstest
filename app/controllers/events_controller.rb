@@ -363,7 +363,7 @@ class EventsController < ApplicationController
    
    @neighborhood_tag = 5
    
-   @v = Rails.cache.fetch('downotown_venues') {@neighborhoods.find(5).venues}
+   @v = @neighborhoods.find(5).venues
    @daily_specials = specials.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
    #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
    @events = events.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
