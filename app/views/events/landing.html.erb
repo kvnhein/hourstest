@@ -89,7 +89,7 @@
 <div class = "hide"><%= link_to "Brunch", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn brunch-btn"%></div>
 <% if (user_signed_in?)%>
    <% if current_user.admin?%>
-<div>
+<div class="hide">
 <%=link_to "Send Reminders", daily_mailer_path, method: :get, remote: true%>
 </div>
 
@@ -104,7 +104,7 @@
 
 <% if (user_signed_in?)%>
    <% if current_user.admin?%>
-<div>
+<div class="hide">
 <%=link_to "Send Reminders", daily_mailer_path, method: :get, remote: true%>
 </div>
 

@@ -66,9 +66,9 @@ class EventsController < ApplicationController
     #@verified_month_ago = Venue.before(@month_ago)
     #@owned_venues = Venue.where("owner > ?", 1)
     #@verified_this_week = Venue.where("avg_verify < ?", 7)
-    @verified_after_week = Venue.where(avg_verify: [7...30] )
-    @verified_month_ago = Venue.where("avg_verify > ?", 29)
-    @verified_this_week = Venue.all
+    #@verified_after_week = Venue.where(avg_verify: [7...30] )
+    #@verified_month_ago = Venue.where("avg_verify > ?", 29)
+    #@verified_this_week = Venue.all
     
     
     claim_index = Claim.all
@@ -353,13 +353,13 @@ class EventsController < ApplicationController
   end
 
   def downtown
-    @event_all = Event.all
+    #@event_all = Event.all
     
     @page_url = "downtown"
     @autocomplete_path = downtown_autocomplete_event_special_path
     @neighborhood_path = downtown_path
     specials = DailySpecial.all 
-    events = @event_all.all_cached
+    events = Event.all_cached
    
    @neighborhood_tag = 5
    

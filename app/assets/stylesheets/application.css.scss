@@ -1096,6 +1096,10 @@ body,html {
         display: block !important;
 }
 
+.modal.modal-fixed-footer .modal-content {
+  padding:20px;
+}
+
 .emailpleftalign {
   color: #000 !important;
   margin-top: 20px !important;

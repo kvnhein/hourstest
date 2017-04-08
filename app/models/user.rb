@@ -9,7 +9,12 @@ has_many :events
 has_many :daily_specials
   validates :fullname, presence: true, length: {maximum: 50}
 before_save :default_values
-
+after_create :send_admin_mail
+ 
+ 
+  def send_admin_mail
+   EventMailer.welcome_email(self).deliver
+  end
 
 
 def default_values
