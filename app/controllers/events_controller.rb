@@ -157,16 +157,18 @@ class EventsController < ApplicationController
     @topic = "Hours"
     @topic_description = "Hours provides Happy Hours/Specials and Featured dishes throughout Pittsburgh"
     @page_url = ""
-    @new_events = Event.after(Date.today - 7)
+    @new_events = Event.all_cached.after(Date.today - 7)
     @date = Date.today 
-    @updated_events = Event.after(Date.today - 7, field: :updated_at).to_a
+    @updated_events = Event.all_cached.after(Date.today - 7, field: :updated_at).to_a
     @events_with_claims = []
-    Claim.all.each do |claim|
+    @venues = Venue.all_cached
+    @all_claims = Claims.claims_cached
+    @claims.all.each do |claim|
         @events_with_claims.push(claim.event)
     end 
-    @users = User.all_cached
+    @users = User.users_cached
     @top_users = []
-    @users.all.each do |user|
+    @users.each do |user|
         if user.fullname
             @top_users.push(user)
         end 

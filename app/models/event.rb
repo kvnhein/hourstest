@@ -27,8 +27,12 @@ end
  def default_values
   self.event_verify ||= Time.now 
   self.varified_user ||= current_user.id
-  
  end
+ 
+ def cached_event_count
+  Rails.cache.fetch([self,'number_of_events']) { count }
+ end
+ 
  
  def add_tags
   if self.food == false    

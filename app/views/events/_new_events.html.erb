@@ -3,7 +3,7 @@
 <%x=[]%>
 <%@v.shuffle.each do |event| %>
 <%event.legit_hour?%>
- <%x.push(Venue.where(id: event.venue_id).first.id)%>
+ <%x.push(@venues.where(id: event.venue_id).first.id)%>
 <%end%>
 
 
@@ -17,9 +17,9 @@
       <div class="row hourslist">
         <div class="col s12">
           <div class="card">
-            <%venue = Venue.find(@e[0].venue_id)%><%neighborhood = Neighborhood.find(venue.neighborhood_id)%>
+            <%venue = @venues.find(@e[0].venue_id)%><%neighborhood = Neighborhood.find(venue.neighborhood_id)%>
             <div class="card-content">
-              <span class="card-title activator center"><%= Venue.where( id: @e[0].venue_id).first.name%><br/><%=neighborhood.name%></span><br>
+              <span class="card-title activator center"><%= @venues.where( id: @e[0].venue_id).first.name%><br/><%=neighborhood.name%></span><br>
 
               <!----This is where the uniq special code is going in -->
 <%unievents = []%>
@@ -114,17 +114,17 @@
 						</span><br>
 					</div>
 					<div class="specials-header">
-						<h4><%= Venue.where( id: @e[0].venue_id).first.name%></h4>
+						<h4><%= @venues.where( id: @e[0].venue_id).first.name%></h4>
 						<h5 class="flow-text"><%=@e[0].event_type%></h5>
 					</div>
 					<div class="powered-by-ver">
 						<div class="verified">
 							<%if @e[0].event_venue.venue_verify.nil?%>
-							<p class="verified-date hide">Venue has not been verified</p><%else%>
+							<p class="verified-date hide">@venues has not been verified</p><%else%>
 							<div class="veri hide">
 								<%= image_tag "verified.png"%>
 							</div>
-							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
+							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if @venues.where(id: @e[0].venue_id).first.urbanist == true %>
 							<div class="urbanist">
 								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist.png"%></a>
 							</div><%end %>
@@ -209,7 +209,7 @@
 								<!--form for Claims-->
 								<%@modal_event = modal_event%>
 								<div id = "form_button<%=modal_event.id%>" display ="none">
-									<% if Claim.where(event_id: modal_event.id).count == 0%>
+									<% if @all_claims.where(event_id: modal_event.id).count == 0%>
 										<% if user_signed_in?%>
 											<% if current_user.can_verify?%>
 											
@@ -286,7 +286,7 @@
 							<%@m = modal_event.id%>
 							<div id = "second_form_button<%=modal_event.id%>"></div>
 							<!-- end of form -->
-								<%@claims = Claim.where(event_id: modal_event.id)%>
+								<%@claims = @all_claims.where(event_id: modal_event.id)%>
 									<div class = "new_claim<%=modal_event.id%>">
 										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
 									</div>
@@ -296,7 +296,7 @@
 						</li><%end%>
 					</ul><br>
 					<div class="row">
-						<%= link_to 'View Profile', venue_path(Venue.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
+						<%= link_to 'View Profile', venue_path(@venues.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
 						<br>
 						<br>
 						<br>

@@ -18,6 +18,10 @@ class Claim < ActiveRecord::Base
    return votes
  end
  
+ def self.claims_cached
+    Rails.cache.fetch([ "Claim.all"]) { all }
+ end
+  
  def voter_exp
    votes=0
    self.votes_for.up.each do |vote|

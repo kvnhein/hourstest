@@ -13,8 +13,10 @@ class UsersController < ApplicationController
 	end 
 	
 	def user_list
-		top_user = User.all
+		@top_user = User.users_cached
 	end
+	
+	
 	
 	def add_super_user
     	

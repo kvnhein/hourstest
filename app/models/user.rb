@@ -16,6 +16,19 @@ after_create :send_admin_mail
    EventMailer.welcome_email(self).deliver
   end
 
+def self.users_cached
+  Rails.cache.fetch("users_cached", expires_in: 1.hour) do
+    User.all
+  end
+end 
+
+def cached_user_experience
+		Rails.cache.fetch([self,"user_experience"]) {experience}
+end
+
+def cached_user_id
+		Rails.cache.fetch([self,"user_id"]) {id}
+end
 
 def default_values
     self.experience ||= 0
@@ -25,9 +38,7 @@ def default_values
     self.num_events_saved ||= 0
  end
  
- def self.all_cached
-  Rails.cache.fetch('User.all') { all }
- end
+ 
   
 def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
