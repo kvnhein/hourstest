@@ -3,7 +3,7 @@
 <%x=[]%>
 <%@v.shuffle.each do |event| %>
 <%event.legit_hour?%>
- <%x.push(@venues.where(id: event.venue_id).first.id)%>
+ <%x.push(@venues.find(event.venue_id).id)%>
 <%end%>
 
 
@@ -209,7 +209,7 @@
 								<!--form for Claims-->
 								<%@modal_event = modal_event%>
 								<div id = "form_button<%=modal_event.id%>" display ="none">
-									<% if Claim.where(event_id: modal_event.id).count == 0%>
+									<% if Claim.claims_cached.where(event_id: modal_event.id).count == 0%>
 										<% if user_signed_in?%>
 											<% if current_user.can_verify?%>
 											
@@ -286,7 +286,7 @@
 							<%@m = modal_event.id%>
 							<div id = "second_form_button<%=modal_event.id%>"></div>
 							<!-- end of form -->
-								<%@claims = Claim.where(event_id: modal_event.id)%>
+								<%@claims = Claim.claims_cached.where(event_id: modal_event.id)%>
 									<div class = "new_claim<%=modal_event.id%>">
 										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
 									</div>

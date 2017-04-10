@@ -37,7 +37,7 @@ class Venue < ActiveRecord::Base
   end
 
   def self.all_cached
-    Rails.cache.fetch([ "Venue.all"]) { all }
+    Rails.cache.fetch([ "venues"]) { all }
   end
   
   def self.downtown_venues

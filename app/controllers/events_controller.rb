@@ -162,7 +162,7 @@ class EventsController < ApplicationController
     @updated_events = Event.all_cached.after(Date.today - 7, field: :updated_at).to_a
     @events_with_claims = []
     @venues = Venue.all_cached
-    @all_claims = Claims.claims_cached
+    @claims = Claim.claims_cached
     @claims.all.each do |claim|
         @events_with_claims.push(claim.event)
     end 

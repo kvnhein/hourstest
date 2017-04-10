@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
 
 
  def self.all_cached
-  Rails.cache.fetch('Event.all') { all }
+  Rails.cache.fetch('events') { all }
  end
 
  def self.credit_cached

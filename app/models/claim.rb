@@ -19,7 +19,7 @@ class Claim < ActiveRecord::Base
  end
  
  def self.claims_cached
-    Rails.cache.fetch([ "Claim.all"]) { all }
+    Rails.cache.fetch([ "claims"]) { all }
  end
   
  def voter_exp
