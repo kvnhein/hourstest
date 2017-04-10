@@ -159,7 +159,7 @@ class EventsController < ApplicationController
     @page_url = ""
     @new_events = Event.all_cached.after(Date.today - 7)
     @date = Date.today 
-    @updated_events = Event.all_cached.after(Date.today - 7, field: :updated_at).to_a
+    @updated_events = Event.new_events_cached
     @events_with_claims = []
     @venues = Venue.all_cached
     @claims = Claim.claims_cached

@@ -7,7 +7,7 @@ class LiqoursController < ApplicationController
   def index
     @liqours = Liqour.all
     @venues_now = Venue.includes(:events)
-    @events = Event.all_cached
+    
   end
 
   # GET /liqours/1

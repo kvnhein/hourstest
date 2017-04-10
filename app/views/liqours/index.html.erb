@@ -1,3 +1,5 @@
-<% @events.each do |event|%>
+<% @venues_now.each do |venue|%>
+    <%venue.events.each do |event|%>
     <%=event.special%>
     <%end%>
+<%end%>

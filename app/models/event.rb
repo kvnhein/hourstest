@@ -17,10 +17,13 @@ class Event < ActiveRecord::Base
  def self.all_cached
   Rails.cache.fetch('events') { all }
  end
-
- def self.credit_cached
-  Rails.cache.fetch('Event.all') { all }
+def cached_special
+ Rails.cache.fetch([self, "special"]) {special}
 end
+def self.new_events_cached
+ Rails.cache.fetch('new_events') { after(Date.today - 7, field: :updated_at)}
+end
+
 
 def self.likes_cached
 end
@@ -103,10 +106,10 @@ end
  end
 
   def new_event
-   
-    a = Event.after(Date.today - 7).to_a
-    b = Event.after(Date.today - 7, field: :updated_at).to_a
-    c = Event.before(Date.today - 60, field: :event_verify).to_a
+    events = Event.all_cached
+    a = events.after(Date.today - 7).to_a
+    b = events.after(Date.today - 7, field: :updated_at).to_a
+    c = events.before(Date.today - 60, field: :event_verify).to_a
     if a.include? self
       if self.legit_hour == true 
        return "Verified"
