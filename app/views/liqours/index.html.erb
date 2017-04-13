@@ -3,3 +3,11 @@
     <%=event.special%>
     <%end%>
 <%end%>
+
+<%@venues_hash.each do |venue|%>
+<%=venue.fetch("name")%>
+<%venue_event = @events_hash.select {|event| event["venue_id"] == venue.fetch("id") }%>
+<%venue_event.each do |event|%>
+<%=event.fetch("special")%>
+<%end%>
+<%end%>

@@ -3,7 +3,7 @@
 	
 	<ul class="collapsible beerlist ">
 		<%top_5 = 0%>
-		<% User.all.order("experience desc ").each do |user|%>
+		<% @top_user.all.each do |user|%>
 			
 			<%if top_5 < 5%>
 				<%if user.fullname && user.experience%>
@@ -20,7 +20,7 @@
 								
 								</div>
 							
-							<p class="namecont"><%= link_to "#{@top_user.find(user.cached_user_id).fullname}", @top_user.find(user.cached_user_id) %></p>
+							<p class="namecont"><%= link_to "#{user.fullname}", user %></p>
 							<p>Hours: <%= number_with_delimiter(user.cached_user_experience, :delimiter => ',') %></p>
 						    <div class="remove-btn hide">
                                 <%=link_to remove_super_user_user_path(user),remote: true, method: :patch do%>
@@ -37,3 +37,4 @@
 	</ul>
 
 </div>
+

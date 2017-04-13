@@ -6,7 +6,7 @@
 
           <div class="timeforspecial streets">
               <%= truncate(@venue.address, length: 40) %><br/>
-              <%=Neighborhood.where(id: @venue.neighborhood_id).first.name %>
+              <%name = @neighborhoods.select {|neighborhood| neighborhood["id"] == @venue.id } %><%=name%>
               </div>
             </div>
 

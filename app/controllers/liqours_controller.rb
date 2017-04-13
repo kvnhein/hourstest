@@ -7,7 +7,8 @@ class LiqoursController < ApplicationController
   def index
     @liqours = Liqour.all
     @venues_now = Venue.includes(:events)
-    
+    @venues_hash = @venues.map(&:attributes)
+    @events_hash = Event.all.map(&:attributes)
   end
 
   # GET /liqours/1

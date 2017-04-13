@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	 before_action :set_user, only: [:add_super_user, :remove_super_user] 
 	def show
 		@user = User.find(params[:id])
-		@daily_specials = DailySpecial.where(user_id: @user.id).page(params[:page]).per_page(5)
+		@daily_specials = DailySpecial.where(user_id: @user.id)
 	end
 	
 	def special_collection
@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 	end 
 	
 	def user_list
+		@user_hash = User.all.order("experience desc ").map(&:attributes)
 		@top_user = User.users_cached
+
 	end
 	
 	

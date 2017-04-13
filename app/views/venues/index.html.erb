@@ -31,68 +31,84 @@
 
 <div id="Market_Square">
      <p class="center-tit"><%= link_to 'See Downtown Hours', downtown_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
-  <% @venues.where(neighborhood_id: 5).order("name ASC").each do |venue| %>
-     <%@venue = venue %>
-     <%= render 'venue_index'%>
+  <%@venue_array.each do |venue| %>
+     <%if venue.neighborhood_id == 2%>
+         <%@venue = venue %>
+         <%= render 'venue_index'%>
+     <%end%>
 <% end %>
 </div>
 
 <div id="Southside">
   
     <p class="center-tit"><%= link_to 'See South Side Hours', south_side_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
-<% @venues.where(neighborhood_id: 1).order("name ASC").each do |venue| %>
+<% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 1%>
      <%@venue = venue %>
      <%= render 'venue_index'%>
+    <%end%>
 <% end %>
 </div>
 
 <div id="Shadyside">
      <p class="center-tit"><%= link_to 'See Shadyside Hours', shadyside_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
- <% @venues.where(neighborhood_id: 2).order("name ASC").each do |venue| %>
+ <% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 2%>
      <%@venue = venue %>
      <%= render 'venue_index'%>
+     <%end%>
 <% end %>
 </div>
 
 
 <div id="Oakland">
      <p class="center-tit"><%= link_to 'See Oakland Hours', oakland_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
-<% @venues.where(neighborhood_id: 3).order("name ASC").each do |venue| %>
+<% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 3%>
      <%@venue = venue %>
      <%= render 'venue_index'%>
+    <%end%>
 <% end %>
 </div>
 
 <div id="Lawrenceville">
      <p class="center-tit"><%= link_to 'See Lawrenceville Hours', lawrenceville_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
- <% @venues.where(neighborhood_id: 7).order("name ASC").each do |venue| %>
+ <% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 7%>
      <%@venue = venue %>
      <%= render 'venue_index'%>
+    <%end%>
 <% end %>
 </div>
 
 <div id="Strip_district">
      <p class="center-tit"><%= link_to 'See Strip District Hours', strip_district_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
- <% @venues.where(neighborhood_id: 11).order("name ASC").each do |venue| %>
+ <% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 11%>
      <%@venue = venue %>
      <%= render 'venue_index'%>
+    <%end%>
 <% end %>
 </div>
 
     <div id="East_liberty">
      <p class="center-tit"><%= link_to 'See East Liberty Hours', east_liberty_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
-     <% @venues.where(neighborhood_id: 9).order("name ASC").each do |venue| %>
-         <%@venue = venue %>
-         <%= render 'venue_index'%>
-    <% end %>
+     <% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 9%>
+     <%@venue = venue %>
+     <%= render 'venue_index'%>
+    <%end%>
+<% end %>
     </div>
     
      <div id="bloomfield_tab">
      <p class="center-tit"><%= link_to 'See Bloomfield Hours', bloomfield_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
-     <% @venues.where(neighborhood_id: 6).order("name ASC").each do |venue| %>
-         <%@venue = venue %>
-         <%= render 'venue_index'%>
-    <% end %>
+     <% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 6%>
+     <%@venue = venue %>
+     <%= render 'venue_index'%>
+    <%end%>
+<% end %>
     </div>
 
 
