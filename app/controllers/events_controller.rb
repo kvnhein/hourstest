@@ -181,7 +181,8 @@ class EventsController < ApplicationController
   def urbanist
       
     @users = User.all
-    @urbanist_venues = Venue.where(urbanist: true)
+    @urbanist_venues = @venues.all
+    venues = @venues.all
     @events = Event.where(day: @day_specials)
       
     #this is for OG
@@ -194,19 +195,19 @@ class EventsController < ApplicationController
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
 
-    @shadyside_venues = Venue.where(urbanist: true, neighborhood_id: 2)
-    @south_side_venues = Venue.where(urbanist: true, neighborhood_id: 1)
-    @oakland_venues = Venue.where(urbanist: true, neighborhood_id: 3)
-    @lawrenceville_bloomfield_venues = Venue.where(urbanist: true, neighborhood_id: [7,6])
-    @market_square_venues = Venue.where(urbanist: true, neighborhood_id: 5)
-    @strip_district_venues = Venue.where(urbanist: true, neighborhood_id: 11)
+    @shadyside_venues = @venues.where(neighborhood_id: 2)
+    @south_side_venues = @venues.where(neighborhood_id: 1)
+    @oakland_venues = @venues.where(neighborhood_id: 3)
+    @lawrenceville_bloomfield_venues = @venues.where(neighborhood_id: [7,6])
+    @market_square_venues = @venues.where( neighborhood_id: 5)
+    @strip_district_venues = @venues.where(neighborhood_id: 11)
 
-    @urbanist_venues = Venue.where(urbanist: true)
+    @urbanist_venues = Venue.all
     @daily_specials =  DailySpecial.today
 
-    @verified_this_weeku = Venue.between_times(@week_ago, @today).where(urbanist: true)
-    @verified_after_weeku = Venue.between_times(@month_ago,@week_ago).where(urbanist: true)
-    @verified_month_agou = Venue.before(@month_ago).where(urbanist: true)
+    @verified_this_weeku = @venues.between_times(@week_ago, @today).where(urbanist: true)
+    @verified_after_weeku = @venues.between_times(@month_ago,@week_ago).where(urbanist: true)
+    @verified_month_agou = @venues.before(@month_ago).where(urbanist: true)
 
 
 
