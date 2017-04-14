@@ -7,9 +7,9 @@ class VenuesController < ApplicationController
   # GET /venues
   # GET /venues.json
   def index
-   @neighborhoods = Neighborhood.all_cached.map(&:attributes)
+   @neighborhoods = Neighborhood.all_cached.to_a
 
-    @venue_array = Venue.all_cached.order("name ASC").to_a
+    @venue_array = @venues.all_cached.order("name ASC").to_a
   end
 
   def users_venues

@@ -6,7 +6,12 @@
 
           <div class="timeforspecial streets">
               <%= truncate(@venue.address, length: 40) %><br/>
-              <%name = @neighborhoods.select {|neighborhood| neighborhood["id"] == @venue.id } %><%=name%>
+              <% @neighborhoods.each do |neighborhood| %>
+              <%if neighborhood.id == @venue.neighborhood_id%>
+                <%= neighborhood.name%>
+               <%end%>
+              <%end%>
+              
               </div>
             </div>
 
