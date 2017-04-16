@@ -21,7 +21,7 @@
       <ul class="tabs">
         <!--li class="tab col s4 hide"><a href="#venues">Venues</a></li-->
 
-        <%unless @todays_feature.count== 0%>
+        <%unless @daily_specials.count== 0%>
         <li class="tab col s4"><a href="#featured-dish">Features</a></li>
         <%end%>
 
@@ -48,9 +48,10 @@
  <div><%= render partial: "shared/top_tags"%></div>
  <%=render partial: "shared/dynamic_table_card"%>
 </div>
+<%=@events.count%>
+<%=@events_all.count%>
 
-
-<%unless @todays_feature.count== 0%>
+<%unless @daily_specials.count== 0%>
 <div id="featured-dish"> 
   <%=render partial: "shared/featured_dish_table"%>
 </div>

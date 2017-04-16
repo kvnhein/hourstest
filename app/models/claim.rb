@@ -21,6 +21,8 @@ class Claim < ActiveRecord::Base
  def self.claims_cached
     Rails.cache.fetch([ "claims"]) { all }
  end
+ 
+ 
   
  def voter_exp
    votes=0

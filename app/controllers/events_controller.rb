@@ -81,7 +81,11 @@ class EventsController < ApplicationController
             claim.destroy
         end
     end
-    
+    if user_signed_in?
+        @signed_in = true
+    else
+        @signed_in = false
+    end
     
   end
 
@@ -153,11 +157,15 @@ class EventsController < ApplicationController
   end
 
   def landing
+      
+    
     #this is for OG
     @topic = "Hours"
     @topic_description = "Hours provides Happy Hours/Specials and Featured dishes throughout Pittsburgh"
     @page_url = ""
     @new_events = Event.all_cached.after(Date.today - 7)
+    @todays_events = Event.all_cached.after(Date.today - 7).to_a
+    @todays_venues = @venues.to_a
     @date = Date.today 
     @updated_events = Event.new_events_cached
     @events_with_claims = []
@@ -183,7 +191,7 @@ class EventsController < ApplicationController
     @users = User.all
     @urbanist_venues = @venues.all
     venues = @venues.all
-    @events = Event.where(day: @day_specials)
+    @events = Event.where(day: @day_specials).to_a
       
     #this is for OG
     @topic = "Happy Hours at Urbanist Approved Venues in Pittsburgh"
@@ -266,339 +274,428 @@ class EventsController < ApplicationController
   end
 
  def shadyside
-   @page_url = "shadyside"
+   @users = User.all.to_a
+   neighborhood_id = 2
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
+   @tag_topic = ""
+    if params[:search]
+      @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special').to_a 
+      @tag_topic = "##{params[:search]}"
+    elsif params[:shady_tag]
+      @events = Event.tagged_with(params[:shady_tag]).where(venue_id: venue_id, day: @day_specials)
+      @tag_topic = "##{params[:shady_tag]}"
+    end
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
+    @page_url = "shadyside"
+   
    @autocomplete_path = shadyside_autocomplete_event_special_path
    @neighborhood_path = shadyside_path
    @neighborhood_tag = 2
-
-   @v = @venues.where( neighborhood_id: 2)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_topic = ""
-    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
-      @tag_topic = "##{params[:search]}"
-    elsif params[:shady_tag]
-      @events = Event.tagged_with(params[:shady_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
-      @tag_topic = "##{params[:shady_tag]}"
-    end
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today).after(Date.today - 7)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
     #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @topic = "Hours in Shadyside}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
   end
 
 
   def south_side
-   @page_url = "southside"
-   @autocomplete_path = south_side_autocomplete_event_special_path
-   @neighborhood_path = south_side_path
-   @neighborhood_tag = 1
-   @v = @venues.where( neighborhood_id: 1)
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   @users = User.all.to_a
+   neighborhood_id = 1
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
+    
+    
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"    
     elsif params[:south_tag]
-      @events = Event.tagged_with(params[:south_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = Event.tagged_with(params[:south_tag]).where(venue_id: venue_id, day: @day_specials)
       @tag_topic = "##{params[:south_tag]}"
     end
+    
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
 
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-
+   
+    @neighborhood_tag = 1
+    @autocomplete_path = south_side_autocomplete_event_special_path
+    @neighborhood_path = south_side_path
      #this is for OG
+    @page_url = "southside"
     @topic = "Hours in South Side"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
   end
 
   def oakland
-    @page_url = "oakland"
-    @autocomplete_path = oakland_autocomplete_event_special_path
-    @neighborhood_path = oakland_path
-
-
-   @neighborhood_tag = 3
-   @v = @venues.where( neighborhood_id: 3)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   @users = User.all.to_a
+   neighborhood_id = 3
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
+   
+   
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
     elsif params[:oakland_tag]
-      @events = Event.tagged_with(params[:oakland_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = Event.tagged_with(params[:oakland_tag]).where(venue_id: venue_id, day: @day_specials)
       @tag_topic = "##{params[:oakland_tag]}"
     end
 
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
+    
+    @autocomplete_path = oakland_autocomplete_event_special_path
+    @neighborhood_path = oakland_path
 
      #this is for OG
+    @neighborhood_tag = 3
+    @page_url = "oakland"
     @topic = "Hours in Oakland"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
 
   end
 
   def downtown
-    #@event_all = Event.all
-    @venues = Venue.all
-    @page_url = "downtown"
-    @autocomplete_path = downtown_autocomplete_event_special_path
-    @neighborhood_path = downtown_path
-    specials = DailySpecial.all 
-    events = Event.all
+    neighborhood_id = 5
+   @users = User.all.to_a
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
    
-   @neighborhood_tag = 5
-   
-   @v = Neighborhood.find(5).venues
-   @daily_specials = specials.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   #@scheduled_events = Event.where(venue_id: @v.pluck(:id), event_date: Date.today)
-   @events = events.where(venue_id: @v.pluck(:id), day: @day_specials).order('event_verify')
-   @tag_events = events.where(venue_id: @v.pluck(:id), day: @day_specials)
-   
-   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
+   
     if params[:search]
-      @events = events.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = events.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
      elsif params[:down_tag]
-      @events = events.tagged_with(params[:down_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = events.tagged_with(params[:down_tag]).where(venue_id: venue_id, day: @day_specials)
      @tag_topic = "##{params[:down_tag]}"
     end
-
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
     
-
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
+    
+    @autocomplete_path = downtown_autocomplete_event_special_path
+    @neighborhood_path = downtown_path
+    @neighborhood_tag = 5
      #this is for OG
+    
+    @page_url = "downtown"
     @topic = "Hours in Downtown"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
-
-
- 
 
   end
 
 
   def lawrenceville
-   @page_url = "lawrencville"
+   @users = User.all.to_a
+   neighborhood_id = 7
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
+   @tag_topic = ""
+   
+   if params[:search]
+     @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
+     @tag_topic = "##{params[:search]}"
+   elsif params[:law_tag]
+      @events = Event.tagged_with(params[:law_tag]).where(venue_id: venue_id, day: @day_specials)
+     @tag_topic = "##{params[:law_tag]}" 
+   end
+   
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
+
    @autocomplete_path = lawrenceville_autocomplete_event_special_path
    @neighborhood_path = lawrenceville_path
    @neighborhood_tag = 7
-   hood_id = Neighborhood.find(7).id
-   @v = @venues.where( neighborhood_id: hood_id)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_topic = ""
-   if params[:search]
-     @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
-     @tag_topic = "##{params[:search]}"
-   elsif params[:law_tag]
-      @events = Event.tagged_with(params[:law_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
-     @tag_topic = "##{params[:law_tag]}" 
-   end
-
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @page_url = "lawrencville"
+    @topic = "Hours in Lawrenceville"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
 
   def bloomfield
-   @page_url = "bloomfield"
-   @autocomplete_path = bloomfield_autocomplete_event_special_path
-   @neighborhood_path = bloomfield_path
-   @neighborhood_tag = 6
-   hood_id = Neighborhood.find(6).id
-   @v = @venues.where( neighborhood_id: hood_id)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   neighborhood_id = 6
+   @users = User.all.to_a
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
+   
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
     elsif params[:bloom_tag]
-      @events = Event.tagged_with(params[:bloom_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = Event.tagged_with(params[:bloom_tag]).where(venue_id: venue_id, day: @day_specials)
      @tag_topic = "##{params[:bloom_tag]}"
     end
 
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
 
+    
+    @autocomplete_path = bloomfield_autocomplete_event_special_path
+    @neighborhood_path = bloomfield_path
+    @neighborhood_tag = 6
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @page_url = "bloomfield"
+    @topic = "Hours in Bloomfield"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
 
   def east_liberty
-   @page_url = "east_liberty"
-   @autocomplete_path = east_liberty_autocomplete_event_special_path
-   @neighborhood_path = east_liberty_path
-   @neighborhood_tag = 9
-   hood_id = Neighborhood.find(9).id
-   @v = @venues.where( neighborhood_id: hood_id)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+   neighborhood_id = 9
+   @users = User.all.to_a
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
+   
     if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: venue_id , day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
     elsif params[:east_tag]
-      @events = Event.tagged_with(params[:east_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = Event.tagged_with(params[:east_tag]).where(venue_id: venue_id , day: @day_specials)
       @tag_topic = "##{params[:east_tag]}"
     end
 
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
 
+   
+   @autocomplete_path = east_liberty_autocomplete_event_special_path
+   @neighborhood_path = east_liberty_path
+   @neighborhood_tag = 9
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @page_url = "east_liberty"
+    @topic = "Hours in East Liberty"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
 
   def strip_district
-   @page_url = "strip_district"
+    neighborhood_id = 11
+    @users = User.all.to_a
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
+   @tag_topic = ""
+   
+   if params[:search]
+     @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
+     @tag_topic = "##{params[:search]}"
+   elsif params[:strip_tag]
+      @events = Event.tagged_with(params[:strip_tag]).where(venue_id: venue_id, day: @day_specials)
+     @tag_topic = "##{params[:strip_tag]}"
+   end
+    
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
+    
+    
    @autocomplete_path = strip_district_autocomplete_event_special_path
    @neighborhood_path = strip_district_path
    @neighborhood_tag = 11
-   hood_id = Neighborhood.find(11).id
-   @v = @venues.where( neighborhood_id: hood_id)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_topic = ""
-   if params[:search]
-     @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
-     @tag_topic = "##{params[:search]}"
-   elsif params[:strip_tag]
-      @events = Event.tagged_with(params[:strip_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
-     @tag_topic = "##{params[:strip_tag]}"
-   end
-
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
      #this is for OG
+    @page_url = "strip_district"
     @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
   def squirrel_hill
-   @page_url = "squirrel_hill"
-   @autocomplete_path = bloomfield_autocomplete_event_special_path
-   @neighborhood_path = bloomfield_path
-   @neighborhood_tag = 10
-   hood_id = Neighborhood.find(10).id
-   @v = @venues.where( neighborhood_id: hood_id)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+    neighborhood_id = 10
+    @users = User.all.to_a
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
+   
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
    elsif params[:sq_tag]
-      @events = Event.tagged_with(params[:sq_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = Event.tagged_with(params[:sq_tag]).where(venue_id: venue_id, day: @day_specials)
       @tag_topic = "##{params[:sq_tag]}"
    end
 
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
+    
+   @autocomplete_path = bloomfield_autocomplete_event_special_path
+   @neighborhood_path = bloomfield_path
+   @neighborhood_tag = 10
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @page_url = "squirrel_hill"
+    @topic = "Hours in Squirrel Hill"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
   def north_side
-   @page_url = "north_side"
-   @autocomplete_path = north_side_autocomplete_event_special_path
-   @neighborhood_path = north_side_path
-   @neighborhood_tag = 12
-   hood_id = Neighborhood.find(12).id
-   @v = @venues.where( neighborhood_id: hood_id)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+    neighborhood_id = 12
+    @users = User.all.to_a
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
-   if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+   
+   
+  if params[:search]
+      @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
    elsif params[:north_tag]
-      @events = Event.tagged_with(params[:north_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = Event.tagged_with(params[:north_tag]).where(venue_id: venue_id, day: @day_specials)
       @tag_topic = "##{params[:north_tag]}"
    end
 
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
+   
+   @autocomplete_path = north_side_autocomplete_event_special_path
+   @neighborhood_path = north_side_path
+   @neighborhood_tag = 12
 
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @page_url = "north_side"
+    @topic = "Hours in North Side"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 
   def mt_washington
-   @page_url = "mt_washington"
-   @autocomplete_path = mt_washington_autocomplete_event_special_path
-   @neighborhood_path = mt_washington_path
-   @neighborhood_tag = 13
-   hood_id = Neighborhood.find(13).id
-   @v = @venues.where( neighborhood_id: hood_id)
-   #@daily_specials = DailySpecial.where(venue_id: @v.pluck(:id))
-   @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-   @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
-   @tag_events = Event.where(venue_id: @v.pluck(:id), day: @day_specials)
+    neighborhood_id = 13
+    @users = User.all.to_a
+   @neighborhoods_all = Neighborhood.all.to_a
+   @venues_all = Venue.all_cached.to_a
+   @events_all = Event.all_cached.to_a
+   @claims_all = Claim.all.to_a
+   @daily_specials_all = DailySpecial.all.to_a
+   
+   @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
+   venue_id = @venues.map { |venue| venue.id }
+   @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
+   @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
+   
    if params[:search]
-      @events = Event.where(venue_id: @v.pluck(:id), day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
    elsif params[:mt_tag]
-      @events = Event.tagged_with(params[:mt_tag]).where(venue_id: @v.pluck(:id), day: @day_specials)
+      @events = Event.tagged_with(params[:mt_tag]).where(venue_id: venue_id, day: @day_specials)
       @tag_topic = "##{params[:mt_tag]}"
    end
 
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id))
-    #@todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id),special_date: Date.today)
-    @todays_feature =  DailySpecial.where(venue_id: @v.pluck(:id)).after(Date.today - 7)
-
+    @todays_feature =  @daily_specisals
+    @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
+    @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
+   
+   @autocomplete_path = mt_washington_autocomplete_event_special_path
+   @neighborhood_path = mt_washington_path
+   @neighborhood_tag = 13
+    
      #this is for OG
-    @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
+    @page_url = "mt_washington"
+    @topic = "Hours in Mt.Washington"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
   end
 

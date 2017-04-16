@@ -13,6 +13,16 @@ class Event < ActiveRecord::Base
 
   scope :special_like, -> (special) { where("special ilike ?", special)}
 
+def claim_count(claims)
+    total_claim = claims.select{|claim| claim.event_id == self.id}
+    return total_claim.count
+     
+ end
+ 
+ def find_event_user(users)
+  event_user = users.select {|user| user.id == self.user_id}
+  return event_user.first
+ end 
 
  def self.all_cached
   Rails.cache.fetch('events') { all }
@@ -105,18 +115,14 @@ end
   end
  end
 
-  def new_event
-    events = Event.all_cached
-    a = events.after(Date.today - 7).to_a
-    b = events.after(Date.today - 7, field: :updated_at).to_a
-    c = events.before(Date.today - 60, field: :event_verify).to_a
-    if a.include? self
+  def new_event (new_events,  verify_events)
+    if new_events.include? self
       if self.legit_hour == true 
        return "Verified"
       else 
        return "New"
      end
-    elsif c.include? self 
+    elsif  verify_events.include? self 
      return "Not Verified"
     end
   end
@@ -257,6 +263,20 @@ def next_sunday
   return true
  end
 end 
+
+def color_chip(current_hour, current_minute)
+	if current_hour-2+(current_minute.to_f*0.0166) > self.start.to_i && current_hour-2+(current_minute.to_f*0.0166) < self.end.to_f
+		style="background-color:#17a787"
+	elsif current_hour < 1 && self.end < 23 &&  self.end > 22
+		style="background-color:#17a787"
+    elsif current_hour < 2 && self.end < 24  &&  self.end > 23
+		style="background-color:#17a787"
+	elsif current_hour-2+(@c.to_f*0.0166) < self.start && current_hour > 2
+		style="background-color:#000000"
+	else
+		style="background-color:#bdbdbd"
+    end
+end
 
 end
 

@@ -1,11 +1,11 @@
 <%x=[]%><%@events.each do |event| %>
-	
+	<!--x.push(@venues.find(event.venue_id).id)-->
 	<%x.push(event.venue_id)%>
 <%end%>
 <%x.uniq.each do |d|%>
 
-	<%@e = @events.where(venue_id: d).order(:start).reverse%>
-	<%current_venue = @venues.find(d)%>
+	<%@e = @events.select {|event| event.venue_id == d}.sort! { |a,b| a.start <=> b.start }.reverse%>
+	<%current_venue = @venues.select{|venue| venue.id == d }.first%>
 	<div class="row hourslist">
 		<div class="col s12">
 			<div class="card">
@@ -81,75 +81,19 @@
 					
 						<!---This is where it ends-->
 					<%unievents.reverse.each do |event|%>
-					<%if @b-2+(@c.to_f*0.0166) > event.start.to_i && @b-2+(@c.to_f*0.0166) < event.end.to_f %>
-					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787"><!--green-->
-							<%=event.special%>
-						</div>
-						
-						<div class="new-event" id = "new-event<%=event.id%>">
-						
-						
+					 <div class="chip-piece">
+                		<div class="chip" style="<%=event.color_chip(@b,@c)%>">
+                  			<%=event.special%>
+                		</div>
+               			<div class="new-event">
+                  			<%= event.new_event(@new_events,  @verify_events)%>
+               			</div>
+              		</div>
+              <%end%>
 					
-							<%= event.cached_new_event%>
-							<%if  event.cached_claims?%>
-								<i class="zmdi zmdi-flag"></i>
-							<%end%>
-						</div>
-					</div>
-					<%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
-					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787"><!--green-->
-							<%=event.special%>
-						</div>
-						<div class="new-event" id = "new-event<%=event.id%>">
-								
-							<%= event.cached_new_event%>
-							<%if  event.cached_claims?%>
-								<i class="zmdi zmdi-flag"></i>
-							<%end%>
-						</div>
-					</div>
-					<%elsif @b < 2 && event.end <= 24  &&  event.end >= 23 %>
-					<div class="chip-piece">
-						<div class="chip" style="background-color:#17a787"><!--green-->
-							<%=event.special%>
-						</div>
-						<div class="new-event" id = "new-event<%=event.id%>">
-							
-							<%= event.cached_new_event%>
-							<%if  event.cached_claims?%>
-								<i class="zmdi zmdi-flag"></i>
-							<%end%>
-						</div>
-					</div><%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
-					<div class="chip-piece">
-						<div class="chip" style="background-color:#000000"><!--black-->
-							<%=event.special%>
-						</div>
-						<div class="new-event" id = "new-event<%=event.id%>">
-							<%= event.cached_new_event%>
-							<%if  event.cached_claims?%>
-								<i class="zmdi zmdi-flag"></i>
-							<%end%>
-						</div>
-					</div><%else%>
-					<div class="chip-piece">
-						<div class="chip" style="background-color:#bdbdbd">
-							<%=event.special%>
-						</div>
-						<div class="new-event" id = "new-event<%=event.id%>">
-							<%= event.cached_new_event%>
-							<%if  event.cached_claims?%>
-								<i class="zmdi zmdi-flag"></i>
-							<%end%>
-						</div>
-					</div><%end%><%end%>
-					
-					<div class="directions-btn">
-					<a class="btn-flat disabled teal-text text-accent-4" href=
-        "http://www.google.com/maps/place/<%= current_venue.address %>" target="_blank"><i class="material-icons">directions</i></a>
-					</div>
+			  <div class="directions-btn">
+				<a class="btn-flat disabled teal-text text-accent-4" href="http://www.google.com/maps/place/<%= current_venue.address %>" target="_blank"><i class="material-icons">directions</i></a>
+			  </div>
 					
 					<!--div class="card-content">-->
 					<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
@@ -166,7 +110,7 @@
 					</div>
 					<div class="specials-header">
 						<h4><%= current_venue.name%></h4>
-						<h5 class="flow-text"><%=@e[0].event_type%></h5>
+					<h5 class="flow-text"><%=current_venue.venue_type%></h5>
 					</div>
 					<div class="powered-by-ver">
 						<div class="verified">
@@ -350,5 +294,3 @@
 
 	<!-- This is the code to hide form-->
 										
-
-
