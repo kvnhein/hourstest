@@ -740,7 +740,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
 
-    expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
+    
     @event = current_user.events.build(event_params)
     Venue.find(@event.venue_id).venue_avg_verify
     
@@ -869,7 +869,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
+   
     
         
     respond_to do |format|
@@ -888,7 +888,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-     expire_action :action => [:shadyside, :south_side, :lawrenceville, :oakland, :bloomfield, :strip_district, :downtown]
+     
     @event.destroy
     respond_to do |format|
       Venue.find(@event.venue_id).update_attribute(:venue_verify, Time.now)
