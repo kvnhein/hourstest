@@ -86,6 +86,7 @@ class EventsController < ApplicationController
     else
         @signed_in = false
     end
+    @current_voter = current_user
     
   end
 
@@ -391,7 +392,7 @@ class EventsController < ApplicationController
   end
 
   def downtown
-   @current_voter = current_user
+   
    neighborhood_id = 5
    @users = User.all.to_a
    @neighborhoods_all = Neighborhood.includes(:venues).all.to_a
