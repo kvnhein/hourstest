@@ -32,7 +32,7 @@ class VenuesController < ApplicationController
     @topic = "at #{@venue.name}"
     @topic_description = "Check out today's Happy Hours/Specials and Featured Dishes at #{@venue.name}"
     @page_image = DailySpecial.today.where(venue_id: params[:id]).first
-
+    @claims = Claim.all
     #if DailySpecial.before(Date.today - 7).count > 0
     #past_specials = DailySpecial.before(Date.today - 7)
     #past_specials.delete_all
@@ -68,7 +68,7 @@ class VenuesController < ApplicationController
     
     @events.each do |event|
       if Claim.where(event_id: event.id).first
-        current_claim = Claim.where(event_id: event.id).first
+        current_claim = @claims.select {|claim| claim.event_id == event.id}.first
         if current_claim.delete_date == Date.current
           current_claim.destroy!
           event.destroy!
