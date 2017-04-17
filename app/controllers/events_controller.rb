@@ -391,11 +391,12 @@ class EventsController < ApplicationController
   end
 
   def downtown
-    neighborhood_id = 5
+   @current_voter = current_user
+   neighborhood_id = 5
    @users = User.all.to_a
-   @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a
-   @events_all = Event.all_cached.to_a
+   @neighborhoods_all = Neighborhood.includes(:venues).all.to_a
+   @venues_all = Venue.includes(:events, :daily_specials).all_cached.to_a
+   @events_all = Event.includes(:tags, :votes).all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
    

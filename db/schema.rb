@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404163256) do
+ActiveRecord::Schema.define(version: 20170417164231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,21 +113,35 @@ ActiveRecord::Schema.define(version: 20170404163256) do
     t.integer  "venue_id"
     t.float    "start"
     t.float    "end"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.text     "detail"
     t.datetime "event_verify"
     t.integer  "varified_user"
     t.integer  "user_id"
-    t.integer  "status",        default: 0
+    t.integer  "status",                  default: 0
     t.date     "event_date"
     t.boolean  "food"
     t.boolean  "drinks"
     t.boolean  "late_nite"
     t.boolean  "entertainment"
     t.boolean  "legit_hour"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
 
+  add_index "events", ["cached_votes_down"], name: "index_events_on_cached_votes_down", using: :btree
+  add_index "events", ["cached_votes_score"], name: "index_events_on_cached_votes_score", using: :btree
+  add_index "events", ["cached_votes_total"], name: "index_events_on_cached_votes_total", using: :btree
+  add_index "events", ["cached_votes_up"], name: "index_events_on_cached_votes_up", using: :btree
+  add_index "events", ["cached_weighted_average"], name: "index_events_on_cached_weighted_average", using: :btree
+  add_index "events", ["cached_weighted_score"], name: "index_events_on_cached_weighted_score", using: :btree
+  add_index "events", ["cached_weighted_total"], name: "index_events_on_cached_weighted_total", using: :btree
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
   create_table "likes", force: :cascade do |t|

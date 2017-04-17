@@ -132,7 +132,7 @@
 										<div class="valign-wrapper">
 										<div class="verified-hour" id='like-<%=modal_event.id%>'>
 											<%if @signed_in %>
-												<%if current_user.voted_as_when_voted_for modal_event %>
+												<%if @current_voter.voted_as_when_voted_for modal_event %>
 													<%= render 'event_downvote'%>
 												<%else %>
 													<%= render 'event_upvote' %>
@@ -142,7 +142,7 @@
 											<%end%>
 										</div>
 										<div class="verified-hour-like" id= 'event<%=modal_event.id%>'>
-                            					<%= modal_event.get_likes.size%>
+                            					<%= modal_event.cached_votes_up%>
                         				</div>
                         				</div>
 									</div>
@@ -173,10 +173,10 @@
 								</div><%end%>
 								
 								
-									<div class="submitted-by hide"><p>Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(1).experience%> </p></div>
+								
 									<div class="verified-by-w" id='verify-<%=modal_event.id%>'>
 										<%unless modal_event.event_verify.nil? || modal_event.varified_user.nil? %>
-										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
+										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=modal_event.find_event_user(@users).fullname%></p>
 										<%end%>
 									</div>
 									
@@ -191,7 +191,7 @@
 									<% if modal_event.claim_count(@claims_all) == 0 %>
 									
 										<% if @signed_in%>
-											<% if current_user.can_verify?%>
+											<% if @current_voter.can_verify?%>
 											
 											<!-- This is the code to hide form-->
 											<script>
@@ -231,7 +231,7 @@
   													
   													<div class="field hide">
     													<%= f.label :user_id %><br>
-    													<%= f.text_field :user_id, :value => current_user.id %> %>
+    													<%= f.text_field :user_id, :value => @current_voter.id %> %>
   													</div>
   													<div class="field hide">
     													<%= f.label :event_id %><br>
