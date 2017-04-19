@@ -37,10 +37,21 @@ class VenuesController < ApplicationController
     #past_specials = DailySpecial.before(Date.today - 7)
     #past_specials.delete_all
     #end
-   
+    @current_user = current_user
     @event = Event.new 
-
-    @events = Event.where(venue_id: params[:id])
+    @events_all = Event.where(venue_id: @venue.id).to_a
+    @events_id = @events_all.map { |event| event.id }
+    @user_likes = @events_all.select{|event| @current_user.voted_as_when_voted_for event}.map{|event| event.id}  
+    @users = User.all.to_a
+    
+    if @events_id.count > 0
+     @claims_all = Claim.all.to_a.select { |claim| @events_id.include?(claim.id)}
+     @claims_event_id = @claims_all.map {|claim| claim.event_id}
+    else
+      @claims_all = []
+      @claims_event_id = []
+    end
+    
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
     @m = ""
     @t = ""
@@ -66,15 +77,14 @@ class VenuesController < ApplicationController
       @s = "active"
     end
     
-    @events.each do |event|
-      if Claim.where(event_id: event.id).first
-        current_claim = @claims.select {|claim| claim.event_id == event.id}.first
-        if current_claim.delete_date == Date.current
-          current_claim.destroy!
+   
+      @claims_all.each do |claim|
+        if claim.delete_date == Date.current
+          claim.destroy!
           event.destroy!
         end 
       end 
-    end 
+   
 
     @beers = Beer.where(venue_id: @venue.id) #did this so no beer list would show
     @liquors = Liqour.where(venue_id: params[:id])

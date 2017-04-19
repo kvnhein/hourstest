@@ -44,7 +44,7 @@
                      <%=event.special%>
                  </div>
                   <div class="new-event">
-                        <%= event.new_event%>
+                        
                    </div>
               </div>
     <%elsif @b < 1 && event.end < 23 &&  event.end > 22%>
@@ -53,7 +53,7 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                        <%= event.new_event%>
+                        
                    </div>
               </div>
     <%elsif @b < 2 && event.end < 24  &&  event.end > 23 %>
@@ -62,7 +62,7 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                        <%= event.new_event%>
+                        
                    </div>
               </div>
     <%elsif @b-2+(@c.to_f*0.0166) < event.start && @b > 2%>
@@ -71,7 +71,7 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                        <%= event.new_event%>
+                        
                    </div>
               </div>
     <%else%>
@@ -80,7 +80,7 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                        <%= event.new_event%>
+                       
                    </div>
               </div>
      <%end%>
@@ -90,7 +90,7 @@
                   <%=event.special%>
                 </div>
                <div class="new-event">
-                  <%= event.new_event%>
+                  
                </div>
               </div>
   <%end%>
@@ -129,7 +129,7 @@
                     <p class="verified-date hide"> Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p>
                   <%end%>
 
-              <% if Venue.where(id: @e[0].venue_id).first.urbanist == true %>
+              <% if @venue.urbanist == true %>
                       <div class="urbanist">
                         <a href="http://www.hourspgh.com/urbanist" target="_blank">
                         <%= image_tag "urbanist.png"%>

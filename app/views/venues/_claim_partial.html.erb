@@ -1,8 +1,8 @@
 <%modal_event = @modal_event%>
 								<div id = "form_button<%=modal_event.id%>" display ="none">
-									<% if modal_event.claims.count == 0%>
+									<% unless @claims_event_id.include? modal_event.id %>
 										<% if user_signed_in?%>
-											<% if current_user.can_verify?%>
+											<% if @current_user.can_verify?%>
 											
 											<!-- This is the code to hide form-->
 											<script>
@@ -42,7 +42,7 @@
   													
   													<div class="field hide">
     													<%= f.label :user_id %><br>
-    													<%= f.text_field :user_id, :value => current_user.id %> %>
+    													<%= f.text_field :user_id, :value => @current_user.id %> %>
   													</div>
   													<div class="field hide">
     													<%= f.label :event_id %><br>
@@ -77,7 +77,7 @@
 								<%@m = modal_event.id%>
 							<div id = "second_form_button<%=modal_event.id%>"></div>
 							<!-- end of form -->
-						    	<%@claims = Claim.where(event_id: modal_event.id)%>
+						    	<%@claims = @claims_all.select {|claim| claim.event_id == modal_event.id}%> 
 									<div class = "new_claim<%=modal_event.id%>">
 										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
 									</div>

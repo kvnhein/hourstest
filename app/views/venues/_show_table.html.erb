@@ -1,9 +1,10 @@
 <ul class="collection z-depth-1">
-<% @v = @events.all.where( day: @d)%>
+    
+<% @v = @events_all.select {|event| @d.include?(event.day)} %>
 <% if @v.empty?%>
   <li class = "collection-item grey lighten-3"><%= @venue.name%> has no hours on <%=@h%></li>
 <%else%>
-  <% @v.order(start: :asc, special: :asc).each do |x| %>
+  <% @v.sort! { |a,b| a.start <=> b.start }.each do |x| %>
   <li class="collection-item grey lighten-3 special-by-day addonpadding">
 
     <h4>
@@ -14,7 +15,7 @@
             <div id = 'like-<%=x.id%>'>
               <% if user_signed_in? %>
                 <div class="">
-                    <% if current_user.voted_as_when_voted_for x %>
+                    <% if @user_likes.include?(x.id) %>
                       <%= render partial: 'events/event_downvote'%>
                     <% else %>
                       <%= render partial: 'events/event_upvote' %>
@@ -25,7 +26,7 @@
               <%end%>
           </div>
           <div class="verified-hour-like2" id= 'event<%=x.id%>'>
-            <%= x.get_likes.size%>
+            <%= x.cached_votes_total%>
           </div>
         </div>
 </h4>
@@ -72,9 +73,9 @@
 <%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
 
  </div>
-
+ 
                         				
-<p><span class="submit-by">Submitted by  <%= link_to "#{User.find(x.user_id).fullname}", User.find(x.user_id) %></span></p>
+<p><span class="submit-by">Submitted by <%= link_to "#{x.find_event_user(@users).fullname}", x.find_event_user(@users) %></span></p>
   <%if x.any_details == 2%>
       <p class="deets">
 		Details: <%=x.detail%></p><%@event_tag = x%><!--<%= render partial: "shared/tags"%>-->
@@ -115,7 +116,7 @@
 <%= render partial: "shared/verify_button_partial"%>
 <div class="verified-by-w" id='verify-<%=@event.id%>'>
     <%unless @event.event_verify.nil? || @event.varified_user.nil? %>
-	    <p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(@event.event_verify, Time.now)%> ago by <%=User.find(@event.varified_user).fullname%></p>
+	    <p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(@event.event_verify, Time.now)%> ago by <%=x.find_event_user(@users).fullname%></p>
 	<%end%>
 </div>
 </div>
