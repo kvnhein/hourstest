@@ -41,7 +41,9 @@ class VenuesController < ApplicationController
     @event = Event.new 
     @events_all = Event.where(venue_id: @venue.id).to_a
     @events_id = @events_all.map { |event| event.id }
-    @user_likes = @events_all.select{|event| @current_user.voted_as_when_voted_for event}.map{|event| event.id}  
+    if (user_signed_in?)
+    @user_likes = @events_all.select{|event| event.cached_votes_up > 0}.select{|event| @current_user.voted_as_when_voted_for event}.map{|event| event.id}  
+    end
     @users = User.all.to_a
     
     if @events_id.count > 0

@@ -132,11 +132,15 @@
 										<div class="valign-wrapper">
 										<div class="verified-hour" id='like-<%=modal_event.id%>'>
 											<%if @signed_in %>
-												<%if @current_voter.voted_as_when_voted_for modal_event %>
-													<%= render 'event_downvote'%>
-												<%else %>
+												<%if modal_event.cached_votes_up > 0 %>
+													<%if @current_voter.voted_as_when_voted_for modal_event %>
+														<%= render 'event_downvote'%>
+													<%else %>
+														<%= render 'event_upvote' %>
+													<%end %>
+												<%else%>
 													<%= render 'event_upvote' %>
-												<%end %>
+												<%end%>
 											<%else%>
 												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-plus-circle-o"></i> </a>
 											<%end%>
