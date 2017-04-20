@@ -32,7 +32,7 @@
 <div id="Market_Square">
      <p class="center-tit"><%= link_to 'See Downtown Hours', downtown_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
   <%@venue_array.each do |venue| %>
-     <%if venue.neighborhood_id == 2%>
+     <%if venue.neighborhood_id == 5%>
          <%@venue = venue %>
          <%= render 'venue_index'%>
      <%end%>
