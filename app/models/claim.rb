@@ -13,7 +13,8 @@ class Claim < ActiveRecord::Base
  def claim_votes
    votes=0
    self.votes_for.up.each do |vote|
-     votes = votes + User.find(vote.voter_id).voting_power
+     votes = votes + User.where(id: vote.voter_id).first.voting_power
+     
    end
    return votes
  end

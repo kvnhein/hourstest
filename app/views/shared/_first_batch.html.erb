@@ -85,8 +85,11 @@
                 		<div class="chip" style="<%=event.color_chip(@b,@c)%>">
                   			<%=event.special%>
                 		</div>
-               			<div class="new-event hide">
-                  			<%= event.new_event(@new_events,  @verify_events)%>
+               			<div class="new-event" id = "new-event<%=event.id%>">
+               				<%if  event.cached_claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
+                  			<% event.new_event(@new_events,  @verify_events)%>
                			</div>
               		</div>
               <%end%>
@@ -270,7 +273,7 @@
 							<%@m = modal_event.id%>
 							<div id = "second_form_button<%=modal_event.id%>"></div>
 							<!-- end of form -->
-								<%@claims = @claims_all.select{|claim| claim.event_id == modal_event.id}.first%> 
+								<%@claims = @claims_all.select{|claim| claim.event_id == modal_event.id}%> 
 									<div class = "new_claim<%=modal_event.id%>">
 										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
 									</div>

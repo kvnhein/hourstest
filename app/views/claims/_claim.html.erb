@@ -1,9 +1,11 @@
 <div class="claim-top">
     <p class="red-text text-accent-4" style="display:inline-block;">
       <%if claim.status == 1 %>
-         <%= claim.user.fullname%>'s claim has been confirmed
+      
+         <%= @users.select {|user| claim.user_id == user.id}.first.fullname%>'s claim has been confirmed
+        
       <%else%>
-        <%= claim.user.fullname%> reported this a bad hour. Agree?
+        <%=  @users.select {|user| claim.user_id == user.id}.first.fullname%> reported this a bad hour. Agree?
       <%end%>
     </p>
     <p style="display:inline-block;">
@@ -18,6 +20,7 @@
   <%= link_to "view", claim_path(claim)%>
   
 <!--<span>
+     
       <% if claim.event%>
         <%= claim.event.special %>
       <%end%>
@@ -64,7 +67,7 @@
  
 
 <div class="range-slider<%=claim.id%> slider-margin">
-  <!--<input class="range-slider__range" type="range" value="<%= claim.get_likes.size%>" min="0" max="10" disabled>-->
+  <!--<input class="range-slider__range" type="range" value="<%= claim.cached_votes_total%>" min="0" max="10" disabled>-->
   <!--<span class="range-slider__value">0</span>-->
   <progress value="<%= claim.claim_votes%>" max="10">
 </progress>
@@ -105,7 +108,7 @@
  <%if user_signed_in?%>
 <div class = "chips<%=claim.id%>" style="text-align:left">
       <%voters = claim.votes_for.up.by_type(User).voters%>
-          <% voters.each do |user|%>
+          <% @claim_voters.each do |user|%>
             <div class="chip">
               <%=user.fullname%> <%=user.voting_power%> 
             </div>

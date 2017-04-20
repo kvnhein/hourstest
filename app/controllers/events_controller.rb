@@ -400,7 +400,7 @@ class EventsController < ApplicationController
    @events_all = Event.includes(:tags, :votes).all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
-   
+   @claim_voters = []
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
