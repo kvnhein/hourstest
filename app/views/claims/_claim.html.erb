@@ -2,10 +2,10 @@
     <p class="red-text text-accent-4" style="display:inline-block;">
       <%if claim.status == 1 %>
       
-         <%= @users.select {|user| claim.user_id == user.id}.first.fullname%>'s claim has been confirmed
+         <%= claim.user.fullname%>'s claim has been confirmed
         
       <%else%>
-        <%=  @users.select {|user| claim.user_id == user.id}.first.fullname%> reported this a bad hour. Agree?
+        <%=  claim.user.fullname%> reported this a bad hour. Agree?
       <%end%>
     </p>
     <p style="display:inline-block;">
