@@ -27,7 +27,7 @@ def claim_count(claims)
 
 def find_event_user_varified(users)
   event_user_varified = users.select {|user| user.id == self.varified_user}
-  return event_user.first
+  return event_user_varified.first
 end
  def self.all_cached
   Rails.cache.fetch('events') { all }
