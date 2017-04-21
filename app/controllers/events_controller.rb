@@ -81,7 +81,7 @@ class EventsController < ApplicationController
             claim.destroy
         end
     end
-    if user_signed_in?
+    if (user_signed_in?)
         @signed_in = true
     else
         @signed_in = false
