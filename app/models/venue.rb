@@ -54,11 +54,21 @@ class Venue < ActiveRecord::Base
     self.save!
   end 
 
-    def total_votes(todays_events)
+   def total_votes(todays_events)
       events = todays_events.select { |event| event.venue_id == self.id } 
       total_votes = events.map {|event| event.cached_votes_total }.inject(0){|sum,x| sum + x }
       return total_votes
     end 
+  
+  def order_todays_venues(todays_events, venues)
+    x=[]
+    todays_events.each do |event|
+	    x.push(event.venue_id)
+	  end
+    venue_ids = x.uniq
+    todays_venues = venues.select {|venue| venu_ids.include?(venue.id)}.sort! {|x,y| y.total_votes(todays_events) <=> x.total_votes(todays_events)}
+   end 
+  
   
   def venue_avg_verify
     days = 0

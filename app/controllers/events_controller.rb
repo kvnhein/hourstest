@@ -279,7 +279,7 @@ class EventsController < ApplicationController
    neighborhood_id = 2
    @neighborhoods_all = Neighborhood.all.to_a
    @events_all = Event.all_cached.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
    
@@ -296,7 +296,7 @@ class EventsController < ApplicationController
       @events = Event.tagged_with(params[:shady_tag]).where(venue_id: venue_id, day: @day_specials)
       @tag_topic = "##{params[:shady_tag]}"
     end
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
     @page_url = "shadyside"
@@ -315,7 +315,7 @@ class EventsController < ApplicationController
    @users = User.all.to_a
    neighborhood_id = 1
    @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
@@ -355,7 +355,7 @@ class EventsController < ApplicationController
    @users = User.all.to_a
    neighborhood_id = 3
    @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
@@ -396,7 +396,7 @@ class EventsController < ApplicationController
    neighborhood_id = 5
    @users = User.all.to_a
    @neighborhoods_all = Neighborhood.includes(:venues).all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
@@ -416,7 +416,7 @@ class EventsController < ApplicationController
      @tag_topic = "##{params[:down_tag]}"
     end
     
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
     
@@ -436,7 +436,7 @@ class EventsController < ApplicationController
    @users = User.all.to_a
    neighborhood_id = 7
    @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
@@ -513,7 +513,7 @@ class EventsController < ApplicationController
    neighborhood_id = 9
    @users = User.all.to_a
    @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
@@ -552,7 +552,7 @@ class EventsController < ApplicationController
     neighborhood_id = 11
     @users = User.all.to_a
    @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
@@ -590,7 +590,7 @@ class EventsController < ApplicationController
     neighborhood_id = 10
     @users = User.all.to_a
    @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
@@ -628,7 +628,7 @@ class EventsController < ApplicationController
     neighborhood_id = 12
     @users = User.all.to_a
    @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
@@ -667,7 +667,7 @@ class EventsController < ApplicationController
     neighborhood_id = 13
     @users = User.all.to_a
    @neighborhoods_all = Neighborhood.all.to_a
-   @venues_all = Venue.all_cached.to_a.sort! {|x,y| y.total_votes(@events_all.select {|event| @day_specials.include?(event.day)}) <=> x.total_votes(@events_all.select {|event| @day_specials.include?(event.day)})}
+   @venues_all = Venue.all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a
