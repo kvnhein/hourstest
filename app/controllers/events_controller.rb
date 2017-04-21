@@ -336,7 +336,7 @@ class EventsController < ApplicationController
       @tag_topic = "##{params[:south_tag]}"
     end
     
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
 
@@ -376,7 +376,7 @@ class EventsController < ApplicationController
       @tag_topic = "##{params[:oakland_tag]}"
     end
 
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
     
@@ -456,7 +456,7 @@ class EventsController < ApplicationController
      @tag_topic = "##{params[:law_tag]}" 
    end
    
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
 
@@ -494,7 +494,7 @@ class EventsController < ApplicationController
      @tag_topic = "##{params[:bloom_tag]}"
     end
 
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
 
@@ -533,7 +533,7 @@ class EventsController < ApplicationController
       @tag_topic = "##{params[:east_tag]}"
     end
 
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
 
@@ -572,7 +572,7 @@ class EventsController < ApplicationController
      @tag_topic = "##{params[:strip_tag]}"
    end
     
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
     
@@ -610,7 +610,7 @@ class EventsController < ApplicationController
       @tag_topic = "##{params[:sq_tag]}"
    end
 
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
     
@@ -649,7 +649,7 @@ class EventsController < ApplicationController
       @tag_topic = "##{params[:north_tag]}"
    end
 
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
    
@@ -687,7 +687,7 @@ class EventsController < ApplicationController
       @tag_topic = "##{params[:mt_tag]}"
    end
 
-    @todays_feature =  @daily_specisals
+    @todays_feature =  @daily_specials
     @new_events = @events.select {|event| event.created_at > (Date.current - 7.days)}
     @verify_events= @events.select {|event| event.event_verify > (Date.current - 60.days)}
    
