@@ -402,7 +402,7 @@ class EventsController < ApplicationController
    @daily_specials_all = DailySpecial.all.to_a
    @claim_voters = []
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
-   venue_id = @venues.map { |venue| venue.id }.sort! {|x,y| x.total_votes <=> y.total_votes}
+   venue_id = @venues
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 8.days)}.select{|special|  venue_id.include?(special.venue_id)}
    @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
