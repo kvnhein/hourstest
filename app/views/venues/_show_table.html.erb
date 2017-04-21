@@ -116,7 +116,7 @@
 <%= render partial: "shared/verify_button_partial"%>
 <div class="verified-by-w" id='verify-<%=@event.id%>'>
     <%unless @event.event_verify.nil? || @event.varified_user.nil? %>
-	    <p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(@event.event_verify, Time.now)%> ago by <%=x.find_event_user(@users).fullname%></p>
+	    <p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(@event.event_verify, Time.now)%> ago by <%=x.find_event_user_varified(@users).fullname%></p>
 	<%end%>
 </div>
 </div>
