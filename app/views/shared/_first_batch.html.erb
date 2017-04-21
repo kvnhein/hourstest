@@ -2,8 +2,10 @@
 	<!--x.push(@venues.find(event.venue_id).id)-->
 	<%x.push(event.venue_id)%>
 <%end%>
-<%x.uniq.each do |d|%>
+<%@venues_all.each do |venue|%>
+<% if @events_all.select {|event| event.venue_id == venue.id}.count  > 0  %>
 
+<%d = venue.id%>
 	<%@e = @events.select {|event| event.venue_id == d}.sort! { |a,b| a.start <=> b.start }.reverse%>
 	<%current_venue = @venues.select{|venue| venue.id == d }.first%>
 	<div class="row hourslist">
@@ -298,7 +300,7 @@
 	</div>
 	
 <%end%>
-
+<%end%>
 
 	<!-- This is the code to hide form-->
 										

@@ -46,6 +46,20 @@ class Venue < ActiveRecord::Base
     Rails.cache.fetch('downotown_venues') {Neighborhood.find(5).venues}
   end 
 
+
+  def avg_time
+    events = self.events
+    avg_time = (events.map {|event| event.event_verify }.map{|date| (Time.current - date).to_i/(24*60*60)}.inject(0){|sum,x| sum + x })/events.count
+    self.avg_verify = avg_time
+    self.save!
+  end 
+
+    def total_votes(todays_events)
+      events = todays_events.select { |event| event.venue_id == self.id } 
+      total_votes = events.map {|event| event.cached_votes_total }.inject(0){|sum,x| sum + x }
+      return total_votes
+    end 
+  
   def venue_avg_verify
     days = 0
     Event.where(venue_id: self.id, day: Time.current.strftime("%A")).each do |event| 
@@ -63,6 +77,7 @@ class Venue < ActiveRecord::Base
       self.save
     end
   end
+  
   
   
 
