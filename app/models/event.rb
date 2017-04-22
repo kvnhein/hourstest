@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   acts_as_votable
   by_star_field :created_at
   validates :special, presence: true
+  validates :day, presence: true
   #validates :validate_tag, presence: true
 
   belongs_to :venue, touch: true
