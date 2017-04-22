@@ -18,7 +18,6 @@
 //= require jquery_ujs
 //= require autocomplete-rails
 //= require turbolinks
-//= require social-share-button
 //= require materialize-sprockets
 //= require toastr
 //= require_tree .

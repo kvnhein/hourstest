@@ -105,9 +105,9 @@
   <!--<span class="range-slider__value">0</span>-->
 </div>
 
- <%if user_signed_in?%>
+ <%if user_signed_in? == true%>
 <div class = "chips<%=claim.id%>" style="text-align:left">
-      <%voters = claim.votes_for.up.by_type(User).voters%>
+      <%@claim_voters = claim.votes_for.up.by_type(User).voters%>
           <% @claim_voters.each do |user|%>
             <div class="chip">
               <%=user.fullname%> <%=user.voting_power%> 

@@ -69,13 +69,12 @@
 
 
 <div class="valign-wrapper timeforspecial">
-<i class="zmdi zmdi-time"></i>
-<%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
-
- </div>
+    <i class="zmdi zmdi-time"></i>
+    <%=start_time%>:<%=start_minutes%> <%=start_am%> - <%=end_time%>:<%=end_minutes%> <%=end_am%>
+</div>
  
-                        				
-<p><span class="submit-by">Submitted by <%= link_to "#{x.find_event_user(@users).fullname}", x.find_event_user(@users) %></span></p>
+<p>
+    <span class="submit-by">Submitted by <%= link_to "#{x.find_event_user(@users).fullname}", x.find_event_user(@users) %></span></p>
   <%if x.any_details == 2%>
       <p class="deets">
 		Details: <%=x.detail%></p><%@event_tag = x%><!--<%= render partial: "shared/tags"%>-->
