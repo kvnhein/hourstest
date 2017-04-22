@@ -323,7 +323,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
     
@@ -363,7 +363,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
@@ -404,7 +404,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 8.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
@@ -444,7 +444,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
@@ -482,7 +482,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
@@ -521,7 +521,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
@@ -560,7 +560,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
@@ -598,7 +598,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
@@ -636,7 +636,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
@@ -675,7 +675,7 @@ class EventsController < ApplicationController
    @venues = @venues_all.select {|venue| venue.neighborhood_id == neighborhood_id }
    venue_id = @venues.map { |venue| venue.id }
    @daily_specials = @daily_specials_all.select {|special| special.created_at > (Date.current - 7.days)}.select{|special|  venue_id.include?(special.venue_id)}
-   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| y.cached_votes_total <=> x.cached_votes_total}
+   @events = @events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}
    @tag_events = Event.where(venue_id: venue_id, day: @day_specials)
    @tag_topic = ""
    
