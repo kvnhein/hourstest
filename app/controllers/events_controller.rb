@@ -409,10 +409,10 @@ class EventsController < ApplicationController
    @tag_topic = ""
    
     if params[:search]
-      @events = events.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
+      @events = Event.where(venue_id: venue_id, day: @day_specials).special_like("%#{params[:search]}%").order('special')
       @tag_topic = "##{params[:search]}"
      elsif params[:down_tag]
-      @events = events.tagged_with(params[:down_tag]).where(venue_id: venue_id, day: @day_specials)
+      @events = Event.tagged_with(params[:down_tag]).where(venue_id: venue_id, day: @day_specials)
      @tag_topic = "##{params[:down_tag]}"
     end
     
