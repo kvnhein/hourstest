@@ -18,6 +18,6 @@
             </div>
 
               <div class="like-number" id='event<%=@d.id%>'>
-                <%= @d.get_likes.size%>
+                <%= @d.cached_votes_total +@d.credits%>
               </div>
             </div>

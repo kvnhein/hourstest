@@ -5,7 +5,7 @@
 								<div class = "verify_button<%=modal_event.id%>">
 								<% if Claim.where(event_id: modal_event.id)%>
 									
-										<%if @signed_in %>
+										<%if @signed_in = true %>
 											<%if current_user.can_verify?%>
 												<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render partial: "events/event_verified"%></div>
 											<%else%>

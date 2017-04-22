@@ -1,5 +1,5 @@
 $('#down<%=@event.id%>').bind('ajax:success', function() {
-    $('#event<%=@event.id%>').html('<%=escape_javascript @event.get_upvotes.size.to_s %>');
+    $('#event<%=@event.id%>').html('<%=escape_javascript (@event.cached_votes_total + @event.credits).to_s %>');
     $('#like-<%=@event.id%>').html('<%=escape_javascript (render partial: "shared/event_upvote") %>');
     $('.user-points>').html('<%=escape_javascript link_to "Points: #{current_user.experience}" %>');
 <%if current_user.experience <= 5 %>

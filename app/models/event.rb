@@ -45,6 +45,7 @@ end
  def default_values
   self.event_verify ||= Time.now 
   self.varified_user ||= current_user.id
+  self.credits ||= 0 
  end
  
  def cached_event_count
