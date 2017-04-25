@@ -13,7 +13,9 @@ class EventsController < ApplicationController
   
   # GET /events
   # GET /events.json
-
+  def privacy
+  end 
+    
   def under_construction
   end
   

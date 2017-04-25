@@ -285,5 +285,69 @@ def color_chip(current_hour, current_minute)
     end
 end
 
+def event_now(current_hour, current_minute)
+ if current_hour-2+(current_minute.to_f*0.0166) > self.start.to_i && current_hour-2+(current_minute.to_f*0.0166) < self.end.to_f
+		 return true
+	elsif current_hour < 1 && self.end < 23 &&  self.end > 22
+	  return true
+ elsif current_hour < 2 && self.end < 24  &&  self.end > 23
+		 return true
+	else 
+		 return false
+		end
+end
+
+def event_later(current_hour, current_minute)
+ if current_hour-2+(@c.to_f*0.0166) < self.start && current_hour > 2
+		 return true
+	else 
+		 return false
+	end
+end
+
+def event_past(current_hour, current_minute)
+ if self.event_now(current_hour, current_minute) == false && self.event_later(current_hour, current_minute) == false
+  return true
+ else 
+  return false
+ end
+end
+
+def update_tags
+ tags = self.tag_list
+ if tags.include? ("Food")
+  self.food = true
+  self.save!
+ else
+  self.food = false
+  self.save!
+ end
+ 
+ if tags.include? ("Drinks")
+  self.drinks = true
+  self.save!
+ else
+  self.drinks = false
+  self.save!
+ end 
+ 
+ if tags.include? ("Late Nite")
+  self.late_nite = true
+  self.save!
+ else
+  self.late_nite = false
+  self.save!
+ end
+ 
+ if tags.include? ("Entertainment")
+  self.entertainment = true
+  self.save!
+ else
+  self.entertainment = false
+  self.save!
+ end
+end
+
+
 end
 
