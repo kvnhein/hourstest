@@ -2,7 +2,7 @@
         <div class="like-like">
           <div id = 'claim-like-<%=@c.id%>'>
               <% if user_signed_in? %>
-                     <% unless current_user.voted_as_when_voted_for @c %>
+                     <% unless @user_likes.include?(@c) %>
 				          <%= render 'claims/claim_upvote' %>
 			         <% end %>
               <%else%>
@@ -14,6 +14,6 @@
             </div>
         </div>
         <div class="like-number" id='claim<%=@c.id%>'>
-            <%= @c.get_likes.size%>
+            <%= @c.cached_votes_total%>
         </div>
     </div>

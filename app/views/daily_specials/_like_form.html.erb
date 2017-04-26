@@ -2,8 +2,8 @@
 <div class="like-btn">
 <div class="like-like">
    <div id = 'like-<%=@j.id%>'>
-      <% if user_signed_in? %>
-      <% if current_user.voted_as_when_voted_for @j %>
+      <% if @signed_in == true %>
+      <% if @user_likes.include?(@j) %>
 				  <%= render 'daily_specials/downvote'%>
 			    <% else %>
 				    <%= render 'daily_specials/upvote' %>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="like-number" id='special<%=@j.id%>'>
-   <%= @j.credit + @j.get_likes.size%>
+   <%= @j.credit + @j.cached_votes_total%>
 </div>
 </div>
 

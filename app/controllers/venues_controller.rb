@@ -29,9 +29,18 @@ class VenuesController < ApplicationController
   # GET /venues/1.json
   
   def show
+    if (user_signed_in?)
+        @signed_in = true
+    else
+        @signed_in = false
+    end
+    @daily_specials = DailySpecial.all.to_a.select{|special| special.venue_id == @venue.id}.sort!{|x,y| x.created_at <=> y.created_at }
+    @current_voter = current_user
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     @topic = "at #{@venue.name}"
     @topic_description = "Check out today's Happy Hours/Specials and Featured Dishes at #{@venue.name}"
-    @page_image = DailySpecial.today.where(venue_id: params[:id]).first
+    @page_image = @daily_specials.first
     @claims = Claim.all
     #if DailySpecial.before(Date.today - 7).count > 0
     #past_specials = DailySpecial.before(Date.today - 7)
@@ -41,18 +50,15 @@ class VenuesController < ApplicationController
     @event = Event.new 
     @events_all = Event.where(venue_id: @venue.id).to_a
     @events_id = @events_all.map { |event| event.id }
-    if (user_signed_in?)
-    @user_likes = @events_all.select{|event| event.cached_votes_up > 0}.select{|event| @current_user.voted_as_when_voted_for event}.map{|event| event.id}  
+    if @signed_in == true
+    @user_likes = @current_user.find_up_voted_items.to_a
     end
     @users = User.all.to_a
     
-    if @events_id.count > 0
-     @claims_all = Claim.all.to_a.select { |claim| @events_id.include?(claim.id)}
-     @claims_event_id = @claims_all.map {|claim| claim.event_id}
-    else
-      @claims_all = []
-      @claims_event_id = []
-    end
+
+     @claims_all = Claim.all.to_a
+     
+    
     
     t= Time.now.in_time_zone("Eastern Time (US & Canada)")
     @m = ""
@@ -90,7 +96,7 @@ class VenuesController < ApplicationController
 
     @beers = Beer.where(venue_id: @venue.id) #did this so no beer list would show
     @liquors = Liqour.where(venue_id: params[:id])
-    @daily_specials = DailySpecial.where(venue_id: @venue.id)
+    #@daily_specials = DailySpecial.where(venue_id: @venue.id)
     @drinks = Drink.where(venue_id: params[:id])
 
 

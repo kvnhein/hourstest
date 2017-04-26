@@ -2,8 +2,8 @@
           <div class="like-btn">
           <div class="like-like">
           <div id = 'like-<%=@d.id%>'>
-              <% if user_signed_in? %>
-                <% if current_user.voted_as_when_voted_for @d %>
+              <% if @signed_in == true %>
+                <%if @user_likes.include?(@d) %>
 				          <%= render 'event_downvote'%>
 			          <% else %>
 				          <%= render 'event_upvote' %>

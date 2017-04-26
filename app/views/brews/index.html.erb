@@ -1,11 +1,39 @@
-<p id="notice"><%= notice %></p>
 
-<h3 class = "flow-text">Master Beer List</h3>
+<%tag_list = [] %>
+        <% @events.each do |event|%> 
+        <%tag_list.push("Food") if event.food == true%>
+        <%tag_list.push("Drinks") if event.drinks == true%>
+        <%tag_list.push("Late Nite") if event.late_nite == true%>
+        <%tag_list.push("Entertainment") if event.entertainment == true%>
+<%end%>
 
-<%= link_to 'New Brew', new_brew_path, id: "new_link", remote: true %>
+<p>Tage List</p><%= tag_list.uniq%>
 
+<%@venues.each do |venue| %>
+    <% venue_events= @events.select {|event| event.venue_id == venue.id}%>
+    <h1><%=venue.name%></h1><br>
+    <h2><%=venue.genre%></h2><br>
+    <% venue_events.each do |event|%>
+        <p>Special:<%= event.special%></p>
+        <p>Description:<%=event.detail%></p>
+        <p>Day: <%=event.day%> </p>
+        <p>Time: <%=event.time_conversion%></p>
+        <p>Details: <%=event.detail%> </p>
+        <p>tags: <%= event.find_tags.each {|tag| puts tag}%></p> 
+        <p>event saves: <%= event.cached_votes_total%></p>
+        <p>claims?
+                    <%if @claims.map {|claim| claim.event_id}.include?(event.id) %>
+                        True
+                    <%else%>
+                        False
+                    <%end%>
+        </p>
+        <p> Verified <%=distance_of_time_in_words(event.event_verify, Time.now)%> ago by <%=event.find_event_user_varified(@users).fullname%></p>
+       
+    <%end%>
+        <br><br>
+<%end%> 
 
-<div id = 'beerlist'><%= render 'beers/list'%></div>
 
 
 

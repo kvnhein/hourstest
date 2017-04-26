@@ -31,7 +31,7 @@
 					<%if current_venue.urbanist == true %>
 					<div class="urbanist">
 						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
-							<%= image_tag "urbanist.png"%>
+							<%= image_tag "hourspgh-award.png"%>
 						</a>
 						
 					</div>
@@ -52,12 +52,12 @@
 					      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="zmdi zmdi-close"></i></a>
 					    </div>
 					    <%if current_venue.urbanist == true %>
-					      <a href="http://www.hourspgh.com/urbanist" class="card" target="_blank">
+					      <!--a href="http://www.hourspgh.com/urbanist" class="card" target="_blank"--><a class="card">
 						<div class="icon-circle">
-						  <%= image_tag "urbanist.png"%>
+						  <%= image_tag "hourspgh-award.png"%>
 						</div>
 						<div class="icon-logo">
-						  <%= image_tag "urbanistapprovedseal.png"%>
+						  <%= image_tag "hourspgh-award-key.png"%>
 						</div>
 						<div class="arrow">
 						  <%= image_tag "arrow.png"%>
@@ -179,7 +179,7 @@
 							<%end%>
 							<%if current_venue.urbanist == true %>
 							<div class="urbanist">
-								<a href="http://www.hourspgh.com/urbanist" target="_blank"><%= image_tag "urbanist.png"%></a>
+								<a target="_blank"><%= image_tag "hourspgh-award.png"%></a>
 							</div>
 							<%end %>
 						</div>

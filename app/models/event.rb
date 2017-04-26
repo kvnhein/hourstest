@@ -20,6 +20,15 @@ def claim_count(claims)
      
  end
  
+ def find_tags
+        tags = []
+        tags.push("Food") if self.food == true
+        tags.push("Drinks") if self.drinks == true
+        tags.push("Late Nite") if self.late_nite == true
+        tags.push("Entertainment") if self.entertainment == true
+        return tags
+ end 
+ 
 
  def find_event_user(users)
   event_user = users.select {|user| user.id == self.user_id}

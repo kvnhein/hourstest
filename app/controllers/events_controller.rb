@@ -89,7 +89,9 @@ class EventsController < ApplicationController
         @signed_in = false
     end
     @current_voter = current_user
-    
+    if @signed_in == true
+    @user_likes = @current_voter.find_up_voted_items.to_a
+    end
   end
 
   def event_time

@@ -22,6 +22,9 @@ class ListsController < ApplicationController
     if (user_signed_in?)
     @venue_owner = current_user.id
     end
+    
+    
+    
   end
 
   # GET /lists/1

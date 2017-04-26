@@ -1,13 +1,25 @@
 class BrewsController < ApplicationController
-  before_filter :require_admin_construction
+  #before_filter :require_admin_construction
   before_action :set_brew, only: [:show, :edit, :update, :destroy]
 
   # GET /brews
   # GET /brews.json
   def index
-    @brews = Brew.all
-    @brew = Brew.new
-    @beers = Beer.all
+    
+    @neighborhoods = Neighborhood.includes(:venues).all.to_a 
+    @users = User.includes(:claims, :events).all.to_a
+   
+    
+    @venues = @neighborhoods.map { |neighborhood| neighborhood.venues.to_a }.flatten
+    @events = @users.map { |users| users.events.to_a }.flatten
+    @claims = @users.map { |users| users.claims.to_a }.flatten
+   
+    if (user_signed_in?)
+      @signed_in == true
+      @current_user = current_user
+      @user_likes = @current_user.find_up_voted_items.to_a
+    end
+    
   end
 
   # GET /brews/1
