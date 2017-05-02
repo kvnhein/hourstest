@@ -31,6 +31,7 @@ class VenuesController < ApplicationController
   def show
     if (user_signed_in?)
         @signed_in = true
+        @user_likes = current_user.find_up_voted_items.to_a
     else
         @signed_in = false
     end
@@ -50,9 +51,7 @@ class VenuesController < ApplicationController
     @event = Event.new 
     @events_all = Event.where(venue_id: @venue.id).to_a
     @events_id = @events_all.map { |event| event.id }
-    if @signed_in == true
-    @user_likes = @current_user.find_up_voted_items.to_a
-    end
+    
     @users = User.all.to_a
     
 

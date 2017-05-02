@@ -5,15 +5,17 @@ class BrewsController < ApplicationController
   # GET /brews
   # GET /brews.json
   def index
+    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
     
     @neighborhoods = Neighborhood.includes(:venues).all.to_a 
     @users = User.includes(:claims, :events).all.to_a
    
     
     @venues = @neighborhoods.map { |neighborhood| neighborhood.venues.to_a }.flatten
-    @events = @users.map { |users| users.events.to_a }.flatten
+    @events = @users.map { |users| users.events.to_a }.flatten.select {|event| event.day == "Monday"}
     @claims = @users.map { |users| users.claims.to_a }.flatten
-   
+    
     if (user_signed_in?)
       @signed_in == true
       @current_user = current_user

@@ -1,6 +1,6 @@
 <%modal_event = @modal_event%>
 								<div id = "form_button<%=modal_event.id%>" display ="none">
-									<% unless @claims_event_id.include? modal_event.id %>
+									<% unless @claims_all.include?(modal_event.id) %>
 										<% if user_signed_in?%>
 											<% if @current_user.can_verify?%>
 											
@@ -52,7 +52,7 @@
     													<%= f.submit "submit", class:"submit-btn2", id: "form-hide#{modal_event.id}"%>
   													</div>
 												<% end %>
-												<button id="hide<%=modal_event.id%>" class="hide-btn2">Cancle</button>
+												<button id="hide<%=modal_event.id%>" class="hide-btn2">Cancel</button>
 												</div>
 												
 											<%else%>

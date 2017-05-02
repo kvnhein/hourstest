@@ -60,6 +60,7 @@ class ClaimsController < ApplicationController
 
   def event_create
     @claim = Claim.create! claim_params
+   
     
   respond_to do |format|
     format.html { redirect_to action: :index }

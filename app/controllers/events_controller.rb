@@ -76,22 +76,21 @@ class EventsController < ApplicationController
     claim_index = Claim.all
     claim_index.each do |claim|
         if claim.status == 1 && (claim.created_at + 7.days).to_date == Date.current
-            claim.event.status = 1
-            claim.event.save
-            claim.destroy
+           # claim.event.status = 1
+           # claim.event.save
+           # claim.destroy
         elsif claim.status == 0 && (claim.created_at + 7.days).to_date == Date.current
-            claim.destroy
+            #claim.destroy
         end
     end
     if (user_signed_in?)
         @signed_in = true
+        @user_likes = current_user.find_up_voted_items.to_a
     else
         @signed_in = false
     end
     @current_voter = current_user
-    if @signed_in == true
-    @user_likes = @current_voter.find_up_voted_items.to_a
-    end
+    
   end
 
   def event_time
@@ -311,6 +310,8 @@ class EventsController < ApplicationController
     #this is for OG
     @topic = "Hours in Shadyside}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    
 
   end
 
