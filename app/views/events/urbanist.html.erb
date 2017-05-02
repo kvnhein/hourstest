@@ -298,10 +298,11 @@
 <div id="Market_Square">
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 5 }.each do |venue|%> 
-        
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
         <%venue.events.to_a.each do |event|%>
          <%@events_neigh.push(event)%>
-    <%end%>
+        <%end%>
+      <%end%>
     <%end%>
 <div class ="center" id="specials">     
      <%= render partial: 'shared/first_batch_new'%>
@@ -311,10 +312,11 @@
 <div id="Southside">
   <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 1 }.each do |venue|%> 
-        
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
         <%venue.events.to_a.each do |event|%>
          <%@events_neigh.push(event)%>
-    <%end%>
+        <%end%>
+      <%end%>
     <%end%>
 <div class ="center" id="specials">     
      <%= render partial: 'shared/first_batch_new'%>
@@ -324,10 +326,11 @@
 <div id="Shadyside">
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 2 }.each do |venue|%> 
-        
+     <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
         <%venue.events.to_a.each do |event|%>
          <%@events_neigh.push(event)%>
-    <%end%>
+        <%end%>
+      <%end%>
     <%end%>
 <div class ="center" id="specials">     
      <%= render partial: 'shared/first_batch_new'%>
@@ -338,10 +341,11 @@
 <div id="Oakland">
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 3 }.each do |venue|%> 
-        
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
         <%venue.events.to_a.each do |event|%>
          <%@events_neigh.push(event)%>
-    <%end%>
+        <%end%>
+      <%end%>
     <%end%>
 <div class ="center" id="specials">     
      <%= render partial: 'shared/first_batch_new'%>
@@ -351,10 +355,11 @@
 <div id="Lawrenceville">
       <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 7 }.each do |venue|%> 
-        
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
         <%venue.events.to_a.each do |event|%>
          <%@events_neigh.push(event)%>
-    <%end%>
+        <%end%>
+      <%end%>
     <%end%>
 <div class ="center" id="specials">     
      <%= render partial: 'shared/first_batch_new'%>
@@ -364,10 +369,11 @@
 <div id="Strip_district">
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 11 }.each do |venue|%> 
-        
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
         <%venue.events.to_a.each do |event|%>
          <%@events_neigh.push(event)%>
-    <%end%>
+        <%end%>
+      <%end%>
     <%end%>
 <div class ="center" id="specials">     
      <%= render partial: 'shared/first_batch_new'%>
@@ -377,10 +383,11 @@
     <div id="East_liberty">
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 9 }.each do |venue|%> 
-        
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
         <%venue.events.to_a.each do |event|%>
          <%@events_neigh.push(event)%>
-    <%end%>
+        <%end%>
+      <%end%>
     <%end%>
 <div class ="center" id="specials">     
      <%= render partial: 'shared/first_batch_new'%>

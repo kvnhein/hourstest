@@ -258,7 +258,7 @@ class EventsController < ApplicationController
 
    @v = @venues.where( urbanist: true)
 
-   @events = Event.where(day: @day_tag)
+   @events = Event.where(day: @day_tag).to_a
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     else
