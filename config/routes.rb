@@ -116,7 +116,7 @@ resources :events do
         resources :events
 
   get 'mt_washington/:mt_tag', to: 'events#mt_washington', as: :mt_tag
-  get 'mt_washiington/autocomplete_event_special'
+  get 'mt_washington/autocomplete_event_special'
      get 'mt_washington' => 'events#mt_washington'
         resources :events
 
