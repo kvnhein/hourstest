@@ -135,13 +135,13 @@
 								<%=modal_event.detail%></p><%@event_tag = modal_event%><!--<%= render partial: "shared/tags"%>-->
 								<%end%>
 								
-								<%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
+								<%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f && @day == @h %>
 								<div class="now-tab">
 									Now
-								</div><%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
+								</div><%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22 && @day == @h%>
 								<div class="now-tab">
 									Now
-								</div><%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 %>
+								</div><%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 && @day == @h %>
 								<div class="now-tab">
 									Now
 								</div><%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>

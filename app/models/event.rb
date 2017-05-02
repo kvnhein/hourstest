@@ -131,16 +131,13 @@ end
   end
  end
 
-  def new_event (new_events,  verify_events)
-    if new_events.include? self
+  def new_event 
+    
       if self.legit_hour == true 
        return "Verified"
       else 
        return "New"
      end
-    elsif  verify_events.include? self 
-     return "Not Verified"
-    end
   end
   
   def cached_new_event

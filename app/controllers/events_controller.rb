@@ -161,23 +161,25 @@ class EventsController < ApplicationController
   end
 
   def landing
-      
+    
     
     #this is for OG
     @topic = "Hours"
     @topic_description = "Hours provides Happy Hours/Specials and Featured dishes throughout Pittsburgh"
     @page_url = ""
-    @new_events = Event.all_cached.after(Date.today - 7)
-    @todays_events = Event.all_cached.after(Date.today - 7).to_a
+    events = Event.all 
+    @new_events = events.all_cached.after(Date.today - 7)
+    @todays_events = events.all_cached.after(Date.today - 7).to_a
+    
     @todays_venues = @venues.to_a
     @date = Date.today 
     @updated_events = Event.new_events_cached
     @events_with_claims = []
     @venues = Venue.all_cached
-    @claims = Claim.claims_cached
-    @claims.all.each do |claim|
-        @events_with_claims.push(claim.event)
-    end 
+    @claims = Claim.all.to_a
+    claim_event_id = @claims.map{|claim| claim.event_id } 
+    @events_events = 
+    @user_array = User.all.to_a.sort!{|x,y| y.experience <=> x.experience }
     @users = User.users_cached
     @top_users = []
     @users.each do |user|
