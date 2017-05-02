@@ -196,7 +196,7 @@ class EventsController < ApplicationController
       
     @users = User.all
     @urbanist_venues = @venues.all
-    venues = @venues.all
+    venues = Venue.all.to_a
     @events = Event.where(day: @day_specials).to_a
       
     #this is for OG

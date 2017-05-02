@@ -297,9 +297,10 @@
 
 <div id="Market_Square">
     <%@urbanist_batch = []%>
-    <%@venues.select {|venue| venue.neighborhood_id == 5 }.each do |venue|%> 
-        
-        <%venue.events.to_a.each do |event|%>
+    <%@urbanist_venues.where(neighborhood_id: 5).each do |venue|%>
+        <%a= venue.id%>
+        <%events = @events.where(venue_id: a).to_a%>
+        <%events.each do |event|%>
          <%@urbanist_batch.push(event)%>
     <%end%>
     <%end%>
