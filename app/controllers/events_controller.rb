@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :event_upvote, :event_downvote, :event_verified]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
  # before_action :require_owner_event, only: [:edit, :update, :destroy]
-  before_action :verified_venues, only: [:downtown,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :squirrel_hill]
+  before_action :verified_venues, only: [:urbanist, :downtown,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :squirrel_hill]
   before_action :event_time, only: [:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill, :user_index]
   autocomplete :event, :special, :full => true
   
@@ -198,7 +198,7 @@ class EventsController < ApplicationController
     @urbanist_venues = @venues.all
     venues = Venue.all.to_a
     @events = Event.where(day: @day_specials).to_a
-      
+      @claims_all = Claim.all.to_a
     #this is for OG
     @topic = "Happy Hours at Urbanist Approved Venues in Pittsburgh"
     @topic_description = "URBANIST guide aims to produce the best printed city guides in the nation"

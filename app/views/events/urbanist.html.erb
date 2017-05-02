@@ -296,91 +296,95 @@
 </script>
 
 <div id="Market_Square">
-    <%@urbanist_batch = []%>
+    <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 5 }.each do |venue|%> 
         
         <%venue.events.to_a.each do |event|%>
-         <%@urbanist_batch.push(event)%>
+         <%@events_neigh.push(event)%>
     <%end%>
     <%end%>
-     
-     <%= render 'urbanist_batch'%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
 </div>
 
 <div id="Southside">
-  
-     <%@urbanist_batch = []%>
-    <%@urbanist_venues.where(neighborhood_id: 1).each do |venue|%>
-        <%a= venue.id%>
-        <%events = @events.where(venue_id: a).to_a%>
-        <%events.each do |event|%>
-         <%@urbanist_batch.push(event)%>
+  <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 1 }.each do |venue|%> 
+        
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
     <%end%>
     <%end%>
-     <%= render 'urbanist_batch'%>
-
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
 </div>
 
 <div id="Shadyside">
-    <%@urbanist_batch = []%>
-    <%@urbanist_venues.where(neighborhood_id: 2).each do |venue|%>
-        <%a= venue.id%>
-        <%events = @events.where(venue_id: a).to_a%>
-        <%events.each do |event|%>
-         <%@urbanist_batch.push(event)%>
+    <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 2 }.each do |venue|%> 
+        
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
     <%end%>
     <%end%>
-        <%= render 'urbanist_batch'%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
 </div>
 
 
 <div id="Oakland">
-    <%@urbanist_batch = []%>
-    <%@urbanist_venues.where(neighborhood_id: 3).each do |venue|%>
-        <%a= venue.id%>
-        <%events = @events.where(venue_id: a).to_a%>
-        <%events.each do |event|%>
-         <%@urbanist_batch.push(event)%>
+    <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 3 }.each do |venue|%> 
+        
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
     <%end%>
     <%end%>
-        <%= render 'urbanist_batch'%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
 </div>
 
 <div id="Lawrenceville">
-      <%@urbanist_batch = []%>
-    <%@urbanist_venues.where(neighborhood_id: [7,6]).each do |venue|%>
-        <%a= venue.id%>
-        <%events = @events.where(venue_id: a).to_a%>
-        <%events.each do |event|%>
-         <%@urbanist_batch.push(event)%>
+      <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 7 }.each do |venue|%> 
+        
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
     <%end%>
-    
     <%end%>
-        <%= render 'urbanist_batch'%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
 </div>
 
 <div id="Strip_district">
-    <%@urbanist_batch = []%>
-    <%@urbanist_venues.where(neighborhood_id: 11).each do |venue|%>
-        <%a= venue.id%>
-        <%events = @events.where(venue_id: a).to_a%>
-        <%events.each do |event|%>
-         <%@urbanist_batch.push(event)%>
+    <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 11 }.each do |venue|%> 
+        
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
     <%end%>
     <%end%>
-        <%= render 'urbanist_batch'%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
 </div>
 
     <div id="East_liberty">
-    <%@urbanist_batch = []%>
-    <%@urbanist_venues.where(neighborhood_id: 9).each do |venue|%>
-        <%a= venue.id%>
-        <%events = @events.where(venue_id: a).to_a%>
-        <%events.each do |event|%>
-         <%@urbanist_batch.push(event)%>
+    <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 9 }.each do |venue|%> 
+        
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
     <%end%>
     <%end%>
-         <%= render 'urbanist_batch'%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
     </div>
 
 <!--END URBANISTHOURS --> 
