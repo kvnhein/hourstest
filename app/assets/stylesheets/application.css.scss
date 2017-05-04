@@ -18,6 +18,12 @@ $primary-color: color("grey", "lighten-5") !default;
 
 }
 
+.center-logo a {
+  display: block;
+    width: 134px;
+    margin: 0 auto;
+}
+
 
 
 button:focus {
@@ -2881,6 +2887,8 @@ nav .button-collapse i {
 footer.page-footer .footer-copyright {
   padding: 0 0 0 10px;
 }
+
+
 
 .toast {
   word-break: normal;
