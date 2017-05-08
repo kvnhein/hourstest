@@ -15,7 +15,7 @@
             <div id = 'like-<%=x.id%>'>
               <% if user_signed_in? %>
                 <div class="">
-                    <% if @user_likes.include?(x.id) %>
+                    <% if @user_likes.include?(x) %>
                       <%= render partial: 'events/event_downvote'%>
                     <% else %>
                       <%= render partial: 'events/event_upvote' %>

@@ -12,6 +12,10 @@ class VenuesController < ApplicationController
     @venue_array = @venues.all_cached.order("name ASC").to_a
   end
 
+
+  def venue_dash
+  end 
+  
   def users_venues
     if user_signed_in?
     a = current_user.id

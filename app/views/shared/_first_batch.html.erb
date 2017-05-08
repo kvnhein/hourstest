@@ -138,7 +138,7 @@
 										<div class="verified-hour" id='like-<%=modal_event.id%>'>
 											<%if @signed_in %>
 												<%if modal_event.cached_votes_up > 0 %>
-													<%if @user_likes.include?(modal_event.id) %>
+													<%if @user_likes.include?(modal_event) %>
 														<%= render 'event_downvote'%>
 													<%else %>
 														<%= render 'event_upvote' %>
