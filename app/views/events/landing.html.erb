@@ -111,7 +111,7 @@
     <%end%>
 <%end%>
 
-<% if @new_events.count < 0%>
+<% if @new_events.count > 0%>
 <div class="container cont-sec">
 	<div class="contributors-section">
 <h4 class ="flow-text center landing-title">NEW HOURS</h4>
@@ -122,7 +122,7 @@
 			<%= render "new_hours_partial"%>
 	</div>
 </div>
-<div class = "center">
+<div class = "center hide">
 <%if (user_signed_in?)%>
 <%= link_to new_event_path, class: "btn-flat disabled text-accent-4 venue-profile-buttons" do%>
 	<i class="material-icons">access_time</i>
