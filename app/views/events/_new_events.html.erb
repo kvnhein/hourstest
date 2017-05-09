@@ -103,19 +103,22 @@
 									<div class="like-like row">
 										<div class="valign-wrapper">
 										<div class="verified-hour" id='like-<%=modal_event.id%>'>
-											<%if user_signed_in? %>
-												<%if current_user.voted_as_when_voted_for modal_event %>
-													<%= render 'event_downvote'%>
-												<%else %>
+											<%if @signed_in %>
+												<%if modal_event.cached_votes_up > 0 %>
+													<%if @user_likes.include?(modal_event) %>
+														<%= render 'event_downvote'%>
+													<%else %>
+														<%= render 'event_upvote' %>
+													<%end %>
+												<%else%>
 													<%= render 'event_upvote' %>
-												<%end %>
+												<%end%>
 											<%else%>
 												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-plus-circle-o"></i> </a>
 											<%end%>
 										</div>
 										<div class="verified-hour-like" id= 'event<%=modal_event.id%>'>
-                            					<%= modal_event.get_likes.size%>
-                            		
+                            					<%= modal_event.cached_votes_total + modal_event.credits%>
                         				</div>
                         				
                         				</div>
@@ -172,7 +175,7 @@
 								<!--form for Claims-->
 								<%@modal_event = modal_event%>
 								<div id = "form_button<%=modal_event.id%>" display ="none">
-									<% if Claim.claims_cached.where(event_id: modal_event.id).count == 0%>
+									<% if modal_event.claim_count(@claims)== 0%>
 										<% if user_signed_in?%>
 											<% if current_user.can_verify?%>
 											
@@ -249,7 +252,7 @@
 							<%@m = modal_event.id%>
 							<div id = "second_form_button<%=modal_event.id%>"></div>
 							<!-- end of form -->
-								<%@claims = Claim.claims_cached.where(event_id: modal_event.id)%>
+								<%@claims =  @claims.select{|claim| claim.event_id == modal_event.id}%>
 									<div class = "new_claim<%=modal_event.id%>">
 										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
 									</div>
