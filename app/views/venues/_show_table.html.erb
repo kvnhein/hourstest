@@ -89,51 +89,114 @@
   </script>
   
   
-
-<%if @button == 1 %>
- <%@happy_hour = x%>
-
-
-  <div class="imhere">
-  <div style="">
-    <%= link_to edit_event_path(@happy_hour) do%>
-    <!--<i class="material-icons">edit_mode</i>-->
-<i class="zmdi zmdi-edit profile-btn-edit"></i>
-
-  <%end%>
-  </div>
-    <div style="">
-  <%= link_to x, method: :delete, data: { confirm: 'Are you sure?' } do%>
-  <!--<i class="material-icons">delete_forever</i>-->
-                  <i class="zmdi zmdi-delete profile-btn-edit"></i>
-  <%end%>
-    </div>
-  </div>
-<%end%>
-<div class="verifyprofile">
-<%@event = x%>
-<%= render partial: "shared/verify_button_partial"%>
-<div class="verified-by-w" id='verify-<%=@event.id%>'>
-    <%unless @event.event_verify.nil? || @event.varified_user.nil? %>
-	    <p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(@event.event_verify, Time.now)%> ago by <%=x.find_event_user_varified(@users).fullname%></p>
-	<%end%>
-</div>
-</div>
-
-<%@modal_event = x%>
-<div class="flagprofile">
-    
-<% if user_signed_in?%>    
-<%= render partial: "venues/claim_partial"%>
-<%else%>
-<div  class = "btn-flat disabled red-text text-accent-4 new_claim signin_flag">
-	<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee hide", id: "form-hide#{@event.id}" do%>
-			<i class="zmdi zmdi-flag"></i>
-	<%end%>
-	<a class="tooltipped btn-flat disabled red-text text-accent-4 cantsee"  data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag hours"><i class="zmdi zmdi-flag"></i></a>
-</div>
-<%end%>
-</div>
+  
+  
+  	<%@modal_event = x%>
+  	<%modal_event = x%>
+  	  	<div class="verified-by-w" id='verify-<%=modal_event.id%>'>
+			<%unless modal_event.event_verify.nil? || modal_event.varified_user.nil? %>
+				<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=modal_event.find_event_user_varified(@users).fullname%></p>
+			<%end%>
+		</div>
+									
+		<!-- Verify Button-->
+		<%= render partial: "shared/verify_button_partial"%>
+		<div id = "form_button<%=modal_event.id%>" display ="none">
+			<% if modal_event.claim_count(@claims_all) == 0 %>
+				<% if @signed_in%>
+					<% if @current_voter.can_verify?%>
+					<!-- This is the code to hide form-->
+					<script>
+					    $(document).ready(function(){
+    					    $("#hide<%=modal_event.id%>").click(function(){
+        						$(".posh<%=modal_event.id%>").hide();
+    						    });
+    						$("#show<%=modal_event.id%>").click(function(){
+							    $(".posh<%=modal_event.id%>").show();
+    							});
+    												
+  													
+    												
+    						$(".posh<%=modal_event.id%>").hide();
+    						$(".new_claim<%=modal_event.id%>").hide();
+    											
+						});
+				    </script>
+                    
+                    <div class="new_claim">
+					<%if @button == 1 %>
+					<%@happy_hour = x%>
+                        <div class="imhere">
+                          
+                          <div style="">
+                            <%= link_to edit_event_path(@happy_hour) do%>
+                                <i class="zmdi zmdi-edit profile-btn-edit"></i>
+                            <%end%>
+                          </div>
+                
+                          <div style="">
+                            <%= link_to x, method: :delete, data: { confirm: 'Are you sure?' } do%>
+                              <i class="zmdi zmdi-delete profile-btn-edit"></i>
+                            <%end%>
+                          </div>
+                        </div>
+	                <%end%>										
+	                <button id="show<%=modal_event.id%>" class="btn-flat disabled">
+						<i class="zmdi zmdi-flag"></i>
+					</button>
+				    </div>
+											
+											<!-- End of code to hide form--> 
+					                        <div class = "posh<%=modal_event.id%> theshowform" style="position: relative;">
+												
+												<%= form_for Claim.new, remote: true do |f| %>
+  													<div class="input-field">
+    													<!--<%= f.label :description, "What's Wrong? (Required)" %>-->
+    													<%= f.text_area :description, class:"materialize-textarea", id:"claimarea1" %>
+    													 <label for="claimarea1">What's Wrong</label>
+  													</div>
+  													
+  													<div class="field hide">
+    													<%= f.label :user_id %><br>
+    													<%= f.text_field :user_id, :value => @current_voter.id %> %>
+  													</div>
+  													<div class="field hide">
+    													<%= f.label :event_id %><br>
+    													<%= f.text_field :event_id, :value => modal_event.id %> %>
+  													</div>
+  													<div class = "">
+    													<%= f.submit "submit", class:"submit-btn2", id: "form-hide#{modal_event.id}"%>
+  													</div>
+												<% end %>
+												<button id="hide<%=modal_event.id%>" class="hide-btn2">Cancel</button>
+												</div>
+												
+											<%else%>
+												<div class="new_claim">
+													<button id="show" class="btn-flat disabled" onclick="Materialize.toast('You dont have enough hours yet to contest happy hours. Save more hours to you profile to earn Hours.', 4000)">
+														<i class="zmdi zmdi-flag"></i>
+													</button>
+												</div>
+											<%end%>
+											<%else%>
+												<div  class = "btn-flat disabled red-text text-accent-4 new_claim signin_flag">
+													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee hide", id: "form-hide#{modal_event.id}" do%>
+														<i class="zmdi zmdi-flag"></i>
+													<%end%>
+													<a class="tooltipped btn-flat disabled red-text text-accent-4 cantsee"  data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag hours"><i class="zmdi zmdi-flag"></i></a>
+        
+												</div>
+										<%end%>
+									<%end%>
+								</div>
+						
+							<%@m = modal_event.id%>
+							<div id = "second_form_button<%=modal_event.id%>"></div>
+							<!-- end of form -->
+								<%@claims = @claims_all.select{|claim| claim.event_id == modal_event.id}%> 
+									<div class = "new_claim<%=modal_event.id%>">
+										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
+									</div>
       </li>
        <%end%>
     </ul>
