@@ -1,13 +1,106 @@
-<% @venues_now.each do |venue|%>
-    <%venue.events.each do |event|%>
-    <%=event.special%>
-    <%end%>
-<%end%>
 
-<%@venues_hash.each do |venue|%>
-<%=venue.fetch("name")%>
-<%venue_event = @events_hash.select {|event| event["venue_id"] == venue.fetch("id") }%>
-<%venue_event.each do |event|%>
-<%=event.fetch("special")%>
-<%end%>
-<%end%>
+<p id="notice"><%= notice %></p>
+
+<h5>New Events</h5>
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Venue</th>
+      <th>Special</th>
+      <th>Details</th>
+      <th>User Name</th>
+      <th>Time Created</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td> <%= @venues.select {|venue| venue.id = event.venue.id }.first.name%></td>
+        <td><%= event.special %></td>
+        <td><%= event.detail %></td>
+        <td><%= @users.select {|user| user.id == event.user_id}.first.fullname%></td>
+        <td><%=event.created_at.strftime("created %m/%d/%Y") %> <%=event.created_at.strftime("at %I:%M%p")%></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h5>Updated Events</h5>
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Venue</th>
+      <th>Special</th>
+      <th>Details</th>
+      <th>User Name</th>
+      <th>Time Created</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @verified_events.each do |event| %>
+      <tr>
+        <td> <%= @venues.select {|venue| venue.id = event.venue.id }.first.name%></td>
+        <td><%= event.special %></td>
+        <td><%= event.detail %></td>
+        <td><%= @users.select {|user| user.id == event.user_id}.first.fullname%></td>
+        <td><%=event.created_at.strftime("created %m/%d/%Y") %> <%=event.created_at.strftime("at %I:%M%p")%></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h5>New Claims</h5>
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Decription</th>
+      <th>Venue/Event</th>
+      <th>User Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @claims.each do |claim| %>
+   
+      <tr>
+        <td><%= claim.description %></td>
+        <td><%=claim.event.venue.name%>/ <%=claim.event.special%></td>
+        <td><%= @users.select {|user| user.id == claim.user_id}.first.fullname%></td>
+        <td><%=claim.created_at.strftime("created on %m/%d/%Y") %> <%=claim.created_at.strftime("at %I:%M%p")%></td>
+        <td><%= link_to 'Show', claim %></td>
+        <td><%= link_to 'Edit', edit_claim_path(claim) %></td>
+        <td><%= link_to 'Destroy', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% @verified_events.each do |event| %>
+<div class="collection">
+        <a href="#!" class="collection-item active">Venue:<%= @venues.select {|venue| venue.id = event.venue.id }.first.name%></a>
+        <a href="#!" class="collection-item ">Special: <%= event.special %></a>
+        <a href="#!" class="collection-item">Details: <%= event.detail %></a>
+        <a href="#!" class="collection-item">User Name:<%= @users.select {|user| user.id == event.user_id}.first.fullname%></a>
+        <a href="#!" class="collection-item">Updated: <%=event.created_at.strftime("created %m/%d/%Y") %> <%=event.created_at.strftime("at %I:%M%p")%></a>
+    </div>
+    <br>
+<%end%> 

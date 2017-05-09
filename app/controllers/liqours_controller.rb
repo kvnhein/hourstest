@@ -5,10 +5,12 @@ class LiqoursController < ApplicationController
   # GET /liqours
   # GET /liqours.json
   def index
-    @liqours = Liqour.all
-    @venues_now = Venue.includes(:events)
-    @venues_hash = @venues.map(&:attributes)
-    @events_hash = Event.all.map(&:attributes)
+     
+     @events = Event.all.past_week.to_a 
+     @claims = Claim.all.past_week.to_a 
+     @verified_events = Event.all.past_week( field: :updated_at).to_a.select{|event| event.created_at != event.updated_at}
+     @venues = Venue.all.to_a
+     @users = User.all.to_a
   end
 
   # GET /liqours/1
