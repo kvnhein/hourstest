@@ -175,12 +175,13 @@ class EventsController < ApplicationController
     @date = Date.today 
     @updated_events = Event.new_events_cached
     @events_with_claims = []
-    @venues = Venue.all_cached
+    @venues = Venue.all_cached.to_a
     @claims = Claim.all.to_a
+    @neighborhoods = Neighborhood.all.to_a
     claim_event_id = @claims.map{|claim| claim.event_id } 
-    @events_events = 
-    @user_array = User.all.to_a.sort!{|x,y| y.experience <=> x.experience }
-    @users = User.users_cached
+    @users = User.all.to_a
+    @user_array = @users.sort!{|x,y| y.experience <=> x.experience }
+    
     @top_users = []
     @users.each do |user|
         if user.fullname

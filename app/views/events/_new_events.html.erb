@@ -1,9 +1,9 @@
- <% @v = @new_events.where(day: @d)%>
+ <% @v = @todays_events.select {|event| event.day == @d}%>
  
 <%x=[]%>
 <%@v.shuffle.each do |event| %>
 <%event.legit_hour?%>
- <%x.push(@venues.find(event.venue_id).id)%>
+ <%x.push(event.venue_id)%>
 <%end%>
 
 
@@ -13,13 +13,14 @@
 
 <%x.uniq.each do |d|%>
 
-  <%@e = @v.where(venue_id: d).order(:start).reverse%>
+  <%@e = @v.select {|event| event.venue_id == d}.sort! { |a,b| a.start <=> b.start }.reverse%>
       <div class="row hourslist">
         <div class="col s12">
           <div class="card">
-            <%venue = @venues.find(@e[0].venue_id)%><%neighborhood = Neighborhood.find(venue.neighborhood_id)%>
+          	<% current_venue = @venues.select {|venue| venue.id == d }.first%>
+          	<% current_neighborhood = @neighborhoods.select {|neighborhood| neighborhood.id == current_venue.neighborhood_id }.first%>
             <div class="card-content">
-              <span class="card-title activator center"><%= @venues.where( id: @e[0].venue_id).first.name%><br/><%=neighborhood.name%></span><br>
+              <span class="card-title activator center"><%= current_venue.name%><br/><%=current_neighborhood.name%></span><br>
 
               <!----This is where the uniq special code is going in -->
 <%unievents = []%>
@@ -75,17 +76,17 @@
 						</span><br>
 					</div>
 					<div class="specials-header">
-						<h4><%= @venues.where( id: @e[0].venue_id).first.name%></h4>
-						<h5 class="flow-text"><%=@e[0].event_type%></h5>
+						<h4><%= current_venue%></h4>
+						<h5 class="flow-text"><%=current_venue.genre%></h5>
 					</div>
 					<div class="powered-by-ver">
 						<div class="verified">
-							<%if @e[0].event_venue.venue_verify.nil?%>
+							<%if current_venue.venue_verify.nil?%>
 							<p class="verified-date hide">@venues has not been verified</p><%else%>
 							<div class="veri hide">
 								<%= image_tag "verified.png"%>
 							</div>
-							<p class="verified-date hide">Verified <%=distance_of_time_in_words(@e[0].event_venue.venue_verify, Time.now)%> ago</p><%end%><%if @venues.where(id: @e[0].venue_id).first.urbanist == true %>
+							<p class="verified-date hide">Verified <%=distance_of_time_in_words(current_venue.venue_verify, Time.now)%> ago</p><%end%><%if current_venue.urbanist == true %>
 							<div class="urbanist">
 								<a target="_blank"><%= image_tag "hourspgh-award.png"%></a>
 							</div><%end %>
@@ -124,7 +125,8 @@
 									<i class="zmdi zmdi-time"></i>
 <%=modal_event.time_conversion%>
 								</div>
-								<p><span class="submit-by">Submitted by  <%= link_to "#{User.find(modal_event.user_id).fullname}", User.find(modal_event.user_id) %></span> 
+								<% event_user = @users.select{|user| user.id == modal_event.user_id}.first%>
+								<p><span class="submit-by">Submitted by  <%= link_to "#{event_user.fullname}", event_user %></span> 
 								</p>
 								<% delete_date =  modal_event.created_at + 10.days%><!--delete date-->
 								<%delete_date.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{delete_date.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%>
@@ -155,11 +157,11 @@
 									</div><%end%>
 								</div>
 								
-									<div class="submitted-by hide"><p>Submitted by <%=User.find(modal_event.user_id).fullname%> <%User.find(1).experience%> </p></div>
+									<div class="submitted-by hide"><p>Submitted by <%=event_user.fullname%> </p></div>
 									<div class = "hide">
 									<div class="verified-by-w" id='verify-<%=modal_event.id%>'>
 										<%unless modal_event.event_verify.nil? || modal_event.varified_user.nil? %>
-										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=User.find(modal_event.varified_user).fullname%></p>
+										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=@users.select{|user| user.id == modal_event.varified_user}.first.fullname%></p>
 										<%end%>
 									</div>
 									
@@ -257,7 +259,7 @@
 						</li><%end%>
 					</ul><br>
 					<div class="row">
-						<%= link_to 'View Profile', venue_path(@venues.where( id: @e[0].venue_id).first.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
+						<%= link_to 'View Profile', venue_path(current_venue), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
 						<br>
 						<br>
 						<br>
