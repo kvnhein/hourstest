@@ -3,6 +3,54 @@
 
 <h5>New Events</h5>
 
+<% unique_venues = @venues.map {|venue| venue }.uniq%>
+<% unique_venues.each do |venue| %>
+  <p><%venue.name%><% @events.select {|event| event.venue_id == venue.id}.count%> </p>
+<%end%>
+
+
+
+
+  
+  <ul class="collapsible popout" data-collapsible="accordion">
+    <% unique_venues.each do |venue| %>
+    <li>
+      <div class="collapsible-header">
+        <%=venue.name%>
+        <div class = "right chip">
+          <%= @events.select {|event| event.venue_id == venue.id}.count%>
+        </div>
+      </div>
+      
+      
+      <div class="collapsible-body">
+         <ul class="collection">
+         <% @events.select {|event| event.venue_id == venue.id}.each do |event|%>
+         <li class="collection-item"><p><%= event.venue.name%> | <%= @users.select {|user| user.id == event.user_id}.first.fullname%> <br> Special: <%= event.special %> <br>Details: <%= event.detail %> <br> <%=event.created_at.strftime("created %m/%d/%Y") %> <%=event.created_at.strftime("at %I:%M%p")%></p> </li>
+         
+         <%end%> 
+         </ul>
+      </div>
+    
+    
+    </li>
+    <%end%>
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table class="striped">
   <thead>
     <tr>
@@ -33,7 +81,6 @@
 
 <br>
 
-<h5>Updated Events</h5>
 
 <table class="striped">
   <thead>
