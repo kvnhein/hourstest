@@ -18,7 +18,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td> <%= @venues.select {|venue| venue.id = event.venue.id }.first.name%></td>
+        <td> <%= event.venue.name%></td>
         <td><%= event.special %></td>
         <td><%= event.detail %></td>
         <td><%= @users.select {|user| user.id == event.user_id}.first.fullname%></td>
