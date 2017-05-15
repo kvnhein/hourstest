@@ -20,6 +20,9 @@ def claim_count(claims)
      
  end
  
+ 
+ 
+ 
  def find_tags
         tags = []
         tags.push("Food") if self.food == true

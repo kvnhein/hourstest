@@ -7,9 +7,11 @@
 <meta property="og:image" content="<%=@page_image%>" />
 <%end%>
 
+<%= render "neighborhood_button_partial"%>
+
   <!-- Modal Trigger -->
-    <div class="addhoursbutton2 center">
-  <a class="modal-trigger btn-flat disabled text-accent-4 venue-profile-buttons floating-one" href="#modal1"><i class="material-icons">queue</i></a>
+  <div class="addhoursbutton2 center">
+      <a class="modal-trigger btn-flat disabled text-accent-4 venue-profile-buttons floating-one" href="#modal1"><i class="material-icons">queue</i></a>
   </div>
 
   <!-- Modal Structure -->
@@ -223,7 +225,7 @@ Verify Venue
         "http://www.google.com/maps/place/<%= @venue.address %>" target="_blank">Directions</a>
    </div>
    <%if @venue.open_table_id%> 
-   <div class = "col s4">
+   <div class = "hide col s4">
        <a class="btn-flat disabled teal-text text-accent-4 venue-profile-buttons make-res modal-trigger" href="#makeares">MAKE A RESERVATION</a>
     </div>
     <%end%>

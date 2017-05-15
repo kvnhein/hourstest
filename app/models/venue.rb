@@ -30,6 +30,14 @@ class Venue < ActiveRecord::Base
   def venue_area
      "#{name} | #{Neighborhood.find(neighborhood_id).name}"
   end
+  
+  def return_neighborhood
+    if self.neighborhood_id == 5 
+      return downtown_path
+    else
+      return shadyside_path
+    end 
+  end
 
   def feature_dish_check
     a = self.id

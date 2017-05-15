@@ -1,0 +1,24 @@
+
+<% if @venue.neighborhood.id == 2 %>
+    <p class="center-tit backbtn"><%= link_to shadyside_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to Shadyside <%end%></p>
+<% elsif @venue.neighborhood.id == 1 %> 
+    <p class="center-tit backbtn"><%= link_to south_side_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to South Side <%end%></p>
+<% elsif @venue.neighborhood.id == 3 %> 
+    <p class="center-tit backbtn"><%= link_to oakland_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to Oakland<%end%></p>
+<% elsif @venue.neighborhood.id == 5 %>
+    <p class="center-tit backbtn"><%= link_to downtown_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to Downtown <%end%></p>
+<% elsif @venue.neighborhood.id == 7 %> 
+    <p class="center-tit backbtn"><%= link_to lawrenceville_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to Lawrenceville <%end%></p>
+<% elsif @venue.neighborhood.id == 6 %> 
+    <p class="center-tit backbtn"><%= link_to bloomfield_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to Bloomfield <%end%></p>
+<% elsif @venue.neighborhood.id == 9 %> 
+    <p class="center-tit backbtn"><%= link_to east_liberty_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to East Liberty<%end%></p>
+<% elsif @venue.neighborhood.id == 11 %> 
+    <p class="center-tit backbtn"><%= link_to strip_district_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to Strip District<%end%></p>
+<% elsif @venue.neighborhood.id == 10 %> 
+    <p class="center-tit backbtn"><%= link_to squirrel_hill_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to Squirrel Hill<%end%></p>
+<% elsif @venue.neighborhood.id == 12 %> 
+    <p class="center-tit backbtn"><%= link_to north_side_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to North Side<%end%></p>
+<% elsif @venue.neighborhood.id == 13 %> 
+    <p class="center-tit backbtn"><%= link_to mt_washington_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true do%><i class="zmdi zmdi-chevron-left"></i>Back to Mount Washington<%end%></p>
+<%end%>

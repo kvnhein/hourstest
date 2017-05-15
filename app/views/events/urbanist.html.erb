@@ -396,5 +396,5 @@
 
 <!--END URBANISTHOURS --> 
 </div>
-
+<%= raw @tag_events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, urb_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", urbanist_path, class:"disabled teal-text text-accent-4"%>
 </div>

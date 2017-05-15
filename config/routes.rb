@@ -67,6 +67,7 @@ resources :events do
           put "like", to: "events#event_upvote"
           put "dislike", to: "events#event_downvote"
           get :event_verified
+          get :event_tags
         end
    end
 
@@ -104,6 +105,7 @@ resources :events do
   get 'urbanist/autocomplete_event_special'
       get 'urbanist' => 'events#urbanist'
          resources :events
+
 
   get 'squirrel_hill/:sq_tag', to: 'events#squirrel_hill', as: :sq_tag
   get 'squirrel_hill/autocomplete_event_special'

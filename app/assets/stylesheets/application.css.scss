@@ -18,10 +18,87 @@ $primary-color: color("grey", "lighten-5") !default;
 
 }
 
-a{
-  -webkit-user-select:none;
-  -webkit-touch-callout: none;
+.center-tit.backbtn {
+      position: fixed;
+    top: 8px;
+    color: #fff;
+    z-index: 999;
+    border-bottom: 0;
+    padding: 0;
+    left: 0;
+        width: 100%;
+        background-color: #0e0e0e;
+        text-align:left;
 }
+
+.openhoursmodal.modal.modal-fixed-footer .modal-footer {
+  background-color: #0e0e0e;
+}
+
+.openhoursmodal .dayname {
+  color: #fff;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    font-size: 12px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    top:0;
+}
+
+.openhoursmodal {
+  top: 0 !important;
+    width: 100%;
+    height: 100% !important;
+    max-height: 100%;
+}
+
+.openhoursmodal .specials-header {
+      height: 160px;
+}
+
+.openhoursmodal .modal-close {
+  float: left !important;
+  color: #1fdeb4 !important;
+      padding: 0 10px;
+}
+
+.openhoursmodal .modal-close i {
+  vertical-align: bottom;
+    margin-right: 5px;
+}
+
+.openhoursmodal.modal.modal-fixed-footer .modal-content {
+      padding: 0;
+    height: 100%;
+}
+
+
+.openhoursmodal .modal-footer {
+  top: 0;
+    z-index: 999;
+}
+
+.center-tit.backbtn a {
+  padding: 0 10px;
+  color: #1fdeb4 !important;
+}
+
+.center-tit.backbtn i {
+  color: #1fdeb4;
+  margin-right: 5px;
+  vertical-align: top;
+}
+
+
+.backbtn a {
+      color: #17a787 !important;
+    letter-spacing: 1px;
+    background-color: #0e0e0e;
+}
+
 
 .center-logo a {
   display: block;
@@ -729,7 +806,7 @@ position: absolute;
    .con-neighb .col.m6{
          background: #aaa;
     border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+    /*border-bottom: 1px solid #fff;*/
     padding: 0;
 
    }
@@ -820,6 +897,16 @@ position: absolute;
 
 .bloomfield_tab {
       background: url(bloomfield-btn3.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.mntwashington_tab {
+   background: url(mountWashington.jpg);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1507,13 +1594,13 @@ footer.page-footer {
 .imhere .zmdi-delete {
   position: absolute;
     right: 75px;
-    bottom: 6px;
+    bottom: -7px;
 }
 
 .imhere .zmdi-edit {
       position: absolute;
     right: 44px;
-    bottom: 6px;
+    bottom: -7px;
     
 }
 
@@ -3150,6 +3237,17 @@ iframe {
         border-bottom: 1px solid #fff;
 }
 
+.mountwash-btn {
+  background: url(mountWashington.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+        border-bottom: 1px solid #fff;
+}
+
 .brunch-btn {
     background: url(brunch.png);
   background-repeat: no-repeat;
@@ -3427,6 +3525,30 @@ background-position:center;
 
 .specials-header.lawrenceville-header {
    background: url("lawrencvile_new_btn_darker.jpg");
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
+}
+
+
+
+.specials-header.mntwash-header {
+  background: url("mountWashington.jpg");
+   background-repeat:no-repeat;
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;
+  height:194px;
+}
+
+.specials-header.northside-header {
+  background: url("northsidenew.jpg");
    background-repeat:no-repeat;
 -webkit-background-size:cover;
 -moz-background-size:cover;

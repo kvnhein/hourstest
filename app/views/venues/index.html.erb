@@ -19,6 +19,8 @@
         <li class="tab Strip_district"><a class="" href="#Strip_district">Strip District</a></li>
         <li class="tab East_liberty"><a class="" href="#East_liberty">East Liberty</a></li>
         <li class="tab bloomfield_tab"><a class="" href="#bloomfield_tab">Bloomfield</a></li>
+        <li class="tab mntwashington_tab"><a class="" href="#mt_washington">Mt. Washington</a></li>
+        <!--<li class="tab bloomfield_tab"><a class="" href="#north_side">North Side</a></li>-->
       </ul>
     </div>
   </div>
@@ -104,11 +106,33 @@
      <div id="bloomfield_tab">
      <p class="center-tit"><%= link_to 'See Bloomfield Hours', bloomfield_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
      <% @venue_array.each do |venue| %>
-    <%if venue.neighborhood_id == 6%>
+    <%if venue.neighborhood_id == 6 %>
      <%@venue = venue %>
      <%= render 'venue_index'%>
     <%end%>
 <% end %>
     </div>
+
+    
+     <div id="mt_washington">
+     <p class="center-tit"><%= link_to 'See Mt. Washington Hours', mt_washington_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+     <% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 13 %>
+     <%@venue = venue %>
+     <%= render 'venue_index'%>
+    <%end%>
+<% end %>
+    </div>
+
+<!-- <div id="north_side">
+     <p class="center-tit"><%= link_to 'See North Side Hours', north_side_path, class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %></p>
+     <% @venue_array.each do |venue| %>
+    <%if venue.neighborhood_id == 12%>
+     <%@venue = venue %>
+     <%= render 'venue_index'%>
+    <%end%>
+<% end %>
+    </div>-->
+
 
 

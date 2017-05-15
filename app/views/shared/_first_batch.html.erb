@@ -102,18 +102,32 @@
 					
 					<!--div class="card-content">-->
 					<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
-					<a class="activator waves-effect waves-light btn openhours"></a>
+					<!--a class="activator waves-effect waves-light btn openhours"></a-->
+					<a class="modal-trigger waves-effect waves-light btn openhours" href="#modal2<%=current_venue.id%>">Modal</a>
 				</div>
-				<div class="card-reveal">
-					<div class="modal-header">
-						<span class="card-title activator"><%= @day_tag %> Hours 
+				<div class="modal modal-fixed-footer openhoursmodal" id="modal2<%=current_venue.id%>">
+				<div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><i class="zmdi zmdi-chevron-left"></i>Back</a>
+      
+      <h6 class="dayname"><%= @day_tag %> Hours </h6>
+    </div>
+    <div class="modal-content">
+					<div class="">
+						
+					
+						<span class="">
+							
+							
 						
 						<!--<i class="material-icons right xbox">close</i>-->
-						<i class="zmdi zmdi-close right xbox"></i>
+						<!--i class="zmdi zmdi-close right xbox"></i-->
 						
+      
+
 						</span><br>
 					</div>
 					<div class="specials-header">
+							
 						<h4><%= current_venue.name%></h4>
 					<h5 class="flow-text"><%=current_venue.venue_type%></h5>
 					</div>
@@ -292,7 +306,10 @@
 						<br>
 						<br>
 					</div>
-				</div><!-- <div class="card-action">
+					</div>
+						
+				</div>
+				<!-- <div class="card-action">
               <a href="#">Menu</a>
               <a href="#">Share</a>
             </div>-->
