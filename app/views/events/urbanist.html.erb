@@ -207,9 +207,12 @@
         <li class="tab Southside"><a class="" href="#Southside"><br/>South Side</a></li>
         <li class="tab Shadyside"><a class="" href="#Shadyside"><br/>Shadyside</a></li>
         <li class="tab Oakland"><a class="" href="#Oakland"><br/>Oakland</a></li>
-        <li class="tab Lawrenceville"><a class="" href="#Lawrenceville">Lawrenceville/<br/>Bloomfield</a></li>
+        <li class="tab Lawrenceville"><a class="" href="#Lawrenceville">Lawrenceville</a></li>
+        <li class="tab East_liberty"><a class="" href="#Bloomfield"><br/>Bloomfield</a></li>
         <li class="tab Strip_district"><a class="" href="#Strip_district"><br/>Strip District</a></li>
         <li class="tab East_liberty"><a class="" href="#East_liberty"><br/>East Liberty</a></li>
+        <li class="tab East_liberty"><a class="" href="#North_side"><br/>North Side</a></li>
+        <li class="tab East_liberty"><a class="" href="#Mt_washington"><br/>Mt. Washington</a></li>
       </ul>
     </div>
   </div>
@@ -274,6 +277,9 @@
         </div>
 </div>
 
+<div class = "center">
+<%= raw @tag_events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, urb_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", urbanist_path, class:"disabled teal-text text-accent-4"%>
+</div>
 
 <script>
   $(document).ready(function() {
@@ -366,6 +372,20 @@
 </div>
 </div>
 
+<div id="Bloomfield">
+      <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 6 }.each do |venue|%> 
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
+        <%end%>
+      <%end%>
+    <%end%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
+</div>
+
 <div id="Strip_district">
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 11 }.each do |venue|%> 
@@ -393,8 +413,36 @@
      <%= render partial: 'shared/first_batch_new'%>
 </div>
     </div>
+    
+    <div id="North_side">
+      <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 12 }.each do |venue|%> 
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
+        <%end%>
+      <%end%>
+    <%end%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
+</div>
+
+<div id="Mt_washington">
+      <%@events_neigh = []%>
+    <%@venues.select {|venue| venue.neighborhood_id == 13 }.each do |venue|%> 
+      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
+        <%venue.events.to_a.each do |event|%>
+         <%@events_neigh.push(event)%>
+        <%end%>
+      <%end%>
+    <%end%>
+<div class ="center" id="specials">     
+     <%= render partial: 'shared/first_batch_new'%>
+</div>
+</div>
 
 <!--END URBANISTHOURS --> 
 </div>
-<%= raw @tag_events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, urb_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", urbanist_path, class:"disabled teal-text text-accent-4"%>
+
 </div>

@@ -170,10 +170,10 @@
 <div class = "contributors ">
 	
 	<ul class="collapsible beerlist ">
-		<%top_5 = 0%>
+		<%top_10 = 0%>
 		<% @user_array.each do |user|%>
 			
-			<%if top_5 < 5%>
+			<%if top_10 < 10%>
 				<%if user.fullname && user.experience%>
 					<div class="collapsible-header special-by-day z-depth-1">
 						
@@ -186,7 +186,7 @@
 						
 						</li>
 					</div>
-					<%top_5 = top_5 + 1 %>
+					<%top_10 = top_10 + 1 %>
 				<%end%>
 			<%end%>
 		<%end%>
