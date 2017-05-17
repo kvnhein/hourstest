@@ -1204,6 +1204,10 @@ body,html {
         display: block !important;
 }
 
+.modal.modal-fixed-footer {
+  max-width:800px;
+}
+
 .modal.modal-fixed-footer .modal-content {
   padding:20px;
 }
