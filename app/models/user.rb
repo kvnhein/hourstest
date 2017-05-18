@@ -83,7 +83,7 @@ def self.from_omniauth(auth)
   end
 
   def admin?
-  	self.id == 1
+  	self.id == 1 || self.admin == true
   end
   
   def super_user?
