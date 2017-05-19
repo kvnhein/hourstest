@@ -57,16 +57,22 @@ class Venue < ActiveRecord::Base
 
   def avg_time
     events = self.events
+    if events.count > 0 
     avg_time = (events.map {|event| event.event_verify }.map{|date| (Time.current - date).to_i/(24*60*60)}.inject(0){|sum,x| sum + x })/events.count
     self.avg_verify = avg_time
     self.save!
+    <%else%>
+    self.avg_verify = 0 
+    self.save!
+    <%end%>
+    
   end 
 
    def total_votes(todays_events)
       events = todays_events.select { |event| event.venue_id == self.id } 
       total_votes = events.map {|event| event.cached_votes_total }.inject(0){|sum,x| sum + x }
       return total_votes
-    end 
+   end 
   
   def order_todays_venues(todays_events, venues)
     x=[]
