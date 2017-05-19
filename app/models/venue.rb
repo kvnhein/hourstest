@@ -61,10 +61,10 @@ class Venue < ActiveRecord::Base
     avg_time = (events.map {|event| event.event_verify }.map{|date| (Time.current - date).to_i/(24*60*60)}.inject(0){|sum,x| sum + x })/events.count
     self.avg_verify = avg_time
     self.save!
-    <%else%>
+    else
     self.avg_verify = 0 
     self.save!
-    <%end%>
+    end
     
   end 
 
