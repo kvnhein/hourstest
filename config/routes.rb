@@ -139,7 +139,7 @@ resources :events do
   end
   
   resources :events do 
-      resources :review, only: [:create, :destroy]
+      resources :reviews, only: [:create, :destroy]
   end
 
   resources :neighborhoods
