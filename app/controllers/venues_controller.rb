@@ -17,8 +17,9 @@ class VenuesController < ApplicationController
   end 
   
   def venues_avg_time
-    Venue.all.each {|venue| venue.avg_time}
-    @venues = Venue.all.to_a.sort! {|x,y| y.avg_verify <=> x.avg_verify }
+    venues = Venue.all.to_a
+    venues.each {|venue| venue.avg_time}
+    @venues = venues.sort! {|x,y| y.avg_verify <=> x.avg_verify }
     
     
     
