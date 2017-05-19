@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :venue, touch: true
   has_many :claims, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   
   before_save :upper_case
   before_save :default_values
@@ -21,7 +22,9 @@ def claim_count(claims)
  end
  
  
- 
+ def average_rating
+  reviews.count == 0 ? 0 : reviews.average(:star).round(2)
+ end 
  
  def find_tags
         tags = []

@@ -16,11 +16,14 @@ class VenuesController < ApplicationController
   def venue_dash
   end 
   
-  def users_venues
-    if user_signed_in?
-    a = current_user.id
-    @venues = Venue.where(owner: a)
-    end
+  def venues_avg_time
+    Venue.all.each {|venue| venue.avg_time}
+    @venues = Venue.all.to_a.sort! {|x,y| y.avg_verify <=> x.avg_verify }
+    
+    
+    
+    
+    
   end
   
   def venue_verified

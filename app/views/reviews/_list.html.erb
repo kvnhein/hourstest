@@ -1,0 +1,19 @@
+<% if @reviews.blank> %> 
+    <div class = "text-center">
+        <h4>There is not Review yet</h4>
+    </div>
+<%else%>
+    <%= @reviews.order("id desc").each do |review| %>
+    <hr>
+    
+    <div class = "row">
+        <div class = "col-md-1">
+            
+        </div>
+        <div class = "col-md-1">
+            
+        </div>
+    </div>
+    <%end%>
+
+<%end%> 

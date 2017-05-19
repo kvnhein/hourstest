@@ -137,6 +137,10 @@ resources :events do
       get :venue_verified
     end
   end
+  
+  resources :events do 
+      resources :review, only: [:create, :destroy]
+  end
 
   resources :neighborhoods
    get "daily_mailer" => "events#daily_mailer"
@@ -149,7 +153,7 @@ resources :events do
    get 'venue_liqour_list' => 'liqours#venue_liqour_list'
    get 'venue_drink_list' => 'drinks#venue_drink_list'
 
-   get 'users_venues' => 'venues#users_venues'
+   get 'venues_avg_time' => 'venues#venues_avg_time'
    get 'about_us' => 'events#about_us'
 
 

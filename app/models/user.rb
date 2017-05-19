@@ -7,6 +7,7 @@ acts_as_voter
 has_many :reservations
 has_many :events
 has_many :claims
+has_many :reviews, dependent: :destroy
 has_many :daily_specials
   validates :fullname, presence: true, length: {maximum: 50}
 before_save :default_values
