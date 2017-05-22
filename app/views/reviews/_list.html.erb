@@ -1,17 +1,24 @@
-<% if @reviews.blank> %> 
+<% if @reviews.blank? %> 
     <div class = "text-center">
         <h4>There is not Review yet</h4>
     </div>
 <%else%>
-    <%= @reviews.order("id desc").each do |review| %>
+    <% @reviews.order("id desc").each do |r| %>
     <hr>
     
     <div class = "row">
         <div class = "col-md-1">
             
         </div>
-        <div class = "col-md-1">
-            
+        <div class = "col-md-11">
+            <div>
+                <strong> <%= r.user.fullname%> <%= r.star%> </strong>
+                <span class = "pull-right">
+                    <%= link_to "Remove My Review", [@event, r], method: :delete, data: {confirm: "Are you dure?"}%>
+                </span>
+            </div>
+            <div><%= r.created_at.strftime("%v") %></div>
+            <div><%= r.comment%></div>
         </div>
     </div>
     <%end%>

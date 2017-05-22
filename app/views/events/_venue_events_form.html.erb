@@ -18,12 +18,12 @@
   <% end %>
   <div class="input-field col s12">
     <%= f.label :special %><br>
-    <%= f.text_field :special, :maxlength => 40, :size => 20 %>
+    <%= f.text_field :special, :maxlength => 40, :size => 20, :required => 'required' %>
   </div>
   <div class="row">
 <div class="input-field col s12">
     <%= f.label :detail %><br>
-    <%= f.text_field :detail %>
+    <%= f.text_field :detail, :required => 'required' %>
   </div>
   </div>
 
@@ -34,7 +34,7 @@
       <div id="test1">
       <div class="field" id = "day_of_week">
     <%= f.label :day %><br>
-    <%= f.select :day, [[' ', ' '],['Monday', 'Monday'],['Tuesday','Tuesday'],['Wednesday', 'Wednesday'],['Thursday','Thursday'],['Friday','Friday'],['Saturday','Saturday'],['Sunday','Sunday'],['Everyday','Everyday'],['Weekdays','Weekdays'],['Weekend','Weekend']]  %>
+    <%= f.select :day, [['Monday', 'Monday'],['Tuesday','Tuesday'],['Wednesday', 'Wednesday'],['Thursday','Thursday'],['Friday','Friday'],['Saturday','Saturday'],['Sunday','Sunday'],['Everyday','Everyday'],['Weekdays','Weekdays'],['Weekend','Weekend']], :required => 'required'  %>
   </div>
       </div>
    

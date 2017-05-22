@@ -60,3 +60,11 @@
 
 <%= link_to 'Edit', edit_event_path(@event), class: "waves-effect waves-light btn menubtn" %> |
  <%= link_to 'Back',   Venue.where(id: @event.venue_id).first, class: "waves-effect waves-light btn menubtn", 'data-no-turbolink' => true  %>
+ 
+ <h3>Reviews <%= @event.average_rating%>  (<%= @reviews.count%>)</h3>
+ <div>
+     <%= render partial: "reviews/form"%> 
+ </div>
+ <div>
+     <%= render partial: "reviews/list"%>
+ </div>

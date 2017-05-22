@@ -727,6 +727,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+      
+      @reviews = @event.reviews
+      @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
   end
 
   # GET /events/new
