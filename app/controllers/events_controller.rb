@@ -140,20 +140,20 @@ class EventsController < ApplicationController
 
 
       if  x == 0
-       @day_specials = ["Sunday","Everyday","Weekend"]
+       @day_specials = "Sunday"
        elsif x == 1
-       @day_specials = ["Monday","Everyday","Weekdays"]
+       @day_specials = "Monday"
        elsif x == 2
-       @day_specials = ["Tuesday","Everyday","Weekdays"]
+       @day_specials = "Tuesday"
        elsif x == 3
-       @day_specials = ["Wednesday","Everyday","Weekdays"]
+       @day_specials = "Wednesday"
        elsif x == 4
-       @day_specials = ["Thursday","Everyday","Weekdays"]
+       @day_specials = "Thursday"
        elsif x == 5
-       @day_specials = ["Friday","Everyday","Weekdays"]
+       @day_specials = "Friday"
        else
-       @day_specials = ["Saturday","Everyday","Weekend"]
-       end
+       @day_specials = "Saturday"
+      end
   end
 
   def event_upvote
@@ -418,8 +418,8 @@ class EventsController < ApplicationController
    
    neighborhood_id = 5
    @users = User.all.to_a
-   @neighborhoods_all = Neighborhood.includes(:venues).all.to_a
-   @venues_all = Venue.all_cached.to_a
+   
+   @venues_all = Venue.includes(:events).all_cached.to_a
    @events_all = Event.all_cached.to_a
    @claims_all = Claim.all.to_a
    @daily_specials_all = DailySpecial.all.to_a

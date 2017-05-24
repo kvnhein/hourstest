@@ -21,7 +21,6 @@
           	<% current_neighborhood = @neighborhoods.select {|neighborhood| neighborhood.id == current_venue.neighborhood_id }.first%>
             <div class="card-content">
               <span class="card-title activator center"><%= current_venue.name%><br/><%=current_neighborhood.name%></span><br>
-
               <!----This is where the uniq special code is going in -->
 <%unievents = []%>
 <%unispecials = []%>

@@ -4,10 +4,7 @@ class DrinksController < ApplicationController
   # GET /drinks
   # GET /drinks.json
   def index
-    @drinks = Event.all
-    @drink = Drink.new
-    @drinks_count = Event.all.count
-    @drinks_last = @drinks.last
+  @venues = Venue.includes( :daily_specials)
     
       
   end
