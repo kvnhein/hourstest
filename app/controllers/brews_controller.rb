@@ -7,14 +7,9 @@ class BrewsController < ApplicationController
   def index
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    
-    @neighborhoods = Neighborhood.includes(:venues).all.to_a 
-    @users = User.includes(:claims, :events).all.to_a
-   
-    
-    @venues = @neighborhoods.map { |neighborhood| neighborhood.venues.to_a }.flatten
-    @events = @users.map { |users| users.events.to_a }.flatten.select {|event| event.day == "Monday"}
-    @claims = @users.map { |users| users.claims.to_a }.flatten
+
+    @venues = Venue.includes(:events, :daily_specials).all.to_a
+    @users = User.all.to_a
     
     if (user_signed_in?)
       @signed_in == true

@@ -5,7 +5,8 @@ class Event < ActiveRecord::Base
   validates :special, presence: true
   validates :day, presence: true
   #validates :validate_tag, presence: true
-
+  
+  belongs_to :user
   belongs_to :venue, touch: true
   has_many :claims, dependent: :destroy
   has_many :reviews, dependent: :destroy
