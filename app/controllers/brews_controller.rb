@@ -7,9 +7,16 @@ class BrewsController < ApplicationController
   def index
     @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
     @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
+    if @b < 2 
+      day = (Time.now.in_time_zone("Eastern Time (US & Canada)") -1.day).strftime("%A")
+    else 
+      day = Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%A")
+    end
 
-    @venues = Venue.includes(:events, :daily_specials).all.to_a
+    @venues = Venue.includes(:events, :daily_specials).where(events: {day: day}).all.to_a
     @users = User.all.to_a
+    @current_voter = current_user
+    @claims_all = Claim.all.to_a 
     
     if (user_signed_in?)
       @signed_in == true

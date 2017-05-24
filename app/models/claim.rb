@@ -10,8 +10,8 @@ class Claim < ActiveRecord::Base
     self.delete_date ||= Date.yesterday
  end
  
- def claim_votes
-   users = User.all.to_a 
+ def claim_votes(users)
+   
    votes=0
    self.votes_for.up.each do |vote|
      votes = votes + users.select {|user| vote.voter_id == user.id}.first.voting_power

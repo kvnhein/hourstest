@@ -21,8 +21,8 @@
   
 <!--<span>
      
-      <% if claim.event%>
-        <%= claim.event.special %>
+      <% if @modal_event%>
+        <%= @modal_event.special %>
       <%end%>
     </span>-->
     </div>
@@ -49,7 +49,7 @@
     </p>
     
     <div class = "upvote_count" id = "count<%=claim.id%>">
-      <%= claim.claim_votes%> 
+      <%= claim.claim_votes(@users)%> 
     </div>
     Confirmed this claim 
     <%if claim.status == 0%>
@@ -69,7 +69,7 @@
 <div class="range-slider<%=claim.id%> slider-margin">
   <!--<input class="range-slider__range" type="range" value="<%= claim.cached_votes_total%>" min="0" max="10" disabled>-->
   <!--<span class="range-slider__value">0</span>-->
-  <progress value="<%= claim.claim_votes%>" max="10">
+  <progress value="<%= claim.claim_votes(@users)%>" max="10">
 </progress>
 </div>
 

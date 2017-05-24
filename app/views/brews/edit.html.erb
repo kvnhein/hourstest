@@ -4,3 +4,314 @@
 
 <%= link_to 'Show', @brew %> |
 <%= link_to 'Back', brews_path %>
+
+
+
+
+
+
+
+<%venues.each do |venue|%>
+
+	<%venue_events = venue.events.to_a.sort! { |a,b| a.start <=> b.start }.reverse%>
+	<div class="row hourslist">
+		<div class="col s12">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title activator">
+						<%= venue.name%>
+					</span>
+					<br>
+					<!--==This is where the uniq special code is going in -->
+					<%unievents = []%> 
+					<%unispecials = []%> 
+					<%venue_events.each do |event| %> 
+						
+							<%if unispecials.index(event.special.to_s ) == nil%> 
+								<%unievents.push(event) %> 
+								<%unispecials.push(event.special.to_s )%> 
+							<%end%> 
+					<%end%>
+					<div class="arrow">
+						<%= image_tag "arrow.png"%>
+		
+					</div>
+					<%if venue.urbanist == true %>
+					<div class="urbanist">
+						<a href="#modal1<%=venue.id%>" class="modal-trigger">
+							<%= image_tag "hourspgh-award.png"%>
+						</a>
+						
+					</div>
+					<%end%>
+					<%if venue.spr_rank == 1 %>
+					<div class="sustainablepgh">
+						<a href="#modal1<%=venue.id%>" class="modal-trigger">
+							<%= image_tag "SustainablePittsburgh.png"%>
+						</a>
+
+					</div>
+					<%end%>
+					<!-- Modal Structure -->
+					
+					  <div id="modal1<%=venue.id%>" class="modal awards-key">
+					    <div class="modal-content">
+					      <h4>restraunt awards key</h4>
+					      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="zmdi zmdi-close"></i></a>
+					    </div>
+					    <%if venue.urbanist == true %>
+					      <!--a href="http://www.hourspgh.com/urbanist" class="card" target="_blank"--><a class="card">
+						<div class="icon-circle">
+						  <%= image_tag "hourspgh-award.png"%>
+						</div>
+						<div class="icon-logo">
+						  <%= image_tag "hourspgh-award-key.png"%>
+						</div>
+						<div class="arrow">
+						  <%= image_tag "arrow.png"%>
+						</div>
+						  </a>
+						<%end %>
+						<%if venue.spr_rank == 1 %>
+						  <a href="http://www.sustainablepghrestaurants.org/site/about/overview/" class="card" target="_blank">
+						<div class="icon-circle suspit">
+						  <%= image_tag "SustainablePittsburgh.png"%>
+						</div>
+						<div class="icon-logo">
+						  <%= image_tag "SustainablePittsburghlogo.jpg"%>
+						</div>
+						<div class="arrow">
+						  <%= image_tag "arrow.png"%>
+						</div>
+						  </a>
+						<%end%>
+					    </div>
+					
+						<!---This is where it ends-->
+					<%unievents.reverse.each do |event|%>
+					 <div class="chip-piece">
+                		<div class="chip" style="<%=event.color_chip(@b,@c)%>">
+                  			<%=event.special%>
+                		</div>
+               			<div class="new-event" id = "new-event<%=event.id%>">
+               				<%if  event.cached_claims?%>
+								<i class="zmdi zmdi-flag"></i>
+							<%end%>
+                  		
+               			</div>
+              		</div>
+              <%end%>
+					
+			  <div class="directions-btn">
+				<a class="btn-flat disabled teal-text text-accent-4" href="http://www.google.com/maps/place/<%= venue.address %>" target="_blank"><i class="material-icons">directions</i></a>
+			  </div>
+					
+					<!--div class="card-content">-->
+					<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
+					<a class="activator waves-effect waves-light btn openhours"></a>
+				</div>
+				<div class="card-reveal">
+					<div class="modal-header">
+						<span class="card-title activator"><%= @day_tag %> Hours 
+						
+						<!--<i class="material-icons right xbox">close</i>-->
+						<i class="zmdi zmdi-close right xbox"></i>
+						
+						</span><br>
+					</div>
+					<div class="specials-header">
+						<h4><%= venue.name%></h4>
+					<h5 class="flow-text"><%=venue.venue_type%></h5>
+					</div>
+					<div class="powered-by-ver">
+						<div class="verified">
+							<%if venue.urbanist == true %>
+							<div class="urbanist">
+								<a target="_blank"><%= image_tag "hourspgh-award.png"%></a>
+							</div>
+							<%end %>
+						</div>
+					</div>
+					<ul class="collapsible beerlist" data-collapsible="accordion">
+						<%venue_events.reverse.each do |modal_event|%>
+							<%@event = modal_event%>
+						<li>
+							<div class="collapsible-header special-by-day">
+								<div class="valign-wrapper">
+									<h4><%= modal_event.special %></h4><%@d = modal_event%>
+									<div class="like-like row">
+										<div class="valign-wrapper">
+										<div class="verified-hour" id='like-<%=modal_event.id%>'>
+											<%if @signed_in %>
+												<%if modal_event.cached_votes_up > 0 %>
+													<%if @user_likes.include?(modal_event.id) %>
+														<%= render 'event_downvote'%>
+													<%else %>
+														<%= render 'event_upvote' %>
+													<%end %>
+												<%else%>
+													<%= render 'event_upvote' %>
+												<%end%>
+											<%else%>
+												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-plus-circle-o"></i> </a>
+											<%end%>
+										</div>
+										<div class="verified-hour-like" id= 'event<%=modal_event.id%>'>
+                            					<%= modal_event.cached_votes_total + modal_event.credits%>
+                        				</div>
+                        				</div>
+									</div>
+								</div>
+								<div class="valign-wrapper timeforspecial">
+									<i class="zmdi zmdi-time"></i>
+<%=modal_event.time_conversion%>
+								</div> 
+								<p><span class="submit-by">Submitted by  <%= link_to "#{@users.select {|user| modal_event.user_id == user.id}.first.fullname}", modal_event.find_event_user(@users.select {|user| modal_event.user_id == user.id}.first) %></span> <%if modal_event.any_details == 2%></p>
+								
+								<p class="deets">
+								Details: 
+								<%=modal_event.detail%></p><%@event_tag = modal_event%>
+								<%end%>
+								
+								<%if @b-2+(@c.to_f*0.0166) > modal_event.start.to_i && @b-2+(@c.to_f*0.0166) < modal_event.end.to_f %>
+								<div class="now-tab">
+									Now
+								</div><%elsif @b < 1 && modal_event.end < 23 &&  modal_event.end > 22%>
+								<div class="now-tab">
+									Now
+								</div><%elsif @b < 2 && modal_event.end < 24  &&  modal_event.end > 23 %>
+								<div class="now-tab">
+									Now
+								</div><%elsif @b-2+(@c.to_f*0.0166) < modal_event.start && @b > 2%>
+								<div class="later-tab">
+									Later
+								</div><%end%>
+								
+								
+								
+									<div class="verified-by-w" id='verify-<%=modal_event.id%>'>
+										<%unless modal_event.event_verify.nil? || modal_event.varified_user.nil? %>
+										<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=@users.select {|user| modal_event.varified_user == user.id}.first.fullname%></p>
+										<%end%>
+									</div>
+									
+									<!-- Verify Button-->
+								<%= render partial: "shared/verify_button_partial"%>
+								<!--end of verify button-->
+								
+								<!--form for Claims-->
+								<%@modal_event = modal_event%>
+								<div id = "form_button<%=modal_event.id%>" display ="none">
+									
+									<% if modal_event.claim_count(@claims_all) == 0 %>
+									
+										<% if @signed_in%>
+											<% if @current_voter.can_verify?%>
+											
+											<!-- This is the code to hide form-->
+											<script>
+												$(document).ready(function(){
+    												$("#hide<%=modal_event.id%>").click(function(){
+        												$(".posh<%=modal_event.id%>").hide();
+    													});
+    												$("#show<%=modal_event.id%>").click(function(){
+											        	$(".posh<%=modal_event.id%>").show();
+    													});
+    												
+  													
+    												
+    												$(".posh<%=modal_event.id%>").hide();
+    												$(".new_claim<%=modal_event.id%>").hide();
+    											
+												});
+											</script>
+											
+											
+											
+											
+											<div class="new_claim">
+											<button id="show<%=modal_event.id%>" class="btn-flat disabled">
+												<i class="zmdi zmdi-flag"></i>
+											</button>
+											</div>
+											<!-- End of code to hide form--> 
+											<div class = "posh<%=modal_event.id%> theshowform" style="position: relative;">
+												
+												<%= form_for Claim.new, remote: true do |f| %>
+  													<div class="input-field">
+    													<!--<%= f.label :description, "What's Wrong? (Required)" %>-->
+    													<%= f.text_area :description, class:"materialize-textarea", id:"claimarea1" %>
+    													 <label for="claimarea1">What's Wrong</label>
+  													</div>
+  													
+  													<div class="field hide">
+    													<%= f.label :user_id %><br>
+    													<%= f.text_field :user_id, :value => @current_voter.id %> %>
+  													</div>
+  													<div class="field hide">
+    													<%= f.label :event_id %><br>
+    													<%= f.text_field :event_id, :value => modal_event.id %> %>
+  													</div>
+  													<div class = "">
+    													<%= f.submit "submit", class:"submit-btn2", id: "form-hide#{modal_event.id}"%>
+  													</div>
+												<% end %>
+												<button id="hide<%=modal_event.id%>" class="hide-btn2">Cancel</button>
+												</div>
+												
+											<%else%>
+												<div class="new_claim">
+													<button id="show" class="btn-flat disabled" onclick="Materialize.toast('You dont have enough hours yet to contest happy hours. Save more hours to you profile to earn Hours.', 4000)">
+														<i class="zmdi zmdi-flag"></i>
+													</button>
+												</div>
+											<%end%>
+											<%else%>
+												<div  class = "btn-flat disabled red-text text-accent-4 new_claim signin_flag">
+													<%= link_to new_user_session_path, class:"btn-flat disabled red-text text-accent-4 cantsee hide", id: "form-hide#{modal_event.id}" do%>
+														<i class="zmdi zmdi-flag"></i>
+													<%end%>
+													<a class="tooltipped btn-flat disabled red-text text-accent-4 cantsee"  data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to flag hours"><i class="zmdi zmdi-flag"></i></a>
+        
+												</div>
+										<%end%>
+									<%end%>
+								</div>
+						
+							
+							<div id = "second_form_button<%=modal_event.id%>"></div>
+							<!-- end of form -->
+								<%@claims = @claims_all.select{|claim| claim.event_id == modal_event.id}%> 
+									<div class = "new_claim<%=modal_event.id%>">
+										<%=render partial: 'claims/claim', collection: @claims, as: :claim%>
+									</div>
+								
+							</div>
+							
+						</li><%end%>
+					</ul><br>
+					 
+					<div class="row">
+						<%= link_to 'View Profile', venue_path(venue.id), class:"btn-flat disabled teal-text text-accent-4", 'data-no-turbolink' => true %><br>
+						<br>
+						<br>
+						<br>
+					</div>
+				</div><!-- <div class="card-action">
+              <a href="#">Menu</a>
+              <a href="#">Share</a>
+            </div>-->
+			</div>
+		</div>
+	</div>
+	
+<%end%>
+
+
+	<!-- This is the code to hide form-->
+										
+
+
+
+										
+
