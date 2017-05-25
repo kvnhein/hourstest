@@ -135,10 +135,10 @@
 													<%if @user_likes.include?(modal_event.id) %>
 														<%= render 'event_downvote'%>
 													<%else %>
-														<%= render 'event_upvote' %>
+														<%= render 'events/event_upvote' %>
 													<%end %>
 												<%else%>
-													<%= render 'event_upvote' %>
+													<%= render 'events/event_upvote' %>
 												<%end%>
 											<%else%>
 												<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="You need to be signed in to save hours"><i class="zmdi zmdi-plus-circle-o"></i> </a>

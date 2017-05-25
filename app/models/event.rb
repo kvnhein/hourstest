@@ -104,10 +104,10 @@ end
   if self.event_verify
    if self.event_verify < 7.days.ago 
     return true
-   end
   else
-   return true
+   return false
   end
+ end
  end
  
  def validate_tag

@@ -19,7 +19,8 @@ class BrewsController < ApplicationController
     @claims_all = Claim.all.to_a 
     
     if (user_signed_in?)
-      @signed_in == true
+      @holder = true
+      @signed_in = true
       @current_user = current_user
       @user_likes = @current_user.find_up_voted_items.to_a
     end

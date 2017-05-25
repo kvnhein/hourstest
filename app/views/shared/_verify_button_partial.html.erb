@@ -3,9 +3,9 @@
 							
 								<div class="verifyprofile">
 								<div class = "verify_button<%=modal_event.id%>">
-								<% if @claims_all.select {|claim| claim.event_id == modal_event.id}.count > 0 %>
+								<% if @claims_all.select {|claim| claim.event_id == modal_event.id}.count == 0 %>
 									
-										<%if @signed_in == true %>
+										<%if @signed_in%>
 											<%if current_user.can_verify?%>
 												<div class="verified-hour" id='verified-<%=modal_event.id%>'><%= render partial: "events/event_verified"%></div>
 											<%else%>
