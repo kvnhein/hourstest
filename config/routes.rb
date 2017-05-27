@@ -71,6 +71,7 @@ resources :events do
         end
    end
 
+ get 'south_side/:south_now', to: 'events#south_side', as: :south_now
  get 'south_side/:south_tag', to: 'events#south_side', as: :south_tag
  get 'south_side/autocomplete_event_special'
       get 'south_side' => 'events#south_side'
