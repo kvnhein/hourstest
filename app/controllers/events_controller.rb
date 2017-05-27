@@ -189,7 +189,7 @@ class EventsController < ApplicationController
     @events_with_claims = []
     @venues = Venue.all_cached.to_a
     @claims = Claim.all.to_a
-    
+    @claims_all = @claims
     @neighborhoods = Neighborhood.all.to_a
     claim_event_id = @claims.map{|claim| claim.event_id } 
     @users = User.all.to_a
