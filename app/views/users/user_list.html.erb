@@ -5,7 +5,7 @@
 		<%top_5 = 0%>
 		<% @top_user.all.each do |user|%>
 			
-			<%if top_5 < 5%>
+			<%if top_5 < 100%>
 				<%if user.fullname && user.experience%>
 					<div class="collapsible-header special-by-day z-depth-1">
 						
