@@ -20,7 +20,8 @@
 								
 								</div>
 							
-							<p class="namecont"><%= link_to "#{user.fullname}", user %></p>
+							<p class="namecont"><%= link_to "#{user.fullname}", user %><br> <%= user.email%></p>
+							
 							<p>Hours: <%= number_with_delimiter(user.cached_user_experience, :delimiter => ',') %></p>
 						    <div class="remove-btn hide">
                                 <%=link_to remove_super_user_user_path(user),remote: true, method: :patch do%>
