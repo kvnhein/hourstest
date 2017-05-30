@@ -1,4 +1,6 @@
-	<%= @event.new_event%>
+
 	<%if  @event.claims?%>
 		<i class="zmdi zmdi-flag"></i>
+	<%else%>
+		<%= @event.event_is_new%>
 	<%end%>

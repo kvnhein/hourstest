@@ -95,10 +95,14 @@
   	<%modal_event = x%>
   	  	<div class="verified-by-w" id='verify-<%=modal_event.id%>'>
 			<%unless modal_event.event_verify.nil? || modal_event.varified_user.nil? %>
-				<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=modal_event.find_event_user_varified(@users).fullname%></p>
+				<%if modal_event.event_is_old%>
+					<p class="teal-text text-accent-4"> VERIFY HOUR</p>
+				<%else%>
+					<p class="teal-text text-accent-4">Verified <%=distance_of_time_in_words(modal_event.event_verify, Time.now)%> ago by <%=modal_event.find_event_user_varified(@users).fullname%></p>
+				<%end%>
 			<%end%>
 		</div>
-									
+		<%@event = modal_event%>					
 		<!-- Verify Button-->
 		<%= render partial: "shared/verify_button_partial"%>
 		<div id = "form_button<%=modal_event.id%>" display ="none">

@@ -137,9 +137,20 @@ end
     end
   end
  end
+ 
+ def event_is_new
+  if self.created_at > (Time.current - 14.days)
+   return "NEW"
+  end
+ end
+ 
+ def event_is_old
+   if self.event_verify < (Time.current - 31.days)
+    return "NEW"
+  end
+ end
 
   def new_event 
-    
       if self.legit_hour == true 
        return "Verified"
       else 
