@@ -1,12 +1,24 @@
-<%= form_for([@event, @event.reviews.new]) do |f|%>
+<%= form_for([@event, @event.reviews.new]) do |f| %>
+	
+	<div id="user_stars"></div>
 
-    <%= f.text_field :star %>
-    <%= f.text_field :comment%>
-    
-    <%= f.hidden_field :event_id, value: @event.id%> 
-    
-    <div class = "action">
-        <%= f.submit%> 
-    </div>
-    
-<%end%>
+	<div class="form-group">
+		<%= f.text_area :comment, rows: 3, class: "form-control" %>	
+	</div>
+	
+
+	<%= f.hidden_field :event_id, value: @event.id %>
+
+	<div class="actions">
+		<%= f.submit "Create", class: "btn btn-primary" %>
+	</div>
+
+<% end %>
+
+<script>
+	$('#user_stars').raty({
+		path: '/assets',
+		scoreName: 'review[star]',
+		score: 1
+	});
+</script>

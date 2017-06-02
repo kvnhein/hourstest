@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery-ui
+
 //= require nprogress
 //= require nprogress-turbolinks
 

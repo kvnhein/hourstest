@@ -7,8 +7,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :event_upvote, :event_downvote, :event_verified]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
  # before_action :require_owner_event, only: [:edit, :update, :destroy]
-  before_action :verified_venues, only: [:landing,:urbanist, :downtown,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :squirrel_hill, :mt_washington]
-  before_action :event_time, only: [:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill, :user_index, :mt_washington]
+  before_action :verified_venues, only: [:index,:landing,:urbanist, :downtown,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :squirrel_hill, :mt_washington]
+  before_action :event_time, only: [:index,:daily_mailer,:shadyside, :south_side, :lawrenceville, :oakland, :north_side, :bloomfield, :east_liberty, :strip_district, :downtown, :squirrel_hill, :user_index, :mt_washington]
   autocomplete :event, :special, :full => true
   
   # GET /events
@@ -288,11 +288,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    @v = @venues.all
-    @daily_specials = DailySpecial.where(venue_id: @v.pluck(:id), day: @day_tag)
-    @b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
-    @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)
-    @l = Time.now.in_time_zone("Eastern Time (US & Canada)").min
+    
   end
 
  def shadyside
