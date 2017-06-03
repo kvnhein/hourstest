@@ -58,10 +58,14 @@
    <%= f.select :spr_rank, options_for_select([['None', '0'],['starter', '1']], @venue.spr_rank), class: "list-select" %>
     </div>
 <%end%>
-  <div class="waves-effect waves-light btn menubtn">
-    <%= f.submit %>
+ 
+  <div class="btn-flat disabled teal-text text-accent-4">
+    <%= f.submit "Done", class:"btn-flat disabled teal-text text-accent-4", id: "event-button",:data => {:disable_with => "Saving..."} %>
+    <%= link_to 'Back', @venue, class:"btn-flat disabled teal-text text-accent-4"  %>
   </div>
+ 
+  
 
-  <%= link_to 'Back', @venue, class:"btn-flat disabled teal-text text-accent-4"  %>
+  
 <% end %>
 </div>
