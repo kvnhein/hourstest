@@ -75,11 +75,11 @@
 <%= link_to "Bloomfield", bloomfield_path, class: "waves-effect waves-light btn newvenue image-btns menubtn bloomfield-btn no-border-bottom"%>
 </div>
 
-<div class = "col m4 s6 z-depth-1" style="padding:0;">
+<div class = "col m4 s12 z-depth-1" style="padding:0;">
 <%= link_to "Mt. Washington", mt_washington_path, class: "waves-effect waves-light btn newvenue image-btns menubtn mountwash-btn"%>
 </div>
 
-<div class = "col m4 s6 z-depth-1" style="padding:0;">
+<div class = "col m4 s6 z-depth-1 hide" style="padding:0;">
 <%= link_to "North Side", north_side_url, class: "waves-effect waves-light btn newvenue image-btns menubtn northside-btn"%>
 </div>
 
@@ -102,7 +102,6 @@
 <%end%><!--cache end-->
 </div>
 </div>
-<br>
 
 <% if (user_signed_in?)%>
    <% if current_user.admin?%>
@@ -142,7 +141,6 @@
 
 <%end%>
 </div>
-<br>
 <div class="contributors-section">
 	<h4 class ="flow-text center landing-title">TOP CONTRIBUTORS</h4>
 	<p class="center">
