@@ -34,6 +34,10 @@ Rails.application.routes.draw do
 
    end
 
+resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
+
 
   resources :liqours do
     member do
@@ -68,10 +72,11 @@ resources :events do
           put "dislike", to: "events#event_downvote"
           get :event_verified
           get :event_tags
+          get :events_now
         end
    end
 
- get 'south_side/:south_now', to: 'events#south_side', as: :south_now
+ 
  get 'south_side/:south_tag', to: 'events#south_side', as: :south_tag
  get 'south_side/autocomplete_event_special'
       get 'south_side' => 'events#south_side'

@@ -21,7 +21,8 @@ class Venue < ActiveRecord::Base
   has_many :events, dependent: :destroy
   has_many :daily_specials, dependent: :destroy
   has_many :lists, dependent: :destroy
-  has_many :bees
+  has_many :beers
+  has_many :messages, dependent: :destroy
 
   def to_param
     "#{id} #{name}".parameterize

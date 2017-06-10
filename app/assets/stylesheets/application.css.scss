@@ -1446,6 +1446,36 @@ footer.page-footer {
     background-size: cover;
     background-position: center;
     padding: 50px 20px;
+    
+}
+
+.about-top2 {
+      position: fixed;
+    bottom: 0;
+    z-index: 100;
+    margin-bottom: 0;
+     width: 100%;
+    background-color: #000;
+        padding: 12px;
+        left: 0;
+}
+
+.about-top2 a{
+ text-transform: none;
+    text-align: right;
+    float: right;
+    color: #1fdeb4 !important;
+    font-weight: bold;
+}
+
+.about-top2 p{
+ text-transform: none;
+    text-align: right;
+    float: right;
+    color: #fff !important;
+    font-weight: normal;
+    display: inline-block;
+    margin: 0 10px;
 }
 
 .about-top .venue-profile-buttons {
@@ -1455,17 +1485,19 @@ footer.page-footer {
 
 .about-top h2 {
      margin: 0;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: bold;
     color: #fff;
     letter-spacing: .5px;
       text-align: center;
+     
 }
 
 .about-top p {
       color: #fff;
     margin-top: 5px;
     font-weight: normal;
+    margin:0;
 }
 
 .slider .slides li img {
@@ -3247,6 +3279,17 @@ iframe {
 
 .mountwash-btn {
   background: url(mountWashington.jpg);
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+        border-bottom: 1px solid #fff;
+}
+
+.northside-btn {
+  background: url(northsidenew.jpg);
   background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;

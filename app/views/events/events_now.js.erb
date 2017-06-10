@@ -1,0 +1,7 @@
+$('#events_now').bind('ajax:success', function() {
+    <%@b = Time.now.in_time_zone("Eastern Time (US & Canada)").hour%>
+    <%  @c = (Time.now.in_time_zone("Eastern Time (US & Canada)").min)%>
+    $('#hours_partial').html('<%=escape_javascript (render "hours_partial_now") %>');
+   
+    
+    });

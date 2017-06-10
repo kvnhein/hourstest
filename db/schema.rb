@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518215707) do
+ActiveRecord::Schema.define(version: 20170607170413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(version: 20170518215707) do
   add_index "claims", ["cached_weighted_total"], name: "index_claims_on_cached_weighted_total", using: :btree
   add_index "claims", ["event_id"], name: "index_claims_on_event_id", using: :btree
   add_index "claims", ["user_id"], name: "index_claims_on_user_id", using: :btree
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "daily_specials", force: :cascade do |t|
     t.string   "text"
@@ -218,6 +225,19 @@ ActiveRecord::Schema.define(version: 20170518215707) do
   add_index "lists", ["brew_id"], name: "index_lists_on_brew_id", using: :btree
   add_index "lists", ["venue_id"], name: "index_lists_on_venue_id", using: :btree
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "venue_id"
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+  add_index "messages", ["venue_id"], name: "index_messages_on_venue_id", using: :btree
+
   create_table "neighborhoods", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -358,6 +378,9 @@ ActiveRecord::Schema.define(version: 20170518215707) do
   add_foreign_key "liqours", "venues"
   add_foreign_key "lists", "brews"
   add_foreign_key "lists", "venues"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
+  add_foreign_key "messages", "venues"
   add_foreign_key "reservations", "daily_specials"
   add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "events"

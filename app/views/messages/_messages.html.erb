@@ -1,0 +1,37 @@
+
+<% @messages.each do |message|%>
+<div class="panel">
+	<div class="panel-body">
+		
+		<strong><%= message.user.fullname %></strong>
+
+		<span class="pull-right"><%= message.message_time %></span>
+		<br>
+		<div class="row-space-2">
+			<%= message.content %>
+		</div>
+	</div>
+</div>
+<%end%>
+
+<h2 class = "flow-text center">Messages</h2>
+<% @messages.each do |message|%>      
+    <div class="row">
+        <div class="col s12 m12  z-depth-1">
+          <div class="card white">
+            <div class="card-content black-text">
+              <span class="card-title"><%= message.user.fullname %><br>
+              <%= message.message_time %>
+              </span>
+              
+              <p><%= message.content %></p>
+            </div>
+            <div class="card-action">
+             <p>Visit Venue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+<%end%>
+    
+     

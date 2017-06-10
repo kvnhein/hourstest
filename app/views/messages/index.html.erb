@@ -1,0 +1,37 @@
+<%if current_user.admin == true%>
+
+<div class="row">
+        <div class="col s12 m12  z-depth-1">
+          <div class="card white">
+            <div class="card-content black-text">
+              <span class="card-title"><%= link_to "#{@other.fullname}", @other, class: "btn-flat disabled teal-text text-accent-4" %></span>
+              
+              <%= form_for [@conversation, @conversation.messages.new] do |f| %>
+						<div class="form-group">
+							<%= f.text_area :content, id: "new_message",placeholder: "Add a personal message", class: "form-control" %>
+							<%= f.label :venue_id %><br>
+							<%=collection_select( :message, :venue_id, Venue.order('name ASC').all, :id, :venue_area, { :multiple => false})%>
+						</div>
+						<%= f.hidden_field :user_id, value: current_user.id %>
+						
+						<div class="actions">
+							<%= f.submit "Send Message", class: "btn-flat disabled teal-text text-accent-4" %>
+						</div>
+					<% end %>
+            </div>
+            <div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+<%end%>
+
+		<div id="chat">
+			<%= render 'messages'%>
+		</div>
+
+	</div>
+
+</div>
+

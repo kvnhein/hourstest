@@ -12,22 +12,27 @@
 <div class="row about-top">
   <div class="col s12 m12 center">
     <h2>What Are Your Favorite Hours?</h2>
-    <p style="color: #fff;">Build a profile of your favorite Hours in Pittsburgh.</p>
+    <p style="color: #fff;">Choose a neighborhood to explore happy hours.</p>
   </div>
   
-  <div class = "center">
-<%if (user_signed_in?)%>
-<%= link_to edit_user_registration_path, class: "btn-flat disabled text-accent-4 venue-profile-buttons" do%>
-	My Profile
-<%end%>
-<%else%>
-<%= link_to new_user_session_path, class: "btn-flat disabled text-accent-4 venue-profile-buttons" do%>
-	Create Profile
-<%end%>
-<%end%>
+  <div class = "center hide">
+
 </div>
 </div>
 
+<%if (user_signed_in?)%>
+<%= link_to edit_user_registration_path, class: "btn-flat disabled text-accent-4 venue-profile-buttons hide" do%>
+	My Profile
+<%end%>
+<%else%>
+<div class="row about-top2">
+	<%= link_to "Login", new_user_session_path%> <p>|</p>
+<%= link_to new_user_registration_path do%>
+	Sign Up
+<%end%>
+
+</div>
+<%end%>
 
 <% cache("landing", :expires_in => 24.hours) do %>
 <h4 class ="flow-text center landing-title hide"><%=Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B #{Time.now.in_time_zone("Eastern Time (US & Canada)").day.ordinalize}, %Y")%></h4>
@@ -70,8 +75,12 @@
 <%= link_to "Bloomfield", bloomfield_path, class: "waves-effect waves-light btn newvenue image-btns menubtn bloomfield-btn no-border-bottom"%>
 </div>
 
-<div class = "col m4 s12 z-depth-1" style="padding:0;">
-<%= link_to "Mount Washington", mt_washington_path, class: "waves-effect waves-light btn newvenue image-btns menubtn mountwash-btn"%>
+<div class = "col m4 s6 z-depth-1" style="padding:0;">
+<%= link_to "Mt. Washington", mt_washington_path, class: "waves-effect waves-light btn newvenue image-btns menubtn mountwash-btn"%>
+</div>
+
+<div class = "col m4 s6 z-depth-1 hide" style="padding:0;">
+<%= link_to "North Side", north_side_url, class: "waves-effect waves-light btn newvenue image-btns menubtn northside-btn"%>
 </div>
 
 </div>
@@ -89,16 +98,6 @@
 <%= link_to "Bloomfield", bloomfield_path, class: "waves-effect waves-light btn newvenue image-btns menubtn bloomfield-btn"%>
 </div>
 </div>
-<div class = "hide"><%= link_to "Brunch", landing_path, class: "waves-effect waves-light btn newvenue image-btns menubtn brunch-btn"%></div>
-<% if (user_signed_in?)%>
-   <% if current_user.admin?%>
-<div class="hide">
-<%=link_to "Send Reminders", daily_mailer_path, method: :get, remote: true%>
-</div>
-
-</div>
-    <%end%>
-<%end%>
 
 <%end%><!--cache end-->
 </div>
