@@ -1,18 +1,4 @@
 
-<% @messages.each do |message|%>
-<div class="panel">
-	<div class="panel-body">
-		
-		<strong><%= message.user.fullname %></strong>
-
-		<span class="pull-right"><%= message.message_time %></span>
-		<br>
-		<div class="row-space-2">
-			<%= message.content %>
-		</div>
-	</div>
-</div>
-<%end%>
 
 <h2 class = "flow-text center">Messages</h2>
 <% @messages.each do |message|%>      
