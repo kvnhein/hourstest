@@ -24,8 +24,10 @@ class DailySpecialsController < ApplicationController
 
   end
    @daily_specials.to_a.each do |feature|
+     if feature.credit > 0 
         feature_increase = (feature.credit*rand(0..4))/feature.credit
         feature.increment!(:credit, by = feature_increase)
+      end
     end 
   end
 
