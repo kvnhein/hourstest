@@ -1820,6 +1820,20 @@ footer.page-footer {
       z-index: 99;
 }
 
+.combined-hours .urbanist {
+    position: inherit;
+    z-index: 99;
+    float: left;
+    margin: 5px 10px;
+}
+
+.combined-hours .sustainablepgh {
+     position: inherit;
+    z-index: 99;
+    float: left;
+    margin: 5px 0px;
+}
+
 
 .sustainablepgh {
       position: absolute;
@@ -1834,7 +1848,7 @@ footer.page-footer {
 
 .directions-btn {
    position: absolute;
-    bottom: 0;
+   top: 0;
       right: 0px;
       z-index: 99;
 }
@@ -3148,6 +3162,8 @@ iframe {
         min-width: 100%;
         *width: 100%;
     }
+    
+    
 
 .openhours {
   width: 100%;
@@ -3161,12 +3177,75 @@ iframe {
   color: rgba(0,0,0,0);
 }
 
+.combined-hours .openhours {
+      width: auto;
+    height: auto;
+    position: relative;
+    top: 0;
+    background: 0;
+    left: 0;
+    /* background-color: #000 !important; */
+    box-shadow: none;
+    color: #17a787;
+    float: right;
+    padding: 15px;
+    margin: 5px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 0;
+    text-align: center;
+}
+
+.combined-hours .card {
+  margin: 0;
+    background-color: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #D6D5D5;
+    border-top: 1px solid #D6D5D5;
+    margin-bottom: 10px;
+}
+
+.combined-hours .card .card-content {
+        padding: 0 0 43px 0;
+}
+
+.combined-hours .teal-text.text-accent-4 {
+  letter-spacing: 0;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.combined-hours .featured-dish-section {
+    margin: 0 0 10px 0;
+        border-bottom: 1px solid #D6D5D5;
+    border-top: 1px solid #D6D5D5;
+}
+
+.happy-hours-footer {
+  border-top: 1px solid #e8e8e8;
+  margin-top: 5px;
+}
+
+.hours-header {
+   border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+
 .openhours:hover {
   box-shadow:none;
 }
 
 .card .card-content {
-    padding: 20px 20px 30px 20px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 0;
+}
+
+.combined-hours .card .card-content {
+    padding: 0px 0px 42px 0px;
     border-radius: 0;
 }
 
@@ -3182,6 +3261,10 @@ iframe {
     right: 0;
 
 }
+
+/*NEW CONBINED HOURS*/
+
+
 
 .image-btns {
     text-transform: none;

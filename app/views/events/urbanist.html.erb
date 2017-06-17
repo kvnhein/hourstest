@@ -302,9 +302,29 @@
 </script>
 <%=link_to "now", events_now_event_path(1), method: :get, remote: true ,id: "events_now"%>
 <div id = "hours_partial">
-<%=render "hours_partial_now"%>
+
 </div>
 <!--END URBANISTHOURS --> 
 </div>
 
 </div>
+
+<%venues = Venue.includes(:events).all.to_a %> 
+<%events = Event.all.to_a%>
+<%@events = events%>
+<%special_count = 0%>
+
+<%venues.each_slice(2) do |venue| %>
+	<%venue.each do |venue_list| %>	
+		<br>
+		<%@venue_ids = venues.map {|venue| venue.id }%>
+		<%=render partial: "shared/first_batch_new"%>
+	<%end%>
+	<br>
+	<%if venue.count == 2 %>
+		<%=events[special_count].special%> Special
+	<br>
+		<%special_count = special_count + 1 %>
+	<%end%>
+	<br>
+<%end%>

@@ -1,21 +1,19 @@
-<%x=[]%><%@events_neigh.each do |event| %>
-	<!--x.push(@venues.find(event.venue_id).id)-->
-	<%x.push(event.venue_id)%>
-<%end%>
-
+<%x = @venue_ids%>
 
 <%x.uniq.each do |d|%>
 
 	<%@e = @events.select {|event| event.venue_id == d}.sort! { |a,b| a.start <=> b.start }.reverse%>
 	<%current_venue = @venues.select{|venue| venue.id == d }.first%>
+	
 	<div class="row hourslist">
 		<div class="col s12">
 			<div class="card">
 				<div class="card-content">
-					<span class="card-title activator">
+					<div class="hours-header">
+					<span class="teal-text text-accent-4 activator">
 						<%= current_venue.name%>
 					</span>
-					<br>
+					</div>
 					<!--==This is where the uniq special code is going in -->
 					<%unievents = []%> 
 					<%unispecials = []%> 
@@ -26,26 +24,8 @@
 								<%unispecials.push(test)%> 
 							<%end%> 
 					<%end%>
-					<div class="arrow">
-						<%= image_tag "arrow.png"%>
-		
-					</div>
-					<%if current_venue.urbanist == true %>
-					<div class="urbanist">
-						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
-							<%= image_tag "hourspgh-award.png"%>
-						</a>
-						
-					</div>
-					<%end%>
-					<%if current_venue.spr_rank == 1 %>
-					<div class="sustainablepgh">
-						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
-							<%= image_tag "SustainablePittsburgh.png"%>
-						</a>
-
-					</div>
-					<%end%>
+					
+				
 					<!-- Modal Structure -->
 					
 					  <div id="modal1<%=current_venue.id%>" class="modal awards-key">
@@ -83,7 +63,7 @@
 					
 						<!---This is where it ends-->
 					<%unievents.reverse.each do |event|%>
-					 <div class="chip-piece">
+					 <div class="chip-piece center">
                 		<div class="chip" style="<%=event.color_chip(@b,@c)%>">
                   			<%=event.special%>
                 		</div>
@@ -102,7 +82,27 @@
 					
 					<!--div class="card-content">-->
 					<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
-					<a class="activator waves-effect waves-light btn openhours"></a>
+					<div class="happy-hours-footer">
+						
+							<%if current_venue.urbanist == true %>
+					<div class="urbanist">
+						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
+							<%= image_tag "hourspgh-award.png"%>
+						</a>
+						
+					</div>
+					<%end%>
+					<%if current_venue.spr_rank == 1 %>
+					<div class="sustainablepgh">
+						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
+							<%= image_tag "SustainablePittsburgh.png"%>
+						</a>
+
+					</div>
+					<%end%>
+					
+					<a class="activator waves-effect waves-light btn openhours">View Details</a>
+					</div>
 				</div>
 				<div class="card-reveal">
 					<div class="modal-header">
@@ -300,6 +300,12 @@
 	</div>
 	
 <%end%>
+
+
+
+
+
+
 
 
 	<!-- This is the code to hide form-->

@@ -23,6 +23,10 @@ class DailySpecialsController < ApplicationController
     fresh_when etag: @daily_specials
 
   end
+   @daily_specials.to_a.each do |feature|
+        feature_increase = (feature.credit*rand(0..4))/feature.credit
+        feature.increment!(:credit, by = feature_increase)
+    end 
   end
 
   def add_reservation

@@ -18,4 +18,8 @@ module ApplicationHelper
    will_paginate @collection, {link_options: {'data-remote': true}, params: {action: 'other_action'}}
   end
 
+ 
+  
+  
+
 end

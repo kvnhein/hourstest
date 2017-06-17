@@ -2,9 +2,7 @@
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 5 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+         <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -16,9 +14,7 @@
   <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 1 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+        <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -30,9 +26,7 @@
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 2 }.each do |venue|%> 
      <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+        <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -45,9 +39,7 @@
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 3 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+        <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -59,9 +51,7 @@
       <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 7 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+        <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -73,9 +63,7 @@
       <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 6 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+        <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -87,9 +75,7 @@
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 11 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+        <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -101,9 +87,7 @@
     <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 9 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+       <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -115,9 +99,7 @@
       <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 12 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+        <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     
@@ -129,9 +111,7 @@
       <%@events_neigh = []%>
     <%@venues.select {|venue| venue.neighborhood_id == 13 }.each do |venue|%> 
       <%if @events.select{|event| event.venue_id == venue.id }.count > 0 %>
-        <%venue.events.to_a.each do |event|%>
-         <%@events_neigh.push(event)%>
-        <%end%>
+        <%@events_neigh = venue.events.to_a%>
       <%end%>
     <%end%>
 <div class ="center" id="specials">     

@@ -237,7 +237,7 @@ class EventsController < ApplicationController
     @strip_district_venues = @venues.where(neighborhood_id: 11)
 
     @urbanist_venues = Venue.all
-    @daily_specials =  DailySpecial.today
+    @daily_specials =  DailySpecial.today.to_a
 
     @verified_this_weeku = @venues.between_times(@week_ago, @today).where(urbanist: true)
     @verified_after_weeku = @venues.between_times(@month_ago,@week_ago).where(urbanist: true)
@@ -330,6 +330,13 @@ class EventsController < ApplicationController
     #this is for OG
     @topic = "Hours in Shadyside}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..4))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
+         
+    
     
     
 
@@ -373,6 +380,12 @@ class EventsController < ApplicationController
     @page_url = "southside"
     @topic = "Hours in South Side"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..4))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
 
   end
 
@@ -413,6 +426,12 @@ class EventsController < ApplicationController
     @page_url = "oakland"
     @topic = "Hours in Oakland"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..4))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
 
   end
 
@@ -453,6 +472,12 @@ class EventsController < ApplicationController
     @page_url = "downtown"
     @topic = "Hours in Downtown"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..4))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
 
   end
 
@@ -492,6 +517,12 @@ class EventsController < ApplicationController
     @page_url = "lawrencville"
     @topic = "Hours in Lawrenceville"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..4))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
   end
 
 
@@ -531,6 +562,12 @@ class EventsController < ApplicationController
     @page_url = "bloomfield"
     @topic = "Hours in Bloomfield"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..4))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
   end
 
 
@@ -570,6 +607,12 @@ class EventsController < ApplicationController
     @page_url = "east_liberty"
     @topic = "Hours in East Liberty"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..5))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
   end
 
 
@@ -609,6 +652,12 @@ class EventsController < ApplicationController
     @page_url = "strip_district"
     @topic = "Hours in #{Neighborhood.find(@neighborhood_tag).name}"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..5))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
   end
 
   def squirrel_hill
@@ -647,6 +696,12 @@ class EventsController < ApplicationController
     @page_url = "squirrel_hill"
     @topic = "Hours in Squirrel Hill"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..5))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
   end
 
   def north_side
@@ -686,6 +741,12 @@ class EventsController < ApplicationController
     @page_url = "north_side"
     @topic = "Hours in North Side"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..5))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
   end
 
   def mt_washington
@@ -724,6 +785,12 @@ class EventsController < ApplicationController
     @page_url = "mt_washington"
     @topic = "Hours in Mt.Washington"
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
+    
+    current_date = Date.current
+    @daily_specials.each do |feature|
+        feature_increase = (feature.credit*rand(0..5))/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature.increment!(:credit, by = feature_increase)
+    end 
   end
 
   # GET /events/1
