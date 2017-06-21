@@ -1,23 +1,32 @@
 <div class="container" style="background-color:#eee;">
 <div class="combined-hours">
 <%venues = Venue.includes(:events).all.to_a %> 
-<%events = Event.all.to_a%>
-<%@events = events%>
+<%day_specials = "Monday"%>
+<%events_all = Event.all.to_a%>
+<%@events = events_all.select {|event| day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
 <%@users = User.all.to_a%>
 <%@claims_all = []%>
-<%special_count = 0%>
 
-<%venues.each_slice(3) do |venue| %>
-	
-	<%venue.each do |venue_list| %>	
-	<%@venue_ids = [venue_list.id]%>
-		<%=render partial: "shared/first_batch_new"%>
-	<%end%>
-		<%@daily_specials = DailySpecial.all.to_a%>
-		<%=render "first_special_batch_now"%>
-		<%venues = venues.drop(2)%>
-		<%special_count = special_count + 1 %>
-	
+
+
+
+<%special_count = 0%>
+<%@events.each do |event| %>
+	<%venues.push(event.venue)%>
+<%end%>
+
+	<%venues.uniq.each_slice(3) do |venue| %>
+	 
+		<%venue.each do |venue_list| %>	
+			<%@venue_ids = [venue_list.id]%>
+			<%=render partial: "shared/first_batch_new"%>
+		<%end%>
+		<%if venue.count == 3 %>
+			<%@daily_specials = [DailySpecial.all.to_a[special_count]]%>
+			<%=render "first_special_batch_now"%>
+			<%venues = venues.drop(3)%>
+			<%special_count = special_count + 1 %>
+		<%end%>
 <%end%>
 </div>
 </div>

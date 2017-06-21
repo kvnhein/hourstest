@@ -1821,17 +1821,15 @@ footer.page-footer {
 }
 
 .combined-hours .urbanist {
-    position: inherit;
-    z-index: 99;
+        position: initial;
     float: left;
-    margin: 5px 10px;
+    margin: 5px;
 }
 
 .combined-hours .sustainablepgh {
-     position: inherit;
-    z-index: 99;
+        position: initial;
     float: left;
-    margin: 5px 0px;
+    margin: 5px 0;
 }
 
 
@@ -3177,14 +3175,14 @@ iframe {
   color: rgba(0,0,0,0);
 }
 
-.combined-hours .openhours {
+.combined-hours .openhours2 {
       width: auto;
     height: auto;
     position: relative;
     top: 0;
     background: 0;
     left: 0;
-    /* background-color: #000 !important; */
+    background-color: rgba(0,0,0,0);
     box-shadow: none;
     color: #17a787;
     float: right;
@@ -3206,8 +3204,13 @@ iframe {
     margin-bottom: 10px;
 }
 
-.combined-hours .card .card-content {
-        padding: 0 0 43px 0;
+
+
+.arrow.arrow-with-header img {
+  width: 10px;
+    position: absolute;
+    right: 26px;
+    top: 46%;
 }
 
 .combined-hours .teal-text.text-accent-4 {

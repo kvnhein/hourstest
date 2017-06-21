@@ -13,6 +13,10 @@
 					<span class="teal-text text-accent-4 activator">
 						<%= current_venue.name%>
 					</span>
+							
+					<div class="arrow arrow-with-header">
+						  <%= image_tag "arrow.png"%>
+						</div>
 					</div>
 					<!--==This is where the uniq special code is going in -->
 					<%unievents = []%> 
@@ -77,14 +81,16 @@
               <%end%>
 					
 			  <div class="directions-btn">
-				<a class="btn-flat disabled teal-text text-accent-4" href="http://www.google.com/maps/place/<%= current_venue.address %>" target="_blank"><i class="material-icons">directions</i></a>
+				<a class="activator waves-effect waves-light btn openhours2" href="http://www.google.com/maps/place/<%= current_venue.address %>" target="_blank"><i style="vertical-align: bottom;" class="hide material-icons">directions</i>Directions</a>
 			  </div>
 					
 					<!--div class="card-content">-->
 					<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
+					
+					<a class="activator waves-effect waves-light btn openhours">View Details</a>
 					<div class="happy-hours-footer">
-						
-							<%if current_venue.urbanist == true %>
+						<div>
+					<%if current_venue.urbanist == true %>
 					<div class="urbanist">
 						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
 							<%= image_tag "hourspgh-award.png"%>
@@ -100,8 +106,9 @@
 
 					</div>
 					<%end%>
-					
-					<a class="activator waves-effect waves-light btn openhours">View Details</a>
+					</div>
+						
+						<a class="activator waves-effect waves-light btn openhours2">View Details</a>
 					</div>
 				</div>
 				<div class="card-reveal">
@@ -113,6 +120,7 @@
 						
 						</span><br>
 					</div>
+					
 					<div class="specials-header">
 						<h4><%= current_venue.name%></h4>
 					<h5 class="flow-text"><%=current_venue.venue_type%></h5>

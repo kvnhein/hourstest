@@ -14010,18 +14010,18 @@ footer.page-footer {
 
 /* line 1823, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .combined-hours .urbanist {
-  position: inherit;
+  position: absolute;
+  top: 50px;
+  left: 10px;
   z-index: 99;
-  float: left;
-  margin: 5px 10px;
 }
 
 /* line 1830, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .combined-hours .sustainablepgh {
-  position: inherit;
+  position: absolute;
+  top: 86px;
+  left: 10px;
   z-index: 99;
-  float: left;
-  margin: 5px 0px;
 }
 
 /* line 1838, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
@@ -15531,14 +15531,14 @@ iframe {
 }
 
 /* line 3180, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
-.combined-hours .openhours {
+.combined-hours .openhours2 {
   width: auto;
   height: auto;
   position: relative;
   top: 0;
   background: 0;
   left: 0;
-  /* background-color: #000 !important; */
+  background-color: #000 !important;
   box-shadow: none;
   color: #17a787;
   float: right;
@@ -15561,60 +15561,63 @@ iframe {
   margin-bottom: 10px;
 }
 
-/* line 3209, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
-.combined-hours .card .card-content {
-  padding: 0 0 43px 0;
+/* line 3211, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+.arrow.arrow-with-header img {
+  width: 10px;
+  position: absolute;
+  right: 26px;
+  top: 56%;
 }
 
-/* line 3213, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3218, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .combined-hours .teal-text.text-accent-4 {
   letter-spacing: 0;
   font-size: 14px;
 }
 
-/* line 3219, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3224, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .combined-hours .featured-dish-section {
   margin: 0 0 10px 0;
   border-bottom: 1px solid #D6D5D5;
   border-top: 1px solid #D6D5D5;
 }
 
-/* line 3225, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3230, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .happy-hours-footer {
   border-top: 1px solid #e8e8e8;
   margin-top: 5px;
 }
 
-/* line 3230, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3235, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .hours-header {
   border-bottom: 1px solid #e8e8e8;
   margin-bottom: 15px;
   padding: 10px;
 }
 
-/* line 3237, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3242, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .openhours:hover {
   box-shadow: none;
 }
 
-/* line 3241, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3246, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .card .card-content {
   padding: 20px 20px 20px 20px;
   border-radius: 0;
 }
 
-/* line 3246, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3251, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .combined-hours .card .card-content {
-  padding: 0px 0px 42px 0px;
+  padding: 0px 0px 10px 0px;
   border-radius: 0;
 }
 
-/* line 3251, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3256, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 #header22.active22 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-/* line 3256, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3261, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .urbanist-b .card .card-content .card-title {
   position: absolute;
   text-align: center;
@@ -15623,7 +15626,7 @@ iframe {
 }
 
 /*NEW CONBINED HOURS*/
-/* line 3268, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3273, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .image-btns {
   text-transform: none;
   letter-spacing: normal !important;
@@ -15636,7 +15639,7 @@ iframe {
   margin-bottom: 0;
 }
 
-/* line 3280, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3285, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .lawrenceville-btn {
   background: url(lawrencvile_new_btn.jpg);
   background-repeat: no-repeat;
@@ -15647,7 +15650,7 @@ iframe {
   background-position: center;
 }
 
-/* line 3290, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3295, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .marketsquare-btn {
   background: url(downtown_btn_new.jpg);
   background-repeat: no-repeat;
@@ -15658,7 +15661,7 @@ iframe {
   background-position: center;
 }
 
-/* line 3300, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3305, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .shadyside-btn {
   background: url(shadyside_new_button.jpg);
   background-repeat: no-repeat;
@@ -15669,7 +15672,7 @@ iframe {
   background-position: center;
 }
 
-/* line 3320, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3325, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .oaklandbtn {
   background: url(stripdistrict_btn_new.jpg);
   background-repeat: no-repeat;
@@ -15680,7 +15683,7 @@ iframe {
   background-position: center;
 }
 
-/* line 3330, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3335, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .southside-btn {
   background: url(Southside_new_btn.jpg);
   background-repeat: no-repeat;
@@ -15691,7 +15694,7 @@ iframe {
   background-position: center;
 }
 
-/* line 3340, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3345, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .strip_district-btn {
   background: url(strip_new_btn.jpg);
   background-repeat: no-repeat;
@@ -15702,7 +15705,7 @@ iframe {
   background-position: center;
 }
 
-/* line 3350, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3355, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .east_liberty-btn {
   background: url(east_new_btn.jpg);
   background-repeat: no-repeat;
@@ -15714,7 +15717,7 @@ iframe {
   border-bottom: 1px solid #fff;
 }
 
-/* line 3361, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3366, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .bloomfield-btn {
   background: url(bloomfield-btn2.jpg);
   background-repeat: no-repeat;
@@ -15726,7 +15729,7 @@ iframe {
   border-bottom: 1px solid #fff;
 }
 
-/* line 3372, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3377, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .mountwash-btn {
   background: url(mountWashington.jpg);
   background-repeat: no-repeat;
@@ -15738,7 +15741,7 @@ iframe {
   border-bottom: 1px solid #fff;
 }
 
-/* line 3383, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3388, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .northside-btn {
   background: url(pnc_clemente2.jpg);
   background-repeat: no-repeat;
@@ -15750,7 +15753,7 @@ iframe {
   border-bottom: 1px solid #fff;
 }
 
-/* line 3394, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3399, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .brunch-btn {
   background: url(brunch.png);
   background-repeat: no-repeat;
@@ -15761,7 +15764,7 @@ iframe {
   background-position: center;
 }
 
-/* line 3405, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3410, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header {
   background-color: #0e0e0e;
   margin-bottom: 0;
@@ -15772,7 +15775,7 @@ iframe {
   text-align: center;
 }
 
-/* line 3415, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3420, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.oakland-header {
   background: url(oaklandbtn-new_darker.jpg);
   background-repeat: no-repeat;
@@ -15784,7 +15787,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3426, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3431, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .login-top {
   color: #fff;
   font-size: 24px;
@@ -15792,7 +15795,7 @@ iframe {
   padding: 0 19px;
 }
 
-/* line 3433, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3438, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.login-bg {
   background: url(login-bg.jpg);
   background-repeat: no-repeat;
@@ -15804,7 +15807,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3446, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3451, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.culture_district-header {
   background: url(cult.jpg);
   background-repeat: no-repeat;
@@ -15816,7 +15819,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3457, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3462, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.strip_district-header {
   background: url(strip_new_btn-darker.jpg);
   background-repeat: no-repeat;
@@ -15828,7 +15831,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3468, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3473, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.east_liberty-header {
   background: url(east_new_btn_darker.jpg);
   background-repeat: no-repeat;
@@ -15840,7 +15843,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3479, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3484, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.urbanist-header {
   background: url(UrbanistAbout.jpg);
   background-repeat: no-repeat;
@@ -15852,7 +15855,7 @@ iframe {
   height: 150px;
 }
 
-/* line 3490, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3495, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.urbanist-venues {
   background: url(Urbanist-venues.jpg);
   background-repeat: no-repeat;
@@ -15864,7 +15867,7 @@ iframe {
   height: 150px;
 }
 
-/* line 3501, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3506, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.urbanist-featured {
   background: url(Urbanist-featured.jpg);
   background-repeat: no-repeat;
@@ -15876,12 +15879,12 @@ iframe {
   height: 150px;
 }
 
-/* line 3512, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3517, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.urbanist-header.neighborhoodtop h4 {
   margin: 5px 0 0 0;
 }
 
-/* line 3516, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3521, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.marketsquare-header {
   background: url(downtown_btn_new_darker.jpg);
   background-repeat: no-repeat;
@@ -15893,7 +15896,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3527, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3532, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.bloomfield-header {
   background: url(bloomfield-btn3.jpg);
   background-repeat: no-repeat;
@@ -15905,7 +15908,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3538, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3543, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.shadyside-header {
   background: url(shadyside_new_button_darker.jpg);
   background-repeat: no-repeat;
@@ -15917,7 +15920,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3549, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3554, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header1 {
   /** background: url(feature1.png);**/
   background: url(tacos_feature.jpg);
@@ -15930,7 +15933,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3561, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3566, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header2 {
   /**  background: url(feature2.png);**/
   background: url(tacos_feature.jpg);
@@ -15943,7 +15946,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3573, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3578, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header3 {
   /** background: url(feature3.png);**/
   background: url(tacos_feature.jpg);
@@ -15956,7 +15959,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3585, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3590, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header4 {
   /** background: url(feature4.png);**/
   background: url(tacos_feature.jpg);
@@ -15969,7 +15972,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3597, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3602, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header5 {
   /** background: url(feature5.png);**/
   background: url(tacos_feature.jpg);
@@ -15982,7 +15985,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3609, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3614, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header6 {
   /** background: url(feature6.png);**/
   background: url(tacos_feature.jpg);
@@ -15995,7 +15998,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3621, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3626, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header7 {
   /** background: url(feature7.png);**/
   background: url(tacos_feature.jpg);
@@ -16008,7 +16011,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3633, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3638, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header8 {
   /** background: url(feature8.png);**/
   background: url(tacos_feature.jpg);
@@ -16021,7 +16024,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3645, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3650, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header9 {
   /** background: url(feature9.png);**/
   background: url(tacos_feature.jpg);
@@ -16034,7 +16037,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3657, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3662, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.features-header10 {
   /** background: url(feature10.png);**/
   background: url(tacos_feature.jpg);
@@ -16047,7 +16050,7 @@ iframe {
   height: 180px;
 }
 
-/* line 3669, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3674, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.lawrenceville-header {
   background: url("lawrencvile_new_btn_darker.jpg");
   background-repeat: no-repeat;
@@ -16059,7 +16062,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3682, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3687, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.mntwash-header {
   background: url("mountWashington.jpg");
   background-repeat: no-repeat;
@@ -16071,7 +16074,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3693, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3698, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.northside-header {
   background: url("pnc_clemente2.jpg");
   background-repeat: no-repeat;
@@ -16083,7 +16086,7 @@ iframe {
   height: 194px;
 }
 
-/* line 3704, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3709, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.southside-header {
   background: url(/assets/Southside_new_btn_darker-4953c3153cad4ffb5b3e83c3e174e30d2511b37da8708e9831de6f799d5deec6.jpg);
   background-repeat: no-repeat;
@@ -16095,12 +16098,12 @@ iframe {
   height: 194px;
 }
 
-/* line 3715, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3720, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header.neighborhoodtop h4 {
   margin: 20px 0 0 0;
 }
 
-/* line 3719, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3724, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header h5 {
   margin: 0 0 35px 0 !important;
   font-size: 12px;
@@ -16110,7 +16113,7 @@ iframe {
   text-shadow: 0px 0px 6px #000;
 }
 
-/* line 3728, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3733, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .btn, .btn-large, .btn-large {
   background-color: #17a787;
   font-size: 11px;
@@ -16119,7 +16122,7 @@ iframe {
   box-shadow: none;
 }
 
-/* line 3736, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3741, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .badge-section img {
   width: 48px;
   height: auto;
@@ -16127,7 +16130,7 @@ iframe {
   display: block;
 }
 
-/* line 3743, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3748, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .badge-section h6 {
   font-size: 10px;
   color: #000000;
@@ -16137,18 +16140,18 @@ iframe {
   height: 20px;
 }
 
-/* line 3752, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3757, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .badge-section .row .col.s4 {
   padding: 10px 0.75rem;
   height: 120px;
 }
 
-/* line 3757, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3762, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .badge-section {
   padding-top: 8px;
 }
 
-/* line 3761, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3766, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .specials-header h4 {
   margin: 0;
   font-size: 26px;
@@ -16157,17 +16160,17 @@ iframe {
   letter-spacing: .5px;
 }
 
-/* line 3769, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3774, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .card-panel {
   margin: 1rem 0 1rem 0;
 }
 
-/* line 3773, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3778, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .card-panel h2 {
   margin: 1rem 0 1rem 0;
 }
 
-/* line 3777, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3782, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .waves-effect.waves-light.btn-large {
   display: block;
   width: 293px;
@@ -16176,18 +16179,18 @@ iframe {
   color: #4db6ac;
 }
 
-/* line 3785, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3790, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .container h5 {
   margin: 2.82rem 0 0.656rem 0;
 }
 
-/* line 3789, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3794, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 i.tiny {
   margin-right: 6px;
   margin-top: -2px;
 }
 
-/* line 3794, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3799, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .card .card-reveal {
   position: fixed;
   left: 0%;
@@ -16195,13 +16198,13 @@ i.tiny {
   z-index: 998;
 }
 
-/* line 3801, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3806, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .card .card-reveal .specials-header {
   height: auto;
   padding: 22px 18px 18px 18px;
 }
 
-/* line 3806, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3811, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .edit-button-user {
   width: 123px;
   position: absolute;
@@ -16210,7 +16213,7 @@ i.tiny {
   height: 100%;
 }
 
-/* line 3814, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3819, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .edit-button-user a {
   display: block;
   width: 58px;
@@ -16219,14 +16222,14 @@ i.tiny {
   position: relative;
 }
 
-/* line 3822, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3827, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .bleft {
   width: 63px;
   display: inline;
   height: 100%;
 }
 
-/* line 3838, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3843, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .edit-button-user a .zmdi {
   width: 53px;
   padding: 0 23px;
@@ -16239,13 +16242,13 @@ i.tiny {
   font-size: 24px;
 }
 
-/* line 3850, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3855, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .edit-btn.btn .zmdi, .edit-btn.btn-large .zmdi {
   color: #1fdeb4;
   font-size: 26px;
 }
 
-/* line 3856, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3861, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .zmdi-time {
   margin-top: -1px;
   margin-right: 6px !important;
@@ -16255,23 +16258,23 @@ i.tiny {
   height: auto !important;
 }
 
-/* line 3865, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3870, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .addedpadding {
   padding-right: 135px !important;
 }
 
-/* line 3869, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3874, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .edit-button-user .bleft a .material-icons {
   border-left: 1px solid #ddd;
 }
 
-/* line 3873, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3878, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .morehourslist li {
   margin: 34px 0;
   font-size: 13px;
 }
 
-/* line 3878, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3883, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .morehourslist .valign-wrapper {
   align-items: center;
   color: #17a787;
@@ -16288,19 +16291,19 @@ i.tiny {
   justify-content: center;
 }
 
-/* line 3892, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3897, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .morehourslist .valign-wrapper i.tiny {
   margin-top: 0px;
 }
 
-/* line 3896, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3901, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .detailstitle {
   background-color: #0c0c0c;
   height: auto;
   position: relative;
 }
 
-/* line 3902, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3907, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .detailstitle h4 {
   font-size: 26px;
   font-weight: bold;
@@ -16310,7 +16313,7 @@ i.tiny {
   margin: 0;
 }
 
-/* line 3911, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3916, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .detailstitle h2 {
   margin: 0;
   font-size: 11px;
@@ -16323,13 +16326,13 @@ i.tiny {
   text-align: center;
 }
 
-/* line 3923, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3928, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .collapsible {
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* line 3928, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3933, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .card {
   margin: 0;
   background-color: #fff;
@@ -16338,17 +16341,17 @@ i.tiny {
   border-bottom: 1px solid #D6D5D5;
 }
 
-/* line 3936, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3941, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .card .card-action a {
   width: 49%;
 }
 
-/* line 3940, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3945, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .row.brews-list {
   margin-bottom: 0;
 }
 
-/* line 3944, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3949, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .row.brews-list h4 {
   font-size: 16px;
   font-weight: 600;
@@ -16356,7 +16359,7 @@ i.tiny {
   margin: 13px 50px 15px 41px;
 }
 
-/* line 3951, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3956, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .icon-remove-add a {
   position: absolute;
   z-index: 900;
@@ -16365,19 +16368,19 @@ i.tiny {
   margin-left: 16px;
 }
 
-/* line 3959, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3964, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .newbeerbtn {
   padding: 20px;
 }
 
-/* line 3963, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3968, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .newbeerbtn a {
   margin: 0 auto;
   width: 80%;
   display: block;
 }
 
-/* line 3969, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3974, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .listtitle {
   /*    background: #fff;
       width: initial;
@@ -16401,7 +16404,7 @@ i.tiny {
 /* .title-sep {
   padding: 30px 0;
 } */
-/* line 3993, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+/* line 3998, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
 .title-sep hr {
   border-color: #D6D5D5;
   border-style: solid;
@@ -16411,18 +16414,18 @@ i.tiny {
 }
 
 @media only screen and (min-width: 993px) {
-  /* line 4003, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4008, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   nav a img {
     margin-left: 2px;
   }
 
-  /* line 4011, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4016, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   nav ul li {
     height: 50px;
     margin-top: -7px;
   }
 
-  /* line 4016, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4021, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   nav ul a {
     height: 50px;
     text-transform: uppercase;
@@ -16433,18 +16436,18 @@ i.tiny {
   }
 }
 @media only screen and (max-width: 600px) {
-  /* line 4032, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4037, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .urbanist-featured .featured-dish-section .card-image {
     margin-left: -15px;
     margin-right: -15px;
   }
 
-  /* line 4037, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4042, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .main-con-header img {
     display: none;
   }
 
-  /* line 4041, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4046, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .under-con .main-con-header img {
     padding: 30px;
     height: auto;
@@ -16455,19 +16458,19 @@ i.tiny {
     max-width: 330px;
   }
 
-  /* line 4051, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4056, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .under-con h2 {
     text-align: center;
     margin-top: 70px;
     font-size: 39px;
   }
 
-  /* line 4057, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4062, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .image-btns {
     padding: 62px 5px;
   }
 
-  /* line 4063, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4068, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .under-con p {
     text-align: center;
     margin-bottom: 20px;
@@ -16475,66 +16478,66 @@ i.tiny {
     padding: 0 20px;
   }
 
-  /* line 4070, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4075, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .main-con-header a {
     margin: 0 auto;
   }
 
-  /* line 4074, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4079, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .main-con-header {
     height: auto;
     background-color: #020202;
   }
 
-  /* line 4079, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4084, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .under-con-header {
     display: none;
   }
 
-  /* line 4083, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4088, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .slider .slides {
     height: 260px !important;
   }
 
-  /* line 4087, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4092, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .slider {
     height: 260px !important;
   }
 
-  /* line 4091, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4096, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .featured-dish-section .card-image {
     margin: 0 -20px;
   }
 
-  /* line 4096, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4101, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .con-content2 .row .col.m4 {
     padding: 25px;
   }
 
-  /* line 4100, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4105, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .con-content2 {
     background-color: #fff;
     margin-bottom: 20px;
   }
 
-  /* line 4105, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4110, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .main-con-header h2 {
     font-size: 30px;
   }
 
-  /* line 4111, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4116, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .con-content2 img {
     max-width: 247px;
     margin: 0 auto;
     display: block;
   }
 
-  /* line 4117, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4122, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .con-content-p {
     margin-bottom: 46px;
   }
 
-  /* line 4121, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
+  /* line 4126, /home/ubuntu/workspace/app/assets/stylesheets/application.css.scss */
   .con-content2 h6 {
     text-align: center;
     font-weight: 800;

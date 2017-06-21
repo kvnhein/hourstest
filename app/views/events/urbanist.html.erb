@@ -300,7 +300,7 @@
   });
 });
 </script>
-<%=link_to "now", events_now_event_path(1), method: :get, remote: true ,id: "events_now"%>
+
 <div id = "hours_partial">
 
 </div>
@@ -309,22 +309,26 @@
 
 </div>
 
-<%venues = Venue.includes(:events).all.to_a %> 
-<%events = Event.all.to_a%>
-<%@events = events%>
+<div class="container" style="background-color:#eee;">
+<div class="combined-hours">
+<%venues = []%>
 <%special_count = 0%>
-
-<%venues.each_slice(2) do |venue| %>
-	<%venue.each do |venue_list| %>	
-		<br>
-		<%@venue_ids = venues.map {|venue| venue.id }%>
-		<%=render partial: "shared/first_batch_new"%>
-	<%end%>
-	<br>
-	<%if venue.count == 2 %>
-		<%=events[special_count].special%> Special
-	<br>
-		<%special_count = special_count + 1 %>
-	<%end%>
-	<br>
+<%@events.each do |event| %>
+	<%venues.push(event.venue)%>
 <%end%>
+
+	<%venues.uniq.each_slice(3) do |venue| %>
+	 
+		<%venue.each do |venue_list| %>	
+			<%@venue_ids = [venue_list.id]%>
+			<%=render partial: "shared/first_batch_new"%>
+		<%end%>
+		<%if venue.count == 3 %>
+			<%@daily_specials = [DailySpecial.all.to_a[special_count]]%>
+			<%=render "first_special_batch_now"%>
+			<%venues = venues.drop(3)%>
+			<%special_count = special_count + 1 %>
+		<%end%>
+<%end%>
+</div>
+</div>
