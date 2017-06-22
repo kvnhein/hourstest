@@ -327,7 +327,7 @@ s
 		<%end%>
 		<%if venue.count == 1 && count != daily_special_count %>
 			<%@special_array = [@daily_specials[count]]%>
-			<%= count%><%=daily_special_count%>
+			
 			<%=render "first_special_batch_now"%>
 			<%venues = venues.drop(1)%>
 			<%count = count + 1  %>
