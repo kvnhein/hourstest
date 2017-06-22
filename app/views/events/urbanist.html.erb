@@ -318,14 +318,14 @@ s
 	<%venues.push(event.venue)%>
 <%end%>
 
-	<%venues.uniq.each_slice(1) do |venue| %>
+	<%venues.uniq.each_slice(3) do |venue| %>
 	 
 		<%venue.each do |venue_list| %>	
 			<%@venue_ids = [venue_list.id]%>
 			<%=render partial: "shared/first_batch_new"%>
 			
 		<%end%>
-		<%if venue.count == 1 && count != daily_special_count %>
+		<%if venue.count == 3 && count != daily_special_count %>
 			<%@special_array = [@daily_specials[count]]%>
 			
 			<%=render "first_special_batch_now"%>
