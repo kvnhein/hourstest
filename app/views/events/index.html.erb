@@ -22,7 +22,7 @@
 			<%=render partial: "shared/first_batch_new"%>
 		<%end%>
 		<%if venue.count == 3 %>
-			<%@daily_specials = [DailySpecial.all.to_a[special_count]]%>
+			<%@daily_specials = [@daily_specials.all.to_a[special_count]]%>
 			<%=render "first_special_batch_now"%>
 			<%venues = venues.drop(3)%>
 			<%special_count = special_count + 1 %>

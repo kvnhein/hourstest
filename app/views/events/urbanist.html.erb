@@ -300,7 +300,7 @@
   });
 });
 </script>
-
+s
 <div id = "hours_partial">
 
 </div>
@@ -312,22 +312,23 @@
 <div class="container" style="background-color:#eee;">
 <div class="combined-hours">
 <%venues = []%>
-<%special_count = 0%>
 <%@events.each do |event| %>
 	<%venues.push(event.venue)%>
 <%end%>
 
-	<%venues.uniq.each_slice(3) do |venue| %>
+	<%venues.uniq.each_slice(1) do |venue| %>
 	 
 		<%venue.each do |venue_list| %>	
 			<%@venue_ids = [venue_list.id]%>
 			<%=render partial: "shared/first_batch_new"%>
+			
 		<%end%>
-		<%if venue.count == 3 %>
-			<%@daily_specials = [DailySpecial.all.to_a[special_count]]%>
+		<%if venue.count == 1 %>
+			<%@special_array = [@daily_specials.first]%>
 			<%=render "first_special_batch_now"%>
-			<%venues = venues.drop(3)%>
-			<%special_count = special_count + 1 %>
+			<%venues = venues.drop(1)%>
+			<%@daily_specials.drop(1) %>
+			
 		<%end%>
 <%end%>
 </div>
