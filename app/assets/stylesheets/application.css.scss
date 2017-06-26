@@ -1459,6 +1459,19 @@ footer.page-footer {
     
 }
 
+.new-hours-page.about-top {
+   background: #000;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    padding: 20px 20px;
+    margin-bottom: 2px;
+    
+}
+
 .about-top2 {
       position: fixed;
     bottom: 0;
@@ -1476,6 +1489,12 @@ footer.page-footer {
     float: right;
     color: #1fdeb4 !important;
     font-weight: bold;
+}
+
+.awards-holder {
+  z-index: 20;
+    display: block;
+    position: absolute;
 }
 
 .about-top2 p{
@@ -2224,13 +2243,69 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .profile-tabs.venues {
-      padding: 0;
-    margin-top: 2px;
-   background-color:rgba(0,0,0,0);
+         background-color: #fff;
+    padding-top: 5px !important;
+}
+
+.tags-for-hours {
+      background-color: #fff;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #D6D5D5;
+    padding: 13px;
+    clear: both;
 }
 
 .profile-tabs .tabs {
-  background-color: rgba(0,0,0,0)
+  background-color: rgba(0,0,0,0);
+}
+
+.profile-tabs2 {
+  padding:0 !important;
+}
+
+.profile-tabs2 .tabs .indicator {
+  background-color: #17a787;
+}
+
+.profile-tabs2 .tabs {
+    background-color: #fff;
+    border-bottom: 1px solid #D6D5D5;
+    margin-bottom: 10px;
+    border-top: 1px solid #D6D5D5;
+}
+
+.profile-tabs2 .allnowlatertabs {
+    background-color: #fff;
+    border-bottom: 1px solid #D6D5D5;
+    margin-bottom: 10px;
+    border-top: 1px solid #D6D5D5;
+    padding: 20px;
+    width: 100% !important;
+}
+
+.profile-tabs2 .allnowlatertabs ul {
+      margin: 0;
+}
+
+.profile-tabs2 .allnowlatertabs li {
+     line-height: 1px;
+    text-align: center;
+}
+
+.allnowlatertabs ul li a.active {
+  color: #000 !important;
+}
+
+.allnowlatertabs ul li a {
+  color: #17a787 !important;
+}
+
+.profile-tabs2 .tabs .tab a {
+  color:#17a787;
+}
+
+.profile-tabs2 .tabs .tab a.active {
+  color:#000;
 }
 
 .profile-tabs.venues .tabs .indicator {
@@ -2270,11 +2345,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .profile-tabs.venues .tabs .tab a {
-  padding: 124px 47px 0px 12px;
-      font-size: 15px;
+ padding: 97px 25px 0px 10px;
+    line-height: 38px;
+    font-size: 12px;
     font-weight: 300;
     letter-spacing: 0.5px;
-        color: #fff;
+        min-width: 105px;
+    color: #fff;
         
         background: -moz-linear-gradient(top, rgba(0,0,0,0) 1%, rgba(0,0,0,0) 56%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top, rgba(0,0,0,0) 1%,rgba(0,0,0,0) 56%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -3194,6 +3271,19 @@ iframe {
     text-align: center;
 }
 
+.veiw-details-btn {
+  color: #17a787;
+    float: right;
+    padding: 15px;
+    margin: 5px !important;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
 .combined-hours .card {
   margin: 0;
     background-color: #fff;
@@ -3216,7 +3306,10 @@ iframe {
 .combined-hours .teal-text.text-accent-4 {
   letter-spacing: 0;
     font-size: 14px;
+}
 
+.combined-hours .hours-header .teal-text.text-accent-4 {
+  color: #4d4d4d !important;
 }
 
 .combined-hours .featured-dish-section {
@@ -3226,12 +3319,10 @@ iframe {
 }
 
 .happy-hours-footer {
-  border-top: 1px solid #e8e8e8;
   margin-top: 5px;
 }
 
 .hours-header {
-   border-bottom: 1px solid #e8e8e8;
     margin-bottom: 15px;
     padding: 10px;
 }

@@ -1,24 +1,6 @@
-<br><div class = "contributors">
-	<ul class="collapsible beerlist">
-		<%top_5 = 0%>
-		<% @users.all.order("experience desc ").each do |user|%>
-			
-			<%if top_5 < 100%>
-				<%if user.fullname && user.experience%>
-					<div class="collapsible-header special-by-day">
-						<li>
-							<% if user.experience > 100 %>
-								<div class = "right"><i class="tiny material-icons" >verified_user</i></div>
-							<%end%>
-							<p class="namecont"><%= user.fullname%></p>
-							<p>Hours: <%=user.experience%></p>
-						
-						</li>
-					</div>
-					<%top_5 = top_5 + 1 %>
-				<%end%>
-			<%end%>
-		<%end%>
-	</ul>
+<div class ="center" id="specials">
+	<div class="col s3 profilepage">
+			<%= render "new_hours_partial"%>
+	</div>
 </div>
 

@@ -300,13 +300,27 @@ def color_chip(current_hour, current_minute)
 		style="background-color:#17a787"
 	elsif current_hour < 1 && self.end < 23 &&  self.end > 22
 		style="background-color:#17a787"
-    elsif current_hour < 2 && self.end < 24  &&  self.end > 23
+ elsif current_hour < 2 && self.end < 24  &&  self.end > 23
 		style="background-color:#17a787"
 	elsif current_hour-2+(@c.to_f*0.0166) < self.start && current_hour > 2
 		style="background-color:#000000"
 	else
 		style="background-color:#bdbdbd"
-    end
+ end
+end
+
+def current_or_later(current_hour, current_minute)
+	if current_hour-2+(current_minute.to_f*0.0166) > self.start.to_i && current_hour-2+(current_minute.to_f*0.0166) < self.end.to_f
+		 return "current"
+	elsif current_hour < 1 && self.end < 23 &&  self.end > 22
+	  return "current"
+ elsif current_hour < 2 && self.end < 24  &&  self.end > 23
+		return "current"
+	elsif current_hour-2+(@c.to_f*0.0166) < self.start && current_hour > 2
+		return "later"
+	else
+	 return "past"
+ end
 end
 
 def event_now(current_hour, current_minute)

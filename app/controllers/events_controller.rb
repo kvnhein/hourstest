@@ -33,9 +33,14 @@ class EventsController < ApplicationController
   end 
   
   def user_index
-      @users = User.all
-      @urbanist_venues = Venue.where(urbanist: true)
-      @events = Event.where(day: @day_specials)
+      @users = User.all.to_a
+      @events = Event.where(legit_hour: false).to_a
+      @new_events = Event.where(legit_hour: false)
+      @todays_events = Event.after(Date.today - 7).to_a
+       @neighborhoods = Neighborhood.all.to_a
+       @claims = Claim.all.to_a
+        @claims_all = @claims
+      
   end
   
   def events_now
@@ -278,11 +283,11 @@ class EventsController < ApplicationController
     @tag_events = Event.all
    @v = @venues.where( urbanist: true)
 
-   @events = Event.where(day: @day_tag).to_a
+   @page_events = Event.all.to_a
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     elsif params[:urb_tag]
-      @events = Event.tagged_with(params[:urb_tag]).where(day: @day_tag)
+      @page_events = Event.tagged_with(params[:urb_tag])
       @tag_topic = "##{params[:urb_tag]}"
     end
   end

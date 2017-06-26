@@ -4,7 +4,7 @@
 
 
 
- <div class="col s12 m8 offset-m2 featured-dish-section ">
+ <div class="col s12 m12 featured-dish-section ">
     <h5>
     <%= link_to "#{Venue.where(id: event.venue_id).first.name}", venue_path(Venue.where( id: event.venue_id).first.id), class: "teal-text text-accent-4", 'data-no-turbolink' => true %>
     </h5>
@@ -54,7 +54,4 @@
 </div>
 
 <%end%>
-
-
-
 

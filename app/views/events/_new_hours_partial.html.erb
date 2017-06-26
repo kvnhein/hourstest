@@ -52,55 +52,48 @@
    <div class="weeklyhours beerlist" id="firstfade">
     <div id="SunTab" class="col s12 showday center">
         <%@h = "Sunday"%>
-        <%@next_week = @date%>
-        <%@next_week += 1 + ((6-@next_week.wday) % 7) %> 
+        
         <% @d = "Sunday" %>
         <%= render "new_events"%>
    </div>
     <div id="MonTab" class="col s12 showday center">
         <%@h = "Monday"%>
-        <%@next_week = @date%>
-        <%@next_week += 1 + ((0-@next_week.wday) % 7) %> 
+        
         <% @d ="Monday" %>
         <%= render "new_events"%>
    </div>
     <div id="TueTab" class="col s12 showday center">
 
       <% @h = "Tuesday"%>
-      <%@next_week = @date%>
-      <%@next_week += 1 + ((1-@next_week.wday) % 7) %> 
+     
       <% @d = "Tuesday" %>
         <%= render "new_events"%>
    </div>
     <div id="WedTab" class="col s12 showday center">
 
        <% @h = "Wednesday"%>
-       <%@next_week = @date%>
-       <%@next_week += 1 + ((2-@next_week.wday) % 7) %> 
+       
         <% @d = "Wednesday"%>
        <%= render "new_events"%>
    </div>
      <div id="ThurTab" class="col s12 showday center">
 
        <% @h = "Thursday"%>
-       <%@next_week = @date%>
-       <%@next_week += 1 + ((3-@next_week.wday) % 7) %> 
+        
         <% @d = "Thursday" %>
        <%= render "new_events"%>
    </div>
      <div id="FriTab" class="col s12 showday center">
 
        <% @h = "Friday"%>
-       <%@next_week = @date%>
-       <%@next_week += 1 + ((4-@next_week.wday) % 7) %> 
+      
         <% @d = "Friday"%>
         <%= render "new_events"%>
    </div>
    <div id="SatTab" class="col s12 showday center">
 
        <% @h = "Saturday"%>
-       <%@next_week = @date%>
-       <%@next_week += 1 + ((5-@next_week.wday) % 7) %> 
+       
         <% @d = "Saturday" %>
         <%= render "new_events"%>
    </div>
