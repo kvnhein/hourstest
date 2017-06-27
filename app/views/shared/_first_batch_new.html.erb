@@ -76,6 +76,8 @@
                			<div class="new-event" id = "new-event<%=event.id%>">
                				<%if  event.cached_claims?%>
 								<i class="zmdi zmdi-flag"></i>
+							<%elsif event.credits + event.cached_votes_total > 20 %>
+							   <i class="material-icons">whatshot</i>
 							<%end%>
                   		
                			</div>
@@ -89,7 +91,7 @@
 					<!--div class="card-content">-->
 					<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
 					
-					<a class="modal-trigger waves-effect waves-light btn openhours" href="#modal2<%=current_venue.id%>">View Details</a>
+					<a class="modal-trigger waves-effect waves-light btn openhours" href="#modal2<%=current_venue.id%>"></a>
 					<div class="happy-hours-footer">
 						<div class="awards-holder">
 					<%if current_venue.urbanist == true %>

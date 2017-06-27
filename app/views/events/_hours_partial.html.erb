@@ -61,7 +61,7 @@
                <li class="tab col s4"><a class="active" href="#all">All</a></li>
                 <li class="tab col s4"><a href="#now">Now</a></li>
                 <li class="tab col s4"><a href="#later">Later</a></li>
-            </ul
+            </ul>
         </div>
     </div>
     <% venue_id = @venues.select {|venue| venue.neighborhood_id == 5 }.map { |venue| venue.id }%>
@@ -75,6 +75,7 @@
     
     <!-- current-->
     <div id="now">
+        now?
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
@@ -85,7 +86,7 @@
     <%=render 'one_page_batch'%>
     </div>
 </div>
-</div>
+
 
 <div id="Southside">
     
@@ -94,16 +95,17 @@
      <% venue_id = @venues.select {|venue| venue.neighborhood_id == 1 }.map { |venue| venue.id }%>
      
       <div class="col s12 profile-tabs2">
-        <div id="tabs3" class="allnowlatertabs">
-            <ul>
-               <li class="tab col s4"><a class="active2" href="#all">All</a></li>
-                <li class="tab col s4"><a href="#now2">Now</a></li>
-                <li class="tab col s4"><a href="#later2">Later</a></li>
-            </ul
+            <div id="tabs3" class="allnowlatertabs">
+                <ul>
+                   <li class="tab col s4"><a class="active" href="#all2">All</a></li>
+                    <li class="tab col s4"><a href="#now2">Now</a></li>
+                    <li class="tab col s4"><a href="#later2">Later</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    
      <!-- all -->
-     <div id="active2">
+     <div id="all2">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
@@ -129,11 +131,7 @@
         <li class="tab col s4"><a href="#later2">Later</a></li>
     </ul>
 
-      <script>
-          $(window).load(function () {
-            $("#tabs3").tabs();
-        });
-      </script>
+     
     </div>
     
   <% venue_id = @venues.select {|venue| venue.neighborhood_id == 2 }.map { |venue| venue.id }%>
@@ -152,7 +150,6 @@
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
-</div>
 </div>
 
 <div id="Oakland">
@@ -259,11 +256,6 @@
 </div>
 </div>
 
-<script>
-          $(window).load(function () {
-            $("#tabs2").tabs();
-             $("#tabs3").tabs();
-        });
-      </script>
+
       
    
