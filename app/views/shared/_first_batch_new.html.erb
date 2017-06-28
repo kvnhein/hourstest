@@ -66,18 +66,19 @@
 						  </a>
 						<%end%>
 					    </div>
+					    
 					
 						<!---This is where it ends-->
 					<%unievents.reverse.each do |event|%>
 					 <div class="chip-piece center">
-                		<div class="chip" style="<%=event.color_chip(@b,@c)%>">
+                		<div <%=event.color_chip(@b,@c)%>>
                   			<%=event.special%>
                 		</div>
                			<div class="new-event" id = "new-event<%=event.id%>">
                				<%if  event.cached_claims?%>
 								<i class="zmdi zmdi-flag"></i>
-							<%elsif event.credits + event.cached_votes_total > 20 %>
-							   <i class="material-icons">whatshot</i>
+							<%else%>
+							   <%= event.hot_event%>
 							<%end%>
                   		
                			</div>

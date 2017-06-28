@@ -1,21 +1,25 @@
-<%x=[]%><%@events.each do |event| %>
-	<!--x.push(@venues.find(event.venue_id).id)-->
-	<%x.push(event.venue_id)%>
-<%end%>
-
+<%x = @venue_ids%>
 
 <%x.uniq.each do |d|%>
 
 	<%@e = @events.select {|event| event.venue_id == d}.sort! { |a,b| a.start <=> b.start }.reverse%>
 	<%current_venue = @venues.select{|venue| venue.id == d }.first%>
+	
 	<div class="row hourslist">
 		<div class="col s12">
 			<div class="card">
 				<div class="card-content">
-					<span class="card-title activator">
+					
+				
+					<div class="hours-header">
+					<span class="teal-text text-accent-4 activator">
 						<%= current_venue.name%>
 					</span>
-					<br>
+							
+					<div class="arrow arrow-with-header">
+						  <%= image_tag "arrow.png"%>
+						</div>
+					</div>
 					<!--==This is where the uniq special code is going in -->
 					<%unievents = []%> 
 					<%unispecials = []%> 
@@ -26,29 +30,11 @@
 								<%unispecials.push(test)%> 
 							<%end%> 
 					<%end%>
-					<div class="arrow">
-						<%= image_tag "arrow.png"%>
-		
-					</div>
-					<%if current_venue.urbanist == true %>
-					<div class="urbanist">
-						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
-							<%= image_tag "hourspgh-award.png"%>
-						</a>
-						
-					</div>
-					<%end%>
-					<%if current_venue.spr_rank == 1 %>
-					<div class="sustainablepgh">
-						<a href="#modal1<%=current_venue.id%>" class="modal-trigger">
-							<%= image_tag "SustainablePittsburgh.png"%>
-						</a>
-
-					</div>
-					<%end%>
+					
+				
 					<!-- Modal Structure -->
 					
-					  <div id="modal1<%=current_venue.id%>" class="modal awards-key">
+					  <div id="modalnowAwards<%=current_venue.id%>" class="modal awards-key">
 					    <div class="modal-content">
 					      <h4>restraunt awards key</h4>
 					      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="zmdi zmdi-close"></i></a>
@@ -80,20 +66,19 @@
 						  </a>
 						<%end%>
 					    </div>
+					    
 					
 						<!---This is where it ends-->
 					<%unievents.reverse.each do |event|%>
-					 <div class="chip-piece">
+					 <div class="chip-piece center">
                 		<div <%=event.color_chip(@b,@c)%>>
                   			<%=event.special%>
                 		</div>
                			<div class="new-event" id = "new-event<%=event.id%>">
-               				
                				<%if  event.cached_claims?%>
 								<i class="zmdi zmdi-flag"></i>
 							<%else%>
-								<%=event.event_is_new%>
-								<%= event.hot_event%>
+							   <%= event.hot_event%>
 							<%end%>
                   		
                			</div>
@@ -101,15 +86,37 @@
               <%end%>
 					
 			  <div class="directions-btn">
-				<a class="btn-flat disabled teal-text text-accent-4" href="http://www.google.com/maps/place/<%= current_venue.address %>" target="_blank"><i class="material-icons">directions</i></a>
+				<a class="activator waves-effect waves-light btn openhours2" href="http://www.google.com/maps/place/<%= current_venue.address %>" target="_blank"><i style="vertical-align: bottom;" class="hide material-icons">directions</i>Directions</a>
 			  </div>
 					
 					<!--div class="card-content">-->
 					<!-- <a class="activator waves-effect waves-light btn"><i class="material-icons left" style = "color:#ffffff ">query_builder</i>HOURS</a> -->
-					<!--a class="activator waves-effect waves-light btn openhours"></a-->
-					<a class="modal-trigger waves-effect waves-light btn openhours" href="#modal2<%=current_venue.id%>">Modal</a>
+					
+					<a class="modal-trigger waves-effect waves-light btn openhours" href="#modalnow<%=current_venue.id%>"></a>
+					<div class="happy-hours-footer">
+						<div class="awards-holder">
+					<%if current_venue.urbanist == true %>
+					<div class="urbanist">
+						<a href="#modalnowAwards<%=current_venue.id%>" class="modal-trigger">
+							<%= image_tag "hourspgh-award.png"%>
+						</a>
+						
+					</div>
+					<%end%>
+					<%if current_venue.spr_rank == 1 %>
+					<div class="sustainablepgh">
+						<a href="#modalnowAwards<%=current_venue.id%>" class="modal-trigger">
+							<%= image_tag "SustainablePittsburgh.png"%>
+						</a>
+
+					</div>
+					<%end%>
+					</div>
+						
+						<h5 class="veiw-details-btn">View Details</a>
+					</div>
 				</div>
-				<div class="modal modal-fixed-footer openhoursmodal" id="modal2<%=current_venue.id%>">
+				<div class="modal modal-fixed-footer openhoursmodal" id="modalnow<%=current_venue.id%>">
 				<div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><i class="zmdi zmdi-chevron-left"></i>Back</a>
       
@@ -317,15 +324,18 @@
 					</div>
 						
 				</div>
-				<!-- <div class="card-action">
-              <a href="#">Menu</a>
-              <a href="#">Share</a>
-            </div>-->
+			
 			</div>
 		</div>
 	</div>
 	
 <%end%>
+
+
+
+
+
+
 
 
 	<!-- This is the code to hide form-->

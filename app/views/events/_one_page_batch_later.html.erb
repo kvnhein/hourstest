@@ -1,0 +1,24 @@
+<%venues = []%>
+<%count = 0 %>
+<%daily_special_count = @daily_specials.count%> 
+<%@events.each do |event| %>
+	<%venues.push(event.venue)%>
+<%end%>
+  
+	<%venues.uniq.each_slice(3) do |venue| %>
+	 
+		<%venue.each do |venue_list| %>	
+			<%@venue_ids = [venue_list.id]%>
+			<%=render partial: "shared/first_batch_later"%>
+			
+		<%end%>
+		<%if venue.count == 3 && count != daily_special_count %>
+			<%@special_array = [@daily_specials[count]]%>
+			
+			<%=render "first_special_batch_now"%>
+			<%venues = venues.drop(1)%>
+			<%count = count + 1  %>
+			
+			
+		<%end%>
+<%end%>

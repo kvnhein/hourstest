@@ -127,12 +127,45 @@ $(document).ready(function() {
   
 </script>
 
+
+
 <script>
           $(window).load(function () {
             $("#tabs2").tabs();
              $("#tabs3").tabs();
         });
       </script>
+      
+ <script>
+     $(document).ready(function () {
+    
+     				$(".all-hours-list").show();
+                $(".now-hours-list").show();
+                $(".later-chips").show();
+                
+        $('input[type="radio"]').click(function () {
+            if ($(this).attr("value") == "all") {
+             $(".hours-list").hide();
+                $(".all-hours-list").show();
+                $(".now-hours-list").show();
+                $(".later-hours-list").show();
+            }
+            if ($(this).attr("value") == "now") {
+                $(".hours-list").hide();
+                $(".now-hours-list").show();
+            }
+            if ($(this).attr("value") == "later") {
+                $(".hours-list").hide();
+                $(".later-hours-list").show();
+            }
+        });
+    });
+</script>
+
+
+
+
+
 
 
 

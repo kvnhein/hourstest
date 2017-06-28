@@ -22,6 +22,11 @@ def claim_count(claims)
      
  end
  
+ def hot_event
+  if self.credits + self.cached_votes_total > 40
+   return "<i class='material-icons'>whatshot</i>".html_safe
+  end
+ end 
  
  def average_rating
   reviews.count == 0 ? 0 : reviews.average(:star).round(2)
@@ -297,15 +302,15 @@ end
 
 def color_chip(current_hour, current_minute)
 	if current_hour-2+(current_minute.to_f*0.0166) > self.start.to_i && current_hour-2+(current_minute.to_f*0.0166) < self.end.to_f
-		style="background-color:#17a787"
+		return "class = 'chip now-chips' style='background-color:#17a787'".html_safe
 	elsif current_hour < 1 && self.end < 23 &&  self.end > 22
-		style="background-color:#17a787"
+		return "class = 'chip now-chips' style='background-color:#17a787'".html_safe
  elsif current_hour < 2 && self.end < 24  &&  self.end > 23
-		style="background-color:#17a787"
+		return "class = 'chip now-chips' style='background-color:#17a787'".html_safe
 	elsif current_hour-2+(@c.to_f*0.0166) < self.start && current_hour > 2
-		style="background-color:#000000"
+		return "class = 'chip later-chips' style='background-color:#000000'".html_safe
 	else
-		style="background-color:#bdbdbd"
+		return "class = 'chip past-chips' style='background-color:#bdbdbd'".html_safe
  end
 end
 
