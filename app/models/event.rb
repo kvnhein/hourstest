@@ -23,7 +23,7 @@ def claim_count(claims)
  end
  
  def hot_event
-  if self.credits + self.cached_votes_total > 40
+  if self.credits + self.cached_votes_total > 20
    return "<i class='material-icons'>whatshot</i>".html_safe
   end
  end 
