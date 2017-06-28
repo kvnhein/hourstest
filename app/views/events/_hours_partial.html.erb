@@ -49,22 +49,24 @@
 
 
 
-<div class = "center tags-for-hours">
+<div class = "center tags-for-hours hide">
 <%= raw @tag_events.tag_counts_on(:tags).limit(5).map { |t| link_to t.name, urb_tag_path(t.name), class:"disabled teal-text text-accent-4" }.join('  |') %> | <%=link_to "All", urbanist_path, class:"disabled teal-text text-accent-4"%>
 </div>
 
 <!--NEW NOW TABS-->
-    <div class="center">
-        <div class="tab col s4">
-            <label><input type="radio" name="colorRadio" value="all" checked="checked">All</label>
-        </div>
-        <div class="tab col s4">
-            <label><input type="radio" name="colorRadio" value="now">Now</label>
-        </div>
-        <div class="tab col s4">
-            <label><input type="radio" name="colorRadio" value="later">Later</label>
-        </div>
-    </div>
+    
+     <div class="col s12 profile-tabs3 center">
+    <label  class="tab col s4 all-hours-list-btn active">
+        <input type="radio" name="colorRadio" value="all-hours-list">All</label>
+    <label  class="tab col s4 now-hours-list-btn">
+        <input type="radio" name="colorRadio" value="now-hours-list">Now</label>
+    <label  class="tab col s4 later-hours-list-btn">
+        <input type="radio" name="colorRadio" value="later-hours-list">Later</label>
+</div>
+    
+    
+    
+    
 
     <!--END NEW NOW TABS-->
 
@@ -72,36 +74,25 @@
 <%@day_specials = @day_tag%>
 <%events_all = @page_events%>
 <div id="Market_Square">
-    <div class="col s12 profile-tabs2 hide">
-        <div id="tabs2" class="allnowlatertabs">
-            <ul>
-               <li class="tab col s4"><a class="active" href="#all">All</a></li>
-                <li class="tab col s4"><a href="#now">Now</a></li>
-                <li class="tab col s4"><a href="#later">Later</a></li>
-            </ul>
-        </div>
-    </div>
     
-    
-    
-    
-    <% venue_id = @venues.select {|venue| venue.neighborhood_id == 5 }.map { |venue| venue.id }%>
+
+        <% venue_id = @venues.select {|venue| venue.neighborhood_id == 5 }.map { |venue| venue.id }%>
 
      <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
+     <div id="all-hours-list" class="all-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
     
     
     <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
+    <div id="now-hours-list" class="now-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_now'%>
     </div>
     
     <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
+    <div id="later-hours-list" class="later-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_later'%>
     </div>
@@ -110,35 +101,24 @@
 
 <div id="Southside">
     
-   
-    
+
      <% venue_id = @venues.select {|venue| venue.neighborhood_id == 1 }.map { |venue| venue.id }%>
-     
-      <div class="col s12 profile-tabs2">
-            <div id="tabs3" class="allnowlatertabs">
-                <ul>
-                   <li class="tab col s4"><a class="active" href="#all2">All</a></li>
-                    <li class="tab col s4"><a href="#now2">Now</a></li>
-                    <li class="tab col s4"><a href="#later2">Later</a></li>
-                </ul>
-            </div>
-        </div>
-    
+
       <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
+     <div id="all-hours-list" class="all-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
     
     
     <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
+    <div id="now-hours-list" class="now-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_now'%>
     </div>
     
     <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
+    <div id="later-hours-list" class="later-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_later'%>
     </div>
@@ -147,151 +127,73 @@
 
 <div id="Shadyside">
     
-     <div id="tabs3" class="allnowlatertabs">
-    <ul>
-       <li class="tab col s4"><a class="active2" href="#all">All</a></li>
-        <li class="tab col s4"><a href="#now2">Now</a></li>
-        <li class="tab col s4"><a href="#later2">Later</a></li>
-    </ul>
 
-     
-    </div>
-    
   <% venue_id = @venues.select {|venue| venue.neighborhood_id == 2 }.map { |venue| venue.id }%>
      <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
+     <div id="all-hours-list" class="all-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
     
     
     <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
+    <div id="now-hours-list" class="now-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_now'%>
     </div>
     
     <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
+    <div id="later-hours-list" class="later-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_later'%>
     </div>
 </div>
 
 <div id="Oakland">
+
    <% venue_id = @venues.select {|venue| venue.neighborhood_id == 3 }.map { |venue| venue.id }%>
    
-   <div class="col s12 profile-tabs2">
-      <ul class="tabs">
-        <li class="tab col s4"><a class="active3" href="#all">All</a></li>
-        <li class="tab col s4"><a href="#now3">Now</a></li>
-        <li class="tab col s4"><a href="#later3">Later</a></li>
-      </ul>
-    </div>
+   
     
       <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
+     <div id="all-hours-list" class="all-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
     
     
     <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
+    <div id="now-hours-list" class="now-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_now'%>
     </div>
     
     <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch_later'%>
-    </div>
-</div>
-
-<div id="Lawrenceville">
-   <% venue_id = @venues.select {|venue| venue.neighborhood_id == 7 }.map { |venue| venue.id }%>
-     <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch'%>
-    </div>
-    
-    
-    <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch_now'%>
-    </div>
-    
-    <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch_later'%>
-    </div>
-</div>
-
-<div id="Strip_district">
-   <% venue_id = @venues.select {|venue| venue.neighborhood_id == 11 }.map { |venue| venue.id }%>
-     <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch'%>
-    </div>
-    
-    
-    <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch_now'%>
-    </div>
-    
-    <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch_later'%>
-    </div>
-</div>
-
-<div id="East_liberty">
-  <% venue_id = @venues.select {|venue| venue.neighborhood_id == 9 }.map { |venue| venue.id }%>
-     <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch'%>
-    </div>
-    
-    
-    <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
-    <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
-    <%=render 'one_page_batch_now'%>
-    </div>
-    
-    <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
+    <div id="later-hours-list" class="later-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_later'%>
     </div>
 </div>
     
 <div id="bloomfield_tab">
+    
+
   <% venue_id = @venues.select {|venue| venue.neighborhood_id == 6 }.map { |venue| venue.id }%>
-     <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
+      <!-- all -->
+     <div id="all-hours-list" class="all-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
     
     
     <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
+    <div id="now-hours-list" class="now-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_now'%>
     </div>
     
     <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
+    <div id="later-hours-list" class="later-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_later'%>
     </div>
@@ -299,44 +201,48 @@
 
     
 <div id="mt_washington">
+    
+
   <% venue_id = @venues.select {|venue| venue.neighborhood_id == 13 }.map { |venue| venue.id }%>
-      <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
+ <!-- all -->
+     <div id="all-hours-list" class="all-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
     
     
     <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
+    <div id="now-hours-list" class="now-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_now'%>
     </div>
     
     <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
+    <div id="later-hours-list" class="later-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_later'%>
     </div>
 </div>
 
 <div id="north_side">
+    
+
   <% venue_id = @venues.select {|venue| venue.neighborhood_id == 12 }.map { |venue| venue.id }%>
-     <!-- all -->
-     <div id="all" class="all-hours-list hours-list">
+    <!-- all -->
+     <div id="all-hours-list" class="all-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day)}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch'%>
     </div>
     
     
     <!-- current-->
-    <div id="now" class="now-hours-list hours-list">
+    <div id="now-hours-list" class="now-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "current"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_now'%>
     </div>
     
     <!-- later -->
-    <div id="later" class="later-hours-list hours-list">
+    <div id="later-hours-list" class="later-hours-list hours-list">
     <%@events = events_all.select{|event|  venue_id.include?(event.venue_id)}.select {|event| @day_specials.include?(event.day) && event.current_or_later(@b,@c) == "later"}.sort! {|x,y| (y.cached_votes_total + y.credits) <=> (x.cached_votes_total + x.credits)}%>
     <%=render 'one_page_batch_later'%>
     </div>

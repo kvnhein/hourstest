@@ -140,23 +140,33 @@ $(document).ready(function() {
      $(document).ready(function () {
     
      				$(".all-hours-list").show();
-                $(".now-hours-list").show();
-                $(".later-chips").show();
+
                 
         $('input[type="radio"]').click(function () {
-            if ($(this).attr("value") == "all") {
+            if ($(this).attr("value") == "all-hours-list") {
              $(".hours-list").hide();
                 $(".all-hours-list").show();
-                $(".now-hours-list").show();
-                $(".later-hours-list").show();
+               
+                $('.later-hours-list-btn').removeClass('active');
+                $('.now-hours-list-btn').removeClass('active');
+                $('.all-hours-list-btn').addClass('active');
             }
-            if ($(this).attr("value") == "now") {
+            if ($(this).attr("value") == "now-hours-list") {
                 $(".hours-list").hide();
                 $(".now-hours-list").show();
+                
+                 $('.later-hours-list-btn').removeClass('active');
+                $('.all-hours-list-btn').removeClass('active');
+                $('.now-hours-list-btn').addClass('active');
+                
             }
-            if ($(this).attr("value") == "later") {
+            if ($(this).attr("value") == "later-hours-list") {
                 $(".hours-list").hide();
                 $(".later-hours-list").show();
+                
+                    $('.all-hours-list-btn').removeClass('active');
+                    $('.now-hours-list-btn').removeClass('active');
+                    $('.later-hours-list-btn').addClass('active');
             }
         });
     });
