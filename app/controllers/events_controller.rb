@@ -337,7 +337,7 @@ class EventsController < ApplicationController
     @topic_description = "Never miss another happy hour in Pittsburgh with HoursPGH"
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -390,7 +390,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-   increase_array = [0,0,0,0,0,1,2,3,4]
+   increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -438,7 +438,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -486,7 +486,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -533,7 +533,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -580,7 +580,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -627,7 +627,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -674,7 +674,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -720,7 +720,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -767,7 +767,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
@@ -813,7 +813,7 @@ class EventsController < ApplicationController
     
     current_date = Date.current
     
-    increase_array = [0,0,0,0,0,1,2,3,4]
+    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
         feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)

@@ -24,7 +24,7 @@ class DailySpecialsController < ApplicationController
 
   end
   
-  increase_array = [0,0,0,0,0,1,2,3,4]
+  increase_array = [0,0,0,0,0,1,2,1,1]
    @daily_specials.to_a.each do |feature|
      if feature.credit > 0 
         feature_increase = (feature.credit*increase_array[rand(0..8)])/feature.credit
