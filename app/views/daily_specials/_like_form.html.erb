@@ -9,7 +9,9 @@
 				    <%= render 'daily_specials/upvote' %>
 			    <% end %>
           <%else%>
-             <%= link_to "Like", new_user_session_path%>
+             <%=link_to new_user_session_path  do%>
+               <i class="zmdi zmdi-favorite-outline"></i>
+            <%end%>
           <%end%>
      </div>
 </div>

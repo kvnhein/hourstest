@@ -141,6 +141,8 @@ resources :events do
   resources :venues do
     member do
       get :venue_verified
+      put "like", to: "venues#upvote"
+      put "dislike", to: "venues#downvote"
     end
   end
   

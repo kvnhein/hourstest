@@ -1,0 +1,5 @@
+$('#venue-down<%=@venue.id%>').bind('ajax:success', function() {
+    $('#venue-special<%=@venue.id%>').html('<%=escape_javascript @venue.get_upvotes.size.to_s %>');
+    $('#venue-like-<%=@venue.id%>').html('<%=escape_javascript (render partial: "shared/venue_upvote") %>');
+
+});

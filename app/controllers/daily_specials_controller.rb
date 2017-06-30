@@ -83,6 +83,8 @@ class DailySpecialsController < ApplicationController
 
     respond_to do |format|
       if @daily_special.save
+        
+      
         Venue.where(id: @daily_special.venue_id).first.update_attribute(:venue_verify, Time.now)
         format.html { redirect_to Venue.where(id: @daily_special.venue_id).first, notice: 'Daily special was successfully created.' }
         format.json { render :show, status: :created, location: @daily_special }
@@ -93,6 +95,13 @@ class DailySpecialsController < ApplicationController
       end
     end
   end
+  
+  
+  
+  
+  
+  
+  
   def dish_limited
     @dailyspecial.update_attribute(:dish_status, "limited")
     redirect_to action: "index", notice: "Special's status has been changed to 'Limited'"

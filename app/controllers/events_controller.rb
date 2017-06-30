@@ -96,8 +96,8 @@ class EventsController < ApplicationController
     #@verified_this_week = Venue.all
     
     
-    claim_index = Claim.all
-    claim_index.each do |claim|
+    @claim_index = Claim.all.to_a
+    @claim_index.each do |claim|
         if claim.status == 1 && (claim.created_at + 7.days).to_date == Date.current
            # claim.event.status = 1
            # claim.event.save
@@ -220,10 +220,11 @@ class EventsController < ApplicationController
   def urbanist
       
     @users = User.all
-    @urbanist_venues = @venues.all
+    events_all = Event.all
     venues = Venue.all.to_a
-    @events = Event.where(day: @day_specials).to_a
-      @claims_all = Claim.all.to_a
+    
+    @events = events_all.to_a.select{|event| event.day == @day_specials}
+      @claims_all = @claim_index
     #this is for OG
     @topic = "Happy Hours at Urbanist Approved Venues in Pittsburgh"
     @topic_description = "URBANIST guide aims to produce the best printed city guides in the nation"
@@ -234,14 +235,8 @@ class EventsController < ApplicationController
     @week_ago = 7.day.ago
     @month_ago = 1.month.ago
 
-    @shadyside_venues = @venues.where(neighborhood_id: 2)
-    @south_side_venues = @venues.where(neighborhood_id: 1)
-    @oakland_venues = @venues.where(neighborhood_id: 3)
-    @lawrenceville_bloomfield_venues = @venues.where(neighborhood_id: [7,6])
-    @market_square_venues = @venues.where( neighborhood_id: 5)
-    @strip_district_venues = @venues.where(neighborhood_id: 11)
 
-    @urbanist_venues = Venue.all
+   
     @daily_specials =  DailySpecial.today.to_a
 
     @verified_this_weeku = @venues.between_times(@week_ago, @today).where(urbanist: true)
@@ -280,10 +275,10 @@ class EventsController < ApplicationController
 
 
 
-    @tag_events = Event.all
+    @tag_events = events_all
    @v = @venues.where( urbanist: true)
 
-   @page_events = Event.all.to_a
+   @page_events = events_all.to_a
    if params[:search]
       @events = Event.where(venue_id: @v.pluck(:id), day: @day_tag).special_like("%#{params[:search]}%").order('special')
     elsif params[:urb_tag]
@@ -339,7 +334,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
          
@@ -392,7 +387,7 @@ class EventsController < ApplicationController
     
    increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
 
@@ -440,7 +435,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
 
@@ -488,7 +483,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
 
@@ -535,7 +530,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
   end
@@ -582,7 +577,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
   end
@@ -629,7 +624,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
   end
@@ -676,7 +671,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
   end
@@ -722,7 +717,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
   end
@@ -769,7 +764,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
   end
@@ -815,7 +810,7 @@ class EventsController < ApplicationController
     
     increase_array = [0,0,0,0,0,1,2,1,1]
     @daily_specials.each do |feature|
-        feature_increase = (feature.credit*increase_array[rand(0..8)])/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
+        feature_increase = (feature.credit*(increase_array[rand(0..8)]) + feature.cached_votes_total)/(feature.credit + (current_date  - feature.created_at.to_date).to_i + 1)
         feature.increment!(:credit, by = feature_increase)
     end 
   end

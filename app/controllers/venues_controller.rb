@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  before_action :set_venue, only: [:show, :edit, :update, :destroy, :venue_verified]
+  before_action :set_venue, only: [:show, :edit, :update, :destroy, :venue_verified, :upvote, :downvote]
   before_action :require_admin, only: [:destroy, :new]
   before_action :require_owner, only: [:edit, :update]
 
@@ -20,12 +20,17 @@ class VenuesController < ApplicationController
     venues = Venue.all.to_a
     venues.each {|venue| venue.avg_time}
     @venues = venues.sort! {|x,y| y.avg_verify <=> x.avg_verify }
-    
-    
-    
-    
-    
   end
+  
+  
+  def upvote
+  @venue.liked_by current_user
+  end
+
+  def downvote
+  @venue.unliked_by current_user
+  end
+  
   
   def venue_verified
     @venue.update_attribute(:venue_verify, Time.now)
